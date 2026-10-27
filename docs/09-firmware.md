@@ -1,0 +1,535 @@
+# 09 — Firmware update protocol, and custom firmware
+
+The complete update channel, and an honest assessment of whether a custom
+firmware is reachable.
+
+Two independent bodies of evidence are in play here, and they are marked
+differently:
+
+- the **update protocol** comes from the official app, so
+  `from the official app, untested` — except the Identity Reply and
+  what [the `0x64` probes](#what-the-hardware-has-actually-said-about-0x64)
+  established, which are `verified on hardware`;
+- the **update file** comes from the official OS 2.00 image, so
+  `from firmware image (static analysis)`. Those facts were checked byte for
+  byte against the artefact and are reproducible, but they say nothing about
+  runtime behaviour.
+
+In the official app, the firmware protocol lives in a native plug-in (classes
+`FirmwareUpdater` / `MidiFirmwareUpdater` / `WiFiFirmwareUpdater`).
+
+## Entry points on the app side
+
+```csharp
+StartUpdatingViaMidi(string filePath, int blocks, UpdateInfoDelegate callback)
+StartUpdatingViaWiFi(string filePath, int blocks, string ipAddress,
+                     int portNumber, int wifiMode, UpdateInfoDelegate callback)
+CancelUpdating()
+ResumeUpdating()
+```
+
+`blocks` is a bitmask of `BlockType`:
+
+| Bit | Block |
+|---|---|
+| `1` | Boot |
+| `2` | Program |
+| `4` | Wave |
+
+So the app can push only part of an image. There is also a `skipBlock:`, so a
+block can be skipped mid-transfer.
+
+> **The bitmask does not describe the file.** The OS 2.00 update file contains
+> only **two** blocks, `Installer` and `Program` — there is no block named
+> `Boot` and none named `Wave`, and the waveform data lives *inside* the
+> `Program` image. `from firmware image (static analysis)`. So for that update
+> the state machine's Boot and Wave stages have nothing to push, which is
+> plausibly what `skipBlock:` is for — an inference, not an observed app
+> behaviour. See [the file format](#the-update-file-os-200).
+
+## The frame
+
+Firmware update uses **address-high `0x64`** inside the ordinary SysEx space. It
+is not a separate protocol.
+
+```
+F0 43 10 7F 1C 0C 64 <category> <command> [data] F7
+```
+
+In Parameter Change terms: `ah = 64`, `am = category`, `al = command`. The total
+length is 10 plus the data size, and the app only ever sends 0 or 1 data bytes.
+
+### Checksum
+
+`checkSumValueFromMessage:size:` sums the bytes at indices **7 to size-3**
+inclusive, then returns `(0x80 - (sum & 0x7F)) & 0x7F`, or `0` when
+`sum & 0x7F == 0`. That is the ordinary Yamaha checksum applied from the Model
+ID to the last data byte — the same range this repository verified against a
+captured message in
+[02-sysex-format.md](02-sysex-format.md#bulk-dump).
+
+## Detecting the device
+
+A standard Universal Identity Request / Reply. The plug-in's
+`isIdentityReply:length:correctness:` requires a reply of exactly **15 bytes**:
+
+```
+F0 7E 7F 06 02 43 00 41 64 06 mm 00 00 7F F7
+```
+
+- byte 11 must be `00`
+- bytes 13-14 must be `7F F7`
+- `64 06` is the SEQTRAK's device family / code
+- `mm = (version − 1.0) × 10`
+
+A real unit answered `F0 7E 7F 06 02 43 00 41 64 06 0A 00 00 7F F7`, so
+`mm = 0x0A` → version 2.0, matching the OS V2.00 it was running.
+`verified on hardware`. The pattern derived from the official app is exact.
+
+The same function also accepts a proprietary reply of the form
+`F0 43 10 7F 1C 0C … F7`, at least 10 bytes long, which is what the device sends
+once it is already in loader mode.
+
+## Device-to-host messages
+
+From the dispatcher `handleSysExMessage:withSize:`:
+
+| Address | Meaning | Handler |
+|---|---|---|
+| `64 00 02` | mode reply, 1 data byte | `handleModeReply:` |
+| `64 00 07` | reboot reply, 1 data byte | `handleRebootReply:` |
+| `64 01 00` | request for the next packet (flow control) | `handlePacketRequest` |
+| `64 01 03` | block-creation confirmation | `handleCreateConfirm` |
+| `64 01 05` | terminate with error → `ErrorFromHardware` (13) | `terminateWithResult:` |
+| `64 02 00` | block acknowledgement | advance to the next header |
+
+## The data: bulk dumps
+
+Blocks go out as **Bulk Dumps**, not Parameter Changes. The common header, read
+from the plug-in's literal pool:
+
+```
+F0 43 00 7F 1C bh bl 0C 64 02 al … cc F7
+```
+
+| `al` | Contents |
+|---|---|
+| `01` | **block header**: 4 metadata bytes (`00 01 00 00`) then the payload |
+| `02` | **block data**: a 14-bit packet number then the payload |
+
+`bh bl` is the byte count from the Model ID to the last data byte; the message
+ends with the checksum and `F7`. A block message is `payload + 17` bytes total,
+with payloads of **128 bytes** (`mov w0, #0x80`).
+
+This is exactly the "dividable bulk" format from
+[02-sysex-format.md](02-sysex-format.md#dividable-bulk-split-transfers): packet
+count and packet number at offset 11, data from offset 15.
+
+## The state machine
+
+`UpdateState` has 35 states and reveals that an update runs in **four
+successive stages, each with its own reboot**:
+
+```
+Idling
+└─ CheckingIdentityAtBegining            identity request in normal mode
+└─ RebootingAsLoader                     reboot into the loader
+   WaitingForConnectionForLoader
+   WaitingForStabilizationForLoader
+   CheckingIdentityAsLoader
+   ChangingModeForLoader
+└─ INSTALLER   SendingStartForInstaller → SendingInstallerHeader
+               → SendingInstallerData → WaitingForCreateConfirmForInstaller
+└─ RebootingAsUpdater                    reboot into the freshly written updater
+   WaitingForConnectionForUpdater
+   CheckingIdentityAsUpdater
+   ChangingModeForUpdater
+└─ BOOT        SendingStartForBoot → SendingBootHeader
+               → SendingBootData → WaitingForCreateConfirmForBoot
+└─ PROGRAM     SendingStartForProgram → SendingProgramHeader
+               → SendingProgramData → WaitingForRequestForProgram
+               → WaitingForCreateConfirmForProgram
+└─ WAVE        SendingStartForWave → SendingWaveHeader
+               → SendingWaveData → WaitingForRequestForWave
+               → WaitingForCreateConfirmForWave
+└─ RebootingAsNormal
+   WaitingForConnectionForNormal
+   CheckingIdentityAsNormal
+   End
+```
+
+**The notable part**: the first thing the host sends is not firmware, it is an
+**installer**, which the loader writes and then executes after a reboot. That
+installer is what receives Boot, Program and Wave. The logic that validates and
+writes the image is itself delivered by the update.
+
+## Result codes
+
+`UpdateResult`:
+
+| Code | Meaning |
+|---|---|
+| 0 | `Success` |
+| 1 | `AlreadyUpdating` |
+| 2 | `FileNotFound` |
+| 3 | `DisconnectedPort` |
+| 4 | `SetupFailure` |
+| 5 | `ReceivingFailure` |
+| 6 | `SendingFailure` |
+| 7 | `Timeout` |
+| 8 | `DeviceNotFound` |
+| 9 | `InvalidData` |
+| 10 | `UnknownError` |
+| 11 | `CancelByApp` |
+| 12 | `CancelByHardware` |
+| 13 | `ErrorFromHardware` |
+| 14 | `RebootFailure` |
+
+`InvalidData` is checked **app-side** (a malformed file); `ErrorFromHardware`
+comes from the machine via `64 01 05`.
+
+## The update file (OS 2.00)
+
+Everything in this section is `from firmware image (static analysis)`: derived
+from the official `8Z33OS_.PGM` for OS 2.00 (11,829,343 bytes, sha256
+`1a87fb5a…13bcf63`) by static analysis only. Nothing was executed and no machine
+was touched. Values described as reproduced were checked byte for byte and can
+be replayed with the tools in the sibling `seqtrak-firmware-analysis` project;
+interpretations are marked *inferred*.
+
+### Container
+
+Two blocks concatenated, with no global index. Each is a 128-byte header
+followed by its payload, and the next block starts immediately after.
+
+```
+offset       size          contents
+0x00000000   128           "Installer" block header
+0x00000080   0x00100000    Installer payload: raw ARM image, loaded at 0x10000000
+0x00100080   128           "Program" block header
+0x00100100   0x00a47f5f    Program payload: u32 big-endian length + LZSS stream
+                           -> 0x03fc0000 (63.75 MiB) flat image, loaded at 0x20040000
+0x00b4805f   -             end of file, no trailing bytes
+```
+
+`128 + 0x100000 + 128 + 0xa47f5f` is exactly the file size, so the block chain
+accounts for the whole file: there is no hidden block and no trailing field.
+
+### Block header, 128 bytes
+
+| Offset | Size | Type | `Installer` | `Program` | Meaning |
+|---|---|---|---|---|---|
+| `+0x00` | 24 | ASCII, NUL | `Installer` | `Program` | block name |
+| `+0x18` | 40 | ASCII, NUL | `2.00.2` | `2.00.2` | version |
+| `+0x40` | 4 | u32 LE | `0x0C1566FF` | `0x592A6F35` | **additive sum** |
+| `+0x44` | 28 | ASCII, NUL | ` (C)2021 YAMAHA ` | same | copyright |
+| `+0x60` | 14 | — | zeros | zeros | reserved |
+| `+0x6E` | 2 | u16 LE | `0xFFFF` | `0x0001` | block index — *inferred* |
+| `+0x70` | 4 | u32 LE | `0` | `0` | reserved |
+| `+0x74` | 2 | u16 LE | `0x0000` | `0x0055` | compression flag — *inferred* |
+| `+0x76` | 2 | u16 LE | `0x0055` | `0x0055` | validity flag — *inferred* |
+| `+0x78` | 4 | u32 LE | `0x10000000` | `0x20040000` | load address |
+| `+0x7C` | 4 | u32 LE | `0x00100000` | `0x00A47F5F` | payload length **in the file** |
+
+`+0x7C` is the length *in the file*, so the compressed size for `Program`. The
+decompressed size is stored nowhere in the header; it is implicit in the stream.
+
+The three *inferred* fields are inferred because two blocks are not enough to
+tell a flag from a coincidence. `+0x74` is the strongest of them: it is `0x55`
+for the one compressed block and `0` for the one raw block.
+
+### Integrity: a single additive sum per block
+
+The `+0x40` field is **the arithmetic sum of the payload bytes**, truncated to
+32 bits. Both were reproduced exactly:
+
+| Block | Field at `+0x40` | Sum of |
+|---|---|---|
+| `Installer` | `0x0C1566FF` | its 1,048,576 payload bytes |
+| `Program` | `0x592A6F35` | its 66,846,720 **decompressed** bytes |
+
+The field was tested against byte sum, u16 LE sum, u32 LE sum, u32 LE XOR,
+CRC-32, complemented CRC-32 and Adler-32, each over the payload alone, over
+header + payload, and over the header with the field zeroed. **Only the byte sum
+matches**, and it matches both blocks.
+
+An additive sum has no cryptographic property: anyone can recompute it after
+modifying the image.
+
+### Compression
+
+The `Program` payload is **Okumura-style LZSS**, fully reconstructed and
+verified. The payload begins with a u32 **big-endian** length for the stream
+that follows; the stream is a sequence of a flag byte followed by eight tokens.
+
+### What is in the blocks
+
+**`Installer`** — 1 MiB, uncompressed, in the clear, mean entropy 2.287
+bits/byte. An 8-entry ARM exception vector table at `+0x00`, a literal pool at
+`+0x20`, an identification area at `+0x200` reading
+`" Boot Program #8Z33 Copyright(C) 2021 Yamaha Corporation."`, a reset handler at
+`+0x280`, then mostly GCC-compiled Thumb-2 with libstdc++ (exceptions, RTTI,
+demangler), the **eForce** RTOS, a NAND driver and a FAT12 stack.
+
+That identification string is the origin of a mistake worth recording: the
+`Boot` and `Wave` strings in this file are **code strings inside the Installer**,
+not block headers. Reading a cluster of neighbouring strings as a table of
+contents is what produced the four-block model this document used to carry.
+
+**`Program`** — a 63.75 MiB flat image at `0x20040000`, in the clear. The first
+1024 bytes are a plaintext prologue: 128 bytes of copyright, then a **section
+table** of 14 sixteen-byte records, then `0xFF` padding, then the ARM vector
+table and code at `+0x400`.
+
+Section record layout: `u8` id, `u8` flag (always `0x01`), 6 zero bytes,
+`u32` LE address, `u32` LE length. The first eight records **tile
+`0x20000000`-`0x24000000` exactly** — 64 MiB, each address being the previous
+one plus its length, with the 1024-byte prologue as the only hole — which is
+what makes the interpretation more than a guess.
+
+| # | id | Address | Length | Contents |
+|---|---|---|---|---|
+| 0 | `0x04` | `0x20000000` | 256 KiB | reserved window, absent from the image — *inferred* |
+| 1 | `0x05` | `0x20040400` | 15.75 MiB | **code**: ARM then Thumb-2 |
+| 2 | `0x11` | `0x21000000` | 7.94 MiB | **factory sample data** — *inferred* |
+| 3 | `0x18` | `0x217F0000` | 16 KiB | data |
+| 4 | `0x19` | `0x217F4000` | 4 KiB | data |
+| 5 | `0x1A` | `0x217F5000` | 44 KiB | data |
+| 6 | `0x20` | `0x21800000` | 20 MiB | preformatted storage area |
+| 7 | `0x21` | `0x22C00000` | 20 MiB | the same, a near-identical copy |
+
+Six further records form a second, non-contiguous list whose role is not
+established.
+
+Only **19.00 MiB** of the 63.75 MiB holds anything other than pure `0x00` or
+`0xFF`. The two 20 MiB areas are nearly empty and differ in just **36 bytes out
+of 20,971,520** — section `0x20` starts with the magic `DE AD FA CE` and ends
+with a boot record containing the ASCII `170055`, while `0x21` starts and ends
+erased. That is the signature of an A/B pair with only the first initialised at
+the factory (*inferred*).
+
+### Architecture and SoC
+
+**ARMv7-A, 32-bit, little-endian.** Both blocks open with the characteristic
+8-entry ARM exception vector table built from `ldr pc, [pc, #0x18]`
+instructions — a Cortex-M would use a table of addresses, not instructions,
+which rules out the M profile.
+
+Build paths survive in both blocks:
+
+```
+/home/ngs/workspace/mode-b_fullbuild/build_dir/mode-b/de-21mode-b-tg/src/...
+/home/ngs/workspace/mode-b_fullbuild/build_dir/mode-b/swx09-platform/platform/...
+```
+
+- **`swx09-platform`** — the SoC is a **Yamaha SWX09**, from their in-house
+  audio silicon family. *Inferred*, but a named platform path is a strong
+  indicator, and it is the first concrete fact about the silicon: this document
+  previously said there was no hint of it anywhere.
+- **`eForce Co., Ltd.`** in the Installer — the Japanese vendor of the
+  μC3/μITRON RTOS and the μNet stack. *Inferred* as to which product.
+- Subtrees present: `src/ndd` (NAND driver: ONFI, ECC, bad blocks, wear
+  levelling), `src/sytg` (tone generator: `player`, `tone_generator`,
+  `transporter`), `src/uef`, `src/vtg`, `src/rtg`, `src/wad`,
+  `platform/emidos/driver/fmdc` (flash driver), `platform/bluetooth`,
+  `test/swx09`.
+
+### The version string decodes `FirmwareVersion`
+
+The plaintext `2.00.2` at `+0x18` corresponds exactly to the four bytes
+`02 00 00 02` that the machine returns for `FirmwareVersion` at `01 00 00`
+(`verified on hardware`). So that parameter is a **version triple plus a build
+number**: `2`, `00`, `0`, `2` → "2.00.2". The correspondence is reproduced; the
+reading of the third byte is *inferred*, since it is `0` in both blocks here and
+therefore unconstrained.
+
+## What the hardware has actually said about `0x64`
+
+Everything above about the protocol comes from the official app. Two read-only
+probe sessions on the real unit tested the one thing that the app cannot answer:
+whether the `0x64` space is reachable at all from outside an update.
+
+The marker differs between the two halves of this section, and the difference is
+the point:
+
+| Claim | Marker |
+|---|---|
+| `0x64` answers no read in **normal** mode | `verified on hardware` — instrumented negative, control in the loop |
+| The loader's Identity Reply, byte 11 = `00` | `verified on hardware` |
+| Entering and leaving loader mode is reversible on this unit | `verified on hardware`, one unit, one run |
+| `0x64` answers no read in **loader** mode | `verified on hardware` **only as "silent under these conditions"** — the change-mode was never acknowledged, so this is not yet a firm negative |
+
+**In normal mode, there is no SysEx read path into `0x64`.** Parameter Requests
+to `64 00 00`, `64 01 00`, `64 02 00` and `64 06 00`, six loops each, returned
+nothing — 24 attempts, not one reply. A `FirmwareVersion` control at `01 00 00`
+sat in the same loop and answered 5 times out of 6, so the link and the read
+primitive were working while `0x64` stayed silent. The single control miss is
+the ~1-in-10 drop documented in
+[10-verified-behaviour.md](10-verified-behaviour.md); it is why the control
+belongs in the loop.
+
+**In loader mode, `0x64` is also silent — with one reserve that matters.** The
+machine was rebooted into the loader with `F0 43 10 7F 1C 0C 64 00 06 01 F7`,
+re-enumerated as a MIDI port, and answered the Universal Identity Request:
+
+```
+← F0 7E 7F 06 02 43 00 41 64 06 00 00 01 7F F7
+```
+
+Byte 11 is `00` here against `0A` in normal mode, which is how you tell the two
+apart: that byte is `mm = (version − 1.0) × 10` for the application firmware and
+reads `00` for the loader. Twelve read requests into `0x64` followed, all
+silent.
+
+> **The reserve.** The `change-mode` (`64 00 00` with data `01`) was **not
+> acknowledged** on that run — no `64 00 02` came back. So the silence has two
+> readings: a true negative, or reads that are gated on a change-mode that was
+> never reached. This is in
+> [12-open-questions.md](12-open-questions.md) until a run with an
+> acknowledged change-mode settles it.
+
+**Entering and leaving loader mode was reversible on this unit.** Normal →
+loader → identity → reboot → normal, with the machine back in its initial state
+and nothing written: no `SendingStart`, no block. That is real de-risking — the
+"entry might erase something" hypothesis did not materialise here — but it is
+one unit and one run, and it says nothing about what a *write* in loader mode
+would do.
+
+What this does **not** establish: that the resident loader checks no signature.
+Its code is still not readable by any route available here, which is the
+blocking item below. A silent address proves there is no read path, not that
+there is nothing behind it.
+
+---
+
+# Is custom firmware feasible?
+
+**The file lifts one lock, but not the one that counts.**
+
+There is no cryptographic signature in the update file. That removes the
+objection most people expect to stop them — and it is a **necessary** condition
+for custom firmware, not a **sufficient** one. The component that validates and
+writes is not in the file.
+
+## The defensible statement
+
+This is the wording to quote, and it is deliberately narrower than "there is no
+signature":
+
+> The SEQTRAK OS 2.00 update file contains no cryptographic signature, no
+> certificate and no cryptographic primitive constants; its only integrity check
+> is a 32-bit additive sum per block, verified exactly. It remains possible that
+> the update mechanism verifies a short digest that was not spotted, or that
+> verification happens in a component absent from this file.
+
+## What is now established
+
+`from firmware image (static analysis)` unless noted:
+
+1. **The container is fully understood and reproducible.** A syntactically valid
+   `.PGM` with correct checksums can be built from a modified image.
+2. **The `Program` image is a flat ARMv7-A memory image** loaded at
+   `0x20040000`, in the clear, with a plaintext section table. It is modifiable
+   in principle.
+3. **Nothing in the file is encrypted.** The high entropy measured before the
+   file was parsed came entirely from LZSS compression and audio sample data —
+   which is exactly the ambiguity the earlier version of this document warned
+   about, resolved in the benign direction.
+4. The SoC is a **Yamaha SWX09** (*inferred* from a build path), running an
+   **eForce** RTOS. This document previously said there was no hint of the
+   silicon anywhere.
+5. The update channel itself is fully documented above, so **a third-party
+   updater is writable** — one that pushes an official Yamaha file without the
+   app. `from the official app, untested`.
+
+## What is still blocking
+
+> The component that **validates and writes** is not in this file.
+
+Being precise about this matters more than the headline. The file contains an
+`Installer` and a `Program`; the resident loader receives and writes the
+`Installer`, and the freshly written `Installer` then receives and writes the
+`Program`. Therefore:
+
+- The `Installer` **receives no signature for the `Program`** — there is none in
+  the file. Established.
+- It is **not** established that the `Installer` checks nothing beyond the
+  additive sum. Its block-receive path has not been analysed.
+- **Nothing at all can be said about the resident loader.** Its code is not in
+  this file. If it requires a signature on the `Installer`, everything stops
+  there, and this file cannot reveal that. Hardware has since confirmed it is
+  not readable by SysEx either, in normal or loader mode — see
+  [above](#what-the-hardware-has-actually-said-about-0x64). What hardware *did*
+  settle is cheaper and still useful: switching into loader mode and back is
+  reversible on this unit.
+
+## What the signature search could not have detected
+
+Read this before quoting any conclusion. Each item is a real limit of the
+method, not a stylistic hedge.
+
+1. **A bare 32-byte digest.** A SHA-256 stored as-is is too short for entropy
+   analysis and has no recognisable structure; at a 32-byte window the false
+   positive rate is 2.6 %, which is noise. If the image carries a digest
+   somewhere, the search could not have seen it. Same for a 16-byte MAC.
+2. **A signature outside this file.** USB-stick updates go through a FAT volume
+   and only the `.PGM` was analysed. A detached signature in a second file on
+   the volume, or carried as a message field in the SysEx stream, is out of
+   scope.
+3. **Verification in the resident loader or mask ROM.** The fundamental limit:
+   the code that validates the `Installer` is not in this file, and no
+   measurement on this file can speak about it.
+4. **A hand-rolled bignum verifier.** An in-house RSA or EC implementation with
+   no OID table, no named curve constant and a derived rather than stored public
+   key would pass every constant filter. Unlikely for an industrial vendor, not
+   excluded.
+5. **Non-standard or obfuscated cryptography** whose constants resemble nothing
+   known.
+6. **The Installer's block-receive path was not analysed.** The claim proved
+   is *the file carries no signature* — a statement about the file, not about
+   the behaviour of the embedded software.
+
+## Next steps, ordered by information per unit of risk
+
+Only the first two are free of hardware risk.
+
+1. **Analyse the Installer's block-receive path** — 1 MiB of ARM/Thumb-2,
+   no symbols, but strings and build paths present. Find the code that reads the
+   `+0x40` field and see whether it does anything else. **This is the only way
+   to turn "no signature in the file" into "the installer does not check one",**
+   and it is now the best information-per-cost step available.
+2. **Rebuild a bit-identical `.PGM`** from the decompressed image, to prove the
+   container + LZSS + checksum chain is mastered in the writing direction.
+3. **Write a third-party updater** that replays the SysEx protocol with the
+   **official, unmodified** file. Real risk from the first write onward.
+4. Only then, a minimally patched `Program` image.
+
+Also free and already done: **query the identity** in normal mode
+(`F0 7E 7F 06 01 F7`). `mm = 0x0A` decoded to version 2.0 and matched the
+machine. Repeat it after any firmware change to read the new version. The same
+request in loader mode returns `mm = 00`, which is the cheap way to confirm
+which mode the machine is in.
+
+Also free, and the one probe still owed: **re-run the loader-mode read sweep
+with an acknowledged change-mode**, to turn the reserve above into a firm
+negative or into a read path worth following.
+
+## Risks, stated plainly
+
+Writing to a machine's loader can brick it permanently, and no accessible JTAG
+is documented.
+
+Worse, because the resident loader cannot be inspected, **there is no recovery
+path whose existence can be verified.** Entering loader mode, on the other hand,
+is now known to be reversible on one unit — that is a bound on the risk of
+*looking*, not on the risk of writing. Yamaha's own release notes say that "if
+the unit becomes inoperable by accident, run the updater again", which suggests
+a robust resident loader — but that is a commercial notice, not a guarantee, and
+it probably does not cover an arbitrary `Program` image.
+
+For most of what people want from this machine, the **SysEx + external display +
+third-party app** route gives far more result for far less risk. The protocol
+documented in this repository already covers pattern editing — now
+`verified on hardware`, writes included — live editing state, user scales, song
+mode and Wi-Fi configuration: a very large control surface, with the firmware
+untouched.

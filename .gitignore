@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Scratch output from the extractors
+/tmp/
+*.tmp
+
+# Yamaha's documents: download them yourself, never commit them
+reference/*.pdf
+reference/*.png

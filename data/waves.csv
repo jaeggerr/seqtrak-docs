@@ -1,0 +1,2025 @@
+number,name,main_category,sub_category
+1,CF3 Stretch Sw St,Piano,Piano
+2,CF3 Stretch Sw Mn,Piano,Piano
+3,CF3 Stretch Soft St,Piano,Piano
+4,CF3 Stretch Soft Mn,Piano,Piano
+5,CF3 Stretch Soft St+,Piano,Piano
+6,CF3 Stretch Med St,Piano,Piano
+7,CF3 Stretch Med Mn,Piano,Piano
+8,CF3 Stretch Hard St,Piano,Piano
+9,CF3 Stretch Hard Mn,Piano,Piano
+10,CF3 Stretch Hard Mn+,Piano,Piano
+11,CF3 Stretch Hard Mn-,Piano,Piano
+12,CF3 KeyOff St,Piano,Piano
+13,CF3 KeyOff R,Piano,Piano
+14,CF3 Flat Sw St,Piano,Piano
+15,CF3 Flat Sw Mn,Piano,Piano
+16,CF3 Flat Soft St,Piano,Piano
+17,CF3 Flat Med St,Piano,Piano
+18,CF3 Flat Hard St,Piano,Piano
+19,Brite Piano,Piano,Piano
+20,EP1 Soft,Keys,Rd
+21,EP1 Soft+,Keys,Rd
+22,EP1 Soft-,Keys,Rd
+23,EP1 Med,Keys,Rd
+24,EP1 Med+,Keys,Rd
+25,EP1 Hard,Keys,Rd
+26,EP1 Hard+,Keys,Rd
+27,EP1 Hard-,Keys,Rd
+28,EP2 Sw,Keys,Rd
+29,EP2 Soft1,Keys,Rd
+30,EP2 Soft1-,Keys,Rd
+31,EP2 Soft2,Keys,Rd
+32,EP2 Hard1,Keys,Rd
+33,EP2 Hard1-,Keys,Rd
+34,EP2 Hard2,Keys,Rd
+35,EP3 Soft1,Keys,Rd
+36,EP3 Soft2,Keys,Rd
+37,EP3 Soft2+,Keys,Rd
+38,EP3 Hard1,Keys,Rd
+39,EP3 Hard1+,Keys,Rd
+40,EP3 Hard1-,Keys,Rd
+41,EP3 Hard2,Keys,Rd
+42,EP3 Hard2+,Keys,Rd
+43,EP KeyOff,Keys,Rd
+44,Wr Soft,Keys,Wr
+45,Wr Med,Keys,Wr
+46,Wr Hard,Keys,Wr
+47,Wr KeyOff,Keys,Wr
+48,DX1,Keys,FM
+49,DX2,Keys,FM
+50,DX3,Keys,FM
+51,DX Body Soft,Keys,FM
+52,DX Body Med,Keys,FM
+53,DX Body Hard,Keys,FM
+54,DX Attack1,Keys,FM
+55,DX Attack2,Keys,FM
+56,DX Attack3,Keys,FM
+57,DX Attack4,Keys,FM
+58,DX Attack5,Keys,FM
+59,Clav1,Keys,Clavi
+60,Clav2,Keys,Clavi
+61,Clav2+,Keys,Clavi
+62,Clav3,Keys,Clavi
+63,Clav3-,Keys,Clavi
+64,Clav4 Med,Keys,Clavi
+65,Clav4 Med+,Keys,Clavi
+66,Clav4 Hard,Keys,Clavi
+67,Clav4 Hard+,Keys,Clavi
+68,Clav KeyOff 1,Keys,Clavi
+69,Clav KeyOff 2,Keys,Clavi
+70,Clav5 mp,Keys,Clavi
+71,Clav5 mf,Keys,Clavi
+72,Clav5 f,Keys,Clavi
+73,Clav5 KeyOff,Keys,Clavi
+74,Clav KeyNoise p,Keys,Clavi
+75,Clav KeyNoise mf,Keys,Clavi
+76,Clav KeyNoise f,Keys,Clavi
+77,Clav KeyOff mf,Keys,Clavi
+78,Clav KeyOff f,Keys,Clavi
+79,Harpsichord1,Keys,Other
+80,Harpsichord2 St,Keys,Other
+81,Harpsichord2 St+,Keys,Other
+82,Harpsichord2 St-,Keys,Other
+83,Harpsichord2 KeyOff St,Keys,Other
+84,CP70,Keys,Other
+85,CP80 p,Keys,Other
+86,CP80 mp,Keys,Other
+87,CP80 mf,Keys,Other
+88,CP80 f,Keys,Other
+89,CP80 ff,Keys,Other
+90,CP80 5Sw,Keys,Other
+91,CP80 4Sw Hard,Keys,Other
+92,CP80 KeyOff 3Sw,Keys,Other
+93,Celesta,Keys,Other
+94,Vibraphone1,CPerc,Malet
+95,Vibraphone2 Med,CPerc,Malet
+96,Vibraphone2 Med-,CPerc,Malet
+97,Vibraphone2 Hard,CPerc,Malet
+98,Vibraphone2 Hard-,CPerc,Malet
+99,Marimba 1,CPerc,Malet
+100,Marimba 2,CPerc,Malet
+101,Glockenspiel,CPerc,Malet
+102,Xylophone1,CPerc,Malet
+103,Xylophone2,CPerc,Malet
+104,Timpani1 Sw St,CPerc,Malet
+105,Timpani1 Sw L,CPerc,Malet
+106,Timpani1 Hard R,CPerc,Malet
+107,Timpani2 Oct Soft St,CPerc,Malet
+108,Timpani2 Oct Med St,CPerc,Malet
+109,Timpani2 Oct Hard St,CPerc,Malet
+110,Timpani2 Oct Muffl St,CPerc,Malet
+111,Tubular Bell1,CPerc,Other
+112,Tubular Bell2,CPerc,Other
+113,Bell,CPerc,Other
+114,Bell St1,CPerc,Other
+115,Bell St2,CPerc,Other
+116,Brass Bell,CPerc,Other
+117,Small Bell 1,CPerc,Other
+118,Finger Cymbal,CPerc,Other
+119,Hand Bell,CPerc,Other
+120,Stone Hard,CPerc,Other
+121,Wood Bell1,CPerc,Other
+122,Wood Bell2,CPerc,Other
+123,Kalimba,CPerc,Other
+124,Gamelan1,CPerc,Other
+125,Gamelan2,CPerc,Other
+126,Steel Drum,CPerc,Other
+127,Rock1 Chorus Vibrato,Organ,TnWhl
+128,Rock1 Percussion,Organ,TnWhl
+129,Rock2,Organ,TnWhl
+130,Jazz wPercussion,Organ,TnWhl
+131,Jazz,Organ,TnWhl
+132,Full Draw,Organ,TnWhl
+133,Bow,Organ,TnWhl
+134,Bow Chorus Vibrato,Organ,TnWhl
+135,Gospel,Organ,TnWhl
+136,1st Four Draw,Organ,TnWhl
+137,Draw 16',Organ,TnWhl
+138,Draw 5 1/3',Organ,TnWhl
+139,Draw 8',Organ,TnWhl
+140,Draw 4',Organ,TnWhl
+141,Draw 2 2/3',Organ,TnWhl
+142,Draw 2',Organ,TnWhl
+143,Draw 1 3/5',Organ,TnWhl
+144,Draw 1 1/3',Organ,TnWhl
+145,Draw 1',Organ,TnWhl
+146,Draw 16' Offset,Organ,TnWhl
+147,Draw 8' Offset,Organ,TnWhl
+148,Draw 4' Offset,Organ,TnWhl
+149,Draw 1 3/5' Offset,Organ,TnWhl
+150,Draw 1 1/3' Offset,Organ,TnWhl
+151,Draw 1+3,Organ,TnWhl
+152,Draw 1+3-,Organ,TnWhl
+153,Draw 2+4,Organ,TnWhl
+154,Draw 2+4+,Organ,TnWhl
+155,Draw Even,Organ,TnWhl
+156,Draw Even-,Organ,TnWhl
+157,Draw Odd,Organ,TnWhl
+158,Draw Odd+,Organ,TnWhl
+159,Percussion,Organ,TnWhl
+160,Tonewheel Key Click,Organ,TnWhl
+161,Rotor,Organ,TnWhl
+162,Rotor Whistle,Organ,TnWhl
+163,Rotor Grit,Organ,TnWhl
+164,Compact Electronic,Organ,Other
+165,Compact Electronic-,Organ,Other
+166,Portable Electronic,Organ,Other
+167,Portable Electronic-,Organ,Other
+168,Fr All Tabs,Organ,Other
+169,Fr String Lo,Organ,Other
+170,Fr String Hi,Organ,Other
+171,Fr Pedal,Organ,Other
+172,Fr KeyOff,Organ,Other
+173,Vx Drawbar1-3,Organ,Other
+174,Vx DrawbarIV,Organ,Other
+175,Vx KeyOff,Organ,Other
+176,Pipe Organ1 St,Organ,Other
+177,Pipe Organ1 R,Organ,Other
+178,Pipe Organ2,Organ,Other
+179,Pipe Organ3 St,Organ,Other
+180,Pipe Organ3 L,Organ,Other
+181,Pipe Organ3 R,Organ,Other
+182,Pipe Organ4,Organ,Other
+183,Pipe Organ5,Organ,Other
+184,Accordion1,Organ,Other
+185,Accordion2,Organ,Other
+186,Tango Accordion1,Organ,Other
+187,Tango Accordion2,Organ,Other
+188,Tango Accordion Bass,Organ,Other
+189,Nylon Open Soft St,Guitr,A.Gtr
+190,Nylon Open Med St,Guitr,A.Gtr
+191,Nylon Open Hard St,Guitr,A.Gtr
+192,Nylon Open Hard R,Guitr,A.Gtr
+193,Nylon Open Sw Kb St,Guitr,A.Gtr
+194,Nylon Dead Notes St,Guitr,A.Gtr
+195,Nylon Mute L,Guitr,A.Gtr
+196,Nylon Slide St,Guitr,A.Gtr
+197,Nylon Harmonics St,Guitr,A.Gtr
+198,Nylon FX St,S.EFX,MgFX
+199,Steel Open Soft St,Guitr,A.Gtr
+200,Steel Open Med St,Guitr,A.Gtr
+201,Steel Open Med R,Guitr,A.Gtr
+202,Steel Open Hard St,Guitr,A.Gtr
+203,Steel Open Hard R,Guitr,A.Gtr
+204,Steel Open Sw Kb St,Guitr,A.Gtr
+205,Steel Slide St,Guitr,A.Gtr
+206,Steel Harmonics St,Guitr,A.Gtr
+207,Steel Mute St,Guitr,A.Gtr
+208,Steel Dead Notes St,Guitr,A.Gtr
+209,Steel FX St,S.EFX,MgFX
+210,High Strings Soft St,Guitr,A.Gtr
+211,High Strings Soft R,Guitr,A.Gtr
+212,High Strings Hard St,Guitr,A.Gtr
+213,High Strings Hard R,Guitr,A.Gtr
+214,Clean Open Med,Guitr,E.Cln
+215,Clean Open Hard,Guitr,E.Cln
+216,Clean Open Sw Kb,Guitr,E.Cln
+217,Clean Slap,Guitr,E.Cln
+218,Clean Slide,Guitr,E.Cln
+219,Clean Harmonics,Guitr,E.Cln
+220,Clean Mute,Guitr,E.Cln
+221,Clean Dead,Guitr,E.Cln
+222,60s Clean Open Soft,Guitr,E.Cln
+223,60s Clean Open Med,Guitr,E.Cln
+224,60s Clean Open Hard,Guitr,E.Cln
+225,60s Clean Open Sw,Guitr,E.Cln
+226,60s Clean Open Sw Kb,Guitr,E.Cln
+227,60s Clean Dead,Guitr,E.Cln
+228,60s Clean Mute,Guitr,E.Cln
+229,60s Clean Slide,Guitr,E.Cln
+230,60s Clean Harmonics,Guitr,E.Cln
+231,60s Clean FX,S.EFX,MgFX
+232,60s Clean Slap,Guitr,E.Cln
+233,1Coil Open Sw,Guitr,E.Cln
+234,1Coil Open Soft,Guitr,E.Cln
+235,1Coil Open Med,Guitr,E.Cln
+236,1Coil Open Hard,Guitr,E.Cln
+237,1Coil Dead,Guitr,E.Cln
+238,1Coil Slide,Guitr,E.Cln
+239,Jazz Guitar,Guitr,E.Cln
+240,Vintage Amp1,Guitr,E.Cln
+241,Vintage Amp2,Guitr,E.Cln
+242,Neck Pickup,Guitr,E.Cln
+243,Distortion Open,Guitr,E.Dst
+244,Distortion Harmonics,Guitr,E.Dst
+245,Distortion Mute,Guitr,E.Dst
+246,Overdrive Open,Guitr,E.Dst
+247,Overdrive Mute,Guitr,E.Dst
+248,Feedback,Guitr,E.Dst
+249,Banjo1,Guitr,A.Gtr
+250,Banjo2 Med,Guitr,A.Gtr
+251,Banjo2 Med+,Guitr,A.Gtr
+252,Banjo2 Hard,Guitr,A.Gtr
+253,Banjo2 Hard+,Guitr,A.Gtr
+254,Sitar1,Ethnc,Pluk
+255,Sitar2 Soft,Ethnc,Pluk
+256,Sitar2 Med,Ethnc,Pluk
+257,Sitar2 Hard,Ethnc,Pluk
+258,Sitar Waves1,Ethnc,Pluk
+259,Sitar Waves2,Ethnc,Pluk
+260,Sitar Waves3,Ethnc,Pluk
+261,Sitar Waves4,Ethnc,Pluk
+262,Sitar Waves5,Ethnc,Pluk
+263,Tambura,Ethnc,Pluk
+264,Tambura Waves1,Ethnc,Pluk
+265,Tambura Waves2,Ethnc,Pluk
+266,Tambura Waves3,Ethnc,Pluk
+267,Santur,Ethnc,Pluk
+268,Ud,Ethnc,Pluk
+269,Kanun,Ethnc,Pluk
+270,Baglama,Ethnc,Pluk
+271,Bouzouki,Ethnc,Pluk
+272,Shamisen,Ethnc,Pluk
+273,Koto,Ethnc,Pluk
+274,Acoustic Med,Bass,ABass
+275,Acoustic Hard,Bass,ABass
+276,Pick Open,Bass,EBass
+277,Pick Mute+,Bass,EBass
+278,Pick Mute-,Bass,EBass
+279,Pick Rndwound1 Med,Bass,EBass
+280,Pick Flatwound,Bass,EBass
+281,Pick Flatwound+,Bass,EBass
+282,Finger Med,Bass,EBass
+283,Finger Hard,Bass,EBass
+284,Finger Dead,Bass,EBass
+285,Thumb Pull Hard,Bass,EBass
+286,Thumb Hard,Bass,EBass
+287,Fretless,Bass,EBass
+288,Violin Non-Vib,Strng,Solo
+289,Violin St,Strng,Solo
+290,Violin L,Strng,Solo
+291,Violin R,Strng,Solo
+292,Violin L+,Strng,Solo
+293,Violin St-,Strng,Solo
+294,Violin L-,Strng,Solo
+295,Violin R-,Strng,Solo
+296,Viola St,Strng,Solo
+297,Viola L,Strng,Solo
+298,Viola R,Strng,Solo
+299,Viola St-,Strng,Solo
+300,Viola R-,Strng,Solo
+301,Cello St,Strng,Solo
+302,Cello L,Strng,Solo
+303,Cello R,Strng,Solo
+304,Cello R-,Strng,Solo
+305,Contrabass St,Strng,Solo
+306,Contrabass L,Strng,Solo
+307,Contrabass R,Strng,Solo
+308,Contrabass R-,Strng,Solo
+309,Solo Combi1 St,Strng,Solo
+310,Solo Combi1 L,Strng,Solo
+311,Solo Combi1 R,Strng,Solo
+312,Solo Combi1 R+,Strng,Solo
+313,Solo Combi1 R-,Strng,Solo
+314,Solo Combi2,Strng,Solo
+315,Solo Spiccato Combi,Strng,Solo
+316,Solo Spiccato Combi+,Strng,Solo
+317,Solo Spiccato Combi-,Strng,Solo
+318,Keman,Ethnc,Bowed
+319,Ensemble Mix,Strng,Ensem
+320,Ensemble Mix St,Strng,Ensem
+321,Ensemble Mix L,Strng,Ensem
+322,Ensemble Mix R,Strng,Ensem
+323,Ensemble Mix L Offset,Strng,Ensem
+324,Ensemble Mute St,Strng,Ensem
+325,Ensemble Mute,Strng,Ensem
+326,Ensemble Mute Offset,Strng,Ensem
+327,Hard Ensemble St,Strng,Ensem
+328,Hard Ensemble L,Strng,Ensem
+329,OrchStrgs Soft St,Strng,Ensem
+330,OrchStrgs Soft L,Strng,Ensem
+331,OrchStrgs Soft R,Strng,Ensem
+332,OrchStrgs Med St,Strng,Ensem
+333,OrchStrgs Med L,Strng,Ensem
+334,OrchStrgs Med R,Strng,Ensem
+335,OrchStrgs Hard St,Strng,Ensem
+336,OrchStrgs Hard L,Strng,Ensem
+337,OrchStrgs Hard R,Strng,Ensem
+338,OrchStrgs Hard St Offset,Strng,Ensem
+339,Pizzicato1 St,Strng,Pizz
+340,Pizzicato1 Mn,Strng,Pizz
+341,Pizzicato2,Strng,Pizz
+342,Pop Pizzicato,Strng,Pizz
+343,Large Pizzicato L,Strng,Pizz
+344,Large Pizzicato R,Strng,Pizz
+345,Orchestral Harp,Strng,Pizz
+346,Trumpet1 Med,Brass,Solo
+347,Trumpet1 Hard,Brass,Solo
+348,Trumpet1 Med Offset,Brass,Solo
+349,Trumpet1 Hard Offset,Brass,Solo
+350,Trumpet2,Brass,Solo
+351,Trumpet2+,Brass,Solo
+352,Trumpet2 Offset,Brass,Solo
+353,Trumpet Mute,Brass,Solo
+354,Trumpet Mute Offset,Brass,Solo
+355,Soft Trumpet Soft,Brass,Solo
+356,Soft Trumpet Soft Offset,Brass,Solo
+357,Soft Trumpet Med,Brass,Solo
+358,Soft Trumpet Med Offset,Brass,Solo
+359,Trumpet Vib Soft,Brass,Solo
+360,Trumpet Vib Med,Brass,Solo
+361,Trumpet Vib Hard,Brass,Solo
+362,Trumpet Shake,Brass,Solo
+363,Trombone1,Brass,Solo
+364,Trombone1-,Brass,Solo
+365,Trombone1 Offset,Brass,Solo
+366,Trombone2,Brass,Solo
+367,Trombone2 Offset,Brass,Solo
+368,Soft Trombone,Brass,Solo
+369,Soft Trombone Offset,Brass,Solo
+370,Soft Flugelhorn,Brass,Solo
+371,Flugelhorn1,Brass,Solo
+372,Flugelhorn1 Offset,Brass,Solo
+373,Flugelhorn2,Brass,Solo
+374,French Horn,Brass,Solo
+375,French Horn-,Brass,Solo
+376,French Horn Offset,Brass,Solo
+377,French Horn- Offset,Brass,Solo
+378,Tuba,Brass,Solo
+379,Brass Sect1 St,Brass,Ensem
+380,Brass Sect1 St+,Brass,Ensem
+381,Brass Sect1 L,Brass,Ensem
+382,Brass Sect Fall,Brass,Ensem
+383,Brass Sect2 Soft St,Brass,Ensem
+384,Brass Sect2 Med St,Brass,Ensem
+385,Brass Sect2 Med L,Brass,Ensem
+386,Brass Sect2 Hard St,Brass,Ensem
+387,Brass Sect2 Hard St+,Brass,Ensem
+388,Brass Sect2 Hard L+,Brass,Ensem
+389,Brass Sect2 Hard R,Brass,Ensem
+390,Brass Sect2 Hrd L Offset,Brass,Ensem
+391,FrHorns Soft L Offset,Brass,Ensem
+392,FrHorns Med St,Brass,Ensem
+393,FrHorns Med St+,Brass,Ensem
+394,FrHorns Med St-,Brass,Ensem
+395,Soprano Sax1,SaxWW,Sax
+396,Soprano Sax1 Offset,SaxWW,Sax
+397,Soprano Sax2,SaxWW,Sax
+398,Soprano Sax2 Offset,SaxWW,Sax
+399,Soprano Sax3,SaxWW,Sax
+400,Soprano Sax3 Offset,SaxWW,Sax
+401,Alto Sax1,SaxWW,Sax
+402,Alto Sax1 Offset,SaxWW,Sax
+403,Alto Sax2,SaxWW,Sax
+404,Alto Sax2 Offset,SaxWW,Sax
+405,Alto Sax Vb,SaxWW,Sax
+406,Alto Sax Vb Offset,SaxWW,Sax
+407,Alto Sax3,SaxWW,Sax
+408,Alto Sax3 Offset,SaxWW,Sax
+409,Tenor Sax1,SaxWW,Sax
+410,Tenor Sax2 Soft,SaxWW,Sax
+411,Tenor Sax2 Soft Offset,SaxWW,Sax
+412,Tenor Sax2 Med,SaxWW,Sax
+413,Tenor Sax2 Med Offset,SaxWW,Sax
+414,Tenor Sax2 Hard,SaxWW,Sax
+415,Tenor Sax2 Hard Offset,SaxWW,Sax
+416,Tenor Sax2 Growl,SaxWW,Sax
+417,Tenor Sax2 Growl Offset,SaxWW,Sax
+418,Baritone Sax,SaxWW,Sax
+419,Baritone Sax Offset,SaxWW,Sax
+420,Clarinet Soft St,SaxWW,Orche
+421,Clarinet Soft St+,SaxWW,Orche
+422,Clarinet Soft St Offset,SaxWW,Orche
+423,Clarinet Med St,SaxWW,Orche
+424,Clarinet Med St+,SaxWW,Orche
+425,Clarinet Med St Offset,SaxWW,Orche
+426,Clarinet Hard St,SaxWW,Orche
+427,Clarinet Hard St+,SaxWW,Orche
+428,Clarinet Hard L,SaxWW,Orche
+429,Clarinet Hard St Offset,SaxWW,Orche
+430,Oboe1,SaxWW,Orche
+431,Oboe1 Offset,SaxWW,Orche
+432,Oboe2 Med St,SaxWW,Orche
+433,Oboe2 Med St-,SaxWW,Orche
+434,Oboe2 Med L,SaxWW,Orche
+435,Oboe2 Med R,SaxWW,Orche
+436,Oboe2 Med St Offset,SaxWW,Orche
+437,Oboe2 Hard St,SaxWW,Orche
+438,Oboe2 Hard St-,SaxWW,Orche
+439,Oboe2 Hard L,SaxWW,Orche
+440,English Horn,SaxWW,Orche
+441,Bassoon Med St,SaxWW,Orche
+442,Bassoon Med L,SaxWW,Orche
+443,Bassoon Med R,SaxWW,Orche
+444,Bassoon Med St Offset,SaxWW,Orche
+445,Bassoon Hard St,SaxWW,Orche
+446,Bassoon Hard L,SaxWW,Orche
+447,Bassoon Hard St Offset,SaxWW,Orche
+448,Bagpipe,SaxWW,Other
+449,Harmonica,SaxWW,Other
+450,Chromatic Harmonica,SaxWW,Other
+451,Blues Harmonica,SaxWW,Other
+452,Flute Non-Vib,SaxWW,Orche
+453,Flute1,SaxWW,Orche
+454,Flute1 Offset,SaxWW,Orche
+455,Flute1 Attack,SaxWW,Orche
+456,Flute2 Soft St,SaxWW,Orche
+457,Flute2 Soft St+,SaxWW,Orche
+458,Flute2 Soft St Offset,SaxWW,Orche
+459,Flute2 Med St,SaxWW,Orche
+460,Flute2 Med St+,SaxWW,Orche
+461,Flute2 Med St Offset,SaxWW,Orche
+462,Flute2 Hard St,SaxWW,Orche
+463,Flute2 Hard St+,SaxWW,Orche
+464,Flute2 Hard St Offset,SaxWW,Orche
+465,Piccolo1,SaxWW,Orche
+466,Piccolo2 St,SaxWW,Orche
+467,Piccolo2 St Offset,SaxWW,Orche
+468,Breath One Shot,SaxWW,Orche
+469,Pan Flute,Ethnc,Blown
+470,Irish Pipe,Ethnc,Blown
+471,Irish Pipe Offset,Ethnc,Blown
+472,Shakuhachi,Ethnc,Blown
+473,Recorder,SaxWW,Other
+474,Bottle,SaxWW,Other
+475,Ocarina,SaxWW,Other
+476,Human Whistle,SaxWW,Other
+477,Didgeridoo 1,Ethnc,Blown
+478,Didgeridoo 2,Ethnc,Blown
+479,Didgeridoo 3,Ethnc,Blown
+480,Shanai,Ethnc,Blown
+481,Shanai Offset,Ethnc,Blown
+482,Ney,Ethnc,Blown
+483,Ney Offset,Ethnc,Blown
+484,Kaval,Ethnc,Blown
+485,Kaval Offset,Ethnc,Blown
+486,Hah Choir St,Pads,Voice
+487,Hah Choir L,Pads,Voice
+488,Hah Choir R,Pads,Voice
+489,Ooh Choir St,Pads,Voice
+490,Ooh Choir L,Pads,Voice
+491,Ooh St,Pads,Voice
+492,Ooh St Offset,Pads,Voice
+493,Syn Vox,Pads,Voice
+494,Vox Noise,Pads,Voice
+495,Itopia,Pads,Voice
+496,Granu Vox,Pads,Voice
+497,So Long,Pads,Voice
+498,Vocal Osc,Pads,Voice
+499,PWM Strings St,Pads,Str
+500,PWM Strings Mn,Pads,Str
+501,Long Saw,Pads,Other
+502,Fat Saw St,Pads,Other
+503,Fat Saw Mn,Pads,Other
+504,OB Mod Saw,Pads,Other
+505,Uni Six St,Pads,Other
+506,Trance ABS St,Pads,Other
+507,Hyper Trance St,Pads,Other
+508,Phat Stack St,Pads,Other
+509,Saw Eight Detune St,Pads,Other
+510,Chorus Pad St,Pads,Other
+511,Monster Pad St,Pads,Other
+512,VP Strings St,Pads,Str
+513,VP Strings L,Pads,Str
+514,VP Strings R,Pads,Str
+515,OB Strings,Pads,Str
+516,Syzzle Strings,Pads,Str
+517,Padd,Pads,Other
+518,Dark Light,Pads,Other
+519,OB Brass,Pads,Brass
+520,Trance St,Pads,Other
+521,Trance Mn,Pads,Other
+522,PWM Fast,Pads,Other
+523,PWM Slow,Pads,Other
+524,CS80 Brass,Pads,Brass
+525,Airy Sine,Pads,Other
+526,String Machine,Pads,Str
+527,String Machine+,Pads,Str
+528,String Machine-,Pads,Str
+529,Med Detuned Pad St,Pads,Other
+530,Med Detuned Pad L,Pads,Other
+531,Med Detuned Pad R,Pads,Other
+532,StrongDetuned Pad St,Pads,Other
+533,StrongDetuned Pad L,Pads,Other
+534,StrongDetuned Pad R,Pads,Other
+535,Med Detuned 3osc,Pads,Other
+536,XP Brass,Pads,Brass
+537,XP Brass Lp,Pads,Brass
+538,String Pad St,Pads,Str
+539,String Pad L,Pads,Str
+540,OB Brassy Pad St,Pads,Brass
+541,Fat PWM St,Pads,Other
+542,Soft Ensemble St,Pads,Str
+543,Soft Ensemble L,Pads,Str
+544,Soft Ensemble R,Pads,Str
+545,Sync Lead1,SynLd,Analg
+546,Sync Lead2,SynLd,Analg
+547,Sync Lead3,SynLd,Analg
+548,Sync Lead4,SynLd,Analg
+549,Sync Lead5,SynLd,Analg
+550,Sync LFO,SynLd,Analg
+551,P5 SawDown 0 dg,SynLd,Analg
+552,P5 SawDown 180 dg,SynLd,Analg
+553,P5 SawDown PhaseRndm,SynLd,Analg
+554,P5 SawUp 0 dg,SynLd,Analg
+555,P5 SawUp 90 dg,SynLd,Analg
+556,P5 SawUp 180 dg,SynLd,Analg
+557,P5 SawUp 270 dg,SynLd,Analg
+558,OB Saw,SynLd,Analg
+559,Saw,SynLd,Analg
+560,1o1 Saw,SynLd,Analg
+561,1o1 Sub,SynLd,Analg
+562,Saw Square,SynLd,Analg
+563,Square Saw,SynLd,Analg
+564,Mg Ramp,SynLd,Analg
+565,P10-1,SynLd,Analg
+566,P10-2,SynLd,Analg
+567,P10-3,SynLd,Analg
+568,P25-1,SynLd,Analg
+569,P25-2,SynLd,Analg
+570,P50-1,SynLd,Analg
+571,P50-2,SynLd,Analg
+572,Tri Wave,SynLd,Analg
+573,Sine,SynLd,Analg
+574,Heterodyning,SynLd,Analg
+575,Ring Mod,SynLd,Digi
+576,FM Shaper,SynLd,Digi
+577,FM Metal1,SynLd,Digi
+578,FM Metal2,SynLd,Digi
+579,FM Organ1,Pads,Other
+580,FM Organ2,Pads,Other
+581,FM Organ3,Pads,Other
+582,FM Organ4,Pads,Other
+583,FM Tubular Bass,SynLd,Digi
+584,FM Funk,SynLd,Digi
+585,FM Guitar,SynLd,Digi
+586,FS Buzz,SynLd,Digi
+587,Wet Pluck,SynLd,Digi
+588,Digi 01,SynLd,Digi
+589,Digi 02,SynLd,Digi
+590,Digi 03,SynLd,Digi
+591,Digi 04,SynLd,Digi
+592,Digi 05,SynLd,Digi
+593,Digi 06,SynLd,Digi
+594,Digi 07,SynLd,Digi
+595,Digi 08,SynLd,Digi
+596,Bell1 Wave,SynLd,Digi
+597,Bell2 Wave,SynLd,Digi
+598,DigiVox1,SynLd,Voice
+599,DigiVox2,SynLd,Voice
+600,Vox G2,SynLd,Voice
+601,DigiOsc1,SynLd,Digi
+602,DigiOsc2,SynLd,Digi
+603,DigiOsc3,SynLd,Digi
+604,DigiOsc4,SynLd,Digi
+605,DigiOsc5,SynLd,Digi
+606,DigiOsc6,SynLd,Digi
+607,EP Wave,SyCmp,Other
+608,Organ Wave1,Pads,Other
+609,Organ Wave2,Pads,Other
+610,Organ Wave3,Pads,Other
+611,DigiBell1,SyCmp,Other
+612,DigiBell2,SyCmp,Other
+613,DigiBell3,SyCmp,Other
+614,DigiBell4,SyCmp,Other
+615,DigiBell5,SyCmp,Other
+616,DigiBell6,SyCmp,Other
+617,DigiBell7,SyCmp,Other
+618,Trance Attack St,SyCmp,Stab
+619,Spectrum1,Pads,Other
+620,Spectrum2,Pads,Other
+621,Spectrum3,Pads,Other
+622,3o3 Saw1,Bass,SynBs
+623,3o3 Saw2,Bass,SynBs
+624,3o3 Square,Bass,SynBs
+625,Mini Bass,Bass,SynBs
+626,Punch,Bass,SynBs
+627,Punch Offset,Bass,SynBs
+628,Synth Bass1,Bass,SynBs
+629,Synth Bass2,Bass,SynBs
+630,Brip Bass,Bass,SynBs
+631,Puls Bass,Bass,SynBs
+632,Puls Bass Offset,Bass,SynBs
+633,Dirty Perc,Bass,SynBs
+634,Short Uni,Bass,SynBs
+635,Mg Bass1,Bass,SynBs
+636,Mg Bass2,Bass,SynBs
+637,Mg Bass3,Bass,SynBs
+638,Mg Bass3 Offset,Bass,SynBs
+639,Mod Bass,Bass,SynBs
+640,Analog Bass1,Bass,SynBs
+641,Analog Bass2,Bass,SynBs
+642,Analog Bass2 Offset,Bass,SynBs
+643,Analog Bass3,Bass,SynBs
+644,Analog Bass4,Bass,SynBs
+645,Analog Bass5,Bass,SynBs
+646,T8 Kick Bass,Bass,SynBs
+647,FM Bass1,Bass,SynBs
+648,FM Bass2,Bass,SynBs
+649,FM Bass3,Bass,SynBs
+650,Lately-S,Bass,SynBs
+651,Lately-L,Bass,SynBs
+652,JP Short Seq St,Bass,SynBs
+653,Sharp Perc St,Bass,SynBs
+654,Sharp Perc L,Bass,SynBs
+655,Short Stepper St,Bass,SynBs
+656,Short Stepper L,Bass,SynBs
+657,Mini Brip,SynLd,Other
+658,Noise,SynLd,Other
+659,Saturation,SynLd,Other
+660,Birch St,M.EFX,Ambie
+661,Birch L,M.EFX,Ambie
+662,Anemone St,M.EFX,Ambie
+663,Anemone L,M.EFX,Ambie
+664,Magnitude St,M.EFX,Ambie
+665,Magnitude L,M.EFX,Ambie
+666,Magnitude R,M.EFX,Ambie
+667,SabreTone,M.EFX,Ambie
+668,Mellow,M.EFX,Ambie
+669,BellAir,M.EFX,Ambie
+670,BigSyn,M.EFX,Ambie
+671,Trance Choir,M.EFX,Ambie
+672,Hi-Lo,M.EFX,Ambie
+673,AirHose St,M.EFX,Ambie
+674,AirHose L,M.EFX,Ambie
+675,AirHose R,M.EFX,Ambie
+676,Space Scream,M.EFX,Ambie
+677,Ooh Feedback,M.EFX,Ambie
+678,Fairwave,M.EFX,Ambie
+679,Mind Bell 1,M.EFX,Ambie
+680,Sonar,M.EFX,Ambie
+681,Digi Breath,M.EFX,Ambie
+682,Engine Room,M.EFX,Ambie
+683,Moving Chime St,M.EFX,Ambie
+684,Moving Chime L,M.EFX,Ambie
+685,Moving Chime R,M.EFX,Ambie
+686,Motion Beam,M.EFX,Ambie
+687,Hybrid Pad St,M.EFX,Ambie
+688,Hybrid Pad L,M.EFX,Ambie
+689,Wavedance,M.EFX,Ambie
+690,Leftpitch,M.EFX,Ambie
+691,Reflecting St,M.EFX,Ambie
+692,Reflecting L,M.EFX,Ambie
+693,The Fog St,M.EFX,Ambie
+694,Orchestra Hit1 St,M.EFX,Hit
+695,Orchestra Hit2 St,M.EFX,Hit
+696,Orchestra Hit3,M.EFX,Hit
+697,Hit Orchestra1,M.EFX,Hit
+698,Hit Orchestra2,M.EFX,Hit
+699,Lektronica,M.EFX,EFX
+700,X-Fade,M.EFX,EFX
+701,Resonance X-Fade,M.EFX,EFX
+702,Quiek,M.EFX,EFX
+703,Hop FX,M.EFX,EFX
+704,Neo Seq1 Em All,M.EFX,EFX
+705,Whisper Seq Bb,M.EFX,EFX
+706,Whisper Seq Bb Offset,M.EFX,EFX
+707,Neo Seq2 Em All,M.EFX,EFX
+708,Aero Seq All,M.EFX,EFX
+709,Epic Fx Loop,M.EFX,EFX
+710,Multi Piano,M.EFX,Other
+711,Radio Noise,M.EFX,Other
+712,LFO Seq,M.EFX,Other
+713,Raspberry,M.EFX,Other
+714,Fx Cymbals St,M.EFX,Other
+715,Fx Cymbals L,M.EFX,Other
+716,Warning Mod,M.EFX,Other
+717,Hoo,M.EFX,Other
+718,Bell Choir,M.EFX,Other
+719,Shower L,S.EFX,SE
+720,Fx Female Voice St,S.EFX,SE
+721,Fx Female Voice L,S.EFX,SE
+722,Grain1,S.EFX,SE
+723,Grain2 St,S.EFX,SE
+724,Moving Harp St,S.EFX,SE
+725,Metal Mod,S.EFX,SE
+726,Digital Wind,S.EFX,SE
+727,Ethnic Rhythm Rv All,S.EFX,SE
+728,Noise Burst,S.EFX,SE
+729,Zap1,S.EFX,SE
+730,Zap2,S.EFX,SE
+731,Electric Perc,S.EFX,SE
+732,Granular Loop,S.EFX,SE
+733,Bomb 1,S.EFX,SE
+734,TurnTable,S.EFX,SE
+735,Door Squeak,S.EFX,SE
+736,Helicopter 1,S.EFX,SE
+737,Seashore,S.EFX,SE
+738,TelRing,S.EFX,SE
+739,Bird 3,S.EFX,SE
+740,Stream,S.EFX,SE
+741,Gunshot 1,S.EFX,SE
+742,Applause,S.EFX,SE
+743,RainLoop,S.EFX,SE
+744,AcousticGtr FX1,S.EFX,MgFX
+745,AcousticGtr FX2,S.EFX,MgFX
+746,AcousticGtr FX3 St,S.EFX,MgFX
+747,ElectricGtr FX,S.EFX,MgFX
+748,Shaker 1 Sw,Dr/Pc,PC
+749,Shaker 2 Fresh 1,Dr/Pc,PC
+750,Shaker 2 Fresh 2,Dr/Pc,PC
+751,Shaker 2 Muffled St,Dr/Pc,PC
+752,Castanet 2,Dr/Pc,PC
+753,Triangle Open,Dr/Pc,PC
+754,Arabic Hand Clap,Dr/Pc,Ethnc
+755,Ghunghuru,Dr/Pc,PC
+756,Wind Chime 1,Dr/Pc,PC
+757,Conga1 Hi Slap Open 1,Dr/Pc,PC
+758,Conga1 Hi Slap 1,Dr/Pc,PC
+759,Conga1 Hi Open 1,Dr/Pc,PC
+760,Conga1 Lo Open 1,Dr/Pc,PC
+761,Khalg Conga Lo Dom,Dr/Pc,Ethnc
+762,Quinto Open,Dr/Pc,PC
+763,Bongo1 Hi Open,Dr/Pc,PC
+764,Bongo1 Lo Open,Dr/Pc,PC
+765,Timbale 1,Dr/Pc,PC
+766,Timbale 2,Dr/Pc,PC
+767,Paila,Dr/Pc,PC
+768,Maracas 2 Sw,Dr/Pc,PC
+769,Maracas 2 Slur,Dr/Pc,PC
+770,Cabasa 4,Dr/Pc,PC
+771,Caxixi 1-2,Dr/Pc,PC
+772,Caxixi 3,Dr/Pc,PC
+773,Afoxe Open,Dr/Pc,PC
+774,Tumbo1 Up,Dr/Pc,PC
+775,Tumbo1 Down,Dr/Pc,PC
+776,Tumbo2 Finger Back,Dr/Pc,PC
+777,Tumbo2 Center Open,Dr/Pc,PC
+778,Pandeiro CThmb Opn,Dr/Pc,PC
+779,Pandeiro CThmb Cls,Dr/Pc,PC
+780,Agogo High 1,Dr/Pc,PC
+781,Agogo Low 1,Dr/Pc,PC
+782,Reco-reco 1,Dr/Pc,PC
+783,Surdo Mute 1,Dr/Pc,PC
+784,Surdo Stop 1,Dr/Pc,PC
+785,Surdo Open 1,Dr/Pc,PC
+786,Surdo Mute 2,Dr/Pc,PC
+787,Surdo Stick 1,Dr/Pc,PC
+788,Cajon 1,Dr/Pc,Ethnc
+789,Cajon 2,Dr/Pc,Ethnc
+790,Claves,Dr/Pc,PC
+791,Tabla Nah,Dr/Pc,Ethnc
+792,Tabla Dom,Dr/Pc,Ethnc
+793,Tabla Tak,Dr/Pc,Ethnc
+794,Tabla Sak,Dr/Pc,Ethnc
+795,Moroccan Tamtam Lo,Dr/Pc,Ethnc
+796,Merjaf Group Dom,Dr/Pc,Ethnc
+797,Merjaf Group Sak,Dr/Pc,Ethnc
+798,Zeer Dom,Dr/Pc,Ethnc
+799,Zeer Tak,Dr/Pc,Ethnc
+800,Merwas Group Dom,Dr/Pc,Ethnc
+801,Merwas Group Tak,Dr/Pc,Ethnc
+802,Medando Dom,Dr/Pc,Ethnc
+803,Medando Sak,Dr/Pc,Ethnc
+804,Lama Cymbal,Dr/Pc,Ethnc
+805,Mondira,Dr/Pc,Ethnc
+806,Tibetan Bell,Dr/Pc,Ethnc
+807,Tibetan Bowl,Dr/Pc,Ethnc
+808,Finger Cymbal Mt RH,Dr/Pc,Ethnc
+809,Finger Cymbal Mt L&R,Dr/Pc,Ethnc
+810,Atarigane Chi,Dr/Pc,Ethnc
+811,Wa Taiko,Dr/Pc,Ethnc
+812,Oo Taiko2 Zu,Dr/Pc,Ethnc
+813,Yagura Taiko Don,Dr/Pc,Ethnc
+814,Shime Taiko1 Ten,Dr/Pc,Ethnc
+815,Tsuzumi Ta,Dr/Pc,Ethnc
+816,Small Tabla Dom,Dr/Pc,Ethnc
+817,Udu Finger,Dr/Pc,Ethnc
+818,Udho Back,Dr/Pc,Ethnc
+819,Udho Chap Body,Dr/Pc,Ethnc
+820,Jahla Group Dom,Dr/Pc,Ethnc
+821,Taar Barashim Dom,Dr/Pc,Ethnc
+822,Taar Barashim Shake,Dr/Pc,Ethnc
+823,Twaisat,Dr/Pc,Ethnc
+824,Bendir Tek 1-3,Dr/Pc,Ethnc
+825,Bendir Slap 1-2,Dr/Pc,Ethnc
+826,Bendir Lrg,Dr/Pc,Ethnc
+827,Tnsn Bendir Dom,Dr/Pc,Ethnc
+828,Tnsn Bendir TakOpn,Dr/Pc,Ethnc
+829,Tnsn Bendir TakCls,Dr/Pc,Ethnc
+830,Mrcn Bendir1 Dom Opn,Dr/Pc,Ethnc
+831,Mrcn Bendir2 Dom Cls,Dr/Pc,Ethnc
+832,Mrcn Bendir3 Dom Opn,Dr/Pc,Ethnc
+833,Mrcn Bendir3 Edg Opn,Dr/Pc,Ethnc
+834,AlgrnBendir Deza,Dr/Pc,Ethnc
+835,AlgrnBendir Kaf,Dr/Pc,Ethnc
+836,Iran Bendir Tom,Dr/Pc,Ethnc
+837,Iran Bendir Chap,Dr/Pc,Ethnc
+838,Iran Bendir Back,Dr/Pc,Ethnc
+839,Sagat1 Open,Dr/Pc,Ethnc
+840,Sagat1 Close 1-2,Dr/Pc,Ethnc
+841,Sagat2 Close,Dr/Pc,Ethnc
+842,Sagat3 Open,Dr/Pc,Ethnc
+843,Sajat2 Open,Dr/Pc,Ethnc
+844,Sajat2 Close,Dr/Pc,Ethnc
+845,Riq1 Dum Open 1-2,Dr/Pc,Ethnc
+846,Riq1 Tek Open 1-2,Dr/Pc,Ethnc
+847,Riq1 TekeOpnShrt 1-2,Dr/Pc,Ethnc
+848,Riq2 Sak,Dr/Pc,Ethnc
+849,Riq3 Snouj Close,Dr/Pc,Ethnc
+850,Req Sak,Dr/Pc,Ethnc
+851,Req Dom,Dr/Pc,Ethnc
+852,Req Open,Dr/Pc,Ethnc
+853,Req Sajat,Dr/Pc,Ethnc
+854,Hollo FingerDead 1-2,Dr/Pc,Ethnc
+855,Tombek Dum 1-2,Dr/Pc,Ethnc
+856,Tombek Tek 1-3,Dr/Pc,Ethnc
+857,Tombak Tom,Dr/Pc,Ethnc
+858,Tombak Slap,Dr/Pc,Ethnc
+859,Tombak Chap,Dr/Pc,Ethnc
+860,Tombak Flam & Back,Dr/Pc,Ethnc
+861,Tempo Chap,Dr/Pc,Ethnc
+862,Darbuka1 Dum 1-2,Dr/Pc,Ethnc
+863,Darb1TekeIndFng 1-3,Dr/Pc,Ethnc
+864,Darbuka1 Slap 1-2,Dr/Pc,Ethnc
+865,Darbuka2 Sak,Dr/Pc,Ethnc
+866,Darbuka2 Flam,Dr/Pc,Ethnc
+867,Darbuka3 Dom & Tak,Dr/Pc,Ethnc
+868,Darbuka3 Rak,Dr/Pc,Ethnc
+869,Darbuka3 Noise FX,Dr/Pc,Ethnc
+870,Darbouka Tak Close,Dr/Pc,Ethnc
+871,Doholla Dom,Dr/Pc,Ethnc
+872,Doholla Sak,Dr/Pc,Ethnc
+873,Katem Med Dom Opn,Dr/Pc,Ethnc
+874,Katem Med Tak,Dr/Pc,Ethnc
+875,Katem Med Sak,Dr/Pc,Ethnc
+876,Sigal Marad Dom,Dr/Pc,Ethnc
+877,Sigal Marad Tak,Dr/Pc,Ethnc
+878,AlgrnGalal Daza,Dr/Pc,Ethnc
+879,Bones 1,Dr/Pc,Ethnc
+880,Bones 2,Dr/Pc,Ethnc
+881,Bones 3,Dr/Pc,Ethnc
+882,Bones Triplet,Dr/Pc,Ethnc
+883,Spoons,Dr/Pc,Ethnc
+884,Electric Tambourine,Dr/Pc,PC
+885,Bd Snap 1-2,Dr/Pc,Kick
+886,Bd Snap 1,Dr/Pc,Kick
+887,Bd Tight,Dr/Pc,Kick
+888,Bd Funk St,Dr/Pc,Kick
+889,Bd High St,Dr/Pc,Kick
+890,Bd Rock St,Dr/Pc,Kick
+891,Bd Room,Dr/Pc,Kick
+892,Bd FK Jazz St,Dr/Pc,Kick
+893,Bd Maple Close St,Dr/Pc,Kick
+894,Bd GranCasa Open,Dr/Pc,Kick
+895,Bd T9 Hd,Dr/Pc,Kick
+896,Bd T8,Dr/Pc,Kick
+897,Bd + HH,Dr/Pc,Kick
+898,Bd ElecFX,Dr/Pc,Kick
+899,Sd Bld St,Dr/Pc,Snare
+900,Sd Soul St,Dr/Pc,Snare
+901,Sd Strong St,Dr/Pc,Snare
+902,Sd Funk St,Dr/Pc,Snare
+903,Sd Rock Mute St,Dr/Pc,Snare
+904,Sd Ambience,Dr/Pc,Snare
+905,Sd Power,Dr/Pc,Snare
+906,Sd Oak ClRm St,Dr/Pc,Snare
+907,Sd Metal St,Dr/Pc,Snare
+908,Sd NJz ClRm St,Dr/Pc,Snare
+909,Sd Rock Stick St,Dr/Pc,Snare
+910,Sd Hip Stick,Dr/Pc,Snare
+911,Sd Brush Soft St,Dr/Pc,Snare
+912,Sd LW Brush Tap Sw,Dr/Pc,Snare
+913,Sd Orch,Dr/Pc,Snare
+914,Sd Field St,Dr/Pc,Snare
+915,Hiland Snare Flam,Dr/Pc,Ethnc
+916,Caixa RimShot,Dr/Pc,Ethnc
+917,HH Closed St,Dr/Pc,HHat
+918,HH Pedal St,Dr/Pc,HHat
+919,HH Open St,Dr/Pc,HHat
+920,HH Closed Foot St,Dr/Pc,HHat
+921,HH Half Open St,Dr/Pc,HHat
+922,HH Closed Rock Sw St,Dr/Pc,HHat
+923,HH Pedal Rock St,Dr/Pc,HHat
+924,HH Open Mn,Dr/Pc,HHat
+925,HH Pedal Mn,Dr/Pc,HHat
+926,HH Power ClTip St,Dr/Pc,HHat
+927,HH Power ClEgde St,Dr/Pc,HHat
+928,HH Power Open EdgeSt,Dr/Pc,HHat
+929,HH Dark Closed St,Dr/Pc,HHat
+930,HH Dark Pedal St,Dr/Pc,HHat
+931,HH NJz Closed St,Dr/Pc,HHat
+932,HH NJz Pedal St,Dr/Pc,HHat
+933,HH NJz Open St,Dr/Pc,HHat
+934,HH Reverse D&B,Dr/Pc,HHat
+935,Tom Rock Hi St,Dr/Pc,Tom
+936,Tom Rock Mid St,Dr/Pc,Tom
+937,Tom Rock Low St,Dr/Pc,Tom
+938,Tom Maple Hi St,Dr/Pc,Tom
+939,Tom Maple Mid St,Dr/Pc,Tom
+940,Tom Maple Flr St,Dr/Pc,Tom
+941,Tom Oak Hi St,Dr/Pc,Tom
+942,Tom Oak Mid St,Dr/Pc,Tom
+943,Tom Oak Floor St,Dr/Pc,Tom
+944,Tom NJz Mid St,Dr/Pc,Tom
+945,Tom NJz Low St,Dr/Pc,Tom
+946,Tom NJz Floor St,Dr/Pc,Tom
+947,Tom Brush Floor,Dr/Pc,Tom
+948,Crash St,Dr/Pc,Cymbl
+949,Crash Brite St,Dr/Pc,Cymbl
+950,Crash NJz St,Dr/Pc,Cymbl
+951,PI Crash,Dr/Pc,Cymbl
+952,ZJ Crash Sw,Dr/Pc,Cymbl
+953,Hand Cymbal Open St,Dr/Pc,Cymbl
+954,Hand Cymbal Open R,Dr/Pc,Cymbl
+955,Ride NJz St,Dr/Pc,Cymbl
+956,Ride NJz Cup St,Dr/Pc,Cymbl
+957,ZJ Ride Tip Sw,Dr/Pc,Cymbl
+958,ZJ Ride Cup Sw,Dr/Pc,Cymbl
+959,Ride Brush 2 St,Dr/Pc,Cymbl
+960,China St,Dr/Pc,Cymbl
+961,ZJ Splash,Dr/Pc,Cymbl
+962,Ride T9,Dr/Pc,Cymbl
+963,Reverse Cymbal,Dr/Pc,Cymbl
+964,Seq Click Acc,Dr/Pc,PC
+965,Seq Click 1,Dr/Pc,PC
+966,Seq Click 2,Dr/Pc,PC
+967,Seq Click 3,Dr/Pc,PC
+968,Metronome Bell,Dr/Pc,PC
+969,Metronome Click,Dr/Pc,PC
+970,Count Voice 1,S.EFX,SE
+971,Count Voice 2,S.EFX,SE
+972,Count Voice 3,S.EFX,SE
+973,Count Voice 4,S.EFX,SE
+974,RX5 Ride Cup 1,Dr/Pc,Cymbl
+975,RX7 Ride 1,Dr/Pc,Cymbl
+976,Saturated Fat Kick 1,Dr/Pc,Kick
+977,Tight Snare + Reverb 1,Dr/Pc,Snare
+978,Wide Thin Clap 1,Dr/Pc,PC
+979,Closed Hat + Reverb 1,Dr/Pc,HHat
+980,Open Hat + Delay 1,Dr/Pc,HHat
+981,Fade In Noise 1,S.EFX,SE
+982,Electronic High Tom + Reverb 1,Dr/Pc,Tom
+983,Rumble Kick 1,Dr/Pc,Kick
+984,Punchy Fat Snare 1,Dr/Pc,Snare
+985,Bright Open Hat 1,Dr/Pc,HHat
+986,Shaker 3 + Reverb 1,Dr/Pc,HHat
+987,Noise Ride 1,Dr/Pc,Cymbl
+988,Acoustic Snare - Standard 1,Dr/Pc,Snare
+989,Saturated Fat Kick 2,Dr/Pc,Kick
+990,Tight Snare + Reverb 2,Dr/Pc,Snare
+991,Click Clap + Reverb 1,Dr/Pc,PC
+992,Closed Hat + Reverb 2,Dr/Pc,HHat
+993,Slow Attack Open Hat 1,Dr/Pc,HHat
+994,Muffled Mid Tom + Reverb 1,Dr/Pc,Tom
+995,Glass Broken + Reverb 1,S.EFX,SE
+996,Saturated Tight Kick 1,Dr/Pc,Kick
+997,Snare + Reverb 1,Dr/Pc,Snare
+998,Hand Clap + Reverb 1,Dr/Pc,PC
+999,Acoustic Closed Hat 1,Dr/Pc,HHat
+1000,Bright Open Hat 2,Dr/Pc,HHat
+1001,Closed Hat + Reverb 3,Dr/Pc,HHat
+1002,Punchy High Tom 1,Dr/Pc,Tom
+1003,Soft Kick 1,Dr/Pc,Kick
+1004,Double Click Snare 1,Dr/Pc,Snare
+1005,Lo-Fi Thin Clap 1,Dr/Pc,PC
+1006,Lo-Fi Closed Hat + Reverb 1,Dr/Pc,HHat
+1007,Open Hat with Bell 1,Dr/Pc,HHat
+1008,Tambourine 1,Dr/Pc,PC
+1009,Laser - Falling 1,S.EFX,SE
+1010,Fat Kick + Reverb 1,Dr/Pc,Kick
+1011,Trash Snare + Reverb 1,Dr/Pc,Snare
+1012,Thin Clap + Reverb 1,Dr/Pc,PC
+1013,Tight Closed Hat 1,Dr/Pc,HHat
+1014,Bright Open Hat 3,Dr/Pc,HHat
+1015,Open Hat with Bell 2,Dr/Pc,HHat
+1016,Rumble Kick 2,Dr/Pc,Kick
+1017,Trash Snare + Reverb 2,Dr/Pc,Snare
+1018,Thin Clap + Reverb 2,Dr/Pc,PC
+1019,Bitcrushed Hat 1,Dr/Pc,HHat
+1020,Splash Open Hat 1,Dr/Pc,HHat
+1021,Open Hat with Bell 3,Dr/Pc,HHat
+1022,Acoustic Mid Tom + Reverb 1,Dr/Pc,Tom
+1023,Tight Punchy Kick 1,Dr/Pc,Kick
+1024,Tight Punchy Kick 2,Dr/Pc,Kick
+1025,Tight Punchy Kick 3,Dr/Pc,Kick
+1026,Tight Punchy Kick 4,Dr/Pc,Kick
+1027,Tight Punchy Kick 5,Dr/Pc,Kick
+1028,Tight Punchy Kick 6,Dr/Pc,Kick
+1029,Tight Punchy Kick 7,Dr/Pc,Kick
+1030,Tight Punchy Kick 8,Dr/Pc,Kick
+1031,Tight Soft Kick 1,Dr/Pc,Kick
+1032,Saturated Tight Kick 2,Dr/Pc,Kick
+1033,Tight Soft Kick 2,Dr/Pc,Kick
+1034,Tight Soft Kick 3,Dr/Pc,Kick
+1035,Tight Soft Kick 4,Dr/Pc,Kick
+1036,Tight Soft Kick 5,Dr/Pc,Kick
+1037,Tight Soft Kick 6,Dr/Pc,Kick
+1038,Tight Soft Kick 7,Dr/Pc,Kick
+1039,Punchy Fat Kick 1,Dr/Pc,Kick
+1040,Punchy Fat Kick 2,Dr/Pc,Kick
+1041,Punchy Fat Kick 3,Dr/Pc,Kick
+1042,Punchy Fat Kick 4,Dr/Pc,Kick
+1043,Punchy Fat Kick 5,Dr/Pc,Kick
+1044,Saturated Fat Kick 3,Dr/Pc,Kick
+1045,Saturated Fat Kick 4,Dr/Pc,Kick
+1046,Saturated Fat Kick 5,Dr/Pc,Kick
+1047,Saturated Fat Kick 6,Dr/Pc,Kick
+1048,Saturated Fat Kick 7,Dr/Pc,Kick
+1049,Saturated Fat Kick 8,Dr/Pc,Kick
+1050,Saturated Fat Kick 9,Dr/Pc,Kick
+1051,Punchy Fat Kick 6,Dr/Pc,Kick
+1052,Bitcrushed Punchy Kick 1,Dr/Pc,Kick
+1053,Punchy Saturated Kick 1,Dr/Pc,Kick
+1054,Punchy Kick + Perc 1,Dr/Pc,Kick
+1055,Punchy Kick + Electronic Ping 1,Dr/Pc,Kick
+1056,Punchy Fat Kick 7,Dr/Pc,Kick
+1057,Distorted Kick 1,Dr/Pc,Kick
+1058,Distorted Kick 2,Dr/Pc,Kick
+1059,Distorted Kick 3,Dr/Pc,Kick
+1060,Distorted Kick 4,Dr/Pc,Kick
+1061,Distorted Kick 5,Dr/Pc,Kick
+1062,Distorted Kick 6,Dr/Pc,Kick
+1063,Distorted Kick 7,Dr/Pc,Kick
+1064,Distorted Kick 8,Dr/Pc,Kick
+1065,Kick + Open Hat 1,Dr/Pc,Kick
+1066,Rumble Kick 3,Dr/Pc,Kick
+1067,Rumble Kick 4,Dr/Pc,Kick
+1068,Rumble Kick 5,Dr/Pc,Kick
+1069,Bitcrushed Kick 1,Dr/Pc,Kick
+1070,Bitcrushed Kick 2,Dr/Pc,Kick
+1071,Bitcrushed Kick 3,Dr/Pc,Kick
+1072,Bitcrushed Kick 4,Dr/Pc,Kick
+1073,Muffled Kick 1,Dr/Pc,Kick
+1074,Muffled Kick 2,Dr/Pc,Kick
+1075,Muffled Kick 3,Dr/Pc,Kick
+1076,Muffled Kick 4,Dr/Pc,Kick
+1077,Muffled Kick 5,Dr/Pc,Kick
+1078,Muffled Kick 6,Dr/Pc,Kick
+1079,Lo-Fi Kick 1,Dr/Pc,Kick
+1080,Lo-Fi Kick 2,Dr/Pc,Kick
+1081,Punchy Kick + Reverb 1,Dr/Pc,Kick
+1082,Punchy Kick + Reverb 2,Dr/Pc,Kick
+1083,Punchy Kick + Reverb 3,Dr/Pc,Kick
+1084,Modulated Kick 1,Dr/Pc,Kick
+1085,Modulated Kick 2,Dr/Pc,Kick
+1086,RX7 Kick 1,Dr/Pc,Kick
+1087,RX5 Kick 1,Dr/Pc,Kick
+1088,RX15 Kick 1,Dr/Pc,Kick
+1089,RX7 Kick 2,Dr/Pc,Kick
+1090,RX5 Kick 2,Dr/Pc,Kick
+1091,RX7 Kick 3,Dr/Pc,Kick
+1092,RX7 Kick 4,Dr/Pc,Kick
+1093,RX7 Kick 5,Dr/Pc,Kick
+1094,Kick + Shaker 1,Dr/Pc,Kick
+1095,Kick + Open Hat 2,Dr/Pc,Kick
+1096,Muffled Kick + Bell 1,Dr/Pc,Kick
+1097,Tonal Kick C,Dr/Pc,Kick
+1098,Tonal Kick C#,Dr/Pc,Kick
+1099,Tonal Kick D,Dr/Pc,Kick
+1100,Tonal Kick D#,Dr/Pc,Kick
+1101,Tonal Kick E,Dr/Pc,Kick
+1102,Tonal Kick F,Dr/Pc,Kick
+1103,Tonal Kick F#,Dr/Pc,Kick
+1104,Tonal Kick G,Dr/Pc,Kick
+1105,Tonal Kick G#,Dr/Pc,Kick
+1106,Tonal Kick A,Dr/Pc,Kick
+1107,Tonal Kick A#,Dr/Pc,Kick
+1108,Tonal Kick B,Dr/Pc,Kick
+1109,Distorted Tonal Kick C,Dr/Pc,Kick
+1110,Distorted Tonal Kick C#,Dr/Pc,Kick
+1111,Distorted Tonal Kick D,Dr/Pc,Kick
+1112,Distorted Tonal Kick D#,Dr/Pc,Kick
+1113,Distorted Tonal Kick E,Dr/Pc,Kick
+1114,Distorted Tonal Kick F,Dr/Pc,Kick
+1115,Distorted Tonal Kick F#,Dr/Pc,Kick
+1116,Distorted Tonal Kick G,Dr/Pc,Kick
+1117,Distorted Tonal Kick G#,Dr/Pc,Kick
+1118,Distorted Tonal Kick A,Dr/Pc,Kick
+1119,Distorted Tonal Kick A#,Dr/Pc,Kick
+1120,Distorted Tonal Kick B,Dr/Pc,Kick
+1121,Gated Reverb Snare 1,Dr/Pc,Snare
+1122,Distorted Pitched Snare 1,Dr/Pc,Snare
+1123,Distorted Fat Snare 1,Dr/Pc,Snare
+1124,Distorted Punchy Snare 1,Dr/Pc,Snare
+1125,Punchy Fat Snare 2,Dr/Pc,Snare
+1126,Punchy Fat Snare 3,Dr/Pc,Snare
+1127,Punchy Long Snare 2,Dr/Pc,Snare
+1128,Distorted Snare + Reverb 1,Dr/Pc,Snare
+1129,Distorted Fat Snare 2,Dr/Pc,Snare
+1130,Hardcore Snare 1,Dr/Pc,Snare
+1131,Punchy Long Snare 1,Dr/Pc,Snare
+1132,Distorted Low Snare 1,Dr/Pc,Snare
+1133,Muffled Snare + Reverb 1,Dr/Pc,Snare
+1134,Pitched Snare + Reverb 1,Dr/Pc,Snare
+1135,Fat Snare + Reverb 1,Dr/Pc,Snare
+1136,Muffled Snare + Reverb 2,Dr/Pc,Snare
+1137,Tight Punchy Snare + Reverb 1,Dr/Pc,Snare
+1138,Pitched Snare 1,Dr/Pc,Snare
+1139,Tight Punchy Snare 1,Dr/Pc,Snare
+1140,Trash Snare + Reverb 3,Dr/Pc,Snare
+1141,Punchy Fat Snare 4,Dr/Pc,Snare
+1142,SFX Snare 1,Dr/Pc,Snare
+1143,Spring Snare 1,Dr/Pc,Snare
+1144,Punchy Fat Snare 5,Dr/Pc,Snare
+1145,Gated Reverb Snare 2,Dr/Pc,Snare
+1146,Muffled Snare 1,Dr/Pc,Snare
+1147,Muffled Snare + Reverb 3,Dr/Pc,Snare
+1148,Muffled Snare + Reverb 4,Dr/Pc,Snare
+1149,Lo-Fi Snare 1,Dr/Pc,Snare
+1150,Lo-Fi Snare 2,Dr/Pc,Snare
+1151,Lo-Fi Snare 3,Dr/Pc,Snare
+1152,Lo-Fi Snare 4,Dr/Pc,Snare
+1153,Distorted Low Snare 2,Dr/Pc,Snare
+1154,Hardcore Snare 2,Dr/Pc,Snare
+1155,Hardcore Snare 3,Dr/Pc,Snare
+1156,Hardcore Snare 4,Dr/Pc,Snare
+1157,Hardcore Snare 5,Dr/Pc,Snare
+1158,Glass Broken Snare 1,Dr/Pc,Snare
+1159,Glass Broken Snare 2,Dr/Pc,Snare
+1160,Punchy Snare + Reverb 1,Dr/Pc,Snare
+1161,Factory Snare + Reverb 1,Dr/Pc,Snare
+1162,Tight Snare 1,Dr/Pc,Snare
+1163,Short Pitched Snare 1,Dr/Pc,Snare
+1164,Tight Snare 2,Dr/Pc,Snare
+1165,Tight Snare 3,Dr/Pc,Snare
+1166,Tight Snare 4,Dr/Pc,Snare
+1167,Tight Snare 5,Dr/Pc,Snare
+1168,Glitch Snare 1,Dr/Pc,Snare
+1169,Glitch Snare 2,Dr/Pc,Snare
+1170,Glitch Snare 3,Dr/Pc,Snare
+1171,SFX Snare 2,Dr/Pc,Snare
+1172,Wood Snare 1,Dr/Pc,Snare
+1173,Rx5 Snare 1,Dr/Pc,Snare
+1174,Rx5 Snare 2,Dr/Pc,Snare
+1175,RX7 Snare 1,Dr/Pc,Snare
+1176,RX7 Snare 2,Dr/Pc,Snare
+1177,RX7 Snare 3,Dr/Pc,Snare
+1178,RX7 Snare 4,Dr/Pc,Snare
+1179,RX7 Snare 5,Dr/Pc,Snare
+1180,RX7 Snare 6,Dr/Pc,Snare
+1181,Short Slow Snare 1,Dr/Pc,Snare
+1182,Lo-Fi Snare 5,Dr/Pc,Snare
+1183,Click Wood Snare 1,Dr/Pc,Snare
+1184,Acoustic Snare - Standard 2,Dr/Pc,Snare
+1185,Acoustic Snare - Tight 1,Dr/Pc,Snare
+1186,Acoustic Snare - Tight 2,Dr/Pc,Snare
+1187,Short Can Snare 1,Dr/Pc,Snare
+1188,Acoustic Snare + Reverb 1,Dr/Pc,Snare
+1189,Tight Snare + Reverb 3,Dr/Pc,Snare
+1190,Acoustic Snare - Punchy 1,Dr/Pc,Snare
+1191,Tight Snare + Reverb 4,Dr/Pc,Snare
+1192,Tight Snare + Reverb 5,Dr/Pc,Snare
+1193,Tight Snare + Reverb 6,Dr/Pc,Snare
+1194,Tight Snare + Reverb 7,Dr/Pc,Snare
+1195,Metallic Snare 1,Dr/Pc,Snare
+1196,Metallic Snare 2,Dr/Pc,Snare
+1197,Metallic Snare 3,Dr/Pc,Snare
+1198,Metallic Snare 4,Dr/Pc,Snare
+1199,Metallic Snare 5,Dr/Pc,Snare
+1200,Snare + Wood Block 1,Dr/Pc,Snare
+1201,Snare + Wood Block 2,Dr/Pc,Snare
+1202,RX11 Rim 1,Dr/Pc,Snare
+1203,RX5 Rim 1,Dr/Pc,Snare
+1204,Noisy Rim 1,Dr/Pc,Snare
+1205,Noisy Rim 2,Dr/Pc,Snare
+1206,Metallic Rim 1,Dr/Pc,Snare
+1207,Acoustic Rim - Standard 1,Dr/Pc,Snare
+1208,Noisy Rim 3,Dr/Pc,Snare
+1209,Acoustic Rim - High 1,Dr/Pc,Snare
+1210,Lo-Fi Rim 1,Dr/Pc,Snare
+1211,Pitched Rim 1,Dr/Pc,Snare
+1212,Lo-Fi Rim 2,Dr/Pc,Snare
+1213,Lo-Fi Rim 3,Dr/Pc,Snare
+1214,High Pitched Rim 1,Dr/Pc,Snare
+1215,Stick Rim 1,Dr/Pc,Snare
+1216,Double Click Rim 1,Dr/Pc,Snare
+1217,Noisy Rim 4,Dr/Pc,Snare
+1218,Noisy Rim 5,Dr/Pc,Snare
+1219,Noisy Rim 6,Dr/Pc,Snare
+1220,Noisy Rim 7,Dr/Pc,Snare
+1221,Acoustic Rim - Short 1,Dr/Pc,Snare
+1222,Double Click Rim 2,Dr/Pc,Snare
+1223,Acoustic Rim + Reverb 1,Dr/Pc,Snare
+1224,Lo-Fi Rim + Reverb 1,Dr/Pc,Snare
+1225,Acoustic Rim + Reverb 2,Dr/Pc,Snare
+1226,Acoustic Rim + Reverb 3,Dr/Pc,Snare
+1227,Click Rim + Low 1,Dr/Pc,Snare
+1228,Rim + Low 1,Dr/Pc,Snare
+1229,Bright Clap 1,Dr/Pc,PC
+1230,Group Clap 1,Dr/Pc,PC
+1231,Bright Clap 2,Dr/Pc,PC
+1232,Noise Clap 1,Dr/Pc,PC
+1233,Hand Clap 1,Dr/Pc,PC
+1234,Group Clap 2,Dr/Pc,PC
+1235,Group Clap 3,Dr/Pc,PC
+1236,Hand Clap 2,Dr/Pc,PC
+1237,Hand Clap + Reverb 3,Dr/Pc,PC
+1238,Bright Clap 3,Dr/Pc,PC
+1239,Group Clap 4,Dr/Pc,PC
+1240,Lo-Fi Clap + Reverb 1,Dr/Pc,PC
+1241,Short Delay Clap 1,Dr/Pc,PC
+1242,Bright Clap 4,Dr/Pc,PC
+1243,Clicky Clap 1,Dr/Pc,PC
+1244,Short Clap 1,Dr/Pc,PC
+1245,Short Clap 2,Dr/Pc,PC
+1246,Woody Clap 1,Dr/Pc,PC
+1247,Short Double Clap 1,Dr/Pc,PC
+1248,Glitch Clap 1,Dr/Pc,PC
+1249,Glitch Clap 2,Dr/Pc,PC
+1250,Bitcrushed Clap 1,Dr/Pc,PC
+1251,Glitch Clap 3,Dr/Pc,PC
+1252,Glitch Clap 4,Dr/Pc,PC
+1253,Glitch Clap 5,Dr/Pc,PC
+1254,Lo-Fi Clap 1,Dr/Pc,PC
+1255,Hand Clap 3,Dr/Pc,PC
+1256,Hand Clap 4,Dr/Pc,PC
+1257,Double Clap + Reverb 1,Dr/Pc,PC
+1258,Woody Clap + Reverb 1,Dr/Pc,PC
+1259,Double Clap + Reverb 2,Dr/Pc,PC
+1260,Hand Clap + Reverb 2,Dr/Pc,PC
+1261,Long Clap + Reverb 1,Dr/Pc,PC
+1262,RX11 Clap 1,Dr/Pc,PC
+1263,Hand Clap 5,Dr/Pc,PC
+1264,Hand Clap + Reverb 4,Dr/Pc,PC
+1265,Hand Clap + Reverb 5,Dr/Pc,PC
+1266,Finger Snap 1,Dr/Pc,PC
+1267,Finger Snap 2,Dr/Pc,PC
+1268,Finger Snap 3,Dr/Pc,PC
+1269,Click Snap 1,Dr/Pc,PC
+1270,Finger Snap 4,Dr/Pc,PC
+1271,Woody Snap 1,Dr/Pc,PC
+1272,Finger Snap 5,Dr/Pc,PC
+1273,Finger Snap 6,Dr/Pc,PC
+1274,Wide Snap 1,Dr/Pc,PC
+1275,Wide Snap 2,Dr/Pc,PC
+1276,Click Snap 2,Dr/Pc,PC
+1277,Snap + Reverb 1,Dr/Pc,PC
+1278,Fat Snap 1,Dr/Pc,PC
+1279,Fat Snap 2,Dr/Pc,PC
+1280,Snap + Reverb 2,Dr/Pc,PC
+1281,Tight Closed Hat 2,Dr/Pc,HHat
+1282,Tight Closed Hat 3,Dr/Pc,HHat
+1283,Tight Closed Hat 4,Dr/Pc,HHat
+1284,Tight Closed Hat 5,Dr/Pc,HHat
+1285,Tight Closed Hat 6,Dr/Pc,HHat
+1286,Tight Closed Hat 7,Dr/Pc,HHat
+1287,Tight Closed Hat 8,Dr/Pc,HHat
+1288,Closed Hat 1,Dr/Pc,HHat
+1289,Acoustic Hat Pedal 1,Dr/Pc,HHat
+1290,Tight Closed Hat 9,Dr/Pc,HHat
+1291,Tight Closed Hat 10,Dr/Pc,HHat
+1292,Tight Closed Hat 11,Dr/Pc,HHat
+1293,Tight Closed Hat 12,Dr/Pc,HHat
+1294,Closed Hat + High Tone 1,Dr/Pc,HHat
+1295,Closed Hat 2,Dr/Pc,HHat
+1296,Closed Hat 3,Dr/Pc,HHat
+1297,Closed Hat 4,Dr/Pc,HHat
+1298,Closed Hat 5,Dr/Pc,HHat
+1299,Closed Hat 6,Dr/Pc,HHat
+1300,Closed Hat 7,Dr/Pc,HHat
+1301,Closed Hat 8,Dr/Pc,HHat
+1302,Closed Hat 9,Dr/Pc,HHat
+1303,Closed Hat 10,Dr/Pc,HHat
+1304,Noise Closed Hat 1,Dr/Pc,HHat
+1305,Acoustic Closed Hat 2,Dr/Pc,HHat
+1306,Noise Closed Hat 2,Dr/Pc,HHat
+1307,Low Closed Hat 1,Dr/Pc,HHat
+1308,Noise Closed Hat + Low 1,Dr/Pc,HHat
+1309,Lo-Fi Short Closed Hat 1,Dr/Pc,HHat
+1310,Lo-Fi Short Closed Hat 2,Dr/Pc,HHat
+1311,Lo-Fi Short Closed Hat 3,Dr/Pc,HHat
+1312,Lo-Fi Short Closed Hat 4,Dr/Pc,HHat
+1313,Click Closed Hat 1,Dr/Pc,HHat
+1314,Lo-Fi Closed Hat 1,Dr/Pc,HHat
+1315,Lo-Fi Closed Hat 2,Dr/Pc,HHat
+1316,Lo-Fi Closed Hat 3,Dr/Pc,HHat
+1317,Lo-Fi Closed Hat 4,Dr/Pc,HHat
+1318,Lo-Fi Closed Hat 5,Dr/Pc,HHat
+1319,Click Closed Hat 2,Dr/Pc,HHat
+1320,Lo-Fi Short Closed Hat 5,Dr/Pc,HHat
+1321,Lo-Fi Short Closed Hat 6,Dr/Pc,HHat
+1322,Lo-Fi Short Closed Hat 7,Dr/Pc,HHat
+1323,Lo-Fi Short Closed Hat 8,Dr/Pc,HHat
+1324,Lo-Fi Closed Hat 6,Dr/Pc,HHat
+1325,Lo-Fi Closed Hat 7,Dr/Pc,HHat
+1326,Lo-Fi Closed Hat 8,Dr/Pc,HHat
+1327,Lo-Fi Short Closed Hat 9,Dr/Pc,HHat
+1328,Lo-Fi Closed Hat 9,Dr/Pc,HHat
+1329,Closed Hat + Reverb 4,Dr/Pc,HHat
+1330,Glitch Hat 1,Dr/Pc,HHat
+1331,Glitch Hat 2,Dr/Pc,HHat
+1332,Glitch Hat 3,Dr/Pc,HHat
+1333,Slow Attack Open Hat 2,Dr/Pc,HHat
+1334,Noise Open Hat 1,Dr/Pc,HHat
+1335,Acoustic Open Hat 1,Dr/Pc,HHat
+1336,Noise Open Hat 2,Dr/Pc,HHat
+1337,Acoustic Open Hat 2,Dr/Pc,HHat
+1338,Acoustic Open Hat 3,Dr/Pc,HHat
+1339,Bright Open Hat 4,Dr/Pc,HHat
+1340,Bright Open Hat 5,Dr/Pc,HHat
+1341,Bright Open Hat 6,Dr/Pc,HHat
+1342,Acoustic Open Hat 4,Dr/Pc,HHat
+1343,Gated Open Hat 1,Dr/Pc,HHat
+1344,Crash Open Hat 1,Dr/Pc,HHat
+1345,Crash Open Hat 2,Dr/Pc,HHat
+1346,Crash Open Hat 3,Dr/Pc,HHat
+1347,Lo-Fi Open Hat 1,Dr/Pc,HHat
+1348,Lo-Fi Open Hat 2,Dr/Pc,HHat
+1349,Lo-Fi Open Hat 3,Dr/Pc,HHat
+1350,Lo-Fi Open Hat 4,Dr/Pc,HHat
+1351,Lo-Fi Open Hat 5,Dr/Pc,HHat
+1352,Open Hat + Reverb 1,Dr/Pc,HHat
+1353,Slow Attack Open Hat 3,Dr/Pc,HHat
+1354,Gated Open Hat 2,Dr/Pc,HHat
+1355,Panning Open Hat 1,Dr/Pc,HHat
+1356,Panning Distorted Open Hat 1,Dr/Pc,HHat
+1357,Modulated Open Hat 1,Dr/Pc,HHat
+1358,Slow Attack Open Hat 4,Dr/Pc,HHat
+1359,Modulated Open Hat 2,Dr/Pc,HHat
+1360,Modulated Open Hat 3,Dr/Pc,HHat
+1361,Gated Open Hat 3,Dr/Pc,HHat
+1362,Gated Open Hat 4,Dr/Pc,HHat
+1363,Noise Open Hat 3,Dr/Pc,HHat
+1364,Slow Attack Open Hat 5,Dr/Pc,HHat
+1365,Slow Attack Open Hat 6,Dr/Pc,HHat
+1366,Noise Open Hat 4,Dr/Pc,HHat
+1367,Noise Open Hat 5,Dr/Pc,HHat
+1368,Noise Open Hat 6,Dr/Pc,HHat
+1369,Noise Open Hat 7,Dr/Pc,HHat
+1370,Noise Open Hat 8,Dr/Pc,HHat
+1371,Noise Open Hat 9,Dr/Pc,HHat
+1372,Noise Open Hat 10,Dr/Pc,HHat
+1373,Noise Open Hat 11,Dr/Pc,HHat
+1374,Noise Open Hat 12,Dr/Pc,HHat
+1375,Noise Open Hat 13,Dr/Pc,HHat
+1376,Noise Open Hat 14,Dr/Pc,HHat
+1377,Distorted Open Hat 1,Dr/Pc,HHat
+1378,Noise Open Hat 15,Dr/Pc,HHat
+1379,Distorted Open Hat 2,Dr/Pc,HHat
+1380,Gated Open Hat 5,Dr/Pc,HHat
+1381,Distorted Open Hat 3,Dr/Pc,HHat
+1382,Distorted Open Hat 4,Dr/Pc,HHat
+1383,Bitcrushed Open Hat 1,Dr/Pc,HHat
+1384,Slow Attack Open Hat 7,Dr/Pc,HHat
+1385,Bitcrushed Open Hat 2,Dr/Pc,HHat
+1386,Bitcrushed Open Hat 3,Dr/Pc,HHat
+1387,Bitcrushed Open Hat 4,Dr/Pc,HHat
+1388,Distorted Open Hat 5,Dr/Pc,HHat
+1389,Short Shaker Accent 1,Dr/Pc,PC
+1390,Shaker 4,Dr/Pc,PC
+1391,Short Shaker Accent 2,Dr/Pc,PC
+1392,Shaker 5,Dr/Pc,PC
+1393,Shaker 6,Dr/Pc,PC
+1394,Shaker 7,Dr/Pc,PC
+1395,Shaker 8,Dr/Pc,PC
+1396,Shaker 9,Dr/Pc,PC
+1397,Shaker 10,Dr/Pc,PC
+1398,Shaker 11,Dr/Pc,PC
+1399,Shaker 12,Dr/Pc,PC
+1400,Shaker 13,Dr/Pc,PC
+1401,Shaker 14,Dr/Pc,PC
+1402,Shaker 15,Dr/Pc,PC
+1403,Tambourine 2,Dr/Pc,PC
+1404,Tambourine 3,Dr/Pc,PC
+1405,Tambourine 4,Dr/Pc,PC
+1406,Tambourine 5,Dr/Pc,PC
+1407,Tambourine 6,Dr/Pc,PC
+1408,Tambourine 7,Dr/Pc,PC
+1409,Short Tambourine 1,Dr/Pc,PC
+1410,Tambourine 8,Dr/Pc,PC
+1411,Long Tambourine 1,Dr/Pc,PC
+1412,Long Tambourine 2,Dr/Pc,PC
+1413,Long Tambourine 3,Dr/Pc,PC
+1414,Long Tambourine 4,Dr/Pc,PC
+1415,Long Tambourine 5,Dr/Pc,PC
+1416,RX5 Tambourine 1,Dr/Pc,PC
+1417,Tambourine 9 + Reverb 1,Dr/Pc,PC
+1418,Sharp Ride 1,Dr/Pc,Cymbl
+1419,Sharp Ride 2,Dr/Pc,Cymbl
+1420,Slow Ride 1,Dr/Pc,Cymbl
+1421,Gate Ride 1,Dr/Pc,Cymbl
+1422,Sharp Ride 3,Dr/Pc,Cymbl
+1423,Color Ride 1,Dr/Pc,Cymbl
+1424,Crash Ride 1,Dr/Pc,Cymbl
+1425,Crash Ride 2,Dr/Pc,Cymbl
+1426,Crash Ride 3,Dr/Pc,Cymbl
+1427,Color Ride 2,Dr/Pc,Cymbl
+1428,Acoustic Ride,Dr/Pc,Cymbl
+1429,Color Ride 3,Dr/Pc,Cymbl
+1430,Color Ride 4,Dr/Pc,Cymbl
+1431,Color Ride 5,Dr/Pc,Cymbl
+1432,Dark Ride 1,Dr/Pc,Cymbl
+1433,High Noise Ride 1,Dr/Pc,Cymbl
+1434,Noise Ride 2,Dr/Pc,Cymbl
+1435,Noise Ride 3,Dr/Pc,Cymbl
+1436,Noise Long Ride 1,Dr/Pc,Cymbl
+1437,Synth Ride 1,Dr/Pc,Cymbl
+1438,Synth Long Ride 1,Dr/Pc,Cymbl
+1439,Bitcrushed Ride 1,Dr/Pc,Cymbl
+1440,Acoustic Crash 1,Dr/Pc,Cymbl
+1441,Acoustic Crash 2,Dr/Pc,Cymbl
+1442,Splash Cymbal 1,Dr/Pc,Cymbl
+1443,Splash Cymbal + Reverb 1,Dr/Pc,Cymbl
+1444,Acoustic Crash + Reverb 1,Dr/Pc,Cymbl
+1445,Long Crash + Reverb 1,Dr/Pc,Cymbl
+1446,RX5 Crash 1,Dr/Pc,Cymbl
+1447,Acoustic Crash 3,Dr/Pc,Cymbl
+1448,Big Cymbal 1,Dr/Pc,Cymbl
+1449,Big Cymbal 2,Dr/Pc,Cymbl
+1450,Big Cymbal 3,Dr/Pc,Cymbl
+1451,Cymbal Hammer 1,Dr/Pc,Cymbl
+1452,Noise Crash 1,Dr/Pc,Cymbl
+1453,Noise Crash 2,Dr/Pc,Cymbl
+1454,Noise Crash 3,Dr/Pc,Cymbl
+1455,Punchy Mid Tom 1,Dr/Pc,Tom
+1456,Punchy High Tom 2,Dr/Pc,Tom
+1457,Acoustic High Tom 1,Dr/Pc,Tom
+1458,Acoustic High Tom 2,Dr/Pc,Tom
+1459,Punchy High Tom 3,Dr/Pc,Tom
+1460,Punchy Mid Tom 2,Dr/Pc,Tom
+1461,Acoustic Mid Tom 1,Dr/Pc,Tom
+1462,Punchy Mid Tom 3,Dr/Pc,Tom
+1463,Punchy Mid Tom 4,Dr/Pc,Tom
+1464,Punchy Mid Tom 5,Dr/Pc,Tom
+1465,Acoustic Mid Tom 2,Dr/Pc,Tom
+1466,Punchy Low Tom 1,Dr/Pc,Tom
+1467,Acoustic Mid Tom 3,Dr/Pc,Tom
+1468,Acoustic Mid Tom 4,Dr/Pc,Tom
+1469,Punchy Mid Tom 6,Dr/Pc,Tom
+1470,Acoustic Low Tom 1,Dr/Pc,Tom
+1471,Punchy Low Tom 2,Dr/Pc,Tom
+1472,Bass Tom 1,Dr/Pc,Tom
+1473,Acoustic Low Tom 2,Dr/Pc,Tom
+1474,Punchy Low Tom 3,Dr/Pc,Tom
+1475,Electronic Mid Tom 1,Dr/Pc,Tom
+1476,Electronic Low Tom 1,Dr/Pc,Tom
+1477,Bass Tom 2,Dr/Pc,Tom
+1478,Bass Tom 3,Dr/Pc,Tom
+1479,Bass Tom 4,Dr/Pc,Tom
+1480,Tonal Bass Tom 1,Dr/Pc,Tom
+1481,Bass Tom 5,Dr/Pc,Tom
+1482,Electronic Low Tom 2,Dr/Pc,Tom
+1483,Electronic Mid Tom 2,Dr/Pc,Tom
+1484,RX5 High Tom 1,Dr/Pc,Tom
+1485,RX5 Mid Tom 1,Dr/Pc,Tom
+1486,RX5 Mid Tom 2,Dr/Pc,Tom
+1487,RX5 Low Tom 1,Dr/Pc,Tom
+1488,RX5 High Tom 2,Dr/Pc,Tom
+1489,RX5 Mid Tom 3,Dr/Pc,Tom
+1490,RX5 Mid Tom 4,Dr/Pc,Tom
+1491,RX5 Low Tom 2,Dr/Pc,Tom
+1492,Bitcrushed Tom 1,Dr/Pc,Tom
+1493,Distorted Tom 1,Dr/Pc,Tom
+1494,Distorted Tom 2,Dr/Pc,Tom
+1495,Distorted Tom 3,Dr/Pc,Tom
+1496,Distorted Tom 4,Dr/Pc,Tom
+1497,Distorted Tom 5,Dr/Pc,Tom
+1498,Distorted Tom 6,Dr/Pc,Tom
+1499,Distorted Tom 7,Dr/Pc,Tom
+1500,Bitcrushed Tom 2,Dr/Pc,Tom
+1501,Modulated Tom 1,Dr/Pc,Tom
+1502,Modulated Tom 2,Dr/Pc,Tom
+1503,Modulated Tom 3,Dr/Pc,Tom
+1504,Electronic High Tom 1,Dr/Pc,Tom
+1505,Electronic High Tom 2,Dr/Pc,Tom
+1506,Electronic High Tom 3,Dr/Pc,Tom
+1507,Electronic High Tom 4,Dr/Pc,Tom
+1508,Electronic High Tom 5,Dr/Pc,Tom
+1509,Tonal Cowbell 1,Dr/Pc,PC
+1510,Cowbell Mid 1,Dr/Pc,PC
+1511,Cowbell Mid 2,Dr/Pc,PC
+1512,Cowbell High 1,Dr/Pc,PC
+1513,Cowbell 1,Dr/Pc,PC
+1514,Metallic Cowbell 1,Dr/Pc,PC
+1515,Metallic Cowbell 2,Dr/Pc,PC
+1516,Tonal Cowbell 2,Dr/Pc,PC
+1517,Metallic Cowbell 3,Dr/Pc,PC
+1518,Ringing Bell 1,Dr/Pc,PC
+1519,Short Bell 1,Dr/Pc,PC
+1520,Short Bell 2,Dr/Pc,PC
+1521,High Bell 1,Dr/Pc,PC
+1522,Mind Bell 2,Dr/Pc,PC
+1523,Sci-Fi Bell 1,Dr/Pc,PC
+1524,Bell and Noise 1,Dr/Pc,PC
+1525,Small Bell 2,Dr/Pc,PC
+1526,Tingsha Bell 1,Dr/Pc,PC
+1527,Modulated Bell 1,Dr/Pc,PC
+1528,RX5 Conga High Mute 1,Dr/Pc,PC
+1529,Conga2 High Mute 1,Dr/Pc,PC
+1530,Conga3 Mid Mute 1,Dr/Pc,PC
+1531,Conga3 High 1,Dr/Pc,PC
+1532,RX5 Conga High Open 1,Dr/Pc,PC
+1533,RX5 Conga Low Open 1,Dr/Pc,PC
+1534,Conga3 Mid 1,Dr/Pc,PC
+1535,Conga2 Mid Slap Open 1,Dr/Pc,PC
+1536,RX5 Bongo High 1,Dr/Pc,PC
+1537,Bongo3 High 1,Dr/Pc,PC
+1538,RX5 Bongo Low 1,Dr/Pc,PC
+1539,Bongo4 Low 1,Dr/Pc,PC
+1540,Bongo2 High 1,Dr/Pc,PC
+1541,Bongo4 High 1,Dr/Pc,PC
+1542,Bongo3 High 2,Dr/Pc,PC
+1543,Bongo4 Low 2,Dr/Pc,PC
+1544,Djembe 1,Dr/Pc,Ethnc
+1545,Djembe 2,Dr/Pc,Ethnc
+1546,Djembe 3,Dr/Pc,Ethnc
+1547,Djembe 4,Dr/Pc,Ethnc
+1548,Talking Drum 1,Dr/Pc,Ethnc
+1549,Talking Drum 2,Dr/Pc,Ethnc
+1550,Talking Drum 3,Dr/Pc,Ethnc
+1551,Talking Drum 4,Dr/Pc,Ethnc
+1552,Mridangam 1,Dr/Pc,Ethnc
+1553,Mridangam 2,Dr/Pc,Ethnc
+1554,Tabla 1,Dr/Pc,Ethnc
+1555,Tabla 2,Dr/Pc,Ethnc
+1556,Tabla 3,Dr/Pc,Ethnc
+1557,Tabla 4,Dr/Pc,Ethnc
+1558,Tabla 5,Dr/Pc,Ethnc
+1559,Vibraslap 1,Dr/Pc,PC
+1560,Wood Block 1,Dr/Pc,PC
+1561,Sine Percussion 1,Dr/Pc,PC
+1562,Mid Resonated Tone 2,Dr/Pc,PC
+1563,Foley Sound 1,Dr/Pc,PC
+1564,Water Tone 1,Dr/Pc,PC
+1565,Mid Resonated Tone 1,Dr/Pc,PC
+1566,Gunshot 2,Dr/Pc,PC
+1567,Bomb 2,Dr/Pc,PC
+1568,Punchy Gritty Hit 1,Dr/Pc,PC
+1569,Percussion Hit 1,Dr/Pc,PC
+1570,Muffled Pitched Percussion 1,Dr/Pc,PC
+1571,SFX High Bell 1,Dr/Pc,PC
+1572,Trash Can 1,Dr/Pc,PC
+1573,Telephone 1,Dr/Pc,PC
+1574,Pitched SFX 1,Dr/Pc,PC
+1575,Distorted Pitched Noise 1,Dr/Pc,PC
+1576,SFX Pitched Tone 1,Dr/Pc,PC
+1577,Laser - Blast 1,Dr/Pc,PC
+1578,Scanning 1,Dr/Pc,PC
+1579,Percussion + Glass Broken 1,Dr/Pc,PC
+1580,Glass Broken 1,Dr/Pc,PC
+1581,Percussion + Water 1,Dr/Pc,PC
+1582,Percussion + Water 2,Dr/Pc,PC
+1583,Foley Sound 2,Dr/Pc,PC
+1584,Foley Sound 3,Dr/Pc,PC
+1585,Foley Sound 4,Dr/Pc,PC
+1586,Foley Sound 5,Dr/Pc,PC
+1587,Glass Crash 1,Dr/Pc,PC
+1588,Camera Shutter 1,Dr/Pc,PC
+1589,Camera Shutter 2,Dr/Pc,PC
+1590,Camera Shutter 3,Dr/Pc,PC
+1591,Old Clock Tick 1,Dr/Pc,PC
+1592,Percussion + Water 3,Dr/Pc,PC
+1593,Wood + Reverb 1,Dr/Pc,PC
+1594,Foley Sound 6,Dr/Pc,PC
+1595,Percussion + Glass Broken 2,Dr/Pc,PC
+1596,Ambient Percussion 1,Dr/Pc,PC
+1597,Ambient Percussion 2,Dr/Pc,PC
+1598,Ambient Percussion 3,Dr/Pc,PC
+1599,Ambient Percussion 4,Dr/Pc,PC
+1600,Ambient Percussion 5,Dr/Pc,PC
+1601,Ambient Percussion 6,Dr/Pc,PC
+1602,Sci-Fi - Repeated 1,Dr/Pc,PC
+1603,Foley Sound 7,Dr/Pc,PC
+1604,Industrial Hit 1,Dr/Pc,PC
+1605,Industrial Hit 2,Dr/Pc,PC
+1606,Gritty Noise 1,Dr/Pc,PC
+1607,Industrial Hit 3,Dr/Pc,PC
+1608,Industrial Hit 4,Dr/Pc,PC
+1609,Industrial Hit 5,Dr/Pc,PC
+1610,Gritty Hit 1,Dr/Pc,PC
+1611,Foley Sound 8,Dr/Pc,PC
+1612,Low Noise 1,Dr/Pc,PC
+1613,Panning Gritty Hit 1,Dr/Pc,PC
+1614,Percussion Hit 2,Dr/Pc,PC
+1615,Percussion Hit 3,Dr/Pc,PC
+1616,Laser - Scratch 1,Dr/Pc,PC
+1617,Laser - Falling 2,Dr/Pc,PC
+1618,Percussion Hit 4,Dr/Pc,PC
+1619,Gritty Hit 2,Dr/Pc,PC
+1620,Industrial Hit 6,Dr/Pc,PC
+1621,Analog Rim 1,Dr/Pc,Snare
+1622,Analog Rim 2,Dr/Pc,Snare
+1623,Analog Cowbell 1,Dr/Pc,PC
+1624,Analog Cowbell Accent 1,Dr/Pc,PC
+1625,Analog Conga High 1,Dr/Pc,PC
+1626,Analog Conga Mid 1,Dr/Pc,PC
+1627,Analog Conga Low 1,Dr/Pc,PC
+1628,Sci-Fi - Detected 1,S.EFX,SE
+1629,Sci-Fi - Drip 1,S.EFX,SE
+1630,Sci-Fi - Buzzed 1,S.EFX,SE
+1631,Ambient Noise 1,S.EFX,SE
+1632,Dark Hit 1,S.EFX,SE
+1633,Female Count 1,Sampler,Vocal Count
+1634,Female Count 2,Sampler,Vocal Count
+1635,Female Count 3,Sampler,Vocal Count
+1636,Female Count 4,Sampler,Vocal Count
+1637,Female Count 5,Sampler,Vocal Count
+1638,Female Count 6,Sampler,Vocal Count
+1639,Female Count 7,Sampler,Vocal Count
+1640,Female Count 8,Sampler,Vocal Count
+1641,Male Count 1 A,Sampler,Vocal Count
+1642,Male Count 2 A,Sampler,Vocal Count
+1643,Male Count 3 A,Sampler,Vocal Count
+1644,Male Count 4 A,Sampler,Vocal Count
+1645,Male Count 5 A,Sampler,Vocal Count
+1646,Male Count 6 A,Sampler,Vocal Count
+1647,Male Count 7 A,Sampler,Vocal Count
+1648,Male Count 8 A,Sampler,Vocal Count
+1649,Male Count 1 B,Sampler,Vocal Count
+1650,Male Count 2 B,Sampler,Vocal Count
+1651,Male Count 3 B,Sampler,Vocal Count
+1652,Male Count 4 B,Sampler,Vocal Count
+1653,Male Count 5 B,Sampler,Vocal Count
+1654,Male Count 6 B,Sampler,Vocal Count
+1655,Male Count 7 B,Sampler,Vocal Count
+1656,Male Count 8 B,Sampler,Vocal Count
+1657,Female Vocal - Ha,Sampler,Vocal Phrase / Chant
+1658,Female Vocal - Yo,Sampler,Vocal Phrase / Chant
+1659,Female Vocal - Hey,Sampler,Vocal Phrase / Chant
+1660,Female Vocal - Oh,Sampler,Vocal Phrase / Chant
+1661,Female Vocal - Money,Sampler,Vocal Phrase / Chant
+1662,Female Vocal - Go,Sampler,Vocal Phrase / Chant
+1663,Male Vocal - Yo,Sampler,Vocal Phrase / Chant
+1664,Male Vocal - Oh,Sampler,Vocal Phrase / Chant
+1665,Male Vocal - Uh 1,Sampler,Vocal Phrase / Chant
+1666,Male Vocal - Go,Sampler,Vocal Phrase / Chant
+1667,Male Vocal- Whooh,Sampler,Vocal Phrase / Chant
+1668,Male Vocal - Hey,Sampler,Vocal Phrase / Chant
+1669,Male Vocal - OK,Sampler,Vocal Phrase / Chant
+1670,Male Vocal - Say What,Sampler,Vocal Phrase / Chant
+1671,Male Vocal - Big Up,Sampler,Vocal Phrase / Chant
+1672,Male Vocal - Let's Go,Sampler,Vocal Phrase / Chant
+1673,Male Vocal - Hey - Loud,Sampler,
+1674,Male Vocal - Ooh - Loud,Sampler,Vocal Phrase / Chant Vocal Phrase / Chant Vocal Phrase / Chant
+1675,Male Vocal - Wow - Loud,Sampler,
+1676,Male Vocal - Bon,Sampler,Vocal Phrase / Chant
+1677,Male Vocal - Get Funky,Sampler,Vocal Phrase / Chant
+1678,Male Vocal - Ow,Sampler,Vocal Phrase / Chant
+1679,Male Vocal - Uh 2,Sampler,Vocal Phrase / Chant
+1680,Group Vocal - Ah uh,Sampler,Vocal Phrase / Chant
+1681,Group Vocal - Hey,Sampler,Vocal Phrase / Chant
+1682,Group Vocal - R U Ready?,Sampler,Vocal Phrase / Chant
+1683,Group Vocal - Check It Out,Sampler,Vocal Phrase / Chant
+1684,Group Vocal - Come On,Sampler,Vocal Phrase / Chant
+1685,Group Vocal - Here We Go,Sampler,Vocal Phrase / Chant
+1686,Group Vocal - Ho ho,Sampler,
+1687,Group Vocal- Ho ho uh uh,Sampler,Vocal Phrase / Chant Vocal Phrase / Chant Vocal Phrase / Chant
+1688,Group Vocal - Wussup,Sampler,
+1689,Group Vocal - You You You,Sampler,Vocal Phrase / Chant
+1690,Japanese Chant 1,Sampler,Vocal Phrase / Chant
+1691,Japanese Chant 2,Sampler,Vocal Phrase / Chant
+1692,Japanese Chant 3,Sampler,Vocal Phrase / Chant
+1693,Japanese Chant 4,Sampler,Vocal Phrase / Chant
+1694,Japanese Chant 5,Sampler,Vocal Phrase / Chant
+1695,Japanese Chant 6,Sampler,Vocal Phrase / Chant
+1696,Japanese Chant 7,Sampler,Vocal Phrase / Chant
+1697,Japanese Chant 8,Sampler,Vocal Phrase / Chant
+1698,Japanese Chant 9,Sampler,Vocal Phrase / Chant
+1699,Japanese Chant 10,Sampler,Vocal Phrase / Chant
+1700,Japanese Chant 11,Sampler,Vocal Phrase / Chant
+1701,Japanese Chant 12,Sampler,Vocal Phrase / Chant
+1702,Japanese Chant 13,Sampler,Vocal Phrase / Chant
+1703,Japanese Chant 14,Sampler,Vocal Phrase / Chant
+1704,Japanese Chant 15,Sampler,Vocal Phrase / Chant
+1705,Japanese Chant 16,Sampler,Vocal Phrase / Chant
+1706,Japanese Chant 17,Sampler,Vocal Phrase / Chant
+1707,Japanese Chant 18,Sampler,Vocal Phrase / Chant
+1708,Singing - Female - Ah 1,Sampler,Singing Vocal
+1709,Singing - Female - Ah 2,Sampler,Singing Vocal
+1710,Singing - Female - Ai,Sampler,Singing Vocal
+1711,Singing - Female - La ah ah,Sampler,Singing Vocal
+1712,Singing - Female - Woo la,Sampler,Singing Vocal
+1713,Singing - Female - Aw oh,Sampler,Singing Vocal
+1714,Singing - Female - Ha ah 1,Sampler,Singing Vocal
+1715,Singing - Female - Haaaah,Sampler,Singing Vocal
+1716,Singing - Male - Ah ah,Sampler,Singing Vocal
+1717,Singing - Male - Oh oh woo,Sampler,Singing Vocal
+1718,Singing - Male - La a a a,Sampler,Singing Vocal
+1719,Singing - Male - Ah,Sampler,Singing Vocal
+1720,Singing - Male - Hooo,Sampler,Singing Vocal
+1721,Singing - Male - Hee,Sampler,Singing Vocal
+1722,Singing - Male - Uu,Sampler,Singing Vocal
+1723,Singing - Male - Everyday,Sampler,Singing Vocal
+1724,Singing - Male - Every Night,Sampler,Singing Vocal
+1725,Singing - Male - Yeeaaah,Sampler,Singing Vocal
+1726,Singing - Male - Oh wo,Sampler,Singing Vocal
+1727,-Singing - Male Oh wowo ah,Sampler,Singing Vocal
+1728,Singing - Male - Yeah ah ah,Sampler,Singing Vocal
+1729,Singing - Female - Ha ah 2,Sampler,Singing Vocal
+1730,Singing - Female - La la la la la,Sampler,Singing Vocal
+1731,High pitched vocal - Ah,Sampler,Robotic Vocal / Effect
+1732,High pitched vocal - Top,Sampler,Robotic Vocal / Effect
+1733,Vocoder Beat The Band,Sampler,Robotic Vocal / Effect
+1734,Vocoder Love Is Blind,Sampler,Robotic Vocal / Effect
+1735,Vocoder Freezing Cold,Sampler,Robotic Vocal / Effect
+1736,Vocoder Destiny,Sampler,Robotic Vocal / Effect
+1737,Vocoder Forbidden Dreams,Sampler,Robotic Vocal / Effect
+1738,Vocoder Enjoying This,Sampler,Robotic Vocal / Effect
+1739,Vocoder Desperation,Sampler,Robotic Vocal / Effect
+1740,Vocoder Born Happy,Sampler,Robotic Vocal / Effect
+1741,Vocoder Day Life,Sampler,Robotic Vocal / Effect
+1742,Vocoder Reality,Sampler,Robotic Vocal / Effect
+1743,Vocoder Dreamin Of U,Sampler,Robotic Vocal / Effect
+1744,Vocoder Complicated,Sampler,Robotic Vocal / Effect
+1745,Vocoder Mystery,Sampler,Robotic Vocal / Effect
+1746,Vocoder Revolution,Sampler,Robotic Vocal / Effect
+1747,Vocoder Sweeping,Sampler,Robotic Vocal / Effect
+1748,Vocoder Yesterday,Sampler,Robotic Vocal / Effect
+1749,Vocoder Close Eyes,Sampler,Robotic Vocal / Effect
+1750,Vocoder Infinity,Sampler,Robotic Vocal / Effect
+1751,Vocoder Deepwater,Sampler,Robotic Vocal / Effect
+1752,Riser - Noise 1,Sampler,Riser
+1753,Riser - Synth Lead & Noise 1,Sampler,Riser
+1754,Riser - Synth Lead 1,Sampler,Riser
+1755,Riser - Bubble 1,Sampler,Riser
+1756,Riser - Phase Synth Lead 1,Sampler,Riser
+1757,Riser - Phase Synth Lead 2,Sampler,Riser
+1758,Riser - Panned Synth Lead 1,Sampler,Riser
+1759,Riser - Panned Synth Lead 2,Sampler,Riser
+1760,Riser - Noise 2,Sampler,Riser
+1761,Riser - Bubble 2,Sampler,Riser
+1762,Riser - Noise 3,Sampler,Riser
+1763,Riser - Panned Noise 1,Sampler,Riser
+1764,Riser - Panned Noise 2,Sampler,Riser
+1765,Riser - Panned Noise 3,Sampler,Riser
+1766,Riser - Panned Noise 4,Sampler,Riser
+1767,Riser - Panned Noise 5,Sampler,Riser
+1768,Riser - Panned Noise 6,Sampler,Riser
+1769,Laser - Blast 2,Sampler,Laser / Sci-Fi
+1770,Laser - Rapid Fire 1,Sampler,Laser / Sci-Fi
+1771,Laser - Blast 3,Sampler,Laser / Sci-Fi
+1772,Laser - Blast 4,Sampler,Laser / Sci-Fi
+1773,Laser - Blast 5,Sampler,Laser / Sci-Fi
+1774,Laser - Blast 6,Sampler,Laser / Sci-Fi
+1775,Laser - Blast 7,Sampler,Laser / Sci-Fi
+1776,Laser - Blast 8,Sampler,Laser / Sci-Fi
+1777,Noisy Laser - Blast 1,Sampler,Laser / Sci-Fi
+1778,Laser - Motion 1,Sampler,Laser / Sci-Fi
+1779,Laser - Rapid Fire 2,Sampler,Laser / Sci-Fi
+1780,Laser - Rapid Fire 3,Sampler,Laser / Sci-Fi
+1781,Laser - Flyby 1,Sampler,Laser / Sci-Fi
+1782,Laser - Echo 1,Sampler,Laser / Sci-Fi
+1783,Laser - Echo 2,Sampler,Laser / Sci-Fi
+1784,Laser - Echo 3,Sampler,Laser / Sci-Fi
+1785,Laser - Fizzer 1,Sampler,Laser / Sci-Fi
+1786,Laser - Vibration 1,Sampler,Laser / Sci-Fi
+1787,Laser - Echo 4,Sampler,Laser / Sci-Fi
+1788,Laser - Fleeting 1,Sampler,Laser / Sci-Fi
+1789,Laser - Signal 1,Sampler,Laser / Sci-Fi
+1790,Laser - Signal 2,Sampler,Laser / Sci-Fi
+1791,Laser - Signal 3,Sampler,Laser / Sci-Fi
+1792,Laser - Signal 4,Sampler,Laser / Sci-Fi
+1793,Laser - Signal 5,Sampler,Laser / Sci-Fi
+1794,Laser - Random Motion 1,Sampler,Laser / Sci-Fi
+1795,Laser - Signal 6,Sampler,Laser / Sci-Fi
+1796,Laser - Blast 9,Sampler,Laser / Sci-Fi
+1797,Sci-Fi - Data Transmission 1,Sampler,Laser / Sci-Fi
+1798,Sci-Fi - Data Transmission 2,Sampler,Laser / Sci-Fi
+1799,Sci-Fi - Data Transmission 3,Sampler,Laser / Sci-Fi
+1800,Laser - Falling 3,Sampler,Laser / Sci-Fi
+1801,Laser - After Shock 1,Sampler,Laser / Sci-Fi
+1802,Laser - Falling 4,Sampler,Laser / Sci-Fi
+1803,Laser - Falling 5,Sampler,Laser / Sci-Fi
+1804,Laser - Falling 6,Sampler,Laser / Sci-Fi
+1805,Laser - Falling 7,Sampler,Laser / Sci-Fi
+1806,Laser - Falling 8,Sampler,Laser / Sci-Fi
+1807,Laser - Falling 9,Sampler,Laser / Sci-Fi
+1808,Laser - Blast 10,Sampler,Laser / Sci-Fi
+1809,Laser - Blast 11,Sampler,Laser / Sci-Fi
+1810,Laser - Blast 12,Sampler,Laser / Sci-Fi
+1811,Laser - Echo 5,Sampler,Laser / Sci-Fi
+1812,Noisy Laser - Echo 1,Sampler,Laser / Sci-Fi
+1813,Noisy Laser - Echo 2,Sampler,Laser / Sci-Fi
+1814,Sci-Fi - Data Transmission 4,Sampler,Laser / Sci-Fi
+1815,Laser - Falling 10,Sampler,Laser / Sci-Fi
+1816,Laser - Falling 11,Sampler,Laser / Sci-Fi
+1817,Laser - Falling 12,Sampler,Laser / Sci-Fi
+1818,Laser - Signal 7,Sampler,Laser / Sci-Fi
+1819,Sci-Fi - Rapid Fire 1,Sampler,Laser / Sci-Fi
+1820,Sci-Fi - Detected 2,Sampler,Laser / Sci-Fi
+1821,Sci-Fi - Access Denied 1,Sampler,Laser / Sci-Fi
+1822,Sci-Fi - Error 1,Sampler,Laser / Sci-Fi
+1823,Sci-Fi - Calculation 1,Sampler,Laser / Sci-Fi
+1824,Sci-Fi - Connecting 1,Sampler,Laser / Sci-Fi
+1825,Sci-Fi - Deep Signal 1,Sampler,Laser / Sci-Fi
+1826,Sci-Fi - Deep Signal 2,Sampler,Laser / Sci-Fi
+1827,Sci-Fi - Deep Dive 1,Sampler,Laser / Sci-Fi
+1828,Sci-Fi - Deep Dive 2,Sampler,Laser / Sci-Fi
+1829,Impact - Dark 1,Sampler,Impact
+1830,Impact - Tom & Cymbal 1,Sampler,Impact
+1831,Impact - Metal Hit 1,Sampler,Impact
+1832,Impact - Metal Hit 2,Sampler,Impact
+1833,Impact - Noise 1,Sampler,Impact
+1834,Impact - Noise 2,Sampler,Impact
+1835,Impact - Noise 3,Sampler,Impact
+1836,Impact - Noise 4,Sampler,Impact
+1837,Impact - Noise 5,Sampler,Impact
+1838,Impact - Noise 6,Sampler,Impact
+1839,Impact - Noise 7,Sampler,Impact
+1840,Impact - Noise 8,Sampler,Impact
+1841,Noise - Fade In 1,Sampler,Noise / Distorted
+1842,Noise - Fade In 2,Sampler,Sound Noise / Distorted Sound Noise /
+1843,Noise - Fade In 3,Sampler,Distorted
+1844,Noise - Explosion 1,Sampler,Sound Noise / Distorted Sound
+1845,Noise - Explosion 2,Sampler,Noise / Distorted Sound
+1846,Noise - Explosion 3,Sampler,Noise / Distorted Sound
+1847,Noise - Explosion 4,Sampler,Noise / Distorted Sound
+1848,Distorted Hit 1,Sampler,Noise / Distorted Sound
+1849,Distorted Hit 2,Sampler,Noise / Distorted Sound
+1850,Distorted Hit 3,Sampler,Noise / Distorted Sound
+1851,Distorted Hit 4,Sampler,Noise / Distorted Sound
+1852,Distorted Hit 5,Sampler,Noise / Distorted Sound
+1853,Distorted Hit 6,Sampler,Noise / Distorted Sound
+1854,Distorted Hit 7,Sampler,Noise / Distorted Sound
+1855,Distorted Hit 8,Sampler,Noise / Distorted Sound
+1856,Distorted Hit 9,Sampler,Noise / Distorted Sound
+1857,Noise - Blast 1,Sampler,Noise / Distorted Sound
+1858,Noise - Blast 2,Sampler,Noise / Distorted Sound
+1859,Noise - Blast 3,Sampler,Noise / Distorted Sound
+1860,Noise - Blast 4,Sampler,Noise / Distorted Sound
+1861,Noise - Alert 1,Sampler,Noise / Distorted Sound
+1862,Noise - Signal 1,Sampler,Noise / Distorted Sound
+1863,Noise - Signal 2,Sampler,Noise / Distorted Sound
+1864,Noise - Signal 3,Sampler,Noise / Distorted Sound
+1865,Noise - Signal 4,Sampler,Noise / Distorted Sound
+1866,Noise - Passing 1,Sampler,Noise / Distorted Sound
+1867,Noise - Passing 2,Sampler,Noise / Distorted Sound
+1868,Noise - Passing 3,Sampler,Noise / Distorted Sound
+1869,Noise - Passing 4,Sampler,Noise / Distorted Sound
+1870,Noise - Passing 5,Sampler,Noise / Distorted Sound
+1871,Noise - Passing 6,Sampler,Noise / Distorted Sound
+1872,Noise - Take Off 1,Sampler,Noise / Distorted Sound
+1873,Noise - Take Off 2,Sampler,Noise / Distorted Sound
+1874,Granular Noise 1,Sampler,Noise / Distorted Sound
+1875,Ambient - Noise 1,Sampler,Ambient / Soundscape
+1876,Ambient - Noise 2,Sampler,Ambient / Soundscape
+1877,Ambient - Unstable 1,Sampler,Ambient / Soundscape
+1878,Ambient - Synth bass 1,Sampler,Ambient / Soundscape
+1879,Ambient - Unstable 2,Sampler,Ambient / Soundscape
+1880,Ambient - Noise 3,Sampler,Ambient / Soundscape
+1881,Ambient - Noise 4,Sampler,Ambient / Soundscape
+1882,Ambient - Strings & Noise 1,Sampler,Ambient / Soundscape
+1883,Ambient - Strings & Noise 2,Sampler,Ambient / Soundscape
+1884,Ambient - Strings 1,Sampler,Ambient / Soundscape
+1885,Ambient - Pad & Noise 1,Sampler,Ambient / Soundscape
+1886,Ambient - Pad & Noise 2,Sampler,Ambient / Soundscape
+1887,Samba Whistle 1,Sampler,SFX
+1888,Gunshot 3,Sampler,SFX
+1889,Helicopter 2,Sampler,SFX
+1890,Police 1,Sampler,SFX
+1891,Can 1,Sampler,SFX
+1892,Cashier 1,Sampler,SFX
+1893,Gear 1,Sampler,SFX
+1894,Train Whistle 1,Sampler,SFX
+1895,Train Crossing 1,Sampler,SFX
+1896,Zipper 1,Sampler,SFX
+1897,Tongue Clicking 1,Sampler,SFX
+1898,Heart Beat 1,Sampler,SFX
+1899,Water Drop 1,Sampler,SFX
+1900,Metal Hit 1,Sampler,SFX
+1901,Scratch 1,Sampler,Scratch
+1902,Scratch 2,Sampler,Scratch
+1903,Scratch 3,Sampler,Scratch
+1904,Scratch 4,Sampler,Scratch
+1905,Scratch 5,Sampler,Scratch
+1906,Scratch 6,Sampler,Scratch
+1907,Scratch 7,Sampler,Scratch
+1908,Scratch 8,Sampler,Scratch
+1909,Scratch 9,Sampler,Scratch
+1910,Scratch 10,Sampler,Scratch
+1911,Scratch 11,Sampler,Scratch
+1912,Scratch 12,Sampler,Scratch
+1913,Scratch 13,Sampler,Scratch
+1914,Scratch 14,Sampler,Scratch
+1915,Scratch 15,Sampler,Scratch
+1916,Scratch 16,Sampler,Scratch
+1917,Scratch 17,Sampler,Scratch
+1918,Scratch 18,Sampler,Scratch
+1919,Scratch 19,Sampler,Scratch
+1920,Scratch 20,Sampler,Scratch
+1921,Scratch 21,Sampler,Scratch
+1922,Scratch 22,Sampler,Scratch
+1923,Scratch 23,Sampler,Scratch
+1924,Scratch 24,Sampler,Scratch
+1925,Bird 1,Sampler,Nature / Animals
+1926,Bird 2,Sampler,Nature / Animals
+1927,Sheep 1,Sampler,Nature / Animals
+1928,Lion 1,Sampler,Nature / Animals
+1929,Thunder 1,Sampler,Nature / Animals
+1930,Thunder 2,Sampler,Nature / Animals
+1931,Rain 1,Sampler,Nature / Animals
+1932,Rain 2,Sampler,Nature / Animals
+1933,Brass Hit 1,Sampler,Hit / Stab / Musical Instrument Sound
+1934,Brass Hit 2,Sampler,Hit / Stab / Musical Instrument Sound
+1935,Brass Hit 3,Sampler,Hit / Stab / Musical Instrument Sound
+1936,Synth Brass Hit 1,Sampler,Hit / Stab / Musical Instrument Sound
+1937,Synth Brass Hit 2,Sampler,Hit / Stab / Musical Instrument Sound
+1938,Synth Brass Hit 3,Sampler,Hit / Stab / Musical Instrument Sound
+1939,Trumpet HIT 1,Sampler,Hit / Stab / Musical Instrument Sound
+1940,String Hit 1,Sampler,Hit / Stab / Musical Instrument Sound
+1941,Synth Chord Hit 1,Sampler,Hit / Stab / Musical Instrument Sound
+1942,Piano Chord Hit 1,Sampler,Hit / Stab / Musical Instrument Sound
+1943,Piano Chord Hit 2,Sampler,Hit / Stab / Musical Instrument Sound
+1944,Piano Chord Hit 3,Sampler,Hit / Stab / Musical Instrument Sound
+1945,Piano Chord Hit 4,Sampler,Hit / Stab / Musical Instrument Sound
+1946,Guitar Clean - Delay 1,Sampler,Hit / Stab / Musical Instrument Sound
+1947,Guitar Clean - Delay 2,Sampler,Hit / Stab / Musical Instrument Sound
+1948,Guitar Clean - Delay 3,Sampler,Hit / Stab / Musical Instrument Sound
+1949,Guitar Mute 1,Sampler,Hit / Stab / Musical Instrument Sound
+1950,Guitar Mute 2,Sampler,Hit / Stab / Musical Instrument Sound
+1951,Donk Bass 1,Sampler,Hit / Stab / Musical Instrument Sound
+1952,Bongo3 High 3,Sampler,Percussion
+1953,Bongo3 Low 1,Sampler,Percussion
+1954,Bongo4 High 2,Sampler,Percussion
+1955,Bongo4 Mid 1,Sampler,Percussion
+1956,Bongo4 Low 3,Sampler,Percussion
+1957,Analog Conga 1,Sampler,Percussion
+1958,Analog Conga 2,Sampler,Percussion
+1959,Conga3 High Slap Open 1,Sampler,Percussion
+1960,Conga3 High Open 1,Sampler,Percussion
+1961,Conga3 High Slap Mute 1,Sampler,Percussion
+1962,Conga3 Low Open 1,Sampler,Percussion
+1963,Conga3 Low Mute 1,Sampler,Percussion
+1964,Repique 1,Sampler,Percussion
+1965,Repique Rim 1,Sampler,Percussion
+1966,Timbale 3,Sampler,Percussion
+1967,Tan-tan Body 1,Sampler,Percussion
+1968,Tan-tan Close 1,Sampler,Percussion
+1969,Tan-tan Open 1,Sampler,Percussion
+1970,Tan-tan Slap 1,Sampler,Percussion
+1971,Surdo Mute 3,Sampler,Percussion
+1972,Surdo Open 2,Sampler,Percussion
+1973,Surdo Stop 2,Sampler,Percussion
+1974,High Tom - Standard 1,Sampler,Percussion
+1975,Mid Tom - Standard 1,Sampler,Percussion
+1976,Low Tom - Standard 1,Sampler,Percussion
+1977,Low Tom - Standard 2,Sampler,Percussion
+1978,Floor Tom - Standard 1,Sampler,Percussion
+1979,Cajon Ghost 1,Sampler,Percussion
+1980,Cajon Low 1,Sampler,Percussion
+1981,Analog Cowbell 2,Sampler,Percussion
+1982,RX11 Cowbell 1,Sampler,Percussion
+1983,Acoustic Cowbell 1,Sampler,Percussion
+1984,Acoustic Cowbell 2,Sampler,Percussion
+1985,Electric Wood Block 1,Sampler,Percussion
+1986,Electric Wood Block 2,Sampler,Percussion
+1987,Analog Claves 1,Sampler,Percussion
+1988,Castanet 1,Sampler,Percussion
+1989,Agogo High 2,Sampler,Percussion
+1990,Agogo Low 2,Sampler,Percussion
+1991,Analog Hand Clap 1,Sampler,Percussion
+1992,Open Rim Shot 1,Sampler,Percussion
+1993,Punchy Analog Snare 1,Sampler,Percussion
+1994,Analog Snare 1,Sampler,Percussion
+1995,Distorted Analog Snare 1,Sampler,Percussion
+1996,Standard Hand Clap 1,Sampler,Percussion
+1997,Electronic Snare 1,Sampler,Percussion
+1998,Shaker 16,Sampler,Percussion
+1999,Shaker 17,Sampler,Percussion
+2000,Shaker 18,Sampler,Percussion
+2001,Cabasa 1,Sampler,Percussion
+2002,Cabasa 2,Sampler,Percussion
+2003,Cabasa 3,Sampler,Percussion
+2004,Maracas 1,Sampler,Percussion
+2005,Shaker 19,Sampler,Percussion
+2006,Tambourine 10,Sampler,Percussion
+2007,Guiro 1,Sampler,Percussion
+2008,Vibraslap 2,Sampler,Percussion
+2009,Reco-reco 2,Sampler,Percussion
+2010,Analog Closed Hat 1,Sampler,Percussion
+2011,Analog Closed Hat 2,Sampler,Percussion
+2012,Electronic Closed Hat 1,Sampler,Percussion
+2013,Analog Open Hat 1,Sampler,Percussion
+2014,Analog Open Hat 2,Sampler,Percussion
+2015,Electronic Open Hat 1,Sampler,Percussion
+2016,Ride 1,Sampler,Percussion
+2017,Ride 2,Sampler,Percussion
+2018,Ride 3,Sampler,Percussion
+2019,Ride Brush 1,Sampler,Percussion
+2020,Analog Crash 1,Sampler,Percussion
+2021,Analog Crash 2,Sampler,Percussion
+2022,Analog Glass 1,Sampler,Percussion
+2023,Recorded Sample 1,Sampler,Recorded Sound
+2024,Recorded Sample 2,Sampler,Recorded Sound

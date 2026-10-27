@@ -1,0 +1,145 @@
+section,category,preset_number,preset_name,effect_type,slider_parameter_1,slider_parameter_2,slider_parameter_3
+single,FILTER,1,LPF - NO RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,2,LPF - LOW RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,3,LPF - MID RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,4,LPF - HIGH RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,5,HPF - NO RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,6,HPF - LOW RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,7,HPF - MID RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,FILTER,8,HPF - HIGH RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+single,REVERB,1,SMALL ROOM 1,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,2,SMALL ROOM 2,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,3,MID ROOM,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,4,SMALL HALL,SPX HALL,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,5,MID HALL,SPX HALL,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,6,STAGE,SPX STAGE,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+single,REVERB,7,GATED REVERB,GATED REVERB,Dry/Wet,Room Size,LPF Cutoff Frequency
+single,REVERB,8,REVERSE REVERB,REVERSE REVERB,Dry/Wet,Room Size,LPF Cutoff Frequency
+single,DELAY,1,TEMPO DELAY 4th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+single,DELAY,2,PING PONG DELAY 4th,TEMPO CROSS DELAY,Dry/Wet,Delay Time L>R & Delay Time R>L,Feedback
+single,DELAY,3,TEMPO DELAY 8th DOT,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+single,DELAY,4,TEMPO DELAY 8th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+single,DELAY,5,PING PONG DELAY 8th,TEMPO CROSS DELAY,Dry/Wet,Delay Time L>R & Delay Time R>L,Feedback
+single,DELAY,6,TEMPO DELAY 16th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+single,DELAY,7,ANALOG DELAY MODERN,ANALOG DELAY MODERN,Dry/Wet,Delay Time,Feedback
+single,DELAY,8,ANALOG DELAY RETRO,ANALOG DELAY RETRO,Dry/Wet,Delay Time,Feedback
+single,COMPRESSOR,1,COMP - SETTING 1,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,2,COMP - SETTING 2,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,3,COMP - SETTING 3,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,4,COMP - SETTING 4,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,5,COMP - SETTING 5,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,6,COMP - SETTING 6,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,7,COMP - SETTING 7,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,COMPRESSOR,8,COMP - SETTING 8,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+single,DISTORTION,1,WAVE FOLDER – SATURATION,WAVE FOLDER,Dry/Wet,Fold,Input Level
+single,DISTORTION,2,AMP SIMULATOR 2 – SETTING 1,AMP SIMULATOR 2,Dry/Wet,Overdrive,LPF Cutoff Frequency
+single,DISTORTION,3,AMP SIMULATOR 2 – SETTING 2,AMP SIMULATOR 2,Dry/Wet,Overdrive,LPF Cutoff Frequency
+single,DISTORTION,4,JAZZ COMBO,JAZZ COMBO,Distortion,Depth,Treble
+single,DISTORTION,5,AMP SIMULATOR 1,AMP SIMULATOR 1,Dry/Wet,Overdrive,Presence
+single,DISTORTION,6,SMALL STEREO,SMALL STEREO,Dist Drive,Dist Tone,Dist Presence
+single,DISTORTION,7,BIT CRUSHER,BIT CRUSHER,Sample Rate,Bit,Dry/Wet
+single,DISTORTION,8,DIGITAL TURNTABLE,DIGITAL TURNTABLE,Noise Level,Click Level,Dry Send to Noise
+single,MODULATION,1,SPX CHORUS,SPX CHORUS,Dry/Wet,LFO Speed,LFO Depth
+single,MODULATION,2,TEMPO FLANGER,TEMPO FLANGER,Dry/Wet,LFO Speed,LFO Depth
+single,MODULATION,3,TEMPO PHASER,TEMPO PHASER,LFO Depth,LFO Speed,Feedback Level
+single,MODULATION,4,ENSEMBLE DETUNE,ENSEMBLE DETUNE,Dry/Wet,Detune,Spread
+single,MODULATION,5,AUTO PAN,AUTO PAN,L/R Depth,LFO Speed,LFO Wave
+single,MODULATION,6,TREMOLO,TREMOLO,AM Depth,LFO Speed,PM Depth
+single,MODULATION,7,VCM AUTO WAH,VCM AUTO WAH,Speed,Resonance Offset,Output
+single,MODULATION,8,RING MODULATOR,RING MODULATOR,Dry/Wet,Osc Freq,LFO Depth
+single,DUCKER,1,DUCKER - SETTING 1,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,2,DUCKER - SETTING 2,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,3,DUCKER - SETTING 3,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,4,DUCKER - SETTING 4,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,5,DUCKER - SETTING 5,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,6,DUCKER - SETTING 6,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,7,DUCKER - SETTING 7,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,DUCKER,8,DUCKER - SETTING 8,UNI COMP DOWN,Side Chain Level,Attack,Release
+single,OTHER,1,BEAT REPEAT,BEAT REPEAT,Repeat & Length,Gate Time,Freeze
+single,OTHER,2,TALKING MODULATOR,TALKING MODULATOR,Vowel,Move Speed,Drive
+single,OTHER,3,ROTARY SPEAKER 1-SLOW,ROTARY SPEAKER 1,Speed Control,Rotor/Horn Balance,Mic L-R Angle
+single,OTHER,4,ROTARY SPEAKER 2 - FAST,ROTARY SPEAKER 2,Speed Control,Rotor/Horn Balance,Modulation Depth
+single,OTHER,5,HARMONIC ENHANCER,HARMONIC ENHANCER,Mix Level,Drive,HPF Cutoff Frequency
+single,OTHER,6,AUTO SYNTH,AUTO SYNTH,Mod Depth,AM Depth,Delay Level
+single,OTHER,7,SLICE,SLICE,Dry/Wet,Gate Time,Divide Type
+single,OTHER,8,VINYL BREAK,VINYL BREAK,Break,Speed,Speed Adjust
+send,REVERB,1,HD ROOM,HD ROOM,Reverb Time,Room Size,Hi Damp Freq
+send,REVERB,2,R3 ROOM,R3 ROOM,Reverb Time,Diffusion,LPF Cutoff Frequency
+send,REVERB,3,R3 HALL,R3 HALL,Reverb Time,Diffusion,LPF Cutoff Frequency
+send,REVERB,4,HD HALL,HD HALL,Reverb Time,Room Size,Hi Damp Freq
+send,REVERB,5,R3 PLATE,R3 PLATE,Reverb Time,Diffusion,LPF Cutoff Frequency
+send,REVERB,6,HD PLATE,HD PLATE,Reverb Time,Plate Type,Hi Damp Freq
+send,REVERB,7,SPX STAGE,SPX STAGE,Reverb Time,Diffusion,LPF Cutoff Frequency
+send,REVERB,8,REV-X HALL,REV-X HALL,Reverb Time,Room Size,LPF Cutoff Frequency
+send,DELAY,1,TEMPO DELAY 4th,TEMPO DELAY STEREO,Delay Time,Feedback,Feedback High Damp
+send,DELAY,2,PING PONG DELAY 4th,TEMPO CROSS DELAY,Delay Time L>R & Delay Time R>L,Feedback,Feedback High Damp
+send,DELAY,3,TEMPO DELAY 8th DOT,TEMPO DELAY STEREO,Delay Time,Feedback,Feedback High Damp
+send,DELAY,4,TEMPO DELAY 8th,TEMPO DELAY STEREO,Delay Time,Feedback,Feedback High Damp
+send,DELAY,5,PING PONG DELAY 8th,TEMPO CROSS DELAY,Delay Time L>R & Delay Time R>L,Feedback,Feedback High Damp
+send,DELAY,6,TEMPO DELAY 16th,TEMPO DELAY STEREO,Delay Time,Feedback,Feedback High Damp
+send,DELAY,7,ANALOG DELAY MODERN,ANALOG DELAY MODERN,Delay Time,Feedback,Delay Input Level
+send,DELAY,8,ANALOG DELAY RETRO,ANALOG DELAY RETRO,Delay Time,Feedback,Delay Input Level
+master,FILTER,1,LPF - NO RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,2,LPF - LOW RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,3,LPF - MID RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,4,LPF - HIGH RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,5,HPF - NO RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,6,HPF - LOW RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,7,HPF - MID RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,FILTER,8,HPF - HIGH RESONANCE,CONTROL FILTER,Cutoff,Resonance,Output Level
+master,REVERB,1,SMALL ROOM 1,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,2,SMALL ROOM 2,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,3,MID ROOM,SPX ROOM,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,4,SMALL HALL,SPX HALL,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,5,MID HALL,SPX HALL,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,6,STAGE,SPX STAGE,Dry/Wet,Reverb Time,LPF Cutoff Frequency
+master,REVERB,7,GATED REVERB,GATED REVERB,Dry/Wet,Room Size,LPF Cutoff Frequency
+master,REVERB,8,REVERSE REVERB,REVERSE REVERB,Dry/Wet,Room Size,LPF Cutoff Frequency
+master,DELAY,1,TEMPO DELAY 4th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+master,DELAY,2,PING PONG DELAY 4th,TEMPO CROSS DELAY,Dry/Wet,Delay Time L>R & Delay Time R>L,Feedback
+master,DELAY,3,TEMPO DELAY 8th DOT,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+master,DELAY,4,TEMPO DELAY 8th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+master,DELAY,5,PING PONG DELAY 8th,TEMPO CROSS DELAY,Dry/Wet,Delay Time L>R & Delay Time R>L,Feedback
+master,DELAY,6,TEMPO DELAY 16th,TEMPO DELAY STEREO,Dry/Wet,Delay Time,Feedback
+master,DELAY,7,ANALOG DELAY MODERN,ANALOG DELAY MODERN,Dry/Wet,Delay Time,Feedback
+master,DELAY,8,ANALOG DELAY RETRO,ANALOG DELAY RETRO,Dry/Wet,Delay Time,Feedback
+master,COMPRESSOR,1,COMP - SETTING 1,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,2,COMP - SETTING 2,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,3,COMP - SETTING 3,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,4,COMP - SETTING 4,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,5,COMP - SETTING 5,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,6,COMP - SETTING 6,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,7,COMP - SETTING 7,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,COMPRESSOR,8,COMP - SETTING 8,UNI COMP DOWN,Ratio,Threshold,Make Up Gain
+master,DISTORTION,1,WAVE FOLDER - SATURATION,WAVE FOLDER,Dry/Wet,Fold,Input Level
+master,DISTORTION,2,COMP DISTORTION,COMP DISTORTION,Dry/Wet,Overdrive,LPF Cutoff Frequency
+master,DISTORTION,3,WAVE FOLDER,WAVE FOLDER,Dry/Wet,Fold,Input Level
+master,DISTORTION,4,AMP SIMULATOR 2 - SETTING 1,AMP SIMULATOR 2,Dry/Wet,Overdrive,LPF Cutoff Frequency
+master,DISTORTION,5,AMP SIMULATOR 1,AMP SIMULATOR 1,Dry/Wet,Overdrive,Presence
+master,DISTORTION,6,AMP SIMULATOR 2 - SETTING 2,AMP SIMULATOR 2,Dry/Wet,Overdrive,LPF Cutoff Frequency
+master,DISTORTION,7,BIT CRUSHER,BIT CRUSHER,Sample Rate,Bit,Dry/Wet
+master,DISTORTION,8,DIGITAL TURNTABLE,DIGITAL TURNTABLE,Noise Level,Click Level,Dry Send to Noise
+master,MODULATION,1,SPX CHORUS,SPX CHORUS,Dry/Wet,LFO Speed,LFO Depth
+master,MODULATION,2,TEMPO FLANGER,TEMPO FLANGER,Dry/Wet,LFO Speed,LFO Depth
+master,MODULATION,3,TEMPO PHASER,TEMPO PHASER,LFO Depth,LFO Speed,Feedback Level
+master,MODULATION,4,ENSEMBLE DETUNE,ENSEMBLE DETUNE,Dry/Wet,Detune,Spread
+master,MODULATION,5,AUTO PAN,AUTO PAN,L/R Depth,LFO Speed,LFO Wave
+master,MODULATION,6,TREMOLO,TREMOLO,AM Depth,LFO Speed,PM Depth
+master,MODULATION,7,VCM AUTO WAH,VCM AUTO WAH,Speed,Resonance Offset,Output
+master,MODULATION,8,RING MODULATOR,RING MODULATOR,Dry/Wet,Osc Freq,LFO Depth
+master,DUCKER,1,DUCKER - SETTING 1,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,2,DUCKER - SETTING 2,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,3,DUCKER - SETTING 3,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,4,DUCKER - SETTING 4,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,5,DUCKER - SETTING 5,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,6,DUCKER - SETTING 6,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,7,DUCKER - SETTING 7,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,DUCKER,8,DUCKER - SETTING 8,UNI COMP DOWN,Side Chain Level,Attack,Release
+master,OTHER,1,BEAT REPEAT,BEAT REPEAT,Repeat & Length,Gate Time,Play Speed
+master,OTHER,2,TALKING MODULATOR,TALKING MODULATOR,Vowel,Move Speed,Drive
+master,OTHER,3,ROTARY SPEAKER 1-SLOW,ROTARY SPEAKER 1,Speed Control,Rotor/Horn Balance,Mic L-R Angle
+master,OTHER,4,ROTARY SPEAKER 2 - FAST,ROTARY SPEAKER 2,Speed Control,Rotor/Horn Balance,Modulation Depth
+master,OTHER,5,HARMONIC ENHANCER,HARMONIC ENHANCER,Mix Level,Drive,HPF Cutoff Frequency
+master,OTHER,6,AUTO SYNTH,AUTO SYNTH,Mod Depth,AM Depth,Delay Level
+master,OTHER,7,SLICE,SLICE,Dry/Wet,Gate Time,Divide Type
+master,OTHER,8,VINYL BREAK,VINYL BREAK,Break,Speed,Speed Adjust

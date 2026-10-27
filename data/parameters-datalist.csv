@@ -1,0 +1,1519 @@
+block,high,mid,low,size,range_hex,default_hex,name,description,notes,page
+Bulk Control / Header,11,00,nn,1,-,-,Bulk Header,Project Edit Buffer (nn = 0),,122
+Parameter Change Table / Bulk Control,11,01,nn,1,-,-,Bulk Header,Project User 1 (nn = 0-7),,122
+Parameter Change Table / Bulk Control,11,02,nn,1,-,-,Bulk Header,Sound Edit Buffer Part nn (nn = 0-10),,122
+Parameter Change Table / Bulk Control,11,03,nn,1,-,-,Bulk Header,Sound User 1 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,04,nn,1,-,-,Bulk Header,Sound User 2 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,05,nn,1,-,-,Bulk Header,Sound User 3 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,06,nn,1,-,-,Bulk Header,Sound User 4 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,07,nn,1,-,-,Bulk Header,Sound User 5 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,08,nn,1,-,-,Bulk Header,Sound User 6 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,09,nn,1,-,-,Bulk Header,Sound User 7 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0A,nn,1,-,-,Bulk Header,Sound User 8 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0B,nn,1,-,-,Bulk Header,Sound User 9 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0C,nn,1,-,-,Bulk Header,Sound User 10 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0D,nn,1,-,-,Bulk Header,Sound User 11 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0E,nn,1,-,-,Bulk Header,Sound User 12 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,0F,nn,1,-,-,Bulk Header,Sound User 13 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,10,nn,1,-,-,Bulk Header,Sound User 14 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,11,nn,1,-,-,Bulk Header,Sound User 15 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,12,nn,1,-,-,Bulk Header,Sound User 16 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,13,nn,1,-,-,Bulk Header,Sampler Element Edit Buffer Element nn (nn = 0-6),,122
+Parameter Change Table / Bulk Control,11,14,nn,1,-,-,Bulk Header,Sampler Element User 1 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,15,nn,1,-,-,Bulk Header,Sampler Element User 2 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,16,nn,1,-,-,Bulk Header,Sampler Element User 3 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,17,nn,1,-,-,Bulk Header,Sampler Element User 4 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,18,nn,1,-,-,Bulk Header,Sampler Element User 5 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,19,nn,1,-,-,Bulk Header,Sampler Element User 6 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,1A,nn,1,-,-,Bulk Header,Sampler Element User 7 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,11,1B,nn,1,-,-,Bulk Header,Sampler Element User 8 (nn = 0-127),,122
+Bulk Control / Footer,12,00,nn,1,-,-,Bulk Footer,Project Edit Buffer (nn = 0),,122
+Parameter Change Table / Bulk Control,12,01,nn,1,-,-,Bulk Footer,Project User 1 (nn = 0-7),,122
+Parameter Change Table / Bulk Control,12,02,nn,1,-,-,Bulk Footer,Sound Edit Buffer Part nn (nn = 0-10),,122
+Parameter Change Table / Bulk Control,12,03,nn,1,-,-,Bulk Footer,Sound User 1 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,04,nn,1,-,-,Bulk Footer,Sound User 2 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,05,nn,1,-,-,Bulk Footer,Sound User 3 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,06,nn,1,-,-,Bulk Footer,Sound User 4 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,07,nn,1,-,-,Bulk Footer,Sound User 5 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,08,nn,1,-,-,Bulk Footer,Sound User 6 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,09,nn,1,-,-,Bulk Footer,Sound User 7 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0A,nn,1,-,-,Bulk Footer,Sound User 8 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0B,nn,1,-,-,Bulk Footer,Sound User 9 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0C,nn,1,-,-,Bulk Footer,Sound User 10 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0D,nn,1,-,-,Bulk Footer,Sound User 11 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0E,nn,1,-,-,Bulk Footer,Sound User 12 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,0F,nn,1,-,-,Bulk Footer,Sound User 13 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,10,nn,1,-,-,Bulk Footer,Sound User 14 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,11,nn,1,-,-,Bulk Footer,Sound User 15 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,12,nn,1,-,-,Bulk Footer,Sound User 16 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,13,nn,1,-,-,Bulk Footer,Sampler Element Edit Buffer Element nn (nn = 0-6),,122
+Parameter Change Table / Bulk Control,12,14,nn,1,-,-,Bulk Footer,Sampler Element User 1 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,15,nn,1,-,-,Bulk Footer,Sampler Element User 2 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,16,nn,1,-,-,Bulk Footer,Sampler Element User 3 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,17,nn,1,-,-,Bulk Footer,Sampler Element User 4 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,18,nn,1,-,-,Bulk Footer,Sampler Element User 5 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,19,nn,1,-,-,Bulk Footer,Sampler Element User 6 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,1A,nn,1,-,-,Bulk Footer,Sampler Element User 7 (nn = 0-127),,122
+Parameter Change Table / Bulk Control,12,1B,nn,1,-,-,Bulk Footer,Sampler Element User 8 (nn = 0-127),,122
+System / General,00,00,00,1,00 - 7F,64,Speaker Master Volume,0 - 127,,123
+System / General,00,00,01,1,00 - 7F,20,Headphone Master Volume,0 - 127,,123
+System / General,00,00,02,4,00 - 00 00 - 07 00 - 0F 00 - 0F,00 04 00 00,Master Tune,"-102.4 - +102.3 1st bit3-0 → bit15-12, 2nd bit3-0 → bit11-8 3rd bit3-0 → bit7-4, 4th bit3-0 → bit3-0",MIDI Master Tuning,123
+System / General,00,00,06,1,00 - 01,01,Local Switch,"Off, On",,123
+System / General,00,00,07,1,00 - 01,01,Receive/Transmit Bank Select,"Off, On",,123
+System / General,00,00,08,1,00 - 01,01,Receive/Transmit Program Change,"Off, On",,123
+System / General,00,00,09,1,00 - 01,01,Legacy MIDI In/Out,"Off, On",,123
+System / General,00,00,0A,1,00 - 01,01,Legacy MIDI Transmit Channel Message,"Off, On",,123
+System / General,00,00,0B,1,00 - 70,00,Legacy MIDI Transmit Control Change Transmit Bank Select Transmit Program Change,"bit 6:CC Off, On bit 5:BS Off, On bit 4:PC Off, On bit 3-0:reserved",,123
+System / General,00,00,0C,1,00 - 01,00,Legacy MIDI Transmit System Exclusive Message,"Off, On",,123
+System / General,00,00,0D,1,00 - 01,01,USB MIDI In/Out,"Off, On",,123
+System / General,00,00,0E,1,00 - 01,01,USB MIDI Transmit Channel Message,"Off, On",,123
+System / General,00,00,0F,1,00 - 70,00,USB MIDI Transmit Control Change Transmit Bank Select Transmit Program Change,"bit 6:CC Off, On bit 5:BS Off, On bit 4:PC Off, On bit 3-0:reserved",,123
+System / General,00,00,10,1,00 - 01,00,USB MIDI Transmit System Exclusive Message,"Off, On",,123
+System / General,00,00,11,1,00 - 01,00,Bluetooth MIDI In/Out,"Off, On",,123
+System / General,00,00,12,1,00 - 01,01,Bluetooth MIDI Transmit Channel Message,"Off, On",,123
+System / General,00,00,13,1,00 - 70,00,Bluetooth MIDI Transmit Control Change Transmit Bank Select Transmit Program Change,"bit 6:CC Off, On bit 5:BS Off, On bit 4: PC Off, On bit 3-0:reserved",,123
+System / General,00,00,14,1,00 - 01,00,Bluetooth MIDI Transmit System Exclusive Message,"Off, On",,123
+System / General,00,00,15,1,00 - 03,00,USB Audio Output Gain,"00:-6dB, 01:+0dB, 02:+6dB, 03:+12dB",,123
+System / General,00,00,16,1,00 - 01,00,Wireless LAN,"Off, On",,123
+System / General,00,00,17,1,00 - 01,00,USB Role,"To Host, To Device",,123
+System / General,00,00,18,1,00 - 03,01,Analog Audio Output Gain,"00:-6dB, 01:+0dB, 02:+6dB, 03:+12dB",,123
+System / General,00,00,19,1,00 - 02,01,Sampling Source,"Resampling, Mic/Line In, USB Audio In",,123
+System / General,00,00,1A,1,,00,reserved,,,123
+System / General,00,00,1B,1,00 - 01,01,Sampling Count In,"Off, On",,123
+System / General,00,00,1C,1,00 - 01,01,Auto Normalize,"Off, On",,123
+System / General,00,00,1D,1,00 - 01,01,Project Resume Switch,"Off, On",,123
+System / General,00,00,1E,1,00 - 01,00,Project Resume Auto Trigger,"Off, On",,123
+System / General,00,00,1F,1,00 - 05,03,Record Quantize Value,"Off, 60, 80, 120, 160, 240",,123
+System / General,00,00,20,1,01 - 7F,64,Pad Velocity,1 - 127,,123
+System / General,00,00,21,1,00 - 01,00,Sound Design Mode,"Normal, Advanced",,123
+System / General,00,00,22,1,00 - 03,00,Legacy MIDI Thru,"Off, Channel, Realtime, Both",,123
+System / General,00,00,23,1,00 - 03,03,USB To Host MIDI Thru,"Off, Channel, Realtime, Both",,123
+System / General,00,00,24,1,00 - 03,03,Bluetooth MIDI Thru,"Off, Channel, Realtime, Both",,123
+System / General,00,00,25,1,00 - 01,00,Click Switch,"Off, On",,123
+System / General,00,00,26,1,00 - 09,00,Click Type,1 - 10,,123
+System / General,00,00,27,1,00 - 7F,40,Click Volume,0 -127,,123
+System / General,00,00,28,1,,00,reserved,,,123
+System / General,00,00,29,1,,00,reserved,,,123
+System / General,00,00,2A,1,00 - 01,01,Midi Sync,"Internal, MIDI(Auto)",,123
+System / General,00,00,2B,1,00 - 01,01,Transmit Sequencer Control,"Off, On",,123
+System / General,00,00,2C,1,,00,reserved,,,123
+System / General,00,00,2D,1,00 - 01,01,Midi Clock Out,"Off, On",,123
+System / General,00,00,2E,1,00 - 02,00,Sink Current Setting,"Auto, Fixed 0A, Forbidden 500mA",,123
+System / General,00,00,2F,1,01 - 03,01,Pattern Select Sensitivity,"1, 2, 3",,123
+Project Common / General,30,40,00,1,00 - 7F,00,Project Name 1,,UTF8 (7-bit encoded),124
+Project Common / General,30,40,01,1,00 - 7F,00,Project Name 2,,˶,124
+Project Common / General,30,40,02,1,00 - 7F,00,Project Name 3,,˶,124
+Project Common / General,30,40,03,1,00 - 7F,00,Project Name 4,,˶,124
+Project Common / General,30,40,04,1,00 - 7F,00,Project Name 5,,˶,124
+Project Common / General,30,40,05,1,00 - 7F,00,Project Name 6,,˶,124
+Project Common / General,30,40,06,1,00 - 7F,00,Project Name 7,,˶,124
+Project Common / General,30,40,07,1,00 - 7F,00,Project Name 8,,˶,124
+Project Common / General,30,40,08,1,00 - 7F,00,Project Name 9,,˶,124
+Project Common / General,30,40,09,1,00 - 7F,00,Project Name 10,,˶,124
+Project Common / General,30,40,0A,1,00 - 7F,00,Project Name 11,,˶,124
+Project Common / General,30,40,0B,1,00 - 7F,00,Project Name 12,,˶,124
+Project Common / General,30,40,0C,1,00 - 7F,00,Project Name 13,,˶,124
+Project Common / General,30,40,0D,1,00 - 7F,00,Project Name 14,,˶,124
+Project Common / General,30,40,0E,1,00 - 7F,00,Project Name 15,,˶,124
+Project Common / General,30,40,0F,1,00 - 7F,00,Project Name 16,,˶,124
+Project Common / General,30,40,10,1,00 - 7F,00,Project Name 17,,˶,124
+Project Common / General,30,40,11,1,00 - 7F,00,Project Name 18,,˶,124
+Project Common / General,30,40,12,1,00 - 7F,00,Project Name 19,,˶,124
+Project Common / General,30,40,13,1,00 - 7F,00,Project Name 20,,˶,124
+Project Common / General,30,40,14,1,00 - 7F,00,Project Name 21,,˶,124
+Project Common / General,30,40,15,1,00 - 7F,00,Project Name 22,,˶,124
+Project Common / General,30,40,16,1,00 - 7F,00,Project Name 23,,˶,124
+Project Common / General,30,40,17,1,00 - 7F,00,Project Name 24,,˶,124
+Project Common / General,30,40,18,1,00 - 7F,00,Project Name 25,,˶,124
+Project Common / General,30,40,19,1,00 - 7F,00,Project Name 26,,˶,124
+Project Common / General,30,40,1A,1,00 - 7F,00,Project Name 27,,˶,124
+Project Common / General,30,40,1B,1,00 - 7F,00,Project Name 28,,˶,124
+Project Common / General,30,40,1C,1,00 - 7F,00,Project Name 29,,˶,124
+Project Common / General,30,40,1D,1,00 - 7F,00,Project Name 30,,˶,124
+Project Common / General,30,40,1E,1,00 - 7F,00,Project Name 31,,˶,124
+Project Common / General,30,40,1F,1,00 - 7F,00,Project Name 32,,˶,124
+Project Common / General,30,40,20,1,00 - 7F,00,Project Name 33,,˶,124
+Project Common / General,30,40,21,1,00 - 7F,00,Project Name 34,,˶,124
+Project Common / General,30,40,22,1,00 - 7F,00,Project Name 35,,˶,124
+Project Common / General,30,40,23,1,00 - 7F,00,Project Name 36,,˶,124
+Project Common / General,30,40,24,1,00 - 7F,00,Project Name 37,,˶,124
+Project Common / General,30,40,25,1,00 - 7F,00,Project Name 38,,˶,124
+Project Common / General,30,40,26,1,00 - 7F,00,Project Name 39,,˶,124
+Project Common / General,30,40,27,1,00 - 7F,00,Project Name 40,,˶,124
+Project Common / General,30,40,28,1,00 - 7F,00,Project Name 41,,˶,124
+Project Common / General,30,40,29,1,00 - 7F,00,Project Name 42,,˶,124
+Project Common / General,30,40,2A,1,00 - 7F,00,Project Name 43,,˶,124
+Project Common / General,30,40,2B,1,00 - 7F,00,Project Name 44,,˶,124
+Project Common / General,30,40,2C,1,00 - 7F,00,Project Name 45,,˶,124
+Project Common / General,30,40,2D,1,00 - 7F,00,Project Name 46,,˶,124
+Project Common / General,30,40,2E,1,00 - 7F,00,Project Name 47,,˶,124
+Project Common / General,30,40,2F,1,00 - 7F,00,Project Name 48,,˶,124
+Project Common / General,30,40,30,1,00 - 7F,00,Project Name 49,,˶,124
+Project Common / General,30,40,31,1,00 - 7F,00,Project Name 50,,˶,124
+Project Common / General,30,40,32,1,00 - 7F,00,Project Name 51,,˶,124
+Project Common / General,30,40,33,1,00 - 7F,00,Project Name 52,,˶,124
+Project Common / General,30,40,34,1,00 - 7F,00,Project Name 53,,˶,124
+Project Common / General,30,40,35,1,00 - 7F,00,Project Name 54,,˶,124
+Project Common / General,30,40,36,1,00 - 7F,00,Project Name 55,,˶,124
+Project Common / General,30,40,37,1,00 - 7F,00,Project Name 56,,˶,124
+Project Common / General,30,40,38,1,00 - 7F,00,Project Name 57,,˶,124
+Project Common / General,30,40,39,1,00 - 7F,00,Project Name 58,,˶,124
+Project Common / General,30,40,3A,1,00 - 7F,00,Project Name 59,,˶,124
+Project Common / General,30,40,3B,1,00 - 7F,00,Project Name 60,,˶,124
+Project Common / General,30,40,3C,1,00 - 7F,00,Project Name 61,,˶,124
+Project Common / General,30,40,3D,1,00 - 7F,00,Project Name 62,,˶,124
+Project Common / General,30,40,3E,1,00 - 7F,00,Project Name 63,,˶,124
+Project Common / General,30,40,3F,1,00 - 7F,00,Project Name 64,,˶,124
+Project Common / General,30,40,40,1,00 - 7F,00,Project Name 65,,˶,124
+Project Common / General,30,40,41,1,00 - 7F,00,Project Name 66,,˶,124
+Project Common / General,30,40,42,1,00 - 7F,00,Project Name 67,,UTF8 (7-bit encoded),125
+Project Common / General,30,40,43,1,00 - 7F,00,Project Name 68,,˶,125
+Project Common / General,30,40,44,1,00 - 7F,00,Project Name 69,,˶,125
+Project Common / General,30,40,45,1,00 - 7F,00,Project Name 70,,˶,125
+Project Common / General,30,40,46,1,00 - 7F,00,Project Name 71,,˶,125
+Project Common / General,30,40,47,1,00 - 7F,00,Project Name 72,,˶,125
+Project Common / General,30,40,48,1,00 - 7F,00,Project Name 73,,˶,125
+Project Common / General,30,40,49,1,00 - 7F,00,Project Name 74,,˶,125
+Project Common / General,30,40,4A,1,00 - 7F,00,Project Name 75,,˶,125
+Project Common / General,30,40,4B,1,00 - 7F,00,Project Name 76,,˶,125
+Project Common / General,30,40,4C,1,00 - 7F,00,Project Name 77,,˶,125
+Project Common / General,30,40,4D,1,00 - 7F,00,Project Name 78,,˶,125
+Project Common / General,30,40,4E,1,00 - 7F,00,Project Name 79,,˶,125
+Project Common / General,30,40,4F,1,00 - 7F,00,Project Name 80,,˶,125
+Project Common / General,30,40,50,1,00 - 7F,00,Project Name 81,,˶,125
+Project Common / General,30,40,51,1,00 - 7F,00,Project Name 82,,˶,125
+Project Common / General,30,40,52,1,00 - 7F,00,Project Name 83,,˶,125
+Project Common / General,30,40,53,1,00 - 7F,00,Project Name 84,,˶,125
+Project Common / General,30,40,54,1,00 - 7F,00,Project Name 85,,˶,125
+Project Common / General,30,40,55,1,00 - 7F,00,Project Name 86,,˶,125
+Project Common / General,30,40,56,1,00 - 7F,00,Project Name 87,,˶,125
+Project Common / General,30,40,57,1,00 - 7F,00,Project Name 88,,˶,125
+Project Common / General,30,40,58,1,00,00,reserved,,,125
+Project Common / General,30,40,59,1,00,00,reserved,,,125
+Project Common / General,30,40,5A,1,00,00,reserved,,,125
+Project Common / General,30,40,5B,1,00,00,reserved,,,125
+Project Common / General,30,40,5C,1,00,00,reserved,,,125
+Project Common / General,30,40,5D,1,00,00,reserved,,,125
+Project Common / General,30,40,5E,1,00,00,reserved,,,125
+Project Common / General,30,40,5F,1,00,00,reserved,,,125
+Project Common / General,30,40,60,1,00,00,reserved,,,125
+Project Common / General,30,40,61,1,00,00,reserved,,,125
+Project Common / General,30,40,62,1,00,00,reserved,,,125
+Project Common / General,30,40,63,1,00 - 7F,00,Sampler Element Mute,"bit6-0: element7-1 mute off,on",,125
+Project Common / General,30,40,64,1,,00,reserved,,,125
+Project Common / General,30,40,65,1,01 - 7F,40,Pan,L63 ... C ... R63,,125
+Project Common / General,30,40,66,1,00 - 7F,7F,Volume,0 - 127,,125
+Project Common / General,30,40,67,1,,00,reserved,,,125
+Project Common / General,30,40,68,1,00 - 0B,00,Solo Track,"Off, Track 1, ..., Track 11",,125
+Project Common / General,30,40,69,1,,00,reserved,,,125
+Project Common / General,30,40,6A,1,,00,reserved,,,125
+Project Common / General,30,40,6B,1,,00,reserved,,,125
+Project Common / General,30,40,6C,1,,00,reserved,,,125
+Project Common / General,30,40,6D,1,,00,reserved,,,125
+Project Common / General,30,40,6E,1,,00,reserved,,,125
+Project Common / General,30,40,6F,1,,00,reserved,,,125
+Project Common / General,30,40,70,1,,00,reserved,,,125
+Project Common / General,30,40,71,1,,00,reserved,,,125
+Project Common / General,30,40,72,1,,00,reserved,,,125
+Project Common / General,30,40,73,1,,00,reserved,,,125
+Project Common / General,30,40,74,1,,00,reserved,,,125
+Project Common / General,30,40,75,1,05,05,ARP Synchro Quantize Value,240,,125
+Project Common / General,30,40,76,2,00 - 02 00 - 7F,00 78,Tempo MSB Tempo LSB,"5 - 300 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,125
+Project Common / General,30,40,78,1,,00,reserved,,,125
+Project Common / General,30,40,79,1,00 - 01,00,Pattern Select Mode,"0=normal, 1=advanced",,125
+Project Common / General,30,40,7A,2,00 - 01 00 - 7F,00 10,Pattern Master Step MSB,1 - 128,,125
+Project Common / General,30,40,7C,2,00 - 01 00 - 7F,01 00,Pattern Master Step LSB Swing Offset MSB Swing Offset LSB,"1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0 -58 - 0 - +58 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,125
+Project Common / General,30,40,7E,1,00 - 07,00,Scale,"Scale 1, ..., Scale 8",,125
+Project Common / General,30,40,7F,1,40 - 4B,40,Key,0 - +11,,125
+Project Common / Send Reverb,30,41,00,2,00 - 7F 00 - 7F,01 01,Reverb Type MSB Reverb Type LSB,Refer to Effect Parameter List,R3 Hall,126
+Project Common / Send Reverb,30,41,02,1,00 - 7F,00,Reverb Template Number,˶,Basic,126
+Project Common / Send Reverb,30,41,03,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 1 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,05,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 1 LSB Reverb Parameter 2 MSB Reverb Parameter 2 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,07,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 3 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,09,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 3 LSB Reverb Parameter 4 MSB Reverb Parameter 4 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,0B,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 5 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,0D,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 5 LSB Reverb Parameter 6 MSB Reverb Parameter 6 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,0F,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 7 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,11,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 7 LSB Reverb Parameter 8 MSB Reverb Parameter 8 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,13,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 9 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,15,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 9 LSB Reverb Parameter 10 MSB Reverb Parameter 10 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,17,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 11 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,19,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 11 LSB Reverb Parameter 12 MSB Reverb Parameter 12 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,1B,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 13 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,1D,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 13 LSB Reverb Parameter 14 MSB Reverb Parameter 14 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,1F,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 15 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,21,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 15 LSB Reverb Parameter 16 MSB Reverb Parameter 16 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,23,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 17 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,25,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 17 LSB Reverb Parameter 18 MSB Reverb Parameter 18 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,27,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 19 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,29,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 19 LSB Reverb Parameter 20 MSB Reverb Parameter 20 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,2B,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 21 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,2D,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 21 LSB Reverb Parameter 22 MSB Reverb Parameter 22 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,2F,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 23 MSB,˶ init,,126
+Project Common / Send Reverb,30,41,31,2,00 - 7F 00 - 7F,value for Hall / Basic,Reverb Parameter 23 LSB Reverb Parameter 24 MSB Reverb Parameter 24 LSB,Rev-X ˶ init Rev-X,,126
+Project Common / Send Reverb,30,41,33,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,35,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,37,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,39,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,3B,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,3D,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,3F,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,41,2,,,reserved,,,126
+Project Common / Send Reverb,30,41,43,1,,,reserved,,,126
+Project Common / Send Reverb,30,41,44,1,00 - 7F,2E,Reverb Return,0 - 127,,126
+Project Common / Send Reverb,30,41,45,1,01 - 7F,40,Reverb Pan,L63 ... C ... R63,,126
+Project Common / Send Reverb,30,41,46,1,00 - 7F,01,Reverb On/Off,"Off, On",,126
+Project Common / Send Delay,30,42,00,2,"00, 02 00 - 7F",02 28,Variation Type MSB Variation Type LSB,Refer to Effect Parameter List,Cross Delay,127
+Project Common / Send Delay,30,42,02,1,00 - 7F,00,Variation Template Number,˶,,127
+Project Common / Send Delay,30,42,03,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 1 MSB,˶ init,,127
+Project Common / Send Delay,30,42,05,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 1 LSB Variation Parameter 2 MSB Variation Parameter 2 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,07,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 3 MSB,˶ init,,127
+Project Common / Send Delay,30,42,09,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 3 LSB Variation Parameter 4 MSB Variation Parameter 4 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,0B,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 5 MSB,˶ init,,127
+Project Common / Send Delay,30,42,0D,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 5 LSB Variation Parameter 6 MSB Variation Parameter 6 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,0F,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 7 MSB,˶ init,,127
+Project Common / Send Delay,30,42,11,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 7 LSB Variation Parameter 8 MSB Variation Parameter 8 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,13,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 9 MSB,˶ init,,127
+Project Common / Send Delay,30,42,15,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 9 LSB Variation Parameter 10 MSB Variation Parameter 10 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,17,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 11 MSB,˶ init,,127
+Project Common / Send Delay,30,42,19,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 11 LSB Variation Parameter 12 MSB Variation Parameter 12 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,1B,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 13 MSB,˶ init,,127
+Project Common / Send Delay,30,42,1D,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 13 LSB Variation Parameter 14 MSB Variation Parameter 14 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,1F,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 15 MSB,˶ init,,127
+Project Common / Send Delay,30,42,21,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 15 LSB Variation Parameter 16 MSB Variation Parameter 16 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,23,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 17 MSB,˶ init,,127
+Project Common / Send Delay,30,42,25,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 17 LSB Variation Parameter 18 MSB Variation Parameter 18 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,27,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 19 MSB,˶ init,,127
+Project Common / Send Delay,30,42,29,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 19 LSB Variation Parameter 20 MSB Variation Parameter 20 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,2B,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 21 MSB,˶ init,,127
+Project Common / Send Delay,30,42,2D,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 21 LSB Variation Parameter 22 MSB Variation Parameter 22 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,2F,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 23 MSB,˶ init,,127
+Project Common / Send Delay,30,42,31,2,00 - 7F 00 - 7F,value for Delay Cross Delay,Variation Parameter 23 LSB Variation Parameter 24 MSB Variation Parameter 24 LSB,/ ˶ init /,,127
+Project Common / Send Delay,30,42,33,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,35,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,37,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,39,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,3B,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,3D,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,3F,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,41,2,,00 00,reserved,,,127
+Project Common / Send Delay,30,42,43,1,,00,reserved,,,127
+Project Common / Send Delay,30,42,44,1,00 - 7F,60,Variation Return,0 - 127,,127
+Project Common / Send Delay,30,42,45,1,01 - 7F,40,Variation Pan,L63 ... C ... R63,,127
+Project Common / Send Delay,30,42,46,1,00 - 7F,00,Send Variation To Reverb,0 - 127,,127
+Project Common / Send Delay,30,42,47,1,00 - 01,01,Variation On/Off,"Off, On",,127
+Master Effect,30,4n,00,2,00 - 7F 00 - 7F,to Effect Parameter List,Master Effect Type MSB Master Effect Type LSB,Refer to Effect Parameter List Refer,,128
+Master Effect,30,4n,02,1,00 - 7F,00,Master Effect Template Number,˶,,128
+Master Effect,30,4n,03,2,00 - 7F 00 - 7F,to Effect Parameter List,Master Effect Parameter 1 MSB,˶ Refer,,128
+Master Effect,30,4n,05,2,00 - 7F 00 - 7F,,Master Effect Parameter 1 LSB Master Effect Parameter 2 MSB Master Effect Parameter 2 LSB,˶ ˶,,128
+Master Effect,30,4n,07,2,00 - 7F 00 - 7F,,Master Effect Parameter 3 MSB,˶ ˶,,128
+Master Effect,30,4n,09,2,00 - 7F 00 - 7F,,Master Effect Parameter 3 LSB Master Effect Parameter 4 MSB Master Effect Parameter 4 LSB,˶ ˶,,128
+Master Effect,30,4n,0B,2,00 - 7F 00 - 7F,,Master Effect Parameter 5 MSB,˶ ˶,,128
+Master Effect,30,4n,0D,2,00 - 7F 00 - 7F,,Master Effect Parameter 5 LSB Master Effect Parameter 6 MSB Master Effect Parameter 6 LSB,˶ ˶,,128
+Master Effect,30,4n,0F,2,00 - 7F 00 - 7F,,Master Effect Parameter 7 MSB,˶ ˶,,128
+Master Effect,30,4n,11,2,00 - 7F 00 - 7F,,Master Effect Parameter 7 LSB Master Effect Parameter 8 MSB Master Effect Parameter 8 LSB,˶ ˶,,128
+Master Effect,30,4n,13,2,00 - 7F 00 - 7F,,Master Effect Parameter 9 MSB,˶ ˶,,128
+Master Effect,30,4n,15,2,00 - 7F 00 - 7F,,Master Effect Parameter 9 LSB Master Effect Parameter 10 MSB Master Effect Parameter 10 LSB,˶ ˶,,128
+Master Effect,30,4n,17,2,00 - 7F 00 - 7F,,Master Effect Parameter 11 MSB,˶ ˶,,128
+Master Effect,30,4n,19,2,00 - 7F 00 - 7F,,Master Effect Parameter 11 LSB Master Effect Parameter 12 MSB Master Effect Parameter 12 LSB,˶ ˶,,128
+Master Effect,30,4n,1B,2,00 - 7F 00 - 7F,,Master Effect Parameter 13 MSB,˶ ˶,,128
+Master Effect,30,4n,1D,2,00 - 7F 00 - 7F,,Master Effect Parameter 13 LSB Master Effect Parameter 14 MSB Master Effect Parameter 14 LSB,˶ ˶,,128
+Master Effect,30,4n,1F,2,00 - 7F 00 - 7F,,Master Effect Parameter 15 MSB,˶ ˶,,128
+Master Effect,30,4n,21,2,00 - 7F 00 - 7F,,Master Effect Parameter 15 LSB Master Effect Parameter 16 MSB Master Effect Parameter 16 LSB,˶ ˶,,128
+Master Effect,30,4n,23,2,00 - 7F 00 - 7F,,Master Effect Parameter 17 MSB,˶ ˶,,128
+Master Effect,30,4n,25,2,00 - 7F 00 - 7F,,Master Effect Parameter 17 LSB Master Effect Parameter 18 MSB Master Effect Parameter 18 LSB,˶ ˶,,128
+Master Effect,30,4n,27,2,00 - 7F 00 - 7F,,Master Effect Parameter 19 MSB,˶ ˶,,128
+Master Effect,30,4n,29,2,00 - 7F 00 - 7F,,Master Effect Parameter 19 LSB Master Effect Parameter 20 MSB Master Effect Parameter 20 LSB,˶ ˶,,128
+Master Effect,30,4n,2B,2,00 - 7F 00 - 7F,,Master Effect Parameter 21 MSB,˶ ˶,,128
+Master Effect,30,4n,2D,2,00 - 7F 00 - 7F,,Master Effect Parameter 21 LSB Master Effect Parameter 22 MSB Master Effect Parameter 22 LSB,˶ ˶,,128
+Master Effect,30,4n,2F,2,00 - 7F 00 - 7F,,Master Effect Parameter 23 MSB,˶ ˶,,128
+Master Effect,30,4n,31,2,00 - 7F 00 - 7F,,Master Effect Parameter 23 LSB Master Effect Parameter 24 MSB Master Effect Parameter 24 LSB,˶ ˶,,128
+Master Effect,30,4n,33,2,,00 00,reserved,,,128
+Master Effect,30,4n,35,2,,00 00,reserved,,,128
+Master Effect,30,4n,37,2,,00 00,reserved,,,128
+Master Effect,30,4n,39,2,,00 00,reserved,,,128
+Master Effect,30,4n,3B,2,,00 00,reserved,,,128
+Master Effect,30,4n,3D,2,,00 00,reserved,,,128
+Master Effect,30,4n,3F,2,,00 00,reserved,,,128
+Master Effect,30,4n,41,2,,00 00,reserved,,,128
+Master Effect,30,4n,43,1,"11, 7F",7F,Side Chain Part,"17:Master, 127:Off",,128
+Master Effect,30,4n,44,1,,00,reserved,,,128
+Master Effect,30,4n,45,1,,00,reserved,,,128
+Master Effect,30,4n,46,1,,00,reserved,,,128
+Master Effect,30,4n,47,1,00 - 01,01,Master Effect ON/OFF,"Off, On",,128
+Project Common / Master EQ,30,47,00,1,34 - 4C,40,EQ Gain 1,-12 - +12[dB],,129
+Project Common / Master EQ,30,47,01,1,04 - 28,0C,EQ Frequency 1,32 - 2000[Hz],,129
+Project Common / Master EQ,30,47,02,1,01 - 78,07,EQ Q 1,0.1 - 12.0,Not available when “shelving” is selected,129
+Project Common / Master EQ,30,47,03,1,00 - 01,00,EQ Shape 1,"Shelf, Peak",,129
+Project Common / Master EQ,30,47,04,1,34 - 4C,40,EQ Gain 2,-12 - +12[dB],,129
+Project Common / Master EQ,30,47,05,1,0E - 36,14,EQ Frequency 2,100 - 10.0[kHz],,129
+Project Common / Master EQ,30,47,06,1,01 - 78,07,EQ Q 2,0.1 - 12.0,,129
+Project Common / Master EQ,30,47,07,1,,,reserved,,,129
+Project Common / Master EQ,30,47,08,1,34 - 4C,40,EQ Gain 3,-12 - +12[dB],,129
+Project Common / Master EQ,30,47,09,1,0E - 36,1C,EQ Frequency 3,100 - 10.0[kHz],,129
+Project Common / Master EQ,30,47,0A,1,01 - 78,07,EQ Q 3,0.1- 12.0,,129
+Project Common / Master EQ,30,47,0B,1,,,reserved,,,129
+Project Common / Master EQ,30,47,0C,1,34 - 4C,40,EQ Gain 4,-12 - +12[dB],,129
+Project Common / Master EQ,30,47,0D,1,0E - 36,2C,EQ Frequency 4,100 - 10.0[kHz],,129
+Project Common / Master EQ,30,47,0E,1,01 - 78,07,EQ Q 4,0.1 - 12.0,,129
+Project Common / Master EQ,30,47,0F,1,,,reserved,,,129
+Project Common / Master EQ,30,47,10,1,34 - 4C,40,EQ Gain 5,-12 - +12[dB],,129
+Project Common / Master EQ,30,47,11,1,1C - 3A,34,EQ Frequency 5,0.5 - 16.0[kHz],,129
+Project Common / Master EQ,30,47,12,1,01 - 78,07,EQ Q 5,0.1 - 12.0,Not available when “shelving” is selected,129
+Project Common / Master EQ,30,47,13,1,00 - 01,00,EQ Shape 5,"Shelf, Peak",,129
+Project Common / Master EQ,30,47,14,1,00 - 01,01,Master EQ On/Off,"Off, On",,129
+Project Common / A/D Part Insertion A,30,49,00,2,00 - 7F 00 - 7F,0D 70,Insertion-A Type MSB Insertion-A Type LSB,Refer to Effect Parameter List,NOISE GATE+ COMP+EQ,130
+Project Common / A/D Part Insertion A,30,49,02,1,00 - 7F,00,Insertion-A Template Number,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,03,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 1 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,05,2,00 - 7F 00 - 7F,00 0D,Insertion-A Parameter 1 LSB Insertion-A Parameter 2 MSB Insertion-A Parameter 2 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,07,2,00 - 7F 00 - 7F,00 6D,Insertion-A Parameter 3 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,09,2,00 - 7F 00 - 7F,00 03,Insertion-A Parameter 3 LSB Insertion-A Parameter 4 MSB Insertion-A Parameter 4 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,0B,2,00 - 7F 00 - 7F,00 4B,Insertion-A Parameter 5 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,0D,2,00 - 7F 00 - 7F,00 09,Insertion-A Parameter 5 LSB Insertion-A Parameter 6 MSB Insertion-A Parameter 6 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,0F,2,00 - 7F 00 - 7F,00 40,Insertion-A Parameter 7 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,11,2,00 - 7F 00 - 7F,00 36,Insertion-A Parameter 7 LSB Insertion-A Parameter 8 MSB Insertion-A Parameter 8 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,13,2,00 - 7F 00 - 7F,00 40,Insertion-A Parameter 9 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,15,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 9 LSB Insertion-A Parameter 10 MSB Insertion-A Parameter 10 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,17,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 11 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,19,2,00 - 7F 00 - 7F,00 0D,Insertion-A Parameter 11 LSB Insertion-A Parameter 12 MSB Insertion-A Parameter 12 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,1B,2,00 - 7F 00 - 7F,00 39,Insertion-A Parameter 13 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,1D,2,00 - 7F 00 - 7F,00 24,Insertion-A Parameter 13 LSB Insertion-A Parameter 14 MSB Insertion-A Parameter 14 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,1F,2,00 - 7F 00 - 7F,00 40,Insertion-A Parameter 15 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,21,2,00 - 7F 00 - 7F,00 0A,Insertion-A Parameter 15 LSB Insertion-A Parameter 16 MSB Insertion-A Parameter 16 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,23,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 17 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,25,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 17 LSB Insertion-A Parameter 18 MSB Insertion-A Parameter 18 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,27,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 19 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,29,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 19 LSB Insertion-A Parameter 20 MSB Insertion-A Parameter 20 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,2B,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 21 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,2D,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 21 LSB Insertion-A Parameter 22 MSB Insertion-A Parameter 22 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,2F,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 23 MSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,31,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 23 LSB Insertion-A Parameter 24 MSB Insertion-A Parameter 24 LSB,˶,˶,130
+Project Common / A/D Part Insertion A,30,49,33,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,35,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,37,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,39,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,3B,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,3D,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,3F,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,41,2,,00 00,reserved,,,130
+Project Common / A/D Part Insertion A,30,49,43,1,"- 11, 7F",7F,Side Chain Part,"0:Part1, 1:Part2, ..., 10:Part11, 16:A/D, 17:Master, 127:Off",,130
+Project Common / A/D Part Insertion B,30,4A,00,2,0D 2F,0D 2F,Insertion-B Type MSB Insertion-B Type LSB,Refer to Effect Parameter List,LP-HP FILTER,131
+Project Common / A/D Part Insertion B,30,4A,02,1,00 - 7F,00,Insertion-B Template Number,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,03,2,00 - 7F 00 - 7F,02 00,Insertion-B Parameter 1 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,05,2,00 - 7F 00 - 7F,00 10,Insertion-B Parameter 1 LSB Insertion-B Parameter 2 MSB Insertion-B Parameter 2 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,07,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 3 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,09,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 3 LSB Insertion-B Parameter 4 MSB Insertion-B Parameter 4 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,0B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 5 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,0D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 5 LSB Insertion-B Parameter 6 MSB Insertion-B Parameter 6 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,0F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 7 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,11,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 7 LSB Insertion-B Parameter 8 MSB Insertion-B Parameter 8 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,13,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 9 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,15,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 9 LSB Insertion-B Parameter 10 MSB Insertion-B Parameter 10 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,17,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 11 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,19,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 11 LSB Insertion-B Parameter 12 MSB Insertion-B Parameter 12 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,1B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 13 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,1D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 13 LSB Insertion-B Parameter 14 MSB Insertion-B Parameter 14 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,1F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 15 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,21,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 15 LSB Insertion-B Parameter 16 MSB Insertion-B Parameter 16 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,23,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 17 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,25,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 17 LSB Insertion-B Parameter 18 MSB Insertion-B Parameter 18 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,27,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 19 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,29,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 19 LSB Insertion-B Parameter 20 MSB Insertion-B Parameter 20 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,2B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 21 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,2D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 21 LSB Insertion-B Parameter 22 MSB Insertion-B Parameter 22 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,2F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 23 MSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,31,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 23 LSB Insertion-B Parameter 24 MSB Insertion-B Parameter 24 LSB,˶,˶,131
+Project Common / A/D Part Insertion B,30,4A,33,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,35,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,37,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,39,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,3B,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,3D,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,3F,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,41,2,,00 00,reserved,,,131
+Project Common / A/D Part Insertion B,30,4A,43,1,,00,reserved,,,131
+Project Common / A/D Part General,30,4B,00,1,00 - 03,03,A/D Part Input Mode,"L Mono, R Mono, L+R Mono, Stereo",,132
+Project Common / A/D Part General,30,4B,01,1,00 - 7F,64,A/D Part Volume,0 - 127,,132
+Project Common / A/D Part General,30,4B,02,1,01 - 7F,40,A/D Part Pan,L63 ... C ... R63,,132
+Project Common / A/D Part General,30,4B,03,1,00 - 7F,00,A/D Part Reverb Send,0 - 127,,132
+Project Common / A/D Part General,30,4B,04,1,00 - 7F,00,A/D Part Variation Send,0 - 127,,132
+Project Common / A/D Part General,30,4B,05,1,01,01,A/D Part Insertion Connect Type,Ins A->B,,132
+Project Common / A/D Part General,30,4B,06,1,02 - 03,02,A/D Part Insertion FX Switch,"Bit0:Insertion A Off/On, Bit1:Insertion B Off/On, Bit2-6:reserved","Bit1 is fixed to ""On""",132
+Project Common / A/D Part General,30,4B,07,1,00 - 7F,7F,A/D Part Dry Level,0 - 127,,132
+Project Common / A/D Part General,30,4B,08,1,,,reserved,,,132
+Project Common / A/D Part General,30,4B,09,1,,,reserved,,,132
+Project Common / A/D Part General,30,4B,0A,1,,,reserved,,,132
+Project Common / A/D Part General,30,4B,0B,1,00 - 05,00,A/D Part 2bandEQ Low Type,"Thru, LPF, HPF, Low Shelf Hi Shelf, Peak/Dip",,132
+Project Common / A/D Part General,30,4B,0C,2,00 - 01 00 - 7F,00 30,A/D Part 2bandEQ Low Frequency MSB A/D Part 2bandEQ Low Frequency LSB,"→ 1st bit6-0 bit13-7, 2nd bit6-0 → bit6-0 63.0 - 18.0k",,132
+Project Common / A/D Part General,30,4B,0E,1,28 - 58,40,A/D Part 2bandEQ Low Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,132
+Project Common / A/D Part General,30,4B,0F,1,01 - 78,01,A/D Part 2bandEQ Low Q,0.1 - 12.0,,132
+Project Common / A/D Part General,30,4B,10,1,00 - 05,00,A/D Part 2bandEQ High Type,"Thru, LPF, HPF, Low Shelf Hi Shelf, Peak/Dip",,132
+Project Common / A/D Part General,30,4B,11,2,00 - 01 00 - 7F,00 30,A/D Part 2bandEQ High Frequency MSB A/D Part 2bandEQ High Frequency LSB,"→ 1st bit6-0 bit13-7, 2nd bit6-0 → bit6-0 63.0 - 18.0k",,132
+Project Common / A/D Part General,30,4B,13,1,28 - 58,40,A/D Part 2bandEQ High Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,132
+Project Common / A/D Part General,30,4B,14,1,01 - 78,01,A/D Part 2bandEQ High Q,0.1 - 12.0,,132
+Project Common / A/D Part General,30,4B,15,1,28 - 58,40,A/D Part 2bandEQ Output Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,132
+Project Common / A/D Part General,30,4B,16,1,"- 01, 7D",00,A/D Part Output Select,"0:MainL&R, 1:Direct Out, 125:Off",,132
+Project Common / A/D Part General,30,4B,17,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,00,1,00 - 03,03,USB Part Input Mode,"L Mono, R Mono, L+R Mono, Stereo",,132
+Project Common / USB Audio Input,30,4C,01,1,00 - 7F,64,USB Part Volume,0 - 127,,132
+Project Common / USB Audio Input,30,4C,02,1,01 - 7F,40,USB Part Pan,L63 ... C ... R63,,132
+Project Common / USB Audio Input,30,4C,03,1,00 - 7F,00,USB Part Reverb Send,0 - 127,,132
+Project Common / USB Audio Input,30,4C,04,1,00 - 7F,00,USB Part Variation Send,0 - 127,,132
+Project Common / USB Audio Input,30,4C,05,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,06,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,07,1,00 - 7F,7F,USB Part Dry Level,0 - 127,,132
+Project Common / USB Audio Input,30,4C,08,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,09,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,0A,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,0B,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,0C,2,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,0E,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,0F,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,10,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,11,2,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,13,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,14,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,15,1,,,reserved,,,132
+Project Common / USB Audio Input,30,4C,16,1,"- 01, 7D",00,USB Part Output Select,"0:MainL&R, 1:Direct Out, 125:Off",,132
+Project Common / USB Audio Input,30,4C,17,1,,,reserved,,,132
+Project Common / Scale,30,4D,00,1,24 - 60,3C,Scale 1 Note of Pad 1,C1 ... C6,,133
+Project Common / Scale,30,4D,01,1,24 - 60,3E,Scale 1 Note of Pad 2,C1 ... C6,,133
+Project Common / Scale,30,4D,02,1,24 - 60,3F,Scale 1 Note of Pad 3,C1 ... C6,,133
+Project Common / Scale,30,4D,03,1,24 - 60,41,Scale 1 Note of Pad 4,C1 ... C6,,133
+Project Common / Scale,30,4D,04,1,24 - 60,43,Scale 1 Note of Pad 5,C1 ... C6,,133
+Project Common / Scale,30,4D,05,1,24 - 60,44,Scale 1 Note of Pad 6,C1 ... C6,,133
+Project Common / Scale,30,4D,06,1,24 - 60,46,Scale 1 Note of Pad 7,C1 ... C6,,133
+Project Common / Scale,30,4D,07,1,,00,reserved,,,133
+Project Common / Scale,30,4D,08,1,,00,reserved,,,133
+Project Common / Scale,30,4D,09,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0A,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0B,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0C,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0D,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0E,1,,00,reserved,,,133
+Project Common / Scale,30,4D,0F,1,,00,reserved,,,133
+Project Common / Scale,30,4D,10,1,24 - 60,3C,Scale 2 Note of Pad 1,C1 ... C6,,133
+Project Common / Scale,30,4D,11,1,24 - 60,3E,Scale 2 Note of Pad 2,C1 ... C6,,133
+Project Common / Scale,30,4D,12,1,24 - 60,40,Scale 2 Note of Pad 3,C1 ... C6,,133
+Project Common / Scale,30,4D,13,1,24 - 60,41,Scale 2 Note of Pad 4,C1 ... C6,,133
+Project Common / Scale,30,4D,14,1,24 - 60,43,Scale 2 Note of Pad 5,C1 ... C6,,133
+Project Common / Scale,30,4D,15,1,24 - 60,45,Scale 2 Note of Pad 6,C1 ... C6,,133
+Project Common / Scale,30,4D,16,1,24 - 60,47,Scale 2 Note of Pad 7,C1 ... C6,,133
+Project Common / Scale,30,4D,17,1,,00,reserved,,,133
+Project Common / Scale,30,4D,18,1,,00,reserved,,,133
+Project Common / Scale,30,4D,19,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1A,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1B,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1C,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1D,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1E,1,,00,reserved,,,133
+Project Common / Scale,30,4D,1F,1,,00,reserved,,,133
+Project Common / Scale,30,4D,20,1,24 - 60,3C,Scale 3 Note of Pad 1,C1 ... C6,,133
+Project Common / Scale,30,4D,21,1,24 - 60,3F,Scale 3 Note of Pad 2,C1 ... C6,,133
+Project Common / Scale,30,4D,22,1,24 - 60,41,Scale 3 Note of Pad 3,C1 ... C6,,133
+Project Common / Scale,30,4D,23,1,24 - 60,43,Scale 3 Note of Pad 4,C1 ... C6,,133
+Project Common / Scale,30,4D,24,1,24 - 60,46,Scale 3 Note of Pad 5,C1 ... C6,,133
+Project Common / Scale,30,4D,25,1,24 - 60,48,Scale 3 Note of Pad 6,C1 ... C6,,133
+Project Common / Scale,30,4D,26,1,24 - 60,4B,Scale 3 Note of Pad 7,C1 ... C6,,133
+Project Common / Scale,30,4D,27,1,,00,reserved,,,133
+Project Common / Scale,30,4D,28,1,,00,reserved,,,133
+Project Common / Scale,30,4D,29,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2A,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2B,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2C,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2D,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2E,1,,00,reserved,,,133
+Project Common / Scale,30,4D,2F,1,,00,reserved,,,133
+Project Common / Scale,30,4D,30,1,24 - 60,3C,Scale 4 Note of Pad 1,C1 ... C6,,133
+Project Common / Scale,30,4D,31,1,24 - 60,3E,Scale 4 Note of Pad 2,C1 ... C6,,133
+Project Common / Scale,30,4D,32,1,24 - 60,40,Scale 4 Note of Pad 3,C1 ... C6,,133
+Project Common / Scale,30,4D,33,1,24 - 60,43,Scale 4 Note of Pad 4,C1 ... C6,,133
+Project Common / Scale,30,4D,34,1,24 - 60,45,Scale 4 Note of Pad 5,C1 ... C6,,133
+Project Common / Scale,30,4D,35,1,24 - 60,48,Scale 4 Note of Pad 6,C1 ... C6,,133
+Project Common / Scale,30,4D,36,1,24 - 60,4A,Scale 4 Note of Pad 7,C1 ... C6,,133
+Project Common / Scale,30,4D,37,1,,00,reserved,,,133
+Project Common / Scale,30,4D,38,1,,00,reserved,,,133
+Project Common / Scale,30,4D,39,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3A,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3B,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3C,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3D,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3E,1,,00,reserved,,,133
+Project Common / Scale,30,4D,3F,1,,00,reserved,,,133
+Project Common / Scale,30,4D,40,1,24 - 60,3C,Scale 5 Note of Pad 1,C1 ... C6,,133
+Project Common / Scale,30,4D,41,1,24 - 60,3E,Scale 5 Note of Pad 2,C1 ... C6,,133
+Project Common / Scale,30,4D,42,1,24 - 60,40,Scale 5 Note of Pad 3,C1 ... C6,,133
+Project Common / Scale,30,4D,43,1,24 - 60,42,Scale 5 Note of Pad 4,C1 ... C6,,133
+Project Common / Scale,30,4D,44,1,24 - 60,43,Scale 5 Note of Pad 5,C1 ... C6,,134
+Project Common / Scale,30,4D,45,1,24 - 60,45,Scale 5 Note of Pad 6,C1 ... C6,,134
+Project Common / Scale,30,4D,46,1,24 - 60,47,Scale 5 Note of Pad 7,C1 ... C6,,134
+Project Common / Scale,30,4D,47,1,,00,reserved,,,134
+Project Common / Scale,30,4D,48,1,,00,reserved,,,134
+Project Common / Scale,30,4D,49,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4A,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4B,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4C,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4D,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4E,1,,00,reserved,,,134
+Project Common / Scale,30,4D,4F,1,,00,reserved,,,134
+Project Common / Scale,30,4D,50,1,24 - 60,3C,Scale 6 Note of Pad 1,C1 ... C6,,134
+Project Common / Scale,30,4D,51,1,24 - 60,3E,Scale 6 Note of Pad 2,C1 ... C6,,134
+Project Common / Scale,30,4D,52,1,24 - 60,3F,Scale 6 Note of Pad 3,C1 ... C6,,134
+Project Common / Scale,30,4D,53,1,24 - 60,41,Scale 6 Note of Pad 4,C1 ... C6,,134
+Project Common / Scale,30,4D,54,1,24 - 60,43,Scale 6 Note of Pad 5,C1 ... C6,,134
+Project Common / Scale,30,4D,55,1,24 - 60,45,Scale 6 Note of Pad 6,C1 ... C6,,134
+Project Common / Scale,30,4D,56,1,24 - 60,46,Scale 6 Note of Pad 7,C1 ... C6,,134
+Project Common / Scale,30,4D,57,1,,00,reserved,,,134
+Project Common / Scale,30,4D,58,1,,00,reserved,,,134
+Project Common / Scale,30,4D,59,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5A,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5B,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5C,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5D,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5E,1,,00,reserved,,,134
+Project Common / Scale,30,4D,5F,1,,00,reserved,,,134
+Project Common / Scale,30,4D,60,1,24 - 60,3C,Scale 7 Note of Pad 1,C1 ... C6,,134
+Project Common / Scale,30,4D,61,1,24 - 60,3E,Scale 7 Note of Pad 2,C1 ... C6,,134
+Project Common / Scale,30,4D,62,1,24 - 60,40,Scale 7 Note of Pad 3,C1 ... C6,,134
+Project Common / Scale,30,4D,63,1,24 - 60,41,Scale 7 Note of Pad 4,C1 ... C6,,134
+Project Common / Scale,30,4D,64,1,24 - 60,43,Scale 7 Note of Pad 5,C1 ... C6,,134
+Project Common / Scale,30,4D,65,1,24 - 60,45,Scale 7 Note of Pad 6,C1 ... C6,,134
+Project Common / Scale,30,4D,66,1,24 - 60,46,Scale 7 Note of Pad 7,C1 ... C6,,134
+Project Common / Scale,30,4D,67,1,,00,reserved,,,134
+Project Common / Scale,30,4D,68,1,,00,reserved,,,134
+Project Common / Scale,30,4D,69,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6A,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6B,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6C,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6D,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6E,1,,00,reserved,,,134
+Project Common / Scale,30,4D,6F,1,,00,reserved,,,134
+Project Common / Scale,30,4D,70,1,24 - 60,3C,Scale 8 Note of Pad 1,C1 ... C6,,134
+Project Common / Scale,30,4D,71,1,24 - 60,3D,Scale 8 Note of Pad 2,C1 ... C6,,134
+Project Common / Scale,30,4D,72,1,24 - 60,3F,Scale 8 Note of Pad 3,C1 ... C6,,134
+Project Common / Scale,30,4D,73,1,24 - 60,41,Scale 8 Note of Pad 4,C1 ... C6,,134
+Project Common / Scale,30,4D,74,1,24 - 60,43,Scale 8 Note of Pad 5,C1 ... C6,,134
+Project Common / Scale,30,4D,75,1,24 - 60,44,Scale 8 Note of Pad 6,C1 ... C6,,134
+Project Common / Scale,30,4D,76,1,24 - 60,46,Scale 8 Note of Pad 7,C1 ... C6,,134
+Project Common / Scale,30,4D,77,1,,00,reserved,,,134
+Project Common / Scale,30,4D,78,1,,00,reserved,,,134
+Project Common / Scale,30,4D,79,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7A,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7B,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7C,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7D,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7E,1,,00,reserved,,,134
+Project Common / Scale,30,4D,7F,1,,00,reserved,,,134
+Project Track / General,30,5p,00,1,00 - 7F,64,Volume,0 - 127,,135
+Project Track / General,30,5p,01,1,01 - 7F,40,Pan,L63 ... C ... R63,,135
+Project Track / General,30,5p,02,1,01 - 7F,01,Velocity Limit Low,1 - 127,Not available for DX track,135
+Project Track / General,30,5p,03,1,01 - 7F,7F,Velocity Limit High,1 - 127,Not available for DX track,135
+Project Track / General,30,5p,04,1,00 - 7F,00,Note Limit Low,C-2 ... G8,Not available for DX track,135
+Project Track / General,30,5p,05,1,00 - 7F,7F,Note Limit High,C-2 ... G8,Not available for DX track,135
+Project Track / General,30,5p,06,1,,00,reserved,,,135
+Project Track / General,30,5p,07,1,,00,reserved,,,135
+Project Track / General,30,5p,08,1,00 - 7F,00,Group Number,"Off, Group1, ..., Group127",,135
+Project Track / General,30,5p,09,1,,00,reserved,,,135
+Project Track / General,30,5p,0A,1,,00,reserved,,,135
+Project Track / General,30,5p,0B,1,,00,reserved,,,135
+Project Track / General,30,5p,0C,1,3E - 42,40,Octave,-2 - 0 - +2,Not available for Drum/ SAMPLER Track,135
+Project Track / General,30,5p,0D,1,,00,reserved,,,135
+Project Track / General,30,5p,0E,1,,00,reserved,,,135
+Project Track / General,30,5p,0F,1,00 - 05,00,Pattern Select,1 - 6,,135
+Project Track / General,30,5p,10,1,,00,reserved,,,135
+Project Track / General,30,5p,11,1,,00,reserved,,,135
+Project Track / General,30,5p,12,1,,00,reserved,,,135
+Project Track / General,30,5p,13,1,,00,reserved,,,135
+Project Track / General,30,5p,14,1,,00,reserved,,,135
+Project Track / General,30,5p,15,1,,00,reserved,,,135
+Project Track / General,30,5p,16,2,00 - 01 00 - 7F,00 10,Pattern 1 Step MSB,"1 - 128 → 1st bit6-0 bit13-7, 2nd bit6-0 → bit6-0",,135
+Project Track / General,30,5p,18,2,00 - 01 00 - 7F,00 10,Pattern 1 Step LSB Pattern 2 Step MSB Pattern 2 Step LSB,˶,,135
+Project Track / General,30,5p,1A,2,00 - 01 00 - 7F,00 10,Pattern 3 Step MSB,˶,,135
+Project Track / General,30,5p,1C,2,00 - 01 00 - 7F,00 10,Pattern 3 Step LSB Pattern 4 Step MSB Pattern 4 Step LSB,˶,,135
+Project Track / General,30,5p,1E,2,00 - 01 00 - 7F,00 10,Pattern 5 Step MSB,˶,,135
+Project Track / General,30,5p,20,2,00 - 01 00 - 7F,00 10,Pattern 5 Step LSB Pattern 6 Step MSB Pattern 6 Step LSB,˶,,135
+Project Track / General,30,5p,22,1,,00,reserved,,,135
+Project Track / General,30,5p,23,1,,00,reserved,,,135
+Project Track / General,30,5p,24,1,,00,reserved,,,135
+Project Track / General,30,5p,25,1,,00,reserved,,,135
+Project Track / General,30,5p,26,1,,00,reserved,,,135
+Project Track / General,30,5p,27,1,,00,reserved,,,135
+Project Track / General,30,5p,28,1,,00,reserved,,,135
+Project Track / General,30,5p,29,1,"00,7D",00,Mute,"0:off, 125:on",,135
+Project Track / Chord Notes of Scale 1-4,30,6p,00,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,01,1,"00, 24 - 60",3F,Pad 1 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,02,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,03,1,"00, 24 - 60",46,Pad 1 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,04,1,"00, 24 - 60",3E,Pad 2 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,05,1,"00, 24 - 60",41,Pad 2 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,06,1,"00, 24 - 60",44,Pad 2 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,07,1,"00, 24 - 60",48,Pad 2 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,08,1,"00, 24 - 60",3F,Pad 3 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,09,1,"00, 24 - 60",43,Pad 3 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0A,1,"00, 24 - 60",46,Pad 3 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0B,1,"00, 24 - 60",4A,Pad 3 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0C,1,"00, 24 - 60",41,Pad 4 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0D,1,"00, 24 - 60",44,Pad 4 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0E,1,"00, 24 - 60",48,Pad 4 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,0F,1,"00, 24 - 60",4B,Pad 4 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,10,1,"00, 24 - 60",43,Pad 5 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,11,1,"00, 24 - 60",46,Pad 5 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,12,1,"00, 24 - 60",4A,Pad 5 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,13,1,"00, 24 - 60",4D,Pad 5 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,14,1,"00, 24 - 60",44,Pad 6 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,15,1,"00, 24 - 60",48,Pad 6 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,16,1,"00, 24 - 60",4B,Pad 6 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,17,1,"00, 24 - 60",4F,Pad 6 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,18,1,"00, 24 - 60",46,Pad 7 Chord Note 1 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,19,1,"00, 24 - 60",4A,Pad 7 Chord Note 2 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1A,1,"00, 24 - 60",4D,Pad 7 Chord Note 3 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1B,1,"00, 24 - 60",50,Pad 7 Chord Note 4 of Scale 1,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1C,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1D,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1E,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,1F,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,20,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,21,1,"00, 24 - 60",40,Pad 1 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,22,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,23,1,"00, 24 - 60",47,Pad 1 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,24,1,"00, 24 - 60",3E,Pad 2 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,25,1,"00, 24 - 60",41,Pad 2 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,26,1,"00, 24 - 60",45,Pad 2 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,27,1,"00, 24 - 60",48,Pad 2 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,28,1,"00, 24 - 60",40,Pad 3 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,29,1,"00, 24 - 60",43,Pad 3 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2A,1,"00, 24 - 60",47,Pad 3 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2B,1,"00, 24 - 60",4A,Pad 3 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2C,1,"00, 24 - 60",41,Pad 4 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2D,1,"00, 24 - 60",45,Pad 4 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2E,1,"00, 24 - 60",48,Pad 4 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,2F,1,"00, 24 - 60",4C,Pad 4 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,30,1,"00, 24 - 60",43,Pad 5 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,31,1,"00, 24 - 60",47,Pad 5 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,32,1,"00, 24 - 60",4A,Pad 5 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,33,1,"00, 24 - 60",4D,Pad 5 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,34,1,"00, 24 - 60",45,Pad 6 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,35,1,"00, 24 - 60",48,Pad 6 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,36,1,"00, 24 - 60",4C,Pad 6 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,37,1,"00, 24 - 60",4F,Pad 6 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,38,1,"00, 24 - 60",47,Pad 7 Chord Note 1 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,39,1,"00, 24 - 60",4A,Pad 7 Chord Note 2 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3A,1,"00, 24 - 60",4D,Pad 7 Chord Note 3 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3B,1,"00, 24 - 60",51,Pad 7 Chord Note 4 of Scale 2,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3C,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3D,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3E,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,3F,1,,00,reserved,,,136
+Project Track / Chord Notes of Scale 1-4,30,6p,40,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,41,1,"00, 24 - 60",3F,Pad 1 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,42,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,43,1,"00, 24 - 60",46,Pad 1 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,136
+Project Track / Chord Notes of Scale 1-4,30,6p,44,1,"00, 24 - 60",3E,Pad 2 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,45,1,"00, 24 - 60",41,Pad 2 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,46,1,"00, 24 - 60",44,Pad 2 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,47,1,"00, 24 - 60",48,Pad 2 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,48,1,"00, 24 - 60",3F,Pad 3 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,49,1,"00, 24 - 60",43,Pad 3 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4A,1,"00, 24 - 60",46,Pad 3 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4B,1,"00, 24 - 60",4A,Pad 3 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4C,1,"00, 24 - 60",41,Pad 4 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4D,1,"00, 24 - 60",44,Pad 4 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4E,1,"00, 24 - 60",48,Pad 4 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,4F,1,"00, 24 - 60",4B,Pad 4 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,50,1,"00, 24 - 60",43,Pad 5 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,51,1,"00, 24 - 60",46,Pad 5 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,52,1,"00, 24 - 60",4A,Pad 5 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,53,1,"00, 24 - 60",4D,Pad 5 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,54,1,"00, 24 - 60",44,Pad 6 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,55,1,"00, 24 - 60",48,Pad 6 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,56,1,"00, 24 - 60",4B,Pad 6 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,57,1,"00, 24 - 60",4F,Pad 6 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,58,1,"00, 24 - 60",46,Pad 7 Chord Note 1 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,59,1,"00, 24 - 60",4A,Pad 7 Chord Note 2 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5A,1,"00, 24 - 60",4D,Pad 7 Chord Note 3 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5B,1,"00, 24 - 60",50,Pad 7 Chord Note 4 of Scale 3,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5C,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5D,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5E,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,5F,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,60,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,61,1,"00, 24 - 60",40,Pad 1 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,62,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,63,1,"00, 24 - 60",47,Pad 1 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,64,1,"00, 24 - 60",3E,Pad 2 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,65,1,"00, 24 - 60",41,Pad 2 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,66,1,"00, 24 - 60",45,Pad 2 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,67,1,"00, 24 - 60",48,Pad 2 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,68,1,"00, 24 - 60",40,Pad 3 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,69,1,"00, 24 - 60",43,Pad 3 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6A,1,"00, 24 - 60",47,Pad 3 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6B,1,"00, 24 - 60",4A,Pad 3 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6C,1,"00, 24 - 60",41,Pad 4 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6D,1,"00, 24 - 60",45,Pad 4 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6E,1,"00, 24 - 60",48,Pad 4 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,6F,1,"00, 24 - 60",4C,Pad 4 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,70,1,"00, 24 - 60",43,Pad 5 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,71,1,"00, 24 - 60",47,Pad 5 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,72,1,"00, 24 - 60",4A,Pad 5 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,73,1,"00, 24 - 60",4D,Pad 5 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,74,1,"00, 24 - 60",45,Pad 6 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,75,1,"00, 24 - 60",48,Pad 6 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,76,1,"00, 24 - 60",4C,Pad 6 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,77,1,"00, 24 - 60",4F,Pad 6 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,78,1,"00, 24 - 60",47,Pad 7 Chord Note 1 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,79,1,"00, 24 - 60",4A,Pad 7 Chord Note 2 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7A,1,"00, 24 - 60",4D,Pad 7 Chord Note 3 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7B,1,"00, 24 - 60",51,Pad 7 Chord Note 4 of Scale 4,"0:off, 24 - 60:C1 ... C6",,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7C,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7D,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7E,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 1-4,30,6p,7F,1,,00,reserved,,,137
+Project Track / Chord Notes of Scale 5-8,30,7p,00,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,01,1,"00, 24 - 60",40,Pad 1 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,02,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,03,1,"00, 24 - 60",47,Pad 1 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,04,1,"00, 24 - 60",3E,Pad 2 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,05,1,"00, 24 - 60",42,Pad 2 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,06,1,"00, 24 - 60",45,Pad 2 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,07,1,"00, 24 - 60",00,Pad 2 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,08,1,"00, 24 - 60",3E,Pad 3 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,09,1,"00, 24 - 60",40,Pad 3 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0A,1,"00, 24 - 60",43,Pad 3 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0B,1,"00, 24 - 60",47,Pad 3 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0C,1,"00, 24 - 60",3C,Pad 4 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0D,1,"00, 24 - 60",3E,Pad 4 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0E,1,"00, 24 - 60",43,Pad 4 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,0F,1,"00, 24 - 60",45,Pad 4 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,10,1,"00, 24 - 60",3E,Pad 5 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,11,1,"00, 24 - 60",42,Pad 5 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,12,1,"00, 24 - 60",43,Pad 5 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,13,1,"00, 24 - 60",47,Pad 5 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,14,1,"00, 24 - 60",3C,Pad 6 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,15,1,"00, 24 - 60",40,Pad 6 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,16,1,"00, 24 - 60",43,Pad 6 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,17,1,"00, 24 - 60",45,Pad 6 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,18,1,"00, 24 - 60",3E,Pad 7 Chord Note 1 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,19,1,"00, 24 - 60",42,Pad 7 Chord Note 2 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1A,1,"00, 24 - 60",45,Pad 7 Chord Note 3 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1B,1,"00, 24 - 60",47,Pad 7 Chord Note 4 of Scale 5,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1C,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1D,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1E,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,1F,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,20,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,21,1,"00, 24 - 60",3F,Pad 1 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,22,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,23,1,"00, 24 - 60",46,Pad 1 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,24,1,"00, 24 - 60",3C,Pad 2 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,25,1,"00, 24 - 60",3E,Pad 2 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,26,1,"00, 24 - 60",41,Pad 2 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,27,1,"00, 24 - 60",45,Pad 2 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,28,1,"00, 24 - 60",3E,Pad 3 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,29,1,"00, 24 - 60",3F,Pad 3 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2A,1,"00, 24 - 60",43,Pad 3 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2B,1,"00, 24 - 60",46,Pad 3 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2C,1,"00, 24 - 60",3C,Pad 4 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2D,1,"00, 24 - 60",41,Pad 4 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2E,1,"00, 24 - 60",45,Pad 4 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,2F,1,"00, 24 - 60",00,Pad 4 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,30,1,"00, 24 - 60",3E,Pad 5 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,31,1,"00, 24 - 60",41,Pad 5 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,32,1,"00, 24 - 60",43,Pad 5 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,33,1,"00, 24 - 60",46,Pad 5 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,34,1,"00, 24 - 60",3C,Pad 6 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,35,1,"00, 24 - 60",3F,Pad 6 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,36,1,"00, 24 - 60",41,Pad 6 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,37,1,"00, 24 - 60",46,Pad 6 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,38,1,"00, 24 - 60",3E,Pad 7 Chord Note 1 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,39,1,"00, 24 - 60",41,Pad 7 Chord Note 2 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3A,1,"00, 24 - 60",45,Pad 7 Chord Note 3 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3B,1,"00, 24 - 60",46,Pad 7 Chord Note 4 of Scale 6,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3C,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3D,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3E,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,3F,1,,00,reserved,,,138
+Project Track / Chord Notes of Scale 5-8,30,7p,40,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,41,1,"00, 24 - 60",40,Pad 1 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,42,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,43,1,"00, 24 - 60",00,Pad 1 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,138
+Project Track / Chord Notes of Scale 5-8,30,7p,44,1,"00, 24 - 60",3C,Pad 2 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,45,1,"00, 24 - 60",3E,Pad 2 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,46,1,"00, 24 - 60",41,Pad 2 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,47,1,"00, 24 - 60",45,Pad 2 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,48,1,"00, 24 - 60",3C,Pad 3 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,49,1,"00, 24 - 60",41,Pad 3 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4A,1,"00, 24 - 60",43,Pad 3 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4B,1,"00, 24 - 60",46,Pad 3 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4C,1,"00, 24 - 60",3C,Pad 4 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4D,1,"00, 24 - 60",40,Pad 4 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4E,1,"00, 24 - 60",41,Pad 4 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,4F,1,"00, 24 - 60",45,Pad 4 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,50,1,"00, 24 - 60",3E,Pad 5 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,51,1,"00, 24 - 60",41,Pad 5 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,52,1,"00, 24 - 60",43,Pad 5 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,53,1,"00, 24 - 60",46,Pad 5 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,54,1,"00, 24 - 60",3C,Pad 6 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,55,1,"00, 24 - 60",40,Pad 6 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,56,1,"00, 24 - 60",43,Pad 6 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,57,1,"00, 24 - 60",45,Pad 6 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,58,1,"00, 24 - 60",3E,Pad 7 Chord Note 1 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,59,1,"00, 24 - 60",41,Pad 7 Chord Note 2 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5A,1,"00, 24 - 60",45,Pad 7 Chord Note 3 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5B,1,"00, 24 - 60",46,Pad 7 Chord Note 4 of Scale 7,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5C,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5D,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5E,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,5F,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,60,1,"00, 24 - 60",3C,Pad 1 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,61,1,"00, 24 - 60",3F,Pad 1 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,62,1,"00, 24 - 60",43,Pad 1 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,63,1,"00, 24 - 60",46,Pad 1 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,64,1,"00, 24 - 60",3C,Pad 2 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,65,1,"00, 24 - 60",3D,Pad 2 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,66,1,"00, 24 - 60",41,Pad 2 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,67,1,"00, 24 - 60",44,Pad 2 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,68,1,"00, 24 - 60",3F,Pad 3 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,69,1,"00, 24 - 60",43,Pad 3 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6A,1,"00, 24 - 60",46,Pad 3 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6B,1,"00, 24 - 60",00,Pad 3 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6C,1,"00, 24 - 60",3C,Pad 4 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6D,1,"00, 24 - 60",3F,Pad 4 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6E,1,"00, 24 - 60",41,Pad 4 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,6F,1,"00, 24 - 60",44,Pad 4 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,70,1,"00, 24 - 60",3D,Pad 5 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,71,1,"00, 24 - 60",3F,Pad 5 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,72,1,"00, 24 - 60",44,Pad 5 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,73,1,"00, 24 - 60",46,Pad 5 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,74,1,"00, 24 - 60",3C,Pad 6 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,75,1,"00, 24 - 60",3F,Pad 6 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,76,1,"00, 24 - 60",43,Pad 6 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,77,1,"00, 24 - 60",44,Pad 6 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,78,1,"00, 24 - 60",3D,Pad 7 Chord Note 1 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,79,1,"00, 24 - 60",41,Pad 7 Chord Note 2 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7A,1,"00, 24 - 60",44,Pad 7 Chord Note 3 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7B,1,"00, 24 - 60",46,Pad 7 Chord Note 4 of Scale 8,"0:off, 24 - 60:C1 ... C6",,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7C,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7D,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7E,1,,00,reserved,,,139
+Project Track / Chord Notes of Scale 5-8,30,7p,7F,1,,00,reserved,,,139
+Sound Common / Name,31,0p,00,1,00 - 7F,00,Sound Name 1,,UTF8 (7-bit encoded),140
+Sound Common / Name,31,0p,01,1,00 - 7F,00,Sound Name 2,,˶,140
+Sound Common / Name,31,0p,02,1,00 - 7F,00,Sound Name 3,,˶,140
+Sound Common / Name,31,0p,03,1,00 - 7F,00,Sound Name 4,,˶,140
+Sound Common / Name,31,0p,04,1,00 - 7F,00,Sound Name 5,,˶,140
+Sound Common / Name,31,0p,05,1,00 - 7F,00,Sound Name 6,,˶,140
+Sound Common / Name,31,0p,06,1,00 - 7F,00,Sound Name 7,,˶,140
+Sound Common / Name,31,0p,07,1,00 - 7F,00,Sound Name 8,,˶,140
+Sound Common / Name,31,0p,08,1,00 - 7F,00,Sound Name 9,,˶,140
+Sound Common / Name,31,0p,09,1,00 - 7F,00,Sound Name 10,,˶,140
+Sound Common / Name,31,0p,0A,1,00 - 7F,00,Sound Name 11,,˶,140
+Sound Common / Name,31,0p,0B,1,00 - 7F,00,Sound Name 12,,˶,140
+Sound Common / Name,31,0p,0C,1,00 - 7F,00,Sound Name 13,,˶,140
+Sound Common / Name,31,0p,0D,1,00 - 7F,00,Sound Name 14,,˶,140
+Sound Common / Name,31,0p,0E,1,00 - 7F,00,Sound Name 15,,˶,140
+Sound Common / Name,31,0p,0F,1,00 - 7F,00,Sound Name 16,,˶,140
+Sound Common / Name,31,0p,10,1,00 - 7F,00,Sound Name 17,,˶,140
+Sound Common / Name,31,0p,11,1,00 - 7F,00,Sound Name 18,,˶,140
+Sound Common / Name,31,0p,12,1,00 - 7F,00,Sound Name 19,,˶,140
+Sound Common / Name,31,0p,13,1,00 - 7F,00,Sound Name 20,,˶,140
+Sound Common / Name,31,0p,14,1,00 - 7F,00,Sound Name 21,,˶,140
+Sound Common / Name,31,0p,15,1,00 - 7F,00,Sound Name 22,,˶,140
+Sound Common / Name,31,0p,16,1,00 - 7F,00,Sound Name 23,,˶,140
+Sound Common / Name,31,0p,17,1,00 - 7F,00,Sound Name 24,,˶,140
+Sound Common / Name,31,0p,18,1,00 - 7F,00,Sound Name 25,,˶,140
+Sound Common / Name,31,0p,19,1,00 - 7F,00,Sound Name 26,,˶,140
+Sound Common / Name,31,0p,1A,1,00 - 7F,00,Sound Name 27,,˶,140
+Sound Common / Name,31,0p,1B,1,00 - 7F,00,Sound Name 28,,˶,140
+Sound Common / Name,31,0p,1C,1,00 - 7F,00,Sound Name 29,,˶,140
+Sound Common / Name,31,0p,1D,1,00 - 7F,00,Sound Name 30,,˶,140
+Sound Common / Name,31,0p,1E,1,00 - 7F,00,Sound Name 31,,˶,140
+Sound Common / Name,31,0p,1F,1,00 - 7F,00,Sound Name 32,,˶,140
+Sound Common / Name,31,0p,20,1,00 - 7F,00,Sound Name 33,,˶,140
+Sound Common / Name,31,0p,21,1,00 - 7F,00,Sound Name 34,,˶,140
+Sound Common / Name,31,0p,22,1,00 - 7F,00,Sound Name 35,,˶,140
+Sound Common / Name,31,0p,23,1,00 - 7F,00,Sound Name 36,,˶,140
+Sound Common / Name,31,0p,24,1,00 - 7F,00,Sound Name 37,,˶,140
+Sound Common / Name,31,0p,25,1,00 - 7F,00,Sound Name 38,,˶,140
+Sound Common / Name,31,0p,26,1,00 - 7F,00,Sound Name 39,,˶,140
+Sound Common / Name,31,0p,27,1,00 - 7F,00,Sound Name 40,,˶,140
+Sound Common / Name,31,0p,28,1,00 - 7F,00,Sound Name 41,,˶,140
+Sound Common / Name,31,0p,29,1,00 - 7F,00,Sound Name 42,,˶,140
+Sound Common / Name,31,0p,2A,1,00 - 7F,00,Sound Name 43,,˶,140
+Sound Common / Name,31,0p,2B,1,00 - 7F,00,Sound Name 44,,˶,140
+Sound Common / Name,31,0p,2C,1,00 - 7F,00,Sound Name 45,,˶,140
+Sound Common / Name,31,0p,2D,1,00 - 7F,00,Sound Name 46,,˶,140
+Sound Common / Name,31,0p,2E,1,00 - 7F,00,Sound Name 47,,˶,140
+Sound Common / Name,31,0p,2F,1,00 - 7F,00,Sound Name 48,,˶,140
+Sound Common / Name,31,0p,30,1,00 - 7F,00,Sound Name 49,,˶,140
+Sound Common / Name,31,0p,31,1,00 - 7F,00,Sound Name 50,,˶,140
+Sound Common / Name,31,0p,32,1,00 - 7F,00,Sound Name 51,,˶,140
+Sound Common / Name,31,0p,33,1,00 - 7F,00,Sound Name 52,,˶,140
+Sound Common / Name,31,0p,34,1,00 - 7F,00,Sound Name 53,,˶,140
+Sound Common / Name,31,0p,35,1,00 - 7F,00,Sound Name 54,,˶,140
+Sound Common / Name,31,0p,36,1,00 - 7F,00,Sound Name 55,,˶,140
+Sound Common / Name,31,0p,37,1,00 - 7F,00,Sound Name 56,,˶,140
+Sound Common / Name,31,0p,38,1,00 - 7F,00,Sound Name 57,,˶,140
+Sound Common / Name,31,0p,39,1,00 - 7F,00,Sound Name 58,,˶,140
+Sound Common / Name,31,0p,3A,1,00 - 7F,00,Sound Name 59,,˶,140
+Sound Common / Name,31,0p,3B,1,00 - 7F,00,Sound Name 60,,˶,140
+Sound Common / Name,31,0p,3C,1,00 - 7F,00,Sound Name 61,,˶,140
+Sound Common / Name,31,0p,3D,1,00 - 7F,00,Sound Name 62,,˶,140
+Sound Common / Name,31,0p,3E,1,00 - 7F,00,Sound Name 63,,˶,140
+Sound Common / Name,31,0p,3F,1,00 - 7F,00,Sound Name 64,,˶,140
+Sound Common / Name,31,0p,40,1,00 - 7F,00,Sound Name 65,,˶,140
+Sound Common / Name,31,0p,41,1,00 - 7F,00,Sound Name 66,,˶,140
+Sound Common / Name,31,0p,42,1,00 - 7F,00,Sound Name 67,,UTF8 (7-bit encoded),141
+Sound Common / Name,31,0p,43,1,00 - 7F,00,Sound Name 68,,˶,141
+Sound Common / Name,31,0p,44,1,00 - 7F,00,Sound Name 69,,˶,141
+Sound Common / Name,31,0p,45,1,00 - 7F,00,Sound Name 70,,˶,141
+Sound Common / Name,31,0p,46,1,00 - 7F,00,Sound Name 71,,˶,141
+Sound Common / Name,31,0p,47,1,00 - 7F,00,Sound Name 72,,˶,141
+Sound Common / Name,31,0p,48,1,00 - 7F,00,Sound Name 73,,˶,141
+Sound Common / Name,31,0p,49,1,00 - 7F,00,Sound Name 74,,˶,141
+Sound Common / Name,31,0p,4A,1,00 - 7F,00,Sound Name 75,,˶,141
+Sound Common / Name,31,0p,4B,1,00 - 7F,00,Sound Name 76,,˶,141
+Sound Common / Name,31,0p,4C,1,00 - 7F,00,Sound Name 77,,˶,141
+Sound Common / Name,31,0p,4D,1,00 - 7F,00,Sound Name 78,,˶,141
+Sound Common / Name,31,0p,4E,1,00 - 7F,00,Sound Name 79,,˶,141
+Sound Common / Name,31,0p,4F,1,00 - 7F,00,Sound Name 80,,˶,141
+Sound Common / Name,31,0p,50,1,00 - 7F,00,Sound Name 81,,˶,141
+Sound Common / Name,31,0p,51,1,00 - 7F,00,Sound Name 82,,˶,141
+Sound Common / Name,31,0p,52,1,00 - 7F,00,Sound Name 83,,˶,141
+Sound Common / Name,31,0p,53,1,00 - 7F,00,Sound Name 84,,˶,141
+Sound Common / Name,31,0p,54,1,00 - 7F,00,Sound Name 85,,˶,141
+Sound Common / Name,31,0p,55,1,00 - 7F,00,Sound Name 86,,˶,141
+Sound Common / Name,31,0p,56,1,00 - 7F,00,Sound Name 87,,˶,141
+Sound Common / Name,31,0p,57,1,00 - 7F,00,Sound Name 88,,˶,141
+Sound Common / Name,31,0p,58,1,00 - 7F,00,Sound Name 89,,˶,141
+Sound Common / Name,31,0p,59,1,00 - 7F,00,Sound Name 90,,˶,141
+Sound Common / Name,31,0p,5A,1,00 - 7F,00,Sound Name 91,,˶,141
+Sound Common / Name,31,0p,5B,1,00 - 7F,00,Sound Name 92,,˶,141
+Sound Common / Name,31,0p,5C,1,00 - 7F,00,Sound Name 93,,˶,141
+Sound Common / Name,31,0p,5D,1,00 - 7F,00,Sound Name 94,,˶,141
+Sound Common / Name,31,0p,5E,1,00 - 7F,00,Sound Name 95,,˶,141
+Sound Common / Name,31,0p,5F,1,00 - 7F,00,Sound Name 96,,˶,141
+Sound Common / Name,31,0p,60,1,00 - 7F,00,Sound Name 97,,˶,141
+Sound Common / Name,31,0p,61,1,00 - 7F,00,Sound Name 98,,˶,141
+Sound Common / Name,31,0p,62,1,00 - 7F,00,Sound Name 99,,˶,141
+Sound Common / Name,31,0p,63,1,00 - 7F,00,Sound Name 100,,˶,141
+Sound Common / Name,31,0p,64,1,,00,reserved,,,141
+Sound Common / Name,31,0p,65,1,,00,reserved,,,141
+Sound Common / Name,31,0p,66,1,,00,reserved,,,141
+Sound Common / Name,31,0p,67,1,,00,reserved,,,141
+Sound Common / Name,31,0p,68,1,,00,reserved,,,141
+Sound Common / Name,31,0p,69,1,,00,reserved,,,141
+Sound Common / General,31,1p,00,1,00 - 7F,40,AEG Decay/Release Offset,-64 - +63,Available for Synth track,142
+Sound Common / General,31,1p,01,1,00 - 7F,40,Carrier Attack Offset,-64 - +63,Available for DX track,142
+Sound Common / General,31,1p,02,1,00 - 7F,40,Carrier Decay Offset,-64 - +63,Available for DX track,142
+Sound Common / General,31,1p,03,1,00 - 7F,40,Mod Amount Offset,-64 - +63,Available for DX track,142
+Sound Common / General,31,1p,04,1,00 - 7F,40,Freq Ratio Offset,-64 - +63,Available for DX track,142
+Sound Common / General,31,1p,05,1,00 - 7F,40,Feedback Offset,-64 - +63,Available for DX track,142
+Sound Common / General,31,1p,06,1,,00,reserved,,,142
+Sound Common / General,31,1p,07,1,,00,reserved,,,142
+Sound Common / General,31,1p,08,1,,00,reserved,,,142
+Sound Common / General,31,1p,09,1,,00,reserved,,,142
+Sound Common / General,31,1p,0A,1,,00,reserved,,,142
+Sound Common / General,31,1p,0B,1,,00,reserved,,,142
+Sound Common / General,31,1p,0C,1,,00,reserved,,,142
+Sound Common / General,31,1p,0D,1,00 - 02,02,Trigger/Gate Mode,"Trigger, Gate, Depend on Voice",Not available for DX track,142
+Sound Common / General,31,1p,0E,1,,00,reserved,,,142
+Sound Common / General,31,1p,0F,1,,00,reserved,,,142
+Sound Common / General,31,1p,10,1,10 - 58,42,Pitch Bend Range Upper,-48 - +24,Not available for DX track,142
+Sound Common / General,31,1p,11,1,10 - 58,3E,Pitch Bend Range Lower,-48 - +24,Not available for DX track,142
+Sound Common / General,31,1p,12,1,00 - 7F,40,Velocity Sense Depth,0 - 127,Not available for DX track,142
+Sound Common / General,31,1p,13,1,00 - 7F,40,Velocity Sense Offset,0 - 127,Not available for DX track,142
+Sound Common / General,31,1p,14,1,00 - 7F,64,Volume,0 - 127,,142
+Sound Common / General,31,1p,15,1,01 - 7F,40,Pan,L63 ... C ... R63,,142
+Sound Common / General,31,1p,16,1,,00,reserved,,,142
+Sound Common / General,31,1p,17,2,00 - 0F 00 - 0F,08 00 (80),Detune MSB Detune LSB,"-12.8 - +12.7[Hz] 1st bit3-0 → bit7-4, 2nd bit3-0 → bit3-0",Not available for DX track,142
+Sound Common / General,31,1p,19,1,00 - 7F,00,Reverb Send,0 - 127,,142
+Sound Common / General,31,1p,1A,1,00 - 7F,00,Variation Send,0 - 127,,142
+Sound Common / General,31,1p,1B,1,00 - 7F,7F,Dry Level,0 - 127,,142
+Sound Common / General,31,1p,1C,1,28 - 58,40,Note Shift,-24 - +24[semitones],,142
+Sound Common / General,31,1p,1D,1,,00,reserved,,,142
+Sound Common / General,31,1p,1E,1,00 - 01,00,Portamento Switch,"Off, On",Not available for Drum/DX track,142
+Sound Common / General,31,1p,1F,1,00 - 7F,40,Portamento Time,0 - 127,,142
+Sound Common / General,31,1p,20,1,00 - 01,01,Portamento Mode,"Fingered, Full-time",,142
+Sound Common / General,31,1p,21,1,00 - 03,00,Portamento Time Mode,"Rate 1, Time 1, Rate 2, Time 2",Not available for Drum/DX track,142
+Sound Common / General,31,1p,22,1,00 - 01,01,Key Assign Mode,"Single, Multi",Not available for Drum/DX track,142
+Sound Common / General,31,1p,23,1,00 - 02,01,Mono/Poly Mode,"Mono, Poly, Chord",Chord is not available for Drum/ SAMPLER track,142
+Sound Common / General,31,1p,24,2,00 - 0C,00 00 (00),Micro Tuning Scale,"Equal Temperament, Pure Major, Pure Minor, Werckmeister, Kirnberger, Valloti&Young, 1/4 Shift, 1/4 tone, 1/8 tone, Indian, Arabic 1, Arabic 2, Arabic 3",Not available for Drum/DX track,142
+Sound Common / General,31,1p,26,1,00 - 0B,00,Micro Tuning Root,"C, C#, …, B",Not available for Drum/DX track,142
+Sound Common / General,31,1p,27,1,00 - 07,00,Legato Slope,0 - 7,Not available for Drum/DX track,142
+Sound Common / General,31,1p,28,1,01,01,Insertion Connect Type,Ins A->B,,142
+Sound Common / General,31,1p,29,1,02 - 03,03,Insertion FX Switch,"bit0: Insertion A Off/On, bit1:Insertion B Off/On, bit2-6:reserved",bit1 is fixed to On,142
+Sound Common / General,31,1p,2A,1,,00,reserved,,,142
+Sound Common / General,31,1p,2B,1,00 - 01,01,Element Pan on/off,"Off, On",Not available for DX track,142
+Sound Common / General,31,1p,2C,1,00 - 7F,40,AEG Attack Time,-64 - +63,,142
+Sound Common / General,31,1p,2D,1,00 - 7F,40,AEG Decay Time,-64 - +63,,142
+Sound Common / General,31,1p,2E,1,00 - 7F,40,AEG Sustain Level,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,2F,1,00 - 7F,40,AEG Release Time,-64 - +63,,142
+Sound Common / General,31,1p,30,1,00 - 7F,40,FEG Attack Time,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,31,1,00 - 7F,40,FEG Decay Time,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,32,1,00 - 7F,40,FEG Sustain Level,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,33,1,00 - 7F,40,FEG Release Time,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,34,1,00 - 7F,40,FEG Depth,-64 - +63,Not available for Drum/DX track,142
+Sound Common / General,31,1p,35,1,,00,reserved,,,142
+Sound Common / General,31,1p,36,1,00 - 7F,40,Filter Cutoff Frequency,-64 - +63,,142
+Sound Common / General,31,1p,37,1,00 - 7F,40,Filter Resonance/Width,-64 - +63,,142
+Sound Common / General,31,1p,38,1,,00,reserved,,,143
+Sound Common / General,31,1p,39,2,00 - 01 00 - 7F,00 6F,3bandEQ Low Frequency MSB 3bandEQ Low Frequency LSB,"50.1 - 2.00k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",Not available for DX track Not available for DX track,143
+Sound Common / General,31,1p,3B,1,20 - 60,40,3bandEQ Low Gain,-32 - +32 (12.00 - +12.00[dB]),Not available for DX track,143
+Sound Common / General,31,1p,3C,1,,00,reserved,,,143
+Sound Common / General,31,1p,3D,2,00 - 01 00 - 7F,01 0D,3bandEQ Mid Frequency MSB 3bandEQ Mid Frequency LSB,"139.7 - 10.1k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",Not available for,143
+Sound Common / General,31,1p,3F,1,20 - 60,40,3bandEQ Mid Gain,-32 - +32 (-12.00 - +12.00[dB]),DX track Not available for DX track Not available for,143
+Sound Common / General,31,1p,40,1,00 - 1F,00,3bandEQ Mid Q,0 - 31 (0.7 - 10.3),,143
+Sound Common / General,31,1p,41,2,01 03 - 7F,01 1D,3bandEQ High Frequency MSB 3bandEQ High Frequency LSB,"503.8 - 14.0k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",DX track Not available for DX track,143
+Sound Common / General,31,1p,43,1,20 - 60,40,3bandEQ High Gain,-32 - +32 (-12.00 - +12.00[dB]),Not available for DX track,143
+Sound Common / General,31,1p,44,1,,00,reserved,,,143
+Sound Common / General,31,1p,45,1,00 - 05,03,2bandEQ Low Type,"Thru, LPF, HPF, Low Shelf, Hi Shelf, Peak/Dip",,143
+Sound Common / General,31,1p,46,2,00 - 01 00 - 7F,00 66,2bandEQ Low Frequency MSB 2bandEQ Low Frequency LSB,"63.0 - 18.0k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,143
+Sound Common / General,31,1p,48,1,28 - 58,40,2bandEQ Low Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,143
+Sound Common / General,31,1p,49,1,01 - 78,01,2bandEQ Low Q,0.1 - 12.0,,143
+Sound Common / General,31,1p,4A,1,00 - 05,04,2bandEQ High Type,"Thru, LPF, HPF, Low Shelf, Hi Shelf, Peak/Dip",,143
+Sound Common / General,31,1p,4B,2,00 - 01 00 - 7F,01 10,2bandEQ High Frequency MSB 2bandEQ High Frequency LSB,"63.0 - 18.0k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,143
+Sound Common / General,31,1p,4D,1,28 - 58,40,2bandEQ High Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,143
+Sound Common / General,31,1p,4E,1,01 - 78,01,2bandEQ High Q,0.1 - 12.0,,143
+Sound Common / General,31,1p,4F,1,28 - 58,40,2bandEQ Output Gain,40 - 64 - 88 (-12.00 - +12.00[dB]),,143
+Sound Common / Insertion A,31,2p,00,2,00 - 7F 00 - 7F,00 00,Insertion-A Type MSB Insertion-A Type LSB,Refer to Effect Parameter List,,144
+Sound Common / Insertion A,31,2p,02,1,00 - 7F,00,Insertion-A Template Number,˶,,144
+Sound Common / Insertion A,31,2p,03,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 1 MSB,˶,,144
+Sound Common / Insertion A,31,2p,05,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 1 LSB Insertion-A Parameter 2 MSB Insertion-A Parameter 2 LSB,˶,,144
+Sound Common / Insertion A,31,2p,07,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter3 MSB,˶,,144
+Sound Common / Insertion A,31,2p,09,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter3 LSB Insertion-A Parameter4 MSB Insertion-A Parameter4 LSB,˶,,144
+Sound Common / Insertion A,31,2p,0B,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter5 MSB,˶,,144
+Sound Common / Insertion A,31,2p,0D,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter5 LSB Insertion-A Parameter6 MSB Insertion-A Parameter6 LSB,˶,,144
+Sound Common / Insertion A,31,2p,0F,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter7 MSB,˶,,144
+Sound Common / Insertion A,31,2p,11,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter7 LSB Insertion-A Parameter8 MSB Insertion-A Parameter8 LSB,˶,,144
+Sound Common / Insertion A,31,2p,13,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter9 MSB,˶,,144
+Sound Common / Insertion A,31,2p,15,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter9 LSB Insertion-A Parameter 10 MSB Insertion-A Parameter 10 LSB,˶,,144
+Sound Common / Insertion A,31,2p,17,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 11 MSB,˶,,144
+Sound Common / Insertion A,31,2p,19,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 11 LSB Insertion-A Parameter 12 MSB Insertion-A Parameter 12 LSB,˶,,144
+Sound Common / Insertion A,31,2p,1B,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 13 MSB,˶,,144
+Sound Common / Insertion A,31,2p,1D,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 13 LSB Insertion-A Parameter 14 MSB Insertion-A Parameter 14 LSB,˶,,144
+Sound Common / Insertion A,31,2p,1F,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 15 MSB,˶,,144
+Sound Common / Insertion A,31,2p,21,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 15 LSB Insertion-A Parameter 16 MSB Insertion-A Parameter 16 LSB,˶,,144
+Sound Common / Insertion A,31,2p,23,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 17 MSB,˶,,144
+Sound Common / Insertion A,31,2p,25,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 17 LSB Insertion-A Parameter 18 MSB Insertion-A Parameter 18 LSB,˶,,144
+Sound Common / Insertion A,31,2p,27,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 19 MSB,˶,,144
+Sound Common / Insertion A,31,2p,29,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 19 LSB Insertion-A Parameter 20 MSB Insertion-A Parameter 20 LSB,˶,,144
+Sound Common / Insertion A,31,2p,2B,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 21 MSB,˶,,144
+Sound Common / Insertion A,31,2p,2D,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 21 LSB Insertion-A Parameter 22 MSB Insertion-A Parameter 22 LSB,˶,,144
+Sound Common / Insertion A,31,2p,2F,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 23 MSB,˶,,144
+Sound Common / Insertion A,31,2p,31,2,00 - 7F 00 - 7F,00 00,Insertion-A Parameter 23 LSB Insertion-A Parameter 24 MSB Insertion-A Parameter 24 LSB,˶,,144
+Sound Common / Insertion A,31,2p,33,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,35,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,37,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,39,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,3B,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,3D,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,3F,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,41,2,,00 00,reserved,,,144
+Sound Common / Insertion A,31,2p,43,1,"11, 7F",7F,Side Chain Part,"0:part1, …, 10:part11, 16:A/D, 17:Master, 127: Off",,144
+Sound Common / Insertion B,31,3p,00,2,0D 2F,0D 2F,Insertion-B Type MSB Insertion-B Type LSB,Refer to Effect Parameter List,LP-HP FILTER,145
+Sound Common / Insertion B,31,3p,02,1,00 - 7F,00,Insertion-B Template Number,˶,,145
+Sound Common / Insertion B,31,3p,03,2,00 - 7F 00 - 7F,02 00,Insertion-B Parameter 1 MSB,˶,,145
+Sound Common / Insertion B,31,3p,05,2,00 - 7F 00 - 7F,00 10,Insertion-B Parameter 1 LSB Insertion-B Parameter 2 MSB Insertion-B Parameter 2 LSB,˶,,145
+Sound Common / Insertion B,31,3p,07,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 3 MSB,˶,,145
+Sound Common / Insertion B,31,3p,09,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 3 LSB Insertion-B Parameter 4 MSB Insertion-B Parameter 4 LSB,˶,,145
+Sound Common / Insertion B,31,3p,0B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 5 MSB,˶,,145
+Sound Common / Insertion B,31,3p,0D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 5 LSB Insertion-B Parameter 6 MSB Insertion-B Parameter 6 LSB,˶,,145
+Sound Common / Insertion B,31,3p,0F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 7 MSB,˶,,145
+Sound Common / Insertion B,31,3p,11,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 7 LSB Insertion-B Parameter 8 MSB Insertion-B Parameter 8 LSB,˶,,145
+Sound Common / Insertion B,31,3p,13,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 9 MSB,˶,,145
+Sound Common / Insertion B,31,3p,15,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 9 LSB Insertion-B Parameter 10 MSB Insertion-B Parameter 10 LSB,˶,,145
+Sound Common / Insertion B,31,3p,17,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 11 MSB,˶,,145
+Sound Common / Insertion B,31,3p,19,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 11 LSB Insertion-B Parameter 12 MSB Insertion-B Parameter 12 LSB,˶,,145
+Sound Common / Insertion B,31,3p,1B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 13 MSB,˶,,145
+Sound Common / Insertion B,31,3p,1D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 13 LSB Insertion-B Parameter 14 MSB Insertion-B Parameter 14 LSB,˶,,145
+Sound Common / Insertion B,31,3p,1F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 15 MSB,˶,,145
+Sound Common / Insertion B,31,3p,21,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 15 LSB Insertion-B Parameter 16 MSB Insertion-B Parameter 16 LSB,˶,,145
+Sound Common / Insertion B,31,3p,23,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 17 MSB,˶,,145
+Sound Common / Insertion B,31,3p,25,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 17 LSB Insertion-B Parameter 18 MSB Insertion-B Parameter 18 LSB,˶,,145
+Sound Common / Insertion B,31,3p,27,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 19 MSB,˶,,145
+Sound Common / Insertion B,31,3p,29,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 19 LSB Insertion-B Parameter 20 MSB Insertion-B Parameter 20 LSB,˶,,145
+Sound Common / Insertion B,31,3p,2B,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 21 MSB,˶,,145
+Sound Common / Insertion B,31,3p,2D,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 21 LSB Insertion-B Parameter 22 MSB Insertion-B Parameter 22 LSB,˶,,145
+Sound Common / Insertion B,31,3p,2F,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 23 MSB,˶,,145
+Sound Common / Insertion B,31,3p,31,2,00 - 7F 00 - 7F,00 00,Insertion-B Parameter 23 LSB Insertion-B Parameter 24 MSB Insertion-B Parameter 24 LSB,˶,,145
+Sound Common / Insertion B,31,3p,33,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,35,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,37,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,39,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,3B,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,3D,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,3F,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,41,2,,00 00,reserved,,,145
+Sound Common / Insertion B,31,3p,43,1,,00,reserved,,,145
+Sound Common / LFO,31,4p,00,1,00 - 05,00,LFO Phase,"0, 90, 120, 180, 240, 270",,146
+Sound Common / LFO,31,4p,01,1,00 - 0C,00,LFO Wave,"Triangle, Triangle+, Saw Up, Saw Down, Squ1/4, Squ1/3, Square, Squ2/3, Squ3/4, Trapezoid, S/H1, S/H2, User",,146
+Sound Common / LFO,31,4p,02,1,00 - 3F,20,LFO Speed,0 - 63,Available when Tempo Sync is Off,146
+Sound Common / LFO,31,4p,03,1,05 - 18,0B,LFO Tempo Speed,"5 - 24 (16th, 8th/3, 16th., 8th, 4th/3, 8th., 4th, 2th/3, 4th., 2nd, Whole/3, 2nd., 4thX4, 4thX5, 4thX6, 4thX7, 4thX8, 4thX16,4thX32, 4thX64)",Available when Tempo Sync is On,146
+Sound Common / LFO,31,4p,04,1,00 - 01,00,LFO Tempo Sync,"Off, On",Default value for Drum track is 00 (Off),146
+Sound Common / LFO,31,4p,05,1,00 - 7F,00,LFO Delay Time,0 - 127,,146
+Sound Common / LFO,31,4p,06,1,00 - 7F,00,LFO Fade In Time,0 - 127,,146
+Sound Common / LFO,31,4p,07,1,00 - 7F,7F,LFO Hold Time,"0 - 126, Hold",,146
+Sound Common / LFO,31,4p,08,1,00 - 7F,40,LFO Fade Out Time,0 - 127,,146
+Sound Common / LFO,31,4p,09,1,00 - 02,02,LFO Key On Reset,"Off, Each-On, 1st-On",Default value for Drum track is 00 (Off),146
+Sound Common / LFO,31,4p,0A,1,00 - 01,00,LFO Play Mode,"Loop, One-shot",,146
+Sound Common / LFO,31,4p,0B,1,00 - 44,40,LFO Box1 Destination,0 - 68,,146
+Sound Common / LFO,31,4p,0C,1,00 - 7F,00,LFO Box1 Depth,0 - 127,,146
+Sound Common / LFO,31,4p,0D,1,,0F,reserved,,,146
+Sound Common / LFO,31,4p,0E,1,00 - 45,41,LFO Box2 Destination,0 - 68,,146
+Sound Common / LFO,31,4p,0F,1,00 - 7F,00,LFO Box2 Depth,0 - 127,,146
+Sound Common / LFO,31,4p,10,1,,0F,reserved,,,146
+Sound Common / LFO,31,4p,11,1,00 - 45,42,LFO Box3 Destination,0 - 68,,146
+Sound Common / LFO,31,4p,12,1,00 - 7F,00,LFO Box3 Depth,0 - 127,,146
+Sound Common / LFO,31,4p,13,1,,0F,reserved,,,146
+Sound Common / LFO,31,4p,14,1,00 - 06,06,User Wave Total Step,"2 steps, 3 steps, 4 steps, 6 steps, 8 steps, 12 steps, 16 steps",,146
+Sound Common / LFO,31,4p,15,1,00 - 03,00,User Wave Slope,"Off, Up, Down, Up&Down",,146
+Sound Common / LFO,31,4p,16,1,00 - 7F,40,User Wave Step Value 1,-64 - +63,,146
+Sound Common / LFO,31,4p,17,1,00 - 7F,40,User Wave Step Value 2,-64 - +63,,146
+Sound Common / LFO,31,4p,18,1,00 - 7F,40,User Wave Step Value 3,-64 - +63,,146
+Sound Common / LFO,31,4p,19,1,00 - 7F,40,User Wave Step Value 4,-64 - +63,,146
+Sound Common / LFO,31,4p,1A,1,00 - 7F,40,User Wave Step Value 5,-64 - +63,,146
+Sound Common / LFO,31,4p,1B,1,00 - 7F,40,User Wave Step Value 6,-64 - +63,,146
+Sound Common / LFO,31,4p,1C,1,00 - 7F,40,User Wave Step Value 7,-64 - +63,,146
+Sound Common / LFO,31,4p,1D,1,00 - 7F,40,User Wave Step Value 8,-64 - +63,,146
+Sound Common / LFO,31,4p,1E,1,00 - 7F,40,User Wave Step Value 9,-64 - +63,,146
+Sound Common / LFO,31,4p,1F,1,00 - 7F,40,User Wave Step Value 10,-64 - +63,,146
+Sound Common / LFO,31,4p,20,1,00 - 7F,40,User Wave Step Value 11,-64 - +63,,146
+Sound Common / LFO,31,4p,21,1,00 - 7F,40,User Wave Step Value 12,-64 - +63,,146
+Sound Common / LFO,31,4p,22,1,00 - 7F,40,User Wave Step Value 13,-64 - +63,,146
+Sound Common / LFO,31,4p,23,1,00 - 7F,40,User Wave Step Value 14,-64 - +63,,146
+Sound Common / LFO,31,4p,24,1,00 - 7F,40,User Wave Step Value 15,-64 - +63,,146
+Sound Common / LFO,31,4p,25,1,00 - 7F,40,User Wave Step Value 16,-64 - +63,,146
+Sound Common / LFO,31,4p,26,1,00 - 7F,00,LFO Random Speed Depth,0 - 127,Available when Tempo Sync is Off,146
+Sound Common / Arpeggiator,31,5p,00,1,00 - 0F,00,ARP Template,"Off, Up, Up 2Oct, Down, Down 2Oct, Random, Random 2Oct, Up/Down A, Up/Down A 2Oct, Up/Down B, Up/Down B 2Oct, Thumb Up, Unison, Chord Trigger1, Chord Trigger2, As Played",Affects ARP Switch / Key Mode / Octave Range / Type,147
+Sound Common / Arpeggiator,31,5p,01,1,00 - 01,00,ARP Switch,"Off, On",,147
+Sound Common / Arpeggiator,31,5p,02,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,03,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,04,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,05,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,06,1,00 - 01,01,ARP Loop,"Off, On",,147
+Sound Common / Arpeggiator,31,5p,07,1,00 - 02,01,ARP Hold,"Sync-Off, Off, On",,147
+Sound Common / Arpeggiator,31,5p,08,1,00 - 09,03,ARP Unit Multiply,"50%, 66%, 75%, 100%, 133%, 150%, 200%, 266%, 300%, 400%",,147
+Sound Common / Arpeggiator,31,5p,09,1,00 - 7F,00,ARP Note Limit Low,C-2 ... G8,,147
+Sound Common / Arpeggiator,31,5p,0A,1,00 - 7F,7F,ARP Note Limit High,C-2 ... G8,,147
+Sound Common / Arpeggiator,31,5p,0B,1,01 - 7F,01,ARP Velocity Limit Low,1 - 127,,147
+Sound Common / Arpeggiator,31,5p,0C,1,01 - 7F,7F,ARP Velocity Limit High,1 - 127,,147
+Sound Common / Arpeggiator,31,5p,0D,1,00 - 04,00,ARP Key Mode,"Sort, Thru, Direct, Sort+Drct, Thru+Drct",,147
+Sound Common / Arpeggiator,31,5p,0E,1,00 - 01,01,ARP Vel Mode,"Original, Thru",,147
+Sound Common / Arpeggiator,31,5p,0F,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,10,1,03,03,ARP Quantize Value,120,,147
+Sound Common / Arpeggiator,31,5p,11,1,00 - 64,00,ARP Quantize Strength,0 - 100[%],,147
+Sound Common / Arpeggiator,31,5p,12,2,00 - 01 00 - 7F,00 64,ARP Velocity Rate MSB ARP Velocity Rate LSB,"0 - 200[%] 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,147
+Sound Common / Arpeggiator,31,5p,14,2,00 - 01 00 - 7F,00 64,ARP Gate Time Rate MSB,0 - 200[%],,147
+Sound Common / Arpeggiator,31,5p,16,2,00 - 01 00 - 7F,01 00,ARP Gate Time Rate LSB Swing Offset MSB Swing Offset LSB,"1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0 -60 - 0 - +60 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,147
+Sound Common / Arpeggiator,31,5p,18,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,19,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,1A,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,1B,1,,00,reserved,,,147
+Sound Common / Arpeggiator,31,5p,1C,1,3D - 43,40,ARP Octave Range,-3 - 0 - +3,,147
+Sound Common / Arpeggiator,31,5p,1D,1,,00,Reserved,,,147
+Sound Common / Arpeggiator,31,5p,1E,2,00 - 00 00 - 08,00 00,ARP Type MSB,"Up, Down, Random, Up Down 1, Up Down 2, Slap & Pop, Unison, Rhythm 1, Rhythm 2 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,147
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,00,1,00 - 01,01,Element Assign,"Off, On",Init value for Element 2 - 8 is Off,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,01,1,00 - 01,00,Wave Select,"0=Preset, 1=User",SAMPLER track is fixed to 1 (User),148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,02,1,00 - 07,00,Element Group Number,1 - 8,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,03,2,00 - 1F 00 - 7F,00 01,Wave Number MSB Wave Number LSB,"1 - 4096 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",User Wave :,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,05,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,06,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,07,1,,00,reserved,,1 - 2048 Init value for Synth/ SAMPLER track is 1,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,08,1,00 - 01,00,Trigger/Gate Mode,"Trigger, Gate",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,09,1,,01,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0A,1,00 - 7F,00,Alternate Group,"0=off, 1 - 127",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0B,1,01 - 7F,40,Pan,L63 ... C ... R63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0C,1,00 - 7F,00,Random Pan Depth,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0D,1,00 - 7F,40,Alternate Pan Depth,L64 ... C ... R63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0E,1,00 - 7F,40,Scaling Pan Depth,-64 - +63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,0F,1,00 - 07,00,XA Control,"Normal, Legato, Key Off, Cycle, Random",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,10,1,00 - 7F,00,Note Limit Low,C-2 ... G8,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,11,1,00 - 7F,7F,Note Limit High,C-2 ... G8,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,12,1,01 - 7F,01,Velocity Limit Low,1 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,13,1,01 - 7F,7F,Velocity Limit High,1 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,14,1,00 - 7F,00,Velocity Cross Fade,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,15,1,00 - 7F,00,Key On Delay,0 - 127,Available when Tempo Sync is Off,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,16,1,00 - 01,00,Key On Delay Tempo Sync,"Off, On",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,17,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,18,1,00 - 02,01,Insertion Effect Switch,"Thru, InsA, InsB",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,19,1,00,00,Output Select,0=MainL&R,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,1A,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,1B,5,,00 00 00 00,reserved,00,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,20,5,,00 00 00 00,reserved,00,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,25,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,26,1,00 - 01,00,LFO Speed Range,"Normal, Extended",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,27,2,00 - 03 00 - 7F,00 00,LFO Extended Speed,0 - 415,Available when,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,29,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2A,1,00 - 07,07,LFO Box Switch,"1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0 bit6-3: reserved bit2: off,on box3 bit1: off,on box2 bit0: off,on box1",LFO Speed Range is Extended Available when,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2B,1,05 - 15,0B,Key On Delay Tempo,"16th, 8th/3, 16th., 8th, 4th/3, 8th., 4th, 2th/3, 4th., 2nd, Whole/3, 2nd., 4thX4, 4thX5, 4thX6, 4thX7, 4thX8",Tempo Sync is On,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2C,1,00 - 01,00,Half Damper Switch,"Off, On",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2D,1,,00,Reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2E,1,00 - 7F,64,Element Level,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,2F,1,00 - 7F,54,Level Velocity Sensitivity,-64 - +63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,30,1,00 - 7F,00,Level Velocity Offset,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,31,1,00 - 04,03,Level Sens Key Curve,00 - 04,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,32,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,33,1,00 - 7F,00,AEG Attack Time,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,34,1,00 - 7F,40,AEG Decay 1 Time,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,35,1,00 - 7F,40,AEG Decay 2 Time,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,36,1,00 - 7F,7F,Half Damper Time,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,37,1,00 - 7F,14,AEG Release Time,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,38,1,00 - 7F,00,AEG Init Level,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,39,1,00 - 7F,7F,AEG Attack Level,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3A,1,00 - 7F,7F,AEG Decay 1 Level,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3B,1,00 - 7F,7F,AEG Decay 2 Level,0 - 127,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3C,1,,00,reserved,,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3D,1,00 - 04,04,AEG Time Velocity Segment,"Attack, Atk+Dcy, Decay, Atk+Rls, All",,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3E,1,00 - 7F,40,AEG Time Velocity Sensitivity,-64 - +63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,3F,1,00 - 7F,40,AEG Time Key Follow Sensitivity,-64 - +63,,148
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,40,1,00 - 7F,18,AEG Time Key Follow Center Note,C-2 ... G8,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,41,1,00 - 7C,24,Level Scaling Break Point 1,C-2 ... E8,BP1<BP2 <BP3<BP4,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,42,1,01 - 7D,30,Level Scaling Break Point 2,C#-2 ... F8,BP1<BP2 <BP3<BP4,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,43,1,02 - 7E,3C,Level Scaling Break Point 3,D-2 ... F#8,BP1<BP2 <BP3<BP4,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,44,1,03 - 7F,48,Level Scaling Break Point 4,D#-2 ... G8,BP1<BP2 <BP3<BP4,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,45,2,00 - 01 00 - 7F,01 00,Level Scaling Offset 1 MSB,"-128 - +127 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,47,2,00 - 01 00 - 7F,01 00,Level Scaling Offset 1 LSB Level Scaling Offset 2 MSB Level Scaling Offset 2 LSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,49,2,00 - 01 00 - 7F,01 00,Level Scaling Offset 3 MSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,4B,2,00 - 01 00 - 7F,01 00,Level Scaling Offset 3 LSB Level Scaling Offset 4 MSB Level Scaling Offset 4 LSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,4D,1,00 - 7F,40,Level Key Follow Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,4E,1,00 - 7F,40,AEG Time Key Follow Sensitivity Release Adjustment,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,4F,1,28 - 58,40,Coarse Tune,-24 - +24,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,50,1,00 - 7F,40,Fine Tune,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,51,1,00 - 7F,40,Pitch Velocity Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,52,1,,00,reserved,,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,53,1,00 - 7F,00,Random Pitch Depth,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,54,1,00 - 7F,60,Pitch Key Follow Sensitivity,-200 - +200[%],,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,55,1,00 - 7F,3C,Pitch Key Follow Sensitivity Center Note,C-2 ... G8,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,56,1,00 - 7F,40,Pitch Fine Scaling Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,57,1,00 - 7F,00,PEG Hold Time,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,58,1,00 - 7F,28,PEG Attack Time,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,59,1,00 - 7F,40,PEG Decay 1 Time,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,5A,1,00 - 7F,40,PEG Decay 2 Time,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,5B,1,00 - 7F,40,PEG Release Time,0 - 127,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,5C,2,00 - 01 00 - 7F,01 00,PEG Hold Level MSB,"-128 - +127 (-4800 - +4800[cent]) 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,5E,2,00 - 01 00 - 7F,01 00,PEG Hold Level LSB PEG Attack Level MSB PEG Attack Level LSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,60,2,00 - 01 00 - 7F,01 00,PEG Decay 1 Level MSB PEG Decay 1 Level LSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,62,2,00 - 01 00 - 7F,01 00,PEG Decay 2 Level MSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,64,2,00 - 01 00 - 7F,01 00,PEG Decay 2 Level LSB PEG Release Level MSB PEG Release Level LSB,˶,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,66,1,00 - 7F,54,PEG Depth,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,67,1,00 - 04,04,PEG Time Velocity Sensitivity Segment,"Attack, Atk+Dcy, Decay, Atk+Rls, All",,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,68,1,00 - 7F,40,PEG Time Velocity Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,69,1,00 - 7F,40,PEG Depth Velocity Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,6A,1,00 - 04,02,PEG Depth Velocity Sensitivity Curve,0 - 4,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,6B,1,00 - 7F,40,PEG Time Key Follow Sensitivity,-64 - +63,,149
+Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,41,ep,6C,1,00 - 7F,3C,PEG Time Key Follow Sensitivity Center Note,C-2 ... G8,,149
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,00,1,00 - 15,04,Filter Type,"LPF24D, LPF24A, LPF18, LPF18s, LPF12+HPF12, LPF6+HPF12, HPF24D, HPF12, BPF12D, (reserved), BPFw, BPF6, BEF12, BEF6, DualLPF, DualHPF, DualBPF, DualBEF, (reserved),",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,01,2,00 - 01 00 - 7F,01 20,Filter Cutoff Frequency MSB 0 Filter Cutoff Frequency LSB,"LPF12+BPF6, (reserved), Thru - 255 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,03,1,00 - 7F,40,Filter Cutoff Velocity Sensitivity,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,04,1,,02,reserved,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,05,1,00 - 7F,00,Filter Resonance/Width 0,- 127,Not available when Filter Type is LPF6/Thru,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,06,1,00 - 7F,40,Filter Resonance Velocity Sensitivity,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,07,2,00 - 01 00 - 7F,00 00,HPF Cutoff Frequency MSB 0 HPF Cutoff Frequency LSB,- 255,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,09,1,,40,reserved,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,0A,2,00 - 01 00 - 7F,01 00,Distance MSB,"1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0 -128 - +127 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",Available when Filter Type is DualLPF/HPF/ BPF/BEF,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,0C,2,00 - 01 00 - 7F,01 66,Distance LSB Filter Gain MSB 0 Filter Gain LSB,"- 255 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,0E,1,00 - 7F,00,FEG Hold Time 0,- 127,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,0F,1,00 - 7F,00,FEG Attack Time 0,- 127,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,10,1,00 - 7F,40,FEG Decay 1 Time 0,- 127,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,11,1,00 - 7F,40,FEG Decay 2 Time 0,- 127,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,12,1,00 - 7F,50,FEG Release Time 0,- 127,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,13,2,00 - 01 00 - 7F,01 00,FEG Hold Level MSB,"-128 - +127 (-9600 - +9600[cent]) 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,15,2,00 - 01 00 - 7F,01 7F,FEG Hold Level LSB ˶ FEG Attack Level MSB FEG Attack Level LSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,17,2,00 - 01 00 - 7F,01 7F,˶ FEG Decay 1 Level MSB FEG Decay 1 Level LSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,19,2,00 - 01 00 - 7F,01 7F,˶ FEG Decay 2 Level MSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,1B,2,00 - 01 00 - 7F,01 00,FEG Decay 2 Level LSB ˶ FEG Release Level MSB FEG Release Level LSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,1D,1,00 - 7F,68,FEG Depth,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,1E,1,00 - 04,04,FEG Time Velocity Sensitivity Segment,"Attack, Atk+Dcy, Decay, Atk+Rls, All",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,1F,1,00 - 7F,40,FEG Time Velocity Sensitivity,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,20,1,00 - 7F,40,FEG Depth Velocity Sensitivity,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,21,1,00 - 04,02,FEG Depth Velocity Sensitivity Curve 0,- 4,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,22,1,00 - 7F,40,FEG Time Key Follow Sensitivity,-64 - +63,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,23,1,00 - 7F,18,FEG Time Key Follow Sensitivity Center Note,C-2 ... G8,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,24,1,00 - 7C,24,Filter Cutoff Scaling Break Point 1,C-2 ... E8,BP1<BP2 <BP3<BP4,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,25,1,01 - 7D,30,Filter Cutoff Scaling Break Point 2,C#-2 ... F8,BP1<BP2 <BP3<BP4,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,26,1,02 - 7E,3C,Filter Cutoff Scaling Break Point 3,D-2 ... F#8,BP1<BP2 <BP3<BP4,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,27,1,03 - 7F,48,Filter Cutoff Scaling Break Point 4,D#-2 ... G8,BP1<BP2 <BP3<BP4,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,28,2,00 - 01 00 - 7F,01 00,Filter Cutoff Scaling Offset 1 MSB,"-128 - +127 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,2A,2,00 - 01 00 - 7F,01 00,Filter Cutoff Scaling Offset 1 LSB ˶ Filter Cutoff Scaling Offset 2 MSB Filter Cutoff Scaling Offset 2 LSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,2C,2,00 - 01 00 - 7F,01 00,˶ Filter Cutoff Scaling Offset 3 MSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,2E,2,00 - 01 00 - 7F,01 00,Filter Cutoff Scaling Offset 3 LSB ˶ Filter Cutoff Scaling Offset 4 MSB Filter Cutoff Scaling Offset 4 LSB,,,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,30,1,00 - 7F,4A,Filter Cutoff Key Follow Sensitivity,-200 - +200[%],,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,31,1,00 - 7F,40,HPF Cutoff Key Follow Sensitivity,-200 - +200[%],,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,32,1,00 - 05,00,EQ Type,"2-band, P.EQ, Boost6, Boost12, Boost18, Thru",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,33,1,00 - 1F,00,EQ Q 0,- 31 (0.7 - 10.3),Available when,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,34,2,00 - 01 00 - 7F,00 36,EQ 1 Frequency,"50.1 - 2.00k (2 Band) 139.7 - 12.9k (P.EQ) 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",EQ Type is P.EQ Available when EQ Type,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,36,1,20 - 60,40,EQ 1 Gain,-32 - +32 (-12.00 - +12.00[dB]),,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,37,2,01 03 - 71,01 67,EQ 2 Frequency,"503.8 - 10.1k 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",is 2-band/P.EQ Available when EQ Type is 2-band,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,39,1,20 - 60,40,EQ 2 Gain,-32 - +32 (-12.00 - +12.00[dB]),,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3A,1,00 - 02,01,LFO Wave,"Saw, Triangle, Square",,150
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3B,1,00 - 01,01,LFO Key On Sync,"Off, On",,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3C,1,00 - 7F,00,LFO Key On Delay Time 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3D,1,00 - 3F,26,LFO Speed 0,- 63,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3E,1,00 - 7F,00,LFO AMod Depth 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,3F,1,00 - 7F,00,LFO PMod Depth 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,40,1,00 - 7F,00,LFO FMod Depth 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,41,1,00 - 7F,00,LFO Fade In Time 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,42,1,,00,reserved,,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,43,1,00 - 05,00,Common LFO Phase Offset,"+0, +90, +120, +180, +240, +270",,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,44,1,00 - 7F,7F,Common LFO Box1 Depth Ratio 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,45,1,00 - 7F,7F,Common LFO Box2 Depth Ratio 0,- 127,,151
+Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,42,ep,46,1,00 - 7F,7F,Common LFO Box3 Depth Ratio 0,- 127,,151
+Sound DX / Common,48,09,00,1,00 - 0B,00,Algorithm,1 - 12,,152
+Sound DX / Common,48,09,01,1,,00,reserved,,,152
+Sound DX / Common,48,09,02,1,28 - 58,42,Pitch Bend Sensitivity,-24 - 0 - +24 [semitones],,152
+Sound DX / Common,48,09,03,1,,00,reserved,,,152
+Sound DX / Common,48,09,04,1,00 - 06,00,LFO Wave,"0:Sin, 1:Tri, 2:Saw-Up, 3:Saw-Down, 4:Square, 5:S&H8, 6:S&H",,152
+Sound DX / Common,48,09,05,1,00 - 7F,40,LFO Speed,0 - 127,,152
+Sound DX / Common,48,09,06,1,00 - 7F,00,LFO Delay,0 - 127,,152
+Sound DX / Common,48,09,07,1,00 - 7F,00,LFO PMD,0 - 127,,152
+Sound DX / Common,48,09,08,1,,00,reserved,,,152
+Sound DX / Common,48,09,09,1,,00,reserved,,,152
+Sound DX / Common,48,09,0A,1,00 - 7F,40,PEG Rate 1,0 - 127,,152
+Sound DX / Common,48,09,0B,1,00 - 7F,40,PEG Rate 2,0 - 127,,152
+Sound DX / Common,48,09,0C,1,00 - 7F,40,PEG Rate 3,0 - 127,,152
+Sound DX / Common,48,09,0D,1,00 - 7F,40,PEG Rate 4,0 - 127,,152
+Sound DX / Common,48,09,0E,1,10 - 70,40,PEG Level 1,-48 - 0 - 48 (16 - 64 - 112) +/- 4Oct,,152
+Sound DX / Common,48,09,0F,1,10 - 70,40,PEG Level 2,-48 - 0 - 48 (16 - 64 - 112) +/- 4Oct,,152
+Sound DX / Common,48,09,10,1,10 - 70,40,PEG Level 3,-48 - 0 - 48 (16 - 64 - 112) +/- 4Oct,,152
+Sound DX / Common,48,09,11,1,10 - 70,40,PEG Level 4,-48 - 0 - 48 (16 - 64 - 112) +/- 4Oct,,152
+Sound DX / Common,48,09,12,1,,00,reserved,,,152
+Sound DX / Common,48,09,13,1,,00,reserved,,,152
+Sound DX / Common,48,09,14,1,,00,reserved,,,152
+Sound DX / Common,48,09,15,1,,00,reserved,,,152
+Sound DX / Common,48,09,16,1,,00,reserved,,,152
+Sound DX / Common,48,09,17,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,00,1,00 - 01,01,ON/OFF,"Off, On",,152
+Sound DX / Operator,49,o9,01,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,02,1,00 - 7F,7F,EG Rate 1,,,152
+Sound DX / Operator,49,o9,03,1,00 - 7F,7F,EG Rate 2,,,152
+Sound DX / Operator,49,o9,04,1,00 - 7F,7F,EG Rate 3,,,152
+Sound DX / Operator,49,o9,05,1,00 - 7F,64,EG Rate 4,,,152
+Sound DX / Operator,49,o9,06,1,00 - 7F,7F,EG Level 1,,,152
+Sound DX / Operator,49,o9,07,1,00 - 7F,7F,EG Level 2,,,152
+Sound DX / Operator,49,o9,08,1,00 - 7F,7F,EG Level 3,,,152
+Sound DX / Operator,49,o9,09,1,00 - 7F,00,EG Level 4,,,152
+Sound DX / Operator,49,o9,0A,1,00 - 7F,00,EG Keyboard Rate Scaling,,,152
+Sound DX / Operator,49,o9,0B,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,0C,1,00 - 7F,00,Keyboard Level Scaling Left Depth,,,152
+Sound DX / Operator,49,o9,0D,1,00 - 7F,00,Keyboard Level Scaling Right Depth,,,152
+Sound DX / Operator,49,o9,0E,1,00 - 03,00,Keyboard Level Scaling Left Curve,"0: -LIN, 1: -EXP, 2: +EXP, 3: +LIN",,152
+Sound DX / Operator,49,o9,0F,1,00 - 03,03,Keyboard Level Scaling Right Curve,"0: -LIN, 1: -EXP, 2: +EXP, 3: +LIN",,152
+Sound DX / Operator,49,o9,10,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,11,1,00 - 7F,00,LFO AMD Depth,,,152
+Sound DX / Operator,49,o9,12,1,00 - 7F,00,Level Velocity Sensitivity,,,152
+Sound DX / Operator,49,o9,13,1,00 - 7F,64,Level Output Level,,Init value for Operator2/3 is 0,152
+Sound DX / Operator,49,o9,14,1,00 - 7F,00,Level Feedback Level,,,152
+Sound DX / Operator,49,o9,15,1,00 - 01,00,Level Feedback Type,"0:SAW, 1:SQUARE",,152
+Sound DX / Operator,49,o9,16,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,17,1,00 - 01,01,LFO PMD ON/OFF,"Off, On",,152
+Sound DX / Operator,49,o9,18,1,00 - 01,01,PEG ON/OFF,"Off, On",,152
+Sound DX / Operator,49,o9,19,1,00 - 01,00,Freq. Mode,"0:RATIO, 1:FIXED",,152
+Sound DX / Operator,49,o9,1A,1,00 - 1F,01,Freq. Coarse,,,152
+Sound DX / Operator,49,o9,1B,1,00 - 63,00,Freq. Fine,,,152
+Sound DX / Operator,49,o9,1C,1,00 - 7F,40,Freq. Detune,-64 - 0 - +63 (0 - 64 - 127),,152
+Sound DX / Operator,49,o9,1D,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,1E,1,,00,reserved,,,152
+Sound DX / Operator,49,o9,1F,1,,00,reserved,,,152
+SAMPLER Sample / General,50,eA,00,1,00 - 7F,00,Sample Name 1,,UTF8 (7-bit encoded),153
+SAMPLER Sample / General,50,eA,01,1,00 - 7F,00,Sample Name 2,,˶,153
+SAMPLER Sample / General,50,eA,02,1,00 - 7F,00,Sample Name 3,,˶,153
+SAMPLER Sample / General,50,eA,03,1,00 - 7F,00,Sample Name 4,,˶,153
+SAMPLER Sample / General,50,eA,04,1,00 - 7F,00,Sample Name 5,,˶,153
+SAMPLER Sample / General,50,eA,05,1,00 - 7F,00,Sample Name 6,,˶,153
+SAMPLER Sample / General,50,eA,06,1,00 - 7F,00,Sample Name 7,,˶,153
+SAMPLER Sample / General,50,eA,07,1,00 - 7F,00,Sample Name 8,,˶,153
+SAMPLER Sample / General,50,eA,08,1,00 - 7F,00,Sample Name 9,,˶,153
+SAMPLER Sample / General,50,eA,09,1,00 - 7F,00,Sample Name 10,,˶,153
+SAMPLER Sample / General,50,eA,0A,1,00 - 7F,00,Sample Name 11,,˶,153
+SAMPLER Sample / General,50,eA,0B,1,00 - 7F,00,Sample Name 12,,˶,153
+SAMPLER Sample / General,50,eA,0C,1,00 - 7F,00,Sample Name 13,,˶,153
+SAMPLER Sample / General,50,eA,0D,1,00 - 7F,00,Sample Name 14,,˶,153
+SAMPLER Sample / General,50,eA,0E,1,00 - 7F,00,Sample Name 15,,˶,153
+SAMPLER Sample / General,50,eA,0F,1,00 - 7F,00,Sample Name 16,,˶,153
+SAMPLER Sample / General,50,eA,10,1,00 - 7F,00,Sample Name 17,,˶,153
+SAMPLER Sample / General,50,eA,11,1,00 - 7F,00,Sample Name 18,,˶,153
+SAMPLER Sample / General,50,eA,12,1,00 - 7F,00,Sample Name 19,,˶,153
+SAMPLER Sample / General,50,eA,13,1,00 - 7F,00,Sample Name 20,,˶,153
+SAMPLER Sample / General,50,eA,14,1,00 - 7F,00,Sample Name 21,,˶,153
+SAMPLER Sample / General,50,eA,15,1,00 - 7F,00,Sample Name 22,,˶,153
+SAMPLER Sample / General,50,eA,16,1,00 - 7F,00,Sample Name 23,,˶,153
+SAMPLER Sample / General,50,eA,17,1,00 - 7F,00,Sample Name 24,,˶,153
+SAMPLER Sample / General,50,eA,18,1,00 - 7F,00,Sample Name 25,,˶,153
+SAMPLER Sample / General,50,eA,19,1,00 - 7F,00,Sample Name 26,,˶,153
+SAMPLER Sample / General,50,eA,1A,1,00 - 7F,00,Sample Name 27,,˶,153
+SAMPLER Sample / General,50,eA,1B,1,00 - 7F,00,Sample Name 28,,˶,153
+SAMPLER Sample / General,50,eA,1C,1,00 - 7F,00,Sample Name 29,,˶,153
+SAMPLER Sample / General,50,eA,1D,1,00 - 7F,00,Sample Name 30,,˶,153
+SAMPLER Sample / General,50,eA,1E,1,00 - 7F,00,Sample Name 31,,˶,153
+SAMPLER Sample / General,50,eA,1F,1,00 - 7F,00,Sample Name 32,,˶,153
+SAMPLER Sample / General,50,eA,20,1,00 - 7F,00,Sample Name 33,,˶,153
+SAMPLER Sample / General,50,eA,21,1,00 - 7F,00,Sample Name 34,,˶,153
+SAMPLER Sample / General,50,eA,22,1,00 - 7F,00,Sample Name 35,,˶,153
+SAMPLER Sample / General,50,eA,23,1,00 - 7F,00,Sample Name 36,,˶,153
+SAMPLER Sample / General,50,eA,24,1,00 - 7F,00,Sample Name 37,,˶,153
+SAMPLER Sample / General,50,eA,25,1,00 - 7F,00,Sample Name 38,,˶,153
+SAMPLER Sample / General,50,eA,26,1,00 - 7F,00,Sample Name 39,,˶,153
+SAMPLER Sample / General,50,eA,27,1,00 - 7F,00,Sample Name 40,,˶,153
+SAMPLER Sample / General,50,eA,28,1,00 - 7F,00,Sample Name 41,,˶,153
+SAMPLER Sample / General,50,eA,29,1,00 - 7F,00,Sample Name 42,,˶,153
+SAMPLER Sample / General,50,eA,2A,1,00 - 7F,00,Sample Name 43,,˶,153
+SAMPLER Sample / General,50,eA,2B,1,00 - 7F,00,Sample Name 44,,˶,153
+SAMPLER Sample / General,50,eA,2C,1,00 - 7F,00,Sample Name 45,,˶,153
+SAMPLER Sample / General,50,eA,2D,1,00 - 7F,00,Sample Name 46,,˶,153
+SAMPLER Sample / General,50,eA,2E,1,00 - 7F,00,Sample Name 47,,˶,153
+SAMPLER Sample / General,50,eA,2F,1,00 - 7F,00,Sample Name 48,,˶,153
+SAMPLER Sample / General,50,eA,30,1,00 - 7F,00,Sample Name 49,,˶,153
+SAMPLER Sample / General,50,eA,31,1,00 - 7F,00,Sample Name 50,,˶,153
+SAMPLER Sample / General,50,eA,32,1,00 - 7F,00,Sample Name 51,,˶,153
+SAMPLER Sample / General,50,eA,33,1,00 - 7F,00,Sample Name 52,,˶,153
+SAMPLER Sample / General,50,eA,34,1,00 - 7F,00,Sample Name 53,,˶,153
+SAMPLER Sample / General,50,eA,35,1,00 - 7F,00,Sample Name 54,,˶,153
+SAMPLER Sample / General,50,eA,36,1,00 - 7F,00,Sample Name 55,,˶,153
+SAMPLER Sample / General,50,eA,37,1,00 - 7F,00,Sample Name 56,,˶,153
+SAMPLER Sample / General,50,eA,38,1,00 - 7F,00,Sample Name 57,,˶,153
+SAMPLER Sample / General,50,eA,39,1,00 - 7F,00,Sample Name 58,,˶,153
+SAMPLER Sample / General,50,eA,3A,1,00 - 7F,00,Sample Name 59,,˶,153
+SAMPLER Sample / General,50,eA,3B,1,00 - 7F,00,Sample Name 60,,˶,153
+SAMPLER Sample / General,50,eA,3C,1,00 - 7F,00,Sample Name 61,,˶,153
+SAMPLER Sample / General,50,eA,3D,1,00 - 7F,00,Sample Name 62,,˶,153
+SAMPLER Sample / General,50,eA,3E,1,00 - 7F,00,Sample Name 63,,˶,153
+SAMPLER Sample / General,50,eA,3F,1,00 - 7F,00,Sample Name 64,,˶,153
+SAMPLER Sample / General,50,eA,40,1,00 - 7F,00,Sample Name 65,,˶,153
+SAMPLER Sample / General,50,eA,41,1,00 - 7F,00,Sample Name 66,,˶,153
+SAMPLER Sample / General,50,eA,42,1,00 - 7F,00,Sample Name 67,,UTF8 (7-bit encoded),154
+SAMPLER Sample / General,50,eA,43,1,00 - 7F,00,Sample Name 68,,˶,154
+SAMPLER Sample / General,50,eA,44,1,00 - 7F,00,Sample Name 69,,˶,154
+SAMPLER Sample / General,50,eA,45,1,00 - 7F,00,Sample Name 70,,˶,154
+SAMPLER Sample / General,50,eA,46,1,00 - 7F,00,Sample Name 71,,˶,154
+SAMPLER Sample / General,50,eA,47,1,00 - 7F,00,Sample Name 72,,˶,154
+SAMPLER Sample / General,50,eA,48,1,00 - 7F,00,Sample Name 73,,˶,154
+SAMPLER Sample / General,50,eA,49,1,00 - 7F,00,Sample Name 74,,˶,154
+SAMPLER Sample / General,50,eA,4A,1,00 - 7F,00,Sample Name 75,,˶,154
+SAMPLER Sample / General,50,eA,4B,1,00 - 7F,00,Sample Name 76,,˶,154
+SAMPLER Sample / General,50,eA,4C,1,00 - 7F,00,Sample Name 77,,˶,154
+SAMPLER Sample / General,50,eA,4D,1,00 - 7F,00,Sample Name 78,,˶,154
+SAMPLER Sample / General,50,eA,4E,1,00 - 7F,00,Sample Name 79,,˶,154
+SAMPLER Sample / General,50,eA,4F,1,00 - 7F,00,Sample Name 80,,˶,154
+SAMPLER Sample / General,50,eA,50,1,00 - 7F,00,Sample Name 81,,˶,154
+SAMPLER Sample / General,50,eA,51,1,00 - 7F,00,Sample Name 82,,˶,154
+SAMPLER Sample / General,50,eA,52,1,00 - 7F,00,Sample Name 83,,˶,154
+SAMPLER Sample / General,50,eA,53,1,00 - 7F,00,Sample Name 84,,˶,154
+SAMPLER Sample / General,50,eA,54,1,00 - 7F,00,Sample Name 85,,˶,154
+SAMPLER Sample / General,50,eA,55,1,00 - 7F,00,Sample Name 86,,˶,154
+SAMPLER Sample / General,50,eA,56,1,00 - 7F,00,Sample Name 87,,˶,154
+SAMPLER Sample / General,50,eA,57,1,00 - 7F,00,Sample Name 88,,˶,154
+SAMPLER Sample / General,50,eA,58,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,59,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5A,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5B,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5C,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5D,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5E,1,00,00,reserved,,,154
+SAMPLER Sample / General,50,eA,5F,1,00 - 01,00,Loop On/Off,"Off, On",,154
+SAMPLER Sample / General,50,eA,60,4,00 00 00,00 00 00 00,- Loop Length,0x00000050 - 0x00FFFFFF,,154
+SAMPLER Sample / General,50,eA,64,1,,00,reserved,,,154
+SAMPLER Sample / General,50,eA,65,1,,00,reserved,,,154
+SAMPLER Sample / General,50,eA,66,4,00 00 00,00 00 00 00,- Start Point,0x00000000 - 0x00FFFFFF,,154
+SAMPLER Sample / General,50,eA,6A,4,"00 00 00,",00 00 00 00,End Point,"0x00000000, 0x0000000F - 0x00FFFFFF",bit3-0 is,154
+SAMPLER Sample / General,50,eA,6E,1,,00,reserved,,,154
+SAMPLER Sample / General,50,eA,6F,1,,00,reserved,,,154

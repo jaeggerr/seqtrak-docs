@@ -1,0 +1,1446 @@
+block,effect_types,parameter_number,parameter,display_range,value_range,data_assign_table,default_slider,panel_note,page
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",1,Reverb Time,0.3s - 30.0s,(0 - 69),4,2,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",2,Diffusion,0 - 10,(0 - 10),,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",3,Initial Delay,0.1ms - 99.3ms,(0 - 63),5,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",4,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",5,LPF Cutoff Frequency,1.0kHz -20.0kHz,(34 - 60),3,3,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",6,---,,,,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",7,---,,,,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",8,---,,,,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",9,---,,,,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",11,Reverb Delay,0.1ms - 99.3ms,(0 - 63),5,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",12,Density,0 - 4,(0 - 4),,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",13,ER/Rev Balance,E63>R - E=R - E<R63,(1 - 127),,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",14,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",15,Feedback Level,0 - 63,(64 - 127),,,,64
+Single / Master Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",16,---,,,,,,64
+Single / Master Effect Block,EARLY REFLECTION,1,Type,"S-hall, L-hall, Random, Reverse, Plate, Spring",(0 - 5),,,,64
+Single / Master Effect Block,EARLY REFLECTION,2,Room Size,0.1 - 20.0,(0 - 127),6,2,,64
+Single / Master Effect Block,EARLY REFLECTION,3,Diffusion,0 - 10,(0 - 10),,,,64
+Single / Master Effect Block,EARLY REFLECTION,4,Initial Delay,0.1ms - 200ms,(0 - 127),5,,,64
+Single / Master Effect Block,EARLY REFLECTION,5,Feedback Level,0 - 63,(64 - 127),,,,64
+Single / Master Effect Block,EARLY REFLECTION,6,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,64
+Single / Master Effect Block,EARLY REFLECTION,7,LPF Cutoff Frequency,1.0kHz-20.0kHz,(34 - 60),3,3,,64
+Single / Master Effect Block,EARLY REFLECTION,8,---,,,,,,64
+Single / Master Effect Block,EARLY REFLECTION,9,---,,,,,,64
+Single / Master Effect Block,EARLY REFLECTION,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,64
+Single / Master Effect Block,EARLY REFLECTION,11,Liveness,0 - 10,(0 - 10),,,,64
+Single / Master Effect Block,EARLY REFLECTION,12,Density,0 - 3,(0 - 3),,,,64
+Single / Master Effect Block,EARLY REFLECTION,13,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,64
+Single / Master Effect Block,EARLY REFLECTION,14,---,,,,,,64
+Single / Master Effect Block,EARLY REFLECTION,15,---,,,,,,64
+Single / Master Effect Block,EARLY REFLECTION,16,---,,,,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",1,Type,"TypeA, TypeB",(0 - 1),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",2,Room Size,0.1 - 20.0,(0 - 127),6,2,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",3,Diffusion,0 - 10,(0 - 10),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",4,Initial Delay,0.1ms - 200ms,(0 - 127),5,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",5,Feedback Level,0 - 63,(64 - 127),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",6,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",7,LPF Cutoff Frequency,1.0kHz -20.0kHz,(34 - 60),3,3,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",8,---,,,,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",9,---,,,,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",11,Liveness,0 - 10,(0 - 10),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",12,Density,0 - 3,(0 - 3),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",13,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",14,---,,,,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",15,---,,,,,,64
+Single / Master Effect Block,"GATED REVERB, REVERSE REVERB",16,---,,,,,,64
+Single / Master Effect Block,CROSS DELAY,1,Delay Time L>R,0.1ms-1638.3ms,(1 - 16383),,2,,65
+Single / Master Effect Block,CROSS DELAY,2,Delay Time R>L,0.1ms-1638.3ms,(1 – 16383),,2,,65
+Single / Master Effect Block,CROSS DELAY,3,Feedback Level,0 - 63,(64 - 127),,3,,65
+Single / Master Effect Block,CROSS DELAY,4,Input Select,"L, R, L&R, L-MODE2, R-MODE2",(0 - 4),,,,65
+Single / Master Effect Block,CROSS DELAY,5,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,65
+Single / Master Effect Block,CROSS DELAY,6,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,7,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,8,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,9,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,65
+Single / Master Effect Block,CROSS DELAY,11,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,12,---,,,,,,65
+Single / Master Effect Block,CROSS DELAY,13,EQ Low Frequency,32Hz - 2.0kHz,(4 - 40),3,,,65
+Single / Master Effect Block,CROSS DELAY,14,EQ Low Gain,-12dB - +12dB,(52 - 76),,,,65
+Single / Master Effect Block,CROSS DELAY,15,EQ High Frequency,500Hz - 16.0kHz,(28 - 58),3,,,65
+Single / Master Effect Block,CROSS DELAY,16,EQ High Gain,-12dB - +12dB,(52 - 76),,,,65
+Single / Master Effect Block,TEMPO CROSS DELAY,1,Delay Time L>R,32nd/3 - 4thx6,(0 - 19),13,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,2,Delay Time R>L,32nd/3 - 4thx6,(0 - 19),13,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,3,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,4,Input Select,"L, R, L&R, L-MODE2, R-MODE2",(0 - 4),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,5,Feedback High Damp,0.1 - 1.0,(1 - 10),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,6,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO CROSS DELAY,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,1,Delay Time,32nd/3 - 4thx6,(0 - 19),13,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,2,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,3,Feedback High Damp,0.1 – 1.0,(1 - 10),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,4,L/R Diffusion,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,5,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,6,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY MONO,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,1,Delay Time,32nd/3 - 4thx6,(0 - 19),13,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,2,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,3,Feedback High Damp,0.1 – 1.0,(1 - 10),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,4,L/R Diffusion,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,5,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,6,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,TEMPO DELAY STEREO,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,CONTROL DELAY,1,Delay Time,0.1ms-1486.0ms,(1 - 14860),,2,,65
+Single / Master Effect Block,CONTROL DELAY,2,Delay Transition Rate,1 - 48,(1 - 48),,,,65
+Single / Master Effect Block,CONTROL DELAY,3,Feedback Level,0 - 63,(64 - 127),,3,,65
+Single / Master Effect Block,CONTROL DELAY,4,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,65
+Single / Master Effect Block,CONTROL DELAY,5,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,65
+Single / Master Effect Block,CONTROL DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,65
+Single / Master Effect Block,CONTROL DELAY,11,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,12,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,13,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,14,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,15,---,,,,,,65
+Single / Master Effect Block,CONTROL DELAY,16,---,,,,,,65
+Single / Master Effect Block,DELAY LR,1,Delay Time L,0.1ms-1638.3ms,(1 - 16383),Table No.,Assign No. 2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,2,Delay Time R,0.1ms-1638.3ms,(1 - 16383),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,3,Feedback Time L,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,4,Feedback Time R,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,5,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,6,Feedback High Damp,0.1 – 1.0,(1 - 10),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LR,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,65
+Single / Master Effect Block,DELAY LCR,1,Delay Time L,0.1ms-1638.3ms,(1 - 16383),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,2,Delay Time R,0.1ms-1638.3ms,(1 - 16383),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,3,Delay Time C,0.1ms-1638.3ms,(1 - 16383),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,4,Feedback Time,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,5,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,6,Delay Level C,0 – 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,7,Feedback High Damp,0.1 – 1.0,(1 - 10),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,DELAY LCR,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,66
+Single / Master Effect Block,ANALOG DELAY RETRO,1,Delay Time,25ms - 800ms,(0 - 127),41,2,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,2,Feedback Level,0 - 127,(0 - 127),,3,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,3,Delay Input Level,0 - 127,(0 - 127),,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,4,Type,"Mellow, Dub, Narrow, Soft, Dark",(0 - 4),43,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,5,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,6,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,7,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,8,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,9,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,11,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,12,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,13,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,14,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,15,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY RETRO,16,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,1,Delay Time,50ms - 1.0s,(0 - 127),42,2,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,2,Feedback Level,0 - 127,(0 - 127),,3,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,3,Delay Input Level,0 - 127,(0 - 127),,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,4,Type,"Urban, Dub, Narrow, Soft, Dark",(0 - 4),44,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,5,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,6,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,7,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,8,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,9,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,11,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,12,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,13,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,14,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,15,---,,,,,,66
+Single / Master Effect Block,ANALOG DELAY MODERN,16,---,,,,,,66
+Single / Master Effect Block,CONTROL FILTER,1,Filter Type,"LPF(12dB), LPF(18dB), LPF(24dB), HPF, BPF",(0 - 4),,,,67
+Single / Master Effect Block,CONTROL FILTER,2,Cutoff Frequency Control,0 - 127,(0 - 127),,1,,67
+Single / Master Effect Block,CONTROL FILTER,3,Resonance,0 - 127,(0 - 127),,2,,67
+Single / Master Effect Block,CONTROL FILTER,4,Filter Output Level,-12dB-+12dB,(52 - 76),,3,,67
+Single / Master Effect Block,CONTROL FILTER,5,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,6,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,7,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,8,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,9,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,67
+Single / Master Effect Block,CONTROL FILTER,11,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,12,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,13,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,14,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,15,---,,,,,,67
+Single / Master Effect Block,CONTROL FILTER,16,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,1,Cutoff Frequency,0.00 - 100.00,(0 - 10000),,1,,67
+Single / Master Effect Block,VCM MINI FILTER,2,Resonance,0.0 - 1.0,(0 - 500),,2,,67
+Single / Master Effect Block,VCM MINI FILTER,3,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,4,Type,"LPH, HPF",(0 - 1),,,,67
+Single / Master Effect Block,VCM MINI FILTER,5,Texture,"Retro, Standard, Modern",(0 - 2),,,,67
+Single / Master Effect Block,VCM MINI FILTER,6,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,7,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,8,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,9,Input Level,-36 - +24dB,(0 - 120),,,,67
+Single / Master Effect Block,VCM MINI FILTER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,67
+Single / Master Effect Block,VCM MINI FILTER,11,Output Level,-40 - +20dB,(0 - 120),,3,,67
+Single / Master Effect Block,VCM MINI FILTER,12,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,13,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,14,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,15,---,,,,,,67
+Single / Master Effect Block,VCM MINI FILTER,16,---,,,,,,67
+Single / Master Effect Block,LP-HP FILTER,1,LPF/HPF Cutoff Frequency (*),"-256--1 (LPF24A), 0 (Thru), +1-+256 (HPF24A)",(0-256-512),,1,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,2,Resonance,-6-0-41.625[dB] (0.375[dB]step),(0-16-127),,2,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,3,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,4,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,5,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,6,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,7,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,8,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,9,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,10,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,11,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,12,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,13,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,14,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,15,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,LP-HP FILTER,16,---,,,,,(*) Internally limited depending on Resonance.,67
+Single / Master Effect Block,VCM COMPRESSOR 376,1,Input Level,-∞ - 0.00dB,(0 - 200),25,2,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,2,Output Level,-∞ - 0.00dB,(0 - 200),25,3,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,3,Ratio,"2, 4, 8, 12, 20",(0 - 4),,1,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,4,Attack,0.022ms-50.40ms,(0 - 200),26,2 (*),(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,5,Release,10.88ms-544.22ms,(0 - 200),27,3 (*),(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,6,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,7,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,8,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,9,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,10,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,11,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,1 (*),(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,12,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,13,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,14,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,15,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,VCM COMPRESSOR 376,16,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,1,Attack,1ms - 40ms,(0 - 19),8,2 (*),(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,2,Release,10ms - 680ms,(0 - 15),9,3 (*),(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,3,Threshold,-48dB - -6dB,(79 - 121),,2,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,4,Ratio,1.0-20.0,(0 - 7),10,1,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,5,Output Level,0 - 127,(0 - 127),,3,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,6,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,7,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,8,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,9,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,10,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,11,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,1 (*),(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,12,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,13,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,14,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,15,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,CLASSIC COMPRESSOR,16,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,1,Low Attack,1ms - 200ms,(0 - 29),8,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,2,Low Threshold,-54dB - -6dB,(73 - 121),,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,3,Low Ratio,1.0 - 20.0,(0 - 7),10,1,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,4,Low Gain,-∞ - +18dB,(0 - 55),14,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,5,Mid Attack,1ms - 200ms,(0 - 29),8,2 (*),(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,6,Mid Threshold,-54dB - -6dB,(73 - 121),,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,7,Mid Ratio,1.0 - 20.0,(0 - 7),10,2,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,8,Mid Gain,-∞ - +18dB,(0 - 55),14,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,9,High Attack,1ms - 200ms,(0 - 29),8,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,10,High Threshold,-54dB - -6dB,(73 - 121),,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,11,High Ratio,1.0 - 20.0,(0 - 7),10,3,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,12,High Gain,-∞ - +18dB,(0 - 55),14,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,13,Divide Freq Low,16Hz - 20kHz,(0 - 124),28,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,14,Divide Freq High,16Hz - 20kHz,(0 - 124),28,,(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,15,Common Release,10ms - 3000ms,(0 - 23),9,3 (*),(*) for Ducker.,68
+Single / Master Effect Block,MULTI BAND COMP,16,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,1 (*),(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,1,Threshold,-60dB - 0dB,(0 - 120),,2,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,2,Knee,0 - 8,(0 - 8),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,3,Attack,0.01ms - 80ms,(0 - 127),50,2 (*),(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,4,Release,6.25ms-999.0ms,(0 - 127),51,3 (*),(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,5,Ratio,1.00 - ∞,(0 - 127),52,1,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,6,Side Chain EQ Switch,"Off, On",(0 - 1),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,7,Side Chain EQ Q,0.1 - 10.0,(0 - 126),53,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,8,Side Chain EQ Frequency,11.89Hz-17.78kHz,(0 - 127),54,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,9,Side Chain EQ Gain,-30 - +30dB,(0 - 120),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,11,Output Level,-20 - +40dB,(0 - 120),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,12,Make Up Gain,-20 - +40dB,(0 - 120),,3,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,13,Post-comp HPF,"Off, 1.035Hz-80.35Hz",(0 - 127),55,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,14,Clipper,"Off, 1 - 100",(0 - 100),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,15,Clipper Source,"Dry+Wet, Wet",(0 - 1),,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,16,---,,,,,(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR DOWN,17,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,1 (*),(*) for Ducker.,68
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,1,Threshold,-60dB - 0dB,(0 - 120),,2,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,2,Knee,0 - 8,(0 - 8),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,3,Attack,0.01ms - 80ms,(0 - 127),50,2 (*),(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,4,Release,6.25ms-999.0ms,(0 - 127),51,3 (*),(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,5,Ratio,1 - ∞,(0 - 127),52,1,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,6,Side Chain EQ Switch,"Off, On",(0 - 1),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,7,Side Chain EQ Q,0.1 - 10.0,(0 - 126),53,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,8,Side Chain EQ Frequency,11.89Hz-17.78kHz,(0 - 127),54,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,9,Side Chain EQ Gain,-30 - +30 dB,(0 - 120),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,11,Output Level,-20 - +40dB,(0 - 120),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,12,Make Up Gain,-20 - +20dB,(0 - 80),,3,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,13,Post-comp HPF,"Off, 1.035Hz-80.35Hz",(0 - 127),55,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,14,Clipper,"Off, 1 - 100",(0 - 100),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,15,Clipper Source,"Dry+Wet, Wet",(0 - 1),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,16,Gain Limit,0 - +12dB,(0 - 120),,,(*) for Ducker.,69
+Single / Master Effect Block,UNIVERSAL COMPRESSOR UP,17,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,1 (*),(*) for Ducker.,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,1,Type,"Natural,Rich, Punchy, Electronic,Loud",(0 - 4),,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,2,Compression,0 - 100,(0 - 100),,1,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,3,Texture,0 - 100,(0 - 100),,2,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,4,Output Level,-18dB - +18dB,(0 - 120),,3,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,5,Input Level,-18dB - +18dB,(0 - 120),,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,6,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,7,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,8,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,9,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,10,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,11,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,12,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,13,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,14,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,15,---,,,,,,69
+Single / Master Effect Block,PARALLEL COMPRESSOR,16,---,,,,,,69
+Single / Master Effect Block,AMP SIMULATOR 1,1,Overdrive,0 - 100%,(0 - 100),,2,,70
+Single / Master Effect Block,AMP SIMULATOR 1,2,Device,"Transistor, Vintage Tube, Distortion1, Distortion2, Fuzz",(0 - 4),,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,3,Speaker Type,"Flat, Stack, Combo, Twin, Radio, Megaphone",(0 - 5),,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,4,Presence,-10 - +10,(0 - 20),,3,,70
+Single / Master Effect Block,AMP SIMULATOR 1,5,Output Level,0 - 100%,(0 - 100),,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,6,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,7,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,8,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,9,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,70
+Single / Master Effect Block,AMP SIMULATOR 1,11,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,12,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,13,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,14,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,15,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 1,16,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,1,Overdrive,0 - 127,(0 - 127),,2,,70
+Single / Master Effect Block,AMP SIMULATOR 2,2,AMP Type,"Off, Stack, Combo, Tube, Crunch, Hi Gain, British",(0 - 6),,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,3,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,3,,70
+Single / Master Effect Block,AMP SIMULATOR 2,4,Output Level,0 - 127,(0 - 127),,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,5,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,6,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,7,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,8,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,9,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,70
+Single / Master Effect Block,AMP SIMULATOR 2,11,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,12,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,13,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,14,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,15,---,,,,,,70
+Single / Master Effect Block,AMP SIMULATOR 2,16,---,,,,,,70
+Single / Master Effect Block,COMP DISTORTION,1,Overdrive,0 - 127,(0 - 127),,2,,70
+Single / Master Effect Block,COMP DISTORTION,2,EQ Low Frequency,32Hz - 2.0kHz,(4 - 40),3,,,70
+Single / Master Effect Block,COMP DISTORTION,3,EQ Low Gain,-12dB - +12dB,(52 - 76),,,,70
+Single / Master Effect Block,COMP DISTORTION,4,LPF Cutoff Frequency,1.0kHz-20.0kHz,(34 - 60),3,3,,70
+Single / Master Effect Block,COMP DISTORTION,5,Output Level,0 - 127,(0 - 127),,,,70
+Single / Master Effect Block,COMP DISTORTION,6,---,,,,,,70
+Single / Master Effect Block,COMP DISTORTION,7,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,70
+Single / Master Effect Block,COMP DISTORTION,8,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,70
+Single / Master Effect Block,COMP DISTORTION,9,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,70
+Single / Master Effect Block,COMP DISTORTION,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,70
+Single / Master Effect Block,COMP DISTORTION,11,Edge,0 - 127,(0 - 127),,,,70
+Single / Master Effect Block,COMP DISTORTION,12,Attack,1ms - 40ms,(0 - 19),8,,,70
+Single / Master Effect Block,COMP DISTORTION,13,Release,10ms - 680ms,(0 - 15),9,,,70
+Single / Master Effect Block,COMP DISTORTION,14,Threshold,-48dB - -6dB,(79 - 121),,,,70
+Single / Master Effect Block,COMP DISTORTION,15,Ratio,1.0 - 20.0,(0 - 7),10,,,70
+Single / Master Effect Block,COMP DISTORTION,16,---,,,,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,1,Overdrive,0 - 100%,(0 - 100),,2,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,2,Device,"Transistor, Vintage Tube, Distortion1, Distortion2, Fuzz",(0 - 4),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,3,Speaker Type,"Flat, Stack, Combo, Twin, Radio, Megaphone",(0 - 5),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,4,Presence,-10 - 10,(0 - 20),,3,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,5,Output Level,0 - 100%,(0 - 100),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,6,Delay Time L,0.1ms-1638.3ms,(1 - 16383),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,7,Delay Time R,0.1ms-1638.3ms,(1 - 16383),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,8,Feedback Time,0.1ms-1638.3ms,(1 - 16383),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,9,Feedback Level,0 - 63,(64 - 127),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,11,Delay Mix,0 - 127,(0 - 127),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,12,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,13,Compress,-48dB - -6dB,(79 - 121),,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,14,---,,,,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,15,---,,,,,,70
+Single / Master Effect Block,COMP DISTORTION DELAY,16,---,,,,,,70
+Single / Master Effect Block,US COMBO,1,Gain Boost,"Low, High",(0 - 1),,,,71
+Single / Master Effect Block,US COMBO,2,Volume,0.0 - 10.0,(0 - 100),,1,,71
+Single / Master Effect Block,US COMBO,3,Low Cut,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US COMBO,4,Mid Cut,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US COMBO,5,Mid Width,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US COMBO,6,Mid Sweep,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US COMBO,7,High Cut,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US COMBO,8,Balance,0.0 - 10.0,(0 - 100),,2,,71
+Single / Master Effect Block,US COMBO,9,Output Level,0 - 127,(0 - 127),,,,71
+Single / Master Effect Block,US COMBO,10,---,,,,,,71
+Single / Master Effect Block,US COMBO,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,71
+Single / Master Effect Block,US COMBO,12,Speaker Air,0 - 2,(0 - 2),,,,71
+Single / Master Effect Block,US COMBO,13,Mic Position,"Center, Edge",(0 - 1),,,,71
+Single / Master Effect Block,US COMBO,14,Presence,0.0 - 10.0,(0 - 100),,3,,71
+Single / Master Effect Block,US COMBO,15,---,,,,,,71
+Single / Master Effect Block,US COMBO,16,---,,,,,,71
+Single / Master Effect Block,JAZZ COMBO,1,Panning,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,2,Volume,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,3,Distortion,"Off, 0.1 - 10.0",(0 - 100),,1,,71
+Single / Master Effect Block,JAZZ COMBO,4,Bass,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,5,Middle,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,6,Treble,0.0 - 10.0,(0 - 100),,3,,71
+Single / Master Effect Block,JAZZ COMBO,7,High Treble,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,8,---,,,,,,71
+Single / Master Effect Block,JAZZ COMBO,9,Output Level,0 - 127,(0 - 127),,,,71
+Single / Master Effect Block,JAZZ COMBO,10,---,,,,,,71
+Single / Master Effect Block,JAZZ COMBO,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,71
+Single / Master Effect Block,JAZZ COMBO,12,Speaker Air,0 - 2,(0 - 2),,,,71
+Single / Master Effect Block,JAZZ COMBO,13,Mic Position,"Center, Edge",(0 - 1),,,,71
+Single / Master Effect Block,JAZZ COMBO,14,Chorus,"Off, Chorus, Vib",(0 - 2),,,,71
+Single / Master Effect Block,JAZZ COMBO,15,Vib Speed,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,JAZZ COMBO,16,Depth,0.0 - 10.0,(0 - 100),,2,,71
+Single / Master Effect Block,US HIGH GAIN,1,Type,"Raw1, Vintage1, Modern1, Raw2, Vintage2, Modern2",(0 - 5),32,,,71
+Single / Master Effect Block,US HIGH GAIN,2,Gain,0.0 - 10.0,(0 - 100),,1,,71
+Single / Master Effect Block,US HIGH GAIN,3,---,,,,,,71
+Single / Master Effect Block,US HIGH GAIN,4,Bass,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US HIGH GAIN,5,Middle,0.0 - 10.0,(0 - 100),,2,,71
+Single / Master Effect Block,US HIGH GAIN,6,Treble,0.0 - 10.0,(0 - 100),,3,,71
+Single / Master Effect Block,US HIGH GAIN,7,Presence,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US HIGH GAIN,8,Master Volume,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,US HIGH GAIN,9,Output Level,0 - 127,(0 - 127),,,,71
+Single / Master Effect Block,US HIGH GAIN,10,---,,,,,,71
+Single / Master Effect Block,US HIGH GAIN,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,71
+Single / Master Effect Block,US HIGH GAIN,12,Speaker Air,0 - 2,(0 - 2),,,,71
+Single / Master Effect Block,US HIGH GAIN,13,Mic Position,"Center, Edge",(0 - 1),,,,71
+Single / Master Effect Block,US HIGH GAIN,14,---,,,,,,71
+Single / Master Effect Block,US HIGH GAIN,15,---,,,,,,71
+Single / Master Effect Block,US HIGH GAIN,16,---,,,,,,71
+Single / Master Effect Block,BRITISH LEAD,1,Type,"Crunch, Hi-Gain, Lead",(0 - 2),Table No.,Assign No.,,71
+Single / Master Effect Block,BRITISH LEAD,2,Preamp,0.0 - 10.0,(0 - 100),,1,,71
+Single / Master Effect Block,BRITISH LEAD,3,Tone Shift,"Normal, Loose, Tight",(0 - 2),,,,71
+Single / Master Effect Block,BRITISH LEAD,4,Bass,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,BRITISH LEAD,5,Middle,0.0 - 10.0,(0 - 100),,2,,71
+Single / Master Effect Block,BRITISH LEAD,6,Treble,0.0 - 10.0,(0 - 100),,3,,71
+Single / Master Effect Block,BRITISH LEAD,7,Presence,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,BRITISH LEAD,8,Master Volume,0.0 - 10.0,(0 - 100),,,,71
+Single / Master Effect Block,BRITISH LEAD,9,Output Level,0 - 127,(0 - 127),,,,71
+Single / Master Effect Block,BRITISH LEAD,10,---,,,,,,71
+Single / Master Effect Block,BRITISH LEAD,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,71
+Single / Master Effect Block,BRITISH LEAD,12,Speaker Air,0 - 2,(0 - 2),,,,71
+Single / Master Effect Block,BRITISH LEAD,13,Mic Position,"Center, Edge",(0 - 1),,,,71
+Single / Master Effect Block,BRITISH LEAD,14,---,,,,,,71
+Single / Master Effect Block,BRITISH LEAD,15,---,,,,,,71
+Single / Master Effect Block,BRITISH LEAD,16,---,,,,,,71
+Single / Master Effect Block,MULTI FX,1,Comp. Sustain,"Off, 0.1 - 10.0",(0 - 100),,2,,72
+Single / Master Effect Block,MULTI FX,2,Wah SW,"Off, Wah Pedal, Auto+ Full, Auto+ Mid, Auto+ Light, Auto- Full, Auto- Mid, Auto- Light",(0 - 7),33,,,72
+Single / Master Effect Block,MULTI FX,3,Wah Pedal,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,MULTI FX,4,Dist SW,"Off, Overdrive, Distortion1, Distortion2, Clean, Crunch, Hi-Gain, Modern",(0 - 7),34,,,72
+Single / Master Effect Block,MULTI FX,5,Dist Drive,0.0 - 10.0,(0 - 100),,1,,72
+Single / Master Effect Block,MULTI FX,6,Dist EQ,"High Boost, Mid Boost, Mid Cut 1, Mid Cut 2, Mid Cut 3, Low Cut 1, Low Cut 2, High Cut, High/Low",(0 - 8),35,,,72
+Single / Master Effect Block,MULTI FX,7,Dist Tone,0.0 - 10.0,(0 - 100),,,,72
+Single / Master Effect Block,MULTI FX,8,Dist Presence,0.0 - 10.0,(0 - 100),,3,,72
+Single / Master Effect Block,MULTI FX,9,Output Level,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,MULTI FX,10,---,,,,,,72
+Single / Master Effect Block,MULTI FX,11,Speaker Type,"Off, Stack, Twin, Tweed, Oldies, Modern, Mean, Soft, Small, Dip1, Dip2, Metal, Light",(0 - 12),31,,,72
+Single / Master Effect Block,MULTI FX,12,LFO Speed,0.100Hz-9.925Hz,(0 - 127),36,,,72
+Single / Master Effect Block,MULTI FX,13,Phaser SW,"Off, Standard, Wide, Vibe, Tremolo",(0 - 4),37,,,72
+Single / Master Effect Block,MULTI FX,14,Delay SW,"Off, Delay M, Echo1 M, Echo2 M, Chorus M, Dly Chorus M, Flanger1 M, Flanger2 M, Flanger3 M, Delay St, Echo1 St, Echo2 St, Chorus St, Dl Chorus St, Flanger1 St, Flanger2 St, Flanger3 St",(0 - 16),38,,,72
+Single / Master Effect Block,MULTI FX,15,Delay Ctrl,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,MULTI FX,16,Delay Time,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,SMALL STEREO,1,Comp. SW,"Off, On",(0 - 1),,,,72
+Single / Master Effect Block,SMALL STEREO,2,Comp. Sustain,0.0 - 10.0,(0 - 100),,,,72
+Single / Master Effect Block,SMALL STEREO,3,Comp. Level,0.0 - 10.0,(0 - 100),,,,72
+Single / Master Effect Block,SMALL STEREO,4,Dist Type,"Overdrive, Distortion1, Distortion2, Clean, Crunch, Hi-Gain, Modern",(1 - 7),34,,,72
+Single / Master Effect Block,SMALL STEREO,5,Dist Drive,0.0 - 10.0,(0 - 100),,1,,72
+Single / Master Effect Block,SMALL STEREO,6,Dist EQ,"High Boost, Mid Boost, Mid Cut 1, Mid Cut 2, Mid Cut 3, Low Cut 1, Low Cut 2, High Cut, High/Low",(0 - 8),35,,,72
+Single / Master Effect Block,SMALL STEREO,7,Dist Tone,0.0 - 10.0,(0 - 100),,2,,72
+Single / Master Effect Block,SMALL STEREO,8,Dist Presence,0.0 - 10.0,(0 - 100),,3,,72
+Single / Master Effect Block,SMALL STEREO,9,Output Level,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,SMALL STEREO,10,---,,,,,,72
+Single / Master Effect Block,SMALL STEREO,11,Speaker Type,"Off, Stack, Twin, Tweed, Oldies, Modern, Mean, Soft, Small, Dip1, Dip2, Metal, Light",(0 - 12),31,,,72
+Single / Master Effect Block,SMALL STEREO,12,---,,,,,,72
+Single / Master Effect Block,SMALL STEREO,13,---,,,,,,72
+Single / Master Effect Block,SMALL STEREO,14,---,,,,,,72
+Single / Master Effect Block,SMALL STEREO,15,---,,,,,,72
+Single / Master Effect Block,SMALL STEREO,16,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,1,Mode,"Bright, Top Boost",(0 - 1),,,,72
+Single / Master Effect Block,BRITISH COMBO,2,Normal,0.0 - 10.0,(0 - 100),,1,,72
+Single / Master Effect Block,BRITISH COMBO,3,Brilliant,0.0 - 10.0,(0 - 100),,2,,72
+Single / Master Effect Block,BRITISH COMBO,4,Bass,0.0 - 10.0,(0 - 100),,,,72
+Single / Master Effect Block,BRITISH COMBO,5,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,6,Treble,0.0 - 10.0,(0 - 100),,,,72
+Single / Master Effect Block,BRITISH COMBO,7,Cut,0.0 - 10.0,(0 - 100),,3,,72
+Single / Master Effect Block,BRITISH COMBO,8,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,9,Output Level,0 - 127,(0 - 127),,,,72
+Single / Master Effect Block,BRITISH COMBO,10,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,72
+Single / Master Effect Block,BRITISH COMBO,12,Speaker Air,0 - 2,(0 - 2),,,,72
+Single / Master Effect Block,BRITISH COMBO,13,Mic Position,"Center, Edge",(0 - 1),,,,72
+Single / Master Effect Block,BRITISH COMBO,14,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,15,---,,,,,,72
+Single / Master Effect Block,BRITISH COMBO,16,---,,,,,,72
+Single / Master Effect Block,BRITISH LEGEND,1,Sensitivity,"High, Low",(0 - 1),,,,73
+Single / Master Effect Block,BRITISH LEGEND,2,Preamp,0.0 - 10.0,(0 - 100),,1,,73
+Single / Master Effect Block,BRITISH LEGEND,3,---,,,,,,73
+Single / Master Effect Block,BRITISH LEGEND,4,Bass,0.0 - 10.0,(0 - 100),,,,73
+Single / Master Effect Block,BRITISH LEGEND,5,Middle,0.0 - 10.0,(0 - 100),,2,,73
+Single / Master Effect Block,BRITISH LEGEND,6,Treble,0.0 - 10.0,(0 - 100),,3,,73
+Single / Master Effect Block,BRITISH LEGEND,7,Presence,0.0 - 10.0,(0 - 100),,,,73
+Single / Master Effect Block,BRITISH LEGEND,8,Master Volume,0.0 - 10.0,(0 - 100),,,,73
+Single / Master Effect Block,BRITISH LEGEND,9,Output Level,0 - 127,(0 - 127),,,,73
+Single / Master Effect Block,BRITISH LEGEND,10,---,,,,,,73
+Single / Master Effect Block,BRITISH LEGEND,11,Speaker Type,"Off, BS 4x12, AC 2x12, AC 1x12, AC 4x10, BC 2x12, AM 4x12, YC 4x12, JC 2x12, OC 2x12, OC 1x8",(0 - 10),30,,,73
+Single / Master Effect Block,BRITISH LEGEND,12,Speaker Air,0 - 2,(0 - 2),,,,73
+Single / Master Effect Block,BRITISH LEGEND,13,Mic Position,"Center, Edge",(0 - 1),,,,73
+Single / Master Effect Block,BRITISH LEGEND,14,---,,,,,,73
+Single / Master Effect Block,BRITISH LEGEND,15,---,,,,,,73
+Single / Master Effect Block,BRITISH LEGEND,16,---,,,,,,73
+Single / Master Effect Block,LO-FI,1,Sampling Frequency Control,44.1KHz-344.5Hz,(0 - 127),12,1,,73
+Single / Master Effect Block,LO-FI,2,Word Length,1 - 127,(1 - 127),,2,,73
+Single / Master Effect Block,LO-FI,3,Output Level,-6dB - +36dB,(0 - 42),,,,73
+Single / Master Effect Block,LO-FI,4,Pre-LPF Cutoff Frequency,63Hz - 20.0kHz,(10 - 60),3,,,73
+Single / Master Effect Block,LO-FI,5,Filter Type,"Thru, PowerBass, Radio, Telephone, Clean, Low",(0 - 5),,,,73
+Single / Master Effect Block,LO-FI,6,Pre-LPF Resonance,1.0 - 12.0,(10 - 120),,,,73
+Single / Master Effect Block,LO-FI,7,Bit Assign,0 - 6,(0 - 6),,,,73
+Single / Master Effect Block,LO-FI,8,Emphasis,"Off, On",(0 - 1),,,,73
+Single / Master Effect Block,LO-FI,9,---,,,,,,73
+Single / Master Effect Block,LO-FI,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,3,,73
+Single / Master Effect Block,LO-FI,11,---,,,,,,73
+Single / Master Effect Block,LO-FI,12,---,,,,,,73
+Single / Master Effect Block,LO-FI,13,---,,,,,,73
+Single / Master Effect Block,LO-FI,14,---,,,,,,73
+Single / Master Effect Block,LO-FI,15,Input Mode,"Mono, Stereo",(0 - 1),,,,73
+Single / Master Effect Block,LO-FI,16,---,,,,,,73
+Single / Master Effect Block,NOISY,1,Mod Depth,0 - 10,(0 - 10),,,,73
+Single / Master Effect Block,NOISY,2,Mod Speed,0 - 127,(0 - 127),,,,73
+Single / Master Effect Block,NOISY,3,Mod Feedback,0 - 63,(64 - 127),,,,73
+Single / Master Effect Block,NOISY,4,Mod Mix Balance,1 - 127,(1 - 127),,,,73
+Single / Master Effect Block,NOISY,5,Drive,0 - 127,(0 - 127),,2,,73
+Single / Master Effect Block,NOISY,6,AM Speed,0.00Hz - 39.7Hz,(0 - 127),1,,,73
+Single / Master Effect Block,NOISY,7,AM Depth,0 - 127,(0 - 127),,,,73
+Single / Master Effect Block,NOISY,8,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,3,,73
+Single / Master Effect Block,NOISY,9,LPF Resonance,1.0 - 12.0,(10 - 120),,,,73
+Single / Master Effect Block,NOISY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,73
+Single / Master Effect Block,NOISY,11,EQ Frequency,100Hz - 10.0kHz,(14 - 54),3,,,73
+Single / Master Effect Block,NOISY,12,EQ Gain,-12dB - +12dB,(52 - 76),,,,73
+Single / Master Effect Block,NOISY,13,EQ Width,1.0 - 12.0,(10 - 120),,,,73
+Single / Master Effect Block,NOISY,14,---,,,,,,73
+Single / Master Effect Block,NOISY,15,---,,,,,,73
+Single / Master Effect Block,NOISY,16,---,,,,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,1,Click Density,0 - 5,(0 - 5),Table No.,Assign No.,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,2,Click Level,0 - 127,(0 - 127),,2,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,3,Noise Tone,0 - 6,(0 - 6),,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,4,Noise Mod Speed,0.00Hz - 39.7Hz,(0 - 127),1,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,5,Noise Mod Depth,0 - 127,(0 - 127),,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,6,Dry Send to Noise,0 - 127,(0 - 127),,3,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,7,Noise LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,8,Noise LPF Q,1.0 - 12.0,(10 - 120),,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,9,Noise Level,0 - 127,(0 - 127),,1,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,10,---,,,,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,11,Dry Level,0 - 127,(0 - 127),,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,12,Dry LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,13,---,,,,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,14,---,,,,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,15,---,,,,,,73
+Single / Master Effect Block,DIGITAL TURNTABLE,16,---,,,,,,73
+Single / Master Effect Block,BIT CRUSHER,1,Sample Rate,0 - 100.00,(0 -16383),,1,,74
+Single / Master Effect Block,BIT CRUSHER,2,Bit,1 - 16,(1 - 16),,2,,74
+Single / Master Effect Block,BIT CRUSHER,3,Crush Type,"Soft, Hard",(0 - 1),,,,74
+Single / Master Effect Block,BIT CRUSHER,4,Input Level,-19.5dB - +12dB,(1 - 127),47,,,74
+Single / Master Effect Block,BIT CRUSHER,5,M/S,"Off, On",(0 - 1),,,,74
+Single / Master Effect Block,BIT CRUSHER,6,Side Sample Rate,0 - 100.00,(0 - 16383),,,,74
+Single / Master Effect Block,BIT CRUSHER,7,Side Bit,1 - 16,(1 - 16),,,,74
+Single / Master Effect Block,BIT CRUSHER,8,Sample Rate Link,-1.0 - +1.0,(0 - 100),,,,74
+Single / Master Effect Block,BIT CRUSHER,9,Bit Link,-1.0 - +1.0,(0 - 100),,,,74
+Single / Master Effect Block,BIT CRUSHER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,3,,74
+Single / Master Effect Block,BIT CRUSHER,11,Output Level,-19.5dB - +12dB,(1 - 127),47,,,74
+Single / Master Effect Block,BIT CRUSHER,12,---,,,,,,74
+Single / Master Effect Block,BIT CRUSHER,13,---,,,,,,74
+Single / Master Effect Block,BIT CRUSHER,14,---,,,,,,74
+Single / Master Effect Block,BIT CRUSHER,15,---,,,,,,74
+Single / Master Effect Block,BIT CRUSHER,16,---,,,,,,74
+Single / Master Effect Block,WAVE FOLDER,1,Fold,0.000 - 1.000,(0 - 1000),,2,,74
+Single / Master Effect Block,WAVE FOLDER,2,Fold Type,"Soft, Hard",(0 - 1),,,,74
+Single / Master Effect Block,WAVE FOLDER,3,LFO Depth,0 - 127,(0 - 127),,,,74
+Single / Master Effect Block,WAVE FOLDER,4,LFO Speed,0.01Hz - 1400Hz,(0 - 1023),62,,,74
+Single / Master Effect Block,WAVE FOLDER,5,LFO Shape,-50 - +50,(0 - 100),,,,74
+Single / Master Effect Block,WAVE FOLDER,6,---,,,,,,74
+Single / Master Effect Block,WAVE FOLDER,7,---,,,,,,74
+Single / Master Effect Block,WAVE FOLDER,8,---,,,,,,74
+Single / Master Effect Block,WAVE FOLDER,9,Input Level,-40 - +20dB,(0 - 120),,3,,74
+Single / Master Effect Block,WAVE FOLDER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,74
+Single / Master Effect Block,WAVE FOLDER,11,Output Level,-40 - +20dB,(0 - 120),,,,74
+Single / Master Effect Block,WAVE FOLDER,12,SEQ Depth,0 - 127,(0 - 127),,,,74
+Single / Master Effect Block,WAVE FOLDER,13,SEQ Clock,0.5x - 10.0x,(0 - 15),63,,,74
+Single / Master Effect Block,WAVE FOLDER,14,SEQ Pattern,A- J,(0 - 9),64,,,74
+Single / Master Effect Block,WAVE FOLDER,15,SEQ Variation,0 - 100,(0 - 100),,,,74
+Single / Master Effect Block,WAVE FOLDER,16,SEQ Phase Reset,"OFF, Key On, Seq Start, Seq Start + Bar",(0 - 3),,,,74
+Single / Master Effect Block,G CHORUS,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,75
+Single / Master Effect Block,G CHORUS,2,---,,,,,,75
+Single / Master Effect Block,G CHORUS,3,PM Depth,0 - 127,(0 - 127),,3,,75
+Single / Master Effect Block,G CHORUS,4,Feedback Level,0 - 63,(64 - 127),,,,75
+Single / Master Effect Block,G CHORUS,5,Delay Offset,0.0ms - 50.0ms,(0 - 127),2,,,75
+Single / Master Effect Block,G CHORUS,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,75
+Single / Master Effect Block,G CHORUS,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,75
+Single / Master Effect Block,G CHORUS,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,75
+Single / Master Effect Block,G CHORUS,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,75
+Single / Master Effect Block,G CHORUS,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,75
+Single / Master Effect Block,G CHORUS,14,---,,,,,,75
+Single / Master Effect Block,G CHORUS,15,Input Mode,"Mono, Stereo",(0 - 1),,,,75
+Single / Master Effect Block,G CHORUS,16,---,,,,,,75
+Single / Master Effect Block,2 MODULATOR,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,75
+Single / Master Effect Block,2 MODULATOR,2,AM Depth,0 - 127,(0 - 127),,,,75
+Single / Master Effect Block,2 MODULATOR,3,PM Depth,0 - 127,(0 - 127),,3,,75
+Single / Master Effect Block,2 MODULATOR,4,Feedback Level,0 - 63,(64 - 127),,,,75
+Single / Master Effect Block,2 MODULATOR,5,Delay Offset,0.0ms - 50.0ms,(0 - 127),2,,,75
+Single / Master Effect Block,2 MODULATOR,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,75
+Single / Master Effect Block,2 MODULATOR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,75
+Single / Master Effect Block,2 MODULATOR,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,75
+Single / Master Effect Block,2 MODULATOR,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,75
+Single / Master Effect Block,2 MODULATOR,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,75
+Single / Master Effect Block,2 MODULATOR,14,---,,,,,,75
+Single / Master Effect Block,2 MODULATOR,15,Input Mode,"Mono, Stereo",(0 - 1),,,,75
+Single / Master Effect Block,2 MODULATOR,16,---,,,,,,75
+Single / Master Effect Block,SPX CHORUS,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,75
+Single / Master Effect Block,SPX CHORUS,2,LFO Depth,0 - 127,(0 - 127),,3,,75
+Single / Master Effect Block,SPX CHORUS,3,Feedback Level,0 - 63,(64 - 127),,,,75
+Single / Master Effect Block,SPX CHORUS,4,Delay Offset,0.0ms - 50.0ms,(0 - 127),2,,,75
+Single / Master Effect Block,SPX CHORUS,5,---,,,,,,75
+Single / Master Effect Block,SPX CHORUS,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,75
+Single / Master Effect Block,SPX CHORUS,10,Dry/Wet Balance,D63>W - D= W - D<W63,(1 - 127),,1,,75
+Single / Master Effect Block,SPX CHORUS,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,75
+Single / Master Effect Block,SPX CHORUS,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,75
+Single / Master Effect Block,SPX CHORUS,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,75
+Single / Master Effect Block,SPX CHORUS,14,---,,,,,,75
+Single / Master Effect Block,SPX CHORUS,15,Input Mode,"Mono, Stereo",(0 - 1),,,,75
+Single / Master Effect Block,SPX CHORUS,16,---,,,,,,75
+Single / Master Effect Block,SYMPHONIC,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,75
+Single / Master Effect Block,SYMPHONIC,2,LFO Depth,0 - 127,(0 - 127),,3,,75
+Single / Master Effect Block,SYMPHONIC,3,Delay Offset,0.0ms - 50.0ms,(0 - 127),2,,,75
+Single / Master Effect Block,SYMPHONIC,4,---,,,,,,75
+Single / Master Effect Block,SYMPHONIC,5,---,,,,,,75
+Single / Master Effect Block,SYMPHONIC,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,75
+Single / Master Effect Block,SYMPHONIC,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,75
+Single / Master Effect Block,SYMPHONIC,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,75
+Single / Master Effect Block,SYMPHONIC,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,75
+Single / Master Effect Block,SYMPHONIC,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,75
+Single / Master Effect Block,SYMPHONIC,14,---,,,,,,75
+Single / Master Effect Block,SYMPHONIC,15,---,,,,,,75
+Single / Master Effect Block,SYMPHONIC,16,---,,,,,,75
+Single / Master Effect Block,ENSEMBLE DETUNE,1,Detune,-50cent-+50cent,(14 - 114),,2,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,2,Initial Delay Lch,0.0ms - 50.0ms,(0 - 127),2,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,3,Initial Delay Rch,0.0ms - 50.0ms,(0 - 127),2,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,4,Spread,0 - 63,(0 - 63),,3,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,5,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,6,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,7,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,8,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,9,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,10,Dry/Wet Balance,D63>W - D= W - D<W63,(1 - 127),,1,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,15,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,ENSEMBLE DETUNE,16,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,75
+Single / Master Effect Block,VCM FLANGER,1,Speed,0.040Hz-10.00Hz,(0 - 235),20,2,,75
+Single / Master Effect Block,VCM FLANGER,2,Manual,0 - 127,(0 - 127),,,,75
+Single / Master Effect Block,VCM FLANGER,3,Depth,0 - 127,(0 - 127),,3,,75
+Single / Master Effect Block,VCM FLANGER,4,Feedback,0 - 127,(0 - 127),,,,75
+Single / Master Effect Block,VCM FLANGER,5,Type,1 - 3,(0 - 2),,,,75
+Single / Master Effect Block,VCM FLANGER,6,Spread,0 - 127,(0 - 127),,,,75
+Single / Master Effect Block,VCM FLANGER,7,Mix,0 - 127,(0 - 127),,1,,75
+Single / Master Effect Block,VCM FLANGER,8,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,9,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,10,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,11,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,12,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,13,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,14,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,15,---,,,,,,75
+Single / Master Effect Block,VCM FLANGER,16,---,,,,,,75
+Single / Master Effect Block,CLASSIC FLANGER,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,76
+Single / Master Effect Block,CLASSIC FLANGER,2,LFO Depth,0 - 127,(0 - 127),,3,,76
+Single / Master Effect Block,CLASSIC FLANGER,3,LFO Wave,"Triangle, Sine, Random",(0 - 2),,,,76
+Single / Master Effect Block,CLASSIC FLANGER,4,Delay Offset,0.09 - 36.21ms,(0 - 139),18,,,76
+Single / Master Effect Block,CLASSIC FLANGER,5,Feedback Level,0 - 100%,(100 - 200),,,,76
+Single / Master Effect Block,CLASSIC FLANGER,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,76
+Single / Master Effect Block,CLASSIC FLANGER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,76
+Single / Master Effect Block,CLASSIC FLANGER,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,76
+Single / Master Effect Block,CLASSIC FLANGER,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,76
+Single / Master Effect Block,CLASSIC FLANGER,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,76
+Single / Master Effect Block,CLASSIC FLANGER,14,Modulation Phase,-180 - +180,(0 - 16),19,,,76
+Single / Master Effect Block,CLASSIC FLANGER,15,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,76
+Single / Master Effect Block,CLASSIC FLANGER,16,Analog Feel,0 - 10,(0 - 10),,,,76
+Single / Master Effect Block,TEMPO FLANGER,1,LFO Speed,16th - 4thx16,(5 - 29),13,2,,76
+Single / Master Effect Block,TEMPO FLANGER,2,LFO Depth,0 - 127,(0 - 127),,3,,76
+Single / Master Effect Block,TEMPO FLANGER,3,Feedback Level,0 - 63,(64 - 127),,,,76
+Single / Master Effect Block,TEMPO FLANGER,4,Delay Offset,0.0ms - 50.0ms,(0 - 127),2,,,76
+Single / Master Effect Block,TEMPO FLANGER,5,LFO Phase Reset,"Off(free run), KeyOnReset, SEQ Start Reset",(0 - 2),,,,76
+Single / Master Effect Block,TEMPO FLANGER,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,76
+Single / Master Effect Block,TEMPO FLANGER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,76
+Single / Master Effect Block,TEMPO FLANGER,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,76
+Single / Master Effect Block,TEMPO FLANGER,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,76
+Single / Master Effect Block,TEMPO FLANGER,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,76
+Single / Master Effect Block,TEMPO FLANGER,14,LFO Phase Difference,-180deg - +180deg,(4 - 124),,,,76
+Single / Master Effect Block,TEMPO FLANGER,15,---,,,,,,76
+Single / Master Effect Block,TEMPO FLANGER,16,---,,,,,,76
+Single / Master Effect Block,DYNAMIC FLANGER,1,Sensitivity,0 - 127,(0 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,2,Delay Offset,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,3,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,4,Attack Time,0.3ms - 227ms,(0 - 127),15,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,5,Release Time,2.6ms - 2171ms,(0 - 127),16,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,6,Release Curve,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,7,Direction,"Up, Down",(0 - 1),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,8,Dyna Threshold Level,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,9,Dyna Level Offset,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,DYNAMIC FLANGER,12,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,76
+Single / Master Effect Block,CONTROL FLANGER,1,Flanger Control,0 - 127,(0 - 127),,1,,76
+Single / Master Effect Block,CONTROL FLANGER,2,Bottom,0 - 127,(0 - 127),,,,76
+Single / Master Effect Block,CONTROL FLANGER,3,Top,0 - 127,(0 - 127),,2,,76
+Single / Master Effect Block,CONTROL FLANGER,4,Feedback,0 - 127,(0 - 127),,3,,76
+Single / Master Effect Block,CONTROL FLANGER,5,Type,1 - 3,(0 - 2),,,,76
+Single / Master Effect Block,CONTROL FLANGER,6,Spread,0 - 127,(0 - 127),,,,76
+Single / Master Effect Block,CONTROL FLANGER,7,Mix,0 - 127,(0 - 127),,,,76
+Single / Master Effect Block,CONTROL FLANGER,8,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,9,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,10,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,11,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,12,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,13,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,14,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,15,---,,,,,,76
+Single / Master Effect Block,CONTROL FLANGER,16,---,,,,,,76
+Single / Master Effect Block,VCM PHASER MONO,1,Speed,0.100Hz-10.00Hz,(0 - 252),21,2,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,2,Manual,0 - 127,(0 - 127),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,3,Depth,0 - 127,(0 - 127),,1,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,4,Feedback,0 - 127,(0 - 127),,3,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,5,Stage,"4, 6, 8, 10, 12, 16",(0 - 5),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,6,Mode,"1, 2, 3",(0 - 2),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,7,Color,0 - 127,(0 - 127),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,8,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,9,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,10,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,11,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,12,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,13,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,14,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,15,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER MONO,16,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, 8, 12 or 16; or when Mode is set to 2 and Stage is set to 4 or 10.",76
+Single / Master Effect Block,VCM PHASER STEREO,1,Speed,0.100Hz-10.00Hz,(0 - 252),21,2,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,2,Manual,0 - 127,(0 - 127),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,3,Depth,0 - 127,(0 - 127),,1,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,4,Feedback,0 - 127,(0 - 127),,3,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,5,Stage,"4, 6, 8, 10",(0 - 3),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,6,Mode,"1, 2",(0 - 1),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,7,Color,0 - 127,(0 - 127),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,8,Spread,0 - 127,(0 - 127),,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,9,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,10,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,11,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,12,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,13,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,14,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,15,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,VCM PHASER STEREO,16,---,,,,,"The Color parameter is not available in the following conditions: When Mode is set to 1 and Stage is set to 4, 6, or 8; or when Mode is set to 2 and Stage is set to 4 or 10.",77
+Single / Master Effect Block,TEMPO PHASER,1,LFO Speed,16th - 4thx16,(5 - 29),13,2,,77
+Single / Master Effect Block,TEMPO PHASER,2,LFO Depth,0 - 127,(0 - 127),,1,,77
+Single / Master Effect Block,TEMPO PHASER,3,Phase Shift Offset,0 - 127,(0 - 127),,,,77
+Single / Master Effect Block,TEMPO PHASER,4,Feedback Level,0 - 63,(64 - 127),,3,,77
+Single / Master Effect Block,TEMPO PHASER,5,LFO Phase Reset,"Off(free run), KeyOnReset, SEQ Start Reset",(0 - 2),,,,77
+Single / Master Effect Block,TEMPO PHASER,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,77
+Single / Master Effect Block,TEMPO PHASER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,77
+Single / Master Effect Block,TEMPO PHASER,11,Stage,4 - 22,(4 - 22),,,,77
+Single / Master Effect Block,TEMPO PHASER,12,Diffusion,"Mono, Stereo",(0 - 1),,,,77
+Single / Master Effect Block,TEMPO PHASER,13,---,,,,,,77
+Single / Master Effect Block,TEMPO PHASER,14,---,,,,,,77
+Single / Master Effect Block,TEMPO PHASER,15,---,,,,,,77
+Single / Master Effect Block,TEMPO PHASER,16,---,,,,,,77
+Single / Master Effect Block,DYNAMIC PHASER,1,Sensitivity,0 - 127,(0 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,2,Dyna Level Offset,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,3,Feedback Level,0 - 63,(64 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,4,Attack Time,0.3ms - 227ms,(0 - 127),15,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,5,Release Time,2.6ms - 2171ms,(0 - 127),16,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,6,Release Curve,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,7,Direction,"Up, Down",(0 - 1),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,8,Dyna Threshold Level,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,11,Stage,"4, 5, 6",(4 - 6),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,DYNAMIC PHASER,12,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,77
+Single / Master Effect Block,CONTROL PHASER,1,Phase Control,0 - 127,(0 - 127),,1,,77
+Single / Master Effect Block,CONTROL PHASER,2,Bottom,0 - 127,(0 - 127),,,,77
+Single / Master Effect Block,CONTROL PHASER,3,Top,0 - 127,(0 - 127),,2,,77
+Single / Master Effect Block,CONTROL PHASER,4,Feedback,0 - 127,(0 - 127),,3,,77
+Single / Master Effect Block,CONTROL PHASER,5,Stage,"4, 6, 8, 10",(0 - 3),,,,77
+Single / Master Effect Block,CONTROL PHASER,6,Mode,"1, 2",(0 - 1),,,,77
+Single / Master Effect Block,CONTROL PHASER,7,Color,0 - 127,(0 - 127),,,,77
+Single / Master Effect Block,CONTROL PHASER,8,Spread,0 - 127,(0 - 127),,,,77
+Single / Master Effect Block,CONTROL PHASER,9,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,10,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,11,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,12,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,13,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,14,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,15,---,,,,,,77
+Single / Master Effect Block,CONTROL PHASER,16,---,,,,,,77
+Single / Master Effect Block,AUTO PAN,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,2,,77
+Single / Master Effect Block,AUTO PAN,2,L/R Depth,0 - 127,(0 - 127),,1,,77
+Single / Master Effect Block,AUTO PAN,3,F/R Depth,0 - 127,(0 - 127),,,,77
+Single / Master Effect Block,AUTO PAN,4,Pan Direction,"L<>R, L>>R, L<<R, L Turn, R Turn, L/R",(0 - 5),,,,77
+Single / Master Effect Block,AUTO PAN,5,LFO Wave,0 - 28,(0 - 28),,3,,77
+Single / Master Effect Block,AUTO PAN,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,77
+Single / Master Effect Block,AUTO PAN,10,---,,,,,,77
+Single / Master Effect Block,AUTO PAN,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,77
+Single / Master Effect Block,AUTO PAN,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,77
+Single / Master Effect Block,AUTO PAN,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,77
+Single / Master Effect Block,AUTO PAN,14,---,,,,,,77
+Single / Master Effect Block,AUTO PAN,15,Input Mode,"Mono, Stereo",(0 - 1),,,,77
+Single / Master Effect Block,AUTO PAN,16,---,,,,,,77
+Single / Master Effect Block,TREMOLO,1,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),Table No. 1,Assign No. 2,,77
+Single / Master Effect Block,TREMOLO,2,AM Depth,0 - 127,(0 - 127),,1,,77
+Single / Master Effect Block,TREMOLO,3,PM Depth,0 - 127,(0 - 127),,3,,77
+Single / Master Effect Block,TREMOLO,4,---,,,,,,77
+Single / Master Effect Block,TREMOLO,5,---,,,,,,77
+Single / Master Effect Block,TREMOLO,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,77
+Single / Master Effect Block,TREMOLO,10,---,,,,,,77
+Single / Master Effect Block,TREMOLO,11,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,77
+Single / Master Effect Block,TREMOLO,12,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,77
+Single / Master Effect Block,TREMOLO,13,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,77
+Single / Master Effect Block,TREMOLO,14,LFO Phase Difference,-180deg-+180deg,(4 - 124),,,,77
+Single / Master Effect Block,TREMOLO,15,Input Mode,"Mono, Stereo",(0 - 1),,,,77
+Single / Master Effect Block,TREMOLO,16,---,,,,,,77
+Single / Master Effect Block,VCM AUTO WAH,1,Speed,0.100Hz-20.00Hz,(0 - 254),22,1,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,2,Bottom,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,3,Top,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,4,Resonance Offset,-12.0 - +12.0,(40 - 88),,2,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,5,LFO Wave,"Sin, Trp",(0 - 1),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,6,Type,"High, Mid, Low, Bass",(0 - 3),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,7,Overdrive,0.0dB - +40.0dB,(0 - 80),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,8,Output,-20.0dB-+10.0dB,(24 - 84),,3,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,9,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,10,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,11,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,12,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,13,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,14,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,15,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM AUTO WAH,16,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,1,Sensitivity,0 - 127,(0 - 127),,1,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,2,Bottom,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,3,Top,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,4,Resonance Offset,-12.0 - +12.0,(40 - 88),,2,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,5,Direction,"Up, Down",(0 - 1),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,6,Type,"High, Mid, Low, Bass",(0 - 3),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,7,Overdrive,0.0dB - +40.0dB,(0 - 80),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,8,Output,-20.0dB-+10.0dB,(24 - 84),,3,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,9,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,10,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,11,Attack Offset,-5 - +5,(59 - 69),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,12,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,13,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,14,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,15,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM TOUCH WAH,16,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,1,Pedal Control,0 - 127,(0 - 127),,1,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,2,Bottom,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,3,Top,0 - 127,(0 - 127),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,4,Resonance Offset,-12.0 - +12.0,(40 - 88),,2,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,5,Direction,"Up, Down",(0 - 1),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,6,Type,"High, Mid, Low, Bass",(0 - 3),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,7,Overdrive,0.0dB - +40.0dB,(0 - 80),,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,8,Output,-20.0dB-+10.0dB,(24 - 84),,3,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,9,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,10,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,11,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,12,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,13,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,14,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,15,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,VCM PEDAL WAH,16,---,,,,,"When the value of Bottom is greater than Top, the sound will not be modulated and only the Bottom value is available.",78
+Single / Master Effect Block,RING MODULATOR,1,OSC Frequency Coarse,0.5Hz - 5kHz,(0 - 127),17,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,2,OSC Frequency Fine,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,3,LFO Wave,"Tri, Sine",(0 - 1),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,4,LFO Depth,0 - 127,(0 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,5,LFO Speed,0.0Hz - 39.70Hz,(0 - 127),1,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,6,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,7,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,RING MODULATOR,12,Modulator Input Level,-∞dB-0dB-+24dB,(0 - 127),45,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,1,Sensitivity,0 - 127,(0 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,2,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,3,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,4,Attack Time,0.3ms - 227ms,(0 - 127),15,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,5,Release Time,2.6ms - 2171ms,(0 - 127),16,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,6,Release Curve,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,7,Direction,"Up, Down",(0 - 1),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,8,Dyna Threshold Level,0 - 127,(0 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,9,Dyna Level Offset,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,DYNAMIC RING MODULATOR,12,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,78
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,1,Spiral Speed,-39.7Hz-0.00Hz- +39.7Hz,(1 - 255),60,2,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,2,Filter Offset,C-2 - G8,(0 - 127),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,3,Feedback,0 - 127,(0 - 127),,3,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,4,Spiral Step Mode,"Continuous, Semitone, Scale",(0 - 2),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,5,Spiral Step Semitones,1 semitones - 12 semitones,(0 - 11),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,6,Spiral Step Scale Type,"Maj, Min(Natural), Min(Harmonic)",(0 - 2),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,7,Spiral Sync,"Step, Octave",(0 - 1),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,8,Offset Transition Rate,1 - 62,(1 - 62),,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,9,Spiral Step Transition Rate,1/48 - 1/2,(0 - 14),61,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,10,Dry/Wet Balance,D63>W - D= W - D<W63,(1 - 127),,1,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,11,---,,,,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,12,---,,,,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,13,---,,,,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,14,---,,,,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,15,---,,,,,,79
+Single / Master Effect Block,SPIRALIZER P / SPIRALIZER F,16,Spiral Switch,"Off, On",(0 - 1),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,1,Spiral Speed,32nd/3 - 4thx6,(0 - 19),13,2,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,2,Filter Offset,C-2 - G8,(0 - 127),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,3,Feedback,0 - 127,(0 - 127),,3,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,4,Spiral Step Mode,"Continuous, Semitone, Scale",(0 - 2),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,5,Spiral Step Semitones,1 semitones - 12 semitones,(0 - 11),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,6,Spiral Step Scale Type,"Maj, Min(Natural), Min(Harmonic)",(0 - 2),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,7,Spiral Sync,"Step, Octave",(0 - 1),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,8,Offset Transition Rate,1 - 62,(1 - 62),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,9,Spiral Step Transition Rate,1/48 - 1/2,(0 - 14),61,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,10,Dry/Wet Balance,D63>W - D= W - D<W63,(1 - 127),,1,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,11,---,,,,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,12,---,,,,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,13,---,,,,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,14,---,,,,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,15,Direction,"Up, Down",(0 - 1),,,,79
+Single / Master Effect Block,TEMPO SPIRALIZER P / TEMPO SPIRALIZER F,16,Spiral Switch,"Off, On",(0 - 1),,,,79
+Single / Master Effect Block,TECH MODULATION,1,Mod Speed,0 - 127,(0 - 127),,2,,79
+Single / Master Effect Block,TECH MODULATION,2,Mod Depth,0 - 127,(0 - 127),,3,,79
+Single / Master Effect Block,TECH MODULATION,3,Mod Gain,-12 - +12dB,(52 - 76),,,,79
+Single / Master Effect Block,TECH MODULATION,4,Mod Mix Balance,D63>W - D=W - D<W63,(1 - 127),,,,79
+Single / Master Effect Block,TECH MODULATION,5,Pre Mod HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,79
+Single / Master Effect Block,TECH MODULATION,6,Mod LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,,79
+Single / Master Effect Block,TECH MODULATION,7,Mod LPF Resonance,1.0 - 12.0,(10 - 120),,,,79
+Single / Master Effect Block,TECH MODULATION,8,Delay Time,0.1 - 740.0ms,(1 - 7400),,,,79
+Single / Master Effect Block,TECH MODULATION,9,Delay Time Offset R,0 - 884,(0 - 884),,,,79
+Single / Master Effect Block,TECH MODULATION,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,79
+Single / Master Effect Block,TECH MODULATION,11,Feedback Level,0 - 63,(64 - 127),,,,79
+Single / Master Effect Block,TECH MODULATION,12,FB Level Offset R,-63 - +63,(1 - 127),,,,79
+Single / Master Effect Block,TECH MODULATION,13,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,79
+Single / Master Effect Block,TECH MODULATION,14,FB Hi Damp Offset R,-0.9 - +0.9,(1 - 19),,,,79
+Single / Master Effect Block,TECH MODULATION,15,---,,,,,,79
+Single / Master Effect Block,TECH MODULATION,16,---,,,,,,79
+Single / Master Effect Block,ROTARY SPEAKER 1,1,Rotor Speed Slow,0.0Hz - 2.65Hz,(0 - 63),1,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,2,Horn Speed Slow,0.0Hz - 2.65Hz,(0 - 63),1,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,3,Rotor Speed Fast,2.69Hz-39.70Hz,(64 - 127),1,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,4,Horn Speed Fast,2.69Hz-39.70Hz,(64 - 127),1,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,5,Slow-Fast Time of Rotor,0 - 127,(0 - 127),,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,6,Slow-Fast Time of Horn,0 - 127,(0 - 127),,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,7,Drive Rotor,0 - 127,(0 - 127),,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,8,Drive Horn,0 - 127,(0 - 127),,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,9,Rotor/ Horn Balance,R63>H - R=H - R<H63,(1 - 127),,2,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,10,---,,,,,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,15,Mic L-R Angle,0deg - 180deg,(0 - 60),,3,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 1,16,Speed Control,"Slow, Fast",(0 - 1),,1,11 - 14 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,ROTARY SPEAKER 2,1,Speed Control,"Slow, Fast",(0 - 1),,1,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,2,Drive,0.0 - 10.0,(0 - 100),,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,3,Tone,0.0 - 10.0,(0 - 100),,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,4,Rotor/ Horn Balance,R63>H - R=H - R<H63,(1 - 127),,2,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,5,Output Level,0 - 127,(0 - 127),,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,6,Mic L-R Angle,"0deg, 90deg, 120deg, 180deg",(0 - 3),,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,7,Input Level,-6dB-0dB-+6dB,(52 - 76),,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,8,Modulation Depth,0 - 63,(0 - 63),,3,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,9,---,,,,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,10,---,,,,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,11,Slow-Fast Time of Horn,x0.21 - x1.00 - x2.00,(14 - 127),49,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,12,Fast-Slow Time of Horn,x0.21 - x1.00 - x2.00,(14 - 127),49,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,13,Rotor Speed Slow,0.0rpm - 88.3rpm,(0 - 127),56,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,14,Horn Speed Slow,0.0rpm - 89.6rpm,(0 - 127),57,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,15,Rotor Speed Fast,189.3rpm-736.8rpm,(1 - 127),58,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,16,Horn Speed Fast,209.4rpm-817.6rpm,(1 - 127),59,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,17,Slow-Fast Time of Rotor,x0.21 - x1.00 - x2.00,(14 - 127),49,,,80
+Single / Master Effect Block,ROTARY SPEAKER 2,18,Fast-Slow Time of Rotor,x0.21 - x1.00 - x2.00,(14 - 127),49,,,80
+Single / Master Effect Block,DYNAMIC FILTER,1,Filter Type,"LPF(12dB), LPF(18dB), LPF(24dB), HPF, BPF, BEF",(0 - 5),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,2,Sensitivity,0 - 127,(0 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,3,Dyna Level Offset,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,4,Resonance,-16 - +111,(0 - 127),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,5,Attack Time,0.3ms - 227ms,(0 - 127),15,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,6,Release Time,2.6ms - 2171ms,(0 - 127),16,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,7,Release Curve,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,8,Direction,"Up, Down",(0 - 1),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,9,Dyna Threshold Level,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,DYNAMIC FILTER,12,Side Chain Input Level,-∞dB-0dB-+24dB,(0 - 127),45,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,1,Mod Speed,0 - 127,(0 - 127),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,2,Mod Wave Type,"TypeA, TypeB, TypeC, TypeD",(0 - 3),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,3,Mod Depth,0 - 127,(0 - 127),,1,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,4,Mod Depth Offset R,-63 - +63,(1 - 127),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,5,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,6,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,7,Delay Time,0.1ms - 370.0ms,(1 - 3700),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,8,Delay Time Offset R,0 - 884,(0 - 884),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,9,Delay Level,0 - 127,(0 - 127),,3,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,10,Dry Mix Level,0 - 127,(0 - 127),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,11,Feedback Level,0 - 63,(64 - 127),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,12,FB Level Offset R,-63 - +63,(1 - 127),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,13,AM Speed,0.00Hz - 39.7Hz,(0 - 127),1,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,14,AM Wave,"Tri, Sine, Saw Up, Saw Down",(0 - 3),,,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,15,AM Depth,0 - 127,(0 - 127),,2,,80
+Single / Master Effect Block,AUTO SYNTH  Data Default,16,AM Inverse R,"Normal, Inverse",(0 - 1),,,,80
+Single / Master Effect Block,ISOLATOR,1,On/Off Switch,"Off, On",(0 - 1),,,,81
+Single / Master Effect Block,ISOLATOR,2,Low Level,-64 - +63,(0 - 127),,1,,81
+Single / Master Effect Block,ISOLATOR,3,Mid Level,-64 - +63,(0 - 127),,2,,81
+Single / Master Effect Block,ISOLATOR,4,High Level,-64 - +63,(0 - 127),,3,,81
+Single / Master Effect Block,ISOLATOR,5,Low Mute,"Off, On",(0 - 1),,,,81
+Single / Master Effect Block,ISOLATOR,6,Mid Mute,"Off, On",(0 - 1),,,,81
+Single / Master Effect Block,ISOLATOR,7,High Mute,"Off, On",(0 - 1),,,,81
+Single / Master Effect Block,ISOLATOR,8,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,9,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,10,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,11,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,12,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,13,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,14,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,15,---,,,,,,81
+Single / Master Effect Block,ISOLATOR,16,---,,,,,,81
+Single / Master Effect Block,SLICE,1,Divide Type,16th - 4th,(5 - 11),13,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,2,Gate Time,0 - 100%,(0 - 100),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,3,Pan AEG Type,A- E,(0 - 4),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,4,Pan AEG Min Level,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,5,Pan Depth,-63 - +63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,6,Divide Min Level,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,7,Pan Type,A- J,(0 - 9),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,8,Drive,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,9,AEG Phase,0-15(×16th note),(0 - 15),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,10,Dry/Wet Balance,D63>W - D= W - D<W63,(1 - 127),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,11,Phase Reset,"Off(free run), KeyOnReset, SEQ Start Reset",(0 - 2),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,SLICE,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,81
+Single / Master Effect Block,VINYL BREAK,1,Break,"Off, On",(0 - 1),,1,,81
+Single / Master Effect Block,VINYL BREAK,2,Speed,"Fast, Middle, Slow, Vinyl Stop, Power Off",(0 - 4),,2,,81
+Single / Master Effect Block,VINYL BREAK,3,Speed Adjust,+30% - -30%,(0 - 120),,3,,81
+Single / Master Effect Block,VINYL BREAK,4,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,5,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,6,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,7,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,8,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,9,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,81
+Single / Master Effect Block,VINYL BREAK,11,Output Level,-19.5dB - +12dB,(1 - 127),47,,,81
+Single / Master Effect Block,VINYL BREAK,12,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,13,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,14,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,15,---,,,,,,81
+Single / Master Effect Block,VINYL BREAK,16,---,,,,,,81
+Single / Master Effect Block,BEAT REPEAT,1,Repeat,"Off, On",(0 - 1),Table No.,Assign No. 1,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,2,Length,1/256 - 1/1,(0 - 8),48,1,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,3,Freeze,"Off, On",(0 - 1),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,4,Gate Time,1 - 100%,(1 - 100),,2,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,5,Attack Time,0 - 100%,(0 - 100),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,6,Release Time,0 - 100%,(0 - 100),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,7,Play Speed,0.0 - +1.0,(65 - 127),,3,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,8,Pitch Sweep,-63 - +63,(1 - 127),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,9,---,,,,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,11,Filter Type,"THRU, LPF, HPF",(0 - 2),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,12,Cutoff,14.1Hz-21.1kHz,(0 - 127),46,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,13,Resonance,0.0 - 12.7,(0 - 127),,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,14,Output Level,-19.5dB - +12dB,(1 - 127),47,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,15,---,,,,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,BEAT REPEAT,16,---,,,,,This effect does not work properly below BPM42.,81
+Single / Master Effect Block,VCM EQ 501,1,EQ1(LSH) Frequency,31.5Hz - 2.0kHz,(12 - 84),28,,,82
+Single / Master Effect Block,VCM EQ 501,2,EQ1(LSH) Gain,-12.0dB-+12.0dB,(60 - 300),,1,,82
+Single / Master Effect Block,VCM EQ 501,3,EQ2 Q,0.50 - 16.00,(0 - 60),29,,,82
+Single / Master Effect Block,VCM EQ 501,4,EQ2 Frequency,50.0Hz-20.0kHz,(20 - 124),28,,,82
+Single / Master Effect Block,VCM EQ 501,5,EQ2 Gain,-18.0dB-+18.0dB,(0 - 360),,,,82
+Single / Master Effect Block,VCM EQ 501,6,EQ3 Q,0.50 - 16.00,(0 - 60),29,,,82
+Single / Master Effect Block,VCM EQ 501,7,EQ3 Frequency,50.0Hz-20.0kHz,(20 - 124),28,,,82
+Single / Master Effect Block,VCM EQ 501,8,EQ3 Gain,-18.0dB-+18.0dB,(0 - 360),,2,,82
+Single / Master Effect Block,VCM EQ 501,9,EQ4 Q,0.50 - 16.00,(0 - 60),29,,,82
+Single / Master Effect Block,VCM EQ 501,10,EQ4 Frequency,50.0Hz-20.0kHz,(20 - 124),28,,,82
+Single / Master Effect Block,VCM EQ 501,11,EQ4 Gain,-18.0dB-+18.0dB,(0 - 360),,,,82
+Single / Master Effect Block,VCM EQ 501,12,EQ5(HSH) Frequency,500Hz - 20.0kHz,(60 - 124),28,,,82
+Single / Master Effect Block,VCM EQ 501,13,EQ5(HSH) Gain,-12.0dB-+12.0dB,(60 - 300),,3,,82
+Single / Master Effect Block,VCM EQ 501,14,Output Level,-12.0dB-+12.0dB,(60 - 300),,,,82
+Single / Master Effect Block,VCM EQ 501,15,---,,,,,,82
+Single / Master Effect Block,VCM EQ 501,16,---,,,,,,82
+Single / Master Effect Block,PRESENCE,1,Presence,0 - 100,(0 - 100),,1,,82
+Single / Master Effect Block,PRESENCE,2,Texture,0 - 100,(0 - 100),,2,,82
+Single / Master Effect Block,PRESENCE,3,Output Level,-6dB - +6dB,(0 - 120),,3,,82
+Single / Master Effect Block,PRESENCE,4,---,,,,,,82
+Single / Master Effect Block,PRESENCE,5,---,,,,,,82
+Single / Master Effect Block,PRESENCE,6,---,,,,,,82
+Single / Master Effect Block,PRESENCE,7,---,,,,,,82
+Single / Master Effect Block,PRESENCE,8,---,,,,,,82
+Single / Master Effect Block,PRESENCE,9,---,,,,,,82
+Single / Master Effect Block,PRESENCE,10,---,,,,,,82
+Single / Master Effect Block,PRESENCE,11,---,,,,,,82
+Single / Master Effect Block,PRESENCE,12,---,,,,,,82
+Single / Master Effect Block,PRESENCE,13,---,,,,,,82
+Single / Master Effect Block,PRESENCE,14,---,,,,,,82
+Single / Master Effect Block,PRESENCE,15,---,,,,,,82
+Single / Master Effect Block,PRESENCE,16,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,1,HPF Cutoff Frequency,500Hz - 16.0kHz,(28 - 58),3,3,,82
+Single / Master Effect Block,HARMONIC ENHANCER,2,Drive,0 - 127,(0 - 127),,2,,82
+Single / Master Effect Block,HARMONIC ENHANCER,3,Mix Level,0 - 127,(0 - 127),,1,,82
+Single / Master Effect Block,HARMONIC ENHANCER,4,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,5,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,6,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,7,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,8,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,9,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,10,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,11,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,12,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,13,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,14,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,15,---,,,,,,82
+Single / Master Effect Block,HARMONIC ENHANCER,16,---,,,,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,1,Low Subband Gain Lch,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,2,Low Subband Gain,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,3,Rch Mid1 Subband Gain Lch Mid1 Subband Gain,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,4,,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,5,Rch Mid2 Subband Gain Lch Mid2 Subband Gain,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,6,,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,7,Rch Mid3 Subband Gain Lch Mid3 Subband Gain,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,8,,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,9,Rch High Subband Gain Lch,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,10,High Subband Gain Rch,-14.00dB-6.00dB,(5801-7801),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,11,Width Low,0.00 - 1.00,(0 - 100),,1,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,12,Width Mid1,0.00 - 1.00,(0 - 100),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,13,Width Mid2,0.00 - 1.00,(0 - 100),,2,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,14,Width Mid3,0.00 - 1.00,(0 - 100),,,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,15,Width High,0.00 - 1.00,(0 - 100),,3,,82
+Single / Master Effect Block,STEREOPHONIC OPTIMIZER,16,On/Off Switch,Off - On,(0 - 1),,,,82
+Single / Master Effect Block,TALKING MODULATOR,1,Vowel,"a, i, u, e, o",(0 - 4),,1,,83
+Single / Master Effect Block,TALKING MODULATOR,2,Move Speed,1 - 62,(1 - 62),,2,,83
+Single / Master Effect Block,TALKING MODULATOR,3,Drive,0 - 127,(0 - 127),,3,,83
+Single / Master Effect Block,TALKING MODULATOR,4,Output Level,0 - 127,(0 - 127),,,,83
+Single / Master Effect Block,TALKING MODULATOR,5,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,6,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,7,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,8,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,9,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,10,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,11,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,12,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,13,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,14,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,15,---,,,,,,83
+Single / Master Effect Block,TALKING MODULATOR,16,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,1,EQ Frequency,0.00 - 100.00,(0 - 10000),,2,,83
+Single / Master Effect Block,VCM MINI BOOSTER,2,Resonance,0.0 - 1.0,(0 - 500),,3,,83
+Single / Master Effect Block,VCM MINI BOOSTER,3,Gain,0.0 - 20.0dB,(0 - 100),,1,,83
+Single / Master Effect Block,VCM MINI BOOSTER,4,Type,"Low Shelf, High Shelf",(0 - 1),,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,5,Texture,"Retro, Standard, Modern",(0 - 2),,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,6,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,7,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,8,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,9,Input Level,-36 - +24dB,(0 - 120),,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,10,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,11,Output Level,-40 - +20dB,(0 - 120),,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,12,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,13,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,14,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,15,---,,,,,,83
+Single / Master Effect Block,VCM MINI BOOSTER,16,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,1,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,2,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,3,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,4,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,5,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,6,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,7,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,8,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,9,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,83
+Single / Master Effect Block,DAMPER RESONANCE,11,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,12,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,13,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,14,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,15,---,,,,,,83
+Single / Master Effect Block,DAMPER RESONANCE,16,Damper Control,0 - 127,(0 - 127),,"2, 3",,83
+Single / Master Effect Block,PITCH CHANGE,1,Pitch 1,-24 - +24,(40 - 88),,2,,83
+Single / Master Effect Block,PITCH CHANGE,2,Fine 1,-50 - +50,(14 - 114),,,,83
+Single / Master Effect Block,PITCH CHANGE,3,Initial Delay 1,0.1ms - 400.0ms,(0 - 127),7,,,83
+Single / Master Effect Block,PITCH CHANGE,4,Feedback Level 1,0 - 63,(64 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,5,Pitch 2,-24 - +24,(40 - 88),,3,,83
+Single / Master Effect Block,PITCH CHANGE,6,Fine 2,-50 - +50,(14 - 114),,,,83
+Single / Master Effect Block,PITCH CHANGE,7,Initial Delay 2,0.1ms - 400.0ms,(0 - 127),7,,,83
+Single / Master Effect Block,PITCH CHANGE,8,Feedback Level 2,0 - 63,(64 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,9,---,,,,,,83
+Single / Master Effect Block,PITCH CHANGE,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,1,,83
+Single / Master Effect Block,PITCH CHANGE,11,Pan 1,L63 - C - R63,(1 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,12,Output Level1,0 - 127,(0 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,13,Pan 2,L63 - C - R63,(1 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,14,Output Level2,0 - 127,(0 - 127),,,,83
+Single / Master Effect Block,PITCH CHANGE,15,---,,,,,,83
+Single / Master Effect Block,PITCH CHANGE,16,---,,,,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,1,Comp Attack,1ms - 40ms,(0 - 19),8,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,2,Comp Release,10ms - 680ms,(0 - 15),9,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,3,Comp Threshold,-48dB - -6dB,(79 - 121),,3,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,4,Comp Ratio,1.0 - 20.0,(0 - 7),10,2,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,5,Comp Output Level,0 - 127,(0 - 127),,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,10,---,,,,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,11,Noise Gate Attack,1ms - 40ms,(0 - 19),,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,12,Noise Gate Release,10ms - 680ms,(0 - 15),,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,13,Noise Gate Threshold,-73dB - -30dB,(54 - 97),,1,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,14,EQ Mid Frequency,100Hz - 10.0kHz,(14 - 54),3,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,15,EQ Mid Gain,-12dB - +12dB,(52 - 76),,,,83
+Single / Master Effect Block,NOISE GATE+COMP+EQ,16,EQ Mid Width,0.1 - 12.0,(1 - 120),,,,83
+Single EQ Block,2 Band EQ,1,EQ1 Type,"Thru, LPF (-6dB/oct), HPF (-6dB/oct), Low Shelving, Hi Shelving, Peak/Dip",0 - 5,,,,84
+Single EQ Block,2 Band EQ,2,EQ1 Freq,63Hz - 18.0Hz,48 - 244,39,,,84
+Single EQ Block,2 Band EQ,3,EQ1 Gain,-12dB-0dB-+12dB,40 - 64 -88,,,,84
+Single EQ Block,2 Band EQ,4,EQ1 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,2 Band EQ,5,EQ2 Type,"Thru, LPF (-6dB/oct), HPF (-6dB/oct), Low Shelving, Hi Shelving, Peak/Dip",0 - 5,,,,84
+Single EQ Block,2 Band EQ,6,EQ2 Freq,63Hz - 18.0Hz,48 - 244,39,,,84
+Single EQ Block,2 Band EQ,7,EQ2 Gain,-12dB-0dB-+12dB,40 - 64 -88,,,,84
+Single EQ Block,2 Band EQ,8,EQ2 Q,0.1 - -12.0,1 - 120,,,,84
+Single EQ Block,2 Band EQ,9,Output Gain,-12dB-0dB-+12dB,40 - 64 -88,,,,84
+Single EQ Block,Master EQ,1,EQ1 Gain,-12dB - +12dB,52 - 76,,,,84
+Single EQ Block,Master EQ,2,EQ1 Frequency,32Hz - 2.0kHz,4 - 40,3,,,84
+Single EQ Block,Master EQ,3,EQ1 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,Master EQ,4,EQ1 Shape,"Shelving, Peaking",0 - 1,,,,84
+Single EQ Block,Master EQ,5,EQ2 Gain,-12dB - +12dB,52 - 76,,,,84
+Single EQ Block,Master EQ,6,EQ2 Frequency,100Hz - 10kHz,14 - 54,3,,,84
+Single EQ Block,Master EQ,7,EQ2 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,Master EQ,8,---,,,,,,84
+Single EQ Block,Master EQ,9,EQ3 Gain,-12dB - +12dB,52 - 76,,,,84
+Single EQ Block,Master EQ,10,EQ3 Frequency,100Hz - 10kHz,14 - 54,3,,,84
+Single EQ Block,Master EQ,11,EQ3 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,Master EQ,12,---,,,,,,84
+Single EQ Block,Master EQ,13,EQ4 Gain,-12dB - +12dB,52 - 76,,,,84
+Single EQ Block,Master EQ,14,EQ4 Frequency,100Hz - 10kHz,14 - 54,3,,,84
+Single EQ Block,Master EQ,15,EQ4 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,Master EQ,16,---,,,,,,84
+Single EQ Block,Master EQ,17,EQ5 Gain,-12dB - +12dB,52 - 76,,,,84
+Single EQ Block,Master EQ,18,EQ5 Frequency,500Hz - 16kHz,28 - 58,3,,,84
+Single EQ Block,Master EQ,19,EQ5 Q,0.1 - 12.0,1 - 120,,,,84
+Single EQ Block,Master EQ,20,EQ5 Shape,"Shelving, Peaking",0 - 1,,,,84
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",1,Reverb Time,0.3s - 30.0s,(0 - 69),4,1,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",2,Diffusion,0 - 10,(0 - 10),,2,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",3,Initial Delay,0.1ms - 99.3ms,(0 - 63),5,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",4,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",5,LPF Cutoff Frequency,1.0kHz -20.0kHz,(34 - 60),3,3,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",6,---,,,,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",7,---,,,,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",8,---,,,,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",9,---,,,,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",11,Reverb Delay,0.1ms - 99.3ms,(0 - 63),5,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",12,Density,0 - 4,(0 - 4),,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",13,ER/Rev Balance,E63>R - E= R - E<R63,(1 - 127),,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",14,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",15,Feedback Level,0 - 63,(64 - 127),,,,85
+Send Effect Block,"SPX HALL, SPX ROOM, SPX STAGE",16,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",1,Reverb Time,0.3s - 30.0s,(0 - 69),4,1,,85
+Send Effect Block,"HD HALL, HD ROOM",2,Room Size,0 - 4,(0 - 4),,2,,85
+Send Effect Block,"HD HALL, HD ROOM",3,Initial Delay,0.1ms - 200.0ms,(0 - 127),5,,,85
+Send Effect Block,"HD HALL, HD ROOM",4,High Damp Frequency,1.0kHz - 20.0kHz,(34 - 60),3,3,,85
+Send Effect Block,"HD HALL, HD ROOM",5,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",6,High Ratio,0.0 - 1.0,(0 - 10),,,,85
+Send Effect Block,"HD HALL, HD ROOM",7,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",8,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",9,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",10,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",11,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",12,---,,,,,,85
+Send Effect Block,"HD HALL, HD ROOM",13,EQ Low Frequency,22Hz - 1.0kHz,(1 - 34),3,,,85
+Send Effect Block,"HD HALL, HD ROOM",14,EQ Low Gain,-12dB-0dB-+12dB,(52 - 76),,,,85
+Send Effect Block,"HD HALL, HD ROOM",15,EQ High Frequency,500Hz - 18.0kHz,(28 - 59),3,,,85
+Send Effect Block,"HD HALL, HD ROOM",16,EQ High Gain,-12dB-0dB-+12dB,(52 - 76),,,,85
+Send Effect Block,HD PLATE,1,Reverb Time,0.3s - 30.0s,(0 - 69),4,1,,85
+Send Effect Block,HD PLATE,2,Plate Type,1 - 3,(0 - 2),,2,,85
+Send Effect Block,HD PLATE,3,Initial Delay,0.1ms - 200.0ms,(0 - 127),5,,,85
+Send Effect Block,HD PLATE,4,High Damp Frequency,1.0kHz - 20.0kHz,(34 - 60),3,3,,85
+Send Effect Block,HD PLATE,5,---,,,,,,85
+Send Effect Block,HD PLATE,6,High Ratio,0.0 - 1.0,(0 - 10),,,,85
+Send Effect Block,HD PLATE,7,---,,,,,,85
+Send Effect Block,HD PLATE,8,---,,,,,,85
+Send Effect Block,HD PLATE,9,---,,,,,,85
+Send Effect Block,HD PLATE,10,---,,,,,,85
+Send Effect Block,HD PLATE,11,---,,,,,,85
+Send Effect Block,HD PLATE,12,---,,,,,,85
+Send Effect Block,HD PLATE,13,EQ Low Frequency,22Hz - 1.0kHz,(1 - 34),3,,,85
+Send Effect Block,HD PLATE,14,EQ Low Gain,-12dB-0dB-+12dB,(52 - 76),,,,85
+Send Effect Block,HD PLATE,15,EQ High Frequency,500Hz - 18.0kHz,(28 - 59),3,,,85
+Send Effect Block,HD PLATE,16,EQ High Gain,-12dB-0dB-+12dB,(52 - 76),,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",1,Reverb Time,0.3s - 18.0s,(0 - 69),23/24,1,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",2,Diffusion,0 - 10,(0 - 10),,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",3,Initial Delay,0.1ms - 200.0ms,(0 - 127),5,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",4,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",5,LPF Cutoff Frequency,1.0kHz - 20.0kHz,(34 - 60),3,3,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",6,Room Size,0 – 31,(0 - 31),,2,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",7,High Ratio,0.1 - 1.0,(1 - 10),,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",8,Low Ratio,0.1 - 1.4,(1 - 14),,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",9,Decay,0 - 63,(0 - 63),,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",10,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",11,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",12,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",13,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",14,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",15,---,,,,,,85
+Send Effect Block,"REV-X HALL, REV-X ROOM",16,---,,,,,,85
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",1,Reverb Time,0.3s - 30.0s,(0 - 69),4,1,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",2,Diffusion,0 – 10,(0 - 10),,2,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",3,Initial Delay,0.1ms - 200.0ms,(0 - 127),5,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",4,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",5,LPF Cutoff Frequency,1.0kHz -20.0kHz,(34 - 60),3,3,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",6,---,,,,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",7,---,,,,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",8,---,,,,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",9,---,,,,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",10,---,,,,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",11,Reverb Delay,0.1ms - 200.0ms,(0 - 127),5,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",12,Density,0 - 4,(0 - 4),,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",13,ER/Rev Balance,E63>R - E=R - E<R63,(1 - 127),,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",14,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",15,Feedback Level,0 - 63,(64 - 127),,,,86
+Send Effect Block,"R3 HALL, R3 ROOM, R3 PLATE",16,---,,,,,,86
+Send Effect Block,SPACE SIMULATOR,1,Reverb Time,0.3s - 30.0s,(0 - 69),4,1,,86
+Send Effect Block,SPACE SIMULATOR,2,Diffusion,0 – 10,(0 - 10),,2,,86
+Send Effect Block,SPACE SIMULATOR,3,Initial Delay,0.1ms - 200.0ms,(0 - 127),5,,,86
+Send Effect Block,SPACE SIMULATOR,4,HPF Cutoff Frequency,20Hz - 8.0kHz,(0 - 52),3,,,86
+Send Effect Block,SPACE SIMULATOR,5,LPF Cutoff Frequency,1.0kHz -20.0kHz,(34 - 60),3,3,,86
+Send Effect Block,SPACE SIMULATOR,6,Width,0.5m - 30.2m,(0 - 104),11,,,86
+Send Effect Block,SPACE SIMULATOR,7,Height,0.5m - 30.2m,(0 - 104),11,,,86
+Send Effect Block,SPACE SIMULATOR,8,Depth,0.5m - 30.2m,(0 - 104),11,,,86
+Send Effect Block,SPACE SIMULATOR,9,Wall Vary,0 - 30,(0 - 30),,,,86
+Send Effect Block,SPACE SIMULATOR,10,---,,,,,,86
+Send Effect Block,SPACE SIMULATOR,11,Reverb Delay,0.1ms - 200.0ms,(0 - 127),5,,,86
+Send Effect Block,SPACE SIMULATOR,12,Density,0 - 4,(0 - 4),,,,86
+Send Effect Block,SPACE SIMULATOR,13,ER/Rev Balance,E63>R - E= R - E<R63,(1 - 127),,,,86
+Send Effect Block,SPACE SIMULATOR,14,Feedback High Damp,0.1 - 1.0,(1 - 10),,,,86
+Send Effect Block,SPACE SIMULATOR,15,Feedback Level,0 - 63,(64 - 127),,,,86
+Send Effect Block,SPACE SIMULATOR,16,Space Type,1 - 2,(0-1),,,,86
+Send Effect Block,CROSS DELAY,1,Delay Time L>R,0.1ms-1638.3ms,(1 - 16383),,1,,87
+Send Effect Block,CROSS DELAY,2,Delay Time R>L,0.1ms-1638.3ms,(1 - 16383),,1,,87
+Send Effect Block,CROSS DELAY,3,Feedback Level,0 - 63,(64 - 127),,2,,87
+Send Effect Block,CROSS DELAY,4,Input Select,"L, R, L&R, L-MODE2, R-MODE2",(0 - 4),,,,87
+Send Effect Block,CROSS DELAY,5,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,,87
+Send Effect Block,CROSS DELAY,6,---,,,,,,87
+Send Effect Block,CROSS DELAY,7,---,,,,,,87
+Send Effect Block,CROSS DELAY,8,---,,,,,,87
+Send Effect Block,CROSS DELAY,9,---,,,,,,87
+Send Effect Block,CROSS DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,87
+Send Effect Block,CROSS DELAY,11,---,,,,,,87
+Send Effect Block,CROSS DELAY,12,---,,,,,,87
+Send Effect Block,CROSS DELAY,13,EQ Low Frequency,32Hz - 2.0kHz,(4 - 40),3,,,87
+Send Effect Block,CROSS DELAY,14,EQ Low Gain,-12dB - +12dB,(52 - 76),,,,87
+Send Effect Block,CROSS DELAY,15,EQ High Frequency,500Hz - 16.0kHz,(28 - 58),3,,,87
+Send Effect Block,CROSS DELAY,16,EQ High Gain,-12dB - +12dB,(52 - 76),,,,87
+Send Effect Block,TEMPO CROSS DELAY,1,Delay Time L>R,32nd/3 - 4thx6,(0 - 19),13,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,2,Delay Time R>L,32nd/3 - 4thx6,(0 - 19),13,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,3,Feedback Level,0 - 63,(64 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,4,Input Select,"L, R, L&R, L-MODE2, R-MODE2",(0 - 4),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,5,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,6,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO CROSS DELAY,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,1,Delay Time,32nd/3 - 4thx6,(0 - 19),13,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,2,Feedback Level,0 - 63,(64 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,3,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,4,L/R Diffusion,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,5,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,6,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY MONO,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,1,Delay Time,32nd/3 - 4thx6,(0 - 19),13,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,2,Feedback Level,0 - 63,(64 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,3,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,4,L/R Diffusion,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,5,Lag,-63ms - +63ms,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,6,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,TEMPO DELAY STEREO,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,CONTROL DELAY,1,Delay Time,0.1ms-1486.0ms,(1 - 14860),,1,,87
+Send Effect Block,CONTROL DELAY,2,Delay Transition Rate,1 - 48,(1 - 48),,,,87
+Send Effect Block,CONTROL DELAY,3,Feedback Level,0 - 63,(64 - 127),,2,,87
+Send Effect Block,CONTROL DELAY,4,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,,87
+Send Effect Block,CONTROL DELAY,5,---,,,,,,87
+Send Effect Block,CONTROL DELAY,6 - 9,Same as the parameters,shaded in gray,in CROSS DELAY,,,,87
+Send Effect Block,CONTROL DELAY,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,87
+Send Effect Block,CONTROL DELAY,11,---,,,,,,87
+Send Effect Block,CONTROL DELAY,12,---,,,,,,87
+Send Effect Block,CONTROL DELAY,13,---,,,,,,87
+Send Effect Block,CONTROL DELAY,14,---,,,,,,87
+Send Effect Block,CONTROL DELAY,15,---,,,,,,87
+Send Effect Block,CONTROL DELAY,16,---,,,,,,87
+Send Effect Block,DELAY LR,1,Delay Time L,0.1ms-1638.3ms,(1 - 16383),Table No.,Assign No. 1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,2,Delay Time R,0.1ms-1638.3ms,(1 - 16383),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,3,Feedback Time L,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,4,Feedback Time R,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,5,Feedback Level,0 - 63,(64 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,6,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,7,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LR,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,87
+Send Effect Block,DELAY LCR,1,Delay Time L,0.1ms-1638.3ms,(1 - 16383),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,2,Delay Time R,0.1ms-1638.3ms,(1 - 16383),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,3,Delay Time C,0.1ms-1638.3ms,(1 - 16383),,1,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,4,Feedback Time,0.1ms-1638.3ms,(1 - 16383),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,5,Feedback Level,0 - 63,(64 - 127),,2,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,6,Delay Level C,0 - 127,(0 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,7,Feedback High Damp,0.1 - 1.0,(1 - 10),,3,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,8,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,9,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,11,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,DELAY LCR,12,---,,,,,13 - 16 Same as the parameters shaded in gray in CROSS DELAY,88
+Send Effect Block,ANALOG DELAY RETRO,1,Delay Time,25ms - 800ms,(0 - 127),41,1,,88
+Send Effect Block,ANALOG DELAY RETRO,2,Feedback Level,0 - 127,(0 - 127),,2,,88
+Send Effect Block,ANALOG DELAY RETRO,3,Delay Input Level,0 - 127,(0 - 127),,3,,88
+Send Effect Block,ANALOG DELAY RETRO,4,Type,"Mellow, Dub, Narrow, Soft, Dark",(0 - 4),43,,,88
+Send Effect Block,ANALOG DELAY RETRO,5,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,6,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,7,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,8,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,9,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,88
+Send Effect Block,ANALOG DELAY RETRO,11,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,12,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,13,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,14,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,15,---,,,,,,88
+Send Effect Block,ANALOG DELAY RETRO,16,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,1,Delay Time,50ms - 1.0s,(0 - 127),42,1,,88
+Send Effect Block,ANALOG DELAY MODERN,2,Feedback Level,0 - 127,(0 - 127),,2,,88
+Send Effect Block,ANALOG DELAY MODERN,3,Delay Input Level,0 - 127,(0 - 127),,3,,88
+Send Effect Block,ANALOG DELAY MODERN,4,Type,"Urban, Dub, Narrow, Soft, Dark",(0 - 4),44,,,88
+Send Effect Block,ANALOG DELAY MODERN,5,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,6,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,7,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,8,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,9,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,10,Dry/Wet Balance,D63>W - D=W - D<W63,(1 - 127),,,,88
+Send Effect Block,ANALOG DELAY MODERN,11,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,12,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,13,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,14,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,15,---,,,,,,88
+Send Effect Block,ANALOG DELAY MODERN,16,---,,,,,,88

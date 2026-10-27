@@ -1,0 +1,2425 @@
+engine,number,name,category,bank_msb,bank_lsb,program
+Drum,1,Tight Punchy Kick 1,Kick,63,0,0
+Drum,2,Tight Punchy Kick 2,Kick,63,0,1
+Drum,3,Tight Punchy Kick 3,Kick,63,0,2
+Drum,4,Tight Punchy Kick 4,Kick,63,0,3
+Drum,5,Tight Punchy Kick 5,Kick,63,0,4
+Drum,6,Tight Punchy Kick 6,Kick,63,0,5
+Drum,7,Tight Punchy Kick 7,Kick,63,0,6
+Drum,8,Tight Punchy Kick 8,Kick,63,0,7
+Drum,9,Soft Kick 1,Kick,63,0,8
+Drum,10,Tight Soft Kick 1,Kick,63,0,9
+Drum,11,Tight Soft Kick 2,Kick,63,0,10
+Drum,12,Tight Soft Kick 3,Kick,63,0,11
+Drum,13,Tight Soft Kick 4,Kick,63,0,12
+Drum,14,Tight Soft Kick 5,Kick,63,0,13
+Drum,15,Tight Soft Kick 6,Kick,63,0,14
+Drum,16,Tight Soft Kick 7,Kick,63,0,15
+Drum,17,Punchy Fat Kick 1,Kick,63,0,16
+Drum,18,Punchy Fat Kick 2,Kick,63,0,17
+Drum,19,Punchy Fat Kick 3,Kick,63,0,18
+Drum,20,Punchy Fat Kick 4,Kick,63,0,19
+Drum,21,Punchy Fat Kick 5,Kick,63,0,20
+Drum,22,Bitcrushed Punchy Kick 1,Kick,63,0,21
+Drum,23,Punchy Fat Kick 6,Kick,63,0,22
+Drum,24,Punchy Fat Kick 7,Kick,63,0,23
+Drum,25,Distorted Kick 1,Kick,63,0,24
+Drum,26,Distorted Kick 2,Kick,63,0,25
+Drum,27,Distorted Kick 3,Kick,63,0,26
+Drum,28,Distorted Kick 4,Kick,63,0,27
+Drum,29,Distorted Kick 5,Kick,63,0,28
+Drum,30,Distorted Kick 6,Kick,63,0,29
+Drum,31,Distorted Kick 7,Kick,63,0,30
+Drum,32,Distorted Kick 8,Kick,63,0,31
+Drum,33,Saturated Tight Kick 1,Kick,63,0,32
+Drum,34,Saturated Fat Kick 1,Kick,63,0,33
+Drum,35,Saturated Tight Kick 2,Kick,63,0,34
+Drum,36,Saturated Fat Kick 2,Kick,63,0,35
+Drum,37,Saturated Fat Kick 3,Kick,63,0,36
+Drum,38,Saturated Fat Kick 4,Kick,63,0,37
+Drum,39,Saturated Fat Kick 5,Kick,63,0,38
+Drum,40,Saturated Fat Kick 6,Kick,63,0,39
+Drum,41,Saturated Fat Kick 7,Kick,63,0,40
+Drum,42,Punchy Saturated Kick 1,Kick,63,0,41
+Drum,43,Saturated Fat Kick 8,Kick,63,0,42
+Drum,44,Saturated Fat Kick 9,Kick,63,0,43
+Drum,45,Bitcrushed Kick 1,Kick,63,0,44
+Drum,46,Bitcrushed Kick 2,Kick,63,0,45
+Drum,47,Bitcrushed Kick 3,Kick,63,0,46
+Drum,48,Bitcrushed Kick 4,Kick,63,0,47
+Drum,49,Rumble Kick 1,Kick,63,0,48
+Drum,50,Rumble Kick 2,Kick,63,0,49
+Drum,51,Rumble Kick 3,Kick,63,0,50
+Drum,52,Rumble Kick 4,Kick,63,0,51
+Drum,53,Rumble Kick 5,Kick,63,0,52
+Drum,54,Punchy Kick + Reverb 1,Kick,63,0,53
+Drum,55,Punchy Kick + Reverb 2,Kick,63,0,54
+Drum,56,Punchy Kick + Reverb 3,Kick,63,0,55
+Drum,57,Muffled Kick 1,Kick,63,0,56
+Drum,58,Muffled Kick 2,Kick,63,0,57
+Drum,59,Muffled Kick 3,Kick,63,0,58
+Drum,60,Muffled Kick 4,Kick,63,0,59
+Drum,61,Muffled Kick 5,Kick,63,0,60
+Drum,62,Muffled Kick 6,Kick,63,0,61
+Drum,63,Lo-Fi Kick 1,Kick,63,0,62
+Drum,64,Lo-Fi Kick 2,Kick,63,0,63
+Drum,65,RX7 Kick 1,Kick,63,0,64
+Drum,66,RX5 Kick 1,Kick,63,0,65
+Drum,67,RX15 Kick 1,Kick,63,0,66
+Drum,68,RX7 Kick 2,Kick,63,0,67
+Drum,69,RX5 Kick 2,Kick,63,0,68
+Drum,70,RX7 Kick 3,Kick,63,0,69
+Drum,71,RX7 Kick 4,Kick,63,0,70
+Drum,72,RX7 Kick 5,Kick,63,0,71
+Drum,73,Acoustic Kick - Standard 1,Kick,63,0,72
+Drum,74,Acoustic Kick - Standard 2,Kick,63,0,73
+Drum,75,Acoustic Kick - Standard 3,Kick,63,0,74
+Drum,76,Acoustic Kick - Standard 4,Kick,63,0,75
+Drum,77,Acoustic Kick - Rock 1,Kick,63,0,76
+Drum,78,Acoustic Kick - Modern Rock 1,Kick,63,0,77
+Drum,79,Acoustic Kick - Jazz 1,Kick,63,0,78
+Drum,80,Acoustic Kick - Maple 1,Kick,63,0,79
+Drum,81,Modulated Kick 1,Kick,63,0,80
+Drum,82,Modulated Kick 2,Kick,63,0,81
+Drum,83,Punchy Kick + Electronic Ping 1,Kick,63,0,82
+Drum,84,Muffled Kick + Bell 1,Kick,63,0,83
+Drum,85,Punchy Kick + Perc 1,Kick,63,0,84
+Drum,86,Kick + Shaker 1,Kick,63,0,85
+Drum,87,Kick + Open Hat 1,Kick,63,0,86
+Drum,88,Kick + Open Hat 2,Kick,63,0,87
+Drum,89,Tonal Kick C,Kick,63,0,88
+Drum,90,Tonal Kick C#,Kick,63,0,89
+Drum,91,Tonal Kick D,Kick,63,0,90
+Drum,92,Tonal Kick D#,Kick,63,0,91
+Drum,93,Tonal Kick E,Kick,63,0,92
+Drum,94,Tonal Kick F,Kick,63,0,93
+Drum,95,Tonal Kick F#,Kick,63,0,94
+Drum,96,Tonal Kick G,Kick,63,0,95
+Drum,97,Tonal Kick G#,Kick,63,0,96
+Drum,98,Tonal Kick A,Kick,63,0,97
+Drum,99,Tonal Kick A#,Kick,63,0,98
+Drum,100,Tonal Kick B,Kick,63,0,99
+Drum,101,Distorted Tonal Kick C,Kick,63,0,100
+Drum,102,Distorted Tonal Kick C#,Kick,63,0,101
+Drum,103,Distorted Tonal Kick D,Kick,63,0,102
+Drum,104,Distorted Tonal Kick D#,Kick,63,0,103
+Drum,105,Distorted Tonal Kick E,Kick,63,0,104
+Drum,106,Distorted Tonal Kick F,Kick,63,0,105
+Drum,107,Distorted Tonal Kick F#,Kick,63,0,106
+Drum,108,Distorted Tonal Kick G,Kick,63,0,107
+Drum,109,Distorted Tonal Kick G#,Kick,63,0,108
+Drum,110,Distorted Tonal Kick A,Kick,63,0,109
+Drum,111,Distorted Tonal Kick A#,Kick,63,0,110
+Drum,112,Distorted Tonal Kick B,Kick,63,0,111
+Drum,113,Tight Snare 1,Snare,63,0,112
+Drum,114,Tight Snare 2,Snare,63,0,113
+Drum,115,Tight Snare 3,Snare,63,0,114
+Drum,116,Short Pitched Snare 1,Snare,63,0,115
+Drum,117,Tight Snare 4,Snare,63,0,116
+Drum,118,Tight Snare + Reverb 1,Snare,63,0,117
+Drum,119,Tight Punchy Snare + Reverb 1,Snare,63,0,118
+Drum,120,Tight Snare 5,Snare,63,0,119
+Drum,121,Pitched Snare 1,Snare,63,0,120
+Drum,122,Tight Snare 6,Snare,63,0,121
+Drum,123,Tight Snare + Reverb 2,Snare,63,0,122
+Drum,124,Tight Snare + Reverb 3,Snare,63,0,123
+Drum,125,Tight Snare + Reverb 4,Snare,63,0,124
+Drum,126,Tight Snare + Reverb 5,Snare,63,0,125
+Drum,127,Tight Punchy Snare 1,Snare,63,0,126
+Drum,128,Punchy Fat Snare 1,Snare,63,0,127
+Drum,129,Distorted Pitched Snare 1,Snare,63,1,0
+Drum,130,Distorted Punchy Snare 1,Snare,63,1,1
+Drum,131,Punchy Fat Snare 2,Snare,63,1,2
+Drum,132,Distorted Fat Snare 1,Snare,63,1,3
+Drum,133,Distorted Fat Snare 2,Snare,63,1,4
+Drum,134,Punchy Fat Snare 3,Snare,63,1,5
+Drum,135,Punchy Fat Snare 4,Snare,63,1,6
+Drum,136,Punchy Fat Snare 5,Snare,63,1,7
+Drum,137,Distorted Low Snare 1,Snare,63,1,8
+Drum,138,Distorted Low Snare 2,Snare,63,1,9
+Drum,139,Punchy Long Snare 1,Snare,63,1,10
+Drum,140,Punchy Long Snare 2,Snare,63,1,11
+Drum,141,Click Wood Snare 1,Snare,63,1,12
+Drum,142,Double Click Snare 1,Snare,63,1,13
+Drum,143,Short Slow Snare 1,Snare,63,1,14
+Drum,144,Lo-Fi Snare 1,Snare,63,1,15
+Drum,145,Lo-Fi Snare 2,Snare,63,1,16
+Drum,146,Lo-Fi Snare 3,Snare,63,1,17
+Drum,147,Lo-Fi Snare 4,Snare,63,1,18
+Drum,148,Lo-Fi Snare 5,Snare,63,1,19
+Drum,149,Short Can Snare 1,Snare,63,1,20
+Drum,150,Muffled Snare 1,Snare,63,1,21
+Drum,151,Tight Snare + Reverb 6,Snare,63,1,22
+Drum,152,Tight Snare + Reverb 7,Snare,63,1,23
+Drum,153,Snare + Reverb 1,Snare,63,1,24
+Drum,154,Snare + Reverb 2,Snare,63,1,25
+Drum,155,Muffled Snare + Reverb 1,Snare,63,1,26
+Drum,156,Muffled Snare + Reverb 2,Snare,63,1,27
+Drum,157,Pitched Snare + Reverb 1,Snare,63,1,28
+Drum,158,Muffled Snare + Reverb 3,Snare,63,1,29
+Drum,159,Muffled Snare + Reverb 4,Snare,63,1,30
+Drum,160,Fat Snare + Reverb 1,Snare,63,1,31
+Drum,161,Punchy Snare + Reverb 1,Snare,63,1,32
+Drum,162,Distorted Snare + Reverb 1,Snare,63,1,33
+Drum,163,Gated Reverb Snare 1,Snare,63,1,34
+Drum,164,Gated Reverb Snare 2,Snare,63,1,35
+Drum,165,Spring Snare 1,Snare,63,1,36
+Drum,166,Trash Snare + Reverb 1,Snare,63,1,37
+Drum,167,Trash Snare + Reverb 2,Snare,63,1,38
+Drum,168,Trash Snare + Reverb 3,Snare,63,1,39
+Drum,169,Rx5 Snare 1,Snare,63,1,40
+Drum,170,Rx5 Snare 2,Snare,63,1,41
+Drum,171,RX7 Snare 1,Snare,63,1,42
+Drum,172,RX7 Snare 2,Snare,63,1,43
+Drum,173,RX7 Snare 3,Snare,63,1,44
+Drum,174,RX7 Snare 4,Snare,63,1,45
+Drum,175,RX7 Snare 5,Snare,63,1,46
+Drum,176,RX7 Snare 6,Snare,63,1,47
+Drum,177,Acoustic Snare - Standard 1,Snare,63,1,48
+Drum,178,Acoustic Snare - Standard 2,Snare,63,1,49
+Drum,179,Acoustic Snare - Soul 1,Snare,63,1,50
+Drum,180,Acoustic Snare - Standard 3,Snare,63,1,51
+Drum,181,Acoustic Snare - Standard 4,Snare,63,1,52
+Drum,182,Acoustic Snare - Punchy 1,Snare,63,1,53
+Drum,183,Acoustic Snare - Punchy 2,Snare,63,1,54
+Drum,184,Acoustic Snare - Metallic 1,Snare,63,1,55
+Drum,185,Acoustic Snare - Punchy 3,Snare,63,1,56
+Drum,186,Acoustic Snare - Tight 1,Snare,63,1,57
+Drum,187,Acoustic Snare - Tight 2,Snare,63,1,58
+Drum,188,Acoustic Snare + Reverb 1,Snare,63,1,59
+Drum,189,Acoustic Snare - Punchy 4,Snare,63,1,60
+Drum,190,Acoustic Snare - Punchy 5,Snare,63,1,61
+Drum,191,Acoustic Snare - Brush 1,Snare,63,1,62
+Drum,192,Acoustic Snare - Brush Tap 1,Snare,63,1,63
+Drum,193,Acoustic Snare - Flam 1,Snare,63,1,64
+Drum,194,Glitch Snare 1,Snare,63,1,65
+Drum,195,Glitch Snare 2,Snare,63,1,66
+Drum,196,Glitch Snare 3,Snare,63,1,67
+Drum,197,Hardcore Snare 1,Snare,63,1,68
+Drum,198,Hardcore Snare 2,Snare,63,1,69
+Drum,199,Hardcore Snare 3,Snare,63,1,70
+Drum,200,Hardcore Snare 4,Snare,63,1,71
+Drum,201,Hardcore Snare 5,Snare,63,1,72
+Drum,202,Snare + Wood Block 1,Snare,63,1,73
+Drum,203,Snare + Wood Block 2,Snare,63,1,74
+Drum,204,Wood Snare 1,Snare,63,1,75
+Drum,205,Factory Snare + Reverb 1,Snare,63,1,76
+Drum,206,Metallic Snare 1,Snare,63,1,77
+Drum,207,Metallic Snare 2,Snare,63,1,78
+Drum,208,Metallic Snare 3,Snare,63,1,79
+Drum,209,Metallic Snare 4,Snare,63,1,80
+Drum,210,Metallic Snare 5,Snare,63,1,81
+Drum,211,Glass Broken Snare 1,Snare,63,1,82
+Drum,212,Glass Broken Snare 2,Snare,63,1,83
+Drum,213,SFX Snare 1,Snare,63,1,84
+Drum,214,SFX Snare 2,Snare,63,1,85
+Drum,215,Acoustic Rim - Jazz 1,Rim,63,1,86
+Drum,216,Acoustic Rim - Oak 1,Rim,63,1,87
+Drum,217,Acoustic Rim - Fat 1,Rim,63,1,88
+Drum,218,Acoustic Rim - Rock 1,Rim,63,1,89
+Drum,219,Acoustic Rim - Standard 1,Rim,63,1,90
+Drum,220,Acoustic Rim - High 1,Rim,63,1,91
+Drum,221,RX11 Rim 1,Rim,63,1,92
+Drum,222,RX5 Rim 1,Rim,63,1,93
+Drum,223,Acoustic Rim - Short 1,Rim,63,1,94
+Drum,224,Analog Rim 1,Rim,63,1,95
+Drum,225,Analog Rim 2,Rim,63,1,96
+Drum,226,Pitched Rim 1,Rim,63,1,97
+Drum,227,Lo-Fi Rim 1,Rim,63,1,98
+Drum,228,Lo-Fi Rim 2,Rim,63,1,99
+Drum,229,Lo-Fi Rim 3,Rim,63,1,100
+Drum,230,Stick Rim 1,Rim,63,1,101
+Drum,231,Acoustic Rim - Short 2,Rim,63,1,102
+Drum,232,High Pitched Rim 1,Rim,63,1,103
+Drum,233,Double Click Rim 1,Rim,63,1,104
+Drum,234,Acoustic Rim + Reverb 1,Rim,63,1,105
+Drum,235,Lo-Fi Rim + Reverb 1,Rim,63,1,106
+Drum,236,Acoustic Rim + Reverb 2,Rim,63,1,107
+Drum,237,Acoustic Rim + Reverb 3,Rim,63,1,108
+Drum,238,Noisy Rim 1,Rim,63,1,109
+Drum,239,Noisy Rim 2,Rim,63,1,110
+Drum,240,Noisy Rim 3,Rim,63,1,111
+Drum,241,Noisy Rim 4,Rim,63,1,112
+Drum,242,Noisy Rim 5,Rim,63,1,113
+Drum,243,Noisy Rim 6,Rim,63,1,114
+Drum,244,Noisy Rim 7,Rim,63,1,115
+Drum,245,Metallic Rim 1,Rim,63,1,116
+Drum,246,Double Click Rim 2,Rim,63,1,117
+Drum,247,Rim + Low 1,Rim,63,1,118
+Drum,248,Click Rim + Low 1,Rim,63,1,119
+Drum,249,Hand Clap 1,Clap,63,1,120
+Drum,250,Hand Clap 2,Clap,63,1,121
+Drum,251,Hand Clap 3,Clap,63,1,122
+Drum,252,Hand Clap 4,Clap,63,1,123
+Drum,253,Group Clap 1,Clap,63,1,124
+Drum,254,Group Clap 2,Clap,63,1,125
+Drum,255,Group Clap 3,Clap,63,1,126
+Drum,256,Group Clap 4,Clap,63,1,127
+Drum,257,Hand Clap 5,Clap,63,2,0
+Drum,258,Bright Clap 1,Clap,63,2,1
+Drum,259,Bright Clap 2,Clap,63,2,2
+Drum,260,Lo-Fi Thin Clap 1,Clap,63,2,3
+Drum,261,Wide Thin Clap 1,Clap,63,2,4
+Drum,262,Bright Clap 3,Clap,63,2,5
+Drum,263,RX11 Clap 1,Clap,63,2,6
+Drum,264,Bitcrushed Clap 1,Clap,63,2,7
+Drum,265,Lo-Fi Clap 1,Clap,63,2,8
+Drum,266,Lo-Fi Clap + Reverb 1,Clap,63,2,9
+Drum,267,Slow Clap 1,Clap,63,2,10
+Drum,268,Short Clap 1,Clap,63,2,11
+Drum,269,Short Clap 2,Clap,63,2,12
+Drum,270,Short Double Clap 1,Clap,63,2,13
+Drum,271,Double Clap + Reverb 1,Clap,63,2,14
+Drum,272,Double Clap + Reverb 2,Clap,63,2,15
+Drum,273,Bright Clap 4,Clap,63,2,16
+Drum,274,Clicky Clap 1,Clap,63,2,17
+Drum,275,Long Clap + Reverb 1,Clap,63,2,18
+Drum,276,Long Clap + Reverb 2,Clap,63,2,19
+Drum,277,Hand Clap + Reverb 1,Clap,63,2,20
+Drum,278,Thin Clap + Reverb 1,Clap,63,2,21
+Drum,279,Thin Clap + Reverb 2,Clap,63,2,22
+Drum,280,Click Clap + Reverb 1,Clap,63,2,23
+Drum,281,Hand Clap + Reverb 2,Clap,63,2,24
+Drum,282,Hand Clap + Reverb 3,Clap,63,2,25
+Drum,283,Short Delay Clap 1,Clap,63,2,26
+Drum,284,Hand Clap + Reverb 4,Clap,63,2,27
+Drum,285,Hand Clap + Reverb 5,Clap,63,2,28
+Drum,286,Noise Clap 1,Clap,63,2,29
+Drum,287,Noise Clap 2,Clap,63,2,30
+Drum,288,Glitch Clap 1,Clap,63,2,31
+Drum,289,Glitch Clap 2,Clap,63,2,32
+Drum,290,Glitch Clap 3,Clap,63,2,33
+Drum,291,Glitch Clap 4,Clap,63,2,34
+Drum,292,Glitch Clap 5,Clap,63,2,35
+Drum,293,Modulated Hand Clap 1,Clap,63,2,36
+Drum,294,Woody Clap 1,Clap,63,2,37
+Drum,295,Arabic Hand Clap 1,Clap,63,2,38
+Drum,296,Woody Clap + Reverb 1,Clap,63,2,39
+Drum,297,Finger Snap 1,Snap,63,2,40
+Drum,298,Finger Snap 2,Snap,63,2,41
+Drum,299,Finger Snap 3,Snap,63,2,42
+Drum,300,Finger Snap 4,Snap,63,2,43
+Drum,301,Finger Snap 5,Snap,63,2,44
+Drum,302,Finger Snap 6,Snap,63,2,45
+Drum,303,Wide Snap 1,Snap,63,2,46
+Drum,304,Wide Snap 2,Snap,63,2,47
+Drum,305,Fat Snap 1,Snap,63,2,48
+Drum,306,Fat Snap 2,Snap,63,2,49
+Drum,307,Woody Snap 1,Snap,63,2,50
+Drum,308,Snap + Reverb 1,Snap,63,2,51
+Drum,309,Snap + Reverb 2,Snap,63,2,52
+Drum,310,Click Snap 1,Snap,63,2,53
+Drum,311,Click Snap 2,Snap,63,2,54
+Drum,312,Tight Closed Hat 1,Closed HiHat,63,2,55
+Drum,313,Tight Closed Hat 2,Closed HiHat,63,2,56
+Drum,314,Tight Closed Hat 3,Closed HiHat,63,2,57
+Drum,315,Tight Closed Hat 4,Closed HiHat,63,2,58
+Drum,316,Tight Closed Hat 5,Closed HiHat,63,2,59
+Drum,317,Tight Closed Hat 6,Closed HiHat,63,2,60
+Drum,318,Tight Closed Hat 7,Closed HiHat,63,2,61
+Drum,319,Tight Closed Hat 8,Closed HiHat,63,2,62
+Drum,320,Tight Closed Hat 9,Closed HiHat,63,2,63
+Drum,321,Tight Closed Hat 10,Closed HiHat,63,2,64
+Drum,322,Tight Closed Hat 11,Closed HiHat,63,2,65
+Drum,323,Tight Closed Hat 12,Closed HiHat,63,2,66
+Drum,324,Closed Hat 1,Closed HiHat,63,2,67
+Drum,325,Closed Hat 2,Closed HiHat,63,2,68
+Drum,326,Closed Hat 3,Closed HiHat,63,2,69
+Drum,327,Closed Hat 4,Closed HiHat,63,2,70
+Drum,328,Closed Hat 5,Closed HiHat,63,2,71
+Drum,329,Closed Hat 6,Closed HiHat,63,2,72
+Drum,330,Acoustic Closed Hat 1,Closed HiHat,63,2,73
+Drum,331,Closed Hat 7,Closed HiHat,63,2,74
+Drum,332,Closed Hat 8,Closed HiHat,63,2,75
+Drum,333,Closed Hat 9,Closed HiHat,63,2,76
+Drum,334,Acoustic Closed Hat 2,Closed HiHat,63,2,77
+Drum,335,Closed Hat 10,Closed HiHat,63,2,78
+Drum,336,Noise Closed Hat 1,Closed HiHat,63,2,79
+Drum,337,Noise Closed Hat 2,Closed HiHat,63,2,80
+Drum,338,Noise Closed Hat + Low 1,Closed HiHat,63,2,81
+Drum,339,Low Closed Hat 1,Closed HiHat,63,2,82
+Drum,340,Closed Hat + High Tone 1,Closed HiHat,63,2,83
+Drum,341,Acoustic Closed Hat 3,Closed HiHat,63,2,84
+Drum,342,Acoustic Closed Hat 4,Closed HiHat,63,2,85
+Drum,343,Acoustic Closed Hat 5,Closed HiHat,63,2,86
+Drum,344,Acoustic Closed Hat 6,Closed HiHat,63,2,87
+Drum,345,Acoustic Closed Hat 7,Closed HiHat,63,2,88
+Drum,346,Acoustic Closed Hat 8,Closed HiHat,63,2,89
+Drum,347,Acoustic Closed Hat 9,Closed HiHat,63,2,90
+Drum,348,Acoustic Closed Hat 10,Closed HiHat,63,2,91
+Drum,349,Acoustic Hat Pedal 1,Closed HiHat,63,2,92
+Drum,350,Acoustic Hat Pedal 2,Closed HiHat,63,2,93
+Drum,351,Acoustic Hat Pedal 3,Closed HiHat,63,2,94
+Drum,352,Acoustic Hat Pedal 4,Closed HiHat,63,2,95
+Drum,353,Acoustic Hat Pedal 5,Closed HiHat,63,2,96
+Drum,354,Acoustic Hat Pedal 6,Closed HiHat,63,2,97
+Drum,355,Click Closed Hat 1,Closed HiHat,63,2,98
+Drum,356,Lo-Fi Short Closed Hat 1,Closed HiHat,63,2,99
+Drum,357,Click Closed Hat 2,Closed HiHat,63,2,100
+Drum,358,Lo-Fi Short Closed Hat 2,Closed HiHat,63,2,101
+Drum,359,Lo-Fi Short Closed Hat 3,Closed HiHat,63,2,102
+Drum,360,Lo-Fi Short Closed Hat 4,Closed HiHat,63,2,103
+Drum,361,Lo-Fi Short Closed Hat 5,Closed HiHat,63,2,104
+Drum,362,Lo-Fi Short Closed Hat 6,Closed HiHat,63,2,105
+Drum,363,Lo-Fi Short Closed Hat 7,Closed HiHat,63,2,106
+Drum,364,Lo-Fi Short Closed Hat 8,Closed HiHat,63,2,107
+Drum,365,Lo-Fi Short Closed Hat 9,Closed HiHat,63,2,108
+Drum,366,Bitcrushed Hat 1,Closed HiHat,63,2,109
+Drum,367,Lo-Fi Closed Hat 1,Closed HiHat,63,2,110
+Drum,368,Lo-Fi Closed Hat 2,Closed HiHat,63,2,111
+Drum,369,Lo-Fi Closed Hat 3,Closed HiHat,63,2,112
+Drum,370,Lo-Fi Closed Hat 4,Closed HiHat,63,2,113
+Drum,371,Lo-Fi Closed Hat 5,Closed HiHat,63,2,114
+Drum,372,Lo-Fi Closed Hat 6,Closed HiHat,63,2,115
+Drum,373,Lo-Fi Closed Hat 7,Closed HiHat,63,2,116
+Drum,374,Lo-Fi Closed Hat 8,Closed HiHat,63,2,117
+Drum,375,Lo-Fi Closed Hat 9,Closed HiHat,63,2,118
+Drum,376,Closed Hat + Reverb 1,Closed HiHat,63,2,119
+Drum,377,Lo-Fi Closed Hat + Reverb 1,Closed HiHat,63,2,120
+Drum,378,Closed Hat + Reverb 2,Closed HiHat,63,2,121
+Drum,379,Closed Hat + Reverb 3,Closed HiHat,63,2,122
+Drum,380,Closed Hat + Reverb 4,Closed HiHat,63,2,123
+Drum,381,Closed Hat + Reverb 5,Closed HiHat,63,2,124
+Drum,382,Glitch Hat 1,Closed HiHat,63,2,125
+Drum,383,Glitch Hat 2,Closed HiHat,63,2,126
+Drum,384,Glitch Hat 3,Closed HiHat,63,2,127
+Drum,385,Bright Open Hat 1,Open HiHat,63,3,0
+Drum,386,Bright Open Hat 2,Open HiHat,63,3,1
+Drum,387,Bright Open Hat 3,Open HiHat,63,3,2
+Drum,388,Bright Open Hat 4,Open HiHat,63,3,3
+Drum,389,Bright Open Hat 5,Open HiHat,63,3,4
+Drum,390,Noise Open Hat 1,Open HiHat,63,3,5
+Drum,391,Noise Open Hat 2,Open HiHat,63,3,6
+Drum,392,Noise Open Hat 3,Open HiHat,63,3,7
+Drum,393,Noise Open Hat 4,Open HiHat,63,3,8
+Drum,394,Noise Open Hat 5,Open HiHat,63,3,9
+Drum,395,Noise Open Hat 6,Open HiHat,63,3,10
+Drum,396,Noise Open Hat 7,Open HiHat,63,3,11
+Drum,397,Noise Open Hat 8,Open HiHat,63,3,12
+Drum,398,Noise Open Hat 9,Open HiHat,63,3,13
+Drum,399,Noise Open Hat 10,Open HiHat,63,3,14
+Drum,400,Noise Open Hat 11,Open HiHat,63,3,15
+Drum,401,Noise Open Hat 12,Open HiHat,63,3,16
+Drum,402,Noise Open Hat 13,Open HiHat,63,3,17
+Drum,403,Noise Open Hat 14,Open HiHat,63,3,18
+Drum,404,Noise Open Hat 15,Open HiHat,63,3,19
+Drum,405,Bright Open Hat 6,Open HiHat,63,3,20
+Drum,406,Acoustic Open Hat 1,Open HiHat,63,3,21
+Drum,407,Acoustic Open Hat 2,Open HiHat,63,3,22
+Drum,408,Acoustic Open Hat 3,Open HiHat,63,3,23
+Drum,409,Acoustic Open Hat 4,Open HiHat,63,3,24
+Drum,410,Acoustic Open Hat 5,Open HiHat,63,3,25
+Drum,411,Acoustic Open Hat 6,Open HiHat,63,3,26
+Drum,412,Acoustic Open Hat 7,Open HiHat,63,3,27
+Drum,413,Crash Open Hat 1,Open HiHat,63,3,28
+Drum,414,Crash Open Hat 2,Open HiHat,63,3,29
+Drum,415,Crash Open Hat 3,Open HiHat,63,3,30
+Drum,416,Bitcrushed Open Hat 1,Open HiHat,63,3,31
+Drum,417,Bitcrushed Open Hat 2,Open HiHat,63,3,32
+Drum,418,Bitcrushed Open Hat 3,Open HiHat,63,3,33
+Drum,419,Bitcrushed Open Hat 4,Open HiHat,63,3,34
+Drum,420,Distorted Open Hat 1,Open HiHat,63,3,35
+Drum,421,Distorted Open Hat 2,Open HiHat,63,3,36
+Drum,422,Distorted Open Hat 3,Open HiHat,63,3,37
+Drum,423,Distorted Open Hat 4,Open HiHat,63,3,38
+Drum,424,Distorted Open Hat 5,Open HiHat,63,3,39
+Drum,425,Lo-Fi Open Hat 1,Open HiHat,63,3,40
+Drum,426,Lo-Fi Open Hat 2,Open HiHat,63,3,41
+Drum,427,Lo-Fi Open Hat 3,Open HiHat,63,3,42
+Drum,428,Lo-Fi Open Hat 4,Open HiHat,63,3,43
+Drum,429,Lo-Fi Open Hat 5,Open HiHat,63,3,44
+Drum,430,Gated Open Hat 1,Open HiHat,63,3,45
+Drum,431,Gated Open Hat 2,Open HiHat,63,3,46
+Drum,432,Gated Open Hat 3,Open HiHat,63,3,47
+Drum,433,Gated Open Hat 4,Open HiHat,63,3,48
+Drum,434,Gated Open Hat 5,Open HiHat,63,3,49
+Drum,435,Slow Attack Open Hat 1,Open HiHat,63,3,50
+Drum,436,Slow Attack Open Hat 2,Open HiHat,63,3,51
+Drum,437,Slow Attack Open Hat 3,Open HiHat,63,3,52
+Drum,438,Slow Attack Open Hat 4,Open HiHat,63,3,53
+Drum,439,Slow Attack Open Hat 5,Open HiHat,63,3,54
+Drum,440,Slow Attack Open Hat 6,Open HiHat,63,3,55
+Drum,441,Slow Attack Open Hat 7,Open HiHat,63,3,56
+Drum,442,Open Hat with Bell 1,Open HiHat,63,3,57
+Drum,443,Open Hat with Bell 2,Open HiHat,63,3,58
+Drum,444,Open Hat with Bell 3,Open HiHat,63,3,59
+Drum,445,Bell Open Hat 1,Open HiHat,63,3,60
+Drum,446,Splash Open Hat 1,Open HiHat,63,3,61
+Drum,447,Open Hat + Delay 1,Open HiHat,63,3,62
+Drum,448,Open Hat + Reverb 1,Open HiHat,63,3,63
+Drum,449,Open Hat + Reverb 2,Open HiHat,63,3,64
+Drum,450,Panning Open Hat 1,Open HiHat,63,3,65
+Drum,451,Panning Distorted Open Hat 1,Open HiHat,63,3,66
+Drum,452,Modulated Open Hat 1,Open HiHat,63,3,67
+Drum,453,Modulated Open Hat 2,Open HiHat,63,3,68
+Drum,454,Modulated Open Hat 3,Open HiHat,63,3,69
+Drum,455,Reversed Floor Hat 1,Open HiHat,63,3,70
+Drum,456,Reversed Hat 1,Open HiHat,63,3,71
+Drum,457,Shaker 1,Shaker / Tambourine,63,3,72
+Drum,458,Shaker 2,Shaker / Tambourine,63,3,73
+Drum,459,Shaker 3,Shaker / Tambourine,63,3,74
+Drum,460,Shaker 4,Shaker / Tambourine,63,3,75
+Drum,461,Shaker 5,Shaker / Tambourine,63,3,76
+Drum,462,Shaker 6,Shaker / Tambourine,63,3,77
+Drum,463,Shaker 7,Shaker / Tambourine,63,3,78
+Drum,464,Shaker 8,Shaker / Tambourine,63,3,79
+Drum,465,Shaker 9,Shaker / Tambourine,63,3,80
+Drum,466,Shaker 10,Shaker / Tambourine,63,3,81
+Drum,467,Shaker 11,Shaker / Tambourine,63,3,82
+Drum,468,Short Shaker Accent 1,Shaker / Tambourine,63,3,83
+Drum,469,Short Shaker Accent 2,Shaker / Tambourine,63,3,84
+Drum,470,Short Shaker Accent 3,Shaker / Tambourine,63,3,85
+Drum,471,Shaker + Reverb 1,Shaker / Tambourine,63,3,86
+Drum,472,Shaker + Reverb 2,Shaker / Tambourine,63,3,87
+Drum,473,Short Shaker Accent 4,Shaker / Tambourine,63,3,88
+Drum,474,Shaker 12,Shaker / Tambourine,63,3,89
+Drum,475,Shaker 13,Shaker / Tambourine,63,3,90
+Drum,476,Shaker 14,Shaker / Tambourine,63,3,91
+Drum,477,Shaker 15,Shaker / Tambourine,63,3,92
+Drum,478,Arabic Maracas 1,Shaker / Tambourine,63,3,93
+Drum,479,Caxixi 1,Shaker / Tambourine,63,3,94
+Drum,480,Afoxe Open 1,Shaker / Tambourine,63,3,95
+Drum,481,Muffled Shaker 1,Shaker / Tambourine,63,3,96
+Drum,482,Tambourine 1,Shaker / Tambourine,63,3,97
+Drum,483,Tambourine 2,Shaker / Tambourine,63,3,98
+Drum,484,Tambourine 3,Shaker / Tambourine,63,3,99
+Drum,485,Tambourine 4,Shaker / Tambourine,63,3,100
+Drum,486,Tambourine 5,Shaker / Tambourine,63,3,101
+Drum,487,Tambourine 6,Shaker / Tambourine,63,3,102
+Drum,488,Tambourine 7,Shaker / Tambourine,63,3,103
+Drum,489,Short Tambourine 1,Shaker / Tambourine,63,3,104
+Drum,490,Tambourine 8,Shaker / Tambourine,63,3,105
+Drum,491,RX5 Tambourine 1,Shaker / Tambourine,63,3,106
+Drum,492,Long Tambourine 1,Shaker / Tambourine,63,3,107
+Drum,493,Long Tambourine 2,Shaker / Tambourine,63,3,108
+Drum,494,Long Tambourine 3,Shaker / Tambourine,63,3,109
+Drum,495,Long Tambourine 4,Shaker / Tambourine,63,3,110
+Drum,496,Long Tambourine 5,Shaker / Tambourine,63,3,111
+Drum,497,Tambourine + Reverb 1,Shaker / Tambourine,63,3,112
+Drum,498,Sharp Ride 1,Ride,63,3,113
+Drum,499,Sharp Ride 2,Ride,63,3,114
+Drum,500,Noise Ride 1,Ride,63,3,115
+Drum,501,Sharp Ride 3,Ride,63,3,116
+Drum,502,Acoustic Ride 1,Ride,63,3,117
+Drum,503,Acoustic Ride - Brush 1,Ride,63,3,118
+Drum,504,Acoustic Ride 2,Ride,63,3,119
+Drum,505,Acoustic Ride 3,Ride,63,3,120
+Drum,506,RX7 Ride 1,Ride,63,3,121
+Drum,507,Ride Cup 1,Ride,63,3,122
+Drum,508,Ride Cup 2,Ride,63,3,123
+Drum,509,RX5 Ride Cup 1,Ride,63,3,124
+Drum,510,Color Ride 1,Ride,63,3,125
+Drum,511,Color Ride 2,Ride,63,3,126
+Drum,512,Color Ride 3,Ride,63,3,127
+Drum,513,Color Ride 4,Ride,63,4,0
+Drum,514,Color Ride 5,Ride,63,4,1
+Drum,515,Gate Ride 1,Ride,63,4,2
+Drum,516,Crash Ride 1,Ride,63,4,3
+Drum,517,Crash Ride 2,Ride,63,4,4
+Drum,518,Crash Ride 3,Ride,63,4,5
+Drum,519,Noise Ride 2,Ride,63,4,6
+Drum,520,Noise Long Ride 1,Ride,63,4,7
+Drum,521,High Noise Ride 1,Ride,63,4,8
+Drum,522,Synth Ride 1,Ride,63,4,9
+Drum,523,Synth Long Ride 1,Ride,63,4,10
+Drum,524,Dark Ride 1,Ride,63,4,11
+Drum,525,Slow Ride 1,Ride,63,4,12
+Drum,526,Noise Ride 3,Ride,63,4,13
+Drum,527,Bitcrushed Ride 1,Ride,63,4,14
+Drum,528,RX5 Crash 1,Crash,63,4,15
+Drum,529,Acoustic Crash 1,Crash,63,4,16
+Drum,530,Acoustic Crash 2,Crash,63,4,17
+Drum,531,Acoustic Crash + Reverb 1,Crash,63,4,18
+Drum,532,Acoustic Crash 3,Crash,63,4,19
+Drum,533,Slow Acoustic Crash 1,Crash,63,4,20
+Drum,534,Acoustic Crash 4,Crash,63,4,21
+Drum,535,Acoustic Crash 5,Crash,63,4,22
+Drum,536,Splash Cymbal 1,Crash,63,4,23
+Drum,537,Splash Cymbal 2,Crash,63,4,24
+Drum,538,Splash Cymbal + Reverb 1,Crash,63,4,25
+Drum,539,Big Cymbal 1,Crash,63,4,26
+Drum,540,Big Cymbal 2,Crash,63,4,27
+Drum,541,Big Cymbal 3,Crash,63,4,28
+Drum,542,Cymbal Hammer 1,Crash,63,4,29
+Drum,543,China Cymbal 1,Crash,63,4,30
+Drum,544,4th Delay Crash 1,Crash,63,4,31
+Drum,545,Long Crash + Reverb 1,Crash,63,4,32
+Drum,546,Noise Crash 1,Crash,63,4,33
+Drum,547,Noise Crash 2,Crash,63,4,34
+Drum,548,Noise Crash 3,Crash,63,4,35
+Drum,549,Acoustic High Tom 1,Tom,63,4,36
+Drum,550,Acoustic High Tom 2,Tom,63,4,37
+Drum,551,Acoustic Mid Tom 1,Tom,63,4,38
+Drum,552,Acoustic Mid Tom 2,Tom,63,4,39
+Drum,553,Acoustic Mid Tom 3,Tom,63,4,40
+Drum,554,Acoustic Mid Tom 4,Tom,63,4,41
+Drum,555,Acoustic Low Tom 1,Tom,63,4,42
+Drum,556,Acoustic Low Tom 2,Tom,63,4,43
+Drum,557,Punchy High Tom 1,Tom,63,4,44
+Drum,558,Punchy High Tom 2,Tom,63,4,45
+Drum,559,Punchy High Tom 3,Tom,63,4,46
+Drum,560,Punchy Mid Tom 1,Tom,63,4,47
+Drum,561,Punchy Mid Tom 2,Tom,63,4,48
+Drum,562,Punchy Mid Tom 3,Tom,63,4,49
+Drum,563,Punchy Mid Tom 4,Tom,63,4,50
+Drum,564,Punchy Mid Tom 5,Tom,63,4,51
+Drum,565,Punchy Mid Tom 6,Tom,63,4,52
+Drum,566,Punchy Low Tom 1,Tom,63,4,53
+Drum,567,Punchy Low Tom 2,Tom,63,4,54
+Drum,568,Punchy Low Tom 3,Tom,63,4,55
+Drum,569,Electronic High Tom 1,Tom,63,4,56
+Drum,570,Electronic High Tom 2,Tom,63,4,57
+Drum,571,Electronic High Tom 3,Tom,63,4,58
+Drum,572,Electronic High Tom 4,Tom,63,4,59
+Drum,573,Electronic High Tom 5,Tom,63,4,60
+Drum,574,Electronic Mid Tom 1,Tom,63,4,61
+Drum,575,Electronic Mid Tom 2,Tom,63,4,62
+Drum,576,Electronic Low Tom 1,Tom,63,4,63
+Drum,577,Electronic Low Tom 2,Tom,63,4,64
+Drum,578,RX5 High Tom 1,Tom,63,4,65
+Drum,579,RX5 Mid Tom 1,Tom,63,4,66
+Drum,580,RX5 Mid Tom 2,Tom,63,4,67
+Drum,581,RX5 Low Tom 1,Tom,63,4,68
+Drum,582,Acoustic High Tom - Oak 1,Tom,63,4,69
+Drum,583,Acoustic Mid Tom - Oak 1,Tom,63,4,70
+Drum,584,Acoustic Low Tom - Oak 1,Tom,63,4,71
+Drum,585,Acoustic High Tom - Jazz 1,Tom,63,4,72
+Drum,586,Acoustic Mid Tom - Jazz 1,Tom,63,4,73
+Drum,587,Acoustic Low Tom - Jazz 1,Tom,63,4,74
+Drum,588,Acoustic High Tom - Rock 1,Tom,63,4,75
+Drum,589,Acoustic Mid Tom - Rock 1,Tom,63,4,76
+Drum,590,Acoustic Low Tom - Rock 1,Tom,63,4,77
+Drum,591,Acoustic High Tom - Maple 1,Tom,63,4,78
+Drum,592,Acoustic Mid Tom - Maple 1,Tom,63,4,79
+Drum,593,Acoustic Low Tom - Maple 1,Tom,63,4,80
+Drum,594,Electronic High Tom + Reverb 1,Tom,63,4,81
+Drum,595,Muffled Mid Tom + Reverb 1,Tom,63,4,82
+Drum,596,Acoustic Mid Tom + Reverb 1,Tom,63,4,83
+Drum,597,Modulated Tom 1,Tom,63,4,84
+Drum,598,Modulated Tom 2,Tom,63,4,85
+Drum,599,Modulated Tom 3,Tom,63,4,86
+Drum,600,RX5 High Tom 2,Tom,63,4,87
+Drum,601,RX5 Mid Tom 3,Tom,63,4,88
+Drum,602,RX5 Mid Tom 4,Tom,63,4,89
+Drum,603,RX5 Low Tom 2,Tom,63,4,90
+Drum,604,Distorted Tom 1,Tom,63,4,91
+Drum,605,Distorted Tom 2,Tom,63,4,92
+Drum,606,Distorted Tom 3,Tom,63,4,93
+Drum,607,Distorted Tom 4,Tom,63,4,94
+Drum,608,Distorted Tom 5,Tom,63,4,95
+Drum,609,Distorted Tom 6,Tom,63,4,96
+Drum,610,Distorted Tom 7,Tom,63,4,97
+Drum,611,Bitcrushed Tom 1,Tom,63,4,98
+Drum,612,Bitcrushed Tom 2,Tom,63,4,99
+Drum,613,Bass Tom 1,Tom,63,4,100
+Drum,614,Bass Tom 2,Tom,63,4,101
+Drum,615,Tonal Bass Tom 1,Tom,63,4,102
+Drum,616,Bass Tom 3,Tom,63,4,103
+Drum,617,Bass Tom 4,Tom,63,4,104
+Drum,618,Bass Tom 5,Tom,63,4,105
+Drum,619,Analog Cowbell 1,Bell,63,4,106
+Drum,620,Analog Cowbell Accent 1,Bell,63,4,107
+Drum,621,Tonal Cowbell 1,Bell,63,4,108
+Drum,622,Tonal Cowbell 2,Bell,63,4,109
+Drum,623,Metallic Cowbell 1,Bell,63,4,110
+Drum,624,Metallic Cowbell 2,Bell,63,4,111
+Drum,625,Metallic Cowbell 3,Bell,63,4,112
+Drum,626,Cowbell High 1,Bell,63,4,113
+Drum,627,Cowbell 1,Bell,63,4,114
+Drum,628,Cowbell Mid 1,Bell,63,4,115
+Drum,629,Cowbell Mid 2,Bell,63,4,116
+Drum,630,Agogo High 1,Bell,63,4,117
+Drum,631,Agogo Low 1,Bell,63,4,118
+Drum,632,Small Bell 1,Bell,63,4,119
+Drum,633,Short Bell 1,Bell,63,4,120
+Drum,634,Short Bell 2,Bell,63,4,121
+Drum,635,Tingsha Bell 1,Bell,63,4,122
+Drum,636,Ringing Bell 1,Bell,63,4,123
+Drum,637,Muted Finger Cymbal 1,Bell,63,4,124
+Drum,638,Muted Finger Cymbal 2,Bell,63,4,125
+Drum,639,Sagat1 Open 1,Bell,63,4,126
+Drum,640,Sagat1 Close 1,Bell,63,4,127
+Drum,641,Sagat2 Open 1,Bell,63,5,0
+Drum,642,Sagat2 Close 1,Bell,63,5,1
+Drum,643,Sagat3 Open 1,Bell,63,5,2
+Drum,644,Sagat3 Close 1,Bell,63,5,3
+Drum,645,Atarigane 1,Bell,63,5,4
+Drum,646,High Bell 1,Bell,63,5,5
+Drum,647,Mind Bell 1,Bell,63,5,6
+Drum,648,Sci-Fi Bell 1,Bell,63,5,7
+Drum,649,Bell and Noise 1,Bell,63,5,8
+Drum,650,Modulated Bell 1,Bell,63,5,9
+Drum,651,RX5 Conga High Open 1,Conga / Bongo,63,5,10
+Drum,652,RX5 Conga High Mute 1,Conga / Bongo,63,5,11
+Drum,653,RX5 Conga Low Open 1,Conga / Bongo,63,5,12
+Drum,654,Conga1 High Slap 1,Conga / Bongo,63,5,13
+Drum,655,Conga1 High Slap Open 1,Conga / Bongo,63,5,14
+Drum,656,Conga1 High Open 1,Conga / Bongo,63,5,15
+Drum,657,Conga1 Low Open 1,Conga / Bongo,63,5,16
+Drum,658,Conga2 High 1,Conga / Bongo,63,5,17
+Drum,659,Conga2 Mid 1,Conga / Bongo,63,5,18
+Drum,660,Conga2 Mid Mute 1,Conga / Bongo,63,5,19
+Drum,661,Conga3 High Mute 1,Conga / Bongo,63,5,20
+Drum,662,Conga3 Mid Slap Open 1,Conga / Bongo,63,5,21
+Drum,663,Khalg Conga Low,Conga / Bongo,63,5,22
+Drum,664,Analog Conga High 1,Conga / Bongo,63,5,23
+Drum,665,Analog Conga Mid 1,Conga / Bongo,63,5,24
+Drum,666,Analog Conga Low 1,Conga / Bongo,63,5,25
+Drum,667,RX5 Bongo High 1,Conga / Bongo,63,5,26
+Drum,668,RX5 Bongo Low 1,Conga / Bongo,63,5,27
+Drum,669,Bongo1 High Open 1,Conga / Bongo,63,5,28
+Drum,670,Bongo1 Low Open 1,Conga / Bongo,63,5,29
+Drum,671,Bongo2 High 1,Conga / Bongo,63,5,30
+Drum,672,Bongo3 High 1,Conga / Bongo,63,5,31
+Drum,673,Bongo3 High 2,Conga / Bongo,63,5,32
+Drum,674,Bongo4 High 1,Conga / Bongo,63,5,33
+Drum,675,Bongo4 Low 1,Conga / Bongo,63,5,34
+Drum,676,Bongo4 Low 2,Conga / Bongo,63,5,35
+Drum,677,Djembe 1,World,63,5,36
+Drum,678,Djembe 2,World,63,5,37
+Drum,679,Djembe 3,World,63,5,38
+Drum,680,Djembe 4,World,63,5,39
+Drum,681,Talking Drum 1,World,63,5,40
+Drum,682,Talking Drum 2,World,63,5,41
+Drum,683,Talking Drum 3,World,63,5,42
+Drum,684,Talking Drum 4,World,63,5,43
+Drum,685,Tamborim Up 1,World,63,5,44
+Drum,686,Tamborim Down 1,World,63,5,45
+Drum,687,Tamborim Finger Back 1,World,63,5,46
+Drum,688,Tamborim Open 1,World,63,5,47
+Drum,689,Pandeiro Open 1,World,63,5,48
+Drum,690,Pandeiro Close 1,World,63,5,49
+Drum,691,Reco-reco 1,World,63,5,50
+Drum,692,Surdo Mute 1,World,63,5,51
+Drum,693,Surdo Stop 1,World,63,5,52
+Drum,694,Surdo Open 1,World,63,5,53
+Drum,695,Surdo Mute 2,World,63,5,54
+Drum,696,Surdo Stick 1,World,63,5,55
+Drum,697,Caixa Rim 1,World,63,5,56
+Drum,698,Vibraslap 1,World,63,5,57
+Drum,699,Darbuka Dum 1,World,63,5,58
+Drum,700,Darbuka Dom & Tak 1,World,63,5,59
+Drum,701,Darbuka Tak Finger 1,World,63,5,60
+Drum,702,Darbuka Tak Close 1,World,63,5,61
+Drum,703,Darbuka Slap 1,World,63,5,62
+Drum,704,Darbuka Sak 1,World,63,5,63
+Drum,705,Darbuka Rak 1,World,63,5,64
+Drum,706,Darbuka Flam 1,World,63,5,65
+Drum,707,Darbuka Noise 1,World,63,5,66
+Drum,708,Tunisian Bendir Dom 1,World,63,5,67
+Drum,709,Tunisian Bendir Tak 1,World,63,5,68
+Drum,710,Tunisian Bendir Tak 2,World,63,5,69
+Drum,711,Moroccan Bendir Dom 1,World,63,5,70
+Drum,712,Moroccan Bendir Dom 2,World,63,5,71
+Drum,713,Moroccan Bendir Dom 3,World,63,5,72
+Drum,714,Moroccan Bendir Edge 1,World,63,5,73
+Drum,715,Moroccan Tamtam 1,World,63,5,74
+Drum,716,Algerian Bendir Deza 1,World,63,5,75
+Drum,717,Algerian Bendir Kaf 1,World,63,5,76
+Drum,718,Algerian Galal Daza 1,World,63,5,77
+Drum,719,Riq Dum Open 1,World,63,5,78
+Drum,720,Riq Tek Open 1,World,63,5,79
+Drum,721,Riq Teke Open 1,World,63,5,80
+Drum,722,Riq Sak 1,World,63,5,81
+Drum,723,Riq Snouj Close 1,World,63,5,82
+Drum,724,Hollo Finger 1,World,63,5,83
+Drum,725,Bass Darbuka Dum 1,World,63,5,84
+Drum,726,Bass Darbuka Tek 1,World,63,5,85
+Drum,727,Bendir Tek 1,World,63,5,86
+Drum,728,Bendir Slap 1,World,63,5,87
+Drum,729,Bendir Large 1,World,63,5,88
+Drum,730,Merjaf Group Dom 1,World,63,5,89
+Drum,731,Merjaf Group Sak 1,World,63,5,90
+Drum,732,Zeer Dom 1,World,63,5,91
+Drum,733,Zeer Tak 1,World,63,5,92
+Drum,734,Merwas Group Dom 1,World,63,5,93
+Drum,735,Merwas Group Tak 1,World,63,5,94
+Drum,736,Medando Dom 1,World,63,5,95
+Drum,737,Medando Sak 1,World,63,5,96
+Drum,738,Sigal Marad Dom 1,World,63,5,97
+Drum,739,Sigal Marad Tak 1,World,63,5,98
+Drum,740,Doholla Dom 1,World,63,5,99
+Drum,741,Doholla Sak 1,World,63,5,100
+Drum,742,Katem Med Dom Open 1,World,63,5,101
+Drum,743,Katem Med Tak 1,World,63,5,102
+Drum,744,Katem Med Sak 1,World,63,5,103
+Drum,745,Taar Barashim Dom 1,World,63,5,104
+Drum,746,Taar Barashim Shake 1,World,63,5,105
+Drum,747,Req Sak 1,World,63,5,106
+Drum,748,Req Dom 1,World,63,5,107
+Drum,749,Req Open 1,World,63,5,108
+Drum,750,Req Sajat 1,World,63,5,109
+Drum,751,Udho Back 1,World,63,5,110
+Drum,752,Udho Chap Body 1,World,63,5,111
+Drum,753,Jahla Group Dom 1,World,63,5,112
+Drum,754,Iranian Bendir Tom 1,World,63,5,113
+Drum,755,Iranian Bendir Chap 1,World,63,5,114
+Drum,756,Iranian Bendir Back 1,World,63,5,115
+Drum,757,Tombak Tom 1,World,63,5,116
+Drum,758,Tombak Slap 1,World,63,5,117
+Drum,759,Tombak Chap 1,World,63,5,118
+Drum,760,Tombak Flam & Back 1,World,63,5,119
+Drum,761,Tempo Chap 1,World,63,5,120
+Drum,762,Tabla Dom 1,World,63,5,121
+Drum,763,Tabla Tak 1,World,63,5,122
+Drum,764,Tabla Sak 1,World,63,5,123
+Drum,765,Tabla 1,World,63,5,124
+Drum,766,Tabla 2,World,63,5,125
+Drum,767,Tabla 3,World,63,5,126
+Drum,768,Tabla 4,World,63,5,127
+Drum,769,Tabla 5,World,63,6,0
+Drum,770,Mridangam 1,World,63,6,1
+Drum,771,Mridangam 2,World,63,6,2
+Drum,772,Japanese Wa Taiko 1,World,63,6,3
+Drum,773,Japanese Oo Taiko 1,World,63,6,4
+Drum,774,Japanese Yagura Taiko 1,World,63,6,5
+Drum,775,Japanese Shime Taiko 1,World,63,6,6
+Drum,776,Japanese Tsuzumi 1,World,63,6,7
+Drum,777,Timbale 1,World,63,6,8
+Drum,778,Timbale 2,World,63,6,9
+Drum,779,Cajon 1,World,63,6,10
+Drum,780,Cajon 2,World,63,6,11
+Drum,781,Claves 1,World,63,6,12
+Drum,782,Wood Block 1,World,63,6,13
+Drum,783,Bones 1,World,63,6,14
+Drum,784,Bones 2,World,63,6,15
+Drum,785,Bones 3,World,63,6,16
+Drum,786,Bones Triplet 1,World,63,6,17
+Drum,787,Spoons 1,World,63,6,18
+Drum,788,Laser - Falling 1,SFX,63,6,19
+Drum,789,Sci-Fi - Detected 1,SFX,63,6,20
+Drum,790,Sci-Fi - Drip 1,SFX,63,6,21
+Drum,791,Sci-Fi - Buzzed 1,SFX,63,6,22
+Drum,792,Laser - Falling 2,SFX,63,6,23
+Drum,793,Sci-Fi - Repeated 1,SFX,63,6,24
+Drum,794,Laser - Blast 1,SFX,63,6,25
+Drum,795,Laser - Scratch 1,SFX,63,6,26
+Drum,796,Fade In Noise 1,SFX,63,6,27
+Drum,797,Low Noise 1,SFX,63,6,28
+Drum,798,Gritty Noise 1,SFX,63,6,29
+Drum,799,Ambient Noise 1,SFX,63,6,30
+Drum,800,Ambient Percussion 1,SFX,63,6,31
+Drum,801,Ambient Percussion 2,SFX,63,6,32
+Drum,802,Ambient Percussion 3,SFX,63,6,33
+Drum,803,Ambient Percussion 4,SFX,63,6,34
+Drum,804,Ambient Percussion 5,SFX,63,6,35
+Drum,805,Ambient Percussion 6,SFX,63,6,36
+Drum,806,Percussion + Water 1,SFX,63,6,37
+Drum,807,Percussion + Water 2,SFX,63,6,38
+Drum,808,Percussion + Water 3,SFX,63,6,39
+Drum,809,Glass Crash 1,SFX,63,6,40
+Drum,810,Glass Broken 1,SFX,63,6,41
+Drum,811,Percussion + Glass Broken 1,SFX,63,6,42
+Drum,812,Glass Broken + Reverb 1,SFX,63,6,43
+Drum,813,Percussion + Glass Broken 2,SFX,63,6,44
+Drum,814,Foley Sound 1,SFX,63,6,45
+Drum,815,Foley Sound 2,SFX,63,6,46
+Drum,816,Foley Sound 3,SFX,63,6,47
+Drum,817,Foley Sound 4,SFX,63,6,48
+Drum,818,Foley Sound 5,SFX,63,6,49
+Drum,819,Foley Sound 6,SFX,63,6,50
+Drum,820,Foley Sound 7,SFX,63,6,51
+Drum,821,Foley Sound 8,SFX,63,6,52
+Drum,822,Camera Shutter 1,SFX,63,6,53
+Drum,823,Camera Shutter 2,SFX,63,6,54
+Drum,824,Camera Shutter 3,SFX,63,6,55
+Drum,825,Old Clock Tick 1,SFX,63,6,56
+Drum,826,Telephone 1,SFX,63,6,57
+Drum,827,Gunshot 1,SFX,63,6,58
+Drum,828,Bomb 1,SFX,63,6,59
+Drum,829,Scanning 1,SFX,63,6,60
+Drum,830,SFX High Bell 1,SFX,63,6,61
+Drum,831,SFX Pitched Tone 1,SFX,63,6,62
+Drum,832,Muffled Pitched Percussion 1,SFX,63,6,63
+Drum,833,Sine Percussion 1,SFX,63,6,64
+Drum,834,Water Tone 1,SFX,63,6,65
+Drum,835,Mid Resonated Tone 1,SFX,63,6,66
+Drum,836,Mid Resonated Tone 2,SFX,63,6,67
+Drum,837,Wood + Reverb 1,SFX,63,6,68
+Drum,838,Pitched SFX 1,SFX,63,6,69
+Drum,839,Trash Can 1,SFX,63,6,70
+Drum,840,Distorted Pitched Noise 1,SFX,63,6,71
+Drum,841,Dark Hit 1,SFX,63,6,72
+Drum,842,Percussion Hit 1,SFX,63,6,73
+Drum,843,Percussion Hit 2,SFX,63,6,74
+Drum,844,Percussion Hit 3,SFX,63,6,75
+Drum,845,Percussion Hit 4,SFX,63,6,76
+Drum,846,Gritty Hit 1,SFX,63,6,77
+Drum,847,Gritty Hit 2,SFX,63,6,78
+Drum,848,Panning Gritty Hit 1,SFX,63,6,79
+Drum,849,Punchy Gritty Hit 1,SFX,63,6,80
+Drum,850,Industrial Hit 1,SFX,63,6,81
+Drum,851,Industrial Hit 2,SFX,63,6,82
+Drum,852,Industrial Hit 3,SFX,63,6,83
+Drum,853,Industrial Hit 4,SFX,63,6,84
+Drum,854,Industrial Hit 5,SFX,63,6,85
+Drum,855,Industrial Hit 6,SFX,63,6,86
+Synth,856,Rn Bass,Bass,63,6,87
+Synth,857,Buzz Bass,Bass,63,6,88
+Synth,858,Acid3,Bass,63,6,89
+Synth,859,Bass Morpher,Bass,63,6,90
+Synth,860,3 VCOs,Bass,63,6,91
+Synth,861,Brain Bass,Bass,63,6,92
+Synth,862,Lo Boy,Bass,63,6,93
+Synth,863,Dark Bass,Bass,63,6,94
+Synth,864,Fundamental,Bass,63,6,95
+Synth,865,Fat Sine Resonance,Bass,63,6,96
+Synth,866,Moon Bass,Bass,63,6,97
+Synth,867,More Fatty,Bass,63,6,98
+Synth,868,Chill Out Bass,Bass,63,6,99
+Synth,869,Growler,Bass,63,6,100
+Synth,870,Smacked,Bass,63,6,101
+Synth,871,boooooooooom,Bass,63,6,102
+Synth,872,Biting,Bass,63,6,103
+Synth,873,Boogie A Legato,Bass,63,6,104
+Synth,874,Uni Punch,Bass,63,6,105
+Synth,875,Noise Bass,Bass,63,6,106
+Synth,876,Single Oscillator,Bass,63,6,107
+Synth,877,Unison,Bass,63,6,108
+Synth,878,Long Spit,Bass,63,6,109
+Synth,879,Big Bass,Bass,63,6,110
+Synth,880,Bass & Comp!,Bass,63,6,111
+Synth,881,Rave Blade,Bass,63,6,112
+Synth,882,Plastic Bass,Bass,63,6,113
+Synth,883,Funky Resonance,Bass,63,6,114
+Synth,884,Phat Three,Bass,63,6,115
+Synth,885,Needle Bass,Bass,63,6,116
+Synth,886,Acidd,Bass,63,6,117
+Synth,887,Boom Bass,Bass,63,6,118
+Synth,888,West Coast,Bass,63,6,119
+Synth,889,Wazzo,Bass,63,6,120
+Synth,890,Fast PWM Bass,Bass,63,6,121
+Synth,891,Bass Pedal,Bass,63,6,122
+Synth,892,Oxide,Bass,63,6,123
+Synth,893,Bowngo,Bass,63,6,124
+Synth,894,Wide Synth Bass,Bass,63,6,125
+Synth,895,Dry Synth Bass,Bass,63,6,126
+Synth,896,Kick Bass Legato,Bass,63,6,127
+Synth,897,Keep Dancin',Bass,63,7,0
+Synth,898,Velo Master,Bass,63,7,1
+Synth,899,Wah Bass,Bass,63,7,2
+Synth,900,Pulse Step,Bass,63,7,3
+Synth,901,Phat Step,Bass,63,7,4
+Synth,902,Octave Analog,Bass,63,7,5
+Synth,903,Sync Bass,Bass,63,7,6
+Synth,904,Sync Big,Bass,63,7,7
+Synth,905,Puncher,Bass,63,7,8
+Synth,906,Dark Comp,Bass,63,7,9
+Synth,907,Simple Bass,Bass,63,7,10
+Synth,908,Fat Sine,Bass,63,7,11
+Synth,909,Kompressor,Bass,63,7,12
+Synth,910,Dark Uni,Bass,63,7,13
+Synth,911,Fight Bass,Bass,63,7,14
+Synth,912,Byon Bass,Bass,63,7,15
+Synth,913,One Voice,Bass,63,7,16
+Synth,914,Pro-Attack,Bass,63,7,17
+Synth,915,Bobby Bass,Bass,63,7,18
+Synth,916,Trance Bass,Bass,63,7,19
+Synth,917,Short SequenceBass,Bass,63,7,20
+Synth,918,Lately,Bass,63,7,21
+Synth,919,Faaat Pulse,Bass,63,7,22
+Synth,920,Short PWM Bass,Bass,63,7,23
+Synth,921,Hyper Velocity,Bass,63,7,24
+Synth,922,Deep Point,Bass,63,7,25
+Synth,923,Pulse Stop,Bass,63,7,26
+Synth,924,Oh Bee Bass,Bass,63,7,27
+Synth,925,Booming Bass,Bass,63,7,28
+Synth,926,Army Bass,Bass,63,7,29
+Synth,927,Punchy Drone,Bass,63,7,30
+Synth,928,Dee Tune,Bass,63,7,31
+Synth,929,Chorus Pulse,Bass,63,7,32
+Synth,930,Sweeper,Bass,63,7,33
+Synth,931,Synth Bass 1,Bass,63,7,34
+Synth,932,Synth Bass 2,Bass,63,7,35
+Synth,933,Universal,Bass,63,7,36
+Synth,934,Analog Bullet Bass,Bass,63,7,37
+Synth,935,Analog Perc Bass,Bass,63,7,38
+Synth,936,Analog Step Bass,Bass,63,7,39
+Synth,937,Upright,Bass,63,7,40
+Synth,938,Prec Flat Wound,Bass,63,7,41
+Synth,939,Round Wound,Bass,63,7,42
+Synth,940,Mid Range Finger,Bass,63,7,43
+Synth,941,Pick Open,Bass,63,7,44
+Synth,942,Pick Mute,Bass,63,7,45
+Synth,943,Slap Switch,Bass,63,7,46
+Synth,944,Fretless Dry,Bass,63,7,47
+Synth,945,Fretless Solo,Bass,63,7,48
+Synth,946,Dist Tama Bass,Bass,63,7,49
+Synth,947,5th Fuzz Bass,Bass,63,7,50
+Synth,948,Hybrid Bass 1,Bass,63,7,51
+Synth,949,Hybrid Bass 2,Bass,63,7,52
+Synth,950,House Organ Bass,Bass,63,7,53
+Synth,951,Slow Saw Lead,Synth Lead,63,7,54
+Synth,952,Darker Things Drone,Synth Lead,63,7,55
+Synth,953,Analog Saw Dub,Synth Lead,63,7,56
+Synth,954,Percussive Dance 1,Synth Lead,63,7,57
+Synth,955,Multi Saw DA,Synth Lead,63,7,58
+Synth,956,Dance Synth DA,Synth Lead,63,7,59
+Synth,957,Percussive Dance 2,Synth Lead,63,7,60
+Synth,958,Percussive Dance 2 [Chord],Synth Lead,63,7,61
+Synth,959,Power Hook,Synth Lead,63,7,62
+Synth,960,Dance Survivor,Synth Lead,63,7,63
+Synth,961,P5 Resonance Comp,Synth Lead,63,7,64
+Synth,962,P5 Analog Punch,Synth Lead,63,7,65
+Synth,963,P5 Analog Punch [Chord],Synth Lead,63,7,66
+Synth,964,Saw Lead,Synth Lead,63,7,67
+Synth,965,Cool Trance,Synth Lead,63,7,68
+Synth,966,>Attack<,Synth Lead,63,7,69
+Synth,967,Club Finger,Synth Lead,63,7,70
+Synth,968,Wobbly,Synth Lead,63,7,71
+Synth,969,Wobbly [Chord],Synth Lead,63,7,72
+Synth,970,Ana Dayz,Synth Lead,63,7,73
+Synth,971,Airy Nylon,Synth Lead,63,7,74
+Synth,972,Progressive Attack,Synth Lead,63,7,75
+Synth,973,Oracle,Synth Lead,63,7,76
+Synth,974,Big Comp,Synth Lead,63,7,77
+Synth,975,Big Comp [Chord],Synth Lead,63,7,78
+Synth,976,Rezz Punch,Synth Lead,63,7,79
+Synth,977,Resonant Clavi,Synth Lead,63,7,80
+Synth,978,Straight,Synth Lead,63,7,81
+Synth,979,Straight [Chord],Synth Lead,63,7,82
+Synth,980,Psych Noise,Synth Lead,63,7,83
+Synth,981,SquiffyMisbehaving,Synth Lead,63,7,84
+Synth,982,Lektro Codes,Synth Lead,63,7,85
+Synth,983,Lektro Codes [Chord],Synth Lead,63,7,86
+Synth,984,Hard FM Keyboard,Synth Lead,63,7,87
+Synth,985,W Phaser,Synth Lead,63,7,88
+Synth,986,DPCM Attack,Synth Lead,63,7,89
+Synth,987,Talk,Synth Lead,63,7,90
+Synth,988,Digy SEQ,Synth Lead,63,7,91
+Synth,989,Nerve Nasty,Synth Lead,63,7,92
+Synth,990,Ring Zplus,Synth Lead,63,7,93
+Synth,991,Trance Attack,Synth Lead,63,7,94
+Synth,992,Trance Attack [Chord],Synth Lead,63,7,95
+Synth,993,Tekno Attack,Synth Lead,63,7,96
+Synth,994,PWM Percussion,Synth Lead,63,7,97
+Synth,995,Stabby,Synth Lead,63,7,98
+Synth,996,Detroit Stab,Synth Lead,63,7,99
+Synth,997,Corrado,Synth Lead,63,7,100
+Synth,998,Synthetique,Synth Lead,63,7,101
+Synth,999,Noiz Rezz,Synth Lead,63,7,102
+Synth,1000,Tuxedo,Synth Lead,63,7,103
+Synth,1001,Queens,Synth Lead,63,7,104
+Synth,1002,Hip Voice,Synth Lead,63,7,105
+Synth,1003,GX1,Synth Lead,63,7,106
+Synth,1004,GX1 [Chord],Synth Lead,63,7,107
+Synth,1005,Night Watch,Synth Lead,63,7,108
+Synth,1006,Pluck Bells,Synth Lead,63,7,109
+Synth,1007,Power Dance Chords,Synth Lead,63,7,110
+Synth,1008,Hyper Trance,Synth Lead,63,7,111
+Synth,1009,Cosmic Psyche,Synth Lead,63,7,112
+Synth,1010,Brightness,Synth Lead,63,7,113
+Synth,1011,Brightness [Chord],Synth Lead,63,7,114
+Synth,1012,Calliope Lead,Synth Lead,63,7,115
+Synth,1013,Voice Lead,Synth Lead,63,7,116
+Synth,1014,Chiff Lead,Synth Lead,63,7,117
+Synth,1015,Charan Lead,Synth Lead,63,7,118
+Synth,1016,Fifth Lead,Synth Lead,63,7,119
+Synth,1017,Bass & Lead,Synth Lead,63,7,120
+Synth,1018,PWM Stabs,Synth Lead,63,7,121
+Synth,1019,Queen of Pop,Synth Lead,63,7,122
+Synth,1020,EDM Talker,Synth Lead,63,7,123
+Synth,1021,Huge Lead,Synth Lead,63,7,124
+Synth,1022,Bleep Lead,Synth Lead,63,7,125
+Synth,1023,Detuned Vintage,Synth Lead,63,7,126
+Synth,1024,Space Lead,Synth Lead,63,7,127
+Synth,1025,Square Lead,Synth Lead,63,8,0
+Synth,1026,Dual Square Lead,Synth Lead,63,8,1
+Synth,1027,Dual Square Lead [Chord],Synth Lead,63,8,2
+Synth,1028,Vintage Sync,Synth Lead,63,8,3
+Synth,1029,Dirty Hook,Synth Lead,63,8,4
+Synth,1030,Nu Mini,Synth Lead,63,8,5
+Synth,1031,ProgressiveRk Lead,Synth Lead,63,8,6
+Synth,1032,Lucky,Synth Lead,63,8,7
+Synth,1033,Opening,Synth Lead,63,8,8
+Synth,1034,Rap Lead 1,Synth Lead,63,8,9
+Synth,1035,Mini Soft,Synth Lead,63,8,10
+Synth,1036,Feeling,Synth Lead,63,8,11
+Synth,1037,Early Lead,Synth Lead,63,8,12
+Synth,1038,Funky Pulse,Synth Lead,63,8,13
+Synth,1039,Mr. Finger,Synth Lead,63,8,14
+Synth,1040,Singleline,Synth Lead,63,8,15
+Synth,1041,Soft RnB,Synth Lead,63,8,16
+Synth,1042,Wind Synth,Synth Lead,63,8,17
+Synth,1043,Broken Sine,Synth Lead,63,8,18
+Synth,1044,Broken Sine [Chord],Synth Lead,63,8,19
+Synth,1045,Duck Lead,Synth Lead,63,8,20
+Synth,1046,In da Night,Synth Lead,63,8,21
+Synth,1047,Mayday,Synth Lead,63,8,22
+Synth,1048,On D Line,Synth Lead,63,8,23
+Synth,1049,Early Soloist,Synth Lead,63,8,24
+Synth,1050,Heterodyne,Synth Lead,63,8,25
+Synth,1051,Classic 5th,Synth Lead,63,8,26
+Synth,1052,Vintage Saw,Synth Lead,63,8,27
+Synth,1053,Mini Three,Synth Lead,63,8,28
+Synth,1054,Phat Dino,Synth Lead,63,8,29
+Synth,1055,Dynamic Mini,Synth Lead,63,8,30
+Synth,1056,PWM Lead,Synth Lead,63,8,31
+Synth,1057,PWM Lead [Chord],Synth Lead,63,8,32
+Synth,1058,Pulse Wound,Synth Lead,63,8,33
+Synth,1059,Think Sync,Synth Lead,63,8,34
+Synth,1060,Punch Lead,Synth Lead,63,8,35
+Synth,1061,Bright Saw,Synth Lead,63,8,36
+Synth,1062,Troy,Synth Lead,63,8,37
+Synth,1063,Wood Panel,Synth Lead,63,8,38
+Synth,1064,Push Ahead,Synth Lead,63,8,39
+Synth,1065,Eight,Synth Lead,63,8,40
+Synth,1066,Sync Power,Synth Lead,63,8,41
+Synth,1067,Glisten Lead,Synth Lead,63,8,42
+Synth,1068,Big Drone,Synth Lead,63,8,43
+Synth,1069,Screameemy,Synth Lead,63,8,44
+Synth,1070,Flange Filter,Synth Lead,63,8,45
+Synth,1071,Sutra,Synth Lead,63,8,46
+Synth,1072,Free LFO,Synth Lead,63,8,47
+Synth,1073,Rap Lead 2,Synth Lead,63,8,48
+Synth,1074,Space Power Lead,Synth Lead,63,8,49
+Synth,1075,Nyquist,Synth Lead,63,8,50
+Synth,1076,Digimetal,Synth Lead,63,8,51
+Synth,1077,Saw Destroy,Synth Lead,63,8,52
+Synth,1078,Vinalog Saw,Synth Lead,63,8,53
+Synth,1079,Mady SQU,Synth Lead,63,8,54
+Synth,1080,Low Undulation,Synth Lead,63,8,55
+Synth,1081,Impact,Synth Lead,63,8,56
+Synth,1082,Talk Mod,Synth Lead,63,8,57
+Synth,1083,Digital Gangsta,Synth Lead,63,8,58
+Synth,1084,Plastic Squeeze,Synth Lead,63,8,59
+Synth,1085,Pinz Lead,Synth Lead,63,8,60
+Synth,1086,Dancy Saw Lead,Synth Lead,63,8,61
+Synth,1087,Buzz Around,Synth Lead,63,8,62
+Synth,1088,Xtreme Wheel,Synth Lead,63,8,63
+Synth,1089,Supertrance,Synth Lead,63,8,64
+Synth,1090,Supertrance [Chord],Synth Lead,63,8,65
+Synth,1091,Poly Hook,Synth Lead,63,8,66
+Synth,1092,HPF Dance,Synth Lead,63,8,67
+Synth,1093,Tekk Glide,Synth Lead,63,8,68
+Synth,1094,Growl Tekk,Synth Lead,63,8,69
+Synth,1095,Plucked Chordz,Synth Lead,63,8,70
+Synth,1096,Chordz,Synth Lead,63,8,71
+Synth,1097,Cool Body,Synth Lead,63,8,72
+Synth,1098,Twist Sync,Synth Lead,63,8,73
+Synth,1099,TEKIE,Synth Lead,63,8,74
+Synth,1100,Sonix,Synth Lead,63,8,75
+Synth,1101,Big SkidHookLead 1,Synth Lead,63,8,76
+Synth,1102,Big SkidHookLead 2,Synth Lead,63,8,77
+Synth,1103,Full Concert Grand,Piano,63,8,78
+Synth,1104,Concert GrandPiano,Piano,63,8,79
+Synth,1105,Rock Grand Piano,Piano,63,8,80
+Synth,1106,Rock Grand Piano [Chord],Piano,63,8,81
+Synth,1107,Rock Brite Piano,Piano,63,8,82
+Synth,1108,Mellow Grand Piano,Piano,63,8,83
+Synth,1109,Hall Mellow Grand,Piano,63,8,84
+Synth,1110,Hall Mellow Grand [Chord],Piano,63,8,85
+Synth,1111,Glasgow,Piano,63,8,86
+Synth,1112,Romantic Piano,Piano,63,8,87
+Synth,1113,Aggressive Grand,Piano,63,8,88
+Synth,1114,Tacky,Piano,63,8,89
+Synth,1115,House Piano,Piano,63,8,90
+Synth,1116,CP80 Layer,Piano,63,8,91
+Synth,1117,CP80,Piano,63,8,92
+Synth,1118,CP80 [Chord],Piano,63,8,93
+Synth,1119,CP80 Amp,Piano,63,8,94
+Synth,1120,CP80 Chorus,Piano,63,8,95
+Synth,1121,CP 1979,Piano,63,8,96
+Synth,1122,CP70 Chorus,Piano,63,8,97
+Synth,1123,Journey,Piano,63,8,98
+Synth,1124,CP 2007,Piano,63,8,99
+Synth,1125,Old and Squashed,Piano,63,8,100
+Synth,1126,Ballad Key,Piano,63,8,101
+Synth,1127,80s Layer,Piano,63,8,102
+Synth,1128,Ballad Stack,Piano,63,8,103
+Synth,1129,Piano Back,Piano,63,8,104
+Synth,1130,Monaural Grand,Piano,63,8,105
+Synth,1131,Old Blues,Piano,63,8,106
+Synth,1132,Old Blues [Chord],Piano,63,8,107
+Synth,1133,1968,Piano,63,8,108
+Synth,1134,Honkytonk,Piano,63,8,109
+Synth,1135,E.Piano 1,Keyboard,63,8,110
+Synth,1136,Soft Case,Keyboard,63,8,111
+Synth,1137,Soft Case [Chord],Keyboard,63,8,112
+Synth,1138,74 Phase,Keyboard,63,8,113
+Synth,1139,Vintage'74,Keyboard,63,8,114
+Synth,1140,R&B Soft,Keyboard,63,8,115
+Synth,1141,Early 70's,Keyboard,63,8,116
+Synth,1142,Crunchy Comp,Keyboard,63,8,117
+Synth,1143,Vintage Case,Keyboard,63,8,118
+Synth,1144,Hard Vintage,Keyboard,63,8,119
+Synth,1145,Sweetness,Keyboard,63,8,120
+Synth,1146,Phaser Vintage,Keyboard,63,8,121
+Synth,1147,Vintage Phase,Keyboard,63,8,122
+Synth,1148,Early Fusion,Keyboard,63,8,123
+Synth,1149,Neo Soul,Keyboard,63,8,124
+Synth,1150,1983,Keyboard,63,8,125
+Synth,1151,1983 [Chord],Keyboard,63,8,126
+Synth,1152,Contempo,Keyboard,63,8,127
+Synth,1153,Clicky Dyno,Keyboard,63,9,0
+Synth,1154,Dyno Straight,Keyboard,63,9,1
+Synth,1155,Dyno Chorus,Keyboard,63,9,2
+Synth,1156,80s Boosted,Keyboard,63,9,3
+Synth,1157,80s Boosted [Chord],Keyboard,63,9,4
+Synth,1158,Chorus Hard,Keyboard,63,9,5
+Synth,1159,Max Tine,Keyboard,63,9,6
+Synth,1160,Bell Chorus,Keyboard,63,9,7
+Synth,1161,Drive EP,Keyboard,63,9,8
+Synth,1162,Vinyl EP,Keyboard,63,9,9
+Synth,1163,Natural Wr,Keyboard,63,9,10
+Synth,1164,Natural Wr [Chord],Keyboard,63,9,11
+Synth,1165,Wr EP Bright,Keyboard,63,9,12
+Synth,1166,Wr Distortion,Keyboard,63,9,13
+Synth,1167,Phaze Wr,Keyboard,63,9,14
+Synth,1168,E.Piano 2,Keyboard,63,9,15
+Synth,1169,DX Legend,Keyboard,63,9,16
+Synth,1170,Bell DX,Keyboard,63,9,17
+Synth,1171,DX Woody,Keyboard,63,9,18
+Synth,1172,DX Woody [Chord],Keyboard,63,9,19
+Synth,1173,Full Tine,Keyboard,63,9,20
+Synth,1174,DX Mellow,Keyboard,63,9,21
+Synth,1175,DX Crisp,Keyboard,63,9,22
+Synth,1176,DX Celesta EP,Keyboard,63,9,23
+Synth,1177,DX Pluck EP,Keyboard,63,9,24
+Synth,1178,DX-7 II,Keyboard,63,9,25
+Synth,1179,GS Tines,Keyboard,63,9,26
+Synth,1180,Galaxy DX,Keyboard,63,9,27
+Synth,1181,TX816 Bell Piano,Keyboard,63,9,28
+Synth,1182,Marimba DX,Keyboard,63,9,29
+Synth,1183,DX5-Zero,Keyboard,63,9,30
+Synth,1184,Hybrid EP,Keyboard,63,9,31
+Synth,1185,Mixed Up,Keyboard,63,9,32
+Synth,1186,Dyno Wr,Keyboard,63,9,33
+Synth,1187,Analog Piano,Keyboard,63,9,34
+Synth,1188,AhrAmI,Keyboard,63,9,35
+Synth,1189,Electro Piano,Keyboard,63,9,36
+Synth,1190,Transistor Piano,Keyboard,63,9,37
+Synth,1191,EP Pad,Keyboard,63,9,38
+Synth,1192,DX Pad,Keyboard,63,9,39
+Synth,1193,Grace EP,Keyboard,63,9,40
+Synth,1194,Nu Touch Clavi,Keyboard,63,9,41
+Synth,1195,Super Clavi 1,Keyboard,63,9,42
+Synth,1196,PhaserClavi Mt,Keyboard,63,9,43
+Synth,1197,Vintage Clavi,Keyboard,63,9,44
+Synth,1198,Super Clavi 2,Keyboard,63,9,45
+Synth,1199,Stereo Clavi,Keyboard,63,9,46
+Synth,1200,Hollow Clavi,Keyboard,63,9,47
+Synth,1201,Nu Phasing,Keyboard,63,9,48
+Synth,1202,Touch Clavi,Keyboard,63,9,49
+Synth,1203,Wah Clavi,Keyboard,63,9,50
+Synth,1204,Pulse Clavi,Keyboard,63,9,51
+Synth,1205,Brite Clavi,Keyboard,63,9,52
+Synth,1206,Clavi Bril Treble,Keyboard,63,9,53
+Synth,1207,Clavi Bril Treble [Chord],Keyboard,63,9,54
+Synth,1208,Clavi Amped,Keyboard,63,9,55
+Synth,1209,Clavi Phaser,Keyboard,63,9,56
+Synth,1210,Clavi Wah,Keyboard,63,9,57
+Synth,1211,Harpsichord,Keyboard,63,9,58
+Synth,1212,NaturalHarpsichord,Keyboard,63,9,59
+Synth,1213,Octave Harpsichord,Keyboard,63,9,60
+Synth,1214,E.Harpsichord,Keyboard,63,9,61
+Synth,1215,16 + 8 + 5&1/3,Organ,63,9,62
+Synth,1216,First 3 w/Perc,Organ,63,9,63
+Synth,1217,Slow Jam,Organ,63,9,64
+Synth,1218,Cool Cat,Organ,63,9,65
+Synth,1219,Jazzy 1,Organ,63,9,66
+Synth,1220,Jazzy 1 [Chord],Organ,63,9,67
+Synth,1221,Jazzy 2,Organ,63,9,68
+Synth,1222,Jazzy Chorus,Organ,63,9,69
+Synth,1223,Draw Organ,Organ,63,9,70
+Synth,1224,Percussive Organ,Organ,63,9,71
+Synth,1225,Rock Organ,Organ,63,9,72
+Synth,1226,On Road,Organ,63,9,73
+Synth,1227,Progressy,Organ,63,9,74
+Synth,1228,Rocky,Organ,63,9,75
+Synth,1229,Crunchy,Organ,63,9,76
+Synth,1230,Glassy,Organ,63,9,77
+Synth,1231,Clean,Organ,63,9,78
+Synth,1232,Vib Chorus,Organ,63,9,79
+Synth,1233,Soulemn,Organ,63,9,80
+Synth,1234,Mellow,Organ,63,9,81
+Synth,1235,Fully,Organ,63,9,82
+Synth,1236,FullDraw/CVibrato,Organ,63,9,83
+Synth,1237,Even Out,Organ,63,9,84
+Synth,1238,A Few Wheels,Organ,63,9,85
+Synth,1239,A Few Wheels [Chord],Organ,63,9,86
+Synth,1240,Left Manual,Organ,63,9,87
+Synth,1241,Draw Control,Organ,63,9,88
+Synth,1242,Clean Noise,Organ,63,9,89
+Synth,1243,Walking Bass,Organ,63,9,90
+Synth,1244,Greasy,Organ,63,9,91
+Synth,1245,Swishie,Organ,63,9,92
+Synth,1246,Solo Percussion,Organ,63,9,93
+Synth,1247,Percussion Vibrato,Organ,63,9,94
+Synth,1248,Tiny Combo Bars 1,Organ,63,9,95
+Synth,1249,Tiny Combo Bars 1 [Chord],Organ,63,9,96
+Synth,1250,Tiny Combo Bars 2,Organ,63,9,97
+Synth,1251,Panther,Organ,63,9,98
+Synth,1252,1967 Keyboard,Organ,63,9,99
+Synth,1253,YD-45C,Organ,63,9,100
+Synth,1254,Surf Rock,Organ,63,9,101
+Synth,1255,Early Bird,Organ,63,9,102
+Synth,1256,Vx Full Bars,Organ,63,9,103
+Synth,1257,Vx Dark Bars,Organ,63,9,104
+Synth,1258,Fr All Tabs,Organ,63,9,105
+Synth,1259,Fr String Tabs,Organ,63,9,106
+Synth,1260,Vx Full Bars Amped,Organ,63,9,107
+Synth,1261,Vx Surf Organ,Organ,63,9,108
+Synth,1262,Moet,Organ,63,9,109
+Synth,1263,Bollinger,Organ,63,9,110
+Synth,1264,Vinyl Organ,Organ,63,9,111
+Synth,1265,Alternator,Organ,63,9,112
+Synth,1266,Tradi,Organ,63,9,113
+Synth,1267,Petit,Organ,63,9,114
+Synth,1268,Petit [Chord],Organ,63,9,115
+Synth,1269,Fluty,Organ,63,9,116
+Synth,1270,Fluty Pipe,Organ,63,9,117
+Synth,1271,St. Peter,Organ,63,9,118
+Synth,1272,St. Paul,Organ,63,9,119
+Synth,1273,Impromptu,Organ,63,9,120
+Synth,1274,Mixture,Organ,63,9,121
+Synth,1275,Reed Split,Organ,63,9,122
+Synth,1276,Medieval,Organ,63,9,123
+Synth,1277,Medieval [Chord],Organ,63,9,124
+Synth,1278,Breath Pipe,Organ,63,9,125
+Synth,1279,Reedy Pipe,Organ,63,9,126
+Synth,1280,Sunday,Organ,63,9,127
+Synth,1281,Church Organ,Organ,63,10,0
+Synth,1282,Church Organ [Chord],Organ,63,10,1
+Synth,1283,Reed Organ,Organ,63,10,2
+Synth,1284,Accordion,Organ,63,10,3
+Synth,1285,Accordions,Organ,63,10,4
+Synth,1286,Accordions [Chord],Organ,63,10,5
+Synth,1287,Tango Accordion 1,Organ,63,10,6
+Synth,1288,Tango Accordion 2,Organ,63,10,7
+Synth,1289,Master Accordion,Organ,63,10,8
+Synth,1290,Round Saw Phase,Pad,63,10,9
+Synth,1291,Ducker Cloud,Pad,63,10,10
+Synth,1292,Multi Saw Pad,Pad,63,10,11
+Synth,1293,Poly Synth Pad,Pad,63,10,12
+Synth,1294,Poly Pad DA,Pad,63,10,13
+Synth,1295,HyperTrance Stereo,Pad,63,10,14
+Synth,1296,Ethereal,Pad,63,10,15
+Synth,1297,Ethereal [Chord],Pad,63,10,16
+Synth,1298,Saw Pad,Pad,63,10,17
+Synth,1299,Dark ModulationPad,Pad,63,10,18
+Synth,1300,Dark Light,Pad,63,10,19
+Synth,1301,Ambient Synth Pad,Pad,63,10,20
+Synth,1302,5th Lite,Pad,63,10,21
+Synth,1303,Smooth BPF Sweep,Pad,63,10,22
+Synth,1304,Trance,Pad,63,10,23
+Synth,1305,Xtreme Sweep,Pad,63,10,24
+Synth,1306,Warm Pad,Pad,63,10,25
+Synth,1307,Nu Warm Pad,Pad,63,10,26
+Synth,1308,Nu Warm Pad [Chord],Pad,63,10,27
+Synth,1309,5th Atmosphere,Pad,63,10,28
+Synth,1310,Dim,Pad,63,10,29
+Synth,1311,Simple Air,Pad,63,10,30
+Synth,1312,Nature Sine,Pad,63,10,31
+Synth,1313,Nature Sine [Chord],Pad,63,10,32
+Synth,1314,Analog,Pad,63,10,33
+Synth,1315,Perc Pad,Pad,63,10,34
+Synth,1316,Dark Atmo Pad,Pad,63,10,35
+Synth,1317,Dark Atmo Pad [Chord],Pad,63,10,36
+Synth,1318,Dark Organ Pad,Pad,63,10,37
+Synth,1319,Soft Brassy,Pad,63,10,38
+Synth,1320,Road to Nowhere,Pad,63,10,39
+Synth,1321,Analog Sweep,Pad,63,10,40
+Synth,1322,Sweep Pad,Pad,63,10,41
+Synth,1323,Sweep Strings,Pad,63,10,42
+Synth,1324,Brass Motion Pad,Pad,63,10,43
+Synth,1325,Luminous,Pad,63,10,44
+Synth,1326,Mother Ship,Pad,63,10,45
+Synth,1327,Warm Backing Pad,Pad,63,10,46
+Synth,1328,Feather,Pad,63,10,47
+Synth,1329,Feather [Chord],Pad,63,10,48
+Synth,1330,Pan Sphere,Pad,63,10,49
+Synth,1331,Square,Pad,63,10,50
+Synth,1332,Shaper,Pad,63,10,51
+Synth,1333,Early Digital,Pad,63,10,52
+Synth,1334,Dramana,Pad,63,10,53
+Synth,1335,Dream Shift,Pad,63,10,54
+Synth,1336,Dream Shift [Chord],Pad,63,10,55
+Synth,1337,Sound Track,Pad,63,10,56
+Synth,1338,Remote Space,Pad,63,10,57
+Synth,1339,Fathoms,Pad,63,10,58
+Synth,1340,Mother Earth,Pad,63,10,59
+Synth,1341,Landing Pad,Pad,63,10,60
+Synth,1342,The Breath,Pad,63,10,61
+Synth,1343,Feather Pad,Pad,63,10,62
+Synth,1344,Slow Attack Pad,Pad,63,10,63
+Synth,1345,Hi Brite,Pad,63,10,64
+Synth,1346,Pad & Syn,Pad,63,10,65
+Synth,1347,Pad & Syn [Chord],Pad,63,10,66
+Synth,1348,Cosmic Swell Pad,Pad,63,10,67
+Synth,1349,Sweet Flange,Pad,63,10,68
+Synth,1350,Waterfall,Pad,63,10,69
+Synth,1351,Phase Pad,Pad,63,10,70
+Synth,1352,Pure Synth,Pad,63,10,71
+Synth,1353,Pure Synth + Delay,Pad,63,10,72
+Synth,1354,Pearls,Pad,63,10,73
+Synth,1355,Flange Wall,Pad,63,10,74
+Synth,1356,Tornado,Pad,63,10,75
+Synth,1357,Ice Rink,Pad,63,10,76
+Synth,1358,Bell Pad,Pad,63,10,77
+Synth,1359,Bell Pad [Chord],Pad,63,10,78
+Synth,1360,New Age Pad,Pad,63,10,79
+Synth,1361,Paradise,Pad,63,10,80
+Synth,1362,Yellow River,Pad,63,10,81
+Synth,1363,Love Me,Pad,63,10,82
+Synth,1364,Frozen Pad,Pad,63,10,83
+Synth,1365,Bowed Pad,Pad,63,10,84
+Synth,1366,Metal Pad,Pad,63,10,85
+Synth,1367,Pensive,Pad,63,10,86
+Synth,1368,Sci-Fi,Pad,63,10,87
+Synth,1369,Atmosphere,Pad,63,10,88
+Synth,1370,Halo Pad,Pad,63,10,89
+Synth,1371,Space Vocals,Pad,63,10,90
+Synth,1372,Haah Pad,Pad,63,10,91
+Synth,1373,Oooh Pad,Pad,63,10,92
+Synth,1374,Oooh Pad [Chord],Pad,63,10,93
+Synth,1375,Back in Itopian,Pad,63,10,94
+Synth,1376,Strings & Choir,Pad,63,10,95
+Synth,1377,Angel Eyes,Pad,63,10,96
+Synth,1378,Glass Choir,Pad,63,10,97
+Synth,1379,Nativity,Pad,63,10,98
+Synth,1380,Seraphim,Pad,63,10,99
+Synth,1381,Aah Choir,Pad,63,10,100
+Synth,1382,Ooh Choir,Pad,63,10,101
+Synth,1383,Syn Voice,Pad,63,10,102
+Synth,1384,Choir Pad,Pad,63,10,103
+Synth,1385,Mellow Swell,Pad,63,10,104
+Synth,1386,Frozen Glasspad,Pad,63,10,105
+Synth,1387,Lunar Eclipse,Pad,63,10,106
+Synth,1388,Prayer Call,Pad,63,10,107
+Synth,1389,Granular Motion,Pad,63,10,108
+Synth,1390,Mysterious Invention,Pad,63,10,109
+Synth,1391,Gate of Eden,Pad,63,10,110
+Synth,1392,Whispering Ghosts,Pad,63,10,111
+Synth,1393,NighttrainToMunich,Pad,63,10,112
+Synth,1394,Morning Dew,Pad,63,10,113
+Synth,1395,Calling Mr. Reso,Pad,63,10,114
+Synth,1396,2 SwitchesToHeaven,Pad,63,10,115
+Synth,1397,SEKAI-ISAN,Pad,63,10,116
+Synth,1398,Setsunai,Pad,63,10,117
+Synth,1399,Week End,Pad,63,10,118
+Synth,1400,TiRiPAD,Pad,63,10,119
+Synth,1401,Cluster,Pad,63,10,120
+Synth,1402,Xtreme Rezz,Pad,63,10,121
+Synth,1403,My Reality,Pad,63,10,122
+Synth,1404,Magnetics,Pad,63,10,123
+Synth,1405,Sand,Pad,63,10,124
+Synth,1406,Felicity,Pad,63,10,125
+Synth,1407,Vibrancy,Pad,63,10,126
+Synth,1408,Radio Venus,Pad,63,10,127
+Synth,1409,Elec Blue,Pad,63,11,0
+Synth,1410,Chyo Ethno,Pad,63,11,1
+Synth,1411,konjoh BEAM,Pad,63,11,2
+Synth,1412,Blizzard,Pad,63,11,3
+Synth,1413,SINGING BOWL,Pad,63,11,4
+Synth,1414,Metalvox Pad,Pad,63,11,5
+Synth,1415,Refraction,Pad,63,11,6
+Synth,1416,Philanger,Pad,63,11,7
+Synth,1417,Ellipsotron,Pad,63,11,8
+Synth,1418,Envelope,Pad,63,11,9
+Synth,1419,Whatsis,Pad,63,11,10
+Synth,1420,Pearl Collection,Pad,63,11,11
+Synth,1421,Four Dimensions,Pad,63,11,12
+Synth,1422,Hallucination,Pad,63,11,13
+Synth,1423,Electraid,Pad,63,11,14
+Synth,1424,Clearing,Pad,63,11,15
+Synth,1425,Long HiPa,Pad,63,11,16
+Synth,1426,Quad Swell,Pad,63,11,17
+Synth,1427,New Stab,Pad,63,11,18
+Synth,1428,Vinyl Hit,Pad,63,11,19
+Synth,1429,Hit Me,Pad,63,11,20
+Synth,1430,Ambient Bite,Pad,63,11,21
+Synth,1431,Bollog Puls,Pad,63,11,22
+Synth,1432,Orchestra Hit,Pad,63,11,23
+Synth,1433,Rain Pad,Pad,63,11,24
+Synth,1434,Goblin,Pad,63,11,25
+Synth,1435,Echoes,Pad,63,11,26
+Synth,1436,Dripping Quarks,Pad,63,11,27
+Synth,1437,Metallic Airstabs,Pad,63,11,28
+Synth,1438,Descendant,Pad,63,11,29
+Synth,1439,Violin,Strings,63,11,30
+Synth,1440,Violin Solo,Strings,63,11,31
+Synth,1441,Viola,Strings,63,11,32
+Synth,1442,Viola Solo 1,Strings,63,11,33
+Synth,1443,Viola Solo 2,Strings,63,11,34
+Synth,1444,Cello Solo,Strings,63,11,35
+Synth,1445,Cello Duo,Strings,63,11,36
+Synth,1446,ContrabassSolo1,Strings,63,11,37
+Synth,1447,ContrabassSolo2,Strings,63,11,38
+Synth,1448,Quartet,Strings,63,11,39
+Synth,1449,Small Section,Strings,63,11,40
+Synth,1450,Small Ensemble,Strings,63,11,41
+Synth,1451,Small Ensemble [Chord],Strings,63,11,42
+Synth,1452,Almighty,Strings,63,11,43
+Synth,1453,Medium Section,Strings,63,11,44
+Synth,1454,Medium Hall,Strings,63,11,45
+Synth,1455,Quick Bows,Strings,63,11,46
+Synth,1456,Large Section,Strings,63,11,47
+Synth,1457,Strings Section 1,Strings,63,11,48
+Synth,1458,Strings Section 2,Strings,63,11,49
+Synth,1459,Octave Ensemble,Strings,63,11,50
+Synth,1460,Full Chamber,Strings,63,11,51
+Synth,1461,Stryngs,Strings,63,11,52
+Synth,1462,Stryngs [Chord],Strings,63,11,53
+Synth,1463,Dynamic Bow,Strings,63,11,54
+Synth,1464,Pizzicato,Strings,63,11,55
+Synth,1465,SymphonicPizzicato,Strings,63,11,56
+Synth,1466,Plucky Pizzicato,Strings,63,11,57
+Synth,1467,Octave Pizzes,Strings,63,11,58
+Synth,1468,Tremolo Strings 1,Strings,63,11,59
+Synth,1469,Tremolo Strings 2,Strings,63,11,60
+Synth,1470,Tremolo Strs Small,Strings,63,11,61
+Synth,1471,Spicato Large,Strings,63,11,62
+Synth,1472,Spicato Large [Chord],Strings,63,11,63
+Synth,1473,Disco,Strings,63,11,64
+Synth,1474,Lush,Strings,63,11,65
+Synth,1475,Back Ground,Strings,63,11,66
+Synth,1476,Warm Back,Strings,63,11,67
+Synth,1477,Stringy,Strings,63,11,68
+Synth,1478,Big Strings,Strings,63,11,69
+Synth,1479,F.Horn + Strings,Strings,63,11,70
+Synth,1480,Wood Winds+Strings,Strings,63,11,71
+Synth,1481,Synth Strings 1,Strings,63,11,72
+Synth,1482,Synth Strings 2,Strings,63,11,73
+Synth,1483,Gleaming Pad,Strings,63,11,74
+Synth,1484,Fat PWM Synth Vel,Strings,63,11,75
+Synth,1485,VintagePolyStrings,Strings,63,11,76
+Synth,1486,PWM Strings,Strings,63,11,77
+Synth,1487,PWM Strings [Chord],Strings,63,11,78
+Synth,1488,Mourn Strings,Strings,63,11,79
+Synth,1489,VP Soft,Strings,63,11,80
+Synth,1490,PWM Simple,Strings,63,11,81
+Synth,1491,Glassy Rezonant,Strings,63,11,82
+Synth,1492,Superstrings,Strings,63,11,83
+Synth,1493,Light Pad,Strings,63,11,84
+Synth,1494,Noble Pad,Strings,63,11,85
+Synth,1495,Warm Big,Strings,63,11,86
+Synth,1496,Sentimental,Strings,63,11,87
+Synth,1497,Analog Strings,Strings,63,11,88
+Synth,1498,Analog Ensemble,Strings,63,11,89
+Synth,1499,Phase Strings,Strings,63,11,90
+Synth,1500,Octave Strings,Strings,63,11,91
+Synth,1501,80s Clean Strings,Strings,63,11,92
+Synth,1502,3 Oscillators Vin,Strings,63,11,93
+Synth,1503,Silver Strings,Strings,63,11,94
+Synth,1504,Silver Strings [Chord],Strings,63,11,95
+Synth,1505,String Machine,Strings,63,11,96
+Synth,1506,3 Octave Strings,Strings,63,11,97
+Synth,1507,TranceIntroduction,Strings,63,11,98
+Synth,1508,Mystic Trance,Strings,63,11,99
+Synth,1509,Electric Violin,Strings,63,11,100
+Synth,1510,Tron Violin,Strings,63,11,101
+Synth,1511,Tron Strings,Strings,63,11,102
+Synth,1512,Tape Strings,Strings,63,11,103
+Synth,1513,Orchestronic,Strings,63,11,104
+Synth,1514,Vinyltron,Strings,63,11,105
+Synth,1515,Beauty Harp,Strings,63,11,106
+Synth,1516,Stereo Harp,Strings,63,11,107
+Synth,1517,Trumpet,Brass,63,11,108
+Synth,1518,Tp Romantic Legato,Brass,63,11,109
+Synth,1519,Classical Trumpet,Brass,63,11,110
+Synth,1520,Bright Trumpet,Brass,63,11,111
+Synth,1521,Tp SoftJazz Legato,Brass,63,11,112
+Synth,1522,SoftTrumpetLegato,Brass,63,11,113
+Synth,1523,Trumpet Vibrato,Brass,63,11,114
+Synth,1524,Trumpet Shake Vel,Brass,63,11,115
+Synth,1525,Legend Mute,Brass,63,11,116
+Synth,1526,Flugelhorn,Brass,63,11,117
+Synth,1527,Jazzy Flugel,Brass,63,11,118
+Synth,1528,Trumpet Section,Brass,63,11,119
+Synth,1529,Trumpet Section [Chord],Brass,63,11,120
+Synth,1530,Trombone,Brass,63,11,121
+Synth,1531,Blown Bone Legato,Brass,63,11,122
+Synth,1532,Bright Trombone,Brass,63,11,123
+Synth,1533,NewOrleansTrombone,Brass,63,11,124
+Synth,1534,French Horn,Brass,63,11,125
+Synth,1535,French Horn Solo,Brass,63,11,126
+Synth,1536,Tuba,Brass,63,11,127
+Synth,1537,BassTuba(Bb),Brass,63,12,0
+Synth,1538,Euphonium,Brass,63,12,1
+Synth,1539,FrenchHornSection1,Brass,63,12,2
+Synth,1540,FrenchHornSection2,Brass,63,12,3
+Synth,1541,French Horns,Brass,63,12,4
+Synth,1542,F.Horn + Trombone,Brass,63,12,5
+Synth,1543,F.Hrn+Trombone+Trp,Brass,63,12,6
+Synth,1544,Orchestra Brass,Brass,63,12,7
+Synth,1545,Orchestra Brass [Chord],Brass,63,12,8
+Synth,1546,Movie Horns,Brass,63,12,9
+Synth,1547,Symphonic,Brass,63,12,10
+Synth,1548,Smooth Brass,Brass,63,12,11
+Synth,1549,Soft Brass mp-mf,Brass,63,12,12
+Synth,1550,Dynamic Brass,Brass,63,12,13
+Synth,1551,Accent mf-fall,Brass,63,12,14
+Synth,1552,Small BrassSection,Brass,63,12,15
+Synth,1553,MediumBrassSection,Brass,63,12,16
+Synth,1554,Lots O' Brass,Brass,63,12,17
+Synth,1555,Bright Section,Brass,63,12,18
+Synth,1556,Power Section,Brass,63,12,19
+Synth,1557,Shiny Brass,Brass,63,12,20
+Synth,1558,Big Brass,Brass,63,12,21
+Synth,1559,Sforzando,Brass,63,12,22
+Synth,1560,Soft Brass & Sax,Brass,63,12,23
+Synth,1561,Big Band,Brass,63,12,24
+Synth,1562,Sax Big Band,Brass,63,12,25
+Synth,1563,Velo Falls,Brass,63,12,26
+Synth,1564,Hybrid Section,Brass,63,12,27
+Synth,1565,Hybrid Bright,Brass,63,12,28
+Synth,1566,Hybrid Brass Swell,Brass,63,12,29
+Synth,1567,The Synth Brass,Brass,63,12,30
+Synth,1568,T Brass,Brass,63,12,31
+Synth,1569,Lo-fi,Brass,63,12,32
+Synth,1570,Quiet Brass,Brass,63,12,33
+Synth,1571,Big Syn,Brass,63,12,34
+Synth,1572,Thinth,Brass,63,12,35
+Synth,1573,XP Brass Stereo,Brass,63,12,36
+Synth,1574,Simple Saw Brass,Brass,63,12,37
+Synth,1575,Brassy,Brass,63,12,38
+Synth,1576,Kustom,Brass,63,12,39
+Synth,1577,After 1984,Brass,63,12,40
+Synth,1578,After 1984 [Chord],Brass,63,12,41
+Synth,1579,Finale,Brass,63,12,42
+Synth,1580,Huge CS80,Brass,63,12,43
+Synth,1581,CS-90,Brass,63,12,44
+Synth,1582,Oh Bee Soft,Brass,63,12,45
+Synth,1583,Oh Bee Horns,Brass,63,12,46
+Synth,1584,Slow PWM Brass,Brass,63,12,47
+Synth,1585,Soft 5th Brass,Brass,63,12,48
+Synth,1586,Synth Brass 1,Brass,63,12,49
+Synth,1587,Synth Brass 2,Brass,63,12,50
+Synth,1588,Oh Bee Syncomp,Brass,63,12,51
+Synth,1589,Tacky Brass,Brass,63,12,52
+Synth,1590,Soprano Sax,Woodwind,63,12,53
+Synth,1591,Soprano Legato,Woodwind,63,12,54
+Synth,1592,Soprano Soft,Woodwind,63,12,55
+Synth,1593,Mellow Soprano,Woodwind,63,12,56
+Synth,1594,Alto Sax,Woodwind,63,12,57
+Synth,1595,Alto Vib Legato,Woodwind,63,12,58
+Synth,1596,Alto Legato,Woodwind,63,12,59
+Synth,1597,Alto,Woodwind,63,12,60
+Synth,1598,Alto Accent Legato,Woodwind,63,12,61
+Synth,1599,Tenor Sax,Woodwind,63,12,62
+Synth,1600,Tenor Dynamic,Woodwind,63,12,63
+Synth,1601,Tenor Soft Legato,Woodwind,63,12,64
+Synth,1602,Velo Growl Legato,Woodwind,63,12,65
+Synth,1603,Tenor Max,Woodwind,63,12,66
+Synth,1604,SoftTenorSaxLegato,Woodwind,63,12,67
+Synth,1605,Baritone Sax,Woodwind,63,12,68
+Synth,1606,Baritone,Woodwind,63,12,69
+Synth,1607,Hip Bari,Woodwind,63,12,70
+Synth,1608,Tenor Section,Woodwind,63,12,71
+Synth,1609,Sax Octave Section,Woodwind,63,12,72
+Synth,1610,Mixed Sax Section,Woodwind,63,12,73
+Synth,1611,Piccolo,Woodwind,63,12,74
+Synth,1612,Piccolo Legato,Woodwind,63,12,75
+Synth,1613,Flute,Woodwind,63,12,76
+Synth,1614,Flute Legato,Woodwind,63,12,77
+Synth,1615,Sweet Flute,Woodwind,63,12,78
+Synth,1616,Wood Flute,Woodwind,63,12,79
+Synth,1617,Tron Flute,Woodwind,63,12,80
+Synth,1618,Flootz,Woodwind,63,12,81
+Synth,1619,2 Flutes,Woodwind,63,12,82
+Synth,1620,Oboe,Woodwind,63,12,83
+Synth,1621,Sweet Oboe Legato,Woodwind,63,12,84
+Synth,1622,Oboe Soft Legato,Woodwind,63,12,85
+Synth,1623,Clarinet,Woodwind,63,12,86
+Synth,1624,Jazzy Cla Legato,Woodwind,63,12,87
+Synth,1625,Bassoon 1,Woodwind,63,12,88
+Synth,1626,Bassoon 2,Woodwind,63,12,89
+Synth,1627,English Horn,Woodwind,63,12,90
+Synth,1628,Flute & Clari,Woodwind,63,12,91
+Synth,1629,2 Oboes & Bassoon,Woodwind,63,12,92
+Synth,1630,Woodwindind Quartet,Woodwind,63,12,93
+Synth,1631,Harmonica,Woodwind,63,12,94
+Synth,1632,Gentle Harp,Woodwind,63,12,95
+Synth,1633,Woody Harp,Woodwind,63,12,96
+Synth,1634,Bluz Distort,Woodwind,63,12,97
+Synth,1635,Campfire,Woodwind,63,12,98
+Synth,1636,Irish Pipe Legato,Woodwind,63,12,99
+Synth,1637,Recorder,Woodwind,63,12,100
+Synth,1638,Pan Flute,Woodwind,63,12,101
+Synth,1639,Shakuhachi,Woodwind,63,12,102
+Synth,1640,Whistle,Woodwind,63,12,103
+Synth,1641,Ocarina,Woodwind,63,12,104
+Synth,1642,Bagpipe,Woodwind,63,12,105
+Synth,1643,Classical,Guitar,63,12,106
+Synth,1644,High Tension,Guitar,63,12,107
+Synth,1645,Sao Paulo,Guitar,63,12,108
+Synth,1646,Barcelona,Guitar,63,12,109
+Synth,1647,Barcelona [Chord],Guitar,63,12,110
+Synth,1648,Nylon Slide Vel,Guitar,63,12,111
+Synth,1649,NylonHarmonics Vel,Guitar,63,12,112
+Synth,1650,Classical12Strings,Guitar,63,12,113
+Synth,1651,Hip-HopNylonGuitar,Guitar,63,12,114
+Synth,1652,Old Strings,Guitar,63,12,115
+Synth,1653,Mute & Slide Vel,Guitar,63,12,116
+Synth,1654,SteelHarmonics Vel,Guitar,63,12,117
+Synth,1655,Hip-HopSteelGuitar,Guitar,63,12,118
+Synth,1656,Hi Strings,Guitar,63,12,119
+Synth,1657,Two Acoustics,Guitar,63,12,120
+Synth,1658,2 Steel Strings,Guitar,63,12,121
+Synth,1659,Airy 12,Guitar,63,12,122
+Synth,1660,Airy 12 [Chord],Guitar,63,12,123
+Synth,1661,Wide 12 strings,Guitar,63,12,124
+Synth,1662,12Strings Mono,Guitar,63,12,125
+Synth,1663,Clean El & Ac,Guitar,63,12,126
+Synth,1664,Jazzy Pick,Guitar,63,12,127
+Synth,1665,Melodic Jazz,Guitar,63,13,0
+Synth,1666,Touch Wah,Guitar,63,13,1
+Synth,1667,Baby,Guitar,63,13,2
+Synth,1668,Good Night,Guitar,63,13,3
+Synth,1669,Dynamic Clean,Guitar,63,13,4
+Synth,1670,Single Coil Chorus,Guitar,63,13,5
+Synth,1671,Single Coil Chorus [Chord],Guitar,63,13,6
+Synth,1672,1coil Clean,Guitar,63,13,7
+Synth,1673,1coil Amped Vel,Guitar,63,13,8
+Synth,1674,Distant,Guitar,63,13,9
+Synth,1675,Some Hair,Guitar,63,13,10
+Synth,1676,Hit It Hard,Guitar,63,13,11
+Synth,1677,Paddy Clean,Guitar,63,13,12
+Synth,1678,Dual Coil '65,Guitar,63,13,13
+Synth,1679,Dual Coil '65 [Chord],Guitar,63,13,14
+Synth,1680,Dual Coil Amp,Guitar,63,13,15
+Synth,1681,Roto Guitar,Guitar,63,13,16
+Synth,1682,Dual Coil SlideVel,Guitar,63,13,17
+Synth,1683,Dual Coil Slap Vel,Guitar,63,13,18
+Synth,1684,Dual Coil 80sClean,Guitar,63,13,19
+Synth,1685,DualCoil80sCleanMt,Guitar,63,13,20
+Synth,1686,DualCoil80sCleanMt [Chord],Guitar,63,13,21
+Synth,1687,Mute Guitar,Guitar,63,13,22
+Synth,1688,HIP Mute,Guitar,63,13,23
+Synth,1689,Dual Coil Rotary,Guitar,63,13,24
+Synth,1690,Electric 12Strings,Guitar,63,13,25
+Synth,1691,Rotator,Guitar,63,13,26
+Synth,1692,Middy Tremolo,Guitar,63,13,27
+Synth,1693,Retro Flanger,Guitar,63,13,28
+Synth,1694,Vintage Strum,Guitar,63,13,29
+Synth,1695,Vintage1coilChorus,Guitar,63,13,30
+Synth,1696,Spanky,Guitar,63,13,31
+Synth,1697,Rockabilly,Guitar,63,13,32
+Synth,1698,Surfin' 60s 1coil,Guitar,63,13,33
+Synth,1699,Pedal Steel,Guitar,63,13,34
+Synth,1700,2 Electrics,Guitar,63,13,35
+Synth,1701,Light Blues,Guitar,63,13,36
+Synth,1702,DualCoil SemiClean,Guitar,63,13,37
+Synth,1703,Breakback Mountain,Guitar,63,13,38
+Synth,1704,Chorus Dist,Guitar,63,13,39
+Synth,1705,Tex Boogie,Guitar,63,13,40
+Synth,1706,Tex Boogie [Chord],Guitar,63,13,41
+Synth,1707,59 Combo,Guitar,63,13,42
+Synth,1708,Alternative Rocker,Guitar,63,13,43
+Synth,1709,Grunged Up,Guitar,63,13,44
+Synth,1710,Overdrive Mt&Harmo,Guitar,63,13,45
+Synth,1711,Crunched Up 376,Guitar,63,13,46
+Synth,1712,Dynamic Amp,Guitar,63,13,47
+Synth,1713,Chuggin' Guitar,Guitar,63,13,48
+Synth,1714,Chugga,Guitar,63,13,49
+Synth,1715,Small Amp,Guitar,63,13,50
+Synth,1716,Small Amp [Chord],Guitar,63,13,51
+Synth,1717,Metal Mute,Guitar,63,13,52
+Synth,1718,DistortionMt&Harmo,Guitar,63,13,53
+Synth,1719,Cool Drive,Guitar,63,13,54
+Synth,1720,Hard Drive,Guitar,63,13,55
+Synth,1721,Hard Ramp,Guitar,63,13,56
+Synth,1722,Heavy Drive,Guitar,63,13,57
+Synth,1723,No.1 Guitar,Guitar,63,13,58
+Synth,1724,No.1 Guitar [Chord],Guitar,63,13,59
+Synth,1725,Snake Finger,Guitar,63,13,60
+Synth,1726,Dual Coil BlueLead,Guitar,63,13,61
+Synth,1727,Voodooman,Guitar,63,13,62
+Synth,1728,Killer Whammy,Guitar,63,13,63
+Synth,1729,Latin Lover,Guitar,63,13,64
+Synth,1730,Oct Fuzz Wah,Guitar,63,13,65
+Synth,1731,Dual Coil Lead Wah,Guitar,63,13,66
+Synth,1732,Crunchy Guitar,Guitar,63,13,67
+Synth,1733,Beater,Guitar,63,13,68
+Synth,1734,Mid Drive,Guitar,63,13,69
+Synth,1735,Hard Rocker,Guitar,63,13,70
+Synth,1736,Tough Tube,Guitar,63,13,71
+Synth,1737,Drive Wah,Guitar,63,13,72
+Synth,1738,Guitar Harmonics,Guitar,63,13,73
+Synth,1739,Sitar 1,World,63,13,74
+Synth,1740,Sitar 2,World,63,13,75
+Synth,1741,Sitar 3,World,63,13,76
+Synth,1742,Tambura,World,63,13,77
+Synth,1743,Banjo 1,World,63,13,78
+Synth,1744,Banjo 2,World,63,13,79
+Synth,1745,Shamisen,World,63,13,80
+Synth,1746,Koto,World,63,13,81
+Synth,1747,Baglama,World,63,13,82
+Synth,1748,Saz Feeze,World,63,13,83
+Synth,1749,Kanun,World,63,13,84
+Synth,1750,Kotoun,World,63,13,85
+Synth,1751,Bouzuki,World,63,13,86
+Synth,1752,Where Am I?,World,63,13,87
+Synth,1753,Sakura,World,63,13,88
+Synth,1754,Nomad,World,63,13,89
+Synth,1755,Nomad [Chord],World,63,13,90
+Synth,1756,Pluk-o-dy,World,63,13,91
+Synth,1757,Kalimba,World,63,13,92
+Synth,1758,Mbira,World,63,13,93
+Synth,1759,Glass Mbira,World,63,13,94
+Synth,1760,Fiddle,World,63,13,95
+Synth,1761,Kemence,World,63,13,96
+Synth,1762,Kemen Wet,World,63,13,97
+Synth,1763,Yayli,World,63,13,98
+Synth,1764,Kawala,World,63,13,99
+Synth,1765,Ney,World,63,13,100
+Synth,1766,Zurna,World,63,13,101
+Synth,1767,Pungi,World,63,13,102
+Synth,1768,Snake Charmer,World,63,13,103
+Synth,1769,Shehnai 1,World,63,13,104
+Synth,1770,Shehnai 2,World,63,13,105
+Synth,1771,Mythic Flute,World,63,13,106
+Synth,1772,Didgeridoo,World,63,13,107
+Synth,1773,Kodo,World,63,13,108
+Synth,1774,Xylophone,Mallet,63,13,109
+Synth,1775,Orch Xylophone,Mallet,63,13,110
+Synth,1776,Marimba,Mallet,63,13,111
+Synth,1777,Orch Marimba,Mallet,63,13,112
+Synth,1778,Soft Marimba,Mallet,63,13,113
+Synth,1779,Glocken,Mallet,63,13,114
+Synth,1780,Orch Glockenspiel,Mallet,63,13,115
+Synth,1781,Vibraphone,Mallet,63,13,116
+Synth,1782,Vibraphone Soft,Mallet,63,13,117
+Synth,1783,Vibes,Mallet,63,13,118
+Synth,1784,Vibes [Chord],Mallet,63,13,119
+Synth,1785,Vibes Bow,Mallet,63,13,120
+Synth,1786,Celesta,Mallet,63,13,121
+Synth,1787,Ethnic Dream,Mallet,63,13,122
+Synth,1788,Orc Percussion,Mallet,63,13,123
+Synth,1789,Real Timpani,Mallet,63,13,124
+Synth,1790,Timpani + Cymbal,Mallet,63,13,125
+Synth,1791,Steel Drum,Mallet,63,13,126
+Synth,1792,Synth Steel Drum,Mallet,63,13,127
+Synth,1793,Dulcimer,Mallet,63,14,0
+Synth,1794,Metallic Bell,Bell,63,14,1
+Synth,1795,Twinkle,Bell,63,14,2
+Synth,1796,Stick Bell,Bell,63,14,3
+Synth,1797,Ice Bells,Bell,63,14,4
+Synth,1798,Ice Bells [Chord],Bell,63,14,5
+Synth,1799,Bell Ice,Bell,63,14,6
+Synth,1800,Stack Bell,Bell,63,14,7
+Synth,1801,J-Pop,Bell,63,14,8
+Synth,1802,Crystal,Bell,63,14,9
+Synth,1803,Chorus Bell,Bell,63,14,10
+Synth,1804,Handbell,Bell,63,14,11
+Synth,1805,Bell Chiff,Bell,63,14,12
+Synth,1806,Bell Chiff [Chord],Bell,63,14,13
+Synth,1807,Sako Bell,Bell,63,14,14
+Synth,1808,Nice Bell,Bell,63,14,15
+Synth,1809,Noisy Bell,Bell,63,14,16
+Synth,1810,Pop Bells & Pad,Bell,63,14,17
+Synth,1811,Pop Bells & Pad [Chord],Bell,63,14,18
+Synth,1812,Digibox,Bell,63,14,19
+Synth,1813,Nibelungen,Bell,63,14,20
+Synth,1814,Wood Bell,Bell,63,14,21
+Synth,1815,Marimbell,Bell,63,14,22
+Synth,1816,Gamelan,Bell,63,14,23
+Synth,1817,Mystic Bowl,Bell,63,14,24
+Synth,1818,Island Bell,Bell,63,14,25
+Synth,1819,Tibetan,Bell,63,14,26
+Synth,1820,Tibetan [Chord],Bell,63,14,27
+Synth,1821,Rimba Bells,Bell,63,14,28
+Synth,1822,Lost in Asia,Bell,63,14,29
+Synth,1823,Music Box,Bell,63,14,30
+Synth,1824,Tinkle Bell,Bell,63,14,31
+Synth,1825,Tubular Bells 1,Bell,63,14,32
+Synth,1826,Tubular Bells 2,Bell,63,14,33
+Synth,1827,Timp/Bell/Glocken,Bell,63,14,34
+Synth,1828,Bass Morpher [Arp],Rhythmic,63,14,35
+Synth,1829,Fat Sine Resonance [Arp],Rhythmic,63,14,36
+Synth,1830,Boogie A Legato [Arp],Rhythmic,63,14,37
+Synth,1831,Long Spit [Arp],Rhythmic,63,14,38
+Synth,1832,Acidd [Arp],Rhythmic,63,14,39
+Synth,1833,West Coast [Arp],Rhythmic,63,14,40
+Synth,1834,Keep Dancin' [Arp],Rhythmic,63,14,41
+Synth,1835,Phat Step [Arp],Rhythmic,63,14,42
+Synth,1836,Short SequenceBass [Arp],Rhythmic,63,14,43
+Synth,1837,Upright [Arp],Rhythmic,63,14,44
+Synth,1838,Slap Switch [Arp],Rhythmic,63,14,45
+Synth,1839,Multi Saw DA [Arp],Rhythmic,63,14,46
+Synth,1840,Saw Lead [Arp],Rhythmic,63,14,47
+Synth,1841,Airy Nylon [Arp],Rhythmic,63,14,48
+Synth,1842,Rezz Punch [Arp],Rhythmic,63,14,49
+Synth,1843,W Phaser [Arp],Rhythmic,63,14,50
+Synth,1844,Noiz Rezz [Arp],Rhythmic,63,14,51
+Synth,1845,Hip Voice [Arp],Rhythmic,63,14,52
+Synth,1846,Hyper Trance [Arp],Rhythmic,63,14,53
+Synth,1847,EDM Talker [Arp],Rhythmic,63,14,54
+Synth,1848,Space Lead [Arp],Rhythmic,63,14,55
+Synth,1849,Square Lead [Arp],Rhythmic,63,14,56
+Synth,1850,ProgressiveRk Lead [Arp],Rhythmic,63,14,57
+Synth,1851,Opening [Arp],Rhythmic,63,14,58
+Synth,1852,Feeling [Arp],Rhythmic,63,14,59
+Synth,1853,Mini Three [Arp],Rhythmic,63,14,60
+Synth,1854,Nyquist [Arp],Rhythmic,63,14,61
+Synth,1855,HPF Dance [Arp],Rhythmic,63,14,62
+Synth,1856,Glasgow [Arp],Rhythmic,63,14,63
+Synth,1857,House Piano [Arp],Rhythmic,63,14,64
+Synth,1858,Vintage Case [Arp],Rhythmic,63,14,65
+Synth,1859,Bell Chorus [Arp],Rhythmic,63,14,66
+Synth,1860,PhaserClavi Mt [Arp],Rhythmic,63,14,67
+Synth,1861,Marimba DX [Arp],Rhythmic,63,14,68
+Synth,1862,Rocky [Arp],Rhythmic,63,14,69
+Synth,1863,Crunchy [Arp],Rhythmic,63,14,70
+Synth,1864,Walking Bass [Arp],Rhythmic,63,14,71
+Synth,1865,Accordion [Arp],Rhythmic,63,14,72
+Synth,1866,Perc Pad [Arp],Rhythmic,63,14,73
+Synth,1867,Almighty [Arp],Rhythmic,63,14,74
+Synth,1868,SymphonicPizzicato [Arp],Rhythmic,63,14,75
+Synth,1869,Noble Pad [Arp],Rhythmic,63,14,76
+Synth,1870,Trumpet [Arp],Rhythmic,63,14,77
+Synth,1871,MediumBrassSection [Arp],Rhythmic,63,14,78
+Synth,1872,Finale [Arp],Rhythmic,63,14,79
+Synth,1873,Alto [Arp],Rhythmic,63,14,80
+Synth,1874,Sao Paulo [Arp],Rhythmic,63,14,81
+Synth,1875,Hip-HopNylonGuitar [Arp],Rhythmic,63,14,82
+Synth,1876,Hip-HopSteelGuitar [Arp],Rhythmic,63,14,83
+Synth,1877,Wide 12 strings [Arp],Rhythmic,63,14,84
+Synth,1878,Baby [Arp],Rhythmic,63,14,85
+Synth,1879,Dual Coil Amp [Arp],Rhythmic,63,14,86
+Synth,1880,HIP Mute [Arp],Rhythmic,63,14,87
+Synth,1881,Chorus Dist [Arp],Rhythmic,63,14,88
+Synth,1882,Dynamic Amp [Arp],Rhythmic,63,14,89
+Synth,1883,DistortionMt&Harmo [Arp],Rhythmic,63,14,90
+Synth,1884,Heavy Drive [Arp],Rhythmic,63,14,91
+Synth,1885,Banjo 2 [Arp],Rhythmic,63,14,92
+Synth,1886,Sakura [Arp],Rhythmic,63,14,93
+Synth,1887,Orch Xylophone [Arp],Rhythmic,63,14,94
+Synth,1888,Celesta [Arp],Rhythmic,63,14,95
+Synth,1889,J-Pop [Arp],Rhythmic,63,14,96
+Synth,1890,Nibelungen [Arp],Rhythmic,63,14,97
+Synth,1891,Lost in Asia [Arp],Rhythmic,63,14,98
+Synth,1892,Blaster Beam,SFX,63,14,99
+Synth,1893,InsideTheWormhole,SFX,63,14,100
+Synth,1894,Men In Yellow,SFX,63,14,101
+Synth,1895,Metamorphosis,SFX,63,14,102
+Synth,1896,Perplex,SFX,63,14,103
+Synth,1897,Outer Planet,SFX,63,14,104
+Synth,1898,Industrial,SFX,63,14,105
+Synth,1899,Space Walking,SFX,63,14,106
+Synth,1900,Scraper,SFX,63,14,107
+Synth,1901,SE 02 <Zero Two>,SFX,63,14,108
+Synth,1902,Talking Machines,SFX,63,14,109
+Synth,1903,Tobi Mage,SFX,63,14,110
+Synth,1904,Bitzz,SFX,63,14,111
+Synth,1905,Toda,SFX,63,14,112
+Synth,1906,Auto Trapeze,SFX,63,14,113
+Synth,1907,Harpist'sNightmare,SFX,63,14,114
+Synth,1908,Find Newgt!,SFX,63,14,115
+Synth,1909,Nile River,SFX,63,14,116
+Synth,1910,New Age Atmo,SFX,63,14,117
+Synth,1911,Wind Blows,SFX,63,14,118
+Synth,1912,Fire!,SFX,63,14,119
+Synth,1913,Scratching Machine,SFX,63,14,120
+Synth,1914,Goa Psyche,SFX,63,14,121
+Synth,1915,WaitForBadWeather,SFX,63,14,122
+Synth,1916,Reverse The Audio,SFX,63,14,123
+Synth,1917,Radio Static,SFX,63,14,124
+Synth,1918,Surveillance,SFX,63,14,125
+Synth,1919,Noise FX,SFX,63,14,126
+Synth,1920,Sample&HoldVintage,SFX,63,14,127
+Synth,1921,Lazerzz,SFX,63,15,0
+Synth,1922,On The Fritz,SFX,63,15,1
+Synth,1923,Argentina,SFX,63,15,2
+Synth,1924,Reverse Cymbal,SFX,63,15,3
+Synth,1925,Fret Noise,SFX,63,15,4
+Synth,1926,Breath Noiz,SFX,63,15,5
+Synth,1927,Seashore,SFX,63,15,6
+Synth,1928,Tweet,SFX,63,15,7
+Synth,1929,Telephone 2,SFX,63,15,8
+Synth,1930,Helicopter 1,SFX,63,15,9
+Synth,1931,Applause,SFX,63,15,10
+Synth,1932,Gunshot 2,SFX,63,15,11
+DX,1933,FM Lo-Fi Bass,Bass,63,15,12
+DX,1934,FM Up Bass,Bass,63,15,13
+DX,1935,FM Ducking Bass,Bass,63,15,14
+DX,1936,FM Amp Sub,Bass,63,15,15
+DX,1937,FM Decay Bass,Bass,63,15,16
+DX,1938,Wobble Bass,Bass,63,15,17
+DX,1939,FM Dark Bass,Bass,63,15,18
+DX,1940,Beep Bass,Bass,63,15,19
+DX,1941,Feel It,Bass,63,15,20
+DX,1942,Attack Bass,Bass,63,15,21
+DX,1943,FM Jet Bass,Bass,63,15,22
+DX,1944,FM Bold Bass,Bass,63,15,23
+DX,1945,FM Metal Dissonant,Bass,63,15,24
+DX,1946,FM Metallic Lead,Synth Lead,63,15,25
+DX,1947,FM Square and 5th Saw,Synth Lead,63,15,26
+DX,1948,Dyna Lead,Synth Lead,63,15,27
+DX,1949,Mo Dem Lead,Synth Lead,63,15,28
+DX,1950,Bit Tune,Synth Lead,63,15,29
+DX,1951,Bleep Clv,Synth Lead,63,15,30
+DX,1952,Uni Lead,Synth Lead,63,15,31
+DX,1953,FM Chorus 5th Lead,Synth Lead,63,15,32
+DX,1954,FM Square Module,Synth Lead,63,15,33
+DX,1955,FM Lil Dist Airy,Synth Lead,63,15,34
+DX,1956,FM Ring Lead,Synth Lead,63,15,35
+DX,1957,FM Pan Trem Lead,Synth Lead,63,15,36
+DX,1958,FM Saw Bright,Synth Lead,63,15,37
+DX,1959,FM Crush Computer,Synth Lead,63,15,38
+DX,1960,FM Simple Piano,Piano,63,15,39
+DX,1961,FM B Piano,Piano,63,15,40
+DX,1962,FM B Piano [Chord],Piano,63,15,41
+DX,1963,FM Clavi Piano,Piano,63,15,42
+DX,1964,Legend EP,Keyboard,63,15,43
+DX,1965,Legend EP [Chord],Keyboard,63,15,44
+DX,1966,Wood EP,Keyboard,63,15,45
+DX,1967,Wood EP [Chord],Keyboard,63,15,46
+DX,1968,Wood EP Tremolo,Keyboard,63,15,47
+DX,1969,Crystal EP,Keyboard,63,15,48
+DX,1970,FM Chorus Jazz EP,Keyboard,63,15,49
+DX,1971,FM Clear EP,Keyboard,63,15,50
+DX,1972,DigiChord,Keyboard,63,15,51
+DX,1973,Cheez Organ,Organ,63,15,52
+DX,1974,FM Rotate Organ,Organ,63,15,53
+DX,1975,FM Pipe A,Organ,63,15,54
+DX,1976,FM 5th Atmosphere,Pad,63,15,55
+DX,1977,FM Glass Dream,Pad,63,15,56
+DX,1978,FM Glass Dream [Chord],Pad,63,15,57
+DX,1979,Motion Pad,Pad,63,15,58
+DX,1980,Begin Sweep,Pad,63,15,59
+DX,1981,Cloud Pad,Pad,63,15,60
+DX,1982,Sol Phase,Pad,63,15,61
+DX,1983,Flying Kode,Pad,63,15,62
+DX,1984,AlTi Pad,Pad,63,15,63
+DX,1985,Star Pad,Pad,63,15,64
+DX,1986,FM Warm Pad,Pad,63,15,65
+DX,1987,FM Warm Pad [Chord],Pad,63,15,66
+DX,1988,FM Glass Harp,Pad,63,15,67
+DX,1989,FM Slow Phaser Pad,Pad,63,15,68
+DX,1990,FM Ambient Pad,Pad,63,15,69
+DX,1991,FM Strings Pad,Pad,63,15,70
+DX,1992,FM Strings,Strings,63,15,71
+DX,1993,FM Cold Strings,Strings,63,15,72
+DX,1994,FM Soft Brass,Brass,63,15,73
+DX,1995,FM Digital Brass,Brass,63,15,74
+DX,1996,FM Brass,Brass,63,15,75
+DX,1997,FM Hit Brass,Brass,63,15,76
+DX,1998,FM Hit Brass [Chord],Brass,63,15,77
+DX,1999,FM Fun Brass,Brass,63,15,78
+DX,2000,FM Chorus Flute,Woodwind,63,15,79
+DX,2001,FM Sax,Woodwind,63,15,80
+DX,2002,FM Chorus Guitar,Guitar,63,15,81
+DX,2003,FM Chorus Guitar [Chord],Guitar,63,15,82
+DX,2004,FM Wah Guitar,Guitar,63,15,83
+DX,2005,FM Dist Guitar,Guitar,63,15,84
+DX,2006,Ambi Pluck,Guitar,63,15,85
+DX,2007,FM Koto,World,63,15,86
+DX,2008,FM Shamisen,World,63,15,87
+DX,2009,FM Sitar,World,63,15,88
+DX,2010,FM Echo Mallet,Mallet,63,15,89
+DX,2011,Tin Perc,Mallet,63,15,90
+DX,2012,FM Marimba,Mallet,63,15,91
+DX,2013,FM Tubular Bells,Bell,63,15,92
+DX,2014,FM Tubular Bells [Chord],Bell,63,15,93
+DX,2015,Future Bell,Bell,63,15,94
+DX,2016,FM Decay Bass [Arp],Rhythmic,63,15,95
+DX,2017,FM Dark Bass [Arp],Rhythmic,63,15,96
+DX,2018,Mo Dem Lead [Arp],Rhythmic,63,15,97
+DX,2019,Bit Tune [Arp],Rhythmic,63,15,98
+DX,2020,Uni Lead [Arp],Rhythmic,63,15,99
+DX,2021,FM Simple Piano [Arp],Rhythmic,63,15,100
+DX,2022,Legend EP [Arp],Rhythmic,63,15,101
+DX,2023,Wood EP [Arp],Rhythmic,63,15,102
+DX,2024,Star Pad [Arp],Rhythmic,63,15,103
+DX,2025,FM Brass [Arp],Rhythmic,63,15,104
+DX,2026,Ambi Pluck [Arp],Rhythmic,63,15,105
+DX,2027,FM Echo Mallet [Arp],Rhythmic,63,15,106
+DX,2028,Tin Perc [Arp],Rhythmic,63,15,107
+DX,2029,FM Marimba [Arp],Rhythmic,63,15,108
+DX,2030,D'n Beats,SFX,63,15,109
+DX,2031,Buzz Siren,SFX,63,15,110
+DX,2032,Chopper,SFX,63,15,111
+SAMPLER,1,Female Count 1,Vocal Count,62,0,0
+SAMPLER,2,Female Count 2,Vocal Count,62,0,1
+SAMPLER,3,Female Count 3,Vocal Count,62,0,2
+SAMPLER,4,Female Count 4,Vocal Count,62,0,3
+SAMPLER,5,Female Count 5,Vocal Count,62,0,4
+SAMPLER,6,Female Count 6,Vocal Count,62,0,5
+SAMPLER,7,Female Count 7,Vocal Count,62,0,6
+SAMPLER,8,Female Count 8,Vocal Count,62,0,7
+SAMPLER,9,Male Count 1 A,Vocal Count,62,0,8
+SAMPLER,10,Male Count 2 A,Vocal Count,62,0,9
+SAMPLER,11,Male Count 3 A,Vocal Count,62,0,10
+SAMPLER,12,Male Count 4 A,Vocal Count,62,0,11
+SAMPLER,13,Male Count 5 A,Vocal Count,62,0,12
+SAMPLER,14,Male Count 6 A,Vocal Count,62,0,13
+SAMPLER,15,Male Count 7 A,Vocal Count,62,0,14
+SAMPLER,16,Male Count 8 A,Vocal Count,62,0,15
+SAMPLER,17,Male Count 1 B,Vocal Count,62,0,16
+SAMPLER,18,Male Count 2 B,Vocal Count,62,0,17
+SAMPLER,19,Male Count 3 B,Vocal Count,62,0,18
+SAMPLER,20,Male Count 4 B,Vocal Count,62,0,19
+SAMPLER,21,Male Count 5 B,Vocal Count,62,0,20
+SAMPLER,22,Male Count 6 B,Vocal Count,62,0,21
+SAMPLER,23,Male Count 7 B,Vocal Count,62,0,22
+SAMPLER,24,Male Count 8 B,Vocal Count,62,0,23
+SAMPLER,25,Female Vocal - Ha,Vocal Phrase / Chant,62,0,24
+SAMPLER,26,Female Vocal - Yo,Vocal Phrase / Chant,62,0,25
+SAMPLER,27,Female Vocal - Hey,Vocal Phrase / Chant,62,0,26
+SAMPLER,28,Female Vocal - Oh,Vocal Phrase / Chant,62,0,27
+SAMPLER,29,Female Vocal - Money,Vocal Phrase / Chant,62,0,28
+SAMPLER,30,Female Vocal - Go,Vocal Phrase / Chant,62,0,29
+SAMPLER,31,Male Vocal - Yo,Vocal Phrase / Chant,62,0,30
+SAMPLER,32,Male Vocal - Oh,Vocal Phrase / Chant,62,0,31
+SAMPLER,33,Male Vocal - Uh 1,Vocal Phrase / Chant,62,0,32
+SAMPLER,34,Male Vocal - Go,Vocal Phrase / Chant,62,0,33
+SAMPLER,35,Male Vocal- Whooh,Vocal Phrase / Chant,62,0,34
+SAMPLER,36,Male Vocal - Hey,Vocal Phrase / Chant,62,0,35
+SAMPLER,37,Male Vocal - OK,Vocal Phrase / Chant,62,0,36
+SAMPLER,38,Male Vocal - Say What,Vocal Phrase / Chant,62,0,37
+SAMPLER,39,Male Vocal - Big Up,Vocal Phrase / Chant,62,0,38
+SAMPLER,40,Male Vocal - Let's Go,Vocal Phrase / Chant,62,0,39
+SAMPLER,41,Male Vocal - Hey - Loud,Vocal Phrase / Chant,62,0,40
+SAMPLER,42,Male Vocal - Ooh - Loud,Vocal Phrase / Chant,62,0,41
+SAMPLER,43,Male Vocal - Wow - Loud,Vocal Phrase / Chant,62,0,42
+SAMPLER,44,Male Vocal - Bon,Vocal Phrase / Chant,62,0,43
+SAMPLER,45,Male Vocal - Get Funky,Vocal Phrase / Chant,62,0,44
+SAMPLER,46,Male Vocal - Ow,Vocal Phrase / Chant,62,0,45
+SAMPLER,47,Male Vocal - Uh 2,Vocal Phrase / Chant,62,0,46
+SAMPLER,48,Group Vocal - Ah uh,Vocal Phrase / Chant,62,0,47
+SAMPLER,49,Group Vocal - Hey,Vocal Phrase / Chant,62,0,48
+SAMPLER,50,Group Vocal - R U Ready?,Vocal Phrase / Chant,62,0,49
+SAMPLER,51,Group Vocal - Check It Out,Vocal Phrase / Chant,62,0,50
+SAMPLER,52,Group Vocal - Come On,Vocal Phrase / Chant,62,0,51
+SAMPLER,53,Group Vocal - Here We Go,Vocal Phrase / Chant,62,0,52
+SAMPLER,54,Group Vocal - Ho ho,Vocal Phrase / Chant,62,0,53
+SAMPLER,55,Group Vocal- Ho ho uh uh,Vocal Phrase / Chant,62,0,54
+SAMPLER,56,Group Vocal - Wussup,Vocal Phrase / Chant,62,0,55
+SAMPLER,57,Group Vocal - You You You,Vocal Phrase / Chant,62,0,56
+SAMPLER,58,Japanese Chant 1,Vocal Phrase / Chant,62,0,57
+SAMPLER,59,Japanese Chant 2,Vocal Phrase / Chant,62,0,58
+SAMPLER,60,Japanese Chant 3,Vocal Phrase / Chant,62,0,59
+SAMPLER,61,Japanese Chant 4,Vocal Phrase / Chant,62,0,60
+SAMPLER,62,Japanese Chant 5,Vocal Phrase / Chant,62,0,61
+SAMPLER,63,Japanese Chant 6,Vocal Phrase / Chant,62,0,62
+SAMPLER,64,Japanese Chant 7,Vocal Phrase / Chant,62,0,63
+SAMPLER,65,Japanese Chant 8,Vocal Phrase / Chant,62,0,64
+SAMPLER,66,Japanese Chant 9,Vocal Phrase / Chant,62,0,65
+SAMPLER,67,Japanese Chant 10,Vocal Phrase / Chant,62,0,66
+SAMPLER,68,Japanese Chant 11,Vocal Phrase / Chant,62,0,67
+SAMPLER,69,Japanese Chant 12,Vocal Phrase / Chant,62,0,68
+SAMPLER,70,Japanese Chant 13,Vocal Phrase / Chant,62,0,69
+SAMPLER,71,Japanese Chant 14,Vocal Phrase / Chant,62,0,70
+SAMPLER,72,Japanese Chant 15,Vocal Phrase / Chant,62,0,71
+SAMPLER,73,Japanese Chant 16,Vocal Phrase / Chant,62,0,72
+SAMPLER,74,Japanese Chant 17,Vocal Phrase / Chant,62,0,73
+SAMPLER,75,Japanese Chant 18,Vocal Phrase / Chant,62,0,74
+SAMPLER,76,Singing - Female - Ah 1,Singing Vocal,62,0,75
+SAMPLER,77,Singing - Female - Ah 2,Singing Vocal,62,0,76
+SAMPLER,78,Singing - Female - Ai,Singing Vocal,62,0,77
+SAMPLER,79,Singing - Female - La ah ah,Singing Vocal,62,0,78
+SAMPLER,80,Singing - Female - Woo la,Singing Vocal,62,0,79
+SAMPLER,81,Singing - Female - Aw oh,Singing Vocal,62,0,80
+SAMPLER,82,Singing - Female - Ha ah 1,Singing Vocal,62,0,81
+SAMPLER,83,Singing - Female - Haaaah,Singing Vocal,62,0,82
+SAMPLER,84,Singing - Male - Ah ah,Singing Vocal,62,0,83
+SAMPLER,85,Singing - Male - Oh oh woo,Singing Vocal,62,0,84
+SAMPLER,86,Singing - Male - La a a a,Singing Vocal,62,0,85
+SAMPLER,87,Singing - Male - Ah,Singing Vocal,62,0,86
+SAMPLER,88,Singing - Male - Hooo,Singing Vocal,62,0,87
+SAMPLER,89,Singing - Male - Hee,Singing Vocal,62,0,88
+SAMPLER,90,Singing - Male - Uu,Singing Vocal,62,0,89
+SAMPLER,91,Singing - Male - Everyday,Singing Vocal,62,0,90
+SAMPLER,92,Singing - Male - Every Night,Singing Vocal,62,0,91
+SAMPLER,93,Singing - Male - Yeeaaah,Singing Vocal,62,0,92
+SAMPLER,94,Singing - Male - Oh wo,Singing Vocal,62,0,93
+SAMPLER,95,Singing - Male - Oh wowo ah,Singing Vocal,62,0,94
+SAMPLER,96,Singing - Male - Yeah ah ah,Singing Vocal,62,0,95
+SAMPLER,97,Singing - Female - Ha ah 2,Singing Vocal,62,0,96
+SAMPLER,98,Singing - Female - La la la la la,Singing Vocal,62,0,97
+SAMPLER,99,High pitched vocal - Ah,Robotic Vocal / Effect,62,0,98
+SAMPLER,100,High pitched vocal - Top,Robotic Vocal / Effect,62,0,99
+SAMPLER,101,Vocoder Beat The Band,Robotic Vocal / Effect,62,0,100
+SAMPLER,102,Vocoder Love Is Blind,Robotic Vocal / Effect,62,0,101
+SAMPLER,103,Vocoder Freezing Cold,Robotic Vocal / Effect,62,0,102
+SAMPLER,104,Vocoder Destiny,Robotic Vocal / Effect,62,0,103
+SAMPLER,105,Vocoder Forbidden Dreams,Robotic Vocal / Effect,62,0,104
+SAMPLER,106,Vocoder Enjoying This,Robotic Vocal / Effect,62,0,105
+SAMPLER,107,Vocoder Desperation,Robotic Vocal / Effect,62,0,106
+SAMPLER,108,Vocoder Born Happy,Robotic Vocal / Effect,62,0,107
+SAMPLER,109,Vocoder Day Life,Robotic Vocal / Effect,62,0,108
+SAMPLER,110,Vocoder Reality,Robotic Vocal / Effect,62,0,109
+SAMPLER,111,Vocoder Dreamin Of U,Robotic Vocal / Effect,62,0,110
+SAMPLER,112,Vocoder Complicated,Robotic Vocal / Effect,62,0,111
+SAMPLER,113,Vocoder Mystery,Robotic Vocal / Effect,62,0,112
+SAMPLER,114,Vocoder Revolution,Robotic Vocal / Effect,62,0,113
+SAMPLER,115,Vocoder Sweeping,Robotic Vocal / Effect,62,0,114
+SAMPLER,116,Vocoder Yesterday,Robotic Vocal / Effect,62,0,115
+SAMPLER,117,Vocoder Close Eyes,Robotic Vocal / Effect,62,0,116
+SAMPLER,118,Vocoder Infinity,Robotic Vocal / Effect,62,0,117
+SAMPLER,119,Vocoder Deepwater,Robotic Vocal / Effect,62,0,118
+SAMPLER,120,Riser - Noise 1,Riser,62,0,119
+SAMPLER,121,Riser - Synth Lead & Noise 1,Riser,62,0,120
+SAMPLER,122,Riser - Synth Lead 1,Riser,62,0,121
+SAMPLER,123,Riser - Bubble 1,Riser,62,0,122
+SAMPLER,124,Riser - Phase Synth Lead 1,Riser,62,0,123
+SAMPLER,125,Riser - Phase Synth Lead 2,Riser,62,0,124
+SAMPLER,126,Riser - Panned Synth Lead 1,Riser,62,0,125
+SAMPLER,127,Riser - Panned Synth Lead 2,Riser,62,0,126
+SAMPLER,128,Riser - Noise 2,Riser,62,0,127
+SAMPLER,129,Riser - Bubble 2,Riser,62,1,0
+SAMPLER,130,Riser - Noise 3,Riser,62,1,1
+SAMPLER,131,Riser - Panned Noise 1,Riser,62,1,2
+SAMPLER,132,Riser - Panned Noise 2,Riser,62,1,3
+SAMPLER,133,Riser - Panned Noise 3,Riser,62,1,4
+SAMPLER,134,Riser - Panned Noise 4,Riser,62,1,5
+SAMPLER,135,Riser - Panned Noise 5,Riser,62,1,6
+SAMPLER,136,Riser - Panned Noise 6,Riser,62,1,7
+SAMPLER,137,Laser - Blast 2,Laser / Sci-Fi,62,1,8
+SAMPLER,138,Laser - Rapid Fire 1,Laser / Sci-Fi,62,1,9
+SAMPLER,139,Laser - Blast 3,Laser / Sci-Fi,62,1,10
+SAMPLER,140,Laser - Blast 4,Laser / Sci-Fi,62,1,11
+SAMPLER,141,Laser - Blast 5,Laser / Sci-Fi,62,1,12
+SAMPLER,142,Laser - Blast 6,Laser / Sci-Fi,62,1,13
+SAMPLER,143,Laser - Blast 7,Laser / Sci-Fi,62,1,14
+SAMPLER,144,Laser - Blast 8,Laser / Sci-Fi,62,1,15
+SAMPLER,145,Noisy Laser - Blast 1,Laser / Sci-Fi,62,1,16
+SAMPLER,146,Laser - Motion 1,Laser / Sci-Fi,62,1,17
+SAMPLER,147,Laser - Rapid Fire 2,Laser / Sci-Fi,62,1,18
+SAMPLER,148,Laser - Rapid Fire 3,Laser / Sci-Fi,62,1,19
+SAMPLER,149,Laser - Flyby 1,Laser / Sci-Fi,62,1,20
+SAMPLER,150,Laser - Echo 1,Laser / Sci-Fi,62,1,21
+SAMPLER,151,Laser - Echo 2,Laser / Sci-Fi,62,1,22
+SAMPLER,152,Laser - Echo 3,Laser / Sci-Fi,62,1,23
+SAMPLER,153,Laser - Fizzer 1,Laser / Sci-Fi,62,1,24
+SAMPLER,154,Laser - Vibration 1,Laser / Sci-Fi,62,1,25
+SAMPLER,155,Laser - Echo 4,Laser / Sci-Fi,62,1,26
+SAMPLER,156,Laser - Fleeting 1,Laser / Sci-Fi,62,1,27
+SAMPLER,157,Laser - Signal 1,Laser / Sci-Fi,62,1,28
+SAMPLER,158,Laser - Signal 2,Laser / Sci-Fi,62,1,29
+SAMPLER,159,Laser - Signal 3,Laser / Sci-Fi,62,1,30
+SAMPLER,160,Laser - Signal 4,Laser / Sci-Fi,62,1,31
+SAMPLER,161,Laser - Signal 5,Laser / Sci-Fi,62,1,32
+SAMPLER,162,Laser - Random Motion 1,Laser / Sci-Fi,62,1,33
+SAMPLER,163,Laser - Signal 6,Laser / Sci-Fi,62,1,34
+SAMPLER,164,Laser - Blast 9,Laser / Sci-Fi,62,1,35
+SAMPLER,165,Sci-Fi - Data Transmission 1,Laser / Sci-Fi,62,1,36
+SAMPLER,166,Sci-Fi - Data Transmission 2,Laser / Sci-Fi,62,1,37
+SAMPLER,167,Sci-Fi - Data Transmission 3,Laser / Sci-Fi,62,1,38
+SAMPLER,168,Laser - Falling 3,Laser / Sci-Fi,62,1,39
+SAMPLER,169,Laser - After Shock 1,Laser / Sci-Fi,62,1,40
+SAMPLER,170,Laser - Falling 4,Laser / Sci-Fi,62,1,41
+SAMPLER,171,Laser - Falling 5,Laser / Sci-Fi,62,1,42
+SAMPLER,172,Laser - Falling 6,Laser / Sci-Fi,62,1,43
+SAMPLER,173,Laser - Falling 7,Laser / Sci-Fi,62,1,44
+SAMPLER,174,Laser - Falling 8,Laser / Sci-Fi,62,1,45
+SAMPLER,175,Laser - Falling 9,Laser / Sci-Fi,62,1,46
+SAMPLER,176,Laser - Blast 10,Laser / Sci-Fi,62,1,47
+SAMPLER,177,Laser - Blast 11,Laser / Sci-Fi,62,1,48
+SAMPLER,178,Laser - Blast 12,Laser / Sci-Fi,62,1,49
+SAMPLER,179,Laser - Echo 5,Laser / Sci-Fi,62,1,50
+SAMPLER,180,Noisy Laser - Echo 1,Laser / Sci-Fi,62,1,51
+SAMPLER,181,Noisy Laser - Echo 2,Laser / Sci-Fi,62,1,52
+SAMPLER,182,Sci-Fi - Data Transmission 4,Laser / Sci-Fi,62,1,53
+SAMPLER,183,Laser - Falling 10,Laser / Sci-Fi,62,1,54
+SAMPLER,184,Laser - Falling 11,Laser / Sci-Fi,62,1,55
+SAMPLER,185,Laser - Falling 12,Laser / Sci-Fi,62,1,56
+SAMPLER,186,Laser - Signal 7,Laser / Sci-Fi,62,1,57
+SAMPLER,187,Sci-Fi - Rapid Fire 1,Laser / Sci-Fi,62,1,58
+SAMPLER,188,Sci-Fi - Detected 2,Laser / Sci-Fi,62,1,59
+SAMPLER,189,Sci-Fi - Access Denied 1,Laser / Sci-Fi,62,1,60
+SAMPLER,190,Sci-Fi - Error 1,Laser / Sci-Fi,62,1,61
+SAMPLER,191,Sci-Fi - Calculation 1,Laser / Sci-Fi,62,1,62
+SAMPLER,192,Sci-Fi - Connecting 1,Laser / Sci-Fi,62,1,63
+SAMPLER,193,Sci-Fi - Deep Signal 1,Laser / Sci-Fi,62,1,64
+SAMPLER,194,Sci-Fi - Deep Signal 2,Laser / Sci-Fi,62,1,65
+SAMPLER,195,Sci-Fi - Deep Dive 1,Laser / Sci-Fi,62,1,66
+SAMPLER,196,Sci-Fi - Deep Dive 2,Laser / Sci-Fi,62,1,67
+SAMPLER,197,Impact - Dark 1,Impact,62,1,68
+SAMPLER,198,Impact - Tom & Cymbal 1,Impact,62,1,69
+SAMPLER,199,Impact - Metal Hit 1,Impact,62,1,70
+SAMPLER,200,Impact - Metal Hit 2,Impact,62,1,71
+SAMPLER,201,Impact - Noise 1,Impact,62,1,72
+SAMPLER,202,Impact - Noise 2,Impact,62,1,73
+SAMPLER,203,Impact - Noise 3,Impact,62,1,74
+SAMPLER,204,Impact - Noise 4,Impact,62,1,75
+SAMPLER,205,Impact - Noise 5,Impact,62,1,76
+SAMPLER,206,Impact - Noise 6,Impact,62,1,77
+SAMPLER,207,Impact - Noise 7,Impact,62,1,78
+SAMPLER,208,Impact - Noise 8,Impact,62,1,79
+SAMPLER,209,Noise - Fade In 1,Noise / Distorted Sound,62,1,80
+SAMPLER,210,Noise - Fade In 2,Noise / Distorted Sound,62,1,81
+SAMPLER,211,Noise - Fade In 3,Noise / Distorted Sound,62,1,82
+SAMPLER,212,Noise - Explosion 1,Noise / Distorted Sound,62,1,83
+SAMPLER,213,Noise - Explosion 2,Noise / Distorted Sound,62,1,84
+SAMPLER,214,Noise - Explosion 3,Noise / Distorted Sound,62,1,85
+SAMPLER,215,Noise - Explosion 4,Noise / Distorted Sound,62,1,86
+SAMPLER,216,Distorted Hit 1,Noise / Distorted Sound,62,1,87
+SAMPLER,217,Distorted Hit 2,Noise / Distorted Sound,62,1,88
+SAMPLER,218,Distorted Hit 3,Noise / Distorted Sound,62,1,89
+SAMPLER,219,Distorted Hit 4,Noise / Distorted Sound,62,1,90
+SAMPLER,220,Distorted Hit 5,Noise / Distorted Sound,62,1,91
+SAMPLER,221,Distorted Hit 6,Noise / Distorted Sound,62,1,92
+SAMPLER,222,Distorted Hit 7,Noise / Distorted Sound,62,1,93
+SAMPLER,223,Distorted Hit 8,Noise / Distorted Sound,62,1,94
+SAMPLER,224,Distorted Hit 9,Noise / Distorted Sound,62,1,95
+SAMPLER,225,Noise - Blast 1,Noise / Distorted Sound,62,1,96
+SAMPLER,226,Noise - Blast 2,Noise / Distorted Sound,62,1,97
+SAMPLER,227,Noise - Blast 3,Noise / Distorted Sound,62,1,98
+SAMPLER,228,Noise - Blast 4,Noise / Distorted Sound,62,1,99
+SAMPLER,229,Noise - Alert 1,Noise / Distorted Sound,62,1,100
+SAMPLER,230,Noise - Signal 1,Noise / Distorted Sound,62,1,101
+SAMPLER,231,Noise - Signal 2,Noise / Distorted Sound,62,1,102
+SAMPLER,232,Noise - Signal 3,Noise / Distorted Sound,62,1,103
+SAMPLER,233,Noise - Signal 4,Noise / Distorted Sound,62,1,104
+SAMPLER,234,Noise - Passing 1,Noise / Distorted Sound,62,1,105
+SAMPLER,235,Noise - Passing 2,Noise / Distorted Sound,62,1,106
+SAMPLER,236,Noise - Passing 3,Noise / Distorted Sound,62,1,107
+SAMPLER,237,Noise - Passing 4,Noise / Distorted Sound,62,1,108
+SAMPLER,238,Noise - Passing 5,Noise / Distorted Sound,62,1,109
+SAMPLER,239,Noise - Passing 6,Noise / Distorted Sound,62,1,110
+SAMPLER,240,Noise - Take Off 1,Noise / Distorted Sound,62,1,111
+SAMPLER,241,Noise - Take Off 2,Noise / Distorted Sound,62,1,112
+SAMPLER,242,Granular Noise 1,Noise / Distorted Sound,62,1,113
+SAMPLER,243,Ambient - Noise 1,Ambient / Soundscape,62,1,114
+SAMPLER,244,Ambient - Noise 2,Ambient / Soundscape,62,1,115
+SAMPLER,245,Ambient - Unstable 1,Ambient / Soundscape,62,1,116
+SAMPLER,246,Ambient - Synth bass 1,Ambient / Soundscape,62,1,117
+SAMPLER,247,Ambient - Unstable 2,Ambient / Soundscape,62,1,118
+SAMPLER,248,Ambient - Noise 3,Ambient / Soundscape,62,1,119
+SAMPLER,249,Ambient - Noise 4,Ambient / Soundscape,62,1,120
+SAMPLER,250,Ambient - Strings & Noise 1,Ambient / Soundscape,62,1,121
+SAMPLER,251,Ambient - Strings & Noise 2,Ambient / Soundscape,62,1,122
+SAMPLER,252,Ambient - Strings 1,Ambient / Soundscape,62,1,123
+SAMPLER,253,Ambient - Pad & Noise 1,Ambient / Soundscape,62,1,124
+SAMPLER,254,Ambient - Pad & Noise 2,Ambient / Soundscape,62,1,125
+SAMPLER,255,Samba Whistle 1,SFX,62,1,126
+SAMPLER,256,Gunshot 3,SFX,62,1,127
+SAMPLER,257,Helicopter 2,SFX,62,2,0
+SAMPLER,258,Police 1,SFX,62,2,1
+SAMPLER,259,Can 1,SFX,62,2,2
+SAMPLER,260,Cashier 1,SFX,62,2,3
+SAMPLER,261,Gear 1,SFX,62,2,4
+SAMPLER,262,Train Whistle 1,SFX,62,2,5
+SAMPLER,263,Train Crossing 1,SFX,62,2,6
+SAMPLER,264,Zipper 1,SFX,62,2,7
+SAMPLER,265,Tongue Clicking 1,SFX,62,2,8
+SAMPLER,266,Heart Beat 1,SFX,62,2,9
+SAMPLER,267,Water Drop 1,SFX,62,2,10
+SAMPLER,268,Metal Hit 1,SFX,62,2,11
+SAMPLER,269,Scratch 1,Scratch,62,2,12
+SAMPLER,270,Scratch 2,Scratch,62,2,13
+SAMPLER,271,Scratch 3,Scratch,62,2,14
+SAMPLER,272,Scratch 4,Scratch,62,2,15
+SAMPLER,273,Scratch 5,Scratch,62,2,16
+SAMPLER,274,Scratch 6,Scratch,62,2,17
+SAMPLER,275,Scratch 7,Scratch,62,2,18
+SAMPLER,276,Scratch 8,Scratch,62,2,19
+SAMPLER,277,Scratch 9,Scratch,62,2,20
+SAMPLER,278,Scratch 10,Scratch,62,2,21
+SAMPLER,279,Scratch 11,Scratch,62,2,22
+SAMPLER,280,Scratch 12,Scratch,62,2,23
+SAMPLER,281,Scratch 13,Scratch,62,2,24
+SAMPLER,282,Scratch 14,Scratch,62,2,25
+SAMPLER,283,Scratch 15,Scratch,62,2,26
+SAMPLER,284,Scratch 16,Scratch,62,2,27
+SAMPLER,285,Scratch 17,Scratch,62,2,28
+SAMPLER,286,Scratch 18,Scratch,62,2,29
+SAMPLER,287,Scratch 19,Scratch,62,2,30
+SAMPLER,288,Scratch 20,Scratch,62,2,31
+SAMPLER,289,Scratch 21,Scratch,62,2,32
+SAMPLER,290,Scratch 22,Scratch,62,2,33
+SAMPLER,291,Scratch 23,Scratch,62,2,34
+SAMPLER,292,Scratch 24,Scratch,62,2,35
+SAMPLER,293,Bird 1,Nature / Animals,62,2,36
+SAMPLER,294,Bird 2,Nature / Animals,62,2,37
+SAMPLER,295,Sheep 1,Nature / Animals,62,2,38
+SAMPLER,296,Lion 1,Nature / Animals,62,2,39
+SAMPLER,297,Thunder 1,Nature / Animals,62,2,40
+SAMPLER,298,Thunder 2,Nature / Animals,62,2,41
+SAMPLER,299,Rain 1,Nature / Animals,62,2,42
+SAMPLER,300,Rain 2,Nature / Animals,62,2,43
+SAMPLER,301,Brass Hit 1,Hit / Stab / Musical Instrument Sound,62,2,44
+SAMPLER,302,Brass Hit 2,Hit / Stab / Musical Instrument Sound,62,2,45
+SAMPLER,303,Brass Hit 3,Hit / Stab / Musical Instrument Sound,62,2,46
+SAMPLER,304,Synth Brass Hit 1,Hit / Stab / Musical Instrument Sound,62,2,47
+SAMPLER,305,Synth Brass Hit 2,Hit / Stab / Musical Instrument Sound,62,2,48
+SAMPLER,306,Synth Brass Hit 3,Hit / Stab / Musical Instrument Sound,62,2,49
+SAMPLER,307,Trumpet HIT 1,Hit / Stab / Musical Instrument Sound,62,2,50
+SAMPLER,308,String Hit 1,Hit / Stab / Musical Instrument Sound,62,2,51
+SAMPLER,309,Synth Chord Hit 1,Hit / Stab / Musical Instrument Sound,62,2,52
+SAMPLER,310,Piano Chord Hit 1,Hit / Stab / Musical Instrument Sound,62,2,53
+SAMPLER,311,Piano Chord Hit 2,Hit / Stab / Musical Instrument Sound,62,2,54
+SAMPLER,312,Piano Chord Hit 3,Hit / Stab / Musical Instrument Sound,62,2,55
+SAMPLER,313,Piano Chord Hit 4,Hit / Stab / Musical Instrument Sound,62,2,56
+SAMPLER,314,Guitar Clean - Delay 1,Hit / Stab / Musical Instrument Sound,62,2,57
+SAMPLER,315,Guitar Clean - Delay 2,Hit / Stab / Musical Instrument Sound,62,2,58
+SAMPLER,316,Guitar Clean - Delay 3,Hit / Stab / Musical Instrument Sound,62,2,59
+SAMPLER,317,Guitar Mute 1,Hit / Stab / Musical Instrument Sound,62,2,60
+SAMPLER,318,Guitar Mute 2,Hit / Stab / Musical Instrument Sound,62,2,61
+SAMPLER,319,Donk Bass 1,Hit / Stab / Musical Instrument Sound,62,2,62
+SAMPLER,320,Bongo3 High 3,Percussion,62,2,63
+SAMPLER,321,Bongo3 Low 1,Percussion,62,2,64
+SAMPLER,322,Bongo4 High 2,Percussion,62,2,65
+SAMPLER,323,Bongo4 Mid 1,Percussion,62,2,66
+SAMPLER,324,Bongo4 Low 3,Percussion,62,2,67
+SAMPLER,325,Analog Conga 1,Percussion,62,2,68
+SAMPLER,326,Analog Conga 2,Percussion,62,2,69
+SAMPLER,327,Conga3 High Slap Open 1,Percussion,62,2,70
+SAMPLER,328,Conga3 High Open 1,Percussion,62,2,71
+SAMPLER,329,Conga3 High Slap Mute 1,Percussion,62,2,72
+SAMPLER,330,Conga3 Low Open 1,Percussion,62,2,73
+SAMPLER,331,Conga3 Low Mute 1,Percussion,62,2,74
+SAMPLER,332,Repique 1,Percussion,62,2,75
+SAMPLER,333,Repique Rim 1,Percussion,62,2,76
+SAMPLER,334,Timbale 3,Percussion,62,2,77
+SAMPLER,335,Tan-tan Body 1,Percussion,62,2,78
+SAMPLER,336,Tan-tan Close 1,Percussion,62,2,79
+SAMPLER,337,Tan-tan Open 1,Percussion,62,2,80
+SAMPLER,338,Tan-tan Slap 1,Percussion,62,2,81
+SAMPLER,339,Surdo Mute 3,Percussion,62,2,82
+SAMPLER,340,Surdo Open 2,Percussion,62,2,83
+SAMPLER,341,Surdo Stop 2,Percussion,62,2,84
+SAMPLER,342,High Tom - Standard 1,Percussion,62,2,85
+SAMPLER,343,Mid Tom - Standard 1,Percussion,62,2,86
+SAMPLER,344,Low Tom - Standard 1,Percussion,62,2,87
+SAMPLER,345,Low Tom - Standard 2,Percussion,62,2,88
+SAMPLER,346,Floor Tom - Standard 1,Percussion,62,2,89
+SAMPLER,347,Cajon Ghost 1,Percussion,62,2,90
+SAMPLER,348,Cajon Low 1,Percussion,62,2,91
+SAMPLER,349,Analog Cowbell 2,Percussion,62,2,92
+SAMPLER,350,RX11 Cowbell 1,Percussion,62,2,93
+SAMPLER,351,Acoustic Cowbell 1,Percussion,62,2,94
+SAMPLER,352,Acoustic Cowbell 2,Percussion,62,2,95
+SAMPLER,353,Electric Wood Block 1,Percussion,62,2,96
+SAMPLER,354,Electric Wood Block 2,Percussion,62,2,97
+SAMPLER,355,Analog Claves 1,Percussion,62,2,98
+SAMPLER,356,Castanet 1,Percussion,62,2,99
+SAMPLER,357,Agogo High 2,Percussion,62,2,100
+SAMPLER,358,Agogo Low 2,Percussion,62,2,101
+SAMPLER,359,Analog Hand Clap 1,Percussion,62,2,102
+SAMPLER,360,Open Rim Shot 1,Percussion,62,2,103
+SAMPLER,361,Punchy Analog Snare 1,Percussion,62,2,104
+SAMPLER,362,Analog Snare 1,Percussion,62,2,105
+SAMPLER,363,Distorted Analog Snare 1,Percussion,62,2,106
+SAMPLER,364,Standard Hand Clap 1,Percussion,62,2,107
+SAMPLER,365,Electronic Snare 1,Percussion,62,2,108
+SAMPLER,366,Shaker 16,Percussion,62,2,109
+SAMPLER,367,Shaker 17,Percussion,62,2,110
+SAMPLER,368,Shaker 18,Percussion,62,2,111
+SAMPLER,369,Cabasa 1,Percussion,62,2,112
+SAMPLER,370,Cabasa 2,Percussion,62,2,113
+SAMPLER,371,Cabasa 3,Percussion,62,2,114
+SAMPLER,372,Maracas 1,Percussion,62,2,115
+SAMPLER,373,Shaker 19,Percussion,62,2,116
+SAMPLER,374,Tambourine 10,Percussion,62,2,117
+SAMPLER,375,Guiro 1,Percussion,62,2,118
+SAMPLER,376,Vibraslap 2,Percussion,62,2,119
+SAMPLER,377,Reco-reco 2,Percussion,62,2,120
+SAMPLER,378,Analog Closed Hat 1,Percussion,62,2,121
+SAMPLER,379,Analog Closed Hat 2,Percussion,62,2,122
+SAMPLER,380,Electronic Closed Hat 1,Percussion,62,2,123
+SAMPLER,381,Analog Open Hat 1,Percussion,62,2,124
+SAMPLER,382,Analog Open Hat 2,Percussion,62,2,125
+SAMPLER,383,Electronic Open Hat 1,Percussion,62,2,126
+SAMPLER,384,Ride 1,Percussion,62,2,127
+SAMPLER,385,Ride 2,Percussion,62,3,0
+SAMPLER,386,Ride 3,Percussion,62,3,1
+SAMPLER,387,Ride Brush 1,Percussion,62,3,2
+SAMPLER,388,Analog Crash 1,Percussion,62,3,3
+SAMPLER,389,Analog Crash 2,Percussion,62,3,4
+SAMPLER,390,Analog Glass 1,Percussion,62,3,5
+SAMPLER,391,Recorded Sample 1,Recorded Sound,62,3,6
+SAMPLER,392,Recorded Sample 2,Recorded Sound,62,3,7

@@ -1,0 +1,142 @@
+address_high,address_mid,address_low,what_was_established,document
+00,00,00,read 3D = 61 (Speaker Master Volume),10-verified-behaviour.md
+00,00,01,read 29 = 41 (Headphone Master Volume),10-verified-behaviour.md
+00,00,0B,read 70 — all three TX bits set on the TRS interface,10-verified-behaviour.md
+00,00,0E,read as part of the USB interface settings sweep,10-verified-behaviour.md
+00,00,0F,read 70 — all three TX bits set on the USB interface,10-verified-behaviour.md
+00,00,10,"read 01 = On, against a documented default of Off",10-verified-behaviour.md
+00,00,13,read 70 — all three TX bits set on the Bluetooth interface,10-verified-behaviour.md
+00,00,16,read 0 on a unit with Wi-Fi off,07-transports.md
+00,00,23,read as part of the MIDI-thru settings sweep,10-verified-behaviour.md
+00,00,2B,read as part of the sequencer-control settings sweep,10-verified-behaviour.md
+00,00,2D,read Off in 2026-08 and On in 2026-10 after the user enabled it,10-verified-behaviour.md
+00,00,2E,read as part of the sink-current settings sweep,10-verified-behaviour.md
+00,60,00,read 0 on a unit with Wi-Fi off,07-transports.md
+00,60,01,read 0 on a unit with Wi-Fi off,07-transports.md
+01,00,00,read 02 00 00 02 on a unit running OS V2.00,10-verified-behaviour.md
+01,00,04,read 01,10-verified-behaviour.md
+01,10,00,read 00 (SystemStatus),10-verified-behaviour.md
+01,10,02,read 46 = 70 and 64 = 100 (battery percentage),10-verified-behaviour.md
+01,10,07,"read 00, headphones unplugged",10-verified-behaviour.md
+01,10,11,read 00 0B = 11 (sample memory used),10-verified-behaviour.md
+01,10,13,read 03 7E = 510 (sample memory total),10-verified-behaviour.md
+01,10,15,read 00; also the precondition that caught a false failure report,10-verified-behaviour.md
+01,10,17,"00 outside Song mode and 02 inside, over three entries and three exits",10-verified-behaviour.md
+01,10,18,"00 outside Song mode and 13 inside — values measured, meaning inferred",10-verified-behaviour.md
+01,10,20,"01 playing and 00 stopped, alongside FA/FC, over eight transitions; and the machine starts and stops when the HOST sends FA/FC, broadcasting 01 10 20 unsolicited on each; the broadcasts were seen again over Bluetooth on 2026-10-23",10-verified-behaviour.md
+01,10,27,read 00; broadcast on every track change,10-verified-behaviour.md
+01,10,2D,read 00; replies with one data byte but broadcasts two,10-verified-behaviour.md
+01,10,2E,"read 01; broadcast with sound changes, knob moves and FX-block changes",10-verified-behaviour.md
+01,18,30,broadcast two or three times after a track-type change,10-verified-behaviour.md
+01,1p,30,read 00 on part 0 (SoundDesignPage),10-verified-behaviour.md
+01,1p,33,"catalogue number minus one — ten presets loaded by Bank/PC and read back; re-read on parts 0-9 on 2026-10-23 and resolved to the right preset each time, but silent on part 10 (SAMPLER) in eight attempts across two clients",06-sounds-presets.md
+01,1p,37,"cleared a pattern of five events on a re-typed part in one message; broadened 2026-10-23 to 66 messages (6 slots x 11 parts) with no PatternSelect write, each part's selected pattern then read back empty, native synth parts 7-10 included",10-verified-behaviour.md
+01,1p,39,read 00 on part 0; observed broadcasting two data bytes,10-verified-behaviour.md
+01,1p,3C,"answered on all eleven parts, 44 replies out of 44; 1/2/4/5 observed",13-track-types.md
+01,1p,50,read 09 on part 0 (MasterSlider1Assign),10-verified-behaviour.md
+01,1p,53,read 09 on part 0 (SingleSlider1Assign),10-verified-behaviour.md
+01,1p,5C,"readable on request, but not broadcast when the slider moves",05-live-state.md
+01,32,00,data 01 saved the edit buffer into slot 0; the 0B 00 00 list then showed the new name and tempo,10-verified-behaviour.md
+01,33,00,"round trip: part 6 DRUM to SYNTH, acknowledged, PartAwmType 1 to 2",13-track-types.md
+01,33,01,"the acknowledgement address, PartIndex 6 and Result 0",13-track-types.md
+0B,00,00,"1841-byte reply parsed: eight slots, names at offset 25 and tempo at 226, read twice before and after a write",10-verified-behaviour.md
+10,00,04,bulk dump with prefix 00 00 renamed slot 0 to 'Dub Techno'; confirmed by the 0B 00 00 list,10-verified-behaviour.md
+30,40,76,"read 00 77 = 119 BPM; the two-byte encoding confirmed; written 122 -> 126 and restored, read-back matched",10-verified-behaviour.md
+30,40,79,"Pattern Select clamps at 2 while this reads 0, and reaches 5 when it reads 1",04-sequencer-editing.md
+30,40,7E,wrote 00 (Scale 1) and read it back,10-verified-behaviour.md
+30,40,7F,wrote 40 (key C) and read it back,10-verified-behaviour.md
+30,41,00,wrote 01 00 (REV-X HALL) as the send reverb type and read it back,10-verified-behaviour.md
+30,41,02,read 00 (Basic) as the send reverb template after a type write,10-verified-behaviour.md
+30,41,03,wrote 00 30 = 48 (Reverb Time) and read it back — the al = 01 | (k<<1) effect-parameter offset confirmed on a send block,10-verified-behaviour.md
+30,42,00,wrote 02 10 (TEMPO CROSS DELAY) as the send delay type and read it back,10-verified-behaviour.md
+30,42,05,"wrote 8 (Delay Time R>L, 8th) and read it back",10-verified-behaviour.md
+30,42,07,"wrote 92 (Feedback Level, 28 of 63) and read it back",10-verified-behaviour.md
+30,42,0B,wrote 6 (Feedback High Damp) and read it back,10-verified-behaviour.md
+30,42,15,"wrote 90 (Dry/Wet Balance), read back 0 — bypassed on a send block while params 1, 2, 3 and 5 of the same block took",10-verified-behaviour.md
+30,43,00,wrote 0C 28 (CONTROL FILTER) as Master Effect 1 and read it back,10-verified-behaviour.md
+30,44,00,wrote 02 10 (TEMPO CROSS DELAY) as Master Effect 2 and read it back,10-verified-behaviour.md
+30,45,00,wrote 0C 70 (VINYL BREAK) as Master Effect 3 and read it back,10-verified-behaviour.md
+30,45,03,"moved by an FX slider, reported in SysEx",10-verified-behaviour.md
+30,45,05,moved by an FX slider with no CC of its own — SysEx is the only report,05-live-state.md
+30,46,00,wrote 08 00 (VCM COMPRESSOR 376) as Master Effect 4 and read it back,10-verified-behaviour.md
+30,4B,03,"read 00 — A/D Part Reverb Send at its default, ruling the built-in mic out as a reverb source",10-verified-behaviour.md
+30,4D,00,reversible write verified; also per-project rather than global,10-verified-behaviour.md
+30,4D,01,read as part of the user-scale sweep,10-verified-behaviour.md
+30,4D,02,wrote note 50 and read it back (scale 1 pad 3),10-verified-behaviour.md
+30,4D,03,wrote note 52 and read it back (scale 1 pad 4),10-verified-behaviour.md
+30,4D,04,wrote note 55 and read it back (scale 1 pad 5),10-verified-behaviour.md
+30,4D,05,wrote note 57 and read it back (scale 1 pad 6),10-verified-behaviour.md
+30,4D,06,wrote note 60 and read it back (scale 1 pad 7),10-verified-behaviour.md
+30,4D,10,read as part of the user-scale sweep,10-verified-behaviour.md
+30,4D,76,read as part of the user-scale sweep,10-verified-behaviour.md
+30,5p,0F,written and read back; clamps at 2 unless Pattern Select Mode is 1,04-sequencer-editing.md
+30,5p,16,"wrote pattern 1 step length on all eleven parts (12, 14, 16, 32 and 48) and read each back",10-verified-behaviour.md
+31,0p,00,"88 bytes, 7-bit packed in 11 groups of 8, dumped per part",06-sounds-presets.md
+31,1p,14,wrote Volume on all eleven parts and read each back,10-verified-behaviour.md
+31,1p,19,wrote Reverb Send on all eleven parts and read each back,10-verified-behaviour.md
+31,1p,1A,wrote Variation Send on all eleven parts and read each back,10-verified-behaviour.md
+31,1p,36,wrote Filter Cutoff Frequency on all eleven parts and read each back,10-verified-behaviour.md
+31,2p,00,"insertion A block: all 27 readable addresses answered on part 8, and all were restored by write; on 2026-10-23 part 7 was changed to a different type (08 10 CLASSIC COMPRESSOR -> 01 02 SPX HALL), reported back correctly and restored",10-verified-behaviour.md
+31,3p,00,"insertion B block: all 26 readable addresses answered on part 8, and all were restored by write",10-verified-behaviour.md
+31,4p,03,"write sweep on part 7 accepted 24 and clamped 25, 30, 40, 52 and 60 to 24",12-open-questions.md
+31,5p,01,read 00 (ARP Switch off) on parts 8 and 9,10-verified-behaviour.md
+70,40,00,"step record read: 6 bytes on an occupied step, 0 on an empty one",04-sequencer-editing.md
+70,40,01,step record read on a second step,04-sequencer-editing.md
+70,50,00,step record read on a second drum part,04-sequencer-editing.md
+70,60,00,step record read on a third drum part,04-sequencer-editing.md
+71,00,00,created scene 3 on a project that had three; the number travels in the data,14-song-mode.md
+71,10,04,read as part of the Song-mode sweep (CurrentScene),10-verified-behaviour.md
+71,10,06,read as part of the Song-mode sweep,10-verified-behaviour.md
+71,1p,01,behaves as described with the scene byte in the data,14-song-mode.md
+71,20,00,"removed scene 3 again, restoring the initial state; broadened 2026-10-23 to ten consecutive removals, all 16 indices re-read afterwards and only scene 0 answering",10-verified-behaviour.md
+71,50,00,read as part of the Song-mode sweep,10-verified-behaviour.md
+31,1p,2C,"answered on part 7, reading 40 (the documented default); the address is reachable, its meaning was not proven by physical action",10-verified-behaviour.md
+31,1p,2D,"answered on part 7, reading 40 (the documented default); the address is reachable, its meaning was not proven by physical action",10-verified-behaviour.md
+31,1p,37,"answered on part 7, reading 40 (the documented default); the address is reachable, its meaning was not proven by physical action",10-verified-behaviour.md
+31,1p,48,"answered on part 7, reading 40 (the documented default, +0.00 dB); reachable, meaning not proven by physical action",10-verified-behaviour.md
+31,1p,4D,"answered on part 7, reading 40 (the documented default, +0.00 dB); reachable, meaning not proven by physical action",10-verified-behaviour.md
+30,40,7A,"answered with 2 data bytes, 01 00 = 128 (Pattern Master Step); 30 40 7B does not answer separately, it is this field LSB; written 48 and read back on 2026-10-23",10-verified-behaviour.md
+30,40,7C,"Swing Offset alone, 2 data bytes; a write sweep with restore accepted 70 and 186 and clamped 69 and 187 to them, so the field is centred on 128 and display = value - 128",10-verified-behaviour.md
+00,00,11,read 00 on a unit that had just carried a full Bluetooth MIDI session; the value does not report whether BLE MIDI works,10-verified-behaviour.md
+00,00,22,read 03 (Both) against a documented default of 00,10-verified-behaviour.md
+00,00,1F,read 00 (Off) against a documented default of 03,10-verified-behaviour.md
+00,00,20,read 64 (pad velocity 100),10-verified-behaviour.md
+00,00,25,read 00 (metronome off),10-verified-behaviour.md
+70,10,00,"micro timing written and read back on part 0 (wrote 70, read 70, shown +10); neutral is 60, not 0",10-verified-behaviour.md
+70,10,01,"velocity written and read back on part 0 (wrote 70, read 70)",10-verified-behaviour.md
+70,10,03,"retrigger/substep written and read back on part 0 (wrote 1, read 1, shown x2)",10-verified-behaviour.md
+70,60,01,"conditional lock read on part 0, one data byte (00); never written",10-verified-behaviour.md
+70,10,04,"conditional lock written and read back on part 0 (3, 7 and 0 all accepted); eight levels, 0-7",10-verified-behaviour.md
+48,09,00,DX Common block read in full on hardware: 14 of 14 controls answered (Algorithm read 09),10-verified-behaviour.md
+49,o9,02,"DX Operator block read in full on all four operators: 25 of 25 controls answered each, 100 replies",10-verified-behaviour.md
+41,ep,00,"Element Assign read 01 on part 7 elements 1 and 2 (41 07 00, 41 17 00); block surveyed read-only, see the document",10-verified-behaviour.md
+41,ep,03,"Wave Number read as two data bytes (05 06) at the base address; 41 ep 04 is silent on four attempts, twice",10-verified-behaviour.md
+42,ep,00,"Filter Type read 00 on part 7 elements 1 and 2; one data byte",10-verified-behaviour.md
+42,ep,01,"Filter Cutoff Frequency read as two data bytes (01 3E) at the base address; 42 ep 02 is silent on four attempts, twice",10-verified-behaviour.md
+31,1p,17,"Detune read as two data bytes (08 00) at the base address on part 7; 31 1p 18 is silent on four attempts",10-verified-behaviour.md
+31,1p,39,"3bandEQ Low Frequency read as two data bytes (00 76) on part 7; 31 1p 3A is silent on four attempts",10-verified-behaviour.md
+31,4p,00,"Sound Common LFO block surveyed read-only on part 7: every documented address answered at its documented width",10-verified-behaviour.md
+50,eA,00,"Sample name read on all seven slots and decoded 7-into-8 to readable UTF-8 (e.g. 'Bongo3 High 3'); 616 of 616 name addresses answered",10-verified-behaviour.md
+50,eA,5F,"Loop On/Off read 00 on all seven slots, one data byte",10-verified-behaviour.md
+50,eA,60,"Loop Length read as four data bytes at the base address on all seven slots",10-verified-behaviour.md
+50,eA,66,"Start Point read as four data bytes; 0 on all seven factory slots",10-verified-behaviour.md
+50,eA,6A,"End Point read as four data bytes; decodes 7-bit big-endian to durations matching the sample names, under the documented 16 s ceiling",10-verified-behaviour.md
+30,41,00,"Send Reverb block read in full: 38 of 38 documented addresses answered; Reverb Type read 01 00",10-verified-behaviour.md
+30,41,33,"reserved: answers one byte, not the documented two, and the address the table skips (30 41 34) answers one byte as well — a one-byte slot at a two-byte stride",10-verified-behaviour.md
+30,42,00,"Send Delay block read in full: 39 of 39 documented addresses answered",10-verified-behaviour.md
+30,47,00,"Master EQ block read in full: 21 of 21 documented addresses answered, every reply at its documented width",10-verified-behaviour.md
+30,4B,00,"A/D Part General block read in full: 22 of 22 documented addresses answered",10-verified-behaviour.md
+30,41,0B,"Reverb Parameter 5 read 44 with REV-X HALL loaded, inside the 34-60 the effect-parameter table gives that slot; all nine slots the type uses read in range and all fifteen it does not read zero",10-verified-behaviour.md
+30,43,00,"Master Effect 1 type read 0C 28 = CONTROL FILTER; all five slots that type names read inside their documented ranges",10-verified-behaviour.md
+30,46,00,"Master Effect 4 type read 08 00 = VCM COMPRESSOR 376, a type effect-types.csv lists for Master 1 and Master 4 only",10-verified-behaviour.md
+30,41,0B,"written 00 32 and read back, with witness 30 41 09 unmoved and restored to 00 2C: a two-byte Parameter Change is accepted. A one-byte write of 28 to the same address was ignored, leaving 00 2C",10-verified-behaviour.md
+72,0p,00,"a note written to SYNTH 1 and read back identically at 75; three notes landed at consecutive indices and all three were deleted, leaving the list empty; broadened 2026-10-23 to 20 events with velocities 90-110 and gate times 120-600 ticks, all read back identically",10-verified-behaviour.md
+74,0p,00,"deletes the event at the addressed index; three added events removed highest-index-first, list empty afterwards",10-verified-behaviour.md
+75,0p,00,"the reply is EIGHT bytes and is the add payload verbatim (eh el tt nn vv ov gh gl), not the nine-byte shape with a part number this repository described",10-verified-behaviour.md
+76,00,00,"index lookup answers at 76 01 00 with the query echoed plus the index as a 14-bit pair; a note absent from the list is answered with the pair omitted, six bytes instead of eight",10-verified-behaviour.md
+50,eA,66,"Start Point written 00 00 01 00 (128) on slot 7 and read back, End Point unmoved, restored to 00 00 00 00: a four-byte Parameter Change is accepted, 7-bit big-endian",10-verified-behaviour.md
+71,10,00,"ChangeLength accepted as <scene> <msb> <lsb> on a scene created for the test; byte 1 of the Scene Info reply tracked both values written (64 then 100) and no other byte moved",10-verified-behaviour.md
+30,40,76,"answered through a long-lived client immediately after the USB cable was pulled and restored six minutes later: the transport reports LOST then CONNECTED and the link really works again",10-verified-behaviour.md
+30,5p,10,"written 3 on all eleven parts and read back 0 on parts 0 and 7, while 30 5p 16 written in the same loop read back 48 on all eleven: the write does not take. Not read before the write, so an ignored write and a write landing as 0 are indistinguishable",10-verified-behaviour.md
+30,5p,00,"written 100 on part 7 where it read 0 and read back, with parts 0 and 6 as witnesses unmoved at 100: this is the track volume that silences a track, distinct from the Mute flag at 30 5p 29",10-verified-behaviour.md
+71,1p,02,"ChangeMute accepted as <scene> <mute>: writing 00 00 on part 7 cleared byte 14+part of the SceneInfo reply for scene 0 from 1 to 0, and the ten other mute bytes did not move",10-verified-behaviour.md

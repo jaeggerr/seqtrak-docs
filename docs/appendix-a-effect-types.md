@@ -1,0 +1,107 @@
+# Appendix A — Effect type list
+
+> **Source**: Yamaha *SEQTRAK Data List* (OS V2.00), transcribed from `reference/SEQTRAK_data_list_En_D0.pdf` by `tools/pdf-extract/effect_types.py`.
+> Confidence: `from Yamaha Data List`.
+
+
+The **MSB** and **LSB** columns are the two bytes written to an effect block's type parameter (offset `00`-`01` of a Send Reverb, Send Delay, Master Effect or Insertion Effect block). **Assignable to** lists the effect slots that accept the type.
+
+The check marks in the source table are Wingdings glyphs; they are read back by column position, and the columns are calibrated against the header labels, so a mark can only land in the column it was drawn in.
+
+| Category | Type Name | MSB | LSB | Description | Assignable to |
+|---|---|---|---|---|---|
+| -- | No Effect / Thru | `00` | `00` |  | Single, Send |
+| REVERB | SPX HALL | `01` | `02` | Reverb emulating the acoustics of a concert hall derived from the Yamaha SPX1000. | Single, Send, Master 1, Master 2, Master 3 |
+| REVERB | SPX ROOM | `01` | `12` | Reverb emulating the acoustics of a room derived from the Yamaha SPX1000. | Single, Send, Master 1 |
+| REVERB | SPX STAGE | `01` | `30` | Reverb appropriate for a solo instrument derived from the Yamaha SPX1000. | Single, Send, Master 1 |
+| REVERB | EARLY REFLECTION | `0D` | `50` | This effect isolates only the early reflection components of the Reverb. | Single, Master 1 |
+| REVERB | GATED REVERB | `01` | `50` | Simulation of gated reverb. | Single, Master 1 |
+| REVERB | REVERSE REVERB | `01` | `58` | Simulation of reverse playback of gated reverb. | Single, Master 1 |
+| REVERB | HD HALL | `01` | `03` | Reverb emulating the acoustics of a concert hall. | Send |
+| REVERB | HD ROOM | `01` | `13` | Reverb emulating the acoustics of a room. | Send |
+| REVERB | HD PLATE | `01` | `21` | Reverb emulating a metal plate | Send |
+| REVERB | REV-X HALL | `01` | `00` | Reverb emulating the acoustics of a concert hall using the REV-X technology. | Send |
+| REVERB | REV-X ROOM | `01` | `10` | Reverb emulating the acoustics of a room using REV-X technology. | Send |
+| REVERB | R3 HALL | `01` | `01` | Reverb emulating the acoustics of a concert hall using the algorithm derived from the Yamaha ProR3. | Send |
+| REVERB | R3 ROOM | `01` | `11` | Reverb emulating the acoustics of a room using the algorithm derived from the Yamaha ProR3. | Send |
+| REVERB | R3 PLATE | `01` | `20` | Reverb emulating a metal plate using the algorithm derived from the Yamaha ProR3. | Send |
+| REVERB | SPACE SIMULATOR | `01` | `40` | Reverb that lets you set the space size by specifying the width, height, and depth. | Send |
+| DELAY | CROSS DELAY | `02` | `00` | The feedback of the two delayed sounds is crossed. | Single, Send, Master 1 |
+| DELAY | TEMPO CROSS DELAY | `02` | `10` | Tempo-synchronized Cross delay. | Single, Send, Master 1, Master 2, Master 3 |
+| DELAY | TEMPO DELAY MONO | `02` | `20` | Tempo-synchronized Mono delay. | Single, Send, Master 1 |
+| DELAY | TEMPO DELAY STEREO | `02` | `28` | Tempo-synchronized Stereo delay. | Single, Send, Master 1 |
+| DELAY | CONTROL DELAY | `02` | `30` | Delay with delay time that is controllable in real time. | Single, Send, Master 1 |
+| DELAY | DELAY LR | `02` | `40` | Produces two delayed sounds in stereo: L and R. | Single, Send, Master 1 |
+| DELAY | DELAY LCR | `02` | `50` | Produces three delayed sounds: L, R and C (center). | Single, Send, Master 1 |
+| DELAY | ANALOG DELAY RETRO | `02` | `60` | Analog delay driven by bucket-brigade device (BBD) chips with short delay setting. | Single, Send, Master 1, Master 2, Master 3 |
+| DELAY | ANALOG DELAY MODERN | `02` | `68` | Analog delay driven by bucket-brigade device (BBD) chips with long delay setting. | Single, Send, Master 1 |
+| FILTER | CONTROL FILTER | `0C` | `28` | Manually controlled filter. | Single, Master 1, Master 2, Master 3 |
+| FILTER | VCM MINI FILTER | `0D` | `29` | Makes the sound “fatter” and tighter. This effect emulates the characteristics of analog synthesizers. | Single, Master 1, Master 2, Master 3 |
+| FILTER | LP-HP FILTER | `0D` | `2F` | This filter uses one parameter to control both LPF 24dB/oct and HPF 24dB/oct. | Single, Master 1 |
+| COMPRESSOR / DUCKER | VCM COMPRESSOR 376 | `08` | `00` | This effect emulates the characteristics of analog compressors— commonly used in recording studios. By squashing the dynamics, it thickens the sound, making it easier to boost in the mix, and is useful for drum and bass sounds. | Chain, Single, Master 1, Master 4 |
+| COMPRESSOR / DUCKER | CLASSIC COMPRESSOR | `08` | `10` | Conventional compressor. | Chain, Single, Master 1, Master 4 |
+| COMPRESSOR / DUCKER | MULTI BAND COMP | `08` | `20` | 3-band compressor | Chain, Single, Master 1, Master 4 |
+| COMPRESSOR / DUCKER | UNI COMP DOWN | `08` | `30` | Compressor using “downward” algorithm for making loud sounds quieter. | Chain, Single, Master 1, Master 4 |
+| COMPRESSOR / DUCKER | UNI COMP UP | `08` | `38` | Compressor using “upward” algorithm for making quiet sounds louder. | Chain, Single, Master 1, Master 4 |
+| COMPRESSOR / DUCKER | PARALLEL COMP | `08` | `40` | Compressor applying parallel processing of the compressed sounds and dry sounds. | Single, Master 1, Master 4 |
+| DISTORTION | AMP SIMULATOR 1 | `07` | `00` | Simulation of a guitar amplifier. | Single, Master 1 |
+| DISTORTION | AMP SIMULATOR 2 | `07` | `10` | Simulation of a guitar amplifier. | Single, Master 1 |
+| DISTORTION | COMP DISTORTION | `07` | `20` | Since a Compressor is included in the first stage, steady distortion can be produced regardless of changes in input level. | Single, Master 1 |
+| DISTORTION | COMP DISTORTION DELAY | `07` | `30` | Compressor, Distortion and Delay are connected in series. | Single, Master 1 |
+| DISTORTION | US COMBO | `07` | `40` | American combo amp simulator. | Single, Master 1 |
+| DISTORTION | JAZZ COMBO | `07` | `41` | Jazz combo amp simulator. | Single, Master 1 |
+| DISTORTION | US HIGH GAIN | `07` | `42` | American high gain amp simulator. | Single, Master 1 |
+| DISTORTION | BRITISH LEAD | `07` | `43` | British stack amp simulator. | Single, Master 1 |
+| DISTORTION | MULTI FX | `07` | `44` | Multi effector for guitar. | Single, Master 1 |
+| DISTORTION | SMALL STEREO | `07` | `45` | Stereo distortion for guitar. | Single, Master 1 |
+| DISTORTION | BRITISH COMBO | `07` | `46` | British combo amp simulator. | Single, Master 1 |
+| DISTORTION | BRITISH LEGEND | `07` | `47` | British stack amp simulator. | Single, Master 1 |
+| DISTORTION | LO-FI | `0B` | `00` | Degrades the audio quality of the input signal to get a lo-fi sound. as lowering the sampling frequency. | Single, Master 1 |
+| DISTORTION | NOISY | `0B` | `10` | Adds noise to the current sound. | Single, Master 1 |
+| DISTORTION | DIGITAL TURNTABLE | `0B` | `20` | Simulates the noise of an analog record. | Single, Master 1 |
+| DISTORTION | BIT CRUSHER | `0B` | `30` | Produces distortion by reducing the resolution or bandwidth of the digital sound. | Single, Master 1, Master 2, Master 3 |
+| DISTORTION | WAVE FOLDER | `0D` | `28` | Makes various changes to the sound over time by varying and controlling the harmonic content. | Single, Master 1 |
+| MODULATION | G CHORUS | `03` | `00` | A Chorus Effect that produces a richer and more complex modulation than normal chorus. | Single, Master 1 |
+| MODULATION | 2 MODULATOR | `03` | `10` | A Chorus Effect consisting of pitch modulation and amplitude modulation. | Single, Master 1 |
+| MODULATION | SPX CHORUS | `03` | `20` | An effect which uses a 3-phase LFO to add modulation and spaciousness to the sound. | Single, Master 1 |
+| MODULATION | SYMPHONIC | `03` | `30` | A 3-phase Chorus which uses a complex LFO wave. | Single, Master 1 |
+| MODULATION | ENSEMBLE DETUNE | `03` | `40` | Chorus effect without modulation, created by adding a slightly pitch-shifted sound. | Single, Master 1 |
+| MODULATION | VCM FLANGER | `04` | `00` | These effects emulate the characteristics of an analog flanger used in the 1970s, recreating a warm, high-quality flanger effect. | Single, Master 1 |
+| MODULATION | CLASSIC FLANGER | `04` | `10` | Conventional type of flanger. | Single, Master 1 |
+| MODULATION | TEMPO FLANGER | `04` | `20` | Tempo-synchronized flanger. | Single, Master 1, Master 2, Master 3 |
+| MODULATION | DYNAMIC FLANGER | `04` | `30` | Dynamically controlled flanger. | Chain, Single, Master 1 |
+| MODULATION | CONTROL FLANGER | `04` | `08` | Manually controlled flanger. | Single, Master 1 |
+| MODULATION | VCM PHASER MONO | `05` | `00` | This effect emulates the characteristics of analog phasers used in the 1970s, recreating a warm, high-quality phaser effect. This is a mono phaser with VCM technology for producing a vintage sound. | Single, Master 1 |
+| MODULATION | VCM PHASER STEREO | `05` | `10` | This effect emulates the characteristics of analog phasers used in the 1970s, recreating a warm, high-quality phaser effect. This is a stereo phaser with VCM technology for producing a vintage sound. | Single, Master 1 |
+| MODULATION | TEMPO PHASER | `05` | `20` | Tempo-synchronized phaser. | Single, Master 1, Master 2, Master 3 |
+| MODULATION | DYNAMIC PHASER | `05` | `30` | Dynamically controlled phase shifter. | Chain, Single, Master 1 |
+| MODULATION | CONTROL PHASER | `05` | `18` | Manually controlled phaser. | Single, Master 1 |
+| MODULATION | AUTO PAN | `06` | `00` | An effect which cyclically moves the sound left/right and front/back. | Single, Master 1 |
+| MODULATION | TREMOLO | `06` | `10` | An effect which cyclically modulates the volume. | Single, Master 1 |
+| MODULATION | VCM AUTO WAH | `0A` | `00` | Modulates the tone via LFO. | Single, Master 1 |
+| MODULATION | VCM TOUCH WAH | `0A` | `10` | Modulates the tone via Amplitude. | Single, Master 1 |
+| MODULATION | VCM PEDAL WAH | `0A` | `20` | Modulates the tone via pedal control. | Single, Master 1 |
+| MODULATION | RING MODULATOR | `0C` | `00` | An effect that modifies the pitch by applying Amplitude Modulation to the frequency of the input. | Single, Master 1 |
+| MODULATION | DYNAMIC RING MODULATOR | `0C` | `10` | Dynamically controlled Ring Modulator. | Chain, Single, Master 1 |
+| MODULATION | SPIRALIZER P | `0C` | `38` | Unique filter applying Phaser processing with seemingly endless up/down pitch change. | Single, Master 1 |
+| MODULATION | TEMPO SPIRALIZER P | `0C` | `39` | Spiralizer with tempo-synchronized LFO. | Single, Master 1 |
+| MODULATION | SPIRALIZER F | `0C` | `3A` | Unique filter applying Flanger processing with seemingly endless up/down pitch change. | Single, Master 1 |
+| MODULATION | TEMPO SPIRALIZER F | `0C` | `3B` | Spiralizer with tempo-synchronized LFO. | Single, Master 1 |
+| MODULATION | TECH MODULATION | `0C` | `60` | Adds a unique feeling of modulation similar to ring modulation. | Single, Master 1 |
+| OTHER | ROTARY SPEAKER 1 | `06` | `20` | Simulation of a rotary speaker. | Single, Master 1 |
+| OTHER | ROTARY SPEAKER 2 | `06` | `30` | Simulator of a rotary speaker including the amp block. | Single, Master 1 |
+| OTHER | DYNAMIC FILTER | `0C` | `20` | Dynamically controlled filter. | Chain, Single, Master 1 |
+| OTHER | AUTO SYNTH | `0C` | `30` | Processes the input signal into a synthesizer-type sound. | Single, Master 1 |
+| OTHER | ISOLATOR | `0C` | `40` | Controls the level of a specified frequency band of the input signal. | Single, Master 1 |
+| OTHER | SLICE | `0C` | `50` | Slices the Amplitude EG of the Voice sound. | Single, Master 1 |
+| OTHER | VINYL BREAK | `0C` | `70` | Simulates how a turntable slows down gradually (this causes the pitch to drop) before stopping. | Single, Master 1, Master 2, Master 3 |
+| OTHER | BEAT REPEAT | `0C` | `7C` | Adds a mechanical beat by repeatedly playing sampled sounds. | Single, Master 1, Master 2, Master 3 |
+| OTHER | VCM EQ 501 | `0D` | `00` | This effect emulates the characteristics of analog equalizers used in the 1970s, recreating warm, high-quality equalization. | Single, Master 1 |
+| OTHER | PRESENCE | `0D` | `08` | Effect for bringing out the hidden presence in the input sounds. | Single, Master 1 |
+| OTHER | HARMONIC ENHANCER | `0D` | `10` | Layers additional harmonics to the input signal to make the sound stand out. | Single, Master 1 |
+| OTHER | STEREOPHONIC OPTIMIZER | `0D` | `18` | Adjusts the spacing of the sound and reproduces natural sound distance. | Single, Master 1 |
+| OTHER | TALKING MODULATOR | `0D` | `20` | Adds a vowel sound to the input signal. | Single, Master 1 |
+| OTHER | VCM MINI BOOSTER | `0D` | `2A` | Creates a unique sonic texture. This effect emulates the characteristics of analog synthesizers. | Single, Master 1 |
+| OTHER | DAMPER RESONANCE | `0D` | `30` | Simulates the Resonance produced when the damper pedal of a piano is pressed. | Single, Master 1 |
+| OTHER | PITCH CHANGE | `0D` | `40` | Changes the pitch of the input signal. | Single, Master 1 |
+| OTHER | NOISE GATE+COMP+EQ | `0D` | `70` | This effect combines Noise Gate, Compressor and 3-Band EQ, to provide optimum processing of the microphone input, especially vocals. | Single, Master 1 |
