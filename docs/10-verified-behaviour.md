@@ -2974,3 +2974,28 @@ path into `0x64`, in normal mode or in loader mode. The resident loader's code
 cannot be reached from the wire, so the signature question stays open and now
 has no cheap instrument left — every remaining step either writes to the
 machine or needs a hardware dump of the flash.
+
+## 2026-11-05, hardware session: the seven-second acknowledgement reproduces, and the real transport works
+
+Read-only in effect: the rehearsal mode of `tools/sysex_updater.py` enters
+loader mode, enters update mode, waits for the acknowledgement and stops. No
+block header, no block data, so no write path into flash was opened.
+
+| Claim | Evidence |
+|---|---|
+| The mode acknowledgement arrives at **7.04 s** | reproduced to the hundredth, by two different tools on two runs — `loader_probe_timed.py` earlier, the updater's own transport now |
+| `64 00 00` with data `01` is acknowledged by `64 00 02` with data `01` | `← F0 43 10 7F 1C 0C 64 00 02 01 F7` |
+| The updater's transport reaches update mode unaided | witness, reboot, re-enumeration, settle, loader identity (byte 11 = `00`), mode, acknowledgement — every step first try |
+| Leaving update mode and rebooting returns the unit to normal | identity back to `mm = 0A` (v2.0), `01 00 00` witness answering, battery `01 10 02` reading 100 % |
+| Entering and leaving loader mode is reversible | **five** cycles now on this unit |
+
+A timing that reproduces to the hundredth across two independently written
+tools is worth more than the figure itself: it says the delay is something the
+loader does deterministically, not scheduling noise. Any client in this space
+needs windows of seconds. The 0.25-second windows that three earlier runs used
+could not have seen it, which is what made those runs inconclusive.
+
+What this does **not** touch: whether a block transfer works. The rehearsal
+stops one step before the first header message, which is also the step that
+arms a transfer. The create/acknowledge handshake order around each window is
+still unestablished and still only a real transfer will settle it.

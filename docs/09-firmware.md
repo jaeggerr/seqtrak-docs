@@ -455,7 +455,7 @@ the point:
 | `0x64` answers no read in **normal** mode | `verified on hardware` — instrumented negative, control in the loop |
 | The loader's Identity Reply, byte 11 = `00` | `verified on hardware` |
 | Entering and leaving loader mode is reversible on this unit | `verified on hardware`, one unit, four cycles |
-| The change-mode `64 00 00 01` **is** acknowledged in loader mode, after about **7 seconds** | `verified on hardware` |
+| The change-mode `64 00 00 01` **is** acknowledged in loader mode, at **7.04 s** — reproduced by two tools on two runs | `verified on hardware` |
 | `0x64` answers no read in **loader** mode, change-mode acknowledged | `verified on hardware` — instrumented negative, control after every probe |
 
 **In normal mode, there is no SysEx read path into `0x64`.** Parameter Requests
@@ -724,7 +724,8 @@ Three tools in the sibling analysis project:
 The transport has two hardware modes. `--rehearse` enters loader mode, enters
 update mode, waits for the acknowledgement and stops — no header, no block, so
 no write path is opened; that is the part already exercised and found
-reversible. `--write` additionally requires `--i-mean-it`, reads the battery at
+reversible — five cycles, the last of them driven by this transport, with the
+acknowledgement landing at 7.04 s exactly as the probe had measured it. `--write` additionally requires `--i-mean-it`, reads the battery at
 `01 10 02` and **refuses below 80 %**, because losing power during a flash
 write is the one failure this protocol has no answer for. Messages are paced at
 2 ms, the exit to normal mode is in a `finally`, and port lookup tolerates the
@@ -790,7 +791,7 @@ The sequence a sender must follow is therefore fully determined:
 F0 7E 7F 06 01 F7                    identity, expect mm = 0A
 64 00 06 01                          reboot to the loader; re-enumerates
 F0 7E 7F 06 01 F7                    identity, expect byte 11 = 00
-64 00 00 01                          enter update mode; wait ~7 s for 64 00 02 01
+64 00 00 01                          enter update mode; 64 00 02 01 at 7.04 s
   64 02 01  <packed 128-byte header>   per 256 KiB window
   64 02 02  <packet 0 .. 74>            flow-controlled by 64 01 00
   ...                                   window ends with 64 02 00
