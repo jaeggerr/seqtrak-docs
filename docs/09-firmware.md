@@ -557,7 +557,7 @@ Which of the 128 header bytes the receiver actually consumes:
 
 | Header offset | Field | Read by the `Installer`? |
 |---|---|---|
-| `+0x00` | block name, 24 bytes | **yes** — bounded to ≤ 23 chars, then `memcmp` against `#8Z33` |
+| `+0x00` | block name, 24 bytes | **yes** — bounded to ≤ 23 chars |
 | `+0x18` | version | **yes** — bounded to ≤ 11 chars |
 | `+0x40` | **additive sum** | **no — never read** |
 | `+0x6E` | index / flag | **yes** — range check |
@@ -570,6 +570,19 @@ error 15), bounds on the name, version and index fields, and a **5-byte
 `InvalidData`). The block-data handler accumulates no 32-bit sum over what it
 receives, and finalisation at `0x4004` is a flash-commit retry loop with no
 integrity check at all.
+
+> **Where the `#8Z33` tag actually lives, because it is not where you would
+> look.** It is in **neither** block header — both were dumped byte for byte to
+> check. `Installer` holds the name `Installer` at `+0x00` and `Program` holds
+> `Program`; the tag appears nowhere in those 128 bytes. It is the **first five
+> bytes of the decompressed `Program` image**, which opens
+> `#8Z33 Copyright(C)2021 YAMAHA Co.,Ltd.`, and it is also a string constant
+> inside the `Installer`'s own data at image `0x64800`, next to `Wave` and
+> `Data` — that constant is the comparison target. The validator reaches the
+> received side through a pointer at `+8` of a context structure, and **which
+> buffer that pointer refers to is not established**. For pushing the official
+> file this makes no difference; for a modified `Program` it means the image's
+> first five bytes must stay `#8Z33`, which is free to honour.
 
 **Consequence.** The additive sum at `+0x40` is a check the *producer* of the
 file applies — and a useful control for this analysis — not a barrier enforced

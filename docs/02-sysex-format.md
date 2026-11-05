@@ -353,6 +353,37 @@ This is the format the firmware update uses, and the reason the app's
 `AckDataIndex` is 11: the device acknowledges each packet.
 `from the official app, untested`.
 
+Two corrections to that picture, both read out of the `Installer`'s own
+receive path rather than the app, and both needed before anyone writes a
+sender. `from firmware image (static analysis)`.
+
+**The packet number is matched against an 8-bit counter that wraps.** The field
+is 14 bits on the wire, but the receiver holds its expected value in a single
+byte and truncates on every increment:
+
+```
+ldrb r2, [r4, #5]        ; expected packet number -- one byte of context
+ldrh r3, [r0, #0xe]      ; received packet number, decoded
+cmp  r3, r2
+bne  -> 15               ; out of sequence
+...
+ldrb r3, [r4, #5]
+add  r3, r3, #1
+uxtb r3, r3              ; wraps at 256, and the truncation is explicit
+```
+
+So a sender must transmit `index & 0xFF`, not a running 14-bit index. The
+`uxtb` makes the wrap deliberate rather than incidental, which matters: a block
+of more than 16,383 packets is expressible, and the `Program` block needs far
+more than that.
+
+**The payload is 7-into-8 packed.** The routine at `0x31cc`, reached before the
+flash write, is not a length check: it walks the data a byte at a time, shifts
+each one left by one, tests bit `0x80` and reassembles through
+`mvn … lsl #25` / `mvn … lsr #25`, consuming **8 bytes at a time**. That is the
+ordinary Yamaha 7-into-8 unpack. A message carrying 128 SysEx data bytes
+therefore delivers **112** image bytes, not 128.
+
 ## Identity Request and Reply
 
 Standard universal non-realtime messages. Request is receive-only, reply is
