@@ -99,6 +99,7 @@ what a Sound Design knob addresses is its own automation.
 |---|---|---|
 | Power on / off | hold `[⏻/PLAY]` **2 s or longer** | §3.2.1, p. 22 |
 | **Forced termination** | hold `[⏻/PLAY]` **+** `[PROJECT↑]` | §3.2.2, p. 22 |
+| | *Used in anger and it works:* after an interrupted firmware write the unit answered no SysEx and `[⏻/PLAY]` alone would not switch it off. This combination did, and the machine booted normally afterwards. `verified on hardware` — [10](10-verified-behaviour.md#2026-11-05-hardware-session-an-interrupted-firmware-write-and-the-machine-came-back) |
 | Battery / charge status, power on | hold `[ALL]` knob **+** `[⏻/PLAY]` → Global Meter: cyan = charging, white = not charging, flashing red = trouble | §3.1.1, p. 20 |
 | Auto Power Off on / off (30 min idle) | hold the **lower-left Drum key** while switching on | §3.2.3, p. 22 |
 | **Factory reset** | hold `[SAMPLER]` knob **+** `[UNDO/REDO]` while switching on. Global Meter red during init | §16.1, p. 93 |

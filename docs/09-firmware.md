@@ -840,13 +840,38 @@ dump of the flash.
 Writing to a machine's loader can brick it permanently, and no accessible JTAG
 is documented.
 
-Worse, because the resident loader cannot be inspected, **there is no recovery
-path whose existence can be verified.** Entering loader mode, on the other hand,
-is now known to be reversible on one unit — that is a bound on the risk of
-*looking*, not on the risk of writing. Yamaha's own release notes say that "if
+**One recovery path is now verified, for one failure mode.** This section used
+to say that no recovery path could be verified to exist. That is no longer
+true, and it was settled the expensive way: a real transfer of the official
+file was interrupted by a defect in the sender, at 9.9 % of the `Program`
+block, with the `Installer` fully written. The unit answered no SysEx for two
+minutes and would not power off with `[⏻/PLAY]`. **Forced termination —
+`[⏻/PLAY]` + `[PROJECT↑]`, User Guide §3.2.2 — brought it back**, and after
+about thirty seconds of apparent hang on the next start it booted normally,
+with `FirmwareVersion` unchanged and the owner's projects intact.
+`verified on hardware`, written up in
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-05-hardware-session-an-interrupted-firmware-write-and-the-machine-came-back).
+
+Read that bound narrowly. The file was the **same version the unit was already
+running**, so a partially rewritten region received its own content: the mildest
+partial write there is. It says nothing about surviving a partial write of a
+modified image, which is the case custom firmware depends on. And the
+interruption fell in the `Program` phase — the `Installer` phase, the first
+1.6 % of a transfer, whose destination in flash is still unknown, was not
+interrupted and remains the untested sliver.
+
+Entering loader mode is reversible on one unit, five cycles — that is a bound on
+the risk of *looking*, not of writing. Yamaha's own release notes say that "if
 the unit becomes inoperable by accident, run the updater again", which suggests
-a robust resident loader — but that is a commercial notice, not a guarantee, and
+a robust resident loader; the unit recovered without the updater being re-run,
+which is better than the notice promises, but it is still one observation and
 it probably does not cover an arbitrary `Program` image.
+
+**And a warning worth more than the reassurance.** The interruption was not the
+residual unknown this document had been flagging for weeks. It was a timeout in
+the sender set to 5 seconds, in code written hours after this same session
+measured a 7.04-second latency on this unit twice and made a point of it. The
+dangerous part of this exercise turned out not to be the device.
 
 For most of what people want from this machine, the **SysEx + external display +
 third-party app** route gives far more result for far less risk. The protocol

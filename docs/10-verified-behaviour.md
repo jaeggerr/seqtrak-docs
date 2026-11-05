@@ -2999,3 +2999,76 @@ What this does **not** touch: whether a block transfer works. The rehearsal
 stops one step before the first header message, which is also the step that
 arms a transfer. The create/acknowledge handshake order around each window is
 still unestablished and still only a real transfer will settle it.
+
+## 2026-11-05, hardware session: an interrupted firmware write, and the machine came back
+
+**The most important result in this area, and it was not obtained on purpose.**
+A real transfer of the official OS 2.00 file was interrupted by a defect in the
+sender, leaving the unit with the `Installer` block fully written and the
+`Program` block **9.9 % written**. The machine then presented every symptom of
+being bricked. It recovered completely.
+
+### What was written, exactly
+
+| | |
+|---|---|
+| `Installer` | all 4 create cycles, 1,048,576 bytes, every window acknowledged |
+| `Program` | **1,062,576 of 10,780,511 bytes** — 4 windows plus 4 packets of the fifth |
+| Then | the device stopped answering flow control and the sender aborted |
+
+The file was Yamaha's own, unmodified, and the **same version the unit was
+already running** (`2.00.2`). So the partially rewritten region received its
+own content. That is the mildest possible partial write, and it bounds what
+this session can claim.
+
+### The symptoms
+
+- No reply to any SysEx: Identity Request and `01 00 00` both silent, probed for
+  **two minutes** with 4-second windows. The USB port still enumerated.
+- `[⏻/PLAY]` held normally did **not** power the unit off.
+
+### The recovery
+
+1. **Forced termination — hold `[⏻/PLAY]` + `[PROJECT↑]`** (User Guide §3.2.2,
+   p. 22). This worked, and it is the step that saved the unit.
+2. Power on normally. The machine hung for roughly **30 seconds**, then booted.
+3. Everything was back: `mm = 0A` (v2.0), `FirmwareVersion` reading `02 00 00
+   02` = 2.00.2 unchanged, tempo, sequencer state and speaker volume all
+   answering, battery 100 %, **and the owner's projects intact**.
+
+### What this changes
+
+This document and [09-firmware.md](09-firmware.md) both carried the line that
+**no recovery path could be verified to exist**. One now has been, for this
+failure mode: an interrupted `Program` transfer is survivable, and forced
+termination is the way out. Yamaha's own "if the unit becomes inoperable by
+accident, run the updater again" is corroborated in spirit — the updater was
+never re-run, and the unit recovered on its own.
+
+### What it does not change
+
+- **One unit, one run, and the mildest partial write there is**: identical
+  content over identical content. It says nothing about recovering from a
+  partial write of a *different* or *modified* image, which is the case that
+  matters for custom firmware.
+- The interruption happened in the `Program` phase. The `Installer` phase — the
+  first 1.6 % of a transfer, whose destination in flash is still unknown — was
+  not interrupted, so it remains the untested sliver.
+- The USB-stick recovery (`[KICK]` + `[BAR LENGTH]` while switching on) was
+  prepared but **never needed**, so it is still untested.
+
+### The defect, recorded because it is the lesson
+
+The sender's per-packet flow-control window was **5 seconds**, set in a file
+written hours after this same session measured a **7.04-second** latency on this
+unit, twice, with independently written tools — and made a point of it. A
+timeout below a known latency is not a risk that materialised, it is a defect.
+The device had almost certainly not stopped; the sender gave up.
+
+The exit path compounded it: it sent the leave-mode command and the reboot 2 ms
+apart, when a mode command takes about seven seconds and the loader answers
+nothing else while one is pending. The reboot went nowhere, which is why the
+unit was left hung rather than simply idle in update mode.
+
+Both are fixed: every window is now 20 seconds, and the exit waits for its
+acknowledgement before rebooting.
