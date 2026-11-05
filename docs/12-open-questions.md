@@ -439,20 +439,28 @@ have detected is enumerated in
 [09-firmware.md](09-firmware.md#what-the-signature-search-could-not-have-detected) —
 read that before quoting the verdict anywhere.
 
-**One probe is owed, and it is free.** Read-only sweeps have established that
-`0x64` answers no Parameter Request in **normal** mode (four addresses, 24
-attempts, a control answering in the same loop) and none in **loader** mode
-either (twelve requests). The loader-mode half carries a reserve: the
-`change-mode` was never acknowledged on that run, so the silence is either a
-true negative or reads gated behind a change-mode that was never reached.
-Re-running the sweep with the change-mode looped until `64 00 02` comes back
-settles it. `verified on hardware` for the normal-mode result; the loader-mode
-result is `verified on hardware` only as "silent under these conditions". Both
-are written up in
+**That probe has been run, and it is a firm negative.** Read-only sweeps have
+established that `0x64` answers no Parameter Request in **normal** mode (four
+addresses, 24 attempts, a control answering in the same loop) and none in
+**loader** mode either, with the change-mode acknowledged — it is acknowledged
+after about 7 s, which is what three earlier runs with 0.25 s windows had
+missed. Seven addresses, 2.5 s each, an identity control answering in 0.01 s
+after every one. See
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-05-hardware-session-the-loader-takes-seven-seconds-to-acknowledge-and-0x64-is-silent-anyway).
+Both results are now `verified on hardware` as instrumented negatives, written
+up in
 [09-firmware.md](09-firmware.md#what-the-hardware-has-actually-said-about-0x64).
+The reserve this section used to carry — "silent under these conditions,
+because the change-mode was never acknowledged" — is gone.
 
-Switching into loader mode and back out **is reversible** on this unit, which
-bounds the risk of looking but says nothing about writing.
+Switching into loader mode and back out **is reversible** on this unit, four
+cycles now, which bounds the risk of looking but says nothing about writing.
+
+**What this costs us.** The cheap instrument is spent. There is no read path
+into `0x64` from the wire, so the resident loader's code cannot be reached by
+SysEx in any mode, and the signature question — the one that decides custom
+firmware — now has only two routes left: write to the machine and find out, or
+dump the flash in hardware. Neither is free.
 
 Two narrower firmware questions, both answerable from the file:
 

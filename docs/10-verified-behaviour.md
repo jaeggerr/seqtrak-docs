@@ -2918,3 +2918,59 @@ Byte `14 + part` is the mute, part 0 at byte 14 — the indexing this repository
 already described, now exercised by a write. **The ten other mute bytes did not
 move**, which is what makes this a measurement of that byte rather than of the
 message.
+
+## 2026-11-05, hardware session: the loader takes seven seconds to acknowledge, and `0x64` is silent anyway
+
+Read-only. Four loader-mode cycles on the one unit, with
+`tools/loader_probe.py` and then a new `tools/loader_probe_timed.py` in the
+sibling analysis project. Nothing was written: no `SendingStart`, no block
+header, no block data, so no write path into flash was ever opened.
+
+### What was established
+
+| Claim | Evidence |
+|---|---|
+| The change-mode `64 00 00` with data `01` **is** acknowledged in loader mode | `← F0 43 10 7F 1C 0C 64 00 02 01 F7` at **+7.04 s** after the request |
+| `0x64` answers no Parameter Request in loader mode, with the mode acknowledged | seven addresses, 2.5 s window each, nothing; Identity control answered in 0.01 s after **every** one, 7/7 |
+| While a change-mode is pending, the loader answers nothing else | a run sending eight change-modes 0.65 s apart saw the Identity control silent 8/8, then answering once the ack had landed |
+| Entering and leaving loader mode is reversible | four cycles, the unit back to `mm = 0A` (v2.0) and the `01 00 00` witness answering each time |
+
+The addresses tried were `64 00 00`, `64 00 01`, `64 00 02`, `64 01 00`,
+`64 01 03`, `64 02 00` and `64 06 00`.
+
+### How three earlier runs got it wrong
+
+This is the third time in this repository that a negative claim came from an
+instrument that could not establish absence, and it is worth being concrete
+about the shape of the error, because it was not a silly one.
+
+The earlier probers listened for **0.25 s** after each request. The
+acknowledgement arrives at **+7 s**. So it was never seen, and the runs
+concluded "change-mode not acknowledged, `0x64` silent, inconclusive".
+
+Worse, the third run — the one that finally put a control in the loop — caught
+the acknowledgement *inside the listening window of an unrelated request*:
+
+```
+   64 06 00  -> F0 43 10 7F 1C 0C 64 00 02 01 F7
+```
+
+Read naively that says `64 06 00` answered, and it was briefly reported that
+way. It did not. That was the change-mode acknowledgement from six seconds
+earlier, credited to whichever request happened to be in flight when it
+landed. **A reply is not attributable to a request unless the input was drained
+before the send and the arrival time is known.**
+
+What fixed it: a drain before every send, windows of seconds rather than
+milliseconds, the arrival time printed for every message, and the control sent
+after *each* probe rather than once at the start.
+
+### Consequence
+
+The reserve that
+[09-firmware.md](09-firmware.md#what-the-hardware-has-actually-said-about-0x64)
+carried is lifted, and it closes as a **firm negative**: there is no SysEx read
+path into `0x64`, in normal mode or in loader mode. The resident loader's code
+cannot be reached from the wire, so the signature question stays open and now
+has no cheap instrument left — every remaining step either writes to the
+machine or needs a hardware dump of the flash.

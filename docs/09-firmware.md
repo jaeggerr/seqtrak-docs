@@ -390,9 +390,10 @@ therefore unconstrained.
 
 ## What the hardware has actually said about `0x64`
 
-Everything above about the protocol comes from the official app. Two read-only
-probe sessions on the real unit tested the one thing that the app cannot answer:
-whether the `0x64` space is reachable at all from outside an update.
+Everything above about the protocol comes from the official app. Read-only probe
+sessions on the real unit tested the one thing that binary cannot answer:
+whether the `0x64` space is reachable at all from outside an update. **It is
+not**, and that is now a firm negative in both modes.
 
 The marker differs between the two halves of this section, and the difference is
 the point:
@@ -401,8 +402,9 @@ the point:
 |---|---|
 | `0x64` answers no read in **normal** mode | `verified on hardware` — instrumented negative, control in the loop |
 | The loader's Identity Reply, byte 11 = `00` | `verified on hardware` |
-| Entering and leaving loader mode is reversible on this unit | `verified on hardware`, one unit, one run |
-| `0x64` answers no read in **loader** mode | `verified on hardware` **only as "silent under these conditions"** — the change-mode was never acknowledged, so this is not yet a firm negative |
+| Entering and leaving loader mode is reversible on this unit | `verified on hardware`, one unit, four cycles |
+| The change-mode `64 00 00 01` **is** acknowledged in loader mode, after about **7 seconds** | `verified on hardware` |
+| `0x64` answers no read in **loader** mode, change-mode acknowledged | `verified on hardware` — instrumented negative, control after every probe |
 
 **In normal mode, there is no SysEx read path into `0x64`.** Parameter Requests
 to `64 00 00`, `64 01 00`, `64 02 00` and `64 06 00`, six loops each, returned
@@ -413,7 +415,7 @@ the ~1-in-10 drop documented in
 [10-verified-behaviour.md](10-verified-behaviour.md); it is why the control
 belongs in the loop.
 
-**In loader mode, `0x64` is also silent — with one reserve that matters.** The
+**In loader mode, `0x64` is silent too, and the reserve is now lifted.** The
 machine was rebooted into the loader with `F0 43 10 7F 1C 0C 64 00 06 01 F7`,
 re-enumerated as a MIDI port, and answered the Universal Identity Request:
 
@@ -423,22 +425,49 @@ re-enumerated as a MIDI port, and answered the Universal Identity Request:
 
 Byte 11 is `00` here against `0A` in normal mode, which is how you tell the two
 apart: that byte is `mm = (version − 1.0) × 10` for the application firmware and
-reads `00` for the loader. Twelve read requests into `0x64` followed, all
-silent.
+reads `00` for the loader.
 
-> **The reserve.** The `change-mode` (`64 00 00` with data `01`) was **not
-> acknowledged** on that run — no `64 00 02` came back. So the silence has two
-> readings: a true negative, or reads that are gated on a change-mode that was
-> never reached. This is in
-> [12-open-questions.md](12-open-questions.md) until a run with an
-> acknowledged change-mode settles it.
+**The change-mode is acknowledged — it just takes about seven seconds.** This
+is what three earlier runs missed, and the reason they could not settle
+anything:
 
-**Entering and leaving loader mode was reversible on this unit.** Normal →
+```
+→ F0 43 10 7F 1C 0C 64 00 00 01 F7          change-mode
+← F0 43 10 7F 1C 0C 64 00 02 01 F7          +7.04 s
+```
+
+With the mode entered and acknowledged, all seven read addresses tried —
+`64 00 00`, `64 00 01`, `64 00 02`, `64 01 00`, `64 01 03`, `64 02 00`,
+`64 06 00` — returned **nothing** in a 2.5-second window each, while an
+Identity Request sent immediately after every one of them answered in **0.01 s,
+seven times out of seven**. So the link was demonstrably alive and fast at each
+measurement point while `0x64` stayed silent. That is the instrumented negative
+the earlier runs could not produce. Session in
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-05-hardware-session-the-loader-takes-seven-seconds-to-acknowledge-and-0x64-is-silent-anyway).
+
+> **The instrument was the whole problem, for the third time in this
+> repository.** The earlier probers used 0.25-second windows, so the
+> acknowledgement at +7 s was invisible, and one run caught it inside the
+> window of an unrelated request and briefly looked like `64 06 00` answering.
+> A reply attributed to whichever request happened to be in flight is not a
+> measurement. Long windows, a drain before every send, and the arrival time
+> printed for every message: `tools/loader_probe_timed.py` in the sibling
+> analysis project does that, and it is the one to use for anything in this
+> space.
+
+One behavioural detail, worth knowing before writing a client: **while a
+change-mode is pending, the loader answers nothing else.** In the run that sent
+eight change-modes about 0.65 s apart, the Identity control was silent all
+eight times and only started answering once the acknowledgement had landed.
+Identity is otherwise instant in loader mode.
+
+**Entering and leaving loader mode is reversible on this unit.** Normal →
 loader → identity → reboot → normal, with the machine back in its initial state
-and nothing written: no `SendingStart`, no block. That is real de-risking — the
-"entry might erase something" hypothesis did not materialise here — but it is
-one unit and one run, and it says nothing about what a *write* in loader mode
-would do.
+and nothing written: no `SendingStart`, no block. Four cycles now, including one
+where the prober crashed in loader mode on a port-enumeration race and the unit
+was brought back by sending the exit by hand. That is real de-risking — the
+"entry might erase something" hypothesis has not materialised — but it is one
+unit, and it says nothing about what a *write* in loader mode would do.
 
 What this does **not** establish: that the resident loader checks no signature.
 Its code is still not readable by any route available here, which is the
@@ -629,12 +658,11 @@ machine. Repeat it after any firmware change to read the new version. The same
 request in loader mode returns `mm = 00`, which is the cheap way to confirm
 which mode the machine is in.
 
-Also free, and now the **only** step left that does not write to the machine:
-**re-run the loader-mode read sweep with an acknowledged change-mode**, to turn
-the reserve above into a firm negative or into a read path worth following. The
-prober was corrected after the first run to loop the change-mode until `64 00
-02` comes back before it sweeps, so the run is ready to go; entering and
-leaving loader mode is the one part of this that is verified reversible.
+The probe that used to be owed here — the loader-mode read sweep with an
+acknowledged change-mode — has been **run, and it came back a firm negative**.
+There is no SysEx read path into `0x64` in either mode. So nothing risk-free is
+left to try: every remaining step writes to the machine, or needs a hardware
+dump of the flash.
 
 ## Risks, stated plainly
 
