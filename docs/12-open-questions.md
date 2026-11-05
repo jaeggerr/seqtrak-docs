@@ -336,6 +336,17 @@ in the table.
   neither field is ever strained. The `Program` block is 42 create cycles and
   3,085 packets. See
   [09-firmware.md](09-firmware.md#how-a-block-is-cut-into-packets).
+- **Which command arms a block transfer (`SendingStart`)?** The last byte
+  needed for a working third-party updater. Category 1 command `04` requires
+  the armed state and tears it down, so it is the cancel; the unaccounted
+  implemented commands are `64 00 01`, `64 00 04`, `64 01 02` and `64 01 05`,
+  and every other slot in the three tables is a `bx lr` stub. The sender side
+  settles it: `-[FirmwareUpdater sendNextBlock:]` and `startSendingBlocks:` in
+  the plug-in, read through the selector thunks.
+- **What does the `#8Z33` memcmp actually compare?** Not the head of the
+  received payload — that is the compressed LZSS stream, and the check runs in
+  the header path before any payload arrives. See
+  [09-firmware.md](09-firmware.md#what-the-installers-receive-path-actually-checks).
 - **Is the dividable-bulk format used anywhere outside the firmware update?**
   The app's `AckDataIndex = 11` suggests so, but no non-firmware example has
   been captured.

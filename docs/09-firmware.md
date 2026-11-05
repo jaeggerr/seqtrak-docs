@@ -623,18 +623,26 @@ error 15), bounds on the name, version and index fields, and a **5-byte
 receives, and finalisation at `0x4004` is a flash-commit retry loop with no
 integrity check at all.
 
-> **Where the `#8Z33` tag actually lives, because it is not where you would
-> look.** It is in **neither** block header — both were dumped byte for byte to
-> check. `Installer` holds the name `Installer` at `+0x00` and `Program` holds
-> `Program`; the tag appears nowhere in those 128 bytes. It is the **first five
-> bytes of the decompressed `Program` image**, which opens
+> **The `#8Z33` tag: where it is, and what it is not compared against.** It is
+> in **neither** block header — both were dumped byte for byte to check.
+> `Installer` holds the name `Installer` at `+0x00` and `Program` holds
+> `Program`; the tag appears nowhere in those 128 bytes. It is the first five
+> bytes of the **decompressed** `Program` image, which opens
 > `#8Z33 Copyright(C)2021 YAMAHA Co.,Ltd.`, and it is also a string constant
-> inside the `Installer`'s own data at image `0x64800`, next to `Wave` and
-> `Data` — that constant is the comparison target. The validator reaches the
-> received side through a pointer at `+8` of a context structure, and **which
-> buffer that pointer refers to is not established**. For pushing the official
-> file this makes no difference; for a modified `Program` it means the image's
-> first five bytes must stay `#8Z33`, which is free to honour.
+> in the `Installer`'s own data at image `0x64800`, beside `Wave` and `Data` —
+> that constant is the comparison target.
+>
+> What the received side is, though, is **not established**, and two facts rule
+> out the obvious guess. The comparison sits in the header path, which runs
+> before any payload has arrived; and the `Program` payload as carried in the
+> file is the **LZSS stream**, which opens with compressed data, not with the
+> tag. So the check cannot be reading the head of the received payload. A
+> simulator that assumed it did refused the official file, which is how this
+> was caught. The validator reaches its operand through a pointer at `+8` of a
+> context structure and that is as far as the reading goes.
+>
+> Practical consequence, unchanged and cheap: keep `#8Z33` as the first five
+> bytes of any modified image.
 
 **Consequence.** The additive sum at `+0x40` is a check the *producer* of the
 file applies — and a useful control for this analysis — not a barrier enforced
@@ -699,6 +707,45 @@ method, not a stylistic hedge.
    and enforces nothing cryptographic — but both are statements about this file
    and the software it delivers, never about the code already on the machine
    that receives the `Installer`.
+
+## A sender exists, and it has been exercised against a simulated receiver
+
+`from firmware image (static analysis)` for what it validates,
+`from the official app, untested` for the sizing it reproduces.
+Three tools in the sibling analysis project:
+
+| Tool | What it is |
+|---|---|
+| `tools/fw_sysex.py` | the framing: 7-into-8 packing, the 14-bit byte count, the 7-bit checksum, the window and chunk arithmetic, the `.PGM` parser |
+| `tools/installer_sim.py` | a stand-in for the receiver, implementing the checks traced in the subsection above |
+| `tools/sysex_updater.py` | builds the whole stream and drives it at the simulator, then compares what arrived against the file |
+
+The full OS 2.00 file goes through intact:
+
+| Block | Payload | Create cycles | Packets | Messages | Arrived intact |
+|---|---|---|---|---|---|
+| `Installer` | 1,048,576 | 4 | 300 | 304 | yes |
+| `Program` | 10,780,511 | 42 | 3,085 | 3,127 | yes |
+
+**What that does and does not prove.** It establishes the framing, the byte
+count, the checksum, the packing, the window split, the chunk sizing, the
+packet numbering against a one-byte counter, the create/ack flow control, and
+that the bytes leaving the sender are the bytes in the file. It cannot
+establish that the *reading* of the receiver is right: if the firmware was
+misread, the sender and the simulator agree and are both wrong. Only hardware
+settles that.
+
+**And there is deliberately no MIDI path in the sender.** The command that arms
+a transfer on the device — `SendingStart` in the state machine — is the one
+byte of this protocol still not pinned. The category tables narrow it: in
+category 0 the implemented commands are `00` (change-mode, acknowledged by
+`64 00 02` after about 7 s on hardware), `01`, `04` and `06` (reboot); in
+category 1, `02`, `04` and `05`, of which `04` is a **teardown** — it requires
+the armed state, clears it and returns code 14 — so it is the cancel, not the
+start. The remaining receive slots are `bx lr` stubs. Firing a guess at a real
+unit at exactly the moment a transfer is armed is the one place in this
+protocol where guessing is worst, so the sender refuses to open a port until
+that byte comes from the app's sender path.
 
 ## Next steps, ordered by information per unit of risk
 
