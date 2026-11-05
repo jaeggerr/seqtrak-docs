@@ -341,6 +341,12 @@ in the table.
   `0x64` — reboot, enter update mode, leave update mode — and the block header
   message arms the transfer by itself. See
   [09-firmware.md](09-firmware.md#there-is-no-sendingstart-command).
+- **What closes a window in the block-transfer handshake?** `64 01 00` (send
+  the next packet), `64 02 00` (block acknowledged) and `64 01 03` (block
+  created) are all documented, but which arrives when is not, and the app's
+  state machine waits for the create confirmation after the data rather than
+  after the header. The sender accepts any of the three for now. A real
+  transfer settles it; nothing static will.
 - **What does the `#8Z33` memcmp actually compare?** Not the head of the
   received payload — that is the compressed LZSS stream, and the check runs in
   the header path before any payload arrives. See

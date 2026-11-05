@@ -719,6 +719,27 @@ Three tools in the sibling analysis project:
 | `tools/fw_sysex.py` | the framing: 7-into-8 packing, the 14-bit byte count, the 7-bit checksum, the window and chunk arithmetic, the `.PGM` parser |
 | `tools/installer_sim.py` | a stand-in for the receiver, implementing the checks traced in the subsection above |
 | `tools/sysex_updater.py` | builds the whole stream and drives it at the simulator, then compares what arrived against the file |
+| `tools/fw_midi.py` | the MIDI transport, with the guard rails below |
+
+The transport has two hardware modes. `--rehearse` enters loader mode, enters
+update mode, waits for the acknowledgement and stops — no header, no block, so
+no write path is opened; that is the part already exercised and found
+reversible. `--write` additionally requires `--i-mean-it`, reads the battery at
+`01 10 02` and **refuses below 80 %**, because losing power during a flash
+write is the one failure this protocol has no answer for. Messages are paced at
+2 ms, the exit to normal mode is in a `finally`, and port lookup tolerates the
+re-enumeration race that killed one probe run after its reboot had already gone
+out.
+
+**One thing in the sender is still a guess, and it is marked as such in the
+code:** the order of the create/acknowledge handshake around each window.
+`64 01 00`, `64 02 00` and `64 01 03` are all documented device messages, but
+which one closes a window — and whether the block header draws a reply at all —
+is not established, and the app's state machine waits for a create confirmation
+*after* the data rather than after the header. The flow-control wait therefore
+accepts any of the three and fails only on silence, so a wrong guess about
+which arrives cannot abort a transfer that is going fine. A real transfer is
+what settles it.
 
 The full OS 2.00 file goes through intact:
 
