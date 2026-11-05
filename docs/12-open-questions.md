@@ -418,12 +418,22 @@ official OS 2.00 file has been analysed
 - **Does the loader check a signature?** **Still open, and still decisive.**
   There is no signature in the file, which is a *necessary* condition for custom
   firmware, not a sufficient one. The validating component is not in the file.
+- **How does the `Program` image address its strings?** Open, and it governs
+  how approachable that image is. No base address exists at which its strings
+  are pointed to by stored 32-bit words — measured by a sweep of all 4096
+  1 MiB-aligned bases, with the `Installer` as a working control. Either the
+  code builds addresses from `movw`/`movt` immediate pairs, or it reaches
+  strings through an offset table and a runtime base; the measurement does not
+  separate the two. See
+  [09-firmware.md](09-firmware.md#strings-in-the-program-image-cannot-be-cross-referenced).
 
-**The best next step, and it carries no hardware risk:** analyse the
-Installer's block-receive path (1 MiB of ARM/Thumb-2, no symbols) and find the
-code that reads the `+0x40` checksum field. That is the only way to turn "no
-signature in the file" into "the installer does not check one". Everything that
-the signature search could *not* have detected is enumerated in
+**That step is no longer the next one: it is done.** The Installer's
+block-receive path has been analysed, and it never reads the `+0x40`
+checksum field at all — its only identity check on an incoming block is a
+5-byte `memcmp` against the plaintext tag `#8Z33`. So "no signature in the
+file" is now also "the installer does not check one", and what remains is
+entirely the resident loader. Everything that the signature search could *not*
+have detected is enumerated in
 [09-firmware.md](09-firmware.md#what-the-signature-search-could-not-have-detected) —
 read that before quoting the verdict anywhere.
 

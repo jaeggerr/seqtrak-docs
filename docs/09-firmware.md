@@ -308,6 +308,51 @@ with a boot record containing the ASCII `170055`, while `0x21` starts and ends
 erased. That is the signature of an A/B pair with only the first initialised at
 the factory (*inferred*).
 
+### Strings in the `Program` image cannot be cross-referenced
+
+`from firmware image (static analysis)`. Worth knowing before anyone spends
+days on it: **the ordinary way into an unknown binary — find a meaningful
+string, then find the code that uses it — does not work on the `Program`
+image.** The strings are there in the clear; nothing points at them.
+
+The instrument is a base-address sweep. For every one of the 4096 possible
+1 MiB-aligned base addresses `B`, count how many NUL-terminated strings of
+≥ 6 printable characters, at image offset `off`, have the 32-bit value
+`B + off` present as a 4-byte-aligned little-endian word anywhere in the image.
+A binary whose pointers are stored as data shows a sharp peak at its real base.
+
+| Block | Declared load address | Peak found by the sweep | Strings with a stored pointer | Aligned words that are in-image pointers |
+|---|---|---|---|---|
+| `Installer` | `0x10000000` | **`0x10000000`**, sharply | 60 / 311 (**19.3 %**) | 1.095 % |
+| `Program` | `0x20040000` | **none** | 12 / 23,590 (**0.1 %**) | 0.078 % |
+
+The `Installer` is the control, and it validates the method: the sweep recovers
+its documented load address against a noise floor of 1/311, a signal of about
+60×. The `Program`'s best candidate is `0xE5300000` at 64/2000 — which is not
+an address at all but the ARM encoding bucket for `ldr` with the
+always-condition `0xE`, i.e. instruction words miscounted as pointers. **There
+is no base address at which the `Program`'s strings are pointed to.** Searching
+for a bare image offset, or for the offset less the 1024-byte prologue, finds
+nothing either (3 and 7 hits out of 2000).
+
+Two mechanisms would each produce this, and the measurement does not separate
+them — *inferred*:
+
+- **`movw` / `movt` immediate pairs.** On ARMv7 a 32-bit constant is normally
+  materialised by two instructions carrying 16 bits each, so the address exists
+  nowhere in the file as a 32-bit word. The `Installer` demonstrates the
+  pattern: `movw r1,#0x4780 ; movt r1,#0x1006` builds `0x10064780`, the address
+  of the `#8Z33` tag. A tool that does not fold these pairs reports no
+  cross-reference even when the base is right.
+- **An offset table plus a runtime base register**, which is what a relocated
+  or position-independent image would use.
+
+**Practical consequence.** Approach the `Installer` — 1 MiB, uncompressed, base
+recovered, a fifth of its strings directly referenced — and treat the
+`Program`'s 15.75 MiB code section as reachable only by control flow from the
+reset vector and the exception table, not by string search. The sweep is
+`seqtrak-firmware-analysis/tools/string_xref_base_sweep.py`.
+
 ### Architecture and SoC
 
 **ARMv7-A, 32-bit, little-endian.** Both blocks open with the characteristic
@@ -441,6 +486,55 @@ signature":
 5. The update channel itself is fully documented above, so **a third-party
    updater is writable** — one that pushes an official Yamaha file without the
    app. `from the official app, untested`.
+6. **The `Installer`'s block-receive path has been analysed**, and it checks
+   *less* than the file carries. See the subsection below.
+
+### What the `Installer`'s receive path actually checks
+
+`from firmware image (static analysis)`. The 1 MiB `Installer` block was
+analysed at its load address `0x10000000`; the write-up, with
+every address, is in the sibling project's
+`seqtrak-firmware-analysis/INSTALLER-RECEIVE-PATH.md`. The control flow was
+reconstructed by reading — nothing was executed, and the called leaf functions
+(`memcmp`, `strlen`, the flash write) are identified by prologue and use rather
+than proved.
+
+The SysEx dispatcher sits at `0x3e1c`: it requires `ah = 0x64`, bounds the
+category at `<= 2`, and jumps through a 3-entry table at `0x6489c`. Category 2
+re-dispatches on `al` — `01` to the block-header handler at `0x36ac`, `02` to
+the block-data handler at `0x3380`, which is exactly the `64 02 01` / `64 02 02`
+split documented above.
+
+Which of the 128 header bytes the receiver actually consumes:
+
+| Header offset | Field | Read by the `Installer`? |
+|---|---|---|
+| `+0x00` | block name, 24 bytes | **yes** — bounded to ≤ 23 chars, then `memcmp` against `#8Z33` |
+| `+0x18` | version | **yes** — bounded to ≤ 11 chars |
+| `+0x40` | **additive sum** | **no — never read** |
+| `+0x6E` | index / flag | **yes** — range check |
+| `+0x7C` | payload length | **yes** — must be non-zero; drives the transfer |
+
+So the receiver's whole validation of an incoming block is: the ordinary 7-bit
+Yamaha checksum **per message**, the packet sequence number (out of order →
+error 15), bounds on the name, version and index fields, and a **5-byte
+`memcmp` against the plaintext tag `#8Z33`** (mismatch → `UpdateResult` 9,
+`InvalidData`). The block-data handler accumulates no 32-bit sum over what it
+receives, and finalisation at `0x4004` is a flash-commit retry loop with no
+integrity check at all.
+
+**Consequence.** The additive sum at `+0x40` is a check the *producer* of the
+file applies — and a useful control for this analysis — not a barrier enforced
+on reception. Nothing in this path would stand in the way of a modified
+`Program` image, provided the `#8Z33` tag, the string lengths, the packet
+numbers and the 7-bit checksums are right, all of which are trivial to
+reproduce.
+
+**What this does not touch.** This is the loader→`Installer` step already
+passed and the `Installer`→`Program` step. The **resident loader**, which
+receives and writes the `Installer` itself, is still not in this file. If it
+demands a signature on the `Installer`, that applies upstream of everything
+traced here.
 
 ## What is still blocking
 
@@ -453,8 +547,10 @@ Being precise about this matters more than the headline. The file contains an
 
 - The `Installer` **receives no signature for the `Program`** — there is none in
   the file. Established.
-- It is **not** established that the `Installer` checks nothing beyond the
-  additive sum. Its block-receive path has not been analysed.
+- The `Installer` **checks nothing beyond a plaintext tag** — not even the
+  additive sum. Established by analysis;
+  [see above](#what-the-installers-receive-path-actually-checks). So the
+  `Installer`→`Program` step is no longer a candidate barrier.
 - **Nothing at all can be said about the resident loader.** Its code is not in
   this file. If it requires a signature on the `Installer`, everything stops
   there, and this file cannot reveal that. Hardware has since confirmed it is
@@ -485,24 +581,28 @@ method, not a stylistic hedge.
    excluded.
 5. **Non-standard or obfuscated cryptography** whose constants resemble nothing
    known.
-6. **The Installer's block-receive path was not analysed.** The claim proved
-   is *the file carries no signature* — a statement about the file, not about
-   the behaviour of the embedded software.
+6. **It says nothing about the resident loader.** The claim proved is *the file
+   carries no signature*, and the `Installer`'s receive path has since been read
+   and enforces nothing cryptographic — but both are statements about this file
+   and the software it delivers, never about the code already on the machine
+   that receives the `Installer`.
 
 ## Next steps, ordered by information per unit of risk
 
 Only the first two are free of hardware risk.
 
-1. **Analyse the Installer's block-receive path** — 1 MiB of ARM/Thumb-2,
-   no symbols, but strings and build paths present. Find the code that reads the
-   `+0x40` field and see whether it does anything else. **This is the only way
-   to turn "no signature in the file" into "the installer does not check one",**
-   and it is now the best information-per-cost step available.
-2. **Rebuild a bit-identical `.PGM`** from the decompressed image, to prove the
+1. **Rebuild a bit-identical `.PGM`** from the decompressed image, to prove the
    container + LZSS + checksum chain is mastered in the writing direction.
-3. **Write a third-party updater** that replays the SysEx protocol with the
+2. **Write a third-party updater** that replays the SysEx protocol with the
    **official, unmodified** file. Real risk from the first write onward.
-4. Only then, a minimally patched `Program` image.
+3. Only then, a minimally patched `Program` image. Note before planning any
+   such patch: the `Program` image cannot be navigated by string
+   cross-reference — see
+   [below](#strings-in-the-program-image-cannot-be-cross-referenced).
+
+Step 1 of the earlier version of this list — analyse the `Installer`'s
+block-receive path — is **done**, and it is what moved the
+`Installer`→`Program` step off the blocking list.
 
 Also free and already done: **query the identity** in normal mode
 (`F0 7E 7F 06 01 F7`). `mm = 0x0A` decoded to version 2.0 and matched the
