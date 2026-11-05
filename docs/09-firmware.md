@@ -739,8 +739,7 @@ settles that.
 
 The state machine's `SendingStartForInstaller` / `…ForProgram` states suggest a
 distinct "arm the transfer" message. **There is none.** Resolving the
-`objc_msgSend` stubs in the plug-in — each one loads a selector from
-`__objc_selrefs` and tail-calls through the GOT — and then enumerating every
+the indirect calls in the plug-in and then enumerating every
 call site of
 `-[FirmwareUpdater sendSysExWithCategory:command:data:dataLength:]` gives the
 complete inventory of what the app ever sends into the `0x64` space. It is four
