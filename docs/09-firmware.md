@@ -735,17 +735,55 @@ establish that the *reading* of the receiver is right: if the firmware was
 misread, the sender and the simulator agree and are both wrong. Only hardware
 settles that.
 
-**And there is deliberately no MIDI path in the sender.** The command that arms
-a transfer on the device — `SendingStart` in the state machine — is the one
-byte of this protocol still not pinned. The category tables narrow it: in
-category 0 the implemented commands are `00` (change-mode, acknowledged by
-`64 00 02` after about 7 s on hardware), `01`, `04` and `06` (reboot); in
-category 1, `02`, `04` and `05`, of which `04` is a **teardown** — it requires
-the armed state, clears it and returns code 14 — so it is the cancel, not the
-start. The remaining receive slots are `bx lr` stubs. Firing a guess at a real
-unit at exactly the moment a transfer is armed is the one place in this
-protocol where guessing is worst, so the sender refuses to open a port until
-that byte comes from the app's sender path.
+### There is no `SendingStart` command
+
+The state machine's `SendingStartForInstaller` / `…ForProgram` states suggest a
+distinct "arm the transfer" message. **There is none.** Resolving the
+`objc_msgSend` stubs in the plug-in — each one loads a selector from
+`__objc_selrefs` and tail-calls through the GOT — and then enumerating every
+call site of
+`-[FirmwareUpdater sendSysExWithCategory:command:data:dataLength:]` gives the
+complete inventory of what the app ever sends into the `0x64` space. It is four
+call sites:
+
+| Call site | Message | Meaning |
+|---|---|---|
+| `sendRebootRequest:` | `64 00 06 <n>` | reboot — `01` to the loader, `00` to normal |
+| `handleIdentityReply:` | `64 00 00 01` | enter update mode |
+| `startUpdatingAsLoader` | `64 00 00 01` | the same, on the loader path |
+| `sendNextBlock:` | `64 00 00 00` | **leave** update mode, sent once everything has been sent |
+
+That is all. `64 00 00` is the mode command and the data byte is the mode, and
+the receiver masks it: `and r0, r0, #1`, so **only bit 0 matters**. On hardware
+the `01` form is acknowledged by `64 00 02 01` after about seven seconds.
+
+So **the block header message `64 02 01` is what arms a transfer.** That is
+also what the receiver says: the data handler at `0x3380` refuses unless the
+context holds the armed state, the header handler at `0x36ac` is what
+establishes it, and the teardown at `0x3284` — category 1 command `04`, which
+requires the armed state, clears it and returns code 14 — is the cancel. Every
+other slot in the three dispatch tables is a `bx lr` stub.
+
+The sequence a sender must follow is therefore fully determined:
+
+```
+F0 7E 7F 06 01 F7                    identity, expect mm = 0A
+64 00 06 01                          reboot to the loader; re-enumerates
+F0 7E 7F 06 01 F7                    identity, expect byte 11 = 00
+64 00 00 01                          enter update mode; wait ~7 s for 64 00 02 01
+  64 02 01  <packed 128-byte header>   per 256 KiB window
+  64 02 02  <packet 0 .. 74>            flow-controlled by 64 01 00
+  ...                                   window ends with 64 02 00
+64 00 00 00                          leave update mode
+64 00 06 00                          reboot to normal
+```
+
+> **`0x4004` is the reply emitter, not a commit loop.** An earlier reading of
+> this material called it "finalisation: a flash-commit retry loop". It is
+> reached from the mode handler, the data handler and the cancel alike, and the
+> mode handler tail-calls it after staging a buffer with `mov r1, #0xb` —
+> eleven bytes, exactly the length of a `64 00 02 xx` Parameter Change. It is
+> how the device answers.
 
 ## Next steps, ordered by information per unit of risk
 
