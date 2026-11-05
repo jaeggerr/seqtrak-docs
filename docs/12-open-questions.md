@@ -329,19 +329,13 @@ in the table.
   so the composition rule is sound in general; `01 1p` specifically is still
   untested beyond part 0. Read `01 17 33` (part 7's `CurrentSound`) and compare
   with part 0's.
-- **How is a block of more than 16,383 packets framed?** This blocks writing a
-  third-party updater, and it came out of trying. The `Program` payload is
-  10,780,511 bytes; at 128 SysEx data bytes per message carrying 112 image
-  bytes after the 7-into-8 unpack, that is about 96,254 packets. The packet
-  **number** is fine — the receiver matches it against a counter that wraps at
-  256, explicitly (`uxtb`), so `index & 0xFF` is what a sender transmits. But
-  the packet **count** field is 14 bits and cannot hold the total either, so
-  either the block is cut into chunks with their own create/confirm cycles —
-  the state machine's `64 01 03` block-creation confirmation and the
-  device-driven `64 01 00` requests would be how — or the count means something
-  other than a total. Settling it needs the create-confirm path at `0x36ac` and
-  the app's `MIDI.Bulk` sender read together. See
-  [02-sysex-format.md](02-sysex-format.md#dividable-bulk-split-transfers).
+- ~~**How is a block of more than 16,383 packets framed?**~~ **Answered.** The
+  premise was wrong: the payload is not 128 bytes per message. A block is cut
+  into 256 KiB windows, one create cycle each, of 75 packets carrying 3500
+  image bytes — 4000 SysEx bytes — apiece. Packet numbers run `0`-`74`, so
+  neither field is ever strained. The `Program` block is 42 create cycles and
+  3,085 packets. See
+  [09-firmware.md](09-firmware.md#how-a-block-is-cut-into-packets).
 - **Is the dividable-bulk format used anywhere outside the firmware update?**
   The app's `AckDataIndex = 11` suggests so, but no non-firmware example has
   been captured.

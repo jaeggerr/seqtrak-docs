@@ -381,8 +381,14 @@ more than that.
 flash write, is not a length check: it walks the data a byte at a time, shifts
 each one left by one, tests bit `0x80` and reassembles through
 `mvn … lsl #25` / `mvn … lsr #25`, consuming **8 bytes at a time**. That is the
-ordinary Yamaha 7-into-8 unpack. A message carrying 128 SysEx data bytes
-therefore delivers **112** image bytes, not 128.
+ordinary Yamaha 7-into-8 unpack.
+
+Put together with the sender's own sizing, the numbers come out round: a
+firmware packet carries **3500 image bytes as 4000 SysEx data bytes**, and a
+block is cut into 256 KiB windows of 75 packets each. The packet number then
+only ever runs `0`-`74`, which is why an 8-bit counter on the receiving side is
+enough. Worked out in
+[09-firmware.md](09-firmware.md#how-a-block-is-cut-into-packets).
 
 ## Identity Request and Reply
 

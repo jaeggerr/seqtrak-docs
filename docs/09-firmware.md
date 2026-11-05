@@ -118,8 +118,60 @@ F0 43 00 7F 1C bh bl 0C 64 02 al … cc F7
 | `02` | **block data**: a 14-bit packet number then the payload |
 
 `bh bl` is the byte count from the Model ID to the last data byte; the message
-ends with the checksum and `F7`. A block message is `payload + 17` bytes total,
-with payloads of **128 bytes** (`mov w0, #0x80`).
+ends with the checksum and `F7`. A block message is `payload + 17` bytes total.
+
+### How a block is cut into packets
+
+`from the official app, untested`, read out of
+`MidiFirmwareUpdater`'s own implementations — `FirmwareUpdater` is an abstract
+base class whose `sendingDataSize` and `updateTotalPacketCount` are assertion
+stubs, so the base class tells you nothing.
+
+**A block is sent window by window, 256 KiB at a time, and each window is one
+create cycle.** `-[MidiFirmwareUpdater sendingDataSize]`:
+
+```
+and  w20, w0, #0xfffc0000      ; sent, rounded down to a multiple of 0x40000
+sub  w8, w20, w0
+add  w8, w8, #0x40, lsl #12    ; w8 = 0x40000 - (sent mod 0x40000)
+mov  w9, #0xdac                ; 3500
+cmp  w8, #0xdac
+csel w20, w8, w9, lo           ; min(rest of the window, 3500)
+                               ; then clamped again to total - sent
+```
+
+So each packet carries **at most 3500 bytes of image**, and a packet never
+crosses a 256 KiB boundary. `-[MidiFirmwareUpdater updateTotalPacketCount]`
+agrees from the other side: while more than 256 KiB remains it returns a
+literal `75` (`mov w2, #0x4b`), and for the last window
+`ceil(remaining / 3500.0)`, the divisor being the double `3500.0` at `0x9db8`.
+
+| | |
+|---|---|
+| Window, one per create cycle | `0x40000` = 262,144 bytes |
+| Image bytes per packet | ≤ **3500** |
+| Packets in a full window | 74 × 3500 + 1 × 3144 = **75** |
+| SysEx data bytes per full packet | 3500 × 8/7 = **4000** exactly |
+| Full packet message length | 4000 + 17 = **4017** bytes |
+
+That 4000 is the design constraint, and it is what makes the 3500 look
+arbitrary until you apply the 7-into-8 packing described in
+[02-sysex-format.md](02-sysex-format.md#dividable-bulk-split-transfers).
+
+Applied to the OS 2.00 file:
+
+| Block | Payload in the file | Create cycles | Packets |
+|---|---|---|---|
+| `Installer` | 1,048,576 | 4 | 300 |
+| `Program` | 10,780,511 | 42 | 3,085 |
+
+Packet numbers therefore run `0`-`74` inside a window, which is why the
+receiver can hold its expected number in a single byte, and why the 14-bit
+packet-count field is never strained. **The earlier reading of this document —
+"payloads of 128 bytes (`mov w0, #0x80`)" — was wrong**: that `0x80` is the
+128-byte block header size. A 128-byte data payload would have made the
+`Program` block need about 96,000 packets, which neither field can express,
+and that contradiction is what sent anyone looking here in the first place.
 
 This is exactly the "dividable bulk" format from
 [02-sysex-format.md](02-sysex-format.md#dividable-bulk-split-transfers): packet
