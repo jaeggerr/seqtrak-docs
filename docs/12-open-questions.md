@@ -412,7 +412,9 @@ official OS 2.00 file has been analysed
 - **What is the file format?** Answered in full — a two-block container,
   `Installer` and `Program`, with a 128-byte header each, Okumura LZSS on the
   `Program` payload, and a flat ARMv7-A image at `0x20040000` in the clear. See
-  [09-firmware.md](09-firmware.md#the-update-file-os-200).
+  [09-firmware.md](09-firmware.md#the-update-file-os-200). The write direction
+  is closed too: a rebuild from named fields reproduces the official file byte
+  for byte, and a modified image can be taken through to a coherent `.PGM`.
 - **What SoC is this?** A **Yamaha SWX09** (*inferred* from a build path),
   running an eForce RTOS.
 - **Does the loader check a signature?** **Still open, and still decisive.**

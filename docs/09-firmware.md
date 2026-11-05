@@ -488,6 +488,25 @@ signature":
    app. `from the official app, untested`.
 6. **The `Installer`'s block-receive path has been analysed**, and it checks
    *less* than the file carries. See the subsection below.
+7. **The write chain is closed and verified, entirely off the machine.** The
+   container can be synthesised from named field values instead of copied: a
+   rebuild from fields reproduces the official file **byte for byte**
+   (sha256 `1a87fb5a…13bcf63`). An LZSS compressor exists and round-trips the
+   63.75 MiB image exactly, and one script takes a modified image through to a
+   coherent `.PGM`. So producing a modified update file is no longer a question
+   mark; whether the machine would accept one is a separate question, and it is
+   the open one. `from firmware image (static analysis)`.
+
+   **One trap worth carrying over.** The `+0x40` semantics differ between the
+   two blocks: `Installer` stores the sum of its payload **as stored**, while
+   `Program` stores the sum of its **decompressed** image, not of the LZSS
+   stream that is actually in the file. Summing the compressed payload gets you
+   a field that is wrong in its low byte alone, which is a slow thing to debug.
+
+   The regenerated LZSS stream is **valid but not byte-identical** to Yamaha's,
+   because LZSS output is not canonical — it depends on the compressor's
+   match-finding. That has no consequence: the receiver never compares the
+   compressed stream, it decompresses it and writes the result.
 
 ### What the `Installer`'s receive path actually checks
 
@@ -591,18 +610,18 @@ method, not a stylistic hedge.
 
 Only the first two are free of hardware risk.
 
-1. **Rebuild a bit-identical `.PGM`** from the decompressed image, to prove the
-   container + LZSS + checksum chain is mastered in the writing direction.
-2. **Write a third-party updater** that replays the SysEx protocol with the
+1. **Write a third-party updater** that replays the SysEx protocol with the
    **official, unmodified** file. Real risk from the first write onward.
-3. Only then, a minimally patched `Program` image. Note before planning any
+2. Only then, a minimally patched `Program` image. Note before planning any
    such patch: the `Program` image cannot be navigated by string
    cross-reference — see
-   [below](#strings-in-the-program-image-cannot-be-cross-referenced).
+   [above](#strings-in-the-program-image-cannot-be-cross-referenced).
 
-Step 1 of the earlier version of this list — analyse the `Installer`'s
-block-receive path — is **done**, and it is what moved the
-`Installer`→`Program` step off the blocking list.
+Both steps that used to open this list are **done**: the `Installer`'s
+block-receive path has been analysed, which moved the `Installer`→`Program`
+step off the blocking list, and the container rebuild came back byte-identical,
+which closed the write chain. What is left on the risk-free side is one probe,
+below.
 
 Also free and already done: **query the identity** in normal mode
 (`F0 7E 7F 06 01 F7`). `mm = 0x0A` decoded to version 2.0 and matched the
@@ -610,9 +629,12 @@ machine. Repeat it after any firmware change to read the new version. The same
 request in loader mode returns `mm = 00`, which is the cheap way to confirm
 which mode the machine is in.
 
-Also free, and the one probe still owed: **re-run the loader-mode read sweep
-with an acknowledged change-mode**, to turn the reserve above into a firm
-negative or into a read path worth following.
+Also free, and now the **only** step left that does not write to the machine:
+**re-run the loader-mode read sweep with an acknowledged change-mode**, to turn
+the reserve above into a firm negative or into a read path worth following. The
+prober was corrected after the first run to loop the change-mode until `64 00
+02` comes back before it sweeps, so the run is ready to go; entering and
+leaving loader mode is the one part of this that is verified reversible.
 
 ## Risks, stated plainly
 
