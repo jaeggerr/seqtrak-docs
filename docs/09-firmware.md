@@ -360,50 +360,60 @@ with a boot record containing the ASCII `170055`, while `0x21` starts and ends
 erased. That is the signature of an A/B pair with only the first initialised at
 the factory (*inferred*).
 
-### Strings in the `Program` image cannot be cross-referenced
+### Strings in the `Program` image are reached through a RAM alias
 
-`from firmware image (static analysis)`. Worth knowing before anyone spends
-days on it: **the ordinary way into an unknown binary — find a meaningful
-string, then find the code that uses it — does not work on the `Program`
-image.** The strings are there in the clear; nothing points at them.
+`from firmware image (static analysis)`. **This section used to say the
+opposite**: that the `Program`'s strings could not be cross-referenced at any
+base address. That was wrong, and the reason is worth more than the
+correction. The idea came from a third-party analysis (see
+[below](#the-program-image-from-inside-a-third-party-analysis-2026-11)), and
+the measurements here were re-run on this repository's own copy of the image.
 
-The instrument is a base-address sweep. For every one of the 4096 possible
-1 MiB-aligned base addresses `B`, count how many NUL-terminated strings of
-≥ 6 printable characters, at image offset `off`, have the 32-bit value
-`B + off` present as a 4-byte-aligned little-endian word anywhere in the image.
-A binary whose pointers are stored as data shows a sharp peak at its real base.
+**Most of the code does not run where it sits in the image.** The reset
+handler calls a RAM-init routine at `0x2004091C`. It makes five calls to a copy
+routine at `0x200407D4` (source, destination, destination end) and one call
+to a zero-fill at `0x200407E0`. Read as `movw`/`movt` pairs:
 
-| Block | Declared load address | Peak found by the sweep | Strings with a stored pointer | Aligned words that are in-image pointers |
-|---|---|---|---|---|
-| `Installer` | `0x10000000` | **`0x10000000`**, sharply | 60 / 311 (**19.3 %**) | 1.095 % |
-| `Program` | `0x20040000` | **none** | 12 / 23,590 (**0.1 %**) | 0.078 % |
+| Source (image VA) | Destination | Destination end | What it is |
+|---|---|---|---|
+| `0x20040400` | `0x00000000` | `0x000002F8` | vectors |
+| `0x20060400` | `0x000002F8` | `0x0001EBF0` | low RAM |
+| `0x20080400` | `0x00020000` | `0x00028038` | low RAM |
+| *zero-fill* | `0x11000000` | `0x11B607C0` | `.bss`, about 11.4 MiB, no source in the image |
+| `0x2068DEF8` | `0x105FDAF8` | `0x10613B60` | data |
+| `0x20090400` | `0x10000000` | `0x105FDAF8` | **code and data, about 6 MiB** |
 
-The `Installer` is the control, and it validates the method: the sweep recovers
-its documented load address against a noise floor of 1/311, a signal of about
-60×. The `Program`'s best candidate is `0xE5300000` at 64/2000 — which is not
-an address at all but the ARM encoding bucket for `ldr` with the
-always-condition `0xE`, i.e. instruction words miscounted as pointers. **There
-is no base address at which the `Program`'s strings are pointed to.** Searching
-for a bare image offset, or for the offset less the 1024-byte prologue, finds
-nothing either (3 and 7 hits out of 2000).
+The last two are contiguous at both ends, so one mapping covers
+`0x10000000`-`0x10613B60`:
 
-Two mechanisms would each produce this, and the measurement does not separate
-them — *inferred*:
+```
+image VA    = RAM - 0x10000000 + 0x20090400
+file offset = RAM - 0x10000000 + 0x50400     (offset in the decompressed image)
+```
 
-- **`movw` / `movt` immediate pairs.** On ARMv7 a 32-bit constant is normally
-  materialised by two instructions carrying 16 bits each, so the address exists
-  nowhere in the file as a 32-bit word. The `Installer` demonstrates the
-  pattern: `movw r1,#0x4780 ; movt r1,#0x1006` builds `0x10064780`, the address
-  of the `#8Z33` tag. A tool that does not fold these pairs reports no
-  cross-reference even when the base is right.
-- **An offset table plus a runtime base register**, which is what a relocated
-  or position-independent image would use.
+Code in this range is called, and points at its strings, **at its RAM
+address**. The measurement that proves it: of the **8,827** NUL-terminated
+strings of 6 or more printable characters in the mirrored range, **8,001
+(90.6 %)** have their RAM address stored as an aligned little-endian word
+somewhere in the image. Only **3** have their image address stored that way.
 
-**Practical consequence.** Approach the `Installer` — 1 MiB, uncompressed, base
-recovered, a fifth of its strings directly referenced — and treat the
-`Program`'s 15.75 MiB code section as reachable only by control flow from the
-reset vector and the exception table, not by string search. The sweep is
-`seqtrak-firmware-analysis/tools/string_xref_base_sweep.py`.
+**Why the old sweep missed it.** The sweep tried every 1 MiB-aligned base. As
+a base for the whole image, this alias is `0x10000000 - 0x50400 =
+0x0FFAFC00`, which is not 1 MiB-aligned, so the sweep never tried it. And it
+only holds for one region of the image, not for all of it. The sweep was
+measuring correctly; it was asking the wrong question. The `Installer` control
+worked because the `Installer` really is flat.
+
+**Practical consequence.** In Ghidra, add a byte-mapped block named
+`RAM_MIRROR` at `0x10000000`, length `0x613B60`, mapped from `0x20090400`.
+Strings, jump tables and vtables then resolve. **To patch code seen at a RAM
+address `R`, edit the image at `R - 0x10000000 + 0x20090400`**: the RAM copy
+is made at boot.
+
+A second trap, also from the third-party analysis and consistent with what
+was read here: the image **mixes ARM and Thumb-2 by address region**. A caller
+search run in the wrong mode finds nothing, and then "zero callers" means
+nothing.
 
 ### Architecture and SoC
 
@@ -439,6 +449,95 @@ The plaintext `2.00.2` at `+0x18` corresponds exactly to the four bytes
 number**: `2`, `00`, `0`, `2` → "2.00.2". The correspondence is reproduced; the
 reading of the third byte is *inferred*, since it is `0` in both blocks here and
 therefore unconstrained.
+
+## The `Program` image from inside: a third-party analysis (2026-11)
+
+An independent analyst, posting on Reddit, published a working notebook at
+<https://justpaste.it/g3gtl> ("SEQTRAK Firmware Notes", session 4). They went
+further than this repository: they **flashed a modified `Program` and the
+machine accepted it**. Their goal is a tap-tempo patch, and no patch code had
+been written when the notes were published.
+
+**Read the markers in this section carefully. They are the point.**
+
+- *Reported by a third party, not reproduced here* is a claim about **their**
+  unit, in their words. None of the four markers can carry it, so none is
+  used. In particular, nothing here is `verified on hardware`.
+- `from firmware image (static analysis)` marks what was **re-checked**
+  against this repository's copy of the OS 2.00 image (sha256 `1a87fb5a…13bcf63`),
+  independently of their tooling.
+- **Rule 2 applies.** Their notes cite this repository for the load address,
+  the SoC and the absence of a signature. Where they agree with us on those
+  points, it may be inheritance, not corroboration. What they found that we
+  did not have — the flash result, the RAM alias, the parameter table and the
+  BPM handler — is their own.
+
+### What they report on hardware
+
+| Claim | Status here |
+|---|---|
+| A `Program` image patched by two bytes, re-compressed and repacked into a `.PGM`, **was accepted and booted**. The USB product name changed from `SEQTRAK` to `SEQTRAX` | reported by a third party, not reproduced here |
+| The update went through the **USB-stick** route, not SysEx | reported; *inferred* from their description of the Installer reading the file through FAT12 |
+| The same image with a **stale** `+0x40` sum was **rejected** (red LED about 2 s after the first progress LEDs lit). With the sum written **big-endian**, it was rejected the same way. Written little-endian, it was accepted | reported by a third party, not reproduced here |
+| The USB `iProduct` string comes from image address `0x203ED400`. A second `SEQTRAK_` at `0x2068DF84` is not it | reported. The bytes `SEQTRAK\0` at `0x203ED400` are `from firmware image (static analysis)` |
+| Pressing `[BPM−]` emits a Tempo Parameter Change at `30 40 76`, one step per press | reported. It matches [10-verified-behaviour.md](10-verified-behaviour.md) |
+| `[REC]` emits `01 10 21` `RecordingStatus`: `01` on press, `00` on release, one message per edge | reported by a third party, not reproduced here. This repository has the address only `from the official app, untested` |
+| The USB descriptor carries a **second configuration**: four vendor-specific (`0xFF`) interfaces that reuse the MIDI bulk endpoints | reported by a third party, not reproduced here |
+
+**What the flash result changes.** It is one report from one unit, and it has
+not been reproduced. If it holds, it answers the question this document kept
+open: the machine accepts a modified `Program` image, with **no signature**,
+through the stick route. It does not touch the resident loader: they modified
+the `Program` only and kept the official `Installer`. So "does the loader
+check the `Installer`'s signature" stays open, and for a `Program`-only patch
+it no longer matters.
+
+### What was re-checked against the image
+
+`from firmware image (static analysis)`, each read in ARM mode:
+
+| Item | Address | What the image shows |
+|---|---|---|
+| RAM-init routine | `0x2004091C` | the copy table above, six calls, exactly as they list it |
+| Exception vectors | `0x20040400` | `ldr pc, [pc, #0x18]`; the sixth slot is a `nop` |
+| Installer checksum | `0x10001FD4` | adds up every byte of each chunk, then compares the total with header `+0x40` and returns **`2`** on mismatch. See [the correction below](#what-the-installers-receive-path-actually-checks) |
+| Installer per-type table | `0x1006D570` | six pointers. Type `1` points to `0x1006476C`: name `Main`, then `0x1000211C` (the `#8Z33` check, then the sum) and `0x1000203C` |
+| `#8Z33` check | `0x1000211C` | `memcmp(ctx+8, 0x10064780, 5)` → returns **`9`** on mismatch |
+| Parameter index table, built at boot | writer `0x20194B4C`, table RAM `0x11128DB0` | 4-byte rows `{ah, am, al, size}`, 1,160 bytes stored. **Row `0x29` = `30 40 76`, size 2: Tempo.** It was recovered here by tracking the `mov`/`strb` immediates, not by emulation |
+| Neighbours of Tempo | rows `0x27`, `0x28`, `0x2A`, `0x2B` | `30 40 7A`/2, `30 40 7C`/2, `30 40 7F`/1, `30 40 7E`/1 |
+| `set_param` | `0x200A8C50` | `cmp r1, #0xE9; bxhi lr; b 0x200A870C`: a thunk that ignores indices above `0xE9` |
+| BPM step (`bump`) | `0x200BCBA4` | reads the current BPM at `this+0x40`, clamps to min `+0x46` and max `+0x44`, and if it changed calls `set_param(this->mgr, 0x29, new)` at `0x200BCBE8` |
+
+### What they report from static analysis, not re-checked here
+
+Each item is theirs, *inferred* or better in their own grading, and not
+re-checked against the image here.
+
+- **The tempo path** from the front panel: listener `0x200BCE24` →
+  `on_button` `0x200BCCC0` → 1000 ms hold timer, then 50 ms auto-repeat →
+  `bump` → `set_param`. Pressing both BPM buttons together restores a saved
+  value kept at `+0x48`.
+- **Control offsets** in the panel object: `page` `+0x450`, `bpm+` `+0x658`,
+  `bpm-` `+0x680`, `master` `+0x180`. The seven synth pads are an array of
+  `0x28`-byte controls. A held-state query sits at `0x200B1CF8`.
+- **Inbound SysEx**: the router is `0x20135F84` and the engine parser is
+  `0x20147F0C`. The parser does **not** consume Tempo (`am = 0x40` maps to
+  `0xFF`), and where an incoming Tempo is acted on is still unknown.
+- **Open, by their own account**: whether `set_param` changes the sequencer's
+  tempo or only broadcasts it. Their cheapest next step is a hardware test of
+  exactly that.
+- The preset table at image offset `0xFBFFFF`, 2032 records of `0x700` bytes,
+  the `sound.bin` layout of a `.Y3S` with one extra leading byte. The wave
+  table at `0x3E8B20`, 64-byte records, sample rate as a u32 at `+0x28`.
+
+### Where they and this repository disagree
+
+| Point | This repository | Them | Settled by |
+|---|---|---|---|
+| Does the Installer check `+0x40`? | said **no**, from the SysEx receive path | **yes**, from the stick path, and refused twice on hardware | the image: it is checked at `0x10001FD4`. **We were wrong**; corrected below |
+| `Program` strings and cross-references | said unreachable | reached through the RAM alias | the image: 8,001 / 8,827. **We were wrong**; corrected above |
+| Does the Installer code run as Thumb-2? | "mostly Thumb-2" | ARM32 | partly. Every Installer routine read for this section decodes cleanly as ARM. The claim about the whole block was not re-measured |
+| LZSS re-encoding | not byte-identical to Yamaha's | their C encoder is **byte-identical** | not checked. If they are right, it is a better encoder than ours. Either way the receiver decompresses, so it does not matter |
 
 ## What the hardware has actually said about `0x64`
 
@@ -575,8 +674,11 @@ signature":
    (sha256 `1a87fb5a…13bcf63`). An LZSS compressor exists and round-trips the
    63.75 MiB image exactly, and one script takes a modified image through to a
    coherent `.PGM`. So producing a modified update file is no longer a question
-   mark; whether the machine would accept one is a separate question, and it is
-   the open one. `from firmware image (static analysis)`.
+   mark. Whether the machine would accept one was the open question, and a
+   third party now reports that it does, for a `Program`-only change through
+   the stick route
+   ([see above](#what-they-report-on-hardware)). That has not been reproduced
+   here. `from firmware image (static analysis)`.
 
    **One trap worth carrying over.** The `+0x40` semantics differ between the
    two blocks: `Installer` stores the sum of its payload **as stored**, while
@@ -611,17 +713,29 @@ Which of the 128 header bytes the receiver actually consumes:
 |---|---|---|
 | `+0x00` | block name, 24 bytes | **yes** — bounded to ≤ 23 chars |
 | `+0x18` | version | **yes** — bounded to ≤ 11 chars |
-| `+0x40` | **additive sum** | **no — never read** |
+| `+0x40` | **additive sum** | **yes** — by the per-type handler at `0x10001FD4`, not by the SysEx handlers. This table said "no" until 2026-11-10 |
 | `+0x6E` | index / flag | **yes** — range check |
 | `+0x7C` | payload length | **yes** — must be non-zero; drives the transfer |
 
 So the receiver's whole validation of an incoming block is: the ordinary 7-bit
 Yamaha checksum **per message**, the packet sequence number (out of order →
-error 15), bounds on the name, version and index fields, and a **5-byte
-`memcmp` against the plaintext tag `#8Z33`** (mismatch → `UpdateResult` 9,
-`InvalidData`). The block-data handler accumulates no 32-bit sum over what it
-receives, and finalisation at `0x4004` is a flash-commit retry loop with no
-integrity check at all.
+error 15), bounds on the name, version and index fields, a **5-byte `memcmp`
+against the plaintext tag `#8Z33`** (mismatch → `UpdateResult` 9,
+`InvalidData`), and **the additive sum at `+0x40`** (mismatch → `2`).
+
+> **Corrected 2026-11-10.** This paragraph used to say that no 32-bit sum is
+> accumulated over what is received. The SysEx handlers at `0x3380` and
+> `0x36AC` indeed accumulate none. But the Installer has a second layer the
+> first reading missed: a table of per-type handlers at `0x1006D570`, indexed
+> by header `+0x6E`. Type `1` is `Main`, and its chunk handler `0x1000211C`
+> does the `#8Z33` check on the first chunk, then tail-calls `0x10001FD4`.
+> That routine adds every byte of the chunk to a running total at `ctx+0x14`.
+> Once the received count at `ctx+0x10` reaches header `+0x7C`, it compares the
+> total with header `+0x40` and returns `2` if they differ.
+> `from firmware image (static analysis)`. A third party reports that the
+> hardware enforces it: a stale sum was refused, and so was a sum written
+> big-endian ([above](#what-they-report-on-hardware)). Whether the SysEx path
+> reaches this table as well was not traced; assume it does.
 
 > **The `#8Z33` tag: where it is, and what it is not compared against.** It is
 > in **neither** block header — both were dumped byte for byte to check.
@@ -631,6 +745,14 @@ integrity check at all.
 > `#8Z33 Copyright(C)2021 YAMAHA Co.,Ltd.`, and it is also a string constant
 > in the `Installer`'s own data at image `0x64800`, beside `Wave` and `Data` —
 > that constant is the comparison target.
+>
+> **Now answered (2026-11-10):** `0x1000211C` compares the tag against
+> `ctx+8`, the first chunk of the **decompressed** image, and the running sum
+> is also taken over decompressed bytes. So decompression happens upstream of
+> the per-type handler. Where exactly is still not traced (candidates named by
+> the third party: `0x10002A6C`, `0x1005879A`). The reasoning below, kept for
+> the record, was right that the tag is not compared against the compressed
+> payload.
 >
 > What the received side is, though, is **not established**, and two facts rule
 > out the obvious guess. The comparison sits in the header path, which runs
@@ -644,12 +766,13 @@ integrity check at all.
 > Practical consequence, unchanged and cheap: keep `#8Z33` as the first five
 > bytes of any modified image.
 
-**Consequence.** The additive sum at `+0x40` is a check the *producer* of the
-file applies — and a useful control for this analysis — not a barrier enforced
-on reception. Nothing in this path would stand in the way of a modified
-`Program` image, provided the `#8Z33` tag, the string lengths, the packet
-numbers and the 7-bit checksums are right, all of which are trivial to
-reproduce.
+**Consequence.** The additive sum at `+0x40` **is** enforced on reception.
+But it is an additive sum: the rebuild tools already recompute it, so it is no
+barrier to a modified image, only a trap. **Write it little-endian, over the
+decompressed image.** Nothing in this path would stand in the way of a
+modified `Program` image, provided the `#8Z33` tag, the sum, the string
+lengths, the packet numbers and the 7-bit checksums are right. All of these are
+trivial to reproduce, and a third party reports exactly that on hardware.
 
 **What this does not touch.** This is the loader→`Installer` step already
 passed and the `Installer`→`Program` step. The **resident loader**, which
@@ -668,10 +791,12 @@ Being precise about this matters more than the headline. The file contains an
 
 - The `Installer` **receives no signature for the `Program`** — there is none in
   the file. Established.
-- The `Installer` **checks nothing beyond a plaintext tag** — not even the
-  additive sum. Established by analysis;
+- The `Installer` **checks a plaintext tag and an additive sum**, and nothing
+  cryptographic. Established by analysis;
   [see above](#what-the-installers-receive-path-actually-checks). So the
-  `Installer`→`Program` step is no longer a candidate barrier.
+  `Installer`→`Program` step is no longer a candidate barrier. A third party
+  reports a modified `Program` accepted on hardware through the stick route
+  ([see above](#what-they-report-on-hardware)); not reproduced here.
 - **Nothing at all can be said about the resident loader.** Its code is not in
   this file. If it requires a signature on the `Installer`, everything stops
   there, and this file cannot reveal that. Hardware has since confirmed it is
@@ -812,10 +937,13 @@ Only the first two are free of hardware risk.
 
 1. **Write a third-party updater** that replays the SysEx protocol with the
    **official, unmodified** file. Real risk from the first write onward.
-2. Only then, a minimally patched `Program` image. Note before planning any
-   such patch: the `Program` image cannot be navigated by string
-   cross-reference — see
-   [above](#strings-in-the-program-image-cannot-be-cross-referenced).
+2. Only then, a minimally patched `Program` image. A third party reports
+   having done exactly this through the **USB-stick** route, with a two-byte
+   string change ([see above](#what-they-report-on-hardware)). The cheapest
+   reproduction is theirs: the same cosmetic patch, written to a stick, never
+   over SysEx. Before planning a real patch, load the RAM alias
+   ([above](#strings-in-the-program-image-are-reached-through-a-ram-alias)):
+   without it, the code cannot be navigated.
 
 Both steps that used to open this list are **done**: the `Installer`'s
 block-receive path has been analysed, which moved the `Installer`→`Program`

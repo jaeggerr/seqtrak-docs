@@ -442,21 +442,29 @@ official OS 2.00 file has been analysed
 - **Does the loader check a signature?** **Still open, and still decisive.**
   There is no signature in the file, which is a *necessary* condition for custom
   firmware, not a sufficient one. The validating component is not in the file.
-- **How does the `Program` image address its strings?** Open, and it governs
-  how approachable that image is. No base address exists at which its strings
-  are pointed to by stored 32-bit words — measured by a sweep of all 4096
-  1 MiB-aligned bases, with the `Installer` as a working control. Either the
-  code builds addresses from `movw`/`movt` immediate pairs, or it reaches
-  strings through an offset table and a runtime base; the measurement does not
-  separate the two. See
-  [09-firmware.md](09-firmware.md#strings-in-the-program-image-cannot-be-cross-referenced).
+- ~~**How does the `Program` image address its strings?**~~ **Answered
+  2026-11-10.** At boot, about 6 MiB of the image is copied from `0x20090400`
+  to RAM `0x10000000`, and the code points at its strings by their RAM
+  address: 8,001 of 8,827 strings in that range have a stored pointer. The
+  1 MiB-aligned sweep could not find this, because the alias base
+  `0x0FFAFC00` is not 1 MiB-aligned and only one region is affected. The idea
+  came from a third-party analysis; the measurement was re-run here. See
+  [09-firmware.md](09-firmware.md#strings-in-the-program-image-are-reached-through-a-ram-alias).
 
 **That step is no longer the next one: it is done.** The Installer's
-block-receive path has been analysed, and it never reads the `+0x40`
-checksum field at all — its only identity check on an incoming block is a
-5-byte `memcmp` against the plaintext tag `#8Z33`. So "no signature in the
-file" is now also "the installer does not check one", and what remains is
-entirely the resident loader. Everything that the signature search could *not*
+block-receive path has been analysed. It checks the plaintext tag `#8Z33`
+and **the additive sum at `+0x40`**, at `0x10001FD4`, and nothing
+cryptographic. (Until 2026-11-10 this said the sum was never read: that
+reading covered the SysEx handlers and missed the per-type handlers behind
+them.) So "no signature in the file" is also "the installer does not check
+one". What remains is the resident loader, and only for a modified
+`Installer`.
+
+**A third party reports a modified `Program` accepted on hardware**, through
+the USB-stick route, with a two-byte string change. It has not been
+reproduced here. If it holds, a `Program`-only patch does not depend on the
+loader question at all. See
+[09-firmware.md](09-firmware.md#the-program-image-from-inside-a-third-party-analysis-2026-11). Everything that the signature search could *not*
 have detected is enumerated in
 [09-firmware.md](09-firmware.md#what-the-signature-search-could-not-have-detected) —
 read that before quoting the verdict anywhere.
@@ -494,6 +502,20 @@ Two narrower firmware questions, both answerable from the file:
   three of them covering `0x15800000`-`0x18000000` with sizes close to those of
   sections `0x11`, `0x20` and `0x21`. Possibly the same data seen from another
   address space, such as the tone generator's. Low confidence.
+
+### Opened by the third-party firmware analysis (2026-11-10)
+
+Each of these is a claim from
+[09-firmware.md](09-firmware.md#the-program-image-from-inside-a-third-party-analysis-2026-11)
+that nobody has checked here.
+
+| Question | What would settle it |
+|---|---|
+| Does a modified `Program` really flash? One report, one unit | the same two-byte `SEQTRAK` → `SEQTRAX` patch at `0x203ED400`, written to a USB stick, then the USB product name read back. Not over SysEx |
+| Does `set_param(mgr, 0x29, bpm)` at `0x200A8C50` change the sequencer's tempo, or only broadcast it? | a patched build, or reading `0x200A870C` and its observer through to the engine |
+| Does `[REC]` emit `01 10 21` `01` on press and `00` on release? | a `listen_counter.py` capture while pressing `[REC]`. Read-only and cheap |
+| What is the second USB configuration, with four vendor-specific (`0xFF`) interfaces? | `ioreg` or a USB descriptor dump on the host. Read-only |
+| Does the SysEx update path reach the per-type checker at `0x10001FD4` too, or only the stick path? | trace the callers of the `0x1006D570` table from the `64 02 02` handler at `0x3380` |
 
 ## A lead worth following: the firmware's own parameter names
 
