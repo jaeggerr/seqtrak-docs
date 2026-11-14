@@ -140,8 +140,11 @@ address_high,address_mid,address_low,what_was_established,document
 30,5p,10,"written 3 on all eleven parts and read back 0 on parts 0 and 7, while 30 5p 16 written in the same loop read back 48 on all eleven: the write does not take. Not read before the write, so an ignored write and a write landing as 0 are indistinguishable",10-verified-behaviour.md
 30,5p,00,"written 100 on part 7 where it read 0 and read back, with parts 0 and 6 as witnesses unmoved at 100: this is the track volume that silences a track, distinct from the Mute flag at 30 5p 29",10-verified-behaviour.md
 71,1p,02,"ChangeMute accepted as <scene> <mute>: writing 00 00 on part 7 cleared byte 14+part of the SceneInfo reply for scene 0 from 1 to 0, and the ten other mute bytes did not move",10-verified-behaviour.md
-64,00,00,"in loader mode the change-mode (data 01) is acknowledged by 64 00 02 01, arriving about 7 s later; it answers no Parameter Request in either mode",10-verified-behaviour.md
+64,00,00,"in loader mode the change-mode (data 01) is acknowledged by 64 00 02 01 about 7 s later; on the Installer, immediately. Data 00 after the Installer block makes the unit reboot into the Installer (port gone 0.51 s later). It answers no Parameter Request in either mode",10-verified-behaviour.md
 64,00,02,"the mode reply the loader sends to acknowledge a change-mode; answers no Parameter Request of its own",10-verified-behaviour.md
-64,01,00,"answers no Parameter Request in normal or loader mode, change-mode acknowledged, with an identity control answering 0.01 s after each attempt",10-verified-behaviour.md
-64,02,00,"answers no Parameter Request in normal or loader mode, change-mode acknowledged, with an identity control answering 0.01 s after each attempt",10-verified-behaviour.md
+64,01,00,"sent by the device after a block header and after every block packet during an update (flow control); answers no Parameter Request in normal or loader mode",10-verified-behaviour.md
+64,01,02,host-to-device create request with no data; sent once at the end of each block and answered by 64 01 03. A complete update went through with it on 2026-11-14,10-verified-behaviour.md
+64,01,03,"the device's create confirmation, answering 64 01 02 at the end of a block, immediately for both the Installer and the Program on 2026-11-14",10-verified-behaviour.md
+64,01,05,device error during an update: received right after a block header when the host had earlier sent a header every 256 KiB,10-verified-behaviour.md
+64,02,00,"answers no Parameter Request in normal or loader mode; not seen during a complete update on 2026-11-14 (the hand-over to the Installer showed the port vanishing instead)",10-verified-behaviour.md
 64,06,00,"answers no Parameter Request in loader mode; a 64 00 02 01 once seen in its listening window was the change-mode acknowledgement arriving late, not a reply from this address",10-verified-behaviour.md

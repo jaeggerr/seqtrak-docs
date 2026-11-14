@@ -330,23 +330,27 @@ in the table.
   untested beyond part 0. Read `01 17 33` (part 7's `CurrentSound`) and compare
   with part 0's.
 - ~~**How is a block of more than 16,383 packets framed?**~~ **Answered.** The
-  premise was wrong: the payload is not 128 bytes per message. A block is cut
-  into 256 KiB windows, one create cycle each, of 75 packets carrying 3500
-  image bytes — 4000 SysEx bytes — apiece. Packet numbers run `0`-`74`, so
-  neither field is ever strained. The `Program` block is 42 create cycles and
-  3,085 packets. See
+  premise was wrong: the payload is not 128 bytes per message. Packets carry
+  3500 image bytes — 4000 SysEx bytes — apiece, never crossing a 256 KiB
+  boundary, and their numbers restart at each boundary (`0`-`74`), so neither
+  field is ever strained. The `Program` block is one header, 42 windows,
+  3,085 packets and one create request (corrected 2026-11-14: this said one
+  create cycle per window). See
   [09-firmware.md](09-firmware.md#how-a-block-is-cut-into-packets).
 - ~~**Which command arms a block transfer (`SendingStart`)?**~~ **Answered:
-  there is no such command.** The app sends exactly four Parameter Changes into
-  `0x64` — reboot, enter update mode, leave update mode — and the block header
-  message arms the transfer by itself. See
+  there is no such command.** The block header message arms the transfer by
+  itself. The inventory of Parameter Changes the app sends into `0x64` was
+  incomplete, though: besides reboot, enter and leave update mode, it sends the
+  **create request `64 01 02`** at the end of each block (found 2026-11-14). See
   [09-firmware.md](09-firmware.md#there-is-no-sendingstart-command).
-- **What closes a window in the block-transfer handshake?** `64 01 00` (send
-  the next packet), `64 02 00` (block acknowledged) and `64 01 03` (block
-  created) are all documented, but which arrives when is not, and the app's
-  state machine waits for the create confirmation after the data rather than
-  after the header. The sender accepts any of the three for now. A real
-  transfer settles it; nothing static will.
+- ~~**What closes a window in the block-transfer handshake?**~~ **Answered on
+  hardware, 2026-11-14.** Nothing closes a window: windows only renumber
+  packets. A **block** is one header (answered `64 01 00`), packets (each
+  answered `64 01 00`), then the create request `64 01 02` (answered
+  `64 01 03`). After the `Installer`, the host leaves update mode and the unit
+  reboots into the `Installer` (identity byte 12 = `02`). "Nothing static will
+  settle it" was wrong: the official plug-in said all of it. See
+  [09-firmware.md](09-firmware.md#there-is-no-sendingstart-command).
 - **What does the `#8Z33` memcmp actually compare?** Not the head of the
   received payload — that is the compressed LZSS stream, and the check runs in
   the header path before any payload arrives. See
@@ -433,15 +437,17 @@ official OS 2.00 file has been analysed
 
 - **What is the file format?** Answered in full — a two-block container,
   `Installer` and `Program`, with a 128-byte header each, Okumura LZSS on the
-  `Program` payload, and a flat ARMv7-A image at `0x20040000` in the clear. See
+  `Program` payload, and a flat ARMv7 (R profile) image at `0x20040000` in the clear. See
   [09-firmware.md](09-firmware.md#the-update-file-os-200). The write direction
   is closed too: a rebuild from named fields reproduces the official file byte
   for byte, and a modified image can be taken through to a coherent `.PGM`.
 - **What SoC is this?** A **Yamaha SWX09** (*inferred* from a build path),
   running an eForce RTOS.
-- **Does the loader check a signature?** **Still open, and still decisive.**
-  There is no signature in the file, which is a *necessary* condition for custom
-  firmware, not a sufficient one. The validating component is not in the file.
+- **Does the loader check a signature?** Still open, and **no longer
+  decisive** for a `Program`-only change: on 2026-11-14 a `Program` carrying a
+  code patch was accepted over SysEx and runs (`verified on hardware`). The
+  loader only ever receives Yamaha's own `Installer`. The question still
+  decides a modified `Installer`.
 - ~~**How does the `Program` image address its strings?**~~ **Answered
   2026-11-10.** At boot, about 6 MiB of the image is copied from `0x20090400`
   to RAM `0x10000000`, and the code points at its strings by their RAM
@@ -460,9 +466,9 @@ them.) So "no signature in the file" is also "the installer does not check
 one". What remains is the resident loader, and only for a modified
 `Installer`.
 
-**A third party reports a modified `Program` accepted on hardware**, through
-the USB-stick route, with a two-byte string change. It has not been
-reproduced here. If it holds, a `Program`-only patch does not depend on the
+**A modified `Program` is accepted on hardware.** A third party reported it
+through the USB-stick route, and this repository reproduced it over SysEx on
+2026-11-14 with a code patch. A `Program`-only patch does not depend on the
 loader question at all. See
 [09-firmware.md](09-firmware.md#the-program-image-from-inside-a-third-party-analysis-2026-11). Everything that the signature search could *not*
 have detected is enumerated in
@@ -488,9 +494,9 @@ cycles now, which bounds the risk of looking but says nothing about writing.
 
 **What this costs us.** The cheap instrument is spent. There is no read path
 into `0x64` from the wire, so the resident loader's code cannot be reached by
-SysEx in any mode, and the signature question — the one that decides custom
-firmware — now has only two routes left: write to the machine and find out, or
-dump the flash in hardware. Neither is free.
+SysEx in any mode. For a `Program`-only patch that no longer matters (see
+above). For a modified `Installer`, two routes are left: write to the machine
+and find out, or dump the flash in hardware. Neither is free.
 
 Two narrower firmware questions, both answerable from the file:
 
@@ -511,11 +517,13 @@ that nobody has checked here.
 
 | Question | What would settle it |
 |---|---|
-| Does a modified `Program` really flash? One report, one unit | the same two-byte `SEQTRAK` → `SEQTRAX` patch at `0x203ED400`, written to a USB stick, then the USB product name read back. Not over SysEx |
-| Does `set_param(mgr, 0x29, bpm)` at `0x200A8C50` change the sequencer's tempo, or only broadcast it? | a patched build, or reading `0x200A870C` and its observer through to the engine |
+| ~~Does a modified `Program` really flash?~~ **Answered 2026-11-14: yes**, reproduced here over SysEx with the play-from-page code patch. The stick route is still not tried here | — |
+| The play-from-page patch works on hardware (2026-11-14, owner's report; [10](10-verified-behaviour.md#2026-11-14-hardware-session-the-first-complete-sysex-update-and-the-play-from-page-patch-works)). Still open: the behaviour on tracks shorter than the current page, from Song mode, and under an external `FA` | a track shorter than the current page; Song mode; an external `FA` |
+| Does `set_param(mgr, 0x29, bpm)` at `0x200A8C50` change the sequencer's tempo, or only broadcast it? The third party now reports their tap-tempo build, which calls it through `bump`, sets the audible tempo ([09](09-firmware.md#follow-up-a-working-code-patch-published-as-sloptrak-2026-11-13)) | not reproduced here: a patched build flashed on this unit, or reading `0x200A870C` and its observer through to the engine |
 | Does `[REC]` emit `01 10 21` `01` on press and `00` on release? | a `listen_counter.py` capture while pressing `[REC]`. Read-only and cheap |
 | What is the second USB configuration, with four vendor-specific (`0xFF`) interfaces? | `ioreg` or a USB descriptor dump on the host. Read-only |
-| Does the SysEx update path reach the per-type checker at `0x10001FD4` too, or only the stick path? | trace the callers of the `0x1006D570` table from the `64 02 02` handler at `0x3380` |
+| Does the SysEx update path reach the per-type checker at `0x10001FD4` too, or only the stick path? Indirect evidence: a `Program` with a correct `+0x40` was accepted over SysEx; a wrong one has not been tried | trace the callers of the `0x1006D570` table from the `64 02 02` handler at `0x3380` |
+| Does flashing the stock `8Z33OS_.PGM` back over SysEx restore the unpatched firmware? | one run of `tools/sysex_updater.py` with the stock file, then `[PLAY]` on page 2 starting at page 1 |
 
 ## A lead worth following: the firmware's own parameter names
 

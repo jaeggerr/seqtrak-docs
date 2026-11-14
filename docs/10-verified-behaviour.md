@@ -3004,11 +3004,17 @@ still unestablished and still only a real transfer will settle it.
 
 **The most important result in this area, and it was not obtained on purpose.**
 A real transfer of the official OS 2.00 file was interrupted by a defect in the
-sender, leaving the unit with the `Installer` block fully written and the
-`Program` block **9.9 % written**. The machine then presented every symptom of
+sender, leaving the unit with the `Installer` block fully sent (never written, as found on 2026-11-14) and the
+`Program` block **9.9 % sent**. The machine then presented every symptom of
 being bricked. It recovered completely.
 
 ### What was written, exactly
+
+> **Corrected 2026-11-14: nothing was written.** The sender never sent the
+> create request `64 01 02` and never handed over to the `Installer`, so the
+> loader buffered the data and nothing reached flash. The table below records
+> what was **sent**
+> ([2026-11-14](#2026-11-14-hardware-session-the-first-complete-sysex-update-and-the-play-from-page-patch-works)).
 
 | | |
 |---|---|
@@ -3059,6 +3065,12 @@ never re-run, and the unit recovered on its own.
 
 ### The defect, recorded because it is the lesson
 
+> **Overturned on 2026-11-14** ([below](#2026-11-14-hardware-session-the-sysex-transfer-stops-at-the-same-byte-every-time)).
+> With every window at 20 seconds, a second transfer stopped at **the same
+> byte**. The short timeout was a real defect, but it was **not** what stopped
+> this transfer: the device stops answering there. The paragraph below is kept
+> as it was written.
+
 The sender's per-packet flow-control window was **5 seconds**, set in a file
 written hours after this same session measured a **7.04-second** latency on this
 unit, twice, with independently written tools — and made a point of it. A
@@ -3072,3 +3084,102 @@ unit was left hung rather than simply idle in update mode.
 
 Both are fixed: every window is now 20 seconds, and the exit waits for its
 acknowledgement before rebooting.
+
+## 2026-11-14, hardware session: the SysEx transfer stops at the same byte every time
+
+A second real transfer, this time of a **modified** file: the play-from-page
+build ([09](09-firmware.md#a-play-from-page-patch-built-and-then-flashed-2026-11-14)),
+sent by `tools/sysex_updater.py --write` with every window at 20 seconds. The
+owner authorised the write. USB-C, Mac on mains, official app closed, battery
+100 %.
+
+| Step | Result |
+|---|---|
+| Witness `01 00 00`, reboot to loader, re-enumeration, loader identity (byte 11 = `00`) | each first try |
+| Enter update mode | acknowledged after **7.04 s**, the same figure as on 2026-11-05 |
+| `Installer`, 4 windows | all acknowledged |
+| `Program`, windows 1 to 4 | all acknowledged |
+| `Program`, window 5 | **no flow-control reply after its 4th packet**, in 20 s: **1,062,576 bytes** sent |
+| Leave update mode | not acknowledged in 20 s; reboot sent anyway |
+| Identity and `01 00 00` right after | silent, 4 tries each |
+
+**1,062,576 bytes is exactly where the 2026-11-05 transfer stopped**: 4 windows
+of 262,144 bytes plus 4 packets of 3,500. Two transfers, two different
+`Program` streams and two different timeouts (5 s, then 20 s) both stop on the
+same packet. So the stop is the **device's** behaviour at that point, not a
+sender timeout. `verified on hardware`, two runs.
+
+**Cause, found the same day, `from official app`:** the
+sender skipped a stage. After the `Installer`, the official app leaves update
+mode, lets the unit reboot into the freshly written `Installer`, checks that
+the Identity Reply's byte 12 reads `02`, and enters update mode again before
+sending the `Program` (details in
+[09](09-firmware.md#there-is-no-sendingstart-command)). This repository's sender
+went straight on, so the **resident loader** received the `Program` block. It
+took 4 windows plus 4 packets, just over the `Installer`'s own 1 MiB, and then
+stopped answering. The sender now does the hand-over, and refuses to send the
+`Program` unless byte 12 reads `02`. Not yet run on hardware.
+
+**Recovery, a second time.** Forced termination (`[⏻/PLAY]` + `[PROJECT↑]`),
+then a normal power-on. The owner reports that the machine started and that
+nothing was lost. Then, read back: identity `mm = 0A`, `FirmwareVersion`
+`02 00 00 02` = 2.00.2, battery 100 %. `verified on hardware`.
+
+**What this recovery does and does not say.** Found later the same day:
+the sender also never sent the create request `64 01 02`, so **nothing was
+written to flash at all**, by this run or the earlier one. The loader buffered
+about 1 MiB and stopped answering. What was survived is a stalled transfer,
+not a partial write. Surviving an interrupted write is still untested.
+
+**The patch is not installed.** The cable route cannot install anything until
+the window-5 stop is understood. The USB-stick route is the one a third party
+reports working with a modified `Program`.
+
+## 2026-11-14, hardware session: the first complete SysEx update, and the play-from-page patch works
+
+Same day, same unit, owner's go-ahead. Three more runs of the corrected sender,
+each one closer to the official app; the third went through.
+
+| Run | Sender | Result |
+|---|---|---|
+| 3 | hand-over to the `Installer` added | stopped before the `Program`: after leaving the loader, identity byte 12 still read `01`. Nothing of the `Program` sent |
+| 4 | waits for `64 01 03` at the end of each 256 KiB window | no `64 01 03` in 60 s after window 1: the window ended on `64 01 00`. Then, on the next attempt, `64 01 05` (error) right after the first header |
+| **5** | **one header per block, `64 01 02` once at the end of the block** | **complete** |
+
+Run 5, `verified on hardware`:
+
+| Step | Observed |
+|---|---|
+| Loader, update mode | acknowledged at **7.04 s** (third session with this exact figure) |
+| `Installer`, one header, 300 packets, then `64 01 02` | `64 01 03` at once |
+| Leave update mode | the **port vanished 0.51 s later** (no `64 02 00` seen) |
+| Identity after re-enumeration | `F0 7E 7F 06 02 43 00 41 64 06 00 00 02 7F F7`: **byte 12 = `02`, the `Installer`**, first time seen |
+| Enter update mode on the `Installer` | `64 00 02 01`, **immediately** (the loader takes 7 s) |
+| `Program`, one header, 3,111 packets across 42 windows, then `64 01 02` | `64 01 00` after every packet, `64 01 03` at once |
+| Leave update mode, reboot | normal mode: identity `mm = 0A`, `FirmwareVersion` `02 00 00 02`, battery 100 % |
+
+So the full protocol is the one in
+[09](09-firmware.md#there-is-no-sendingstart-command), and every earlier run
+was missing a piece of it: the create request `64 01 02`, one header per block
+(not per window), and the hand-over to the `Installer`. None of the earlier runs
+wrote anything to flash, which is why every one of them was survived.
+
+**The patch works**, reported by the owner: on a track with a melody over
+several pages, with the sequencer stopped, `[PAGE]` to page 2, then
+`[⏻/PLAY]`, and playback started at page 2. The modified `Program` was
+therefore accepted over SysEx too, with no signature in the way.
+
+**One oddity, not explained.** On a song the owner had made before, the
+melody already spanned several pages but the track showed **one** page, and
+`[BAR LENGTH]` had to be pressed to see the others. The patch writes nothing
+related to length (its two hooks touch only the start position), so it is
+*inferred* not to be the cause; not tested against the stock firmware. A read
+of the loaded project in the same session found `Pattern 1 Bar Length`
+(`30 5p 10`) = 0 on all eleven tracks while `Pattern 1 Step` (`30 5p 16`)
+ranged from 8 to 64: the displayed page count follows the step length, not
+that field. Which project the owner had played, and its lengths before the
+change, were not captured. Afterwards, on the patched firmware, the owner
+switched to another project with several pages and saw all of them at once:
+the patched firmware shows multi-page patterns normally, which points to the
+first song's own lengths rather than to the patch (*inferred*).
+
