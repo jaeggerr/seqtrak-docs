@@ -137,6 +137,11 @@ Both default to on: `00 00 07` (Receive/Transmit Bank Select) and `00 00 08`
 (Receive/Transmit Program Change). If preset switching from a controller does
 nothing, check these first.
 
+Then check that the controller sends **Bank Select before the Program Change**.
+A third party reports that a Program Change on its own selects nothing —
+reported, not reproduced here
+([12-open-questions.md](12-open-questions.md#opened-by-a-third-party-receive-side-report-2026-11-14)).
+
 ---
 
 # Arturia MiniLab 3 mapping

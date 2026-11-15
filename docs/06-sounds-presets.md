@@ -83,6 +83,12 @@ Three details worth knowing, all `from Yamaha Data List`:
   number**, and programs 72 and above are temporary areas the sampler uses
   (project 1 elements 1-7, project 2 elements 1-7, and so on).
 
+A third party reports that a **bare Program Change, with no Bank Select before
+it, changes nothing** on the DX track, while the full triplet does — reported,
+not reproduced here, and whether a bank stays latched on a channel after one
+triplet is not known. Until it is, send all three every time. See
+[12-open-questions.md](12-open-questions.md#opened-by-a-third-party-receive-side-report-2026-11-14).
+
 Two System switches can block reception, both on by default: `00 00 07`
 (Receive/Transmit Bank Select) and `00 00 08` (Receive/Transmit Program Change).
 On the transmit side the per-interface bitmasks `00 00 0B` (TRS), `00 00 0F`
