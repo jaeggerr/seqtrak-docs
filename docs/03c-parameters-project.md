@@ -636,7 +636,7 @@ Machine-readable: [`../data/parameters.csv`](../data/parameters.csv).
 | `30 4D 7E` | Project Common / Scale | reserved | 1 |  | 00 |  | `` |  | from Yamaha Data List |
 | `30 4D 7F` | Project Common / Scale | reserved | 1 |  | 00 |  | `` |  | from Yamaha Data List |
 | `30 5p 00` | Project Track / General | Volume | 1 | 00 - 7F | 64 | 0 - 127 | `Volume` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — written 100 on part 7 where it read 0 and read back, with parts 0 and 6 as witnesses unmoved at 100: this is the track volume that silences a track, distinct from the Mute flag at 30 5p 29 — also `from Yamaha Data List` |
-| `30 5p 01` | Project Track / General | Pan | 1 | 01 - 7F | 40 | L63 ... C ... R63 | `Pan` |  | from Yamaha Data List |
+| `30 5p 01` | Project Track / General | Pan | 1 | 01 - 7F | 40 | L63 ... C ... R63 | `Pan` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — part 0 only: read 40; CC 10 on channel 1 = 50 read back 50; restored with CC 10 = 40 and read back 40; the sound pan 31 10 15 and the tempo unmoved. Track pan follows CC 10 on the track channel — also `from Yamaha Data List` |
 | `30 5p 02` | Project Track / General | Velocity Limit Low | 1 | 01 - 7F | 01 | 1 - 127 | `` | Not available for DX track | from Yamaha Data List |
 | `30 5p 03` | Project Track / General | Velocity Limit High | 1 | 01 - 7F | 7F | 1 - 127 | `` | Not available for DX track | from Yamaha Data List |
 | `30 5p 04` | Project Track / General | Note Limit Low | 1 | 00 - 7F | 00 | C-2 ... G8 | `` | Not available for DX track | from Yamaha Data List |

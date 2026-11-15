@@ -263,3 +263,77 @@ The 2032 Drum/Synth/DX sounds share one numbering space under bank MSB 63, with
 The pad's channel designates the track, and the sound's engine must match it.
 The sampler is the exception: under MSB 62 the machine "regards channel number
 as element number", so there the channel designates the element — untested.
+
+## The MiniLab 3's screen: what a host can write on it
+
+Measured on the owner's MiniLab 3 on 2026-11-15, plugged into a Mac over USB,
+the SEQTRAK not involved. These are facts about the controller, not about the
+SEQTRAK. `verified on hardware` here means: SysEx sent from the Mac on the
+`Minilab3 MIDI` port, the owner reading the screen, and for the last two runs
+the controller's own program report captured in the same loop. The message
+formats come from an unofficial Arturia forum thread
+(<https://forum.arturia.com/t/sysex-protocol-documentation/5746>); Arturia
+publishes none.
+
+All messages are wrapped as `F0 00 20 6B 7F 42 <data> F7`.
+
+| Message | `<data>` | Result |
+|---|---|---|
+| Identity Request `F0 7E 7F 06 01 F7` | — | reply `F0 7E 7F 06 02 00 20 6B 02 00 04 04 45 00 02 01 F7`. `verified on hardware` |
+| DAW connect | `02 02 40 6A 21` | reply `02 00 40 63 00` (the forum thread reads `40 63` as the pad bank). `verified on hardware` |
+| DAW disconnect | `02 02 40 6A 20` | sent once; the screen was back on the program name afterwards. Whether it cleared the text or changed program was not separated |
+| Program report, **sent by the controller** on `Shift` + Pad 3 | `02 00 40 62 pp` | `pp` cycles `01` → `02` → `03` → `01`. `verified on hardware` (captured). The owner saw text in the Arturia program and in the DAW program and none in the user program, which fits `01` = Arturia, `02` = DAW, `03` = user (*inferred*: the names were not read against each report) |
+| Two lines of text | `04 ff 60 01 <line 1> 00 02 <line 2> 00` | depends on the family byte `ff` and on the active program, below |
+
+| Active program | Family `ff` tried | Text shown |
+|---|---|---|
+| DAW | `02` | **yes**, and it follows a counter resent twice a second. `verified on hardware` |
+| Arturia | `00`, `01`, `03` | **`00` and `01` yes**, `03` no. A single message stayed on screen, and was still there after an encoder was turned. `verified on hardware` |
+| User (the SEQTRAK template) | `00`, `02`, `03`-`08` | **none**. For `03`-`08` the controller had reported `40 62 03` in the same capture. `01` was not tried in this program |
+
+**Consequence for the SEQTRAK template.** The template is a user program, and
+no message tried writes on the screen while a user program is active. Text is
+available in the Arturia and DAW programs, where the controls send the
+controller's fixed assignments instead of the template's. So "the template's
+mapping plus a sound name on the screen" is not reachable with the messages
+tried here. The Arturia program's assignments were captured
+next, and they do not replace it.
+
+### What the Arturia program's controls send
+
+`verified on hardware`, same day: a cumulative capture of all four MiniLab
+ports on the Mac, keyed by message type, channel and number, while the owner
+touched each control once in a stated order (the controller had reported
+`40 62 01` at the start of the capture). The mapping to controls is by order
+of first appearance.
+
+| Control | Sends | Received by the SEQTRAK as ([cc-map.csv](../data/cc-map.csv)) |
+|---|---|---|
+| Encoder 1 | CC 74, channel 1 | Filter Cutoff |
+| Encoder 2 | CC 71, channel 1 | Filter Resonance |
+| Encoders 3-8 | CC 76, 77, 93, 18, 19, 16, channel 1 | not in the SEQTRAK's CC map |
+| Faders 1-4 | CC 82, 83, 85, 17, channel 1 | not in the SEQTRAK's CC map |
+| Pads 1-8 | notes 36-43, channel 10, with polyphonic aftertouch | notes on DX |
+| `Mod` strip | CC 1, channel 1 | not received |
+| `Pitch` strip | pitch bend, channel 1 | pitch bend |
+| Keyboard | notes on the keyboard channel | notes on that track |
+| `Shift` | CC 9, channel 1, 127 on press and 0 on release | not in the SEQTRAK's CC map |
+| Main encoder, turned and pressed | nothing seen on any of the four ports | — |
+
+**The controls do not follow the keyboard channel in this program.** After
+`Shift` + key moved the keyboard to channel 8 (a key then sent its note on
+channel 8), encoder 1 still sent CC 74 on channel 1, fader 1 CC 82 on channel
+1, and pad 1 note 36 on channel 10. Same capture method.
+
+So with the controller in its Arturia program, two of its twelve knobs and
+faders do something on the SEQTRAK, and only on KICK. The DAW program's
+controls were not captured.
+
+**Two early runs were unusable and are recorded as such.** The first looped
+text began with the word `SEQTRAK`, which is also the template's name and what
+the screen shows by default. A later run concluded "families `00` and `01`
+work in the user program" before the program report was being captured; the
+controller was most likely in the Arturia program at the time. Both mistakes
+are the same one: reading a result without an instrument for the state it
+depended on.
+

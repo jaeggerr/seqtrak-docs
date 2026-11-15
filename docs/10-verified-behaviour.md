@@ -3183,3 +3183,332 @@ switched to another project with several pages and saw all of them at once:
 the patched firmware shows multi-page patterns normally, which points to the
 first song's own lengths rather than to the patch (*inferred*).
 
+## 2026-11-15, hardware session: two failed updates with the MiniLab patch, and a second recovery by forced termination
+
+Same unit, owner's go-ahead, the sender that completed run 5 on 2026-11-14
+(`tools/sysex_updater.py --write`), the file `8Z33OS_pfp_minilab.PGM`
+(play-from-page plus the MiniLab patch,
+[09](09-firmware.md#the-minilab-3-patch-built-and-not-flashed-2026-11-15)).
+The dry run against the simulated receiver passed first. **Neither run
+completed, and the patch was not shown to be running afterwards.**
+
+| Run | Observed | Marker |
+|---|---|---|
+| 1 | Loader, update mode acknowledged at **7.04 s**. `Installer` created. Leave update mode: `64 02 00` at +3.44 s (run 5 saw the port vanish at +0.51 s instead), identity byte 12 = `02`. `Program`: `64 01 00` after every packet of windows 1-41 and of the first 35 packets of window 42. **No `64 01 00` in 20 s after the last packet** (packet 35 of window 42, 270 bytes, all 10,870,674 bytes sent). No `64 01 05` either. The create request `64 01 02` was therefore **never sent**. Exit acknowledged; the unit came back in normal mode, identity `mm = 0A`, `FirmwareVersion` `02 00 00 02`, tempo readable | `verified on hardware` |
+| 2 | Same file, a few minutes later, the sender changed only to log stray replies and wait 60 s on a block's last packet. Loader at 7.04 s, `Installer` created, leave update mode: port gone at +1.01 s, and **it never came back** (watched for more than a minute; no USB device at all). The owner: the unit "does not react at all any more" | `verified on hardware` |
+| Recovery | Forced termination `[⏻/PLAY]` + `[PROJECT↑]`, then a normal power-on: the port was back 28.7 s after the watch started, identity `mm = 0A`, `FirmwareVersion` `02 00 00 02`, tempo `00 61`, and the owner reports a normal start | `verified on hardware` |
+
+**What this establishes.** The forced termination recovers the unit from a
+hang **after the `Installer` block was created** (run 2). The 2026-11-05
+recovery was from a stalled transfer before any create; this one is a step
+further. It still says nothing about an interrupted `Program` write.
+
+**What it does not establish:**
+
+- **Which `Program` the unit is running.** After the recovery, a cumulative
+  counter on the USB port (150 s, every message keyed by type) saw 26 sound
+  changes on channel 8, each as CC 0 + CC 32 + Program Change, and **zero**
+  SysEx with Arturia's manufacturer ID. That is what the unpatched firmware
+  would do, and also what the patched one would do if its hook is not on the
+  Sound Select path or its transmit does not reach USB. The create request
+  was never sent in run 1, so the old `Program` still running is the simpler
+  reading (*inferred*).
+- **Why run 1's last packet got no flow-control reply.** The two files end
+  the same way (the LZSS stream stops cleanly mid-group in both), and every
+  earlier packet was acknowledged. What differs from run 5: the last packet
+  carries 270 bytes instead of 28, and the stream is 242 bytes longer. Not
+  explained.
+- **Why run 2 hung at the hand-over.** The `Installer` block is byte-identical
+  to the one that handed over correctly in run 1 and in run 5. The only
+  difference found is history: run 2 followed a `Program` transfer that had
+  been abandoned without a create. Not explained.
+
+The sender now keeps the last stray replies and prints them when a wait fails
+(`fw_midi.py`); run 2 failed before that could say anything.
+
+### What the `Installer`'s code says about run 1 (static, same day)
+
+`from firmware image (static analysis)`: the `Installer` block read in ARM mode
+at `0x10000000` (`seqtrak-firmware-analysis/tools/installer_tools.py`).
+Nothing was sent to the unit for this.
+
+| Item | Address | What the image shows |
+|---|---|---|
+| Block-data handler `64 02 02` | `0x10003380` | checks the packet number against the counter at state `+5` (mismatch → error `0x0F`), unpacks (`0x100031CC`, 0 → error `0x10`), hands the bytes to `0x10000C2C` (negative → error `0x11`), and **only then** sends `64 01 00` (template at `0x10064850`) |
+| Error reply | `0x10003340` | sends the template at `0x100648A8`, which is `64 01 05`, and stores the code at state `+8` |
+| Accumulate and write | `0x10000C2C` | drops the 4-byte length prefix of a compressed block, stages input 256 KiB at a time, decompresses (`0x10002A6C`) into one output buffer at `0x101C1EBC`, and does **nothing else until the received count reaches header `+0x7C`** (or the output reaches 64 MiB). On that last call it runs the per-type check (`+4` of the type's entry in `0x1006D570`: the `#8Z33` tag and the sum) and then `0x10000688` |
+| Write | `0x10000688` | the type's `+0xC` hook, then four stages with a progress callback each (`0x1000241C`; `0x1000258C`; `0x10002774`, failure → `5`; `0x1000286C`, failure → `6`; `0x1000258C` again, failure → `7`), then the type's `+0x10` hook. Read as erase, program and verify (*inferred* from the shape; the leaf routines were not read) |
+| Create request `64 01 02` | `0x1000350C` | compares two counters (error `0x12` if they differ), sends `64 01 03`, sets a flag, and calls two routines that only loop over a table sending 4-byte tuples to `0x10037B88` (*inferred*: the LEDs) |
+| Leave update mode | `0x10003598` | with the create flag set, the same kind of LED loop (`0x10001B30`); without it, the other two. No write was found in either path |
+
+**So the whole `Program` is written inside the handler of the block's last
+packet, before that packet's `64 01 00`.** The create request that follows
+writes nothing. This changes the reading of run 1:
+
+- the missing reply is most simply the write still running when the sender's
+  20-second window closed (*inferred*; run 5's write must then have finished
+  inside 20 s, and that run logged no times, so the two cannot be compared);
+- the leave-mode acknowledgement arrived afterwards, which a busy handler
+  could not have sent, so the write had returned by then, without an error
+  reply (*inferred*);
+- **the patched `Program` is therefore most likely on the unit since run 1**,
+  and run 2 changed nothing in it. The sentence above calling the old
+  `Program` "the simpler reading" is withdrawn.
+
+If that is right, the 26 sound changes with no Arturia SysEx mean cave N is
+not doing its job: the Sound Select path does not reach the hook, or the
+transmit does not reach USB. Both were listed as assumptions of the build.
+It also means cave N ran, or was bypassed, 26 times without disturbing the
+unit.
+
+**Not settled, and not attempted:** a reversible test that would tell the two
+firmwares apart from the host (arm cave T with CC 9 on channel 1, send CC 19
+on channel 1, see whether KICK's pan moves, restore with CC 10). It is a
+write, and the owner had agreed to a read-only investigation.
+
+Run 2's hang at the hand-over is still unexplained.
+
+The sender now waits 300 s for the reply to a block's last packet
+(`LAST_PACKET_WINDOW` in `fw_midi.py`).
+
+### Settled the same day: the patched `Program` is running, and cave T works
+
+Owner's go-ahead for a reversible write. Host on the USB port, Parameter
+Requests with four tries each, tempo `30 40 76` as the witness in every
+snapshot, restore in a `finally`.
+
+| Step | `30 50 01` (KICK pan) | `31 10 15` | Tempo |
+|---|---|---|---|
+| Before | `40` | `40` | `00 61` |
+| Control: CC 10, channel 1, value `50` | **`50`** | `40` | `00 61` |
+| Control restored: CC 10 = `40` | `40` | `40` | `00 61` |
+| CC 19, channel 1, value `20`, **before** any CC 9 | `40` | `40` | `00 61` |
+| CC 9 on channel 1 (127, then 0), then CC 19 = `20` | **`20`** | `40` | `00 61` |
+| Restored: CC 10 = `40` | `40` | `40` | `00 61` |
+
+`verified on hardware`:
+
+- **The MiniLab patch is on the unit.** CC 19 is not in the SEQTRAK's CC map
+  and did nothing until CC 9 had been seen; after it, CC 19 moved KICK's pan
+  exactly as CC 10 does. Only cave T does that. So run 1 did write the
+  `Program`, as the static reading predicted, and **a `Program` block is
+  complete once its last packet has been received; the create request is not
+  needed for the write**.
+- **Cave T works**: arming on CC 9, the table (CC 19 → CC 10), and the
+  default current track (channel 1).
+- **CC 10 on a track's channel writes `30 5p 01`** (Project Track Pan), not
+  the sound's own pan `31 1p 15`. New for [cc-map](../data/cc-map.csv).
+
+**Why no sound name was sent** (`from firmware image (static analysis)`).
+The build's claim that `0x20143948` is the only site that transmits a Bank
+Select was wrong: it listed the callers of `0x2013BA04`, not the callers of
+the port routine under it. The port-level Bank Select + Program Change
+(`0x203C6308`) has **17** call sites. Five are in the UI code
+(`0x200CC4F4`, `0x200CC640`, `0x200CC75C`, `0x200CC810`, `0x200CC888`, in
+routines reached from `0x200D4680`), which calls it directly on its own port
+object (`[ui+0x20]`) with the part as the channel: `0x200CC640` and
+`0x200CC75C` pass MSB `0x3F` (factory sound), `0x200CC4F4` MSB `0x3E`, and
+the other two `part type | 0x20`. The Sound Select knob is *inferred* to go
+through these, not through the engine's event emitter. This is the
+negative-claim rule again: "the only site" needed a search of every caller
+of the lowest routine.
+
+**A second build** hooks the two MSB `0x3F` sites as well (cave U): it builds
+the same message, copies it into the port's SysEx buffer (`[port+0x38] + 4`,
+skipped if the buffer does not exist yet) and queues it with the port routine
+`0x203C6460(port, len, 0)`, the way the UI's own sender at `0x200A8494` does,
+then continues into `0x203C6308`. Checked off-device like the first
+(`minilab_patch_check.py`: 2,032 messages equal the model, nothing sent
+without a buffer or for another MSB, registers and stack preserved). Image
+sha256 `307d6745…bd9dd6`, file `8Z33OS_pfp_minilab2.PGM`. **Not flashed.**
+
+### Runs 3 and 4: two complete updates, the write time measured, and the sound name on the wire
+
+Same day, owner's go-ahead for each. The sender now waits 300 s for the reply
+to a block's last packet and prints how long it took.
+
+| Run | File | Last `Installer` packet | Last `Program` packet | Result |
+|---|---|---|---|---|
+| 3 | `8Z33OS_pfp_minilab2.PGM` | answered after 0.01 s | answered after **20.73 s** | complete, `64 01 03` at once after the create request |
+| 4 | `8Z33OS_pfp_minilab3.PGM` | 0.02 s | **18.90 s** | complete |
+
+`verified on hardware`:
+
+- **The `Program` write takes about 19 to 21 seconds and happens before the
+  reply to the block's last packet.** That is the cause of run 1's failure:
+  the old 20-second window sits inside that range. Run 5 of 2026-11-14 passed
+  under it by luck.
+- After the create request, **leave update mode was not acknowledged within
+  20 s** in either run; the reboot command was sent anyway and the unit came
+  back in normal mode both times (identity `mm = 0A`, `FirmwareVersion`
+  `02 00 00 02`, tempo `00 61`). Run 5 of 2026-11-14 logged an
+  acknowledgement there. Not explained.
+- Right after run 4's reboot, `FirmwareVersion` did not answer in five tries
+  and the tempo answered on the fourth; ten seconds later everything answered
+  on the first try. Read as the unit still starting (*inferred*).
+- The hand-over to the `Installer` worked in both runs (port gone at +0.51 s
+  and +1.51 s). Run 2's hang did not recur and is still unexplained.
+
+**Run 3's build did not send the name.** Four sound changes on SYNTH 1 with
+the Sound Select knob, counted cumulatively on the USB port: 4 × (CC 0, CC 32,
+Program Change), **0** SysEx with Arturia's ID. So the knob does not go
+through `0x200CC640` / `0x200CC75C` either.
+
+**The knob's handler is `0x200DEFF0`** (`from firmware image (static
+analysis)`): a method of a per-part object (part at `+0x10`, current sound at
+`+0x12`) that takes the port and a signed step, computes the next or previous
+sound (`0x20278C94` / `0x20278D5C`), and, if it changed, calls
+`0x203C6308(port, part, program, 0x3F, LSB, 0)` at **`0x200DF084`**. Its two
+siblings do the same for MSB `part type | 0x20` (`0x200DF2CC`) and MSB `0x3E`
+(`0x200DF3EC`).
+
+**Run 4's build hooks `0x200DF084` as well, and the name is sent**,
+`verified on hardware`: 19 sound changes with the knob (SYNTH 1), same
+cumulative counter, **27** SysEx with Arturia's ID, each
+`F0 00 20 6B 7F 42 04 01 60 01 <name> 00 02 SYNTH 1 00 F7` with a name from
+the preset list (`Space Walking`, `Industrial`, `Outer Planet`, `Perplex`,
+`Metamorphosis`, `Men In Yellow`, `InsideTheWormhole`, `Blaster Beam`,
+`Lost in Asia [Arp]`, `Nibelungen [Arp]`, `J-Pop [Arp]`, `Celesta [Arp]`
+were the last twelve). The owner reports the unit behaving normally.
+
+Not established by this: why 27 messages for 19 Program Changes (the name
+may be sent by more than one of the hooks for some changes, or some Program
+Changes were not transmitted; the capture did not pair them); the KICK
+changes the owner made do not appear in the last twelve Program Changes kept
+by the capture; and **nothing has been seen on the MiniLab's screen yet**:
+the capture was on the USB port with a computer as host, not with the
+MiniLab attached.
+
+### The name on the MiniLab's screen (owner's report, same day)
+
+The MiniLab 3 plugged into the SEQTRAK's USB-C port, in its Arturia program,
+third build of the patch on the SEQTRAK: **the owner reports that the sound
+name is displayed** when Sound Select is turned. `verified on hardware`, by
+the owner reading the screen; which sounds and how many were not recorded.
+
+Two things follow:
+
+- the name message reaches the device attached in host mode, not only a
+  computer in device mode;
+- **the MiniLab needs no DAW connect message** to show family `01` text in
+  its Arturia program: it had been powered off and on again (it is powered by
+  the SEQTRAK) since the last connect message was sent to it, and the patch
+  sends none.
+
+Not reported yet: the translated controls with the MiniLab attached
+(`Shift` + key, a note, then the encoders, faders and pads). The translation
+itself was measured from a computer above.
+
+### Run 5: the fourth build, and what it sends
+
+Same day, owner's go-ahead. `8Z33OS_pfp_minilab4.PGM`
+([09](09-firmware.md#the-minilab-3-patch-fourth-build-the-screen-follows-the-track-and-the-control-2026-11-15)),
+battery 90 %.
+
+| Step | Observed | Marker |
+|---|---|---|
+| Update | complete. Last `Program` packet answered after **20.80 s**. Leave update mode again not acknowledged within 20 s | `verified on hardware` |
+| After the reboot | identity `mm = 0A`, `FirmwareVersion` `02 00 00 02`, tempo `00 61`, each on the first try once the port had been stable for 12 s | `verified on hardware` |
+| The periodic hook | the unit starts and runs normally with a cave called from the manager's update (owner's report, and everything below) | `verified on hardware` |
+| MiniLab attached, Arturia program | the owner reports the **parameter names shown when the encoders are turned**, and the track name shown, but **no sound name** | `verified on hardware`, owner reading the screen |
+
+A capture with a computer as host then showed what is sent, every message in
+order with its time (`SCREEN` is the Arturia SysEx, as `line 1 / line 2`):
+
+| Gesture | Sent |
+|---|---|
+| Select SYNTH 1 (first time since power-on) | `01 10 27` = `07`, then ` / SYNTH 1` 30 ms later |
+| Sound Select on SYNTH 1, three steps | `Lost in Asia [Arp] / SYNTH 1`, `Blaster Beam / SYNTH 1`, `InsideTheWormhole / SYNTH 1`, each 20-30 ms **before** its Program Change (channel 8, MSB 63, LSB 14, programs 98-100) |
+| Select KICK | `01 10 27` = `00`, then ` / KICK` |
+| Sound Select on KICK, three steps | `Tight Punchy Kick 2`, `3`, `4` ` / KICK`, with Program Changes on channel 1, MSB 63, LSB 0, programs 1-3 |
+| Select DX, Sound Select twice | ` / DX`, then `FM Digital Brass / DX`, `FM Brass / DX` (channel 10, MSB 63, LSB 15, programs 74, 75) |
+| Select SYNTH 1, KICK, DX again | `InsideTheWormhole / SYNTH 1`, `Tight Punchy Kick 4 / KICK`, `FM Brass / DX` |
+
+`verified on hardware`, all of it:
+
+- **Cave P works**: it follows the selected track, within about 30 ms.
+- **`01 10 27` is the selected track**, broadcast on selection: `07`, `00`,
+  `09` for SYNTH 1, KICK, DX. (`from official app` until now.)
+- **The knob handler `0x200DEFF0` serves drum, synth and DX tracks alike**:
+  names were sent for all three.
+- The catalogue arithmetic `k = LSB × 128 + program` gives the right name on
+  all three engines.
+- The owner's "no sound name" is the limit the build was known to have: a
+  track shows its sound only after that sound has been changed since
+  power-on. It is not a fault in what is sent.
+
+### A fifth build, not flashed: learn each track's sound without a change
+
+`from firmware image (static analysis)`. The Sound Select knob object (vtable
+at `0x203C8BB8`: `+0x8` the step handler `0x200DEFF0`, `+0xC` a setter
+`0x200DDCFC`) is built with its current sound at `+0x12` set to **0**
+(`0x200E87C0`, and the stand-alone constructor `0x200E204C`), its track at
+`+0x10`, and at `+8` the track's model block (`[model+0x1D0] + track × 0xF8 +
+0x38`). It is then handed to a binding routine (`0x200E8448`). The setter,
+`strh r2, [r0, #0x12]` then the object's `+0x10` method, is the only other
+writer of `+0x12` in this class. So the real sound reaches the object through
+the setter (*inferred*: the binding was not read).
+
+The fifth build replaces the setter's first instruction with a branch to a
+seven-instruction cave that stores the sound for the object's track, replays
+the instruction and continues. Checked like the others (the setter is part of
+the 60,000-step random run; values of 2,032 and above are treated as
+unknown). Image sha256 in the build log; file `8Z33OS_pfp_minilab5.PGM`.
+
+Not established: **when** the firmware calls the setter. If it is not called
+at start-up and project load for every track, this build changes nothing
+visible.
+
+### Runs 6 and 7: the fifth build, a second stop at the hand-over, and the sound known without a change
+
+Same day, owner's go-ahead. `8Z33OS_pfp_minilab5.PGM`, image sha256
+`7b32bfc0…48ac77a`.
+
+| Run | Observed | Marker |
+|---|---|---|
+| 6 | Loader at 7.04 s, `Installer` created, leave update mode: port gone at +1.01 s and **never back** (watched 45 s). Nothing of the `Program` sent. The owner then started the unit **with an ordinary long press on `[⏻/PLAY]`**, no forced termination; identity `mm = 0A` 35 s into the watch | `verified on hardware` |
+| 7 | Same file, a minute later: hand-over at +0.50 s, last `Program` packet answered after **20.23 s**, complete. Normal mode afterwards, version and tempo on the first try | `verified on hardware` |
+
+**The hand-over failure is the unit switching off, not hanging** (*inferred*
+from run 6: a plain power-on brought it back). That re-reads run 2 of this
+morning, where the forced termination was used without first trying a plain
+power-on. Two occurrences in seven hand-overs today, both logged as "port
+gone at +1.01 s"; the five that worked logged +0.50 s, +0.51 s (twice),
++1.51 s and a `64 02 00` at +3.44 s. The sender polls every 0.5 s, so this is
+not a timing measurement. Cause unknown. Nothing is lost when it happens: the
+`Program` has not been touched, and the update can simply be started again.
+
+**Cave S works**, `verified on hardware`. After run 7, with no sound changed
+since the reboot, a capture with a computer as host (every message in order):
+
+| Selected | `01 10 27` | Screen message, 20-40 ms later |
+|---|---|---|
+| KICK | `00` | `Tight Punchy Kick 4 / KICK` |
+| SNARE | `01` | `Bright Clap 1 / SNARE` |
+| HAT 1 | `03` | `Tight Closed Hat 1 / HAT 1` |
+| HAT 2 | `04` | `Bright Open Hat 1 / HAT 2` |
+| SYNTH 1 | `07` | `InsideTheWormhole / SYNTH 1` |
+| SYNTH 2 | `08` | `More Fatty / SYNTH 2` |
+| PERC 2 | `06` | `Shaker 1 / PERC 2` |
+
+So the firmware does call the knob object's setter `0x200DDCFC` for each
+track at start-up, with the track's current sound, and the fifth build knows
+every track's sound without a change. KICK and SYNTH 1 show the sounds the
+owner had left on them before the reboot. The names for the other tracks
+were not compared with an independent read of `01 1p 33`.
+
+An earlier seven-minute capture in this session recorded nothing at all, not
+even `01 10 27`, with the port listed; the unit had most likely been
+unplugged and plugged back while the listener held the old port. It is
+recorded as void, not as silence from the unit.
+
+**The fifth build with the MiniLab attached** (owner's report, same day).
+First attempt: nothing at all on the MiniLab's screen, not even when a fader
+was moved. After unplugging the MiniLab and plugging it back: it works. The
+owner did not say which program the MiniLab was in during the empty-screen
+episode, or whether `Shift` had been pressed since the SEQTRAK's reboot, so
+the cause is not established. Two things are lost at every SEQTRAK reboot and
+either would give an empty screen: the MiniLab, powered by the SEQTRAK,
+restarts and may not come back in its Arturia program; and cave T is
+disarmed until CC 9 is seen again.
+

@@ -815,6 +815,274 @@ marks Song Position as neither transmitted nor recognised
 (appendix I) `from Yamaha Data List`. It could still be tried from the host,
 which is cheap and needs no flashing, but the chart predicts no effect.
 
+### Toward a "sound name on an attached controller" patch (static, 2026-11-15)
+
+The owner wants the name of the current sound shown on the screen of a
+controller plugged into the SEQTRAK's USB port (an Arturia MiniLab 3), with no
+computer in between. The controller's screen only shows what a host sends it
+in the controller vendor's own SysEx, which the stock firmware never emits. A
+patch would have to make the SEQTRAK send it. This subsection locates the
+three pieces such a patch needs. **Nothing was built or flashed.**
+
+`from firmware image (static analysis)`, read in ARM mode against this
+repository's copy of the image, with
+`seqtrak-firmware-analysis/tools/image_tools.py`.
+
+| Piece | Address (image VA) | What the image shows |
+|---|---|---|
+| **Raw SysEx transmit** | `0x20135F84` | `(io, buf, len, src, transmit)`, `transmit` being the fifth argument, on the stack. When it is non-zero the bytes are copied into the buffer of the port object at `io+0x58` (`[port+0x38] + 4`, allocated on demand, `0x2000` bytes) and queued with the port routine below, then the same for the port object at `io+0x5C` unless `src = 4`. When it is zero the bytes go to the engine parser `0x20147F0C` first and are transmitted only if that returns non-zero. So this routine is both ways: the third-party notes above call it the inbound router, which is its `transmit = 0` half |
+| Port-level SysEx send | low RAM `0x000271B4` (image `0x200875B4`), veneer `0x203C6460` | `(port, len, portid)`: returns without sending when bit `0x80` of the half-word at `port+0x2E` is set or the buffer is missing; otherwise writes `portid` (or the port's default at `+0x2C` when 0) to buffer byte 0, the length to bytes 2-3, and posts a message of type `0xF0` through `0x200806DC` |
+| The firmware's own use of it | 10 sites, `0x201439FC`…`0x20145C74` | each fills the 15-byte template `F0 43 10 7F 1C 0C 00 00 00 00 00 00 00 00 F7` at RAM `0x105FDCE8` (image `0x2068E0E8`), counts up to `F7`, and calls `0x20135F84(engine+0x10 → io, template, len, src, 1)`. So the call shape a patch would copy is in the image |
+| Engine event emitter | `0x201437EC` | `(engine, part, event, src)`. Dispatches on the type byte at `event+0x18`: `0x80`, `0x90`/`0x91`, `0xB0`/`0xB1`/`0xB2`, `0xC0`, `0xC1`, `0xD0`, `0xE0`, and `0x30`-`0x32`/`0x40`/`0x48` for the SysEx template. 35 callers, in the track and player classes (`0x20164214`…`0x2017EEF0`) |
+| **Sound-change transmit** | `0x2013BA04`, called at `0x20143948` | `(io, channel, program, bank MSB, bank LSB, src)`. The event type `0xC1` case of the emitter loads `program = [event+0x25]`, `MSB = [event+0x26]`, `LSB = [event+0x27]` and calls it. It queues, then sends on both port objects through the port routine below |
+| Port-level Bank Select + Program Change | low RAM `0x00026FD4` (image `0x200873D4`), veneer `0x203C6308` | `(port, channel, program, MSB, LSB, portid)`: skips the two Bank Selects when MSB or LSB is `0xFF`, otherwise posts `Bn 00 MSB`, `Bn 20 LSB`, then `Cn program` |
+| Other callers of `0x2013BA04` | `0x201439C4`, `0x2013D864` | both pass `0xFF` for MSB and LSB (Program Change alone). `0x20143948` is the **only** site in the image that transmits a Bank Select pair |
+| **Factory sound names** | record `k` at image offset `0xFBFFFF + k × 0x700` (image address `0x20FFFFFF + k × 0x700`), `k` = catalogue number − 1, 2,032 records | the name is 7-into-8 packed from record offset `+9`: one MSB byte, then seven characters, eleven groups. Space-padded, up to 31 characters. Re-checked for all 2,032 records against `data/presets.csv` (`tools/preset_names_check.py`): **2,028 match**, 4 differ in spelling (below). This confirms the third party's table location, which was listed above as not re-checked |
+
+**Why the hook is `0x20143948`** (*inferred*). The machine transmits Bank
+Select MSB + LSB + Program Change on every sound change (`verified on
+hardware`, [10](10-verified-behaviour.md)), and one site in the image can
+produce that triplet. At that site `r0 = io`, `r1 = channel`, `r2 = program`,
+`r3 = MSB`, `[sp] = LSB`, `[sp+4] = src`: everything a patch needs, with the
+`io` object for the transmit call already in hand. For a factory sound
+(MSB `0x3F`), `k = LSB × 128 + program` (`verified on hardware` as the
+catalogue arithmetic, [06](06-sounds-presets.md)).
+
+**What a patch would look like** (*inferred*, nothing built). Replace the
+`bl 0x2013BA04` at `0x20143948` with a `bl` to a cave. The cave, when
+MSB = `0x3F` and `k < 2032`, copies the name out of record `k` into a buffer
+framed by the controller's display SysEx, calls
+`0x20135F84(io, buffer, len, 0, 1)`, then tail-calls `0x2013BA04` with the
+original arguments. The buffer can live in the cave: the RAM copy of the code
+is writable ([MPU table](#architecture-and-soc)). Free cave: the dead
+destructor D1 is 2,160 bytes and play-from-page uses its last 320.
+
+**Not established:**
+
+| Unknown | Why it matters |
+|---|---|
+| Which physical outputs the port objects at `io+0x58` and `io+0x5C` are (USB, DIN, Bluetooth) | the patch sends on both, as the firmware does; a SysEx the controller's vendor defines would also go out of the other one |
+| Whether a front-panel Sound Select turn reaches `0x20143948`, as opposed to a sound change played back from a pattern | the inference above rests on "only site that can transmit a Bank Select"; the producer of the `0xC1` event was not found (no `mov #0xC1` in the code range) |
+| Whether bit `0x80` at `port+0x2E` is the `USB MIDI TX SysEx` switch `00 00 10` | if it is, and it is honoured for this path, the user setting gates the patch. In host mode the machine does send SysEx to an attached device (`verified on hardware`, [07](07-transports.md)) |
+| User sounds (MSB 63, LSB 32-47) | they are not in the factory table; the name would have to come from the part's live sound block, not located |
+| The controller side | **measured 2026-11-15, and it is the blocker**: the MiniLab 3 shows host text in its Arturia and DAW programs and not in a user program, which is where the SEQTRAK template lives ([11](11-controllers.md#the-minilab-3s-screen-what-a-host-can-write-on-it)). A patch would put a name on the screen only with the controller in a program whose control assignments are fixed |
+| Task context | `0x20143948` runs in the engine; the transmit routine allocates on first use. The firmware's own ten sites do the same from the same emitter, which is the reason to expect it is safe (*inferred*) |
+
+**Four factory names differ between the image and the Data List.** The names
+in `data/presets.csv` are `from Yamaha Data List`; the image holds:
+
+| Number | Data List | Image |
+|---|---|---|
+| 984 | `Hard FM Keyboard` | `Hard FM Keys` |
+| 1252 | `1967 Keyboard` | `1967 Keys` |
+| 1630 | `Woodwindind Quartet` | `WoodWind Quartet` |
+| 1946 | `FM Metallic Lead` | `FM Metalic Lead` |
+
+`from firmware image (static analysis)`. Which one the machine reports at
+`31 0p 00` for these four was not read.
+
+**The parameter index table does not carry the current sound.** Rebuilt in
+full (`tools/param_index_table.py`, 290 rows): it has no row for `01 1p 33`
+(`CurrentSound`) or `01 1p 35` (`CurrentSoundName`). Both are answered by
+some other path, not located.
+
+### Toward a "translate an attached controller's fixed CCs" patch (static, 2026-11-15)
+
+The measurement in [11](11-controllers.md#the-minilab-3s-screen-what-a-host-can-write-on-it)
+leaves the sound-name patch above with a cost: the MiniLab 3 only shows host
+text in a program whose controls are fixed, on channel 1, and mostly on CC
+numbers the SEQTRAK does not receive. A second patch could rewrite those
+messages as they come in. This subsection locates where. **Nothing was built
+or flashed.**
+
+`from firmware image (static analysis)`, read in ARM mode,
+`seqtrak-firmware-analysis/tools/image_tools.py`.
+
+| Item | Address (image VA) | What the image shows |
+|---|---|---|
+| Receive dispatcher | `0x201150AC` | a jump table on an event number (up to `0x13`). It feeds byte buffers to the parser below from five places, each with its own parser instance and, for four of them, an enable byte |
+| Parser instances | pointers at RAM `0x110219D0`, `0x110219E0`, `0x110219F4`, `0x110219F8`, `0x11021AAC` | one per input. **Which is USB host, USB device, DIN, Bluetooth or Wi-Fi was not established.** The strings `Port_PTMidiSerialClient`, `Port_PTUsbDeviceClient` and `bluetooth_midi_adapter` exist in the image but were not tied to an instance |
+| Feed a buffer | `0x2011A314` | `(parser, bytes, len)`: each byte with bit 7 set goes to the status handler `0x20119B54`, each data byte to `0x2011A1CC` |
+| Data byte, running status | `0x2011A1CC` | stores the byte at `parser + 4 + n` (status at `+4`, data from `+5`); when the message is complete, at `0x2011A2A4`: `ldrb r1, [r0, #4]` / `add r2, r0, #5` / **`bl 0x20119F40`**. SysEx bytes are accumulated separately (`+0xC` buffer, `+0x10` length, limit `0x2000`) |
+| **Channel-message dispatch** | `0x20119F40` | `(parser, status, data*)`. Drops the message unless the parser's channel byte at `+0x35` is `0x10` or equals the message's channel. Then by status: `0x80`, `0x90`, `0xA0`, `0xB0`, `0xC0`, `0xD0`, `0xE0`. Its only caller is `0x2011A2AC` |
+| Control Change branch | `0x2011A098` | drops CC 0 and CC 32 when the byte at `parser+0x37` is 0; otherwise `0x2011B654(parser+0x38, channel, cc, value, 0)`, then, if the global at RAM `0x11021AD4` is set, a second consumer with source `4` |
+
+**Why the hook is `0x2011A2AC`** (*inferred*). It is the one call through
+which every complete channel message from every input passes, with the status
+in `r1` and a pointer to the two data bytes in `r2`, both still writable: the
+bytes live in the parser object. A cave there can change the channel nibble,
+the controller number or the note number, then continue into `0x20119F40`
+unchanged.
+
+**What a patch would look like** (*inferred*, nothing built), for the MiniLab 3
+in its Arturia program:
+
+| Arrives | Rewritten as |
+|---|---|
+| Note On / Off on any channel but 10 | unchanged; its channel is remembered as the *current track* (one byte in the cave) |
+| CC 74, 71 on channel 1 | same CC, on the current track's channel |
+| CC 76, 77, 93, 18, 19, 16 on channel 1 (encoders 3-8) | CC 73, 75, 91, 94, 10, 7 on the current track's channel |
+| CC 82, 83, 85, 17 on channel 1 (faders 1-4) | CC 7 on channels 8, 9, 10, 11 |
+| CC 1 on channel 1 (`Mod` strip) | CC 74 on the current track's channel |
+| Notes 36-43 on channel 10 (pads 1-8) | note 60 on channels 1-8 |
+
+That reproduces the user template described in
+[11](11-controllers.md#arturia-minilab-3-mapping), with `Shift` + key still
+choosing the track, because the keyboard is the one control that follows the
+keyboard channel in that program.
+
+**Not established:**
+
+| Unknown | Why it matters |
+|---|---|
+| The hook sees every input, not only the USB host port | the rewrite would also apply to DIN and Bluetooth. Notes 36-43 on channel 10 from any other source would stop reaching DX. The patch needs a way to be off: a parser-instance test once the USB host instance is identified, or a switch |
+| Whether `0x2011B654` and the consumer behind `0x11021AD4` are everything downstream | a rewrite before the dispatch covers both by construction; this is only a question if the hook is moved later |
+| MIDI Thru | the rewritten message, not the original, is what would be forwarded |
+| Whether the MiniLab needs the DAW connect message before it shows text in its Arturia program | every positive observation was made after one had been sent |
+| Cave space | D1 has 1,840 bytes free if the tap-tempo patch is not installed. Both patches of this section together were not sized |
+
+### The MiniLab 3 patch (2026-11-15)
+
+> **Flashed on 2026-11-15, third build.** `verified on hardware`: cave T
+> translates (CC 19 moved KICK's pan only after CC 9), and the sound name is
+> transmitted on USB at each Sound Select turn, and the owner reports it
+> displayed on the MiniLab's screen, with no DAW connect message. The first build hooked the wrong site for the name; the tables
+> below describe that first build, and the corrections are in
+> [10](10-verified-behaviour.md#runs-3-and-4-two-complete-updates-the-write-time-measured-and-the-sound-name-on-the-wire):
+> the flashed build adds cave U, reached from `0x200CC640`, `0x200CC75C` and
+> the knob handler's `0x200DF084`. Image sha256 `cdd0b3ea…5bf661`, 832 bytes
+> of D1 used.
+
+`seqtrak-firmware-analysis/tools/minilab_patch.py` implements the two
+subsections above in one patch, on top of the play-from-page image (it also
+accepts the stock image). `tools/make_custom_pgm.py` turns the result into an
+updater. Every claim here is `from firmware image (static analysis)`.
+
+| Change | Image VA | Before | After |
+|---|---|---|---|
+| Code and data | `0x200AD5DC`-`0x200AD88B` (688 bytes, the **head** of dead destructor D1, after its `bx lr`) | D1's body | cave N, cave T, their tables and a text buffer |
+| Sound-change transmit | `0x20143948` | `bl 0x2013BA04` | `bl` cave N (`0x200AD5DC`) |
+| Channel-message dispatch | `0x2011A2AC` | `bl 0x20119F40` | `bl` cave T (`0x200AD6EC`) |
+
+Play-from-page keeps the last 320 bytes of D1 (`0x200ADD08` up); 1,148 bytes
+of D1 stay unused between the two.
+
+**Cave N.** For a factory sound (MSB `0x3F`, `k = LSB × 128 + program < 2032`)
+it copies up to 30 characters of the name from the preset table, drops
+trailing spaces, and sends
+`F0 00 20 6B 7F 42 04 01 60 01 <name> 00 02 <track> 00 F7` through
+`0x20135F84(io, buffer, len, src, 1)`, `src` being the one the hooked call was
+given and `<track>` the front-panel name of the channel's track (`KICK` …
+`SAMPLER`, empty above channel 11). It then continues into `0x2013BA04` with
+the original arguments. A `--connect` build sends the MiniLab's DAW connect
+message first; the default build does not.
+
+**Cave T.** It rewrites nothing until it has seen CC 9 on channel 1, which the
+MiniLab 3 sends for `Shift` in its Arturia program
+([11](11-controllers.md#what-the-arturia-programs-controls-send)). From then
+on, and only for the parser instance that delivered it, it applies the table
+of the previous subsection. The status is changed in `r1` only: the status
+stored in the parser is left alone, so running status still resolves against
+what was really received.
+
+**Checks run on the build** (`tools/minilab_patch_check.py`, which runs both
+caves in a small ARM interpreter with its own instruction decoder, independent of the
+assembler that produced them, and compares with a Python model):
+
+| Check | Result |
+|---|---|
+| The assembled object has no relocations (the caves are position-independent) | yes, asserted |
+| Original words at both hook sites before patching | as expected, asserted |
+| Bytes changed against the input image | 640, all in D1's head or the two hook words |
+| Cave N, all 2,032 factory sounds, random track and `src`, plus MSB `0x3E`, `0x40`, `0xFF` and `k` out of range | 2,048 messages equal the model; nothing sent for the other MSBs; `r0`-`r11`, `sp`, `lr` and the three stack arguments identical at exit in every run; stack 8-byte aligned at the transmit call |
+| Names sent against `data/presets.csv` | 2,027 equal; the 4 spelling differences listed above, and one name cut at 30 characters |
+| Cave T, 40,106 messages: every status `0x80`-`0xEF` × every first data byte after arming, 768 before arming, 25,000 random, two parser instances, re-arming | all equal the model; stored status and second data byte never changed; `r0`, `r2`, `r4`-`r11`, `sp`, `lr` preserved |
+| Branches into the new cave from outside it | the two hooks, and two from D1's own dead body (`0x200ADCE0`, `0x200ADCE8`) |
+| `.PGM` built: `Installer` identical, `+0x40` = sum of the patched image (`0x592A0C40`), re-decompressed `Program` = patched image | yes; image sha256 `e43f461d…d22111` |
+
+**Assumptions the build cannot check** (*inferred*, each one a way it could
+fail):
+
+| Assumption | If wrong |
+|---|---|
+| A front-panel Sound Select turn reaches `0x20143948` | **wrong, measured**: no name was sent. The knob handler is `0x200DEFF0` and calls the port routine itself at `0x200DF084` |
+| `0x20135F84` may be called from that point with a buffer in code RAM, as the firmware's ten sites call it with a buffer in data RAM | the worst case of this patch: a fault in the engine task on a sound change |
+| The transmit reaches the USB host port, and `src` copied from the event routes it there | the name goes to another output, or nowhere |
+| The MiniLab shows family `01` text in its Arturia program without a DAW connect message | no text; rebuild with `--connect` |
+| CC 9 on channel 1 arrives only from the MiniLab's `Shift` | another device sending it arms the translation for its input |
+| The MiniLab's pad bank B and its `Shift` combinations send nothing the table mishandles | not captured |
+| The user keeps at least one note played after `Shift` + key | until a key is played on the new channel, the encoders stay on the previous track |
+
+**Going back** is the previous updater, flashed the same way: the
+play-from-page `.PGM` or the stock `8Z33OS_.PGM`. A flash-back over SysEx has
+still not been done once.
+
+### The MiniLab 3 patch, fourth build: the screen follows the track and the control (2026-11-15)
+
+> **Flashed on 2026-11-15 and working**: the unit runs with the periodic
+> hook, the screen follows the selected track, and the owner reports the
+> parameter names shown when the encoders are turned
+> ([10](10-verified-behaviour.md#run-5-the-fourth-build-and-what-it-sends)).
+> **A fifth build is flashed and working too**: a hook on the knob object's
+> setter `0x200DDCFC` (cave S) makes each track's sound known from start-up
+> ([10](10-verified-behaviour.md#runs-6-and-7-the-fifth-build-a-second-stop-at-the-hand-over-and-the-sound-known-without-a-change)).
+> Image sha256 `7b32bfc0…48ac77a`, 1,476 bytes of D1 used.
+
+The owner's report on the third build: the name is displayed, but the track
+line stays on the last track whose sound was changed, and turning an encoder
+or a fader shows nothing. The fourth build
+(`seqtrak-firmware-analysis/tools/minilab_patch.py`) adds a periodic cave in
+the UI task. `from firmware image (static analysis)` throughout.
+
+| Item | Address (image VA) | What the image shows |
+|---|---|---|
+| Manager update, every 10 ms (third party's reading of the period) | `0x200A7DF0` | calls five sub-updates; the fourth is `bl 0x200CAD18` at **`0x200A7E1C`** with `r0 = [mgr+0x98]`, `r1 = [mgr+8]` |
+| The object at `mgr+0x98` | built at `0x200AD00C` by constructor `0x200D2498`, size `0x2454` | the constructor stores `mgr` at `+8`, **`0x200ABA84(mgr)` = `[mgr+0x78]` at `+0xC`**, and its seventh argument at **`+0x20`**. `0x200CAD18` is `add r0, r0, #0x2440` / `b 0x200CAC84`: the update of a sub-object |
+| `+0xC` is the UI state | `0x200CC4B0`, `0x200CAE30` and others | methods of this class pass `[this+0xC]` to the UI state getters `0x200B2D00` / `0x200B2D50`; `[mgr+0x78]` is passed to `0x200B2D00` at `0x200A8394` |
+| `+0x20` is the port | `0x200CAECC`, `0x200CC624` | methods of this class pass `[this+0x20]` to the port-level SysEx send `0x203C6460` (after copying into `[port+0x38] + 4`) and to the port-level Bank Select + Program Change `0x203C6308` |
+| Selected track | UI state index 4 through `0x200B2D00` | as used by the play-from-page patch, which works on hardware |
+
+| Change against the play-from-page image | Image VA |
+|---|---|
+| Code and data, 1,440 bytes | `0x200AD5DC`-`0x200ADB7B` (head of D1; play-from-page starts at `0x200ADD08`) |
+| `bl 0x203C6308` → cave U | `0x200CC640`, `0x200CC75C`, `0x200DF084` |
+| `bl 0x200CAD18` → cave P | `0x200A7E1C` |
+| `bl 0x20119F40` → cave T | `0x2011A2AC` |
+
+The engine-side hook of the first builds (`0x20143948`) is dropped, so every
+message is built and sent from the UI task; the MIDI receive path only writes
+one word.
+
+**Cave T** now leaves an event in a mailbox word: `0x80000000 | track << 16 |
+controller << 8 | value` for a translated control, `0x40000000 | track << 16`
+when a Note On arrives on a channel other than the current one.
+
+**Cave P**, at most once every fourth call (40 ms): if the mailbox holds a
+control it sends `<track> <parameter>` / `<value in decimal>`
+(`SYNTH 1 Cutoff` / `87`); if it holds a track, or if UI state index 4
+changed since the last look, it sends `<sound>` / `<track>`. The sound is the
+last one cave U saw for that track, so it is empty for a track whose sound
+has not been changed since power-on. It then continues into `0x200CAD18`.
+
+**Checks** (`tools/minilab_patch_check.py`, the same interpreter and model
+method as before; the image is first compared with a fresh assembly of the
+source): cave U on all 2,032 sounds plus the cases that must send nothing;
+cave T on 40,106 messages including the mailbox, the current track and the
+arming; 60,000 random steps interleaving the three caves on one machine
+(6,404 messages from cave P, 5,995 from cave U, all equal to the model); all
+128 values print as their decimal; registers, stack pointer and arguments
+preserved in every run, stack 8-byte aligned at every call. `.PGM` built and
+re-decompressed to the image, sha256 `a0fa7082…fa39a0`.
+
+**Assumptions the build cannot check** (*inferred*):
+
+| Assumption | If wrong |
+|---|---|
+| The object passed to `0x200CAD18` is always the one built at `0x200AD00C`, and its `+0xC` / `+0x20` hold the UI state and the port from the first update on | **the worst case of any build so far**: the hook runs every 10 ms from start-up, so a bad pointer faults the UI task at boot. The way back would be the loader (SysEx, if the unit still answers) or the USB-stick update at power-on, which has not been tried on this unit |
+| The mailbox word is seen coherently by the receive path and the UI task | an event is lost or shown late |
+| The MiniLab accepts a screen message every 40 ms while an encoder turns | missed or garbled updates on its screen |
+| The MiniLab shows 14 characters on its first line and the value on its second as intended | a cut parameter name |
+
 ## What the hardware has actually said about `0x64`
 
 Everything above about the protocol comes from the official app. Read-only probe

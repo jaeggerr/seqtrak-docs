@@ -525,6 +525,26 @@ that nobody has checked here.
 | Does the SysEx update path reach the per-type checker at `0x10001FD4` too, or only the stick path? Indirect evidence: a `Program` with a correct `+0x40` was accepted over SysEx; a wrong one has not been tried | trace the callers of the `0x1006D570` table from the `64 02 02` handler at `0x3380` |
 | Does flashing the stock `8Z33OS_.PGM` back over SysEx restore the unpatched firmware? | one run of `tools/sysex_updater.py` with the stock file, then `[PLAY]` on page 2 starting at page 1 |
 
+### Opened by the "sound name on a controller" patch study (2026-11-15)
+
+The pieces are located in the image, in
+[09-firmware.md](09-firmware.md#toward-a-sound-name-on-an-attached-controller-patch-static-2026-11-15).
+Nothing was built.
+
+| Question | What would settle it |
+|---|---|
+| ~~Does the MiniLab 3 show text sent to it by SysEx while it runs a user program?~~ **Answered 2026-11-15: no**, with the families tried; yes in its Arturia and DAW programs ([11](11-controllers.md#the-minilab-3s-screen-what-a-host-can-write-on-it)). The Arturia program's controls are captured too: fixed assignments on channel 1, two of twelve useful to the SEQTRAK. Still open: family `01` in a user program, and what the DAW program's controls send | a capture of every control in the DAW program |
+| Does a front-panel Sound Select turn go through the event emitter's `0xC1` case at `0x20143948`? | find the producer of the `0xC1` event in the image; or flash a patch that hooks it and turn the knob |
+| Which physical outputs are the port objects at `io+0x58` and `io+0x5C`? | read the constructors that fill `port+0x2C` and `port+0x2E` |
+| Is bit `0x80` at `port+0x2E` the `00 00 10` `USB MIDI TX SysEx` switch? | follow the system-parameter write for `00 00 10` to the port object |
+| For presets 984, 1252, 1630 and 1946 the image and the Data List spell the name differently. Which does `31 0p 00` return? | load each by Bank/PC and dump the name. Read-mostly, cheap |
+| Where are `01 1p 33` and `01 1p 35` answered? They are not in the 290-row parameter index table | follow a Parameter Request through the engine parser `0x20147F0C` |
+| Which of the five MIDI parser instances (RAM `0x110219D0`, `0x110219E0`, `0x110219F4`, `0x110219F8`, `0x11021AAC`) is the USB host input? ([09](09-firmware.md#toward-a-translate-an-attached-controllers-fixed-ccs-patch-static-2026-11-15)) | read the code that creates each one and the port object it is given |
+| ~~Does the MiniLab 3 show text in its Arturia program without a prior DAW connect message?~~ **Answered 2026-11-15: yes** ([10](10-verified-behaviour.md#the-name-on-the-minilabs-screen-owners-report-same-day)) | — |
+| The MiniLab 3 patch is built and checked off-device ([09](09-firmware.md#the-minilab-3-patch-built-and-not-flashed-2026-11-15)). Does it work? | flash it; turn Sound Select with the MiniLab in its Arturia program; press `Shift`, play a key, turn each encoder. Flash the stock file back first, once, to know the way back works |
+| ~~Which `Program` is the unit running since 2026-11-15?~~ **Answered**: the MiniLab patch, third build ([10](10-verified-behaviour.md#runs-3-and-4-two-complete-updates-the-write-time-measured-and-the-sound-name-on-the-wire)). Still open: run 2's hang at the hand-over; why leave update mode was not acknowledged within 20 s after runs 3 and 4; and the translated controls with the MiniLab attached (the name on its screen is reported working) | `Shift` + key, a note, then each encoder, fader and pad |
+| The MiniLab patch is at its fifth build, flashed and working on the wire ([10](10-verified-behaviour.md#runs-6-and-7-the-fifth-build-a-second-stop-at-the-hand-over-and-the-sound-known-without-a-change)). Still open: why the unit sometimes switches off at the hand-over to the `Installer` (2 of 7 on 2026-11-15); why leave update mode is no longer acknowledged within 20 s after a `Program` write; each translated control checked one by one with the MiniLab attached | for the hand-over: read what the loader does on `64 00 00 00`, and log the battery and USB power state at each run |
+
 ## A lead worth following: the firmware's own parameter names
 
 The decompressed `Program` image contains a **table of internal parameter name
