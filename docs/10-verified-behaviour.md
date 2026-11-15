@@ -3595,3 +3595,36 @@ Not established, and not to be read into the above:
 - the stopped case is one attempt. It is a negative result supported by a
   read-back with a control, not by repetition.
 
+## 2026-11-15: a Program Change needs its own Bank Select, every time
+
+The same third-party report said a bare Program Change does nothing on the DX
+track. Run here over USB with `receive_side.py --pc --part 9`, sequencer
+stopped. The instrument is `01 19 33` (`CurrentSound`, catalogue number − 1),
+read 0.5 s after each step and retried up to five times; the tempo control read
+137 at the end.
+
+| Step | Sent on channel 10 (part 9, DX) | `01 19 33` read back |
+|---|---|---|
+| before | — | 1961 (bank LSB 15, program 41) |
+| A | `C9 2A` — Program Change 42 alone | **1961**, unchanged |
+| B | `B9 00 3F`, `B9 20 0F`, `C9 2B` — MSB 63, LSB 15, Program Change 43 | **1963**, as predicted (15 × 128 + 43) |
+| C | `C9 2C` — Program Change 44 alone, straight after B | **1963**, unchanged |
+| restore | `B9 00 3F`, `B9 20 0F`, `C9 29` | 1961 |
+
+`verified on hardware`, on part 9:
+
+- **A Program Change with no Bank Select before it is ignored.** Step A is a
+  negative result, and the instrument can carry it: the same read moved in step
+  B and moved back on restore, in the same run.
+- **The bank is not latched on the channel.** Step C came one message after a
+  complete triplet and was ignored all the same. The Bank Select pair is
+  consumed by the Program Change that follows it.
+- The triplet selects the predicted sound — a further confirmation of
+  [the bank arithmetic](06-sounds-presets.md#reading-back-which-sound-is-loaded).
+
+Limits: one part (DX), one run, USB. Not tried: `CC 32` + Program Change
+without `CC 0`; a drum or synth part; a bank pair sent some time before the
+Program Change rather than immediately; the System switches `00 00 07` /
+`00 00 08`. A bare Program Change could in principle have changed something
+that `01 19 33` does not report; nothing suggests it, and nobody listened.
+

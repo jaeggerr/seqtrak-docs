@@ -83,11 +83,13 @@ Three details worth knowing, all `from Yamaha Data List`:
   number**, and programs 72 and above are temporary areas the sampler uses
   (project 1 elements 1-7, project 2 elements 1-7, and so on).
 
-A third party reports that a **bare Program Change, with no Bank Select before
-it, changes nothing** on the DX track, while the full triplet does — reported,
-not reproduced here, and whether a bank stays latched on a channel after one
-triplet is not known. Until it is, send all three every time. See
-[12-open-questions.md](12-open-questions.md#opened-by-a-third-party-receive-side-report-2026-11-14).
+**A Program Change with no Bank Select before it is ignored**, and the bank is
+**not latched**: a bare Program Change sent right after a full triplet on the
+same channel is ignored too. `verified on hardware` on part 9 (DX), by reading
+`01 19 33` after each message
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-15-a-program-change-needs-its-own-bank-select-every-time)); first reported by a
+third party. So send all three, every time. Whether LSB + Program Change
+without the MSB is enough has not been tried.
 
 Two System switches can block reception, both on by default: `00 00 07`
 (Receive/Transmit Bank Select) and `00 00 08` (Receive/Transmit Program Change).

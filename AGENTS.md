@@ -212,7 +212,7 @@ Three rules learned the hard way, all from
 | `block_read.py` | **the general one**: reads any named block from the CSV — `block_read.py "Project Common / Send Reverb"`, `--part`/`--element` for placeholder mid bytes — and checks every reply's width against the documented size |
 | `reserved_stride.py` | the run that showed `30 41 33`-`41` are one-byte slots at a two-byte stride, and that the size column is wrong for them |
 | `write_test.py`, `step_write_test.py`, `probe_write.py` | the reversible write cycles and a value sweep |
-| `receive_side.py` | what the machine does with what it **receives**: `--rec` writes `01 10 21` and restores it, `--panel` captures what `[REC]` emits, `--pc` compares a bare Program Change with Bank Select + Program Change on one part. Written to reproduce a third-party report; `--rec` was run on 2026-11-15, the other two not yet |
+| `receive_side.py` | what the machine does with what it **receives**: `--rec` writes `01 10 21` and restores it, `--panel` captures what `[REC]` emits, `--pc` compares a bare Program Change with Bank Select + Program Change on one part. Written to reproduce a third-party report; `--rec` and `--pc` were run on 2026-11-15, `--panel` not yet |
 | `ble_trace.swift` + `ble_parse.py` | CoreBluetooth central reading the negotiated MTU and dumping raw packets, plus the only parser that can answer a framing question about them |
 
 Two practical warnings:
@@ -247,7 +247,9 @@ speculatively.
 ## Traps worth knowing before you write any client
 
 1. **Bank Select *is* transmitted** — MSB, LSB, then the Program Change, on
-   every sound change. So a received triplet resolves a preset name straight
+   every sound change. And it is **required on reception, every time**: a
+   Program Change with no Bank Select just before it is ignored, even right
+   after a full triplet on the same channel. So a received triplet resolves a preset name straight
    out of `data/presets.csv`. (This repository said the opposite until it was
    measured properly; the bulk dump of `31 0p 00` is still the route for **user**
    sounds and exact names.)
