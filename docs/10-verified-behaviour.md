@@ -3512,3 +3512,40 @@ either would give an empty screen: the MiniLab, powered by the SEQTRAK,
 restarts and may not come back in its Arturia program; and cave T is
 disarmed until CC 9 is seen again.
 
+### Run 8: the sixth build, and the main encoder steps the pattern
+
+Same day, owner's go-ahead. `8Z33OS_pfp_minilab6.PGM`, image sha256
+`a697d1da…3c967f`, battery 95 %. Complete on the first try: hand-over with a
+`64 02 00` at +3.44 s, last `Program` packet answered after **20.20 s**. Normal
+mode afterwards.
+
+Then from a computer on the USB port, sequencer stopped (`01 10 20` = 0),
+Parameter Requests with four tries, the screen messages captured in the same
+loop:
+
+| Sent on channel 1 | Screen message | `30 50 0F` (KICK) | `30 57 0F` (SYNTH 1) |
+|---|---|---|---|
+| (before) | | `00` | `00` |
+| CC 114 = 65, **before** any CC 9 | none | `00` | `00` |
+| CC 9, then CC 114 = 65 | `KICK Pattern / 2` | `01` | `00` |
+| CC 114 = 65 | `KICK Pattern / 3` | `02` | `00` |
+| CC 115, CC 113, CC 112 | none | `02` | `00` |
+| (restored by Parameter Change) | | `00` | `00` |
+| CC 114 = 66 | `KICK Pattern / 2` | `01` | |
+| CC 114 = 62 | `KICK Pattern / 1` | `00` | |
+| CC 114 = 62 again, at pattern 1 | none | `00` | |
+| CC 114 = 65 six times, 10 ms apart | `KICK Pattern / 2`, once | `01` | |
+
+`verified on hardware`: the firmware's own pattern routine `0x200CD0F4` can
+be called from the periodic hook; the step goes both ways; nothing happens
+below pattern 1; the 200 ms limit holds; the other track did not move.
+
+**A side effect of this test, not undone.** The first message, CC 114 = 65
+before arming, reached the unit as an ordinary controller, and CC 114 is
+*Send Delay Assigned Parameter 2*. Its previous value was not read, so it was
+not restored. The test should have armed first, or read `30 42` before.
+
+Not tested: a step while the sequencer runs (the queued path, row `0xEB`);
+patterns 4-6 with Pattern Select Mode normal; the encoder itself, with the
+MiniLab attached.
+

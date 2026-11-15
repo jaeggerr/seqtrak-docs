@@ -1083,6 +1083,47 @@ re-decompressed to the image, sha256 `a0fa7082…fa39a0`.
 | The MiniLab accepts a screen message every 40 ms while an encoder turns | missed or garbled updates on its screen |
 | The MiniLab shows 14 characters on its first line and the value on its second as intended | a cut parameter name |
 
+### The MiniLab 3 patch, sixth build: the main encoder selects the pattern (2026-11-15)
+
+> **Flashed on 2026-11-15 and working from a host**: CC 114 steps the current
+> track's pattern both ways and the screen message follows
+> ([10](10-verified-behaviour.md#run-8-the-sixth-build-and-the-main-encoder-steps-the-pattern)).
+> Not yet tried with the MiniLab's own encoder.
+
+`from firmware image (static analysis)`.
+
+| Item | Address (image VA) | What the image shows |
+|---|---|---|
+| Per-track parameter setter | `0x200A8C5C` | `(mgr, row, track, value)`; returns at once unless `row` is `0xEA`-`0x121`. The counterpart of `set_param` (`0x200A8C50`), which ignores rows above `0xE9` |
+| Row `0xEA` / `0xEB` | parameter index table | `30 50 0F` (Pattern Select) / `01 10 32` (`ReserveChangePattern`) |
+| **Select a track's pattern** | `0x200CD0F4` | a method of the controller object at `mgr+0x98`: `(this, track, pattern, queue)`. It reads the track's current pattern (model object from `0x2018C478([this+0x14])`, the track's block through `[obj+0x678]`'s `+0x98` method, property selector 8 at `block+0x5E`, value through `[block+0x38]`'s `+0xA8` method). If the pattern differs it calls the setter with row `0xEB` when the sequencer runs (`0x20170850([this+0x18])`) and `queue` is set, row `0xEA` otherwise. If it is the same and the byte at `this+0x2434+track` is not 6, it writes 6 to row `0xEB`. Its one caller, `0x200D2220`, applies one pattern to a list of tracks |
+
+The sixth build uses it:
+
+- **Cave T** rewrites CC 112-115 on channel 1 (the MiniLab's main encoder,
+  [11](11-controllers.md#what-the-arturia-programs-controls-send)) to CC 3,
+  which the SEQTRAK does not receive, so they stop reaching the send effects.
+  For CC 114 it also adds +1 or −1 (value above or below 64) to a pending
+  count.
+- **Cave P** takes the pending count every 40 ms. If it is non-zero and no
+  step was made in the last 200 ms, it reads the current track's pattern with
+  the same sequence as `0x200CD0F4`, adds one step in the count's direction,
+  and if the result is 0-5 calls `0x200CD0F4(controller, track, pattern, 1)`
+  and shows `<track> Pattern` / `<pattern, 1-6>`.
+
+Checks: as before, with the pattern read and the firmware call intercepted
+and modelled; the 60,000-step random run now includes encoder turns and
+patterns changed behind the patch's back. 1,772 of the 1,836 free bytes of
+D1 are used. Image sha256 in the build log; file `8Z33OS_pfp_minilab6.PGM`.
+
+**Assumptions the build cannot check** (*inferred*):
+
+| Assumption | If wrong |
+|---|---|
+| Calling `0x200CD0F4` from the periodic hook is equivalent to its own caller's context | a fault in the UI task when the encoder is turned, not at start-up |
+| The value shown is the pattern asked for | with Pattern Select Mode normal the unit holds three patterns per track ([04](04-sequencer-editing.md#pattern-length)); a higher request may be clamped while the screen shows the number asked. With the sequencer running the change is queued, and the screen shows it before it happens |
+| One message per detent of the encoder | the 200 ms limit hides it either way |
+
 ## What the hardware has actually said about `0x64`
 
 Everything above about the protocol comes from the official app. Read-only probe

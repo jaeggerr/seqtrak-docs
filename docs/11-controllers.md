@@ -318,15 +318,25 @@ of first appearance.
 | `Pitch` strip | pitch bend, channel 1 | pitch bend |
 | Keyboard | notes on the keyboard channel | notes on that track |
 | `Shift` | CC 9, channel 1, 127 on press and 0 on release | not in the SEQTRAK's CC map |
-| Main encoder, turned and pressed | nothing seen on any of the four ports | — |
+| Main encoder, turned | **CC 114, channel 1, relative** (61-62 one way, 65-66 the other, around 64) | **Send Delay Assigned Parameter 2** |
+| Main encoder, pressed | CC 115, channel 1, 127 then 0 | **Send Delay Assigned Parameter 3** |
+| `Shift` + main encoder, turned | CC 112, channel 1, relative | **Send Reverb Assigned Parameter 3** |
+| `Shift` + main encoder, pressed | CC 113, channel 1, 127 then 0 | **Send Delay Assigned Parameter 1** |
 
 **The controls do not follow the keyboard channel in this program.** After
 `Shift` + key moved the keyboard to channel 8 (a key then sent its note on
 channel 8), encoder 1 still sent CC 74 on channel 1, fader 1 CC 82 on channel
 1, and pad 1 note 36 on channel 10. Same capture method.
 
+**The main encoder row was wrong until a second capture.** The first capture
+saw nothing from it and this table said so; a later one (same method, a
+`Shift` press as a marker first) recorded the four controllers above. The
+first was a missed gesture, not silence. It matters: the SEQTRAK receives
+CC 112-115 as send-effect parameters, so on an unpatched unit turning or
+pressing that encoder moves the project's delay or reverb.
+
 So with the controller in its Arturia program, two of its twelve knobs and
-faders do something on the SEQTRAK, and only on KICK. The DAW program's
+faders do something useful on the SEQTRAK, and only on KICK. The DAW program's
 controls were not captured.
 
 **Two early runs were unusable and are recorded as such.** The first looped
