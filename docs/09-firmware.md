@@ -486,7 +486,9 @@ therefore unconstrained.
 ## The `Program` image from inside: a third-party analysis (2026-11)
 
 An independent analyst — `giddycadet` on Reddit, `rexendevar` on GitHub, the same person according to the owner of this repository — published a working notebook at
-<https://justpaste.it/g3gtl> ("SEQTRAK Firmware Notes", session 4). They went
+<https://justpaste.it/g3gtl> ("SEQTRAK Firmware Notes", session 4); an earlier
+state of the same notes is
+[issue #1](https://github.com/jaeggerr/seqtrak-docs/issues/1). They went
 further than this repository: they **flashed a modified `Program` and the
 machine accepted it**. Their goal is a tap-tempo patch, and no patch code had
 been written when the notes were published. It has since been written and
