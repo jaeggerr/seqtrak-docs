@@ -3549,3 +3549,49 @@ Not tested: a step while the sequencer runs (the queued path, row `0xEB`);
 patterns 4-6 with Pattern Select Mode normal; the encoder itself, with the
 MiniLab attached.
 
+## 2026-11-15: `01 10 21` is writable while the sequencer plays
+
+A third party reported that writing `01 10 21` (`RecordingStatus`) arms and
+stops recording
+([12-open-questions.md](12-open-questions.md#opened-by-a-third-party-receive-side-report-2026-11-14)).
+Run here over USB with
+[`tools/hardware-probe/receive_side.py`](../tools/hardware-probe/receive_side.py):
+every state below is three Parameter Requests — `01 10 20`, `01 10 21` and the
+tempo `30 40 76` as a control — each retried up to five times. The tempo
+answered 137 at every one of the eleven states read over the two runs (stopped, then playing), so no reply was lost. The
+sequencer was started and stopped from the host with `FA` / `FC`.
+
+| Sequencer | Sent | `01 10 20` read back | `01 10 21` read back |
+|---|---|---|---|
+| stopped | — | 0 | 0 |
+| stopped | `F0 43 10 7F 1C 0C 01 10 21 01 F7` | 0 | **0** |
+| stopped | `… 01 10 21 00 F7` | 0 | 0 |
+| playing (after `FA`) | — | 1 | 0 |
+| playing | `… 01 10 21 01 F7` | 1 | **1** |
+| playing | `… 01 10 21 00 F7` | 1 | **0** |
+| playing | `… 01 10 21 01 F7` | 1 | **1** |
+| playing | `… 01 10 21 00 F7` | 1 | **0** |
+| stopped (after `FC`) | — | 0 | 0 |
+
+`verified on hardware`:
+
+- **`01 10 21` is a command as well as a status.** While the sequencer plays,
+  the value written is the value read back, in both directions, twice.
+- **With the sequencer stopped, writing 1 is not taken**: it still reads 0 1.5 s
+  later, and the sequencer does not start. So the write does not behave like a
+  press of `[REC]` from a stopped machine, which the third party's report does
+  not distinguish.
+- **The write is not echoed.** In the 1.5 s after each write the machine sent
+  note messages from the playing pattern and no SysEx at all.
+- Writing it does not disturb `01 10 20`.
+
+Not established, and not to be read into the above:
+
+- that the machine **records notes** while `01 10 21` reads 1. No key was
+  pressed and no pattern was read back; only the status was observed;
+- what the front panel shows — nobody was watching `[REC]`;
+- that `[REC]` *emits* this address. That is a separate claim, still only
+  reported;
+- the stopped case is one attempt. It is a negative result supported by a
+  read-back with a control, not by repetition.
+

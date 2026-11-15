@@ -37,7 +37,7 @@ Machine-readable: [`../data/parameters.csv`](../data/parameters.csv).
 | `01 10 1E` | PCApp | EffectModeSelect | 1 | 0 - 1 (decimal) |  |  | `EffectModeSelect` |  | from the official app, untested |
 | `01 10 1F` | PCApp | UndoRedo | 1 | 1 - 1 (decimal) |  |  | `UndoRedo` |  | from the official app, untested |
 | `01 10 20` | PCApp | SequencerStatus | 1 | 0 - 1 (decimal) |  |  | `SequencerStatus` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — 01 playing and 00 stopped, alongside FA/FC, over eight transitions; and the machine starts and stops when the HOST sends FA/FC, broadcasting 01 10 20 unsolicited on each; the broadcasts were seen again over Bluetooth on 2026-10-23 |
-| `01 10 21` | PCApp | RecordingStatus | 1 | 0 - 1 (decimal) |  |  | `RecordingStatus` |  | from the official app, untested |
+| `01 10 21` | PCApp | RecordingStatus | 1 | 0 - 1 (decimal) |  |  | `RecordingStatus` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — writable while the sequencer plays: written 1 it reads back 1, written 0 it reads back 0, twice over; written 1 while stopped it still reads 0; the write is not echoed. Whether notes are then recorded was not tested |
 | `01 10 22` | PCApp | SamplingStatus | 1 | 0 - 2 (decimal) |  |  | `SamplingStatus` |  | from the official app, untested |
 | `01 10 23` | PCApp | MonitoringStatus | 1 | 0 - 1 (decimal) |  |  | `MonitoringStatus` |  | from the official app, untested |
 | `01 10 24` | PCApp | CategoryJumpFavoriteFiltering | 1 | 0 - 1 (decimal) |  |  | `CategoryJumpFavoriteFiltering` |  | from the official app, untested |

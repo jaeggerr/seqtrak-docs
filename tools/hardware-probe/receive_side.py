@@ -10,7 +10,7 @@ Written to reproduce a third-party report (GitHub issue #2, 2026-11-14):
 
 Three stages, each optional:
 
-    python3 receive_side.py --rec            # stage 1, reversible
+    python3 receive_side.py --rec            # stage 1, reversible; the machine plays a few seconds
     python3 receive_side.py --panel          # stage 2, read-only, needs a hand on [REC]
     python3 receive_side.py --pc --part 9    # stage 3, REPLACES the part's sound
 
@@ -95,7 +95,30 @@ def state(link, label):
     return s, r, bpm
 
 
+def rec_cycle(link, label):
+    mark = len(link.log)
+    link.write(REC, 1, 'RecordingStatus = 1')
+    time.sleep(1.5)
+    echoes = [m for _, m in link.since(mark) if m[0] == 0xF0]
+    s1, r1, bpm1 = state(link, f'{label}, after 1')
+    mark = len(link.log)
+    link.write(REC, 0, 'RecordingStatus = 0')
+    time.sleep(1.5)
+    echoes += [m for _, m in link.since(mark) if m[0] == 0xF0]
+    s2, r2, bpm2 = state(link, f'{label}, after 0')
+    print(f'    RESULT ({label})  write 1 -> RecordingStatus {r1}; write 0 -> {r2}; '
+          f'SequencerStatus {s1}/{s2}; tempo {bpm1}/{bpm2}; '
+          f'{len(echoes)} SysEx received besides the replies')
+    for m in echoes:
+        print(f'      {hx(m)}')
+
+
 def stage_rec(link):
+    """Write 01 10 21 with the sequencer stopped, then twice while it plays.
+
+    The sequencer is started and stopped from here with FA / FC, so the machine
+    plays for a few seconds. Nothing is recorded unless a key is pressed.
+    """
     print('STAGE 1 — write 01 10 21')
     s0, r0, bpm0 = state(link, 'before')
     if None in (s0, r0, bpm0):
@@ -103,25 +126,18 @@ def stage_rec(link):
     if s0 != 0 or r0 != 0:
         sys.exit('    the sequencer is not stopped and idle; writing nothing')
     try:
-        mark = len(link.log)
-        link.write(REC, 1, 'RecordingStatus = 1')
-        time.sleep(1.5)
-        show(link, mark, 'after writing 1')
-        s1, r1, bpm1 = state(link, 'armed? ')
-        mark = len(link.log)
-        link.write(REC, 0, 'RecordingStatus = 0')
-        time.sleep(1.5)
-        show(link, mark, 'after writing 0')
-        s2, r2, bpm2 = state(link, 'after  ')
-        print(f'    RESULT  write 1: RecordingStatus {r0}->{r1}, SequencerStatus {s0}->{s1}; '
-              f'write 0: RecordingStatus {r1}->{r2}, SequencerStatus {s1}->{s2}; '
-              f'tempo {bpm0}/{bpm1}/{bpm2}')
+        rec_cycle(link, 'stopped')
+        link.send([0xFA], 'MIDI Start')
+        time.sleep(1.0)
+        if link.read(SEQ) != 1:
+            sys.exit('    the sequencer did not start on FA; stopping here')
+        rec_cycle(link, 'playing, 1st')
+        rec_cycle(link, 'playing, 2nd')
     finally:
         link.write(REC, 0, 'restore: RecordingStatus = 0')
         time.sleep(0.3)
-        if link.read(SEQ) != 0:
-            link.send([0xFC], 'restore: MIDI Stop, the sequencer was left running')
-            time.sleep(0.5)
+        link.send([0xFC], 'restore: MIDI Stop')
+        time.sleep(0.8)
         state(link, 'restored')
 
 

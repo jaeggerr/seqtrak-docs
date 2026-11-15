@@ -209,7 +209,7 @@ The highest-value ones to pin down, each with the gesture that would do it:
 | Address | Parameter | Gesture |
 |---|---|---|
 | `01 10 01` | `ContentsManagementMode` | enter content management in the app, re-read |
-| `01 10 21` | `RecordingStatus` | arm recording. A third party reports both directions — `[REC]` emits it, and writing it arms and stops recording — [not reproduced here](#opened-by-a-third-party-receive-side-report-2026-11-14) |
+| ~~`01 10 21`~~ | ~~`RecordingStatus`~~ | **Partly answered 2026-11-15**: it is writable while the sequencer plays and reads back what was written, `verified on hardware` ([10](10-verified-behaviour.md#2026-11-15-01-10-21-is-writable-while-the-sequencer-plays)). Still open: that `[REC]` emits it, and that notes are recorded once it reads 1 |
 | `01 10 22` | `SamplingStatus` | start sampling |
 | `01 10 2E` | `ParameterLedMode` | step through index words, tabulate the 44 values. Partly done: 3, 2 and 1 correspond to FX blocks |
 | ~~`01 1p 33`~~ | ~~`CurrentSound`~~ | **Answered**: `CurrentSound` = catalogue number − 1, `verified on hardware` by loading 10 known presets and reading each back. [06-sounds-presets.md](06-sounds-presets.md#reading-back-which-sound-is-loaded) |
@@ -536,7 +536,7 @@ was observed (by ear, on the LEDs, or by reading an address back) is not known.
 
 | Claim | Status here | What would settle it |
 |---|---|---|
-| Writing `F0 43 10 7F 1C 0C 01 10 21 01 F7` **arms recording**, and the same with `00` **stops** it. So `01 10 21` is a command as well as a status | reported, not reproduced. This repository has `01 10 21` only `from the official app, untested`; no write to the `01 10` block has been tried here | `receive_side.py --rec`: read `01 10 20` and `01 10 21`, write 1, read both back, write 0, read both back |
+| Writing `F0 43 10 7F 1C 0C 01 10 21 01 F7` **arms recording**, and the same with `00` **stops** it. So `01 10 21` is a command as well as a status | **reproduced 2026-11-15, with a condition they did not state**: `verified on hardware` that the address takes the write **while the sequencer plays** (1 reads back 1, 0 reads back 0, twice), and that with the sequencer **stopped** a written 1 still reads 0. Not established: that notes are recorded, and what the front panel shows. [10](10-verified-behaviour.md#2026-11-15-01-10-21-is-writable-while-the-sequencer-plays) | play notes while it reads 1 and read the pattern back; or watch `[REC]`'s LED |
 | `[REC]` makes the unit **send** `01 10 21`, `01` then `00` | a second report of [the same claim](09-firmware.md#what-they-report-on-hardware). The two reporters know each other's work (this one cites SLOPTRAK), so it is not independent corroboration | `receive_side.py --panel` |
 | A **bare Program Change** on the DX track's channel (`C9 14`, `C9 28`, `C9 3C`) does **not** change the sound | reported, not reproduced. It is a negative claim: it needs `01 19 33` read before and after, not an ear. It is also what the Data List predicts if no bank is current on that channel — "unsupported bank or program numbers are silently ignored" — but that reading is ours, *inferred*, not theirs | `receive_side.py --pc --part 9`, step A |
 | `CC 0 = 63`, `CC 32 = n`, then a Program Change **does** select a sound on the synth and DX tracks | **already `verified on hardware` here**, by a stronger route: ten presets loaded this way and `01 1p 33` read back, all ten as predicted ([06](06-sounds-presets.md#reading-back-which-sound-is-loaded)). Their report agrees | — |
