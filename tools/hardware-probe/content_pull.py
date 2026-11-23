@@ -86,7 +86,7 @@ def main():
     n = a.number
     am = ((n >> 7) | 0x40) & 0x7F
     al = n & 0x7F
-    parts, headers = {}, []
+    parts, headers, streams = {}, [], {}
     try:
         mo.send_message(MODE + [0x01, 0xF7]); time.sleep(0.3); flush()
         req = [0xF0, 0x43, 0x20, 0x7F, 0x1C, 0x0C, KINDS[a.kind], am, al, 0xF7]
@@ -108,6 +108,12 @@ def main():
             # path (06/0A) carries the count at 0x0B and the index at 0x0D.
             if ah in (0x06, 0x0A):
                 index = (d[0x0D] << 7) | d[0x0E]
+                # The count and the index are PER CONTENT, and the index
+                # restarts at 0 for each one: a stereo waveform sends its two
+                # keybanks as two runs of the same indices. Keying on the index
+                # alone silently overwrites the first run with the second.
+                if index == 0 and parts.get(ah):
+                    streams.setdefault(ah, []).append(parts.pop(ah))
             else:
                 index = 0
             parts.setdefault(ah, {})[index] = bytes(d[0x0F:len(d) - 2])
@@ -117,16 +123,20 @@ def main():
         print("ContentsManagementMode restored to 0")
 
     print("%d header(s)" % len(headers))
-    for ah, pk in sorted(parts.items()):
+    for ah in list(parts):
+        streams.setdefault(ah, []).append(parts.pop(ah))
+    for ah, runs in sorted(streams.items()):
+      for run_no, pk in enumerate(runs):
         enc = b"".join(pk[i] for i in sorted(pk))
+        suffix = "" if len(runs) == 1 else "_%d" % run_no
         if ah in (0x06, 0x0A):
             # A packet path's data starts two bytes into the first packet's
             # payload; those two bytes are unexplained.
             raw = unpack7(enc[2:])
-            f = out_dir / ("content_%02X.bin" % ah)
+            f = out_dir / ("content_%02X%s.bin" % (ah, suffix))
             f.write_bytes(raw)
-            print("ah=%02X: %d packets, %d encoded -> %d raw  ->  %s"
-                  % (ah, len(pk), len(enc), len(raw), f))
+            print("ah=%02X run %d: %d packets, %d encoded -> %d raw  ->  %s"
+                  % (ah, run_no, len(pk), len(enc), len(raw), f))
         else:
             # A body: metadata at fixed offsets, then the file from 0x7E.
             meta = {
@@ -138,9 +148,9 @@ def main():
                 "commercial": enc[125],
             }
             raw = unpack7(enc[126:])
-            f = out_dir / ("content_%02X_file.bin" % ah)
+            f = out_dir / ("content_%02X%s_file.bin" % (ah, suffix))
             f.write_bytes(raw)
-            (out_dir / ("content_%02X_meta.txt" % ah)).write_text(
+            (out_dir / ("content_%02X%s_meta.txt" % (ah, suffix))).write_text(
                 "\n".join("%s: %s" % kv for kv in meta.items()) + "\n")
             print("ah=%02X: body, uuid %s, categories %d/%d, commercial %d"
                   % (ah, meta["uuid"], meta["main_category"],

@@ -378,7 +378,7 @@ Every field is 7-bit encoded. Offsets are from the start of the message.
 | `0x11` | 2 | element count — **0 when the kind is Element** |
 | `0x13` | 2 | waveform count — **0 when the kind is Waveform** |
 | `0x15` | 4 | sample count |
-| `0x19` | 4 × *n* | one entry per sample, built by reading each `sample<i>.xml` of the directory and taking its waveform and keybank numbers |
+| `0x19` | 4 × *n* | one entry per sample: its **byte size**, 7-bit encoded. `verified on hardware` — a stereo waveform's header carried two entries of `00 38 6C 40` = 931,392, each sample's size. An earlier pass had these as waveform and keybank numbers; the wire says sizes |
 
 So the kind being sent is excluded from its own count, and the rest declare
 what accompanies it.

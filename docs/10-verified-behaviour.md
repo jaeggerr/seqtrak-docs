@@ -3898,17 +3898,60 @@ request reproduces the exported `.Y3S` **exactly**:
 Not "100 % of the bytes compared" — the same length and the same bytes. The
 read path of the content channel is exact.
 
-#### A stereo waveform sends one keybank
+#### Withdrawn: "a stereo waveform sends one keybank"
 
-Waveform **8592** turned out to be stereo: its body declares **2 keybanks,
-44100 Hz, 2 channels, one-shot**, and the 132-byte table came back whole.
+An earlier pass in this same session concluded that only the first keybank's
+audio arrived. **That was wrong, and it was the client's fault.** The count and
+the packet index are **per content**, and the index restarts at `0` for each
+one: a stereo waveform sends its two keybanks as **two runs of the same
+indices**. Keying the reassembly on the packet index alone silently overwrote
+the first run with the second, and the arithmetic then closed perfectly on one
+keybank — which is what made the wrong answer look confirmed.
 
-But only one channel's audio arrived, and the arithmetic says so without
-ambiguity: keybank 0 declares `n` = 465,696 frames at `+0x3C`, which is
-931,392 bytes, and the transfer delivered **931,392 bytes — a difference of
-zero**. The 355 packets account for keybank 0 and nothing else.
+Traced properly, waveform **8592** sends **710 sample messages**, `count = 355`
+throughout, indices `0`-`354` **twice**, then its body. Reassembled as two runs
+it gives **931,392 bytes per keybank**, 1,862,784 in all, each matching its
+declared size.
 
-So **a request for a stereo waveform brings back the record for both keybanks
-and the samples of only the first.** How the second is fetched is unknown:
-nothing in the transfer announced it, and the machine stopped on its own. A
-client must not assume a stereo waveform arrives whole.
+> **The trap, for anyone writing a client:** split a new stream every time the
+> index returns to `0`. Nothing else in the message distinguishes one content's
+> packets from the next one's — the address stays the parent waveform's.
+
+#### The dump header's per-sample entries are **sizes**
+
+Also corrected. An earlier pass had them as each sample's waveform and
+keybank numbers. The wire says otherwise. Waveform 8592's header:
+
+```
+00 01 00 00 | 00 00 | 00 00 | 00 00 | 00 00 00 02 | 00 38 6C 40 | 00 38 6C 40
+```
+
+- the four metadata bytes, then sound, element and waveform counts all `0` —
+  and the waveform count is `0` **because a waveform is what is being sent**,
+  exactly as documented;
+- sample count **2**;
+- then two 4-byte entries, both `00 38 6C 40` = **931,392** — each sample's
+  **byte size**, not a number. It is the `DataSize` its `sample<i>.xml` carries.
+
+The mono case agrees: byte count 22 = `0x12 + 4 × 1`, one entry, and 220,470
+encodes as `00 0D 3A 36`.
+
+#### `+0x38` takes the same pair of values a third party reported
+
+The two keybanks of waveform 8592 read `+0x38` = **27715** and **37821**, in
+that order. Those are `0x6C43` and `0x93BD` — **exactly the pair, in the same
+order**, that `rechandler`'s notes report for the two keybanks of a resampled
+export on a different unit
+([06-sounds-presets.md](06-sounds-presets.md#two-independent-third-party-sources-and-who-found-what)).
+
+Two readings, and this run cannot choose between them:
+
+- the two contents are the same audio, so the agreement is trivial;
+- or **`+0x38` is not derived from the audio at all**, which would explain why
+  neither analyst could find a checksum in it.
+
+Against the second: our own **mono** waveform, audio generated for this test and
+never seen anywhere else, reads `20124`, while the third party's mono example
+reads `20140` — different audio, different values, so it is not a constant
+either. Whatever it is, it varies, and it is not a function of the samples in
+any obvious way. **Open**, with one more data point than before.
