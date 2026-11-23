@@ -330,60 +330,115 @@ project image, whose pattern encoding is undecoded (below).
 
 ### What has since been recovered — `from the official app, untested`
 
-That verdict is now partly out of date. The channel's **frame** is known.
+That verdict is now partly out of date. The **contents dump header** is fully
+decoded, and with it the channel's frame, its addressing, its acknowledgement
+and its size accounting.
 
-A content dump is an ordinary **Bulk Dump**, built on the same skeleton as the
+#### The frame
+
+A content dump is an ordinary **Bulk Dump**, on the same skeleton as the
 firmware channel's:
 
 ```
-F0 43 00 7F 1C bh bl 0C ah am al  00 01 00 00  <payload…> cc F7
+F0 43 00 7F 1C bh bl 0C  ah am al  00 01 00 00  <payload…>  cc F7
 ```
 
 | Field | What it is |
 |---|---|
-| `bh bl` | byte count, written as a 16-bit value in two 7-bit bytes |
-| `ah` | the content kind, chosen by the file type (project, sound, element, waveform, sample) |
-| `am` | the block selector within that kind |
-| `al` | **`contentNumber & 0x7F`** |
+| `bh bl` | the Yamaha byte count, as a 16-bit value in two 7-bit bytes |
+| `ah` | **the content kind** — see the table below |
+| `am al` | **the content number, 14 bits**: `am = number >> 7`, `al = number & 0x7F` |
 | `00 01 00 00` | the same four metadata bytes the firmware channel's block header carries |
-| `cc` | checksum |
+| `cc` | checksum, then `F7` |
 
-The payload area is zeroed to **0xF98 bytes (3992)** before the header is laid
-down, which bounds one message.
+#### The content kinds — `ah`
 
-**The checksum is the same function as the firmware channel's**, and it was read
-again here rather than assumed: it sums the bytes from index 7 up to `size - 3`
-inclusive, then returns `(0x80 - (sum & 0x7F)) & 0x7F`, or `0` when
-`sum & 0x7F` is zero. Identical to
-[09-firmware.md](09-firmware.md#checksum) and to the arithmetic this repository
-verified against a captured message in
-[02-sysex-format.md](02-sysex-format.md#bulk-dump).
+Read off the branches on the app's own `FileType` (`Project` 0, `Sound` 1,
+`Element` 2, `Waveform` 3):
 
-Payloads go through a small set of named conversions, which is how a
-reimplementation should pack them:
+| `ah` | Content kind |
+|---|---|
+| `02` | Project |
+| `03` | Sound |
+| `04` | Element (a sampler element) |
+| `05` | Waveform |
+
+Samples have no kind of their own: they travel under a waveform, which is how
+a [`.Y3S`](06-sounds-presets.md#the-y3s-content-package--how-a-sound-of-your-own-gets-in)
+packages them too.
+
+#### The header's payload
+
+Every field is 7-bit encoded. Offsets are from the start of the message.
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x0B` | 4 | `00 01 00 00` |
+| `0x0F` | 2 | sound count — **0 when the kind is Sound** |
+| `0x11` | 2 | element count — **0 when the kind is Element** |
+| `0x13` | 2 | waveform count — **0 when the kind is Waveform** |
+| `0x15` | 4 | sample count |
+| `0x19` | 4 × *n* | one entry per sample, built by reading each `sample<i>.xml` of the directory and taking its waveform and keybank numbers |
+
+So the kind being sent is excluded from its own count, and the rest declare
+what accompanies it.
+
+| Quantity | Value |
+|---|---|
+| Yamaha byte count (`bh bl`) | `0x12 + 4n` = 18 + 4 × samples |
+| Whole message length | **27 + 4 × samples** |
+
+Those two agree only if the byte count runs from the **Model ID through the
+last data byte** — which is what [02-sysex-format.md](02-sysex-format.md#bulk-dump)
+says and the Data List's wording does not. A third independent confirmation of
+that reading.
+
+#### The checksum, read again on this channel
+
+It sums the bytes from index 7 up to `size - 3` inclusive, then returns
+`(0x80 - (sum & 0x7F)) & 0x7F`, or `0` when `sum & 0x7F` is zero. Byte for byte
+the firmware channel's function ([09-firmware.md](09-firmware.md#checksum)).
+The checksum goes at `size - 2` and `F7` at `size - 1`.
+
+#### The acknowledgement
+
+After sending, the plug-in sets the address it waits on to the **21-bit packing
+of the address it just sent**:
+
+```
+waitingAcknowledgeAddress = (ah << 14) | (am << 7) | al
+```
+
+So a content dump is acknowledged at its own address. The receive side also
+masks and checks a device number.
+
+#### Size accounting, and a cross-check
+
+The sender adds **1792 bytes per sound** to the transfer's total — exactly the
+size of a `.Y3S`'s `sound.bin`, measured independently on a real export. For a
+project it adds `0x10D001` (1,101,825) bytes.
+
+#### The 7-bit conversions
 
 | Conversion | Use |
 |---|---|
-| 16-bit integer ↔ 7-bit array | byte counts, waveform numbers |
-| 32-bit integer ↔ 7-bit array | sizes and sample positions |
+| 16-bit integer ↔ 7-bit array | byte counts, the three content counts |
+| 32-bit integer ↔ 7-bit array | sample counts, sizes, positions |
 | binary ↔ 7-bit array | file data, with an encoded/decoded byte-count pair giving the ratio |
 | string ↔ 7-bit array | names |
 
-There is also a device-number mask and check on the receive side.
+#### What is still missing
 
-**What is still missing**: the `ah` / `am` table per content kind, how a block
-is cut into packets and numbered, and the acknowledgement state machine with
-its timeouts. The send path's own steps are named — a contents dump header,
-then sound, element and waveform data, then sample and project data by packet
-index, with a waiting-acknowledge address between them — so the shape is
-clear and the remaining work is filling it in.
+- how a sound, element, waveform, sample or project **body** is cut into
+  packets and numbered — the per-kind send steps and the packet-index ones;
+- the **acknowledgement state machine**: which address answers what, the
+  timeouts, the restart, and the result codes of the terminate path;
+- whether a waveform's PCM goes out through the binary 7-bit conversion whole
+  or in windows, as the firmware channel's blocks do.
 
 > Marked `from the official app, untested` throughout: none of this has been
 > sent to a machine. The audio path in particular has never been exercised, and
 > a wrong byte count or checksum on a content write is not a harmless mistake.
-
-**For writing a composition, use step record instead**:
-[14-song-mode.md](14-song-mode.md#5-writing-a-whole-song-the-practical-route).
 
 ## What a project looks like on disk
 
