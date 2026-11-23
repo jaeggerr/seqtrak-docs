@@ -96,12 +96,15 @@ def main():
             ah = d[8]
             if ah in (0x02, 0x03, 0x04, 0x05):
                 headers.append(d); ack(d); continue
-            count = (d[0x0B] << 7) | d[0x0C]
-            index = (d[0x0D] << 7) | d[0x0E]
+            # Two framings, and they must not be mixed: a body (07/08/09)
+            # carries 00 01 00 00 at 0x0B and its data from 0x0F; a packet
+            # path (06/0A) carries the count at 0x0B and the index at 0x0D.
+            if ah in (0x06, 0x0A):
+                index = (d[0x0D] << 7) | d[0x0E]
+            else:
+                index = 0
             parts.setdefault(ah, {})[index] = bytes(d[0x0F:len(d) - 2])
             ack(d)
-            if index + 1 == count and ah == 0x09:
-                pass
     finally:
         mo.send_message(MODE + [0x00, 0xF7]); time.sleep(0.2)
         print("ContentsManagementMode restored to 0")
@@ -109,7 +112,9 @@ def main():
     print("%d header(s)" % len(headers))
     for ah, pk in sorted(parts.items()):
         enc = b"".join(pk[i] for i in sorted(pk))
-        raw = unpack7(enc[2:])  # the first two bytes of a content's stream are unexplained
+        # A packet path's data starts two bytes into the first packet's
+        # payload; those two bytes are unexplained. A body starts at once.
+        raw = unpack7(enc[2:] if ah in (0x06, 0x0A) else enc)
         p = out_dir / ("content_%02X.bin" % ah)
         p.write_bytes(raw)
         print("ah=%02X: %d packets, %d encoded -> %d raw  ->  %s"

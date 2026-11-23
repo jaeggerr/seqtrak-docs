@@ -494,13 +494,27 @@ onto the message like this:
 
 | XML tag | Where it lands | How sure |
 |---|---|---|
-| `UUID` | `0x0F`, 16 raw bytes → 19 | **certain** — it is parsed as a UUID and its bytes taken |
-| `ContentNumber` | split into the message's own `am al` | **certain** — the value is shifted and masked into the address |
-| `Order` | `0x22`, 32-bit encoded | by elimination among the integer tags |
-| `Tag1`, `Tag2` | `0x26` and `0x58`, 50 bytes each | by elimination among the string tags |
-| `MainCategory` | `0x8A` | by position in the tag chain |
-| `SubCategory` | `0x8B` | by position in the tag chain |
-| `Commercial` | `0x8C` | **certain** — it is the only tag read as a boolean |
+| `UUID` | `0x0F`, 16 raw bytes → 19 | **`verified on hardware`** — decoded off a real transfer as `0cf50de9-a18b-454c-8ca4-851a94fb092e`, the UUID in the file |
+| `ContentNumber` | split into the message's own `am al` | **`verified on hardware`** — the machine accepted and echoed the address built from it |
+| `Order` | `0x22`, 32-bit encoded | **`verified on hardware`** — read `0`, matching the file |
+| `Tag1`, `Tag2` | `0x26` and `0x58`, 50 bytes each | by elimination; both were empty in the transfer measured, so it is consistent but not discriminating |
+| `MainCategory` | `0x8A` | **`verified on hardware`** — read `03`, and the file says `3` |
+| `SubCategory` | `0x8B` | **`verified on hardware`** — read `01`, and the file says `1`; the two categories' order is settled by their differing values |
+| `Commercial` | `0x8C` | **`verified on hardware`** — read `00`, and the file says false |
+
+Then the file itself: the 78 encoded bytes from `0x8D` unpacked to **63 bytes
+identical to the `waveform0.bin`** of the exported `.Y3S`, 63 of 63.
+Method: [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-later-the-content-channel-works-and-the-audio-comes-back-byte-for-byte).
+
+> **The two framings are mutually exclusive, and mixing them corrupts the
+> payload.** A **body** (`07` sound, `08` element, `09` waveform) carries the
+> four metadata bytes `00 01 00 00` at `0x0B` and its data from `0x0F`. A
+> **packet** (`06` project, `0A` sample) carries the packet **count** at `0x0B`
+> and the **index** at `0x0D` instead — there are no metadata bytes — and the
+> content's data begins **two bytes into the first packet's payload**, the
+> later packets being pure data. Reading a body's `00 01 00 00` as a count and
+> an index gives a plausible-looking "count 1, index 0" and then shifts
+> everything by two.
 
 So a host does not invent this metadata: it carries the same fields a `.Y3S`
 already ships, and the content number in the body's address is the one written
