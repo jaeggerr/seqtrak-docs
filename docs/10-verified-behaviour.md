@@ -4406,3 +4406,55 @@ What remains is the **firmware image**: 66 MB of ARM with no symbols and no
 hard-coded message templates, since the machine builds its replies in code.
 Locating the content-dump receive path there is a project of the same order as
 the analyses that produced this repository's firmware document, not a next step.
+
+## 2026-11-23 — a host CAN install a `.Y3S`, and the blocker was one stray bit
+
+**Writing content works.** A `.Y3S` built from scratch by this project — not an
+export — was pushed over SysEx and the machine created the sound. Everything
+written here earlier about the write direction being impossible,
+machine-initiated or state-dependent is **withdrawn**: the obstacle was a bug in
+this repository's own address rule.
+
+### The bug
+
+The rule published here was `am = ((n >> 7) | 0x40) & 0x7F`. The real rule is
+`am = (n >> 7) & 0x7F`, no `| 0x40` — read straight off the official app's
+traffic, which addresses sound 4103 as `03 20 07`.
+
+The extra bit is **invisible for waveforms**: their numbers start at 8192, so
+`n >> 7` is already ≥ 64 and bit 6 is set anyway. Every waveform operation
+therefore worked, including the read that reproduced a sample byte for byte. For
+**sounds**, numbered near 4100, bit 6 is clear and the bit corrupts the address.
+That is the whole explanation for the Sound header being refused with `7`
+through twenty header variants, a power cycle, three inventory primings and a
+man-in-the-middle attempt. **The machine was right every time.**
+
+### The transfer that worked
+
+Content-management mode on (`01 10 01 = 1`), then:
+
+| Message | `ah` | Acknowledged |
+|---|---|---|
+| contents dump header, kind Sound, counts `0/0/1/1`, one entry carrying the PCM's **byte size** | `03` | `0` |
+| 90 sample packets, addressed on the **waveform**, 3000 encoded bytes each | `0A` | `0` on every one |
+| the waveform body | `09` | `0` |
+| the **sound body** | `07` | `0` |
+
+Then `01 10 01 = 0`. The header's body was byte-identical to the app's own:
+`00 01 00 00 | 00 00 | 00 00 | 00 01 | 00 00 00 01 | 00 0E 32 00`, those last
+four bytes decoding to 235,776 — the sample's size.
+
+### How it was verified
+
+Not by the acknowledgements, which had read `0` before while nothing landed.
+**`01 10 09` `UserSoundEmptyContentCount` went from 2029 to 2028** across the
+push, and sample memory grew. The same counter decrements by one in the capture
+of the app's own import, which is what suggested it as the instrument.
+
+### How it was found
+
+By **capturing both directions** with a monitor that can see what another
+application sends. This project's own attempts could only ever observe the
+machine's half of the conversation, and the error lived in the other half. The
+owner proposed that capture after the analysis here had twice concluded, in
+public, that the thing was impossible.

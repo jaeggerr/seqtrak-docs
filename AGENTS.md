@@ -213,6 +213,7 @@ Three rules learned the hard way, all from
 
 | Script | What it is for |
 |---|---|
+| `content_push.py` | **installs** a `.Y3S` on the machine through the content channel, without the official app: the dump header, the sample packets, the waveform body and the sound body, each acknowledged. Verified by `01 10 09` decrementing |
 | `content_pull.py` | pulls a content off the machine through the **content channel**: the dump request, the 21-byte acknowledgement at `01 21 00` for every message, 7-into-8 unpacking, and `01 10 01` restored in a `finally`. The run that brought a 220,470-byte sample back byte for byte |
 | `read_many.py` | reads a list of addresses with **one** port held open and timing/active-sensing filtered, four attempts each, the control address interleaved. The instrument to reach for first: a prober that reopens the port per request loses replies on a flooded link |
 | `seqtrak_probe.py` | general read-only prober: `--identity`, `--req`, `--watch`, `--plan` |

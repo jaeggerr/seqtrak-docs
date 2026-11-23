@@ -562,31 +562,24 @@ in the file — not one the host chooses.
 
 #### How a content number becomes `am al` — the exact rule
 
-The sender does not split the number naively. Reading the arithmetic:
-
 ```
-am = ((contentNumber >> 7) | 0x40) & 0x7F
-al =   contentNumber & 0x7F
+am = (contentNumber >> 7) & 0x7F
+al =  contentNumber       & 0x7F
 ```
 
-The `| 0x40` is applied **only when the number is below 8192**, but it changes
-nothing above it: for 8192 ≤ *n* < 16384 the shift already lands in
-`0x40`-`0x7F`. So the one rule above holds throughout, and **bit 6 of `am` is
-always set**.
+Nothing else. `verified on hardware` against the official app's own traffic: it
+addresses sound 4103 as **`03 20 07`** (`4103 >> 7` = 32 = `0x20`) and waveform
+8598 as **`0A 43 16`** (`8598 >> 7` = 67 = `0x43`).
 
-Two consequences a host must know:
-
-- **The address does not distinguish a factory content number from a user
-  one.** *n* and *n* + 8192 produce the same `am al` — 100 and 8292 both give
-  `am = 0x40`, `al = 0x64`. That is consistent with the `.Y3S`, where an
-  element refers to a user waveform as `ContentNumber − 8192`: on the wire the
-  number is the index within its space, and which space is carried elsewhere.
-- **16384 is a hard ceiling.** At or above it the shift leaves bit 7 set and the
-  byte is no longer valid SysEx data. Nothing in the send path checks for it.
-
-This retires a warning an earlier pass left here, which read the nine-bit
-extract as a danger: the value always fits seven bits below 16384, and nothing
-is narrowed or refused.
+> **An earlier version of this section had `am = ((n >> 7) | 0x40) & 0x7F`, and
+> it was wrong.** The spurious bit 6 is invisible for **waveforms**, whose
+> numbers start at 8192 and whose shift already sets that bit — so every
+> waveform operation worked. For **sounds**, numbered around 4100, it corrupts
+> the address and the machine answers `7`. That one bit is what made a Sound
+> header look impossible through twenty experiments, a power cycle and an
+> abandoned man-in-the-middle; the error was here, not in the machine. It came
+> from reading a `| 0x40` in the app's code without checking it against
+> traffic. **Check an address rule against the wire.**
 
 #### The acknowledgement addresses
 
