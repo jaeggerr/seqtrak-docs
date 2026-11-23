@@ -3955,3 +3955,33 @@ never seen anywhere else, reads `20124`, while the third party's mono example
 reads `20140` — different audio, different values, so it is not a constant
 either. Whatever it is, it varies, and it is not a function of the samples in
 any obvious way. **Open**, with one more data point than before.
+
+## 2026-11-23 — a **drum** element accepts a user wave
+
+The question opened two days ago, and the last one of this run that could be
+settled without an ear.
+
+KICK is part 0, a drum part. Its element 0 was pointed at the clavioline user
+waveform and put back, read → write → read-back → restore with the restore in a
+`finally`:
+
+| | `41 00 01` Wave Select | `41 00 03` Wave Number |
+|---|---|---|
+| before | `00` — Preset | `07 7F` = 1023 |
+| written | `01` | `03 11` = 401 |
+| **read back** | **`01` — User** | **`03 11` = 401** |
+| after restore | `00` | `07 7F` = 1023 |
+
+Witnesses in the same loop: SNARE (`41 01 01`/`03`) stayed at Preset 1166 and
+SYNTH 1 (`41 07 01`) at Preset, neither moving at any point, and the tempo
+control answered 120 before, during and after. `verified on hardware`.
+
+**So a drum element takes a user wave reference.** Together with the synth
+result earlier today, the Data List's note that *only the SAMPLER track is
+fixed to User* is now confirmed from both sides: the others choose, and both a
+synth part and a drum part were made to choose.
+
+> **What this does not establish.** The parameter accepts the value and reports
+> it back; nobody listened. Whether the drum part then *sounds* the user wave
+> is a different claim and needs an ear on the machine. This repository has been
+> burned before by reading a successful write as a successful behaviour.
