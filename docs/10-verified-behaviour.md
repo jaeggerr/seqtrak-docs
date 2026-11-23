@@ -4381,3 +4381,28 @@ and neither the message, the mode, the number nor the payload is that something.
 > distinguishes the two in a way nothing here has reached. The map above is
 > recorded so the next attempt starts from facts rather than from this
 > repository's guesses, of which this section has already withdrawn several.
+
+### The man-in-the-middle route is closed: the app picks its port itself
+
+The one instrument that would have shown the app's outgoing traffic was tried
+and does not work.
+
+A pair of virtual CoreMIDI ports was created, named exactly **`SEQTRAK`**, with
+the real device already opened behind them so everything would be relayed. The
+official app was then disconnected and reconnected and an import performed.
+
+**Zero messages arrived at the virtual destination.** The app opened the real
+port. That is consistent with what its own strings say: it has
+`MidiConnect` / `MidiDisconnect` screens and a "Connect To Midi Ports Error"
+string, but **no port picker** — it discovers the device by name and opens it
+itself. With two ports of the same name it took the hardware.
+
+So the app's outgoing side cannot be observed from another client on this
+machine, and the question it would have answered — what, if anything, the app
+sends before a Sound header — stays open. `verified on hardware` as a negative
+about the method, not about the protocol.
+
+What remains is the **firmware image**: 66 MB of ARM with no symbols and no
+hard-coded message templates, since the machine builds its replies in code.
+Locating the content-dump receive path there is a project of the same order as
+the analyses that produced this repository's firmware document, not a next step.
