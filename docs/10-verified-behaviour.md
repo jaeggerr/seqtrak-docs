@@ -4306,9 +4306,28 @@ variants, five device bytes, three inventory primings — every one refused with
 `7`, while a Waveform header is accepted with `0` throughout. Nothing a host can
 say changes it.
 
-**What has not been tried**, and is the cheapest thing left: a **power cycle**.
-Many incomplete transfers were opened during these runs — every accepted
-Waveform header starts one and none was ever completed — so the machine may be
-holding a half-open transfer that makes a different kind unwelcome. `7`
-`PacketLoss` would be a fair thing for it to say about that. After a power
-cycle, a kind `03` header should be the **first** content message sent.
+**The power cycle was tried, and it changes nothing.** The unit was switched
+off and on, confirmed answering, put into contents-management mode, and the
+kind `03` header was the very first content message sent: **`7` again**. So the
+refusal is not a half-open transfer left by the earlier runs.
+
+That closes the cheap hypotheses. The tally is **twenty variants** of a Sound
+header — eleven payloads, five device bytes, three inventory primings, and one
+cold start after a power cycle — every one refused with `7`, while a Waveform
+header is accepted with `0` under all the same conditions.
+
+> **For whoever picks this up: do not brute-force the header.** It has been
+> brute-forced. The difference is not in what the host says, and the app's code
+> contains no step before the header. Two instruments could still settle it,
+> and nothing else obviously can: a **virtual MIDI destination** relaying
+> between the app and the device, which would show the app's outgoing side —
+> invisible to any other client — and the **firmware image**, which is the only
+> place that knows why the machine says no.
+>
+> One reading worth testing first, because it would reframe everything: the
+> acceptance of a Waveform header may not mean "ready to receive". It may be the
+> machine agreeing to *send* that waveform — the same address space serves
+> both directions, and a read request for a waveform is answered, while a sound
+> is not ([§What the content channel actually serves](#what-the-content-channel-actually-serves--a-bounded-survey)
+> found exactly that asymmetry for reads). If so, no host has ever had a write
+> accepted here, and the write direction remains entirely unproven.
