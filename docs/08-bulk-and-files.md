@@ -500,14 +500,33 @@ So a host does not invent this metadata: it carries the same fields a `.Y3S`
 already ships, and the content number in the body's address is the one written
 in the file — not one the host chooses.
 
-> **An unresolved range check sits right here.** Before splitting the content
-> number the sender tests its **bits 13-15**, and extracts `am` as **nine**
-> bits (7-15) rather than seven. Nine bits cannot travel in one SysEx data
-> byte, so something must narrow or refuse them. It matters because **user
-> waveforms are numbered from 8192 up** — bit 13 set, every time — which is
-> exactly the case the test catches. What it does with it has not been
-> established, and no host should assume a plain 14-bit split for a user
-> waveform until it has.
+#### How a content number becomes `am al` — the exact rule
+
+The sender does not split the number naively. Reading the arithmetic:
+
+```
+am = ((contentNumber >> 7) | 0x40) & 0x7F
+al =   contentNumber & 0x7F
+```
+
+The `| 0x40` is applied **only when the number is below 8192**, but it changes
+nothing above it: for 8192 ≤ *n* < 16384 the shift already lands in
+`0x40`-`0x7F`. So the one rule above holds throughout, and **bit 6 of `am` is
+always set**.
+
+Two consequences a host must know:
+
+- **The address does not distinguish a factory content number from a user
+  one.** *n* and *n* + 8192 produce the same `am al` — 100 and 8292 both give
+  `am = 0x40`, `al = 0x64`. That is consistent with the `.Y3S`, where an
+  element refers to a user waveform as `ContentNumber − 8192`: on the wire the
+  number is the index within its space, and which space is carried elsewhere.
+- **16384 is a hard ceiling.** At or above it the shift leaves bit 7 set and the
+  byte is no longer valid SysEx data. Nothing in the send path checks for it.
+
+This retires a warning an earlier pass left here, which read the nine-bit
+extract as a danger: the value always fits seven bits below 16384, and nothing
+is narrowed or refused.
 
 #### The acknowledgement addresses
 
