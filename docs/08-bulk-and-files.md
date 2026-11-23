@@ -81,6 +81,36 @@ between the app's definitions and observed traffic, after `10 00 04`.
 traffic *and* in the official app's own definitions, which is the strongest
 corroboration available short of hardware.
 
+## Content operations beyond the transfer — `from the official app, untested`
+
+Alongside the file transfer, the app drives a set of **content operations** that
+are ordinary Parameter Changes and need none of the channel's machinery. They
+are worth having on their own, and one of them answers a practical problem.
+
+| Operation | Address | Data |
+|---|---|---|
+| **Project Save** | **`01 32 00`** | `01` |
+| Sound Save | *unresolved* | the part index |
+| Element Save | *unresolved* | the element index |
+| Favourite (sound / element) | `10 01 03` / `10 02 03` | see [06-sounds-presets.md](06-sounds-presets.md#toggling-a-favourite) |
+| Remove project / sound / element | `01 40 00` / `01 41 00` / `01 42 00` | the content number |
+| Remove several at once | the same addresses | a list of content numbers |
+| Attribute UUID (project / sound / element) | `10 00 02` / `10 01 02` / `10 02 02` | content number + UUID |
+| Attribute name (project / sound / element) | `10 00 04` / `10 01 04` / `10 02 04` | content number + name |
+| Info acknowledgement | the caller's address | packet index + a `Bulk.Result` |
+
+**Why Save matters.** Element parameters written over SysEx live in the part's
+working state and are lost when a sound is loaded
+([10-verified-behaviour.md](10-verified-behaviour.md#loading-a-sound-discards-live-element-writes)).
+A **Sound Save** is what would commit them to a user sound so they survive. Its
+address was not recovered — the extraction resolved `Project Save` to
+`01 32 00` and left the other two unresolved.
+
+> **Do not go looking for them by probing.** `01 31 xx` is **defragmentation**,
+> and `01 34 00` is a factory reset. The neighbourhood of `01 32 00` is the
+> worst possible place to sweep addresses blindly. Read them out of the app
+> instead.
+
 ## Renaming a project — `10 00 04`
 
 `reverse-engineered from app traffic`. Writes a project name straight into a
