@@ -774,6 +774,24 @@ of its default `40` on the Trigger-mode variant although nothing in the package
 sets it — the machine derives it from the same stored field, by a rule that is
 not known.
 
+## How does a host learn a user sound's content number? (2026-11-23)
+
+`01 41 00` `RemoveSoundAddress`, and the attribute setters `10 01 02` / `10 01 04`,
+all take a **content number**. Nothing read-only on the machine will give one for
+a user sound: `01 1p 33` reads `00 00`, the browser's category list carries bank
+and program instead, and a content request refuses every number in the band the
+app's own exported package points at, with an undocumented result 127
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--removing-a-user-sound-is-blocked-on-a-number-nothing-will-tell-you)).
+
+So the write path works blind: `content_push.py` proposes a number and the
+machine reassigns it without ever saying to what.
+
+**The lead**: the app must be told, and the likely place is an inventory
+exchange over the content channel — the one earlier sessions had to prime three
+times before a push would take. Decoding it would unlock removing and renaming
+user content from a host, which is the last thing the official app can do and
+this repository cannot.
+
 ## Documentation gaps in this repository
 
 - The **DX algorithm chart** (Data List p. 161) and the **effect block diagram**

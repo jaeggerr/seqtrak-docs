@@ -4616,3 +4616,53 @@ Offline cross-check, no hardware: all **seven** of the third-party preset pack's
 patches carry `0x88` = `0x02`, and **every** package exported after an app WAV
 import carries `0x00`. That is what the pack's author had changed, and the loop
 switch in the keybank record was only half the story.
+
+## 2026-11-23 — removing a user sound is blocked on a number nothing will tell you
+
+`01 41 00` `RemoveSoundAddress` takes **the content number**. Nothing on the
+machine will say what a user sound's content number is, so the command cannot be
+aimed, and it was **not sent**.
+
+Three read-only routes were tried, all dead ends:
+
+| Route | What it gives | Why it does not help |
+|---|---|---|
+| `01 1p 33` `CurrentSound` | `00 00` for a user sound | does not report user sounds at all |
+| the browser's category list, `0C mm pp` | an entry's "sound ID" as `[bank LSB] [program]` | bank and program, never a content number |
+| a content request, `03 am al` | the content itself | every number tried refused |
+
+The content sweep is the substantive one. With `01 10 01` engaged, a sound
+content request (`F0 43 20 7F 1C 0C 03 am al F7`) was sent for **every** number
+from 4096 to 4135 — the band the app's own exported `sound.xml` points at, which
+gives `ContentNumber` 4100 for a sound whose waveform at 8593 *does* pull — and
+the machine refused all but two:
+
+| Number | Answer |
+|---|---|
+| 4096, 4099-4135 | refused at `01 22 00`, **result 127** |
+| 4097 | one body, with a name that does not decode and `0x88` = `0x01` — not reproduced, not claimed |
+| 4098 | nothing at all |
+
+`verified on hardware`, `01 10 01` restored in a `finally`. **Result 127 is not
+in the app's `Bulk.Result` enum**, which stops at 54; it is what an unusable
+content number produces. So a user sound's content number is not in the band
+its own exported package names, and the write path works only because
+`content_push.py` *proposes* a number that the machine then reassigns silently.
+
+Note the asymmetry that hid this: waveform numbers (8593, 8598) pull cleanly,
+and sound numbers in the same style do not.
+
+**What would settle it**: the app knows these numbers, so something tells it —
+most likely an inventory exchange over the content channel, which earlier
+sessions had to prime three times before a push would take. That exchange has
+not been decoded. Until it is, deleting a user sound is an operation only the
+official app can aim.
+
+### A stray bit found in the pull tool
+
+Fixing the address rule in the documentation left the same `| 0x40` in
+[`content_pull.py`](../tools/hardware-probe/content_pull.py), where it had been
+harmless: waveform numbers are above 8192 and already carry that bit. It would
+have corrupted every *sound* address the moment anyone pulled one. Removed. The
+sweep above is the first run that used sound addresses at all, which is how it
+surfaced — a retraction is not finished until the tools are re-read.

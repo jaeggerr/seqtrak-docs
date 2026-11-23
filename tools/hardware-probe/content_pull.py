@@ -84,7 +84,10 @@ def main():
         mo.send_message(b)
 
     n = a.number
-    am = ((n >> 7) | 0x40) & 0x7F
+    # No |0x40 here: the app sends 03 20 07 for sound 4103. The stray bit was
+    # invisible for waveforms, whose numbers already exceed 8192, and corrupted
+    # every sound address -- see docs/08-bulk-and-files.md.
+    am = (n >> 7) & 0x7F
     al = n & 0x7F
     parts, headers, streams = {}, [], {}
     try:
