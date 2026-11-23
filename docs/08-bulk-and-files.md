@@ -480,6 +480,35 @@ waveform data at *n* + `0x8F`.
 The 19 bytes for a 16-byte UUID are the 7-into-8 ratio made visible:
 ⌈128 / 7⌉ = 19.
 
+#### Those fields come straight from the content's XML
+
+The sender parses the kind's `.xml` beside the `.bin` and walks its tags. For a
+waveform, `waveform<i>.xml` ([its shape](06-sounds-presets.md#7-xml-files)) maps
+onto the message like this:
+
+| XML tag | Where it lands | How sure |
+|---|---|---|
+| `UUID` | `0x0F`, 16 raw bytes → 19 | **certain** — it is parsed as a UUID and its bytes taken |
+| `ContentNumber` | split into the message's own `am al` | **certain** — the value is shifted and masked into the address |
+| `Order` | `0x22`, 32-bit encoded | by elimination among the integer tags |
+| `Tag1`, `Tag2` | `0x26` and `0x58`, 50 bytes each | by elimination among the string tags |
+| `MainCategory` | `0x8A` | by position in the tag chain |
+| `SubCategory` | `0x8B` | by position in the tag chain |
+| `Commercial` | `0x8C` | **certain** — it is the only tag read as a boolean |
+
+So a host does not invent this metadata: it carries the same fields a `.Y3S`
+already ships, and the content number in the body's address is the one written
+in the file — not one the host chooses.
+
+> **An unresolved range check sits right here.** Before splitting the content
+> number the sender tests its **bits 13-15**, and extracts `am` as **nine**
+> bits (7-15) rather than seven. Nine bits cannot travel in one SysEx data
+> byte, so something must narrow or refuse them. It matters because **user
+> waveforms are numbered from 8192 up** — bit 13 set, every time — which is
+> exactly the case the test catches. What it does with it has not been
+> established, and no host should assume a plain 14-bit split for a user
+> waveform until it has.
+
 #### The acknowledgement addresses
 
 | After sending | It waits on |
