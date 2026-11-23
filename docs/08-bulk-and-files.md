@@ -490,14 +490,63 @@ The 19 bytes for a 16-byte UUID are the 7-into-8 ratio made visible:
 | waveform data | `(0x09 << 14) \| content number` |
 | sample data | **`0A 00 00`** flat — not its own content number |
 
+#### The acknowledgement a host must send back
+
+Every message the machine acknowledges carries:
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x0B` | 1 | **status** — `0` means go on |
+| `0x0C`-`0x0E` | 3 | the `ah am al` being acknowledged |
+| `0x0F`-`0x10` | 2 | the **packet index**, 7-bit encoded, on the two packet-index paths |
+| `0x11`-`0x12` | 2 | the **content number the machine assigned**, as `(msg[0x11] << 7) | msg[0x12]` |
+| `size - 2` | 1 | checksum |
+
+The sender checks three things in order, and each failure is distinct:
+
+| Check | On failure |
+|---|---|
+| the packed `(ah << 14) \| (am << 7) \| al` equals the address it is waiting on | the message is **ignored silently** — no error, no retry |
+| `msg[0x0B]` is zero | terminate with that byte as the result, except that **`1` is reported as `0x21`** (33) |
+| `msg[size-2]` equals the checksum it computes | terminate with result **`7`** |
+
+That silent drop on an address mismatch matters: a host that answers on the
+wrong address does not get an error, it gets a stall until the timeout.
+
+#### The send order, and it is a dependency order
+
+The whole transfer is driven by acknowledgements — one message out, one
+acknowledgement in, the next message chosen by **which address was
+acknowledged**:
+
+| Acknowledged | What goes out next |
+|---|---|
+| `02`-`05` (the dump header) | counters reset, then **sample** data, packet 0 |
+| `0A` (sample data) | the next packet; when the packets run out, the next sample at packet 0; when the samples run out, **waveform** data |
+| `09` (waveform data) | the next waveform; when they run out: for a Waveform transfer **done**, otherwise **element** or **sound** data |
+| `08` (element data) | the next element; when they run out: for an Element transfer **done**, otherwise **sound** data |
+| `07` (sound data) | the next sound; when they run out: for a Sound transfer **done**, otherwise **project** data, packet 0 |
+| `06` (project data) | the next packet; when they run out, **done** |
+
+So the order is **samples → waveforms → elements → sounds → project**: the
+audio first, then each thing that references it. A sound cannot arrive before
+the waveform it points at, which is the same constraint the `.Y3S`'s own
+`ContentNumber − 8192` reference implies.
+
+A transfer ends at the stage matching its own kind. For a Sound or an Element
+the sender signals completion with the **content number the machine assigned**,
+taken from `0x11`-`0x12` of the last acknowledgement — which is how a host
+learns where its sound landed.
+
 #### What is still missing
 
-- the **receive side's** state machine: which address answers what, the
-  timeouts and the restart, and the result codes of the terminate path;
+- the **timeout** values and the restart behaviour, and the full result-code
+  vocabulary beyond `0` (go on), `7` (bad checksum) and `0x21`;
 - the exact meaning of each body's metadata fields — the 32-bit value at
   `0x22` and the three bytes at `0x8A`;
 - the project body's own layout, which is built differently from the other
-  four.
+  four;
+- the whole **receiving** direction, for reading content out of the machine.
 
 > Marked `from the official app, untested` throughout: none of this has been
 > sent to a machine. The audio path in particular has never been exercised, and
