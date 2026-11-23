@@ -507,8 +507,27 @@ The sender checks three things in order, and each failure is distinct:
 | Check | On failure |
 |---|---|
 | the packed `(ah << 14) \| (am << 7) \| al` equals the address it is waiting on | the message is **ignored silently** — no error, no retry |
-| `msg[0x0B]` is zero | terminate with that byte as the result, except that **`1` is reported as `0x21`** (33) |
-| `msg[size-2]` equals the checksum it computes | terminate with result **`7`** |
+| `msg[0x0B]` is zero | terminate with that byte as the result, except that **`1` `Cancel` is reported as `33` `CancelByReceiver`** |
+| `msg[size-2]` equals the checksum it computes | terminate with **`7` `PacketLoss`** — *not* `8` `CheckSumError` |
+
+Those last two are worth reading twice against the
+[result-code table](#result-codes). A bad checksum is reported as
+**`PacketLoss`**, and `CheckSumError` is never what the sender raises for one;
+and the machine's bare `Cancel` is translated on the way to the caller, so the
+code a host sees is not always the code that travelled.
+
+That split runs through the whole table: the codes **below 32** are conditions
+the machine reports on the wire — a full memory, the three mode preconditions —
+while **32 and above** are raised locally and never travel. That reading fits
+every name but has not been checked against a machine.
+
+#### The timeout is 36 seconds
+
+Each send arms a single timer for that long, invalidating the previous one, and
+its expiry is the only thing that ends a stalled transfer. Combined with the
+silent drop above: a host that acknowledges on the wrong address waits **36
+seconds** and then gets `48` `Timeout`, with nothing to say which of the two
+mistakes it made.
 
 That silent drop on an address mismatch matters: a host that answers on the
 wrong address does not get an error, it gets a stall until the timeout.
