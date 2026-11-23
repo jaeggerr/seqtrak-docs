@@ -328,7 +328,17 @@ Reimplementing it means rebuilding packet numbering, checksums, the
 acknowledgement state machine and the timeouts — and then still needing a valid
 project image, whose pattern encoding is undecoded (below).
 
-### What has since been recovered — `from the official app, untested`
+### What has since been recovered — and most of it is now `verified on hardware`
+
+**Read the markers inside this section, not a blanket one.** The channel was
+recovered from the official app and then **exercised on a real unit**: a
+220,470-byte sample was pulled off the machine and reproduced the file the app
+had exported, to the byte
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-later-the-content-channel-works-and-the-audio-comes-back-byte-for-byte)).
+So the request, the addressing, the dump header, the data-packet layout, the
+acknowledgement, the send order, the packet size and the 7-into-8 bit order are
+`verified on hardware`. **The sending direction is not**: nothing has ever been
+written to a machine through this channel.
 
 That verdict is now partly out of date. The **contents dump header** is fully
 decoded, and with it the channel's frame, its addressing, its acknowledgement
@@ -725,9 +735,11 @@ The receiver's own refusals, sent as the result code of an acknowledgement:
   four;
 - the whole **receiving** direction, for reading content out of the machine.
 
-> Marked `from the official app, untested` throughout: none of this has been
-> sent to a machine. The audio path in particular has never been exercised, and
-> a wrong byte count or checksum on a content write is not a harmless mistake.
+> **What is still only `from the official app, untested` is the *write*
+> direction.** Nothing has ever been sent to a machine through this channel,
+> and the audio path in particular has never been written. A wrong byte count
+> or checksum on a content write reaches the machine's own content store, so
+> read first and do not write speculatively.
 
 ## What a project looks like on disk
 

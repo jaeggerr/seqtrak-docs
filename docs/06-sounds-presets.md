@@ -310,10 +310,18 @@ obvious list, or it may be inheritance. It is not two confirmations.
   [02-sysex-format.md](02-sysex-format.md#bulk-dump) — an outside agreement,
   though they may have read this repository, so not independent corroboration.
 
-> **Everything in this section is *reported by a third party, not reproduced
-> here*.** Their own notes grade each claim, and their strongest tag means
-> *they* imported a patch on *their* unit and listened. None of it has been run
-> on this repository's machine, so none of it is `verified on hardware` here.
+> **Most of this section is *reported by a third party, not reproduced here*** —
+> their own notes grade each claim, and their strongest tag means *they*
+> imported a patch on *their* unit and listened.
+>
+> **Three things have since been measured here**, and they are marked where they
+> appear: the keybank record's own fields, read off a real unit through the
+> content channel; the rule that an element refers to a user waveform as
+> `ContentNumber − 8192`; and that a non-SAMPLER element really does play a user
+> wave. The **loop switch itself** — the part that matters, `+0x0F` and
+> `+0x2C` — is still only reported: nobody here has heard a patched sound
+> sustain. See
+> [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-hardware-session--an-awm-element-really-does-play-a-user-wave).
 >
 > **Rule 2 applies, hard.** The SLOPTRAK spec cites this repository for the
 > parameter table and the wave list, and its element-block layout is read

@@ -23,6 +23,7 @@ certainly already written down here. Find it rather than deriving it.
 | Which preset is loaded? What is it called? | [docs/06-sounds-presets.md](docs/06-sounds-presets.md) |
 | What is the BLE service UUID / how is a BLE packet framed? | [docs/07-transports.md](docs/07-transports.md) |
 | How do I dump or rename a project? | [docs/08-bulk-and-files.md](docs/08-bulk-and-files.md) |
+| How do I get a sample or a sound **off** the machine without the app? | [docs/08-bulk-and-files.md](docs/08-bulk-and-files.md) — the content channel, `verified on hardware` for reading; the tool is [`tools/hardware-probe/content_pull.py`](tools/hardware-probe/content_pull.py) |
 | Can I flash my own firmware? | [docs/09-firmware.md](docs/09-firmware.md) |
 | Is this actually true? Has anyone tested it? | [docs/10-verified-behaviour.md](docs/10-verified-behaviour.md) |
 | What CC does what? | [data/cc-map.csv](data/cc-map.csv), [docs/11-controllers.md](docs/11-controllers.md) — its `hardware` column says which eight have been seen on a real unit |
@@ -306,6 +307,16 @@ speculatively.
     `71 1p 01` + `<scene> <pattern>`. The parameter table's "range 0-1925" is a
     composite (`scene × 128 + pattern`), not a scalar bound.
 ## Relationship to the sibling projects
+15. **The content channel has two framings, and mixing them corrupts the
+    payload.** A **body** (`ah` `07` sound, `08` element, `09` waveform) carries
+    the four metadata bytes `00 01 00 00` at `0x0B` and its data from `0x0F`. A
+    **packet** path (`06` project, `0A` sample) carries the packet **count** at
+    `0x0B` and the **index** at `0x0D` instead. Worse, the count and index are
+    **per content** and the index restarts at `0` for each: a stereo waveform
+    sends its two keybanks as two runs of the same indices, so reassembling on
+    the index alone silently drops one of them — and the byte totals then close
+    perfectly on the one that survived.
+    [docs/08-bulk-and-files.md](docs/08-bulk-and-files.md).
 
 This repository is the documentation. The implementations live beside it, in
 separate folders that are **not** part of this repository and must not be
