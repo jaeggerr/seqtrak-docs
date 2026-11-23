@@ -30,7 +30,7 @@ address_high,address_mid,address_low,what_was_established,document
 01,10,2E,"read 01; broadcast with sound changes, knob moves and FX-block changes",10-verified-behaviour.md
 01,18,30,broadcast two or three times after a track-type change,10-verified-behaviour.md
 01,1p,30,read 00 on part 0 (SoundDesignPage),10-verified-behaviour.md
-01,1p,33,"catalogue number minus one — ten presets loaded by Bank/PC and read back; re-read on parts 0-9 on 2026-10-23 and resolved to the right preset each time, but silent on part 10 (SAMPLER) in eight attempts across two clients. Also on 2026-11-23: part 8 read 20 04 = 4100, 4/4 attempts, equal to the <ContentNumber> of that sound's exported .Y3S, so an imported sound kept its content number",06-sounds-presets.md
+01,1p,33,"catalogue number minus one — ten presets loaded by Bank/PC and read back; re-read on parts 0-9 on 2026-10-23 and resolved to the right preset each time, but silent on part 10 (SAMPLER) in eight attempts across two clients. Also on 2026-11-23: part 8 read 20 04 = 4100, 4/4 attempts, equal to the <ContentNumber> of that sound's exported .Y3S -- but a content dump request for sound 4100 finds nothing, so the two numbers being equal is not evidence that they are the same namespace",06-sounds-presets.md
 01,1p,37,"cleared a pattern of five events on a re-typed part in one message; broadened 2026-10-23 to 66 messages (6 slots x 11 parts) with no PatternSelect write, each part's selected pattern then read back empty, native synth parts 7-10 included",10-verified-behaviour.md
 01,1p,39,read 00 on part 0; observed broadcasting two data bytes,10-verified-behaviour.md
 01,1p,3C,"answered on all eleven parts, 44 replies out of 44; 1/2/4/5 observed",13-track-types.md

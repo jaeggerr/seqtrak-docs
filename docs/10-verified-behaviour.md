@@ -3675,8 +3675,11 @@ parsed independently, before any of these reads:
 
 So the third party's rule — that an element refers to a user waveform as
 `ContentNumber − 8192` — is no longer only *reported*: it is **verified on
-hardware** for this case. And the sound kept the content number its file
-carried; it was not reassigned on import here.
+hardware** for this case. The sound's number and its file's `<ContentNumber>`
+are also equal, but see
+[the later entry](#the-same-session-what-a-refusal-names-and-a-namespace-that-is-not-what-it-looks-like):
+a content dump request for sound 4100 finds nothing, so that equality is not
+evidence that the two namespaces are the same.
 
 ### What this retires
 
@@ -3788,3 +3791,54 @@ per-packet field — observed once, meaning unknown.
 - The 7-into-8 **bit order is most-significant first**, now recorded in
   [02-sysex-format.md](02-sysex-format.md#strings-and-blobs-7-into-8-packing).
   It had never been written down, and an ASCII name cannot reveal it.
+
+### The same session: what a refusal names, and a namespace that is not what it looks like
+
+Three more things fell out of asking for a **sound** and an **element** instead
+of a waveform. `verified on hardware`.
+
+#### The dump header comes back with the request's own address
+
+```
+F0 43 00 7F 1C 00 08 0C 03 60 04 00 00 00 00 0D F7      (17 bytes)
+```
+
+Byte count `00 08` = 8 — the Model ID, the three address bytes and four data
+bytes — and the address is `03 60 04`, exactly the kind and content number
+asked for. So a dump header is echoed back before anything else, and its four
+bytes are the interesting part:
+
+| Those four bytes | Meaning |
+|---|---|
+| `00 01 00 00` plus counts, byte count 22 | a transfer follows — this is what the **waveform** request returned |
+| `00 00 00 00`, byte count 8 | **nothing to send** |
+
+#### A refusal names what it is refusing, and it can be the host's own reply
+
+```
+F0 43 00 7F 1C 00 0C 0C 01 22 00 7F 01 21 00 00 00 00 00 30 F7
+```
+
+Result `7F` = 127 `UnknownError`, and the acknowledged address it carries is
+**`01 21 00`** — the address the *host* sends its acknowledgements to. The
+machine is not rejecting the request; it is rejecting **the acknowledgement**
+that followed an empty header. A client must therefore read the
+acknowledged-address field of a refusal to know which end was at fault, and
+not assume a refusal is always about the request.
+
+#### `CurrentSound` is not a content number
+
+`01 18 33` read **4100** on SYNTH 2, and the `.Y3S` exported from that sound
+carries `<ContentNumber>4100</ContentNumber>`. The two numbers agree. But a
+content dump request for **sound 4100** returns the empty header above, and so
+does element 0; a project request returns no header at all.
+
+So the agreement between those two numbers must not be read as "the content
+channel serves that sound at that number". Either sounds are addressed in
+another namespace on this channel, or they are not retrievable by it in the
+state this unit was in. **Open.** The waveform, by contrast, answered at the
+number its own XML declared — 8593 — and delivered every byte.
+
+This revises the earlier entry in this document, which drew the stronger
+conclusion that an imported sound "kept its content number". What is measured
+is only that the two numbers are equal.
