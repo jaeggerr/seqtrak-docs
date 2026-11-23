@@ -427,14 +427,77 @@ project it adds `0x10D001` (1,101,825) bytes.
 | binary ↔ 7-bit array | file data, with an encoded/decoded byte-count pair giving the ratio |
 | string ↔ 7-bit array | names |
 
+#### The bodies have their own addresses
+
+The dump header's `ah` names the **kind being announced**. Each body then
+travels at an `ah` of its own, and the two spaces do not overlap:
+
+| `ah` | Body | Sent |
+|---|---|---|
+| `06` | project data | by packet index |
+| `07` | sound data | one message |
+| `08` | element data | one message |
+| `09` | waveform data | one message |
+| `0A` | sample data | by packet index |
+
+For the one-message bodies, `am al` carry the content number as in the header.
+For project data `am` is **0** and `al` is the packet index.
+
+#### A body's size is declared, and the three sizes check out
+
+Each one-message body copies a fixed-size file into the message:
+
+| Body | Bytes | What it is, measured independently |
+|---|---|---|
+| sound | `0x700` = **1792** | the size of a `.Y3S`'s `sound.bin`, measured on a real export |
+| element | `0x200` = **512** | the 512-byte `element.bin` of a sampler export, as a third party measured it |
+| waveform | `0x84` = **132** | `4 + 64 × 2` — a **stereo** `waveform0.bin`, exactly the layout of [§the keybank record](06-sounds-presets.md#the-rest-of-the-record) |
+
+Three numbers recovered from the app that match three files measured without
+it. That is the strongest internal check this section has.
+
+#### Packet cutting
+
+The two packet-index paths carry **`0xBB8` = 3000 raw bytes per packet**. At
+the 7-into-8 ratio that is 3429 encoded bytes, which sits inside the
+`0xF98` = 3992-byte payload area with room for the header.
+
+#### A body's message layout, taking waveform data as the worked case
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x0B` | 4 | `00 01 00 00` |
+| `0x0F` | 19 | the content's **UUID**, 16 raw bytes through the binary conversion |
+| `0x22` | 4 | a 32-bit value, 7-bit encoded |
+| `0x26` | 50 | a name, string-encoded |
+| `0x58` | 50 | a second string — the tag |
+| `0x8A` | 3 | three single bytes (the category pair and one more) |
+| `0x8D` | *n* | the file's bytes, binary-encoded |
+
+Message length is *n* + `0x8F`. Sound data ends at *n* + `0x8E`, element and
+waveform data at *n* + `0x8F`.
+
+The 19 bytes for a 16-byte UUID are the 7-into-8 ratio made visible:
+⌈128 / 7⌉ = 19.
+
+#### The acknowledgement addresses
+
+| After sending | It waits on |
+|---|---|
+| the contents dump header | the address it just sent, packed `(ah << 14) \| (am << 7) \| al` |
+| sound data | `(0x07 << 14) \| content number` |
+| element data | `(0x08 << 14) \| content number` |
+| waveform data | `(0x09 << 14) \| content number` |
+| sample data | **`0A 00 00`** flat — not its own content number |
+
 #### What is still missing
 
-- how a sound, element, waveform, sample or project **body** is cut into
-  packets and numbered — the per-kind send steps and the packet-index ones;
-- the **acknowledgement state machine**: which address answers what, the
-  timeouts, the restart, and the result codes of the terminate path;
-- whether a waveform's PCM goes out through the binary 7-bit conversion whole
-  or in windows, as the firmware channel's blocks do.
+- the **receive side's** state machine: which address answers what, the
+  timeouts and the restart, and the result codes of the terminate path;
+- the exact meaning of each body's metadata fields — the 32-bit value at
+  `0x22` and the three bytes at `0x8A`;
+- the project body's own layout, which is built differently from the other
+  four.
 
 > Marked `from the official app, untested` throughout: none of this has been
 > sent to a machine. The audio path in particular has never been exercised, and
