@@ -3842,3 +3842,39 @@ number its own XML declared — 8593 — and delivered every byte.
 This revises the earlier entry in this document, which drew the stronger
 conclusion that an imported sound "kept its content number". What is measured
 is only that the two numbers are equal.
+
+### What the content channel actually serves — a bounded survey
+
+The asymmetry above was worth pinning down, so a range of content numbers was
+probed for each kind. The probe sends the request, reads the header and
+**never acknowledges** — an empty header acknowledged is what produced the
+`127` above. `verified on hardware`.
+
+| Kind | Numbers tried | Result |
+|---|---|---|
+| waveform | 8593, 8592, 8594, 8191, 8200, 0, 1 | **8593 answered** (byte count 22) and **8592 answered** (byte count 26). The rest returned the empty header |
+| sound | 4096-4111, 4248, 4263, 4264, 0, 1, 2, 2032, 2047 | every one returned the **empty header** |
+| element | 0-7, 128, 256 | every one returned the **empty header** |
+| project | 0, 1, 2, 7 | **no reply at all** — not even a header |
+
+Three distinct behaviours, and the run carries its own positive control: the
+waveform answered in the same session, through the same code, between the
+silent ones. So the sound and element results are about those requests and not
+about the instrument.
+
+**What this establishes.** On this unit, in this state, the content channel
+served **waveforms only**, and only at user numbers (≥ 8192). A project request
+is not merely empty, it is unanswered, which suggests it is handled on a
+different path rather than refused.
+
+**A hypothesis, not a finding.** The official app's own entry point for pulling
+content takes a **project UUID** alongside the type and the number. Sounds and
+elements may therefore have to be requested inside a project context that is
+established first — plausibly through `10 00 02`
+([§Control addresses](08-bulk-and-files.md#control-addresses)) — which nothing
+here did. Untested.
+
+**And a side find: there are two user waveforms**, 8592 and 8593, where only
+one import was expected. 8592's header declares a byte count of 26 against
+8593's 22, so it carries more — more samples, most likely a stereo pair. Not
+pulled.
