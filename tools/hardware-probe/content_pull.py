@@ -26,10 +26,17 @@ def checksum(buf, size):
 
 
 def unpack7(enc):
-    """7-into-8, most-significant-first: raw[k] = enc[k+1] | bit(6-k) of enc[0]."""
+    """7-into-8, most-significant-first: raw[k] = enc[k+1] | bit(6-k) of enc[0].
+
+    The last group may be partial: a group of 1 + m bytes yields m raw bytes.
+    Dropping it loses up to 6 bytes off the end of every content, which is how
+    a 68-byte keybank table first came back as 63.
+    """
     out = bytearray()
-    for i in range(0, len(enc) - 7, 8):
+    for i in range(0, len(enc), 8):
         g = enc[i:i + 8]
+        if len(g) < 2:
+            break
         h = g[0]
         for k, b in enumerate(g[1:]):
             out.append(b | (((h >> (6 - k)) & 1) << 7))

@@ -256,6 +256,12 @@ header takes bit 6 and the seventh takes bit 0.
 raw[k] = enc[k + 1] | (((h >> (6 - k)) & 1) << 7)      k = 0 … 6
 ```
 
+**The last group may be partial, and it carries real data.** A trailing group
+of `1 + m` bytes yields `m` raw bytes, by the same rule. Dropping it loses up
+to six bytes off the end of every blob — which is exactly how a 68-byte keybank
+table first came back as 63 and a 220,470-byte sample as 220,465. With the tail
+decoded, both reproduce to the byte.
+
 Established by pulling a 220,470-byte sample off a real unit through the
 content channel and unpacking it: with this order every byte matched the file
 the official app had exported from the same sound, 220,465 of 220,465 compared.

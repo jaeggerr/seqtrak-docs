@@ -3878,3 +3878,37 @@ here did. Untested.
 one import was expected. 8592's header declares a byte count of 26 against
 8593's 22, so it carries more — more samples, most likely a stereo pair. Not
 pulled.
+
+### Exact reproduction, and what a stereo waveform does not send
+
+Two refinements close this out.
+
+#### The 7-into-8 tail
+
+The first runs lost the final partial group, so a 68-byte keybank table came
+back as 63 and the sample as 220,465 of 220,470. A trailing group of `1 + m`
+bytes yields `m` raw bytes by the same rule. With the tail decoded, the same
+request reproduces the exported `.Y3S` **exactly**:
+
+| File | Pulled | In the `.Y3S` | |
+|---|---|---|---|
+| `sample0.bin` | 220,470 bytes | 220,470 bytes | **identical** |
+| `waveform0.bin` | 68 bytes | 68 bytes | **identical** |
+
+Not "100 % of the bytes compared" — the same length and the same bytes. The
+read path of the content channel is exact.
+
+#### A stereo waveform sends one keybank
+
+Waveform **8592** turned out to be stereo: its body declares **2 keybanks,
+44100 Hz, 2 channels, one-shot**, and the 132-byte table came back whole.
+
+But only one channel's audio arrived, and the arithmetic says so without
+ambiguity: keybank 0 declares `n` = 465,696 frames at `+0x3C`, which is
+931,392 bytes, and the transfer delivered **931,392 bytes — a difference of
+zero**. The 355 packets account for keybank 0 and nothing else.
+
+So **a request for a stereo waveform brings back the record for both keybanks
+and the samples of only the first.** How the second is fetched is unknown:
+nothing in the transfer announced it, and the machine stopped on its own. A
+client must not assume a stereo waveform arrives whole.
