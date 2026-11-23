@@ -252,6 +252,187 @@ The 2024 preset waveforms are listed in
 categories. Preset wave memory is 800 MB as 16-bit linear; user wave memory is
 500 MB.
 
+**The block is shared by parts 0-8 and 10**, so on paper a *drum* element can
+be pointed at a user wave — a recorded or imported sample — just as a synth
+element can. The Data List says only that the **SAMPLER track is fixed to 1
+(User)**, which constrains part 10 and says nothing about the rest.
+`from Yamaha Data List`, **untested over SysEx**, and nothing on the front panel
+exposes it: Yamaha's copy/paste matrix keeps samples inside the SAMPLER track
+([15-front-panel.md](15-front-panel.md)). The experiment is in
+[12-open-questions.md](12-open-questions.md).
+
+**By another route it is settled.** A `.Y3S` package's element wave field
+references a user waveform directly, and sounds built that way play on synth
+tracks — so a non-sampler element really does reach user wave memory. Reported
+by a third party, not reproduced here:
+[the `.Y3S` section below](#the-y3s-content-package--how-a-sound-of-your-own-gets-in).
+
+## The `.Y3S` content package — how a sound of your own gets in
+
+**This is the route a host actually has.** A `.Y3S` is a sound package the
+machine imports: a zip holding one folder named by the sound's UUID, with
+`sound.bin`, per-waveform keybank records and one raw PCM file per keybank. It
+carries both the sound *and* its user waveforms, so it is the only known way to
+put your own audio into user wave memory — the SysEx bulk selectors reach a
+sampler element's metadata only ([08-bulk-and-files.md](08-bulk-and-files.md)).
+
+### Two independent third-party sources, and who found what
+
+The format has been reverse-engineered twice, by different people, and the two
+accounts cover different ground. Keeping them apart matters: one is the
+container, the other is the loop.
+
+| Source | What it establishes | When |
+|---|---|---|
+| [`FORMAT.md`](https://github.com/rechandler/seqtrak_sampler/blob/main/FORMAT.md) in `rechandler/seqtrak_sampler`, a **reader** for the official app's `.Y3S` exports | the package layout, the keybank table (u32 count + 64-byte records) and the record fields `+0x00`-`+0x03` (key and velocity ranges, marked uncertain), `+0x05` pan, `+0x08` root note, `+0x24` sample rate, `+0x30` last frame, `+0x3C` frame count, `+0x38` unknown. Also a sampler export's 512-byte `element.bin`, whose start and end points match what `50 eA` reports over MIDI | published first |
+| [`Research/docs/10-Y3S-spec.md`](https://github.com/rexendevar/SLOPTRAK/blob/main/Research/docs/10-Y3S-spec.md) in SLOPTRAK, by `rexendevar`/`giddycadet` — the same analyst as the firmware patches in [09-firmware.md](09-firmware.md) | **the loop**: `+0x0F` and `+0x2C`, tested by import. Plus `sound.bin`'s element blocks and the wave reference, and the factory wave table's addresses in the `Program` image | 2026-11-18 |
+
+So the container was already public when the sustain was found. **What is new is
+the loop switch**, and that is the part the owner community had been missing.
+
+One caution on reading them as two independent observations: both rule out the
+same candidate list for `+0x38` (byte and word sums, CRC-16, CRC-32 halves,
+Adler-32) in nearly the same words. That may be two people reaching for the
+obvious list, or it may be inheritance. It is not two confirmations.
+
+`rechandler`'s notes also carry two things worth having here:
+
+- the official app **exports** a resampled sound as `.Y3S` but will not import
+  that file into a synth track — which is why a converter exists at all;
+- for a **one-shot** sampler pad, `Loop Length` over MIDI holds the sample's
+  last frame, not a loop length. Their reading of the bulk checksum (Model ID
+  through data, byte count excluded) agrees with
+  [02-sysex-format.md](02-sysex-format.md#bulk-dump) — an outside agreement,
+  though they may have read this repository, so not independent corroboration.
+
+> **Everything in this section is *reported by a third party, not reproduced
+> here*.** Their own notes grade each claim, and their strongest tag means
+> *they* imported a patch on *their* unit and listened. None of it has been run
+> on this repository's machine, so none of it is `verified on hardware` here.
+>
+> **Rule 2 applies, hard.** The SLOPTRAK spec cites this repository for the
+> parameter table and the wave list, and its element-block layout is read
+> *against* it. Where it agrees with us about `41 ep`, that is inheritance, not
+> corroboration. What is genuinely theirs is the loop.
+
+### Package layout
+
+```
+<sound UUID>/
+    sound.bin          1792 bytes        the sound itself
+    sound.xml                            ContentNumber, UUID, Order, Favorite
+    waveform0.bin      4 + 64 × keybanks keybank records
+    waveform0.xml                        ContentNumber (user waves are ≥ 8192)
+    sample0.bin        2 × n bytes       raw signed 16-bit LE PCM, mono, no header
+    sample0.xml                          WaveformNumber + KeybankNumber + DataSize
+```
+
+A sound that references only factory waves ships `sound.bin` and `sound.xml`
+alone. A stereo waveform is **two keybanks**: left is `sample0.bin`, right is
+`sample1.bin`.
+
+The audio file is **raw PCM, not a WAV**. A patch that stored whole `.wav`
+files played its 112-byte header as audio.
+
+### Infinite sustain is a loop switch in the keybank record
+
+This is the answer to a question the owner community had open since release:
+why every user patch is a one-shot while factory pads hold forever. It is not
+an engine difference and not a firmware limit — it is **two fields in the
+64-byte keybank record**, and nothing else changes.
+
+| Record offset | Size | One-shot | Looping |
+|---|---|---|---|
+| `+0x0F` | u8 | `01` | **`00`** — loop switch, 1 = one-shot, 0 = loop |
+| `+0x2C` | u32 | `0` | **loop start ÷ 16** — in 16-sample blocks |
+| `+0x30` | u32 | `n − 1` | `n − 1` — index of the last sample |
+| `+0x3C` | u32 | `n` | `n` — sample count, `n` = file size ÷ 2 |
+| `+0x34` | u32 | `0` | `0` — **leave it**; the variants that put a loop start here did not loop |
+
+The loop runs from the start point **to the end of the data**; no loop end is
+stored, and whether shortening `+0x30` moves it is untested even by them. Loop
+start has **16-sample granularity** — floor it to a multiple of 16. On a stereo
+waveform, set both records identically.
+
+They established the table by building four variants of one patch that differ
+only in those record bytes and importing each: only `+0x0F = 0` with the loop
+start at `+0x2C` looped.
+
+**What was unknown was narrower than "how the SEQTRAK sustains".** A *sampler
+pad* loops through ordinary documented parameters — `50 eA 5F` `Loop On/Off`,
+`50 eA 60` `Loop Length`, `50 eA 66` / `6A` the start and end points, all
+`from Yamaha Data List` and all `verified on hardware` here, with a write to
+the start point accepted ([03e](03e-parameters-element.md)). What has no SysEx
+block at all is the loop of a **user waveform referenced by an AWM element** —
+a synth or drum track. For that the keybank record in the file is the only
+control, which is why the answer had to be found in a `.Y3S` and not on the
+wire.
+
+**A loop alone is not enough.** The amplitude envelope has to sustain too, and
+the machine's own UI exposes only attack and decay — sustain and release cannot
+be edited on the device. Their advice is to start from a template sound whose
+envelope already sustains. The envelope's byte offsets inside an element block
+are not mapped.
+
+### The rest of the record
+
+| Offset | Field | Value in user records |
+|---|---|---|
+| `+0x00`, `+0x01` | key range low, high | `00`, `7F` |
+| `+0x02`, `+0x03` | velocity range low, high | `01`, `7F` |
+| `+0x08` | root key (MIDI note) | `3C` (60) |
+| `+0x0B` | channels, 1 = mono, 2 = stereo | `01` / `02` |
+| `+0x24` | u32 sample rate in Hz | `44100`; other rates untested |
+| `+0x38` | u32 device-written, differs per channel | meaning unknown — not a sum, CRC-16/32, Adler or any statistic they tried. Their generator copies a template value |
+
+`waveformN.bin` is a u32 keybank count followed by that many records, so 68
+bytes mono and 132 stereo.
+
+### `sound.bin`, and how an element points at a wave
+
+`sound.bin` is 1792 bytes: a header, a 32-byte name as four groups of `00` plus
+seven ASCII characters, undecoded common parameters, then **7 element blocks of
+141 bytes** (the 8th is `FF`-filled in every file they saw, although Yamaha
+documents 8 elements).
+
+Element *k* starts at `0x1E9 + 141 × k`, and its bytes follow **the `41 ep xx`
+address order of this repository's own parameter table** — which is exactly the
+inheritance Rule 2 warns about, so read it as a cross-reference and not as
+confirmation.
+
+The wave reference is a **u16 at `0x1E8 + 141 × k`**:
+
+| Value | Meaning |
+|---|---|
+| `01 00` | element unused |
+| a wave-list number, e.g. `8B 01` = 395 | factory waveform |
+| `ContentNumber − 8192`, e.g. 8687 → 495 | a user waveform shipped in this package |
+
+**An element is switched on by that field alone.** In their device-made files,
+the only bytes differing between a used and an unused element are those two —
+every other element parameter stays at its default. So a multi-sample
+instrument is *N* wave numbers in the first *N* blocks. How the u16 relates to
+the SysEx fields `Element Assign` / `Wave Select` / `Wave Number` is **not
+understood**; its high byte overlaps what the table calls `Element Assign`.
+Factory and user references are indistinguishable byte-wise — the importer
+resolves them by context, and content numbers are reassigned on import.
+
+### What this changes here
+
+- A **user wave on a non-sampler element is real**, not merely implied by the
+  Data List: their element wave field addresses user waveforms directly, and
+  the sounds they built play them on synth tracks. The SysEx path for the same
+  thing ([`41 ep 01` / `41 ep 03`](#waveforms)) is still untested.
+- The factory wave table lives in the `Program` image — offset table at
+  `0x2041157C` (2024 × u32), directory at `0x2041351C`, and **19,865 records**
+  of 64 bytes at `0x20428B24`, the same record layout as a package's. A
+  waveform is multi-zone: its directory entry lists many records. Reported,
+  not re-checked against this repository's image.
+- Their factory reading is not clean: `+0x0F` is `1` on 99.7 % of one-shot-looking
+  factory records but `0` on a drum (wave 765, Timbale 1), and one Sax zone
+  decodes to an 80-sample loop that does not match what is heard. **Factory
+  loop ends are not established.**
+
 ## Favourites and the sound browser — `0C xx xx` and `10 01 xx`
 
 `reverse-engineered from app traffic`. This zone is how the official app drives

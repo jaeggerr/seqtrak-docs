@@ -354,3 +354,22 @@ Remaining, in order of usefulness:
    confirm or demolish the whole result table.
 4. **`part >= 7`.** The app never sends it, so the firmware's response is
    entirely unknown — treat as risky.
+5. **`type >= 4` — DX or SAMPLER on a drum part.** Not in the app's enum and
+   never sent by it, but `04` and `05` are values the firmware uses elsewhere
+   for those two engines: `PartAwmType` reads `04` on part 9 and `05` on part
+   10 (`verified on hardware`, [§6](#6-partawmtype-01-1p-3c-is-state-not-the-command)),
+   and the favourites message `10 01 xx` encodes the engine as `01` Drum,
+   `02` Synth, `04` DX, `05` Sampler
+   ([06-sounds-presets.md](06-sounds-presets.md)). So the two namespaces agree,
+   and whether `01 33 00 0p 04` is refused, ignored or acted on is a one-message
+   experiment. Expect a refusal: `ParameterModel.ChangeAwmTrackType`
+   instantiates only the three AWM classes, and Yamaha's own copy/paste matrix
+   never crosses into DX (§5.5.1, [15-front-panel.md](15-front-panel.md)).
+
+   **Even a success would not give a usable DX track.** The FM parameter blocks
+   are `48 09` (Common) and `49 o9` (Operator) — the part nibble is **fixed at
+   9**, so there is no address at which a second FM part could be edited, and
+   FM polyphony is 8 voices in total
+   ([01-overview.md](01-overview.md)). Moving the engine binding is therefore a
+   firmware job in the audio path, not in the panel code where every patch
+   reported so far lives ([09-firmware.md](09-firmware.md)).
