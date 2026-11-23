@@ -3985,3 +3985,53 @@ synth part and a drum part were made to choose.
 > it back; nobody listened. Whether the drum part then *sounds* the user wave
 > is a different claim and needs an ear on the machine. This repository has been
 > burned before by reading a successful write as a successful behaviour.
+
+## 2026-11-23 — writing content: accepted at every step, and never applied
+
+The first attempt to **write** through the content channel. The result is a
+clean negative, and worth having precisely because the machine never complains.
+
+### What was sent
+
+The patched clavioline waveform — the same audio already on the unit, with the
+record's loop switch at `00` and the loop start at 3282 — written over the
+existing waveform **8593**:
+
+| Step | Message | Acknowledgement |
+|---|---|---|
+| 1 | contents dump header, `ah 05`, 1 sample declared with its size | **result 0** |
+| 2 | 84 sample packets, `ah 0A`, indices 0-83 | **result 0** on every one |
+| 3 | the waveform body, `ah 09`, UUID, order, tags, categories, the 68-byte record | **result 0** |
+
+### What happened
+
+**Nothing.** Read back through the same channel, the record still reads
+`+0x0F` = `01` (one-shot) and `+0x2C` = `0`, and the audio is unchanged. Sample
+memory read `11` before and `11` after. The machine accepted a complete,
+well-formed transfer and discarded it.
+
+Repeated with the header declaring **waveform count 1** instead of 0: same
+three acknowledgements of `0`, same unchanged record.
+
+### What this pins down
+
+- The write **frame** is right: a malformed body is refused with `127`, a
+  `sound` kind with `7`, and the correct header with `0` — the machine is
+  parsing what it is sent, not ignoring it.
+- The **packet framing** had to match the machine's own exactly, and does: the
+  7-into-8 stream is packed over the **whole content** and then cut into
+  3000-byte packets — the groups do **not** restart per packet. Encoding each
+  2625-byte chunk separately gets 83 packets accepted and the 84th refused
+  with `127`, because its length no longer matches. Done right, the numbers
+  reproduce the machine's own: 251,968 encoded bytes, 84 packets, the last of
+  2,968.
+- So what is missing is **not** the frame, the addressing, the packing or the
+  acknowledgements. Something **commits** a received content, and it was not
+  sent. The app's own send path has a preparation step and a sendability check
+  before any of this, and the documented bulk transfers of the parameter zone
+  are **bracketed by a header and a footer** (`11 mm nn` / `12 mm nn`) where
+  this channel used no footer at all. Either is a candidate. Untested.
+
+> **For anyone trying this: it is safe so far.** Three complete transfers were
+> accepted and discarded with no change to the record, the audio or the sample
+> memory. That is not a guarantee — it is what happened three times.

@@ -735,11 +735,21 @@ The receiver's own refusals, sent as the result code of an acknowledgement:
   four;
 - the whole **receiving** direction, for reading content out of the machine.
 
-> **What is still only `from the official app, untested` is the *write*
-> direction.** Nothing has ever been sent to a machine through this channel,
-> and the audio path in particular has never been written. A wrong byte count
-> or checksum on a content write reaches the machine's own content store, so
-> read first and do not write speculatively.
+> **The write direction has now been tried, and it does not land.** A complete
+> transfer — header, 84 sample packets, the body — is acknowledged with `0` at
+> every step and then **discarded**: the record reads back unchanged and sample
+> memory does not move. The frame, the addressing, the packing and the
+> acknowledgements are all right; something **commits** a received content and
+> it has not been found. The app's send path has a preparation step and a
+> sendability check first, and the parameter zone's bulk transfers are bracketed
+> by a header *and a footer* where this channel used none. See
+> [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--writing-content-accepted-at-every-step-and-never-applied).
+
+One thing the failed attempts did settle, and it matters for a reader: the
+7-into-8 stream is packed over the **whole content** and then cut into
+3000-byte packets. The groups do not restart at each packet. Encoding each
+2625-byte chunk on its own gets every packet but the last accepted, and the
+last refused with `127`.
 
 ## What a project looks like on disk
 
