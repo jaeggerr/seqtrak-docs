@@ -4120,40 +4120,94 @@ envelope did. One byte at `41 ep 3B` is the difference, and the machine's own
 UI exposes only attack and decay, which is why the third party's advice was to
 start from a template sound whose envelope already sustains.
 
-### A looped sample does not stop on key release — observed, mechanism unproven
+### Withdrawn: "a looped sample does not stop on key release"
 
-Trying to get the obvious thing from the sustaining patch — sound while the key
-is held, silence when it is let go — failed, and the pattern is consistent
-enough to record.
+An earlier pass in this session published a six-row table concluding that a
+looping user wave never stops once `AEG Decay 2 Level` is `127`. **That table is
+withdrawn.** Its rows were not a clean matrix: the wave the part was pointing at
+changed under the experiment without being re-read, and the reason is the next
+finding. Nothing in it can be attributed to the envelope.
 
-With the looping waveform on part 8, **whenever `41 ep 3B` `AEG Decay 2 Level`
-is `127` the note never stops**, under every combination tried:
+### Loading a sound discards live element writes
 
-| `41 08 3B` Decay 2 Level | `41 08 37` Release Time | `41 08 08` Trigger/Gate | Result |
+`verified on hardware`, and it explains the above. Element parameters written
+over SysEx (`41 ep xx`) live in the part's working state. **Assigning a sound to
+that part reloads its elements from storage and throws those writes away.**
+
+Observed as a silent revert: part 8's element 0 was pointed at user wave 404,
+confirmed by read; later the same address read **401** — the unpatched wave —
+with no write of ours in between, after sounds had been loaded on the track.
+Every envelope experiment run across that boundary was therefore comparing two
+different waveforms without knowing it.
+
+> **The consequence for anyone patching loops:** a loop cannot be installed by
+> writing element parameters. It has to be in the **content** — the waveform's
+> own keybank record, shipped in a `.Y3S` — which is precisely why the third
+> party distributes files rather than a list of parameters.
+
+### The third party's pack works, and it answers the question
+
+Seven patches from `giddycadet`'s free pack were imported on this unit. Played
+on SYNTH 2 with the patch exactly as shipped — wave 405, its own envelope,
+nothing of this project's written over it — the note **holds while the key is
+held and stops when it is released.**
+
+So the behaviour is not "forever" in the sense of unstoppable. The loop makes
+the sample endless; the envelope's release still ends the note. `verified on
+hardware` by the owner's ear, which is the only instrument for it.
+
+### Their envelope, read out of the files
+
+All seven patches carry the **same** amplitude envelope, element 0, differing
+only in attack:
+
+| Field | Address | Value |
+|---|---|---|
+| AEG Attack Time | `41 ep 33` | `0` on the basses, `83` on the pads |
+| AEG Decay 1 Time | `41 ep 34` | `97` |
+| AEG Decay 2 Time | `41 ep 35` | `64` |
+| AEG Release Time | `41 ep 37` | `83` |
+| AEG Init Level | `41 ep 38` | `0` |
+| AEG Attack Level | `41 ep 39` | `127` |
+| AEG Decay 1 Level | `41 ep 3A` | `119` |
+| **AEG Decay 2 Level** | `41 ep 3B` | **`116`** — not `127` |
+
+The sustain level is `116`, which is worth knowing: an import from the official
+app leaves it at `0`, and the obvious guess of `127` is not what a working patch
+uses.
+
+**But their envelope alone is not enough.** Applied byte for byte to this
+project's own patched waveform, the note did **not** behave: it played the
+sample once and stopped. The difference is in the waveform, not the envelope.
+
+### The difference: their sample lengths are all multiples of 64
+
+| Patch | `n` frames | `n % 16` | `n % 64` |
 |---|---|---|---|
-| `0` (what the app's import leaves) | 86 | 1 | fades out on its own, key held or not |
-| `127` | 86 | 1 | **sustains indefinitely** |
-| `127` | **0** | 1 | never stops, release included |
-| `127` | **127** | 1 | never stops |
-| `127` | 127 | **0** | never stops |
-| `127` | 64 | 1 | never stops |
+| Airplane Drone | 134,208 | 0 | 0 |
+| Analog Pad | 241,920 | 0 | 0 |
+| Fat Fuck Friday | 67,968 | 0 | 0 |
+| Hypnotizing Pulse | 270,144 | 0 | 0 |
+| Of the Spheres | 165,312 | 0 | 0 |
+| Sizzle & Whoosh | 188,352 | 0 | 0 |
+| Warm Reese | 174,528 | 0 | 0 |
+| **this project's patch** | **110,235** | **11** | **27** |
 
-Both extremes of `Release Time` behave the same, which says the release stage
-is not what is failing to fire. There is **no AEG Release Level** to blame
-either — `41 ep 3C` is reserved, so the release always targets zero.
+All seven of theirs are divisible by 64. Ours is divisible by nothing.
 
-**The hypothesis:** a loop with no stored end point keeps the voice alive, and
-the envelope's release never gets to finish it. **Not proven**, and two things
-would settle it, neither of which this session managed:
+The loop runs from the start point **to the end of the data**, and the start
+point is counted in **16-sample blocks** — so a sample length that is not a
+multiple of 16 leaves the loop's end in the middle of a block. **That is a
+hypothesis**, not a measurement: it is the only structural difference left in
+the record numbers, and it has not been tested. A re-rendered 117,888-frame
+version exists to test it, which needs another import.
 
-- whether the **Synth keys transmit note-off at all**. Two capture windows
-  caught nothing — both mistimed by the person running them, not by the
-  machine, so this says nothing yet. Use
-  [`tools/hardware-probe/point2_facade.py`](../tools/hardware-probe/point2_facade.py),
-  which exists for self-paced front-panel capture, rather than a fixed window.
-- whether shortening `+0x30` / `+0x3C` gives the loop an **end**, which is open
-  question 1 of the third party's own spec and would test the hypothesis
-  directly.
+### A correction to their spec: the element block base
 
-Until then the practical choice on a looping user wave is binary: it holds
-forever, or it fades on its own. There is no measured middle.
+Their `.Y3S` spec places element 0's block at `0x1E9` in `sound.bin`. **In the
+files here it is at `0x14A`.** Located by searching for the nine-byte sequence
+this machine had just reported for addresses `41 ep 33`-`3B` — it occurs exactly
+once in the file — so the anchor is hardware-backed rather than assumed, and
+with it every envelope field read out of a `.Y3S` matches what the part reports.
+The gap is 159 bytes, which is not a multiple of their 141-byte stride, so one
+of the two numbers is simply wrong rather than off by a block.
