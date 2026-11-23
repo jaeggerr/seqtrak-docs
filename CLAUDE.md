@@ -211,10 +211,20 @@ Three rules learned the hard way, all from
    [`tools/hardware-probe/read_many.py`](tools/hardware-probe/read_many.py),
    which does both, for any multi-address run.
 
+6. **Before you believe a listening test, read back what is actually loaded.**
+   `01 1p 35` `CurrentSoundName` answers in one message, for user sounds too, so
+   there is no excuse. On 2026-11-23 a write went to part 8 while the sound being
+   played sat on part 7, and a published `verified on hardware` claim had to be
+   retracted — the second track mix-up in this repository, and the owner had
+   already warned twice that he tests the wrong track. Reach for
+   [`tools/hardware-probe/which_sound.py`](tools/hardware-probe/which_sound.py)
+   first, every time a test depends on which track is sounding.
+
 ### The hardware-probe tools
 
 | Script | What it is for |
 |---|---|
+| `which_sound.py` | read-only: the loaded sound's **name** on every part from `01 1p 35`, user sounds included, four attempts each with the tempo as control. Run it before any test that depends on which track is sounding |
 | `content_push.py` | **installs** a `.Y3S` on the machine through the content channel, without the official app: the dump header, the sample packets, the waveform body and the sound body, each acknowledged. Verified by `01 10 09` decrementing |
 | `content_pull.py` | pulls a content off the machine through the **content channel**: the dump request, the 21-byte acknowledgement at `01 21 00` for every message, 7-into-8 unpacking, and `01 10 01` restored in a `finally`. The run that brought a 220,470-byte sample back byte for byte |
 | `read_many.py` | reads a list of addresses with **one** port held open and timing/active-sensing filtered, four attempts each, the control address interleaved. The instrument to reach for first: a prober that reopens the port per request loses replies on a flooded link |

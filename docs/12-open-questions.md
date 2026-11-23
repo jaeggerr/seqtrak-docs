@@ -753,26 +753,26 @@ control address in the loop, on every transport. A client that assumes the low
 rate and is wrong manufactures false facts; a client that assumes the high rate
 and is wrong only costs itself a few milliseconds.
 
-## Which parameter address is `sound.bin` offset `0x88`? (2026-11-23)
+## ~~Which parameter address is `sound.bin` offset `0x88`?~~ — CLOSED 2026-11-23
 
-Offset `0x88` of a sound package's `sound.bin` decides whether a note stops at
-key release (`0x02`) or loops forever (`0x00`) — isolated by pushing seven
-one-group-then-one-byte variants to the machine,
-[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--key-release-is-one-byte-and-the-parameter-that-looks-like-it-is-not-it).
-Its `31 xp xx` / `41 ep xx` equivalent is unknown, and two candidates are
-already ruled out on hardware: `41 ep 08` `Trigger/Gate Mode` was written `0`
-on a releasing sound, read back `0`, and changed nothing audible; `31 1p 0D`
-`Trigger/Gate Mode` reads `2` on every synth part.
+It is `31 1p 0D` `Trigger/Gate Mode`: `00` *Trigger* ignores key release and a
+looped sample runs forever, `02` *Depend on Voice* lets the note stop. Settled
+by loading the two one-byte-apart variants from the user bank in turn and
+diffing the part's edit-buffer dumps — four bytes differ in 25 blocks, and only
+that one is behavioural.
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--31-1p-0d-is-the-answer-and-the-previous-sections-41-ep-08-test-was-void).
 
-The common region's byte offsets are not the parameter offsets, so the mapping
-cannot be computed — the name alone fills `0x08`-`0x5F` as eleven 7-bit-packed
-groups where the parameter table spends a hundred addresses.
+The same section **retracts** the `41 ep 08` write test published earlier the
+same day: the write went to part 8 while the sound under test sat on part 7, so
+it established nothing. `41 ep 08` is still ruled out, now on the dump
+comparison, where it reads `01` in both.
 
-**What would settle it**: a wide `31 xp xx` / `41 ep xx` dump taken once with a
-releasing sound loaded on a track and once with a looping one, and the diff
-read off. The obstacle is that loading a *user* sound onto a track from the host
-is not yet possible — `01 18 33` reads `00 00` with one loaded, so it is not
-that address.
+**Still open, and smaller**: whether a *live* write to `31 1p 0D` changes what
+you hear without reloading the sound. The write lands and reads back; nobody
+has listened to it yet. And `31 1p 1F` `Portamento Time` comes out `00` instead
+of its default `40` on the Trigger-mode variant although nothing in the package
+sets it — the machine derives it from the same stored field, by a rule that is
+not known.
 
 ## Documentation gaps in this repository
 

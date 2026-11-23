@@ -4522,3 +4522,97 @@ against a hundred parameter addresses — so the mapping cannot be read off by
 arithmetic. Settling it needs a wide parameter dump taken with each of the two
 sounds loaded in turn, and loading a user sound onto a track from the host is
 itself not yet possible.
+
+## 2026-11-23 — `31 1p 0D` is the answer, and the previous section's `41 ep 08` test was void
+
+### First, the retraction
+
+The [previous section](#2026-11-23--key-release-is-one-byte-and-the-parameter-that-looks-like-it-is-not-it)
+reported a write to `41 08 08` that "changed nothing audible" and concluded from
+that experiment that the element's `Trigger/Gate Mode` is not what governs key
+release. **That experiment was void**: the write went to part 8 (SYNTH 2), and
+the sound being played and listened to was on part 7 (SYNTH 1). The two tracks
+were never compared, so the test could only ever have come back negative.
+
+It was caught by reading `01 1p 35` `CurrentSoundName` on every part: SYNTH 1
+held `clavi-B2` and SYNTH 2 held `bis-disperses`. The conclusion happens to
+survive — see below — but it now rests on a dump comparison instead, and the
+write test is withdrawn. This is the third claim in this repository overturned
+by an instrument that could not see what it was asked about, and the second
+where a track mix-up was the cause.
+
+### Reading the name back is one message
+
+`01 1p 35` `CurrentSoundName` answers a plain Parameter Request with 100 bytes,
+7-bit packed, holding the loaded sound's name — for **user** sounds as well as
+presets. It answered on all eleven parts, four attempts each, tempo as control.
+`verified on hardware`. That is much cheaper than the thirty-block edit-buffer
+burst, and it is the only practical way to tell which user sound a Program
+Change landed on.
+
+`01 1p 33` `CurrentSound` is the opposite: it read `00 00` on a part holding a
+user sound, and writing `858` to it did nothing — the loaded sound was unchanged
+and the address still read `00 00`, with the neighbouring part's name unmoved.
+It reports, it does not select, and it does not report user sounds at all.
+`verified on hardware`.
+
+### The user bank enumerated
+
+Sweeping MSB 63, LSB 32, programs 0-31 on SYNTH 2's channel and reading
+`01 18 35` after each triplet:
+
+| Programs | What loaded |
+|---|---|
+| 0-27 | 28 distinct user sounds, **in creation order**, the most recent last |
+| 15, 16, 17 | nothing — the name stayed on the previous sound |
+| 28-31 | nothing, as documented for unsupported program numbers |
+
+`verified on hardware`. So user sound *k* from zero is LSB `32 + k // 128`,
+program `k % 128`, and the bank has holes: a program that loads nothing looks
+exactly like one that reloads what is already there. Always read the name back.
+The 128-per-bank size is still unmeasured — only 28 sounds existed.
+
+### And the answer
+
+`clavi-B1` (program 25, `sound.bin` `0x88` = `0x00`, loops forever) and
+`clavi-B2` (program 26, `0x88` = `0x02`, stops at key release) differ in that
+one byte and the name. Loading each in turn and dumping the part's edit buffer
+with `11 02 08` gives four differing bytes in 25 blocks:
+
+| Block, offset | Parameter | Looping | Releasing |
+|---|---|---|---|
+| `31 08 00` + `0x09` | a Sound Name byte | `31` | `32` |
+| **`31 18 00` + `0x0D`** | **`31 1p 0D` `Trigger/Gate Mode`** | **`00` *Trigger*** | **`02` *Depend on Voice*** |
+| `31 18 00` + `0x1F` | `31 1p 1F` `Portamento Time` | `00` | `40`, the default |
+| `41 08 00` + `0x04` | the element's wave number | `29` | `2A` |
+
+`verified on hardware`. **`Trigger` means "ignore key release"** — the right
+behaviour for a drum hit, and the reason a looped sample runs forever.
+`Depend on Voice`, the Data List default, lets the note stop when the key is
+released. `Portamento Time` rides along: nothing in the package sets it, so the
+machine derives it from the same stored field.
+
+`41 ep 08`, the element's own `Trigger/Gate Mode`, reads `01` (*Gate*) in **both**
+dumps, so it is not the discriminator. That is the evidence replacing the void
+write test above.
+
+The address takes a live write: with `clavi-B1` loaded, `31 18 0D` read `00`,
+was written `02` and read back `02`, then restored to `00`, with `31 17 0D`
+unmoved at `02` as witness and the tempo answering throughout. `verified on
+hardware` for the read-back only — **whether a live write changes what you hear
+without reloading the sound has not been listened to.**
+
+### Why the official app's imports never sustained
+
+Two independent things are set wrong by a WAV import through the official app,
+and both had to be found before a note would hold and then stop:
+
+| Address | After an app import | What it costs |
+|---|---|---|
+| `41 ep 3B` `AEG Decay 2 Level` | `00` | the note fades to silence with the key held |
+| `31 1p 0D` `Trigger/Gate Mode` | `00` *Trigger* | key release is ignored, so a looped sample never stops |
+
+Offline cross-check, no hardware: all **seven** of the third-party preset pack's
+patches carry `0x88` = `0x02`, and **every** package exported after an app WAV
+import carries `0x00`. That is what the pack's author had changed, and the loop
+switch in the keybank record was only half the story.

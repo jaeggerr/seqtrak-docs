@@ -54,7 +54,7 @@ factory name comes close to filling it.
 |---|---|---|---|---|
 | 64 | 0 | 0-8 | Project (8 = temporary) | user — **`verified on hardware`** for programs 0 and 7 |
 | 63 | 0-31 | 0-127 | Sound (Drum / Synth / DX) | preset banks 1-32 |
-| 63 | 32-47 | 0-127 | Sound | user banks 1-16 |
+| 63 | 32-47 | 0-127 | Sound | user banks 1-16 — **`verified on hardware`** for LSB 32, see below |
 | 62 | 0-3 | 0-127 | Sampler element | preset 1-4 |
 | 62 | 4-11 | 0-127 | Sampler element | user 1-8 |
 | 32-38 | 0-47 | 0-127 | DrumKit sound, MSB = 32 + part (part 0-6) | preset / user |
@@ -97,6 +97,28 @@ On the transmit side the per-interface bitmasks `00 00 0B` (TRS), `00 00 0F`
 (USB) and `00 00 13` (Bluetooth) gate CC, Bank Select and Program Change
 independently — bit 6, bit 5 and bit 4. All three read back as `0x70`, every bit
 set, on a real unit (`verified on hardware`).
+
+### The user bank, measured
+
+`verified on hardware`. Sweeping MSB 63, LSB 32, programs 0-31 on SYNTH 2's
+channel and reading the loaded name back from
+[`01 1p 35`](#reading-back-which-sound-is-loaded) after each one enumerated the
+whole user bank: **programs 0-27 loaded 28 distinct user sounds, in the order
+they were created**, the most recent last. Programs 28 and above left the name
+unchanged, which is the documented "unsupported program numbers are silently
+ignored".
+
+Three programs in the middle of the range (15, 16, 17) also left the name
+unchanged while their neighbours loaded — so the bank is **not densely packed**,
+and a program that loads nothing is indistinguishable from one that reloads what
+is already there. Read the name back rather than assuming a program took.
+
+This settles the user side of the bank arithmetic for the first user bank: user
+sound *k*, counting from zero, is LSB `32 + k // 128`, program `k % 128`. It
+says nothing about the 128-per-bank size itself, since only 28 sounds existed —
+that part of
+[the open question](12-open-questions.md#the-bank-arithmetic-is-documented-and-used-but-never-pinned-by-measurement)
+stands.
 
 ### Example: load Synth preset 858 ("Acid3") on SYNTH 1
 
@@ -192,12 +214,33 @@ Sound names read out of a factory project, part by part:
 | 9 | DX | Square |
 | 10 | SAMPLER | *(empty — user sample)* |
 
+### One message for the name, including user sounds
+
+`01 1p 35` `CurrentSoundName` answers an ordinary Parameter Request with the
+loaded sound's name — 100 bytes, 7-bit packed, the same encoding as the Sound
+Common Name block. One message instead of a thirty-block burst, and it is
+correct for **user** sounds: it returned the names of sounds installed by
+[`content_push.py`](../tools/hardware-probe/content_push.py) on all eleven
+parts. `verified on hardware`.
+
+This is the cheapest way to find out what is loaded on a track, and the only
+practical way to tell which user sound a Program Change actually landed on.
+
 ### The cheaper, less certain route
 
 `01 1p 33` (`CurrentSound`, 2 bytes) holds the current sound number for a part
 and can be read with a single Parameter Request. It is **not broadcast** when
 the sound changes, so it is a poll, not a notification — but its numbering is
 now established.
+
+Two limits, both `verified on hardware`:
+
+- With a **user** sound loaded it reads `00 00`, not the sound's number, so it
+  cannot identify one. Use `01 1p 35` instead.
+- It is **not writable**. Written `858` on part 8 with four confirming reads
+  around it, the loaded sound did not change and the address still read `00 00`,
+  with the neighbouring part's name unmoved as witness. Loading a sound is Bank
+  Select plus Program Change; this address only reports.
 
 **It does not answer on the SAMPLER part.** `01 1A 33` went unanswered in eight
 attempts across two independent clients on 2026-10-23, while `01 17 33` (SYNTH
@@ -467,18 +510,36 @@ alone. The other eleven bytes change nothing audible about key release:
 | `0x143` | ˶ |
 | `0x1E8` | the element's wave reference — it differs because the two packages carry different waveform content numbers |
 
-**Which parameter address this byte is, is not established.** The obvious
-candidate is ruled out: `41 ep 08` `Trigger/Gate Mode` read `1` (Gate) on a
-sound that stops at key release, was written `0` (Trigger) on that element and
-read back `0`, with `41 07 08` unmoved as witness and the tempo answering
-throughout — and the sound still stopped at key release. `31 1p 0D`
-`Trigger/Gate Mode` reads `2` on every synth part, so it does not discriminate
-either. Both `verified on hardware`.
+**That byte is `31 1p 0D` `Trigger/Gate Mode`.** Loading each of the two
+variants in turn and dumping the part's edit buffer leaves exactly one
+behavioural difference between them:
 
-The common region's byte offsets are **not** the `31 xp xx` parameter offsets:
-the name occupies `0x08`-`0x5F` as eleven 7-bit-packed groups where the
-parameter table spends a hundred addresses on it, so the two layouts have
-already diverged before `0x88`.
+| Parameter | Looping sound | Releasing sound |
+|---|---|---|
+| `31 1p 0D` `Trigger/Gate Mode` | `00` *Trigger* | `02` *Depend on Voice* |
+| `31 1p 1F` `Portamento Time` | `00` | `40`, the default |
+
+So **`Trigger` means "ignore key release"**, which is exactly what a drum hit
+wants and exactly what makes a looped sample run forever. `Depend on Voice` —
+the Data List default — lets the note stop when the key is let go. The
+`Portamento Time` difference rides along: nothing in the package sets it, and
+the machine derives it from the same stored field.
+
+The address is also writable live: with the looping sound loaded, `31 18 0D`
+read `00`, was written `02` and read back `02`, then restored to `00`, with
+`31 17 0D` unmoved at `02` as witness and the tempo answering throughout. Only
+the read-back is `verified on hardware` — whether a *live* write changes what
+you hear without reloading the sound has not been listened to.
+
+`41 ep 08`, the **element's** own `Trigger/Gate Mode`, is not involved: it reads
+`01` (*Gate*) in both dumps. The two edit buffers differ in four bytes in all,
+and the other two are the sound name and the element's wave number.
+
+The common region's byte offsets are **not** the `31 xp xx` parameter offsets.
+The name occupies `0x08`-`0x71` and does align, but immediately after it the two
+layouts diverge — the file spends 13 bytes where the edit buffer spends 23 — so
+`0x88` cannot be turned into an address by arithmetic, and was not.
+
 
 ### What this changes here
 
