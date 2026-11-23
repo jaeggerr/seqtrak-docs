@@ -4285,3 +4285,30 @@ frame, the same address and the same counts a host would.
 
 `verified on hardware`, and recorded mainly so the next attempt does not spend
 its time on the payload.
+
+### Priming the inventory does not unlock a Sound header, and `0C 11 01` is the user-sound listing
+
+The app queries the content attributes before it sends, so the inventory
+exchange was the obvious gate. It is not.
+
+`0C 11 01` is confirmed as the **user-sound listing**: it appeared unprompted in
+the capture of the app's own import, and requesting it directly with
+`F0 43 20 7F 1C 0C 0C 11 01 F7` returns the same two-message reply, carrying the
+names of every user sound on the unit. `0C 12 01` and `0C 01 01` answer too.
+`verified on hardware` — and it upgrades that zone, which this repository had
+only `reverse-engineered from app traffic`.
+
+But a kind `03` header sent **immediately after** the listing is still refused
+with `7`, exactly as when sent cold. Three listing modes were tried.
+
+So the tally for the Sound header, all `verified on hardware`: eleven payload
+variants, five device bytes, three inventory primings — every one refused with
+`7`, while a Waveform header is accepted with `0` throughout. Nothing a host can
+say changes it.
+
+**What has not been tried**, and is the cheapest thing left: a **power cycle**.
+Many incomplete transfers were opened during these runs — every accepted
+Waveform header starts one and none was ever completed — so the machine may be
+holding a half-open transfer that makes a different kind unwelcome. `7`
+`PacketLoss` would be a fair thing for it to say about that. After a power
+cycle, a kind `03` header should be the **first** content message sent.
