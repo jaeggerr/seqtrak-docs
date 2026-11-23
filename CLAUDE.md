@@ -198,10 +198,23 @@ Three rules learned the hard way, all from
    this reason, and in both cases a counter was already available and simply not
    consulted.
 
+5. **A prober that opens and closes the port for each request is not a valid
+   instrument while the machine is flooding the link.** Hold **one** port open
+   for the whole run and filter timing and active-sensing bytes. On 2026-11-23
+   this cost two days: every address looked dead, two causal stories were
+   invented for it, and both were wrong — the machine was answering all along
+   and a one-shot prober was losing the replies under a clock flood. The link
+   is flooded whenever **clock** is running, which is **not** the same as the
+   sequencer running: clock was measured at about 48 `F8` a second with
+   `01 10 20` reading `0`. Use
+   [`tools/hardware-probe/read_many.py`](tools/hardware-probe/read_many.py),
+   which does both, for any multi-address run.
+
 ### The hardware-probe tools
 
 | Script | What it is for |
 |---|---|
+| `read_many.py` | reads a list of addresses with **one** port held open and timing/active-sensing filtered, four attempts each, the control address interleaved. The instrument to reach for first: a prober that reopens the port per request loses replies on a flooded link |
 | `seqtrak_probe.py` | general read-only prober: `--identity`, `--req`, `--watch`, `--plan` |
 | `probe_awmtype.py` | reads `01 1p 3C` on all eleven parts, four attempts, control address interleaved |
 | `listen_counter.py` | **cumulative** counter per status byte, with a self-test that injects `F2` through a virtual port first. Use this, not `--watch`, for any negative claim about what the machine sends |
