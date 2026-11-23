@@ -328,6 +328,60 @@ Reimplementing it means rebuilding packet numbering, checksums, the
 acknowledgement state machine and the timeouts — and then still needing a valid
 project image, whose pattern encoding is undecoded (below).
 
+### What has since been recovered — `from the official app, untested`
+
+That verdict is now partly out of date. The channel's **frame** is known.
+
+A content dump is an ordinary **Bulk Dump**, built on the same skeleton as the
+firmware channel's:
+
+```
+F0 43 00 7F 1C bh bl 0C ah am al  00 01 00 00  <payload…> cc F7
+```
+
+| Field | What it is |
+|---|---|
+| `bh bl` | byte count, written as a 16-bit value in two 7-bit bytes |
+| `ah` | the content kind, chosen by the file type (project, sound, element, waveform, sample) |
+| `am` | the block selector within that kind |
+| `al` | **`contentNumber & 0x7F`** |
+| `00 01 00 00` | the same four metadata bytes the firmware channel's block header carries |
+| `cc` | checksum |
+
+The payload area is zeroed to **0xF98 bytes (3992)** before the header is laid
+down, which bounds one message.
+
+**The checksum is the same function as the firmware channel's**, and it was read
+again here rather than assumed: it sums the bytes from index 7 up to `size - 3`
+inclusive, then returns `(0x80 - (sum & 0x7F)) & 0x7F`, or `0` when
+`sum & 0x7F` is zero. Identical to
+[09-firmware.md](09-firmware.md#checksum) and to the arithmetic this repository
+verified against a captured message in
+[02-sysex-format.md](02-sysex-format.md#bulk-dump).
+
+Payloads go through a small set of named conversions, which is how a
+reimplementation should pack them:
+
+| Conversion | Use |
+|---|---|
+| 16-bit integer ↔ 7-bit array | byte counts, waveform numbers |
+| 32-bit integer ↔ 7-bit array | sizes and sample positions |
+| binary ↔ 7-bit array | file data, with an encoded/decoded byte-count pair giving the ratio |
+| string ↔ 7-bit array | names |
+
+There is also a device-number mask and check on the receive side.
+
+**What is still missing**: the `ah` / `am` table per content kind, how a block
+is cut into packets and numbered, and the acknowledgement state machine with
+its timeouts. The send path's own steps are named — a contents dump header,
+then sound, element and waveform data, then sample and project data by packet
+index, with a waiting-acknowledge address between them — so the shape is
+clear and the remaining work is filling it in.
+
+> Marked `from the official app, untested` throughout: none of this has been
+> sent to a machine. The audio path in particular has never been exercised, and
+> a wrong byte count or checksum on a content write is not a harmless mistake.
+
 **For writing a composition, use step record instead**:
 [14-song-mode.md](14-song-mode.md#5-writing-a-whole-song-the-practical-route).
 
