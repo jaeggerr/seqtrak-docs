@@ -214,6 +214,7 @@ Three rules learned the hard way, all from
 
 | Script | What it is for |
 |---|---|
+| `content_pull.py` | pulls a content off the machine through the **content channel**: the dump request, the 21-byte acknowledgement at `01 21 00` for every message, 7-into-8 unpacking, and `01 10 01` restored in a `finally`. The run that brought a 220,470-byte sample back byte for byte |
 | `read_many.py` | reads a list of addresses with **one** port held open and timing/active-sensing filtered, four attempts each, the control address interleaved. The instrument to reach for first: a prober that reopens the port per request loses replies on a flooded link |
 | `seqtrak_probe.py` | general read-only prober: `--identity`, `--req`, `--watch`, `--plan` |
 | `probe_awmtype.py` | reads `01 1p 3C` on all eleven parts, four attempts, control address interleaved |

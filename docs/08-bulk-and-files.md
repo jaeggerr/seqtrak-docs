@@ -456,11 +456,17 @@ Each one-message body copies a fixed-size file into the message:
 Three numbers recovered from the app that match three files measured without
 it. That is the strongest internal check this section has.
 
-#### Packet cutting
+#### Packet cutting — `verified on hardware`
 
-The two packet-index paths carry **`0xBB8` = 3000 raw bytes per packet**. At
-the 7-into-8 ratio that is 3429 encoded bytes, which sits inside the
-`0xF98` = 3992-byte payload area with room for the header.
+The two packet-index paths carry **`0xBB8` = 3000 bytes of *encoded* payload per
+packet**, which is **2625 raw bytes** at the 7-into-8 ratio. An earlier pass
+read the constant as a raw size; a measured transfer settled it: 84 packets of
+3000 encoded bytes delivered 220,470 raw bytes, and 84 × 2625 = 220,500 with
+the last packet short.
+
+A whole message is therefore 3017 bytes — 3000 of payload plus `0x0F` of header
+and two of checksum and `F7` — comfortably inside the `0xF98` = 3992-byte
+payload area.
 
 #### A body's message layout, taking waveform data as the worked case
 

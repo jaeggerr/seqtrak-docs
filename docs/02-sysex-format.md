@@ -248,6 +248,22 @@ Names and sample blobs are packed in **blocks of 7 data bytes into 8 MIDI
 bytes** (`EncodingBlockSize = 7`). The first byte of each group carries bit 7 of
 each of the seven bytes that follow; the next seven carry the low 7 bits.
 
+**The bit order is most-significant first**, `verified on hardware`: byte *k* of
+the group takes **bit 6 − *k*** of the header byte, so the first byte after the
+header takes bit 6 and the seventh takes bit 0.
+
+```
+raw[k] = enc[k + 1] | (((h >> (6 - k)) & 1) << 7)      k = 0 … 6
+```
+
+Established by pulling a 220,470-byte sample off a real unit through the
+content channel and unpacking it: with this order every byte matched the file
+the official app had exported from the same sound, 220,465 of 220,465 compared.
+With the opposite order, 79 %. An all-ASCII name cannot tell the two apart —
+every group's header byte is `00` — which is why the order went unrecorded for
+so long. See
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-later-the-content-channel-works-and-the-audio-comes-back-byte-for-byte).
+
 A name field of 88 MIDI bytes is therefore **11 groups of 8**, holding 77 bytes
 of UTF-8 — and that is exactly the "88 bytes, 11 groups of 8" shape seen in
 project, sound and element names. For plain ASCII every group's first byte is

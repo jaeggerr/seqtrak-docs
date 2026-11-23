@@ -3710,3 +3710,81 @@ chain, after the two overturned negative claims. The rule it adds:
 > filter timing and active-sensing bytes. A one-shot probe is fine on a quiet
 > link and misleading on a busy one — and the link is busy whenever clock is
 > running, which is **not** the same as the sequencer running.
+
+## 2026-11-23, later — the content channel works, and the audio comes back byte for byte
+
+The whole read path of the content channel was exercised on a real unit, and
+the sample that came back is **identical to the file the official app had
+exported from the same sound**. Everything in this section is
+`verified on hardware`.
+
+### The request, refused and then accepted
+
+The request form recovered from the official app was sent verbatim:
+
+```
+F0 43 20 7F 1C 0C 05 43 11 F7     ; ah 05 = Waveform, content number 8593
+```
+
+`am = 0x43`, `al = 0x11` by the documented rule — `((8593 >> 7) | 0x40) & 0x7F`
+and `8593 & 0x7F`. The machine accepted the address and echoed it back, so the
+rule is measured, not inferred.
+
+**Outside contents-management mode it refuses, and names the reason:**
+
+```
+F0 43 00 7F 1C 00 0C 0C 01 22 00 09 05 43 11 00 … F7      (21 bytes)
+```
+
+- result **`09` = `NotContentManagementMode`** — the first result code of that
+  table ever seen on the wire;
+- the refusal arrives at **`01 22 00`** (`InfoAckAddress`), *not* `01 20 00`;
+- the message is exactly the **21-byte acknowledgement frame** recovered from
+  the app, byte count `00 0C` = 12, result at `0x0B`, the acknowledged `ah am
+  al` at `0x0C`-`0x0E`.
+
+`01 10 01` is a real control: written `1` it reads back `1`, written `0` it
+reads back `0`, and the machine echoes the Parameter Change back. **In that mode
+the request is answered with data.**
+
+### The transfer
+
+One request, then every message acknowledged with the 21-byte reply at
+`01 21 00` built as the app builds it. The machine sent:
+
+| Order | Address | Count | What |
+|---|---|---|---|
+| 1 | `05 43 11` | — | the contents dump header, carrying `00 01 00 00` |
+| 2-85 | `0A 43 11` | 84 packets | **sample data**, indices 0-83, 3017 bytes each |
+| 86 | `09 43 11` | 1 packet | **waveform data**, 204-byte payload |
+
+**Samples before the waveform** — the dependency order recovered from the app,
+confirmed by the machine's own choice of what to send next. The transfer ran to
+completion and stopped on its own.
+
+### The audio
+
+The 84 payloads concatenated give 251,968 encoded bytes. Dropping the **first
+two bytes** of that stream and unpacking 7-into-8 most-significant-first gives
+**220,465 bytes, every one identical to the `sample0.bin`** of the `.Y3S` the
+official app had exported from this sound earlier the same day — 220,465 of
+220,465 compared, 100 %.
+
+That single comparison verifies, at once: the request form, the content-number
+rule, the mode precondition, the dump header, the data-packet layout (count at
+`0x0B`, index at `0x0D`, payload at `0x0F`), the acknowledgement that drives the
+transfer, the send order, and the 7-into-8 bit order.
+
+**Two bytes are unexplained.** The packed stream starts two bytes late: the
+first payload begins `00 00` and the data is aligned only after them. Later
+packets' payloads are data-dependent from their first byte. So the two bytes
+look like a one-off prefix at the start of a content's data rather than a
+per-packet field — observed once, meaning unknown.
+
+### Corrections this run forces
+
+- **`0xBB8` = 3000 is an *encoded* payload size, not a raw one.** 2625 raw
+  bytes travel per packet. An earlier pass wrote the opposite.
+- The 7-into-8 **bit order is most-significant first**, now recorded in
+  [02-sysex-format.md](02-sysex-format.md#strings-and-blobs-7-into-8-packing).
+  It had never been written down, and an ASCII name cannot reveal it.
