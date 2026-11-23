@@ -605,10 +605,66 @@ the sender signals completion with the **content number the machine assigned**,
 taken from `0x11`-`0x12` of the last acknowledgement — which is how a host
 learns where its sound landed.
 
+#### Pulling content out: the request
+
+This is the direction that matters for getting a sample off the machine, and it
+is **not** the `11 mm nn` route of [§Requesting a dump](#requesting-a-dump).
+That one asks the parameter zone for a sound's blocks; this one asks the content
+channel for the **files** — the XML metadata and the PCM.
+
+The request is a plain 10-byte Bulk Dump Request, with no checksum:
+
+```
+F0 43 20 7F 1C 0C  ah am al  F7
+```
+
+| Field | Value |
+|---|---|
+| `ah` | the content kind: `02` Project, `03` Sound, `04` Element, `05` Waveform — the same kinds as the dump header |
+| `am al` | the content number, by the [rule above](#how-a-content-number-becomes-am-al--the-exact-rule) |
+
+The requester then waits on `(ah << 14) | (am << 7) | al`, exactly as the
+sender does.
+
+#### Pulling content out: the acknowledgement a host must send
+
+Every message the machine sends has to be acknowledged, and the acknowledgement
+is a **21-byte bulk message at address `01 21 00`** — not `01 20 00`, which is
+the direction the machine answers on:
+
+```
+F0 43 00 7F 1C 00 0C  0C 01 21 00  rr  ah am al  e1 e2  00 00  cc F7
+```
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x00`-`0x06` | 7 | the bulk prefix, with the byte count fixed at **`00 0C`** = 12 |
+| `0x07`-`0x0A` | 4 | `0C 01 21 00` — the Model ID and the address |
+| `0x0B` | 1 | `rr`, the result code: `0` to ask for the next message |
+| `0x0C`-`0x0E` | 3 | the `ah am al` **of the message being acknowledged**, copied from its bytes 8-10 |
+| `0x0F`-`0x10` | 2 | two bytes copied from the incoming message's bytes `0x0D`-`0x0E` |
+| `0x11`-`0x12` | 2 | zero |
+| `0x13`-`0x14` | 2 | checksum, then `F7` |
+
+The byte count of 12 covers the Model ID through `0x12`, which is both what the
+checksum sums and what the app's own `InfoAckByteCount = 12` says — three
+independent statements of the same number.
+
+Each acknowledgement **re-arms the 36-second timer**, so a host that answers
+promptly never sees a timeout, and one that stops answering ends the transfer
+by itself.
+
+The receiver also writes the XML back out as it goes, adding string, integer
+and boolean elements to a root — so the metadata a host must reconstruct is the
+same set the [body layout](#those-fields-come-straight-from-the-contents-xml)
+carries.
+
 #### What is still missing
 
-- the **timeout** values and the restart behaviour, and the full result-code
-  vocabulary beyond `0` (go on), `7` (bad checksum) and `0x21`;
+- the per-kind receive handlers' field offsets, which should mirror the send
+  side but have not been read;
+- the restart behaviour on a timeout, and the full result-code vocabulary
+  beyond `0` (go on), `7` (bad checksum) and `0x21`;
 - the exact meaning of each body's metadata fields — the 32-bit value at
   `0x22` and the three bytes at `0x8A`;
 - the project body's own layout, which is built differently from the other
