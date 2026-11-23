@@ -4119,3 +4119,41 @@ record bytes and hears nothing will conclude the patch failed. It did not — th
 envelope did. One byte at `41 ep 3B` is the difference, and the machine's own
 UI exposes only attack and decay, which is why the third party's advice was to
 start from a template sound whose envelope already sustains.
+
+### A looped sample does not stop on key release — observed, mechanism unproven
+
+Trying to get the obvious thing from the sustaining patch — sound while the key
+is held, silence when it is let go — failed, and the pattern is consistent
+enough to record.
+
+With the looping waveform on part 8, **whenever `41 ep 3B` `AEG Decay 2 Level`
+is `127` the note never stops**, under every combination tried:
+
+| `41 08 3B` Decay 2 Level | `41 08 37` Release Time | `41 08 08` Trigger/Gate | Result |
+|---|---|---|---|
+| `0` (what the app's import leaves) | 86 | 1 | fades out on its own, key held or not |
+| `127` | 86 | 1 | **sustains indefinitely** |
+| `127` | **0** | 1 | never stops, release included |
+| `127` | **127** | 1 | never stops |
+| `127` | 127 | **0** | never stops |
+| `127` | 64 | 1 | never stops |
+
+Both extremes of `Release Time` behave the same, which says the release stage
+is not what is failing to fire. There is **no AEG Release Level** to blame
+either — `41 ep 3C` is reserved, so the release always targets zero.
+
+**The hypothesis:** a loop with no stored end point keeps the voice alive, and
+the envelope's release never gets to finish it. **Not proven**, and two things
+would settle it, neither of which this session managed:
+
+- whether the **Synth keys transmit note-off at all**. Two capture windows
+  caught nothing — both mistimed by the person running them, not by the
+  machine, so this says nothing yet. Use
+  [`tools/hardware-probe/point2_facade.py`](../tools/hardware-probe/point2_facade.py),
+  which exists for self-paced front-panel capture, rather than a fixed window.
+- whether shortening `+0x30` / `+0x3C` gives the loop an **end**, which is open
+  question 1 of the third party's own spec and would test the hypothesis
+  directly.
+
+Until then the practical choice on a looping user wave is binary: it holds
+forever, or it fades on its own. There is no measured middle.
