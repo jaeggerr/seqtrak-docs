@@ -4269,3 +4269,19 @@ destination that the app is pointed at instead of the hardware, relaying to the
 real device and logging both directions. That is the next step for anyone
 continuing this, and it would expose the whole import, not just the half the
 machine answers with.
+
+
+### The Sound header is refused whatever it carries — a state, not a payload
+
+Eleven header variants were sent for kind `03` (Sound): five device bytes, four
+count combinations, and four forms of the per-sample entry (size, waveform
+number plus keybank, waveform number alone, waveform number minus 8192).
+**Every one was refused with result `7`.** In the same session a kind `05`
+(Waveform) header was accepted with `0` with *any* of those payloads.
+
+So the refusal does not depend on the message. It depends on something about
+the machine, and the app's code does not explain it: the app sends the same
+frame, the same address and the same counts a host would.
+
+`verified on hardware`, and recorded mainly so the next attempt does not spend
+its time on the payload.
