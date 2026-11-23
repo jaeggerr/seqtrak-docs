@@ -659,10 +659,44 @@ and boolean elements to a root — so the metadata a host must reconstruct is th
 same set the [body layout](#those-fields-come-straight-from-the-contents-xml)
 carries.
 
+#### What a data packet looks like, read from the receiving side
+
+The sample path is the one that carries audio, and its handler gives the layout
+exactly:
+
+```
+F0 43 00 7F 1C bh bl 0C  ah am al  count(2)  index(2)  <payload…>  cc F7
+```
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x09`-`0x0A` | 2 | `am al` |
+| `0x0B`-`0x0C` | 2 | the **packet count**, 7-bit encoded — rejected if zero |
+| `0x0D`-`0x0E` | 2 | the **packet index**; index `0` starts a new file |
+| `0x0F` | *size* − `0x11` | the payload, 7-bit encoded |
+
+The payload length falls out of the arithmetic as `size − 0x0F − 2`, which is
+the same as the sender's own message length of *n* + `0x0F` for the two
+packet-index paths. The two directions agree, which is the check that matters:
+the layout was read twice, once from each end, without assuming symmetry.
+
+This also closes a loop on the acknowledgement: the two bytes a host copies
+from `0x0D`-`0x0E` into its reply at `0x0F`-`0x10` are **the packet index**, and
+that is the field the sender reads back out to decide what to send next.
+
+The receiver's own refusals, sent as the result code of an acknowledgement:
+
+| Code | When |
+|---|---|
+| `0` | accepted, send the next one |
+| `0x51` (81) `InvalidPacketNumber` | the index is not the one expected, or the content index is out of range |
+| `0x7F` (127) `UnknownError` | the fallback |
+
 #### What is still missing
 
-- the per-kind receive handlers' field offsets, which should mirror the send
-  side but have not been read;
+- the project body's layout on receive, which is built differently from the
+  other four;
+- `requestFilesWithType:…`, the entry point that drives a whole pull;
 - the restart behaviour on a timeout, and the full result-code vocabulary
   beyond `0` (go on), `7` (bad checksum) and `0x21`;
 - the exact meaning of each body's metadata fields — the 32-bit value at
