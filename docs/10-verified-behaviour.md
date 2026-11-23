@@ -4035,3 +4035,87 @@ three acknowledgements of `0`, same unchanged record.
 > **For anyone trying this: it is safe so far.** Three complete transfers were
 > accepted and discarded with no change to the record, the audio or the sample
 > memory. That is not a guarantee — it is what happened three times.
+
+## 2026-11-23 — the loop switch works, and the envelope is why nobody noticed
+
+**A patched user waveform sustains indefinitely on this unit.** The third
+party's claim is reproduced here, on a second machine, with the confound their
+own test did not have to face.
+
+### The run
+
+1. A clavioline note was rendered offline, imported as a WAV through the
+   official app onto **SYNTH 2**, and exported as a `.Y3S`.
+2. That file's keybank record was patched in two bytes — `+0x0F` from `01` to
+   `00`, `+0x2C` to `3282` (a loop start of 52,512 frames, 1.1907 s) — and
+   nothing else, the audio untouched.
+3. The patched file was imported through the app. It landed on part 8 as user
+   wave **404**: `41 08 01` read `01` (User) and `41 08 03` read `404`,
+   `verified on hardware`.
+4. **It still died at 2.5 s, fading out.**
+5. Its amplitude envelope was read, and the cause was there:
+
+| Address | Field | Read |
+|---|---|---|
+| `41 08 33` | AEG Attack Time | `0` |
+| `41 08 34` | AEG Decay 1 Time | `60` |
+| `41 08 3A` | AEG Decay 1 Level | `127` |
+| `41 08 35` | AEG Decay 2 Time | `84` |
+| `41 08 3B` | **AEG Decay 2 Level** | **`0`** |
+
+The envelope holds at full through decay 1 and then **falls to silence** over
+decay 2, with the key still down. No loop can be heard under that.
+
+6. `41 08 3B` was written to `127` — read back `127`, with `41 07 3B` on
+   SYNTH 1 unmoved at `0` as witness and the tempo answering before and after.
+7. Held again: **the note sustains indefinitely.**
+
+### What this establishes, and the one gap
+
+The loop switch and loop start do what the third party reported, and the
+owner's ear is the instrument — the only one there is for this.
+
+**The record was then read back off the machine**, through the content channel,
+and it holds the patch: wave 404 reads `+0x0F` = `00` (loop) and `+0x2C` =
+**3282** — a loop start of 52,512 frames, 1.1907 s, the exact value written into
+the file. Its audio is byte-identical to the file's. Nothing is assumed about
+what the import did; the whole chain is measured.
+
+#### And `+0x38` is written by the machine, not by the file
+
+The record on the machine differs from the file in **exactly two bytes**, and
+they are `+0x38` and `+0x39`: the file carries `9C 4E` (20124), the machine
+holds `54 B8` (**47188**). Everything else matches.
+
+So **the machine overwrites `+0x38` on import.** Whatever a host puts there is
+replaced — which is why neither third party could find a checksum in it: it is
+not the host's field.
+
+And it is **not a function of the audio**, which this run settles. The same
+PCM, byte for byte, was imported twice: as wave 401 it took `20124`, as wave
+404 it took `47188`. Identical samples, identical length, two different values.
+That rules out every content-derived candidate — sums, CRCs, Adler, peak, RMS —
+that both analysts had been testing.
+
+The four values now known, in the order they were created, hint at what it
+might be instead:
+
+| Content | `+0x38` |
+|---|---|
+| wave 401 (first import) | 20124 |
+| wave 400, keybank 0 / keybank 1 (stereo) | 27715 / 37821 |
+| wave 404 (same audio as 401, imported later) | 47188 |
+
+Rising with allocation order, which would fit a storage offset or an allocation
+handle. **A hypothesis, on four points.** Writing it down so the next person
+starts from somewhere.
+
+### The finding that matters more than the loop
+
+**A sample imported as a WAV through the official app arrives with an envelope
+that fades to silence**: `AEG Decay 2 Level` = `0`. So a correctly patched loop
+is inaudible on a freshly imported sample, and anyone who patches the two
+record bytes and hears nothing will conclude the patch failed. It did not — the
+envelope did. One byte at `41 ep 3B` is the difference, and the machine's own
+UI exposes only attack and decay, which is why the third party's advice was to
+start from a template sound whose envelope already sustains.

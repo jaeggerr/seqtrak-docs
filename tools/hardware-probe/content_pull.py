@@ -139,6 +139,13 @@ def main():
                   % (ah, run_no, len(pk), len(enc), len(raw), f))
         else:
             # A body: metadata at fixed offsets, then the file from 0x7E.
+            if len(enc) < 126:
+                f = out_dir / ("content_%02X%s_payload.bin" % (ah, suffix))
+                f.write_bytes(enc)
+                print("ah=%02X: body of only %d encoded bytes, too short for the "
+                      "metadata layout; raw payload written to %s"
+                      % (ah, len(enc), f))
+                continue
             meta = {
                 "uuid": unpack7(enc[0:19] + b"\x00" * 8)[:16].hex(),
                 "order": " ".join("%02X" % b for b in enc[19:23]),

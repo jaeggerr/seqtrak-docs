@@ -51,7 +51,7 @@ Machine-readable: [`../data/parameters.csv`](../data/parameters.csv).
 | `41 ep 30` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | Level Velocity Offset | 1 | 00 - 7F | 00 | 0 - 127 | `` |  | from Yamaha Data List |
 | `41 ep 31` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | Level Sens Key Curve | 1 | 00 - 04 | 03 | 00 - 04 | `` |  | from Yamaha Data List |
 | `41 ep 32` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | reserved | 1 |  | 00 |  | `` |  | from Yamaha Data List |
-| `41 ep 33` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Attack Time | 1 | 00 - 7F | 00 | 0 - 127 | `AEGAttackTime` |  | from Yamaha Data List |
+| `41 ep 33` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Attack Time | 1 | 00 - 7F | 00 | 0 - 127 | `AEGAttackTime` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — AEG Attack Time read 00 on part 8 after a WAV import (envelope survey alongside 41 ep 34/35/37/38/39/3A/3B) — also `from Yamaha Data List` |
 | `41 ep 34` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Decay 1 Time | 1 | 00 - 7F | 40 | 0 - 127 | `AEGDecay1Time` |  | from Yamaha Data List |
 | `41 ep 35` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Decay 2 Time | 1 | 00 - 7F | 40 | 0 - 127 | `AEGDecay2Time` |  | from Yamaha Data List |
 | `41 ep 36` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | Half Damper Time | 1 | 00 - 7F | 7F | 0 - 127 | `` |  | from Yamaha Data List |
@@ -59,7 +59,7 @@ Machine-readable: [`../data/parameters.csv`](../data/parameters.csv).
 | `41 ep 38` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Init Level | 1 | 00 - 7F | 00 | 0 - 127 | `` |  | from Yamaha Data List |
 | `41 ep 39` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Attack Level | 1 | 00 - 7F | 7F | 0 - 127 | `` |  | from Yamaha Data List |
 | `41 ep 3A` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Decay 1 Level | 1 | 00 - 7F | 7F | 0 - 127 | `` |  | from Yamaha Data List |
-| `41 ep 3B` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Decay 2 Level | 1 | 00 - 7F | 7F | 0 - 127 | `` |  | from Yamaha Data List |
+| `41 ep 3B` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Decay 2 Level | 1 | 00 - 7F | 7F | 0 - 127 | `` |  | `verified on hardware` ([10-verified-behaviour.md](10-verified-behaviour.md)) — AEG Decay 2 Level: part 8 read 00 after a WAV import, which makes an imported sample fade to silence with the key held; written 127 and read back 127, with part 7 unmoved at 00 as witness and the tempo as control. The same sound then sustained indefinitely, which is how the keybank record loop switch was confirmed — also `from Yamaha Data List` |
 | `41 ep 3C` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | reserved | 1 |  | 00 |  | `` |  | from Yamaha Data List |
 | `41 ep 3D` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Time Velocity Segment | 1 | 00 - 04 | 04 | Attack, Atk+Dcy, Decay, Atk+Rls, All | `` |  | from Yamaha Data List |
 | `41 ep 3E` | Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch | AEG Time Velocity Sensitivity | 1 | 00 - 7F | 40 | -64 - +63 | `` |  | from Yamaha Data List |

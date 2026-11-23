@@ -310,7 +310,11 @@ obvious list, or it may be inheritance. It is not two confirmations.
   [02-sysex-format.md](02-sysex-format.md#bulk-dump) — an outside agreement,
   though they may have read this repository, so not independent corroboration.
 
-> **Most of this section is *reported by a third party, not reproduced here*** —
+> **The loop switch itself is now `verified on hardware`** — a patched waveform
+> sustains indefinitely on this project's unit, once its envelope is allowed to
+> ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--the-loop-switch-works-and-the-envelope-is-why-nobody-noticed)).
+>
+> **The rest of this section is *reported by a third party, not reproduced here*** —
 > their own notes grade each claim, and their strongest tag means *they*
 > imported a patch on *their* unit and listened.
 >
@@ -318,9 +322,7 @@ obvious list, or it may be inheritance. It is not two confirmations.
 > appear: the keybank record's own fields, read off a real unit through the
 > content channel; the rule that an element refers to a user waveform as
 > `ContentNumber − 8192`; and that a non-SAMPLER element really does play a user
-> wave. The **loop switch itself** — the part that matters, `+0x0F` and
-> `+0x2C` — is still only reported: nobody here has heard a patched sound
-> sustain. See
+> wave. See
 > [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-hardware-session--an-awm-element-really-does-play-a-user-wave).
 >
 > **Rule 2 applies, hard.** The SLOPTRAK spec cites this repository for the
@@ -381,11 +383,19 @@ a synth or drum track. For that the keybank record in the file is the only
 control, which is why the answer had to be found in a `.Y3S` and not on the
 wire.
 
-**A loop alone is not enough.** The amplitude envelope has to sustain too, and
-the machine's own UI exposes only attack and decay — sustain and release cannot
-be edited on the device. Their advice is to start from a template sound whose
-envelope already sustains. The envelope's byte offsets inside an element block
-are not mapped.
+**A loop alone is not enough, and this is the part that bites.**
+`verified on hardware` here: a patched waveform imported through the official
+app still died at 2.5 s, because the import gives it an envelope whose
+**`AEG Decay 2 Level` (`41 ep 3B`) is `0`** — it falls to silence with the key
+still down. Writing that one byte to `127` made the same sound **sustain
+indefinitely**
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--the-loop-switch-works-and-the-envelope-is-why-nobody-noticed)).
+
+So anyone who patches the two record bytes correctly and hears nothing will
+blame the loop. It is the envelope. The machine's own UI exposes only attack
+and decay, which is why the advice is to start from a template sound that
+already sustains — but over SysEx the envelope is one write away
+([03e](03e-parameters-element.md)).
 
 ### The rest of the record
 
@@ -396,7 +406,7 @@ are not mapped.
 | `+0x08` | root key (MIDI note) | `3C` (60) |
 | `+0x0B` | channels, 1 = mono, 2 = stereo | `01` / `02` |
 | `+0x24` | u32 sample rate in Hz | `44100`; other rates untested |
-| `+0x38` | u32 device-written, differs per channel | meaning unknown — not a sum, CRC-16/32, Adler or any statistic they tried. Their generator copies a template value |
+| `+0x38` | u32 **written by the machine**, differs per keybank | `verified on hardware` that the machine **overwrites whatever the file carries** on import, and that it is **not a function of the audio**: the same PCM imported twice took `20124` and `47188`. So a host need not compute it. Meaning still unknown; the values rise with allocation order, which would fit a storage offset ([10-verified-behaviour.md](10-verified-behaviour.md#and-0x38-is-written-by-the-machine-not-by-the-file)) |
 
 `waveformN.bin` is a u32 keybank count followed by that many records, so 68
 bytes mono and 132 stereo.
