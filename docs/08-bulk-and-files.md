@@ -765,27 +765,34 @@ The receiver's own refusals, sent as the result code of an acknowledgement:
   four;
 - the whole **receiving** direction, for reading content out of the machine.
 
-> **A host cannot push content. The write direction is machine-initiated.**
+> **A host CAN push content — an earlier claim here that it cannot is
+> withdrawn.** It was reached by reading the plug-in's send entry point, which
+> emits nothing, and missing that the send is driven from its receipt callback.
+> The traffic settles it: captured while the official app imported a sound, the
+> machine sent **93 acknowledgements** at `01 21 00`, in this order:
 >
-> This was tried and it does not land: a complete transfer — header, 84 sample
-> packets, the body — is acknowledged with `0` at every step and then
-> **discarded**, with the record unchanged and sample memory unmoved. The
-> reason is now known. The app's send entry point **sends nothing**: it sets a
-> directory, creates a queue, registers a receipt callback and arms the
-> timeout. What actually drives a send is its **request handler**, which decodes
-> `msg[6]` as the content kind and `msg[7]`-`msg[8]` as the content number —
-> that is the very same **10-byte Bulk Dump Request** a host uses to *read*
-> ([§Pulling content out](#pulling-content-out-the-request)).
+> | Acknowledged | Meaning |
+> |---|---|
+> | `03 20 07` | the dump header, kind **`03` = Sound**, content number 4103 |
+> | `0A 43 16` × 84 | the sample packets, indices climbing from 0 |
+> | `09 43 16` | the waveform body |
+> | `07 20 07` | the **sound body**, and its last two data bytes carry `20 0E` = **4110**, the content number the machine assigned |
 >
-> So the machine asks and the host answers. An unsolicited dump is parsed,
-> acknowledged and thrown away, which is exactly what was observed. What is
-> still unknown is **how the app gets the machine to ask** — the C# side calls
-> `GetSoundAttribute()` and `GetElementAttribute()` before a send, so an
-> inventory exchange is the obvious place to look next, and the `10 cc ff`
-> attribute addresses ([§Control addresses](#control-addresses)) are its likely
-> vocabulary. Untested.
+> That is exactly the dependency order and the assigned-number report this
+> section describes, observed on the wire.
 >
-> See [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--writing-content-accepted-at-every-step-and-never-applied).
+> **Why this project's own write attempt was discarded.** It announced kind
+> **`05` (Waveform)** and shipped samples plus a waveform body — a transfer
+> that ends at its own kind, which it did, and every message was acknowledged
+> with `0`. But a bare waveform has nothing referencing it. The app announces
+> kind **`03` (Sound)** and ships the whole chain, ending with the sound body.
+> So content is installed **as a sound**, not as a loose waveform. Not yet
+> retried.
+>
+> One more difference worth noting: the machine's own acknowledgements use
+> device byte **`01`** (`F0 43 01 7F`), where this project sent `F0 43 00 7F`.
+> Device `00` was accepted for the header, so it is not obviously fatal, but it
+> is a discrepancy to clear before concluding anything from a failure.
 
 One thing the failed attempts did settle, and it matters for a reader: the
 7-into-8 stream is packed over the **whole content** and then cut into
