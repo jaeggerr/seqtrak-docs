@@ -304,7 +304,6 @@ speculatively.
 14. **In Song mode the scene number is in the *data*, not the address.**
     `71 1p 01` + `<scene> <pattern>`. The parameter table's "range 0-1925" is a
     composite (`scene × 128 + pattern`), not a scalar bound.
-## Relationship to the sibling projects
 15. **The content channel has two framings, and mixing them corrupts the
     payload.** A **body** (`ah` `07` sound, `08` element, `09` waveform) carries
     the four metadata bytes `00 01 00 00` at `0x0B` and its data from `0x0F`. A
@@ -315,6 +314,8 @@ speculatively.
     the index alone silently drops one of them — and the byte totals then close
     perfectly on the one that survived.
     [docs/08-bulk-and-files.md](docs/08-bulk-and-files.md).
+
+## Relationship to the sibling projects
 
 This repository is the documentation. The implementations live beside it, in
 separate folders that are **not** part of this repository and must not be

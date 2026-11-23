@@ -766,8 +766,13 @@ The receiver's own refusals, sent as the result code of an acknowledgement:
 - the whole **receiving** direction, for reading content out of the machine.
 
 > **A host CAN push content — an earlier claim here that it cannot is
-> withdrawn.** It was reached by reading the plug-in's send entry point, which
-> emits nothing, and missing that the send is driven from its receipt callback.
+> withdrawn.** It was reached by **misreading** the plug-in's send entry point.
+> That function does send the header: it checks sendability, sets the file type,
+> the content number, the directory and the four counts, then calls
+> `sendContentsDumpHeader` — and only afterwards creates its queue, registers
+> the receipt callback and arms the timer. The earlier pass read only the
+> function's tail, saw a block that merely restarts the timer, and concluded the
+> entry point emits nothing. It emits the transfer's first message.
 > The traffic settles it: captured while the official app imported a sound, the
 > machine sent **93 acknowledgements** at `01 21 00`, in this order:
 >
