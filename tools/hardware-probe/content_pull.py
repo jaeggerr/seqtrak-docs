@@ -112,13 +112,42 @@ def main():
     print("%d header(s)" % len(headers))
     for ah, pk in sorted(parts.items()):
         enc = b"".join(pk[i] for i in sorted(pk))
-        # A packet path's data starts two bytes into the first packet's
-        # payload; those two bytes are unexplained. A body starts at once.
-        raw = unpack7(enc[2:] if ah in (0x06, 0x0A) else enc)
-        p = out_dir / ("content_%02X.bin" % ah)
-        p.write_bytes(raw)
-        print("ah=%02X: %d packets, %d encoded -> %d raw  ->  %s"
-              % (ah, len(pk), len(enc), len(raw), p))
+        if ah in (0x06, 0x0A):
+            # A packet path's data starts two bytes into the first packet's
+            # payload; those two bytes are unexplained.
+            raw = unpack7(enc[2:])
+            f = out_dir / ("content_%02X.bin" % ah)
+            f.write_bytes(raw)
+            print("ah=%02X: %d packets, %d encoded -> %d raw  ->  %s"
+                  % (ah, len(pk), len(enc), len(raw), f))
+        else:
+            # A body: metadata at fixed offsets, then the file from 0x7E.
+            meta = {
+                "uuid": unpack7(enc[0:19] + b"\x00" * 8)[:16].hex(),
+                "order": " ".join("%02X" % b for b in enc[19:23]),
+                "tag1": bytes(enc[23:73]).rstrip(b"\x00"),
+                "tag2": bytes(enc[73:123]).rstrip(b"\x00"),
+                "main_category": enc[123], "sub_category": enc[124],
+                "commercial": enc[125],
+            }
+            raw = unpack7(enc[126:])
+            f = out_dir / ("content_%02X_file.bin" % ah)
+            f.write_bytes(raw)
+            (out_dir / ("content_%02X_meta.txt" % ah)).write_text(
+                "\n".join("%s: %s" % kv for kv in meta.items()) + "\n")
+            print("ah=%02X: body, uuid %s, categories %d/%d, commercial %d"
+                  % (ah, meta["uuid"], meta["main_category"],
+                     meta["sub_category"], meta["commercial"]))
+            print("        file: %d encoded -> %d raw  ->  %s"
+                  % (len(enc) - 126, len(raw), f))
+            if ah == 0x09 and len(raw) >= 4 + 0x25:
+                import struct
+                cnt = struct.unpack_from("<I", raw, 0)[0]
+                rate = struct.unpack_from("<I", raw, 4 + 0x24)[0]
+                ch = raw[4 + 0x0B]
+                loop = "loop" if raw[4 + 0x0F] == 0 else "one-shot"
+                print("        keybanks %d, %d Hz, %d channel(s), %s"
+                      % (cnt, rate, ch, loop))
 
 
 if __name__ == "__main__":
