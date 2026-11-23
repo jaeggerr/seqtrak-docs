@@ -440,6 +440,46 @@ understood**; its high byte overlaps what the table calls `Element Assign`.
 Factory and user references are indistinguishable byte-wise — the importer
 resolves them by context, and content numbers are reassigned on import.
 
+### Stopping at key release is **one byte** at `0x88`
+
+A sound can hold a note for as long as the key is down and stop when it is
+released, or ignore key release entirely and loop forever. The difference is a
+single byte of `sound.bin`, inside the undecoded common region:
+
+| Offset | Value | Behaviour |
+|---|---|---|
+| `0x88` | `0x02` | the note sustains while the key is held and **stops when it is released** |
+| `0x88` | `0x00` | the note loops and **never stops**, key release included |
+
+`verified on hardware` — two sounds carrying the *same* sample, the same
+keybank record and the same loop switch differed in twelve bytes of
+`sound.bin`. Pushing seven variants through
+[`content_push.py`](../tools/hardware-probe/content_push.py), each restoring one
+group of those bytes and then one single byte, narrowed the behaviour to `0x88`
+alone. The other eleven bytes change nothing audible about key release:
+
+| Offset | Role |
+|---|---|
+| `0x09`-`0x1A` | the sound name |
+| `0x6E`, `0x75`, `0x77`, `0x7C` | no audible effect on key release |
+| `0x84`, `0x95` | ˶ |
+| `0x96`, `0xA2`, `0xA9` | ˶ |
+| `0x143` | ˶ |
+| `0x1E8` | the element's wave reference — it differs because the two packages carry different waveform content numbers |
+
+**Which parameter address this byte is, is not established.** The obvious
+candidate is ruled out: `41 ep 08` `Trigger/Gate Mode` read `1` (Gate) on a
+sound that stops at key release, was written `0` (Trigger) on that element and
+read back `0`, with `41 07 08` unmoved as witness and the tempo answering
+throughout — and the sound still stopped at key release. `31 1p 0D`
+`Trigger/Gate Mode` reads `2` on every synth part, so it does not discriminate
+either. Both `verified on hardware`.
+
+The common region's byte offsets are **not** the `31 xp xx` parameter offsets:
+the name occupies `0x08`-`0x5F` as eleven 7-bit-packed groups where the
+parameter table spends a hundred addresses on it, so the two layouts have
+already diverged before `0x88`.
+
 ### What this changes here
 
 - A **user wave on a non-sampler element is real**, not merely implied by the

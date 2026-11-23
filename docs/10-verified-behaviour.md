@@ -4458,3 +4458,67 @@ application sends. This project's own attempts could only ever observe the
 machine's half of the conversation, and the error lived in the other half. The
 owner proposed that capture after the analysis here had twice concluded, in
 public, that the thing was impossible.
+
+## 2026-11-23 — key release is one byte, and the parameter that looks like it is not it
+
+With a host now able to install a `.Y3S`
+([previous section](#2026-11-23--a-host-can-install-a-y3s-and-the-blocker-was-one-stray-bit)),
+the sustain question became answerable by experiment instead of by reading.
+
+Two packages carrying the **same** 235,776-byte sample, the same 68-byte
+keybank record and the same loop switch behaved differently: one held the note
+while the key was down and stopped on release, the other looped forever. Their
+`sound.bin` files differ in twelve bytes.
+
+Seven variants were built, each one starting from the looping package and
+restoring one group of those bytes from the working one, and each was pushed to
+the machine as its own user sound:
+
+| Sound | Bytes restored | Stops at key release |
+|---|---|---|
+| `clavi-A` | `0x6E`, `0x75`, `0x77`, `0x7C` | no |
+| `clavi-B` | `0x84`, `0x88`, `0x95` | **yes** |
+| `clavi-C` | `0x96`, `0xA2`, `0xA9` | no |
+| `clavi-D` | `0x143`, `0x1E8` | no |
+| `clavi-B1` | `0x84` only | no |
+| `clavi-B2` | `0x88` only | **yes** |
+| `clavi-B3` | `0x95` only | no |
+
+So **`sound.bin` offset `0x88` alone** decides it: `0x02` stops the note at key
+release, `0x00` makes it loop forever. `verified on hardware`.
+
+All seven transfers were accepted at every step, and
+`01 10 09` `UserSoundEmptyContentCount` fell from 2028 to 2023 over the first
+five, which is the instrument that proves five separate sounds were created
+rather than one slot being overwritten five times.
+
+### The parameter that is not it
+
+`41 ep 08` `Trigger/Gate Mode` is the obvious candidate — `Trigger` would
+plausibly mean "ignore key off". It is not the control:
+
+| Step | Reading |
+|---|---|
+| `41 08 08` before | `1` (Gate), on a sound that stops at key release |
+| `41 07 08` witness | `1` |
+| write `41 08 08` = `0` (Trigger), read back | `0` |
+| `41 07 08` witness after | `1`, unmoved |
+| `30 40 76` tempo, as control, throughout | `00 78` |
+| the sound, played on that element | **still stops at key release** |
+
+The write landed and changed nothing audible, so `41 ep 08` is not the byte at
+`0x88`. `41 08 08` was restored to `1` afterwards. `31 1p 0D`
+`Trigger/Gate Mode` reads `2` on SYNTH 1 and SYNTH 2 alike, so it does not
+discriminate between the two behaviours either. Both `verified on hardware`.
+
+`01 18 33` `CurrentSound SYNTH 2` read `00 00` with a user sound loaded on that
+track, four attempts, tempo answering before and after — so it does not report
+user sound numbers, and it cannot be used to select one. `verified on hardware`.
+
+**What stays open**: which `31 xp xx` or `41 ep xx` address corresponds to
+`sound.bin` offset `0x88`. The common region's offsets are not the parameter
+offsets — the name alone occupies `0x08`-`0x5F` as eleven 7-bit-packed groups
+against a hundred parameter addresses — so the mapping cannot be read off by
+arithmetic. Settling it needs a wide parameter dump taken with each of the two
+sounds loaded in turn, and loading a user sound onto a track from the host is
+itself not yet possible.

@@ -753,6 +753,27 @@ control address in the loop, on every transport. A client that assumes the low
 rate and is wrong manufactures false facts; a client that assumes the high rate
 and is wrong only costs itself a few milliseconds.
 
+## Which parameter address is `sound.bin` offset `0x88`? (2026-11-23)
+
+Offset `0x88` of a sound package's `sound.bin` decides whether a note stops at
+key release (`0x02`) or loops forever (`0x00`) — isolated by pushing seven
+one-group-then-one-byte variants to the machine,
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--key-release-is-one-byte-and-the-parameter-that-looks-like-it-is-not-it).
+Its `31 xp xx` / `41 ep xx` equivalent is unknown, and two candidates are
+already ruled out on hardware: `41 ep 08` `Trigger/Gate Mode` was written `0`
+on a releasing sound, read back `0`, and changed nothing audible; `31 1p 0D`
+`Trigger/Gate Mode` reads `2` on every synth part.
+
+The common region's byte offsets are not the parameter offsets, so the mapping
+cannot be computed — the name alone fills `0x08`-`0x5F` as eleven 7-bit-packed
+groups where the parameter table spends a hundred addresses.
+
+**What would settle it**: a wide `31 xp xx` / `41 ep xx` dump taken once with a
+releasing sound loaded on a track and once with a looping one, and the diff
+read off. The obstacle is that loading a *user* sound onto a track from the host
+is not yet possible — `01 18 33` reads `00 00` with one loaded, so it is not
+that address.
+
 ## Documentation gaps in this repository
 
 - The **DX algorithm chart** (Data List p. 161) and the **effect block diagram**
