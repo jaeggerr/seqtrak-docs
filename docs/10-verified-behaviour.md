@@ -4026,11 +4026,15 @@ three acknowledgements of `0`, same unchanged record.
   reproduce the machine's own: 251,968 encoded bytes, 84 packets, the last of
   2,968.
 - So what is missing is **not** the frame, the addressing, the packing or the
-  acknowledgements. Something **commits** a received content, and it was not
-  sent. The app's own send path has a preparation step and a sendability check
-  before any of this, and the documented bulk transfers of the parameter zone
-  are **bracketed by a header and a footer** (`11 mm nn` / `12 mm nn`) where
-  this channel used no footer at all. Either is a candidate. Untested.
+  acknowledgements. **The write direction is machine-initiated**, and an
+  unsolicited dump is parsed, acknowledged and discarded. The app's send entry
+  point sends nothing at all — it sets a directory, creates a queue, registers
+  a receipt callback and arms the timeout — and what drives a send is its
+  **request handler**, which decodes the content kind and number out of the
+  same 10-byte Bulk Dump Request a host uses to read. The machine asks; the
+  host answers. How the app gets the machine to ask is the open end: an
+  inventory exchange is the obvious candidate, since the managed side queries
+  the sound and element attributes before sending.
 
 > **For anyone trying this: it is safe so far.** Three complete transfers were
 > accepted and discarded with no change to the record, the audio or the sample

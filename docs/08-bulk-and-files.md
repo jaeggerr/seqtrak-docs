@@ -735,15 +735,27 @@ The receiver's own refusals, sent as the result code of an acknowledgement:
   four;
 - the whole **receiving** direction, for reading content out of the machine.
 
-> **The write direction has now been tried, and it does not land.** A complete
-> transfer — header, 84 sample packets, the body — is acknowledged with `0` at
-> every step and then **discarded**: the record reads back unchanged and sample
-> memory does not move. The frame, the addressing, the packing and the
-> acknowledgements are all right; something **commits** a received content and
-> it has not been found. The app's send path has a preparation step and a
-> sendability check first, and the parameter zone's bulk transfers are bracketed
-> by a header *and a footer* where this channel used none. See
-> [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--writing-content-accepted-at-every-step-and-never-applied).
+> **A host cannot push content. The write direction is machine-initiated.**
+>
+> This was tried and it does not land: a complete transfer — header, 84 sample
+> packets, the body — is acknowledged with `0` at every step and then
+> **discarded**, with the record unchanged and sample memory unmoved. The
+> reason is now known. The app's send entry point **sends nothing**: it sets a
+> directory, creates a queue, registers a receipt callback and arms the
+> timeout. What actually drives a send is its **request handler**, which decodes
+> `msg[6]` as the content kind and `msg[7]`-`msg[8]` as the content number —
+> that is the very same **10-byte Bulk Dump Request** a host uses to *read*
+> ([§Pulling content out](#pulling-content-out-the-request)).
+>
+> So the machine asks and the host answers. An unsolicited dump is parsed,
+> acknowledged and thrown away, which is exactly what was observed. What is
+> still unknown is **how the app gets the machine to ask** — the C# side calls
+> `GetSoundAttribute()` and `GetElementAttribute()` before a send, so an
+> inventory exchange is the obvious place to look next, and the `10 cc ff`
+> attribute addresses ([§Control addresses](#control-addresses)) are its likely
+> vocabulary. Untested.
+>
+> See [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23--writing-content-accepted-at-every-step-and-never-applied).
 
 One thing the failed attempts did settle, and it matters for a reader: the
 7-into-8 stream is packed over the **whole content** and then cut into
