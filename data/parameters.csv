@@ -62,7 +62,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 01,00,00,PCApp,,,,,,,FirmwareVersion,0,268435455,4,,official app,,read 02 00 00 02 on a unit running OS V2.00,10-verified-behaviour.md
 01,00,04,PCApp,,,,,,,CompatibleVersion,0,127,1,,official app,,read 01,10-verified-behaviour.md
 01,10,00,PCApp,,,,,,,SystemStatus,0,1,1,,official app,,read 00 (SystemStatus),10-verified-behaviour.md
-01,10,01,PCApp,,,,,,,ContentsManagementMode,0,1,1,,official app,,,
+01,10,01,PCApp,,,,,,,ContentsManagementMode,0,1,1,,official app,,"read 00; a write of 1 did not suspend Parameter Requests and a write of 0 did not restore them, so the silence seen on 2026-11-21/23 was the measuring instrument, not this mode",10-verified-behaviour.md
 01,10,02,PCApp,,,,,,,Battery,0,100,1,,official app,,read 46 = 70 and 64 = 100 (battery percentage),10-verified-behaviour.md
 01,10,03,PCApp,,,,,,,AutoPowerOffTime,0,6,1,,official app,,,
 01,10,06,PCApp,,,,,,,WiFiStartupResult,0,7,1,,official app,,,
@@ -85,7 +85,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 01,10,1D,PCApp,,,,,,,ClearEffect,1,1,1,,official app,,,
 01,10,1E,PCApp,,,,,,,EffectModeSelect,0,1,1,,official app,,,
 01,10,1F,PCApp,,,,,,,UndoRedo,1,1,1,,official app,,,
-01,10,20,PCApp,,,,,,,SequencerStatus,0,1,1,,official app,,"01 playing and 00 stopped, alongside FA/FC, over eight transitions; and the machine starts and stops when the HOST sends FA/FC, broadcasting 01 10 20 unsolicited on each; the broadcasts were seen again over Bluetooth on 2026-10-23",10-verified-behaviour.md
+01,10,20,PCApp,,,,,,,SequencerStatus,0,1,1,,official app,,"01 playing and 00 stopped, alongside FA/FC, over eight transitions; and the machine starts and stops when the HOST sends FA/FC, broadcasting 01 10 20 unsolicited on each; the broadcasts were seen again over Bluetooth on 2026-10-23. Also on 2026-11-23: read 00 while the machine emitted MIDI clock continuously at about 48 F8 a second, so clock runs with the sequencer stopped",10-verified-behaviour.md
 01,10,21,PCApp,,,,,,,RecordingStatus,0,1,1,,official app,,"writable while the sequencer plays: written 1 it reads back 1, written 0 it reads back 0, twice over; written 1 while stopped it still reads 0; the write is not echoed. Whether notes are then recorded was not tested",10-verified-behaviour.md
 01,10,22,PCApp,,,,,,,SamplingStatus,0,2,1,,official app,,,
 01,10,23,PCApp,,,,,,,MonitoringStatus,0,1,1,,official app,,,
@@ -103,7 +103,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 01,1p,30,PCApp,,,,,,,SoundDesignPage,0,5,1,,official app,,read 00 on part 0 (SoundDesignPage),10-verified-behaviour.md
 01,1p,31,PCApp,,,,,,,InsertionEffectSliderMode,0,1,1,,official app,,,
 01,1p,32,PCApp,,,,,,,ReserveChangePattern,0,6,1,,official app,,,
-01,1p,33,PCApp,,,,,,,CurrentSound,0,6143,2,,official app,,"catalogue number minus one — ten presets loaded by Bank/PC and read back; re-read on parts 0-9 on 2026-10-23 and resolved to the right preset each time, but silent on part 10 (SAMPLER) in eight attempts across two clients",06-sounds-presets.md
+01,1p,33,PCApp,,,,,,,CurrentSound,0,6143,2,,official app,,"catalogue number minus one — ten presets loaded by Bank/PC and read back; re-read on parts 0-9 on 2026-10-23 and resolved to the right preset each time, but silent on part 10 (SAMPLER) in eight attempts across two clients. Also on 2026-11-23: part 8 read 20 04 = 4100, 4/4 attempts, equal to the <ContentNumber> of that sound's exported .Y3S, so an imported sound kept its content number",06-sounds-presets.md
 01,1p,35,PCApp,,,,,,,CurrentSoundName,,,87,,official app,,,
 01,1p,36,PCApp,,,,,,,DrumPatternPage,0,7,1,,official app,,,
 01,1p,37,PCApp,,,,,,,DeletePattern,0,5,1,,official app,,"cleared a pattern of five events on a re-typed part in one message; broadened 2026-10-23 to 66 messages (6 slots x 11 parts) with no PatternSelect write, each part's selected pattern then read back empty, native synth parts 7-10 included",10-verified-behaviour.md
@@ -1435,9 +1435,9 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 31,5p,1D,Sound Common / Arpeggiator,Reserved,1,,00,,,,,,,,Yamaha Data List,147,,
 31,5p,1E,Sound Common / Arpeggiator,ARP Type MSB,2,00 - 00 00 - 08,00 00,"Up, Down, Random, Up Down 1, Up Down 2, Slap & Pop, Unison, Rhythm 1, Rhythm 2 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,ArpAssignType,0,40,2,0 - 8,Yamaha Data List + official app,147,,
 41,ep,00,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Element Assign,1,00 - 01,01,"Off, On",Init value for Element 2 - 8 is Off,,,,,,Yamaha Data List,148,"Element Assign read 01 on part 7 elements 1 and 2 (41 07 00, 41 17 00); block surveyed read-only, see the document",10-verified-behaviour.md
-41,ep,01,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Wave Select,1,00 - 01,00,"0=Preset, 1=User",SAMPLER track is fixed to 1 (User),,,,,,Yamaha Data List,148,,
+41,ep,01,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Wave Select,1,00 - 01,00,"0=Preset, 1=User",SAMPLER track is fixed to 1 (User),,,,,,Yamaha Data List,148,"part 8 (SYNTH 2) element 0 Wave Select read 01 = User after a WAV import, 4/4 attempts, with part 7 (41 07 01) and part 0 (41 00 01) reading 00 = Preset as witnesses in the same loop and the tempo as control: a non-SAMPLER element does reach user wave memory",10-verified-behaviour.md
 41,ep,02,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Element Group Number,1,00 - 07,00,1 - 8,,,,,,,Yamaha Data List,148,,
-41,ep,03,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Wave Number MSB Wave Number LSB,2,00 - 1F 00 - 7F,00 01,"1 - 4096 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",User Wave :,,,,,,Yamaha Data List,148,"Wave Number read as two data bytes (05 06) at the base address; 41 ep 04 is silent on four attempts, twice",10-verified-behaviour.md
+41,ep,03,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Wave Number MSB Wave Number LSB,2,00 - 1F 00 - 7F,00 01,"1 - 4096 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",User Wave :,,,,,,Yamaha Data List,148,"Wave Number read as two data bytes (05 06) at the base address; 41 ep 04 is silent on four attempts, twice. Also on 2026-11-23: part 8 element 0 read 03 11 = 401 after a WAV import, 4/4 attempts, which equals the ContentNumber - 8192 of the waveform in the .Y3S exported from that same sound (8593 - 8192)",10-verified-behaviour.md
 41,ep,05,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,reserved,1,,00,,,,,,,,Yamaha Data List,148,,
 41,ep,06,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,reserved,1,,00,,,,,,,,Yamaha Data List,148,,
 41,ep,07,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,reserved,1,,00,,1 - 2048 Init value for Synth/ SAMPLER track is 1,,,,,,Yamaha Data List,148,,

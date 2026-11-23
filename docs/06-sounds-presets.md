@@ -256,7 +256,12 @@ categories. Preset wave memory is 800 MB as 16-bit linear; user wave memory is
 be pointed at a user wave — a recorded or imported sample — just as a synth
 element can. The Data List says only that the **SAMPLER track is fixed to 1
 (User)**, which constrains part 10 and says nothing about the rest.
-`from Yamaha Data List`, **untested over SysEx**, and nothing on the front panel
+**`verified on hardware` for a synth part.** SYNTH 2 element 0 read
+`41 08 01` = `01` (User) after a WAV import, with SYNTH 1 and KICK reading `00`
+as witnesses in the same loop, and its `41 08 03` read **401** — the very number
+the exported `.Y3S` carries as `ContentNumber − 8192`
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-23-hardware-session--an-awm-element-really-does-play-a-user-wave)).
+For a **drum** part (0-6) it is still untested, and nothing on the front panel
 exposes it: Yamaha's copy/paste matrix keeps samples inside the SAMPLER track
 ([15-front-panel.md](15-front-panel.md)). The experiment is in
 [12-open-questions.md](12-open-questions.md).

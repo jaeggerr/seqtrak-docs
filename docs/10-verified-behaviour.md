@@ -3628,3 +3628,85 @@ Program Change rather than immediately; the System switches `00 00 07` /
 `00 00 08`. A bare Program Change could in principle have changed something
 that `01 19 33` does not report; nothing suggests it, and nobody listened.
 
+
+## 2026-11-23 hardware session — an AWM element really does play a user wave
+
+The claim this project had been circling since 2026-11-21 is now measured: a
+**non-SAMPLER element reaches user wave memory**, and the number it points at is
+the one written in the `.Y3S` that put it there.
+
+A clavioline note was rendered offline, imported as a WAV onto **SYNTH 2**
+(part 8) through the official app, and that sound exported as a `.Y3S`. The
+file was dissected, then the machine was asked what it was holding.
+
+### The reads
+
+One process, port held open, MIDI clock and active sensing filtered, four
+attempts per address, the tempo as control at both ends of the loop. **44 of 44
+replies.**
+
+| Address | Read | Means |
+|---|---|---|
+| `30 40 76` | `00 78` | **control** — 120 BPM, 4/4 at the start and again at the end |
+| `41 08 01` | **`01`** | SYNTH 2 element 0 `Wave Select` = **User** |
+| `41 08 03` | `03 11` | its `Wave Number` = **401** |
+| `41 07 01` | `00` | **witness** — SYNTH 1 element 0 is on a *preset* wave |
+| `41 07 03` | `03 7F` | witness — preset wave 511 |
+| `41 00 01` | `00` | **witness** — KICK element 0 is on a preset wave |
+| `01 18 33` | `20 04` | SYNTH 2 `CurrentSound` = **4100** |
+| `01 10 20` | `00` | sequencer stopped |
+| `01 10 01` | `00` | not in contents-management mode |
+| `01 10 15` | `00` | current project 0 — UI "project 1" is `0` on the wire |
+
+Two witnesses that must not move read the opposite value in the same loop, so
+`41 ep 01` is read as a per-element field and not as something global.
+`verified on hardware`.
+
+### Three numbers that match the file, exactly
+
+This is the part worth keeping. The `.Y3S` exported from this very sound was
+parsed independently, before any of these reads:
+
+| Quantity | In the file | On the machine |
+|---|---|---|
+| the element's wave reference | `401`, as `ContentNumber − 8192` = 8593 − 8192 | `41 08 03` = **401** |
+| the sound's content number | `<ContentNumber>4100</ContentNumber>` in `sound.xml` | `01 18 33` = **4100** |
+| the element's wave kind | a user waveform shipped in the package | `41 08 01` = **1 (User)** |
+
+So the third party's rule — that an element refers to a user waveform as
+`ContentNumber − 8192` — is no longer only *reported*: it is **verified on
+hardware** for this case. And the sound kept the content number its file
+carried; it was not reassigned on import here.
+
+### What this retires
+
+- **"Can a non-SAMPLER element point at a user wave?"** — yes, measured, for an
+  AWM2 **synth** part over SysEx. The Data List's note that only the SAMPLER
+  track is *fixed* to User is confirmed by implication: the others choose, and
+  this one chose.
+- The same question for a **drum** part (0-6) is still open. Nothing here
+  touched one, and the two drum witnesses read `00`.
+
+### A measurement fault, named so it is not repeated
+
+For two days the machine "did not answer" Parameter Requests while answering
+Identity Requests. Two causal stories were floated and **both were wrong**:
+that contents-management mode suspends the parameter path, and that a Parameter
+Change wakes it for a window. Neither survived its test — writing
+`01 10 01 = 1` did not reproduce the silence, and the path answered for 30 s
+with no write at all.
+
+The cause was the **instrument**. The silent runs invoked a fresh process per
+request, opening and closing the MIDI port each time, with no filtering, while
+the machine was emitting MIDI clock continuously — about 48 `F8` a second,
+**with the sequencer stopped** (`01 10 20` = `00`, measured above). Holding one
+port open and filtering timing bytes made every address answer 4/4 immediately.
+
+This is the third time this repository has been bitten by its own measuring
+chain, after the two overturned negative claims. The rule it adds:
+
+> **An open-and-close-per-request prober is not a valid instrument while the
+> machine is flooding the port.** Hold the port open for the whole run and
+> filter timing and active-sensing bytes. A one-shot probe is fine on a quiet
+> link and misleading on a busy one — and the link is busy whenever clock is
+> running, which is **not** the same as the sequencer running.
