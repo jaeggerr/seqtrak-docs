@@ -4331,3 +4331,53 @@ header is accepted with `0` under all the same conditions.
 > is not ([§What the content channel actually serves](#what-the-content-channel-actually-serves--a-bounded-survey)
 > found exactly that asymmetry for reads). If so, no host has ever had a write
 > accepted here, and the write direction remains entirely unproven.
+
+### The lock is reachable from a script, and a map of which headers it accepts
+
+Two things settle, and together they sharpen the problem rather than solve it.
+
+#### Writing `01 10 01 = 1` engages the real lock
+
+Not merely a flag that accepts a value. Written from a script, the machine
+**reacts on its own**: `01 10 18` (`DrumPadMode`) goes to **21** without being
+asked. That is exactly what it did for the official app, which was captured
+reporting `01 10 01 = 1` at 94.753 s and `01 10 18 = 21` just before. So a host
+can put the machine into the same content-management state the app's project
+menu puts it in, and the machine's own state push proves it.
+
+`verified on hardware`. The state is **not** the difference between a host and
+the app.
+
+#### Which header kinds the machine accepts, in that state
+
+One header per `ah`, same payload throughout, back to back in the locked state:
+
+| `ah` | Header for | Result |
+|---|---|---|
+| `02` | project (kind) | **`0`** |
+| `03` | **sound** (kind) | `7` |
+| `04` | element (kind) | `7` |
+| `05` | waveform (kind) | **`0`** |
+| `06` | project data | `7` |
+| `07` | sound data | `127` |
+| `08` | element data | `127` |
+| `09` | waveform data | **`0`** |
+| `0A` | sample data | `127` |
+| `01`, `0B` | — | no acknowledgement |
+
+Three are accepted — `02`, `05`, `09` — and a sound is refused in **both**
+address spaces. It is not the content number: `02` with number 0 is accepted
+while `04` with number 0 is refused. And `09`, which is a *body* address, is
+accepted while carrying a *header* payload, which should be meaningless.
+
+So the refusal is keyed on the kind itself, in a way no reading of the app
+explains: the app sends a sound header and the machine takes it. Something
+about a host that is not its own content-management session is being rejected,
+and neither the message, the mode, the number nor the payload is that something.
+
+> **This is an unresolved contradiction, not a conclusion.** The app does it;
+> a script in the same state with the same bytes cannot. Either the app sends
+> something before the header that no other client can observe, or the machine
+> distinguishes the two in a way nothing here has reached. The map above is
+> recorded so the next attempt starts from facts rather than from this
+> repository's guesses, of which this section has already withdrawn several.
