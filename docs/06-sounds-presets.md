@@ -535,6 +535,38 @@ you hear without reloading the sound has not been listened to.
 `01` (*Gate*) in both dumps. The two edit buffers differ in four bytes in all,
 and the other two are the sound name and the element's wave number.
 
+#### What Yamaha does and does not say about it
+
+`from Yamaha Data List`. The parameter is **not new**: the *Data List* lists
+`31 1p 0D` `Trigger/Gate Mode` with its three value names (`Trigger`, `Gate`,
+`Depend on Voice`, default `02`) and `41 ep 08` with two, and
+[appendix H](appendix-h-sound-design-parameters.md) already carries the
+footnotes where Trigger and Gate change what the **AEG DECAY** knob edits —
+`Release Time` under Gate, `Decay 1/2 Time` under Trigger. What is nowhere in
+Yamaha's documentation is **what the setting costs you**: that `Trigger` means
+key release is ignored, and that this is why an imported sample loops forever.
+The *User Guide* never mentions `Trigger/Gate Mode` at all — no front-panel
+combination, no app control.
+
+**But there is a printed control with exactly this behaviour, on the SAMPLER
+track only.** User Guide §9.1.5, p. 62: page 4 (ADVANCED), Sound Design knob 3,
+`LOOP ON/OFF`, described on p. 108 as toggling "between holding down the key to
+repeatedly play the sample (ON), or playing it once each time you press the key
+(OFF)". That is the sampler's own `50 eA 5F` `Loop On/Off`
+([appendix H](appendix-h-sound-design-parameters.md)), which read `00` on all
+seven slots of a real unit.
+
+So the same musical result has two different levers depending on where the
+sample lives:
+
+| The sample is on | The lever | Reachable from the front panel |
+|---|---|---|
+| the **SAMPLER** track | `50 eA 5F` `Loop On/Off` | **yes** — page 4 ADVANCED, knob 3 |
+| a **SYNTH** track, as a user wave | `31 1p 0D` `Trigger/Gate Mode` | **no** — nothing printed addresses it |
+
+A user wave on a synth track is the case this repository had to work out, and it
+is the one Yamaha left without a control.
+
 The common region's byte offsets are **not** the `31 xp xx` parameter offsets.
 The name occupies `0x08`-`0x71` and does align, but immediately after it the two
 layouts diverge — the file spends 13 bytes where the edit buffer spends 23 — so

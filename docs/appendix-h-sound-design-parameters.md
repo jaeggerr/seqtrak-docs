@@ -98,7 +98,7 @@ What each hardware knob page edits, per engine, and which of those parameters ca
 | SAMPLER | 3 | EQ Low Gain | OTHER | Sample | EQ1 Gain | yes |  |
 | SAMPLER | 4 | Start Point | OTHER | Sample | Start Point |  |  |
 | SAMPLER | 4 | End Point | OTHER | Sample | End Point |  |  |
-| SAMPLER | 4 | Loop On/Off | OTHER | Sample | Loop On/Off |  |  |
+| SAMPLER | 4 | Loop On/Off | OTHER | Sample | Loop On/Off |  | User Guide p. 108: ON = hold the key to repeat the sample, OFF = play it once per press. The only **printed** control for hold-to-sustain; a user wave on a synth track has none and needs [`31 1p 0D`](06-sounds-presets.md#stopping-at-key-release-is-one-byte-at-0x88) instead |
 | SAMPLER | 4 | Loop Length | OTHER | Sample | Loop Length |  |  |
 | SAMPLER | 5 | PEG Attack Level | OTHER | Sample | PEG Attack Level | yes |  |
 | SAMPLER | 5 | PEG Attack Time | OTHER | Sample | PEG Attack Time | yes |  |
