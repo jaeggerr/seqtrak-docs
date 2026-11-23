@@ -4215,3 +4215,57 @@ once in the file — so the anchor is hardware-backed rather than assumed, and
 with it every envelope field read out of a `.Y3S` matches what the part reports.
 The gap is 159 bytes, which is not a multiple of their 141-byte stride, so one
 of the two numbers is simply wrong rather than off by a block.
+
+## 2026-11-23 — writing a sound: the header is refused cold, and why that is hard to fix
+
+Having seen the official app's import on the wire, the transfer was rebuilt as
+the app does it — announce a **Sound** (kind `03`) and ship the chain. The very
+first message is refused.
+
+### What the machine answers
+
+`verified on hardware`. The contents dump header for kind `03`, content number
+4120, with the record and sound of a real `.Y3S` behind it:
+
+```
+-> F0 43 00 7F 1C 00 16 0C 03 60 18 00 01 00 00 ... F7
+<- F0 43 01 7F 1C 00 0C 0C 01 21 00 07 03 60 18 ... F7     result 7
+```
+
+Result **`7` `PacketLoss`** — which from the machine means something nearer
+"not expected now" than a lost packet. Every variant was refused the same way:
+
+| Variant | Result |
+|---|---|
+| device byte `00`, `02`, `0F` | `7` |
+| device byte `01`, `10` | no acknowledgement at all |
+| sound count `1` instead of `0` | `7` |
+| waveform count `0` | `7` |
+| sample count `0`, no entry | `7` |
+| every count zero | `7` |
+
+So it is **not** the header's contents. And the contrast is sharp: a **Waveform**
+header (kind `05`) is accepted with `0` cold, in the same session, at several
+content numbers. The machine will begin a waveform transfer unprompted and
+refuses to begin a sound one.
+
+### A lead that turned out to be nothing
+
+Two messages appear immediately before **both** of the app's transfers in the
+capture, at unusual addresses: `00 61 02` and `00 60 01`. They looked like an
+arming handshake. They are not — `00 60 01` is **`WiFiReady`** and `00 61 02`
+belongs to the Wi-Fi security family ([03a](03a-parameters-system.md)). Periodic
+state, coincidentally placed. Recorded so nobody else spends time on it.
+
+### The wall, stated plainly
+
+A MIDI input port receives what the **machine** sends. The app's outgoing
+messages go to the device and are invisible to any other client, so the one
+thing that would settle this — what the app sends before its header — cannot be
+captured this way.
+
+**The instrument that would work is a man-in-the-middle:** a virtual MIDI
+destination that the app is pointed at instead of the hardware, relaying to the
+real device and logging both directions. That is the next step for anyone
+continuing this, and it would expose the whole import, not just the half the
+machine answers with.
