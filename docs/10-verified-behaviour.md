@@ -5245,19 +5245,12 @@ key, loop switch, sample rate, loop start, frame count — came back unchanged.
 | "there is no room left in the header for a second keybank" | **withdrawn** — the room is `14 + 4n` |
 | the machine flattens a multi-record table onto one blob | **withdrawn as a property of the machine**; it is what a *malformed* transfer produced |
 | `+0x0B` is the channel count | **withdrawn** — it is the keybank count |
-| the element route is "the way round it" | **it is still the only route that has been heard.** See the correction below: a host-written multi-keybank waveform stores perfectly and does not play |
+| the element route is "the way round it" | **superseded for a waveform a host builds.** The keybank route has now been heard: 8, 32 and 52 keybanks all play, and unlike an element assembly they survive a sound load |
 
-The multisampled instrument the whole line of work was after is **writable** in
-one transfer, as one waveform, persistent because it is content and not live
-state.
-
-> **Correction, later the same day: writable is not playable.** An earlier
-> version of this paragraph stopped at "writable" and let the reader assume the
-> rest. It does **not** play. A 52-keybank waveform built this way, loaded on a
-> part, produces **no sound at all** —
-> [the diagnosis](#2026-11-24-night--a-host-written-multi-keybank-waveform-stores-perfectly-and-does-not-play).
-> Writing and reading back is `verified on hardware`; a working instrument is
-> not. The element route remains the only multisample that has been heard.
+The multisampled instrument the whole line of work was after is writable in one
+transfer, as one waveform, persistent because it is content and not live
+state — and it **plays**:
+[heard, 8 / 32 / 52 keybanks](#2026-11-24-night--the-keybanks-play-and-the-silence-was-my-own-test).
 
 ### How this was missed for six attempts
 
@@ -5359,54 +5352,66 @@ measured at a waveform correlation of 0.9999 or better, and a single common gain
 of 1.6363 was applied to the whole set.
 
 
-## 2026-11-24, night — a host-written multi-keybank waveform stores perfectly and does not play
+## 2026-11-24, night — the keybanks play, and the silence was my own test
 
-**The 52 keybanks are stored, verified byte for byte, and silent.** Loaded on a
-part, the instrument produces no sound at all. This is the gap between the two
-things the earlier sections proved and the one thing they did not test.
+**Retracted in full: the section that stood here concluded that a host-written
+multi-keybank waveform stores perfectly and does not play. It plays.** 8, 32 and
+52 keybanks were each loaded on a part and heard. What was silent was an element
+whose **`41 ep 37` `AEGReleaseTime` was `0`**.
 
-### What has been ruled out, and how
+### The error, because it is the useful part
 
-The sound was loaded on part 8 (SYNTH 2), `01 18 35` reading `clavi-hq52`. One
-address at a time, with part 7 (`clavi-B2op`, a user sound that **does** sound)
-as the comparison:
+The A/B that produced the wrong conclusion changed **two** things in one script:
+it set `AEGReleaseTime` from `0` to `83` *and* repointed the element from the
+52-keybank waveform to a known-good one. The sound came back, and the difference
+was attributed to the waveform. One write, two variables, and the elimination
+table in the retracted section — the pointer, the element, the part, the record
+structure, the audio — was all correct and all beside the point.
 
-| Suspect | Ruled out by |
-|---|---|
-| the wave pointer | `41 08 03` reads **462** = content 8654, the waveform the machine assigned. The machine fixes the pointer up itself; the number written into `sound.bin` at `0x1E8` does not have to be right |
-| the element | all 192 addresses of `41 ep` and `42 ep` read on part 7 and part 8. **Two differences only**: the wave number, and `41 ep 37` `AEGReleaseTime` at `0` against `83` — set back to 83, still silent |
-| the part, and the sound | pointing part 8's element 0 at waveform **426** — the one part 7 uses — makes it **sound**, with nothing else changed. One write separated silent from sounding |
-| the record structure | the 64 bytes of three of the 52 records read against the sounding waveform's single record, field by field. They differ only where they must: key range, root key, loop start, last frame, frame count, and the `+0x0B` the machine writes. Every other field is identical |
-| the audio | all 52 samples came back from the machine byte for byte, SHA-1 equal to what was sent |
+The repository's own rule covers this: a measurement that contradicts something
+already established is a reason to stop. It did contradict one — the records and
+the audio had just been verified byte for byte, which left "stores perfectly and
+does not play" as a very strange thing to believe.
 
-So the element, the part, the sound, the pointer, the record layout and the
-audio are all accounted for. What is left is the **multi-keybank waveform
-itself**.
+### Done properly: one variable, A / B / A
 
-### What is not known
+`verified on hardware`. Element 0 of part 8, nothing touched but the one
+address, with part 7's wave number as witness and the tempo as control:
 
-The deciding test was interrupted: whether the **8**-keybank waveform (content
-8653, number 461) plays. If it does, the fault is the count or something that
-scales with it; if it does not, a host-written multi-keybank waveform does not
-play at all, whatever the count. **Neither of this project's two multi-keybank
-waveforms has ever been heard** — the eight-zone instrument that *was* heard
-was the element route, eight separate single-keybank waveforms.
+| `41 08 03` wave | `41 08 37` release | Heard |
+|---|---|---|
+| 462 (52 keybanks) | `0` | **silent** |
+| 462 (52 keybanks) | `83` | **sounds** |
+| 462 (52 keybanks) | `0` | **silent** |
 
-A second control is worth running in the same session: waveform **8592**, the
-stereo package the official app imported, is a two-keybank waveform the machine
-made itself. Whether it plays on the same element says whether multi-keybank
-playback works on this machine at all.
+So **`AEGReleaseTime` = 0 silences a looped user sample completely**, not just
+at key release. That is worth knowing on its own: `build_kb.py` and `build_hq.py`
+both wrote `0` into that offset of every package they built, which is why every
+multi-keybank package this project has produced was born mute.
 
-> **No crash.** The machine left the MIDI bus immediately after the write that
-> would have begun this test, and the owner confirms they unplugged it. Recorded
-> because the coincidence is exactly the shape of a host-reachable crash, and it
-> was not one.
+### What the keybank route actually does, heard
 
-### What this costs the claims above
+| Keybanks | Content | Heard |
+|---|---|---|
+| 8 | 8653 | plays |
+| 32 | 8655 | plays |
+| 52 | 8654 | plays |
 
-| Claim | State |
-|---|---|
-| a host can **write** 8 and 52 keybanks into one waveform | **`verified on hardware`**, unchanged |
-| the record table and audio read back intact | **`verified on hardware`**, unchanged |
-| a host can build a multisampled instrument that **plays** | **not established** — this is the open question now |
-| the element route is superseded | **withdrawn** — it is the only multisample that has been heard |
+One sample per semitone from C1 to D#5 (MIDI 36-87, Yamaha's numbering, where
+`00`-`7F` is C-2 … G8), zones contiguous over the whole keyboard. This is the
+multisampled instrument the line of work was after, and it is content, so it
+survives a sound load.
+
+### The lead that is left: pitch stops following above about +28 semitones
+
+With the 32-keybank waveform, whose highest root is G3 (67) and whose top zone
+is stretched to key 127, the pitch **stops rising at C6** (96) and every key
+above it sounds the same. 96 − 67 = **29**, so the upward transposition from a
+keybank's root looks to be clamped around +28.
+
+`verified on hardware` as an observation, by ear, on one waveform. The reading
+is inference: a second root distance has not been tried, and nothing has been
+measured on the machine's side. If it holds it is an argument **for** dense
+keybanks rather than against them — the tighter the roots, the less any zone has
+to transpose — and it would also explain why a one-sample instrument falls apart
+at the top of the keyboard, which is where this whole line of work started.
