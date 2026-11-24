@@ -4962,3 +4962,58 @@ normalisation and a loop-window search, both measured, both irrelevant — and
 two listening tests. Diff every block the dump gives you before theorising about
 the audio: a parameter reads in seconds, and the Data List defaults are not what
 a loaded sound puts in its elements.
+
+#### The loop click: an integer number of periods is the wrong objective
+
+The eight-zone instrument clicked at the loop point on some zones and not
+others — mild on the zone rooted at note 48, "vraiment très fort" on the one
+playing si3. Measuring the join explained it and ranked the zones in the order
+the player had put them.
+
+The join is where the sample's end is followed by its loop start, so continuity
+is a **waveform match** between the window before `start` and the window before
+the end. Measured on the eight packages as built — loop length chosen as an
+integer number of periods of the equal-tempered fundamental, snapped to a
+multiple of 16:
+
+| Zone root | Join correlation | Sample jump |
+|---|---|---|
+| 48 | 0.81 | 1,047 |
+| 51 | 0.71 | 1,141 |
+| 54 | 0.47 | 2,629 |
+| 57 | 0.67 | 29,318 |
+| **60** | **0.04** | **24,691** |
+| 63 | **−0.49** | 17,736 |
+| 66 | **−0.49** | 14,536 |
+| 69 | 0.43 | 31,221 |
+
+Root 48 is the best of a bad set and root 60 — which plays si3 — is near zero,
+exactly as reported. Two are anti-correlated.
+
+**Why the arithmetic fails.** The tone carries detuned partials, so it is not
+periodic at the fundamental at all; it is periodic at the much longer beat
+period. An integer number of f0 periods therefore lines up nothing. Searching
+instead for the length that **maximises the waveform correlation at the join**,
+coarse then fine, finds that beat period and lands on:
+
+| Zone root | Join correlation | Sample jump | Loop length |
+|---|---|---|---|
+| 48 | 0.99993 | 6 | 1.222 s |
+| 51 | 1.00000 | 4 | 0.366 s |
+| 54 | 1.00000 | 31 | 1.080 s |
+| 57 | 0.99999 | 28 | 1.350 s |
+| 60 | 0.99999 | 5 | 1.336 s |
+| 63 | 1.00000 | 66 | 0.828 s |
+| 66 | 0.99996 | 71 | 0.205 s |
+| 69 | 1.00000 | 52 | 0.652 s |
+
+`verified on hardware` for the transfer and the assembly; the audible result is
+the player's to judge.
+
+**And one self-inflicted constraint, now removed.** This repository's own
+builder asserted `n % 16 == 0`, carrying the 16-sample granularity of the loop
+*start* over to the loop *length*. Only the start needs it: `+0x2C` is stored
+divided by 16, while `+0x3C` is a plain u32 sample count — and the template
+file's own count is 110,235, an odd number, which should have settled it
+earlier. The constraint cost up to eight samples of misalignment at every join,
+on top of the wrong objective.

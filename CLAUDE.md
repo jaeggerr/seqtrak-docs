@@ -225,6 +225,7 @@ Three rules learned the hard way, all from
 | Script | What it is for |
 |---|---|
 | `which_sound.py` | read-only: the loaded sound's **name** on every part from `01 1p 35`, user sounds included, four attempts each with the tempo as control. Run it before any test that depends on which track is sounding |
+| `find_loop.py` | offline: finds a **seamless** loop in a rendered note by maximising the waveform correlation at the join. Counting periods of the fundamental is the wrong objective and clicks — see the join-correlation tables in 10-verified-behaviour.md |
 | `element_multisample.py` | rebuilds a whole **multisampled** instrument on a part in one pass: loads the first sound, assigns the eight elements to consecutive user waves with their key zones, and writes everything a fresh element does not inherit — `41 ep 54`, `42 ep 0C`, `42 ep 1D` — then reads every field back. The assignment is live state and needs this after every sound load |
 | `element_align_filter.py` | aligns the **`42 ep`** block (filter/EQ) of hand-assigned elements onto the configured one: `Filter Gain` and `FEG Depth`, which a fresh element keeps at the quieter Data List defaults |
 | `element_align.py` | aligns elements switched on from scratch onto a configured one — above all `41 ep 54` `Pitch Key Follow Sensitivity`, which reads 64 (no keyboard tracking) on a fresh element and 96 on a configured one |

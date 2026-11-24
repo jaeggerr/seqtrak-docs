@@ -409,8 +409,22 @@ an engine difference and not a firmware limit — it is **two fields in the
 
 The loop runs from the start point **to the end of the data**; no loop end is
 stored, and whether shortening `+0x30` moves it is untested even by them. Loop
-start has **16-sample granularity** — floor it to a multiple of 16. On a stereo
-waveform, set both records identically.
+start has **16-sample granularity** — floor it to a multiple of 16. The loop
+**length** has none: `+0x3C` is a plain u32 sample count, and a real device-made
+file carries 110,235, an odd number. On a stereo waveform, set both records
+identically.
+
+> **Choosing the loop length: match the waveform, do not count periods.**
+> An integer number of periods of the note's fundamental is the obvious
+> objective and it is the wrong one — a tone with detuned partials is not
+> periodic at its fundamental, it is periodic at the much longer beat period, so
+> counting f0 periods lines up nothing and the loop clicks. Measured over eight
+> zones built that way, the join correlation ran from 0.81 down to **−0.49**,
+> with sample jumps up to 31,221. Searching instead for the length that
+> maximises the correlation between the window before the loop start and the
+> window before the end gives 0.9999 or better on all eight, with jumps of 4 to
+> 71. `verified on hardware`
+> ([10](10-verified-behaviour.md#the-loop-click-an-integer-number-of-periods-is-the-wrong-objective)).
 
 They established the table by building four variants of one patch that differ
 only in those record bytes and importing each: only `+0x0F = 0` with the loop
