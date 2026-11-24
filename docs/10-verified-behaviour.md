@@ -4753,3 +4753,69 @@ tried.
 > Two sounds named `clavi-multi` are now on the unit, at user bank programs 28
 > and 29, and both are the flattened result described above. They are test
 > residue, not instruments.
+
+### Later the same day — the keybank route is closed, the element route is open
+
+Pushing further on the multi-zone problem settled both halves of it.
+
+**A `kind 05` header creates a new waveform.** Announcing each extra keybank
+with `ah 05` on the waveform number, instead of `ah 03` on the sound number,
+gets every stream accepted *and* the five-record waveform body accepted —
+result 0 throughout, where the sound-kind announcement had the body refused.
+But pulling the results back shows what was really stored: waveform 8622 and
+waveform 8623 each hold **one keybank of 44,096 samples, both of them zone 0**.
+The first stream is kept, the later ones are acknowledged and discarded, and the
+five-record table is applied as record 0.
+
+So, three shapes tried and `verified on hardware` for all three:
+
+| Shape | Accepted | Stored |
+|---|---|---|
+| one header, one concatenated stream | fully | 1 keybank, stretched over the whole blob |
+| one header per sample, `ah 03` | streams yes, body **refused** | — |
+| one header per sample, `ah 05` | fully | 1 keybank per waveform, all holding the **first** stream |
+
+**A user waveform gets exactly one keybank through this path.** The header's
+size field is checked at the end of each stream, and exactly one stream is
+expected per header — declare the total and the first stream's last packet is
+refused; declare one zone's size and the *second* stream's last packet is
+refused. There is no room left in the header for a second keybank, which is why
+the capture of the app importing a stereo package is still the only way in.
+
+#### But the element route works, and it is all live parameters
+
+The other route needed no file-layout guesswork at all, because every field
+exists as an ordinary `41 ep xx` parameter. Five single-zone sounds were pushed,
+each creating its own user waveform (**432**-**436**), and then five elements of
+part 8 were assigned by hand:
+
+| Element | Address | Wave | Note limits |
+|---|---|---|---|
+| 0 | `41 08 xx` | 432 (root 36) | `0`-`41` |
+| 1 | `41 18 xx` | 433 (root 48) | `42`-`53` |
+| 2 | `41 28 xx` | 434 (root 60) | `54`-`65` |
+| 3 | `41 38 xx` | 435 (root 72) | `66`-`77` |
+| 4 | `41 48 xx` | 436 (root 84) | `78`-`127` |
+
+`41 ep 00` `Element Assign` = 1, `41 ep 01` `Wave Select` = 1 (user wave),
+`41 ep 03` `Wave Number`, `41 ep 10`/`11` `Note Limit Low`/`High`, `41 ep 12`/`13`
+velocity limits, `41 ep 2E` level and the envelope on each. **Every one read
+back exactly as written**, with `41 07 03` unmoved on SYNTH 1 as witness and the
+tempo answering throughout. `verified on hardware`.
+
+That closes the question of whether the element wave fields work over SysEx,
+which [06](06-sounds-presets.md#waveforms) had listed as untested: `41 ep 01` and
+`41 ep 03` do, for user waves, on a synth part.
+
+**What is not established**: whether it *sounds* like a five-zone instrument.
+The parameters hold; nobody has played it yet. And it does not persist — live
+element writes are lost when a sound is loaded, and `Sound Save` is still an
+unresolved address, so this assembly has to be rebuilt on every power cycle
+until that is found.
+
+> So the one-zone limit is **not** a firmware limit. The engine plays multi-zone
+> waveforms all day — the factory library is sampled every one to three
+> semitones — and a user waveform on this very unit already holds two keybanks
+> (the stereo one, waveform 8592, pulled back and counted). What is missing is
+> the write handshake for the second keybank, and a way to save an element
+> assembly.

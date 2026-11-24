@@ -161,3 +161,8 @@ address_high,address_mid,address_low,what_was_established,document
 01,1p,33,"CurrentSound is not writable: written 858 on part 8, the loaded sound did not change and the address still read 00 00, with the neighbouring part's name unmoved as witness",10-verified-behaviour.md
 31,1p,1F,"Portamento Time came out 00 instead of its default 40 on the Trigger-mode variant of a sound, although nothing in the package sets it - derived from the same stored field as Trigger/Gate Mode, by a rule not yet known",10-verified-behaviour.md
 01,41,00,"RemoveSoundAddress was NOT sent: it takes a content number, and nothing read-only on the machine will give one for a user sound. A sound content request refused every number from 4096 to 4135 with an undocumented result 127, so the band the app's own exported sound.xml names is not where user sounds live",10-verified-behaviour.md
+41,ep,01,"Wave Select written 1 (user wave) on elements 0-4 of part 8 and read back 1 on each, with 41 07 03 unmoved on SYNTH 1 as witness - the SysEx path for pointing an AWM element at a user wave works",10-verified-behaviour.md
+41,ep,03,Wave Number written as 2 bytes on elements 0-4 of part 8 (user waves 432-436) and read back exactly on each; the element wave fields are writable over SysEx for user waves on a synth part,10-verified-behaviour.md
+41,ep,10,"Note Limit Low written per element (0, 42, 54, 66, 78) and read back exactly - five live key zones on one part",10-verified-behaviour.md
+41,ep,11,"Note Limit High written per element (41, 53, 65, 77, 127) and read back exactly",10-verified-behaviour.md
+41,ep,00,Element Assign written 1 on elements 0-4 of part 8 and read back 1 on each,10-verified-behaviour.md

@@ -806,19 +806,26 @@ established the header's fields and left exactly two shapes:
 | one header per sample, each with its own size, then that sample's packets | all streams accepted, the 5-keybank body **refused** |
 | one header with the total size, one continuous stream of the concatenation | accepted throughout, then **flattened to one keybank** |
 
-The shape nobody has tried is the one the *read* side describes: two or more
-packet runs, each with its own count and indices restarting at 0, under a
-**single** header. What that header should declare as its size is the unknown.
+Since then a third shape was tried — one header per keybank using `ah 05`
+(waveform) instead of `ah 03` — and it gets the five-record body **accepted**,
+then stores one keybank per waveform, every one holding the *first* stream. The
+header checks its declared size at the end of each stream and expects exactly
+one stream per header, so there is no room in it for a second keybank.
+
+**The element route is the way round it and it works**: five single-zone user
+waveforms, five elements, `41 ep 00/01/03/10/11` written and read back exactly.
+What that leaves open is **persistence** — `Sound Save` is still unresolved, so
+an element assembly is lost when a sound is loaded.
 
 **What would settle it**: a both-directions capture of the official app
 importing a **stereo** `.Y3S` — the minimal two-keybank case. One capture is
 enough.
 
-The alternative route, several elements in one sound with one waveform each, is
-blocked on a different unknown: element 0's envelope sits at `sound.bin` `0x14A`
-and its wave pointer at `0x1E8`, 158 bytes apart, which cannot both fit the
-141-byte element stride the third-party source reports. The base of element 1 is
-therefore a guess, and was not tried.
+Writing such an assembly **into a file** is still blocked on the element stride:
+element 0's envelope sits at `sound.bin` `0x14A` and its wave pointer at
+`0x1E8`, 158 bytes apart, which cannot both fit the 141-byte stride the
+third-party source reports. The base of element 1 in the file is therefore a
+guess, and was not tried — the live route made it unnecessary for now.
 
 ## Documentation gaps in this repository
 

@@ -463,12 +463,39 @@ and stretches it over the whole audio blob. Pulling the waveform back shows
 keybank count `1` and a sample count rewritten to the full blob length
 ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)).
 
-This is not a format limit — `sampleK.bin` is bound to a `KeybankNumber`, the
-records carry key and velocity ranges, and a stereo waveform is two keybanks —
-but the **write** handshake for more than one keybank is not known. The read
-side says a stereo waveform arrives as two packet runs under one waveform, each
-with its own count and indices from 0; the write side has not been made to
-match. So until that is captured, plan for one zone per user waveform.
+This is not a format limit and **not a firmware limit**. The engine plays
+multi-zone waveforms constantly — the factory library is sampled every one to
+three semitones — and a user waveform on a real unit already holds two
+keybanks: the stereo one, pulled back and counted at `keybanks 2`, two runs of
+355 packets, 931,392 bytes each. What is missing is only the **write**
+handshake for the second keybank. Three shapes were tried and all three store
+one keybank; the header checks its declared size at the end of each stream and
+expects exactly one stream per header, so there is no room in it for a second.
+A capture of the official app importing a stereo package is the way in.
+
+### The way round it: one element per zone
+
+`verified on hardware`. Every field needed is an ordinary parameter, so a
+multisampled instrument can be assembled **live** out of several single-zone
+user waveforms — one per element — without touching the keybank problem at all:
+
+| Parameter | Role |
+|---|---|
+| `41 ep 00` `Element Assign` | `1` turns the element on |
+| `41 ep 01` `Wave Select` | `1` selects a **user** wave |
+| `41 ep 03` `Wave Number` | 2 bytes, the user wave number (`ContentNumber − 8192`) |
+| `41 ep 10` / `11` | `Note Limit Low` / `High` — the zone |
+| `41 ep 12` / `13` | velocity limits |
+| `41 ep 2E` | element level |
+
+Five elements of one part were pointed at five user waveforms with five key
+ranges, and **every field read back as written**, witness unmoved and tempo
+answering. That also settles `41 ep 01` / `41 ep 03`, listed as untested above.
+
+Two caveats. Whether it *sounds* like five zones has not been listened to. And
+it **does not persist**: live element writes are lost when a sound is loaded,
+and `Sound Save` remains an unresolved address, so the assembly must be rebuilt
+until that is found.
 
 ### `sound.bin`, and how an element points at a wave
 
