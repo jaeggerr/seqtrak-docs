@@ -5555,3 +5555,58 @@ four separate the image's table format from a package's, nothing more.
 Factory waveforms cannot be pulled for comparison: every number from 0 to 8191
 answers the content channel with an **empty 17-byte header**, all counts zero.
 That is an answer, not a silence, so the absence is established.
+
+## 2026-11-24, night — the working recipe: eight zones, six semitones apart, heard
+
+**Confirmed by ear, zones joining without a step.** This is the end of the line
+of work that began with one sample stretched across the keyboard, and it is the
+element route — the only one that selects a key zone.
+
+| | One sample (`clavi-B2op`) | Eight zones |
+|---|---|---|
+| user waveforms | 1 | 8, one keybank each |
+| maximum transposition from a root | up to ±4 octaves | **3 semitones** |
+
+Roots 39, 45, 51, 57, 63, 69, 75 and 81 — every six semitones — with the zone
+boundary midway between consecutive roots and the two outer elements widened to
+0 and 127. Content numbers 8660-8667, wave numbers 468-475, assembled with
+[`../tools/hardware-probe/element_multisample.py`](../tools/hardware-probe/element_multisample.py),
+which now takes the root list as an argument:
+
+```
+element_multisample.py 52 468 39,45,51,57,63,69,75,81
+```
+
+All eight elements read back exactly as written — wave number, note limits,
+`41 ep 54` = 96, `42 ep 0C` = 1/127, `42 ep 1D` = 64 — with part 7's wave number
+as witness and the tempo as control.
+
+### Eight is the ceiling, and why the other 44 samples stay on disk
+
+A part has **eight elements**, so eight zones. The 52 one-per-semitone renders
+cannot all be reached: inside a single waveform their differing key ranges
+silence it
+([the rule](#2026-11-24-night--the-rule-a-user-waveform-plays-only-if-all-its-keybanks-share-one-key-range)),
+and across elements there is room for eight. At six semitones apart, eight roots
+span four octaves and no note is ever transposed by more than three semitones,
+which is within the factory library's own commonest zone widths (3, 2 and 1).
+
+### The trap when a set is split across packages
+
+Splitting the set into **one package per element** made each package compute its
+own gain — 1.68 for the lowest root rising to 2.74 for the highest. That is a
+per-sample normalisation, and it inverts the engine's falling level contour into
+a rising ramp, which is exactly
+[the mistake recorded earlier](#normalising-each-zone-to-the-same-peak-is-a-mistake)
+arriving by a new route. `build_hq.py` now takes the gain as an argument;
+computed once over the eight chosen roots it is 1.682977, and the eight peaks
+then fall 27000 → 16572 as the engine intends.
+
+### What it costs to keep
+
+The element assembly is **live state** and is lost the moment a sound is loaded
+onto the part; the user waveforms themselves are content and persist. One
+command rebuilds the assembly with no audio transfer, which is what
+`element_multisample.py` exists for. `Sound Save` remains unresolved
+([08](08-bulk-and-files.md)), so there is no way yet to make the assembly
+survive on its own.

@@ -25,10 +25,25 @@ CH   = 8                      # canal MIDI de la partie 8
 PROG0 = int(sys.argv[1]) if len(sys.argv) > 1 else 52    # program of the first sound, bank 63/32
 WAVE0 = int(sys.argv[2]) if len(sys.argv) > 2 else 453   # number of the first user wave
 
-# (root note, low note, high note) -- a root every 3 semitones, with the two
-# outer elements widened so that nothing is silent
-ZONES = [(48, 0, 49), (51, 50, 52), (54, 53, 55), (57, 56, 58),
-         (60, 59, 61), (63, 62, 64), (66, 65, 67), (69, 68, 127)]
+# (root note, low note, high note). The zone boundary falls midway between
+# consecutive roots, and the two outer elements are widened to 0 and 127 so
+# nothing is silent.
+#
+#     ./element_multisample.py 52 468 39,45,51,57,63,69,75,81
+#
+# Give the roots as a third argument when the set is not the default one. The
+# eight waves must be CONSECUTIVE from WAVE0, in the same order as the roots,
+# and they must have been built with ONE COMMON GAIN across the whole set --
+# a gain computed per package is a per-sample normalisation and inverts the
+# engine's level contour (docs/10, "Normalising each zone to the same peak is
+# a mistake"); build_hq.py takes the gain as an argument for exactly this.
+ROOTS = ([int(x) for x in sys.argv[3].split(',')] if len(sys.argv) > 3
+         else [48, 51, 54, 57, 60, 63, 66, 69])
+ZONES = []
+for _i, _r in enumerate(ROOTS):
+    _lo = 0 if _i == 0 else (ROOTS[_i - 1] + _r) // 2 + 1
+    _hi = 127 if _i == len(ROOTS) - 1 else (_r + ROOTS[_i + 1]) // 2
+    ZONES.append((_r, _lo, _hi))
 
 BLOCK41 = {0x00: 1,    # Element Assign
            0x01: 1,    # Wave Select: user wave
