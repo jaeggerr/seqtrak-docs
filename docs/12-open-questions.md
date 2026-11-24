@@ -792,6 +792,34 @@ times before a push would take. Decoding it would unlock removing and renaming
 user content from a host, which is the last thing the official app can do and
 this repository cannot.
 
+## How does a host write **more than one keybank** into a user waveform? (2026-11-24)
+
+The format plainly supports it — `sampleK.bin` carries a `KeybankNumber`, each
+64-byte record has its own key and velocity range and root key, and a stereo
+waveform *is* two keybanks. The write handshake is what is missing. Six attempts
+on hardware
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get))
+established the header's fields and left exactly two shapes:
+
+| Shape tried | Result |
+|---|---|
+| one header per sample, each with its own size, then that sample's packets | all streams accepted, the 5-keybank body **refused** |
+| one header with the total size, one continuous stream of the concatenation | accepted throughout, then **flattened to one keybank** |
+
+The shape nobody has tried is the one the *read* side describes: two or more
+packet runs, each with its own count and indices restarting at 0, under a
+**single** header. What that header should declare as its size is the unknown.
+
+**What would settle it**: a both-directions capture of the official app
+importing a **stereo** `.Y3S` — the minimal two-keybank case. One capture is
+enough.
+
+The alternative route, several elements in one sound with one waveform each, is
+blocked on a different unknown: element 0's envelope sits at `sound.bin` `0x14A`
+and its wave pointer at `0x1E8`, 158 bytes apart, which cannot both fit the
+141-byte element stride the third-party source reports. The base of element 1 is
+therefore a guess, and was not tried.
+
 ## Documentation gaps in this repository
 
 - The **DX algorithm chart** (Data List p. 161) and the **effect block diagram**

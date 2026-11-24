@@ -255,6 +255,29 @@ exactly, and `InfoNameSize = 100` matches the 100-byte name field of a browser
 entry — two more independent agreements between the traffic captures and the
 official app.
 
+## The sound header's 18 bytes
+
+`ah 03` opens a content transfer and carries 18 bytes. Three of the fields are
+now measured, each by varying it alone with the attempt stopping at the header
+so nothing was installed (`verified on hardware`,
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)):
+
+```
+[0,1,0,0]  [0,0]  [0,0]  [0,1]  b4(1)  b4(size)
+```
+
+| Bytes | Field | What is established |
+|---|---|---|
+| 0-3 | `00 01 00 00` | unexplained; left as the app sends it |
+| 4-5, 6-7 | two 2-byte counts | always `0` in a sound transfer |
+| 8-9 | a 2-byte count | **not validated**: `0`, `1`, `2` and `5` are all accepted |
+| 10-13 | `b4` | **must be 1.** `2` and `5` are refused with result 127, whatever the sizes. So it is *not* a sample count |
+| 14-17 | `b4` | the **byte length of the packet stream that follows**, checked when the stream ends: declare more than you send and the stream's *last* packet is refused, every earlier one accepted |
+
+Result **127** is what all of these refusals return, and it is not in the
+`Bulk.Result` enum below — treat it as the machine's generic "this request is
+unusable".
+
 ## Result codes
 
 The device answers on `AcknowledgeAddress` (`01 20 00`). `Bulk.Result`, `from

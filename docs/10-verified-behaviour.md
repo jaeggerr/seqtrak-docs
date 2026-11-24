@@ -4666,3 +4666,90 @@ harmless: waveform numbers are above 8192 and already carry that bit. It would
 have corrupted every *sound* address the moment anyone pulled one. Removed. The
 sweep above is the first run that used sound addresses at all, which is how it
 surfaced — a retraction is not finished until the tools are re-read.
+
+## 2026-11-24 — a multi-zone user waveform: the transfer header decoded, and one keybank is still all you get
+
+The aim was a multisampled instrument — one note rendered per octave, five key
+zones — because a single sample stretched across the keyboard is what makes an
+imported instrument fall apart when you change octave. It does not work yet, but
+six attempts against the machine turned a blank in the header into three decoded
+fields and one sharp blocker.
+
+### The header, field by field
+
+The sound header (`ah 03`) that opens a content transfer carries 18 bytes. The
+single-sample form that works is `[0,1,0,0] [0,0] [0,0] [0,1] b4(1) b4(size)`.
+Varying the fields one at a time, each attempt stopping at the header so nothing
+was installed:
+
+| Field | Tried | Answer |
+|---|---|---|
+| the 2-byte field at offset 8 | `0`, `1`, `2`, `5` | **all accepted** — the machine does not validate it |
+| the first `b4` | `1` | accepted |
+| the first `b4` | `2`, `5` | **refused, result 127**, whatever the sizes |
+| the second `b4` | one sample's size, or the total of five | accepted either way |
+
+So that first `b4` **must be 1**, and the second is the byte length of the
+packet stream that follows. `verified on hardware`. The earlier comment in
+`content_push.py` reading the fields as "sound=0, element=0, waveform=1,
+sample=1" is wrong about the last one: it is not a sample count, because no
+value but 1 is allowed.
+
+### What the declared size governs
+
+Declaring the total of five samples and then sending only the first sample's
+stream is refused — **on the stream's last packet**, result 127, every earlier
+packet accepted. So the size in the header is the length the machine expects the
+stream to reach, and it checks it at the end. `verified on hardware`.
+
+That gives two working shapes:
+
+| Shape | Outcome |
+|---|---|
+| five headers, each declaring one sample's size, each followed by that sample's packets | all five streams **accepted**; the waveform body carrying 5 keybank records is then **refused**, result 127 |
+| one header declaring the total, one continuous stream of the five samples concatenated | everything **accepted**, header to sound body |
+
+### And the blocker: the second shape is accepted and then silently flattened
+
+The accepted transfer was pulled straight back off the machine
+([`content_pull.py`](../tools/hardware-probe/content_pull.py), waveform 8621).
+All 495,488 bytes of audio came back, and the record did not:
+
+| Field | Sent | Stored |
+|---|---|---|
+| keybank count | **5** | **1** |
+| key range, root key | `0`-`41`, note 36 (zone 0) | `0`-`41`, note 36 — zone 0's, kept |
+| `+0x3C` sample count | 60,480 (zone 0 only) | **247,744** — the whole blob |
+| `+0x30` last index | 60,479 | 247,743 |
+| `+0x2C` loop start | 1,378 blocks | 1,378 — kept |
+
+`verified on hardware`. The machine took the five-record table, **kept the first
+record, and stretched it over the entire blob**. Nothing was refused and nothing
+warned: the sound it builds plays all five notes end to end, as an 11.2-second
+loop, on keys 0-41 only. A transfer being accepted at every step is not evidence
+that it was stored as sent — this is the second time that has caught us, after
+the keybank run that reassembled perfectly while dropping a stereo waveform's
+first zone.
+
+### What would settle it
+
+This repository already records, from the read side, that a stereo waveform's
+two keybanks arrive as **two packet runs, each with its own count and indices
+restarting at 0**, under one waveform. That is the shape neither attempt above
+used: the five-header shape gave each run its own header, and the blob shape
+gave five runs' worth of audio one set of indices. The write side needs the same
+two-run shape under a **single** header — and what the header then declares as
+its size is exactly what is not known.
+
+**One capture settles it**: the official app importing a *stereo* `.Y3S`, which
+is the minimal two-keybank case, both directions. Until then a user waveform on
+a synth element is one zone, and a multisampled instrument has to go the other
+route — several elements in one sound, one waveform each — whose file layout is
+also unresolved: element 0's envelope sits at `0x14A` and its wave pointer at
+`0x1E8`, which are 158 bytes apart and cannot both fit the 141-byte stride the
+third-party source reports, so the base of element 1 is a guess and was not
+tried.
+
+> Two sounds named `clavi-multi` are now on the unit, at user bank programs 28
+> and 29, and both are the flattened result described above. They are test
+> residue, not instruments.

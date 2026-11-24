@@ -454,6 +454,22 @@ already sustains — but over SysEx the envelope is one write away
 `waveformN.bin` is a u32 keybank count followed by that many records, so 68
 bytes mono and 132 stereo.
 
+### A user waveform on a synth element is **one zone**, for now
+
+`verified on hardware`. A package carrying five keybank records — one per
+octave, each with its own key range and root key — is accepted at every step of
+the transfer and then **silently flattened**: the machine keeps the first record
+and stretches it over the whole audio blob. Pulling the waveform back shows
+keybank count `1` and a sample count rewritten to the full blob length
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)).
+
+This is not a format limit — `sampleK.bin` is bound to a `KeybankNumber`, the
+records carry key and velocity ranges, and a stereo waveform is two keybanks —
+but the **write** handshake for more than one keybank is not known. The read
+side says a stereo waveform arrives as two packet runs under one waveform, each
+with its own count and indices from 0; the write side has not been made to
+match. So until that is captured, plan for one zone per user waveform.
+
 ### `sound.bin`, and how an element points at a wave
 
 `sound.bin` is 1792 bytes: a header, a 32-byte name as four groups of `00` plus
