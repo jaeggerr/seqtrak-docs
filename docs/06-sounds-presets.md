@@ -513,10 +513,19 @@ every 3 semitones span two octaves at the factory library's own commonest zone
 width; a full keyboard at that density would need 43 zones, so anything wider
 than two octaves has to stretch.
 
-Two caveats. Whether it *sounds* like five zones has not been listened to. And
-it **does not persist**: live element writes are lost when a sound is loaded,
-and `Sound Save` remains an unresolved address, so the assembly must be rebuilt
-until that is found.
+**It works, and it was heard.** An eight-zone instrument assembled this way —
+a root every 3 semitones from note 48 to 69 — plays each zone at its own pitch
+with the level even across the boundaries, confirmed by ear once all three traps
+above were written.
+
+The one real cost is that it **does not persist**. The user waveforms stay on
+the machine, but the element assignment is live state: it is lost the moment a
+sound is loaded onto the part, and `Sound Save` remains an unresolved address
+([08](08-bulk-and-files.md#why-save-matters)). Rebuilding it is one command and
+no audio transfer —
+[`tools/hardware-probe/element_multisample.py`](../tools/hardware-probe/element_multisample.py)
+loads the first sound, assigns the eight elements and writes all three
+non-inherited parameters, then reads every field back.
 
 ### `sound.bin`, and how an element points at a wave
 
