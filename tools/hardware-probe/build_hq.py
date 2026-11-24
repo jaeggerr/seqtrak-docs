@@ -21,11 +21,11 @@ NAME = sys.argv[3] if len(sys.argv) > 3 else "clavi-hq"
 TEMPLATE = os.path.expanduser("~/Downloads/clavioline-sustain.Y3S")
 OUT = os.path.expanduser("~/Downloads/%s.Y3S" % NAME)
 RATE, PEAK, EBASE = 44100, 27000, 0x14A
-# 0x37 is AEGReleaseTime. It was 0 here, inherited from build_kb.py, and a
-# release of 0 silences a looped user sample COMPLETELY -- not just at key
-# release. Every multi-keybank package this project built was born mute
-# because of it; see docs/10, "the keybanks play, and the silence was my own
-# test". 83 is what a working user sound carries.
+# 0x37 is AEGReleaseTime. build_kb.py wrote 0; 83 is what a working user sound
+# carries, so 83 is used here. A release of 0 was briefly blamed for a silent
+# package and that was WRONG -- the silence survives 83 (docs/10, "a
+# 52-keybank waveform does not play"). This value is alignment with a known
+# good sound, not a fix for anything.
 ENV = {0x33: 0, 0x34: 97, 0x35: 64, 0x37: 83, 0x38: 0, 0x39: 127, 0x3A: 119,
        0x3B: 116}
 SOUND_CN, WAVE_CN = 4100, 8593

@@ -5245,12 +5245,12 @@ key, loop switch, sample rate, loop start, frame count — came back unchanged.
 | "there is no room left in the header for a second keybank" | **withdrawn** — the room is `14 + 4n` |
 | the machine flattens a multi-record table onto one blob | **withdrawn as a property of the machine**; it is what a *malformed* transfer produced |
 | `+0x0B` is the channel count | **withdrawn** — it is the keybank count |
-| the element route is "the way round it" | **superseded for a waveform a host builds.** The keybank route has now been heard: 8, 32 and 52 keybanks all play, and unlike an element assembly they survive a sound load |
+| the element route is "the way round it" | **it is still the only multisample that has been heard.** A 52-keybank waveform does not play — see below |
 
-The multisampled instrument the whole line of work was after is writable in one
-transfer, as one waveform, persistent because it is content and not live
-state — and it **plays**:
-[heard, 8 / 32 / 52 keybanks](#2026-11-24-night--the-keybanks-play-and-the-silence-was-my-own-test).
+The multisampled instrument the whole line of work was after is **writable** in
+one transfer, as one waveform, persistent because it is content and not live
+state. Whether it **plays** is
+[open, and a 52-keybank one does not](#2026-11-24-night--a-52-keybank-waveform-does-not-play-and-three-of-my-own-readings-were-worthless).
 
 ### How this was missed for six attempts
 
@@ -5352,66 +5352,60 @@ measured at a waveform correlation of 0.9999 or better, and a single common gain
 of 1.6363 was applied to the whole set.
 
 
-## 2026-11-24, night — the keybanks play, and the silence was my own test
+## 2026-11-24, night — a 52-keybank waveform does not play, and three of my own readings were worthless
 
-**Retracted in full: the section that stood here concluded that a host-written
-multi-keybank waveform stores perfectly and does not play. It plays.** 8, 32 and
-52 keybanks were each loaded on a part and heard. What was silent was an element
-whose **`41 ep 37` `AEGReleaseTime` was `0`**.
+**A 52-keybank waveform written by a host stores perfectly and does not play.**
+Established by the one test in this sequence whose result the listener could
+check for himself. Everything else recorded by ear that night is withdrawn,
+including a retraction that was itself wrong.
 
-### The error, because it is the useful part
+### The one reliable test
 
-The A/B that produced the wrong conclusion changed **two** things in one script:
-it set `AEGReleaseTime` from `0` to `83` *and* repointed the element from the
-52-keybank waveform to a known-good one. The sound came back, and the difference
-was attributed to the waveform. One write, two variables, and the elimination
-table in the retracted section — the pointer, the element, the part, the record
-structure, the audio — was all correct and all beside the point.
+Part 7 (SYNTH 1) holds `clavi-B2op`, a user sound that sounds. Part 8 (SYNTH 2)
+holds `clavi-hq52`. All **192** addresses of `41 ep` and `42 ep` were read on
+both parts: they differ in **one** place, the wave number — 426 against 462.
+Nothing was changed for the test.
 
-The repository's own rule covers this: a measurement that contradicts something
-already established is a reason to stop. It did contradict one — the records and
-the audio had just been verified byte for byte, which left "stores perfectly and
-does not play" as a very strange thing to believe.
+Played one after the other: **SYNTH 1 sounds, SYNTH 2 does not.** The control is
+inside the test — hearing SYNTH 1 proves the listener was on the right track
+with the volume up, which is exactly what the earlier attempts could not prove.
 
-### Done properly: one variable, A / B / A
+`verified on hardware`. So with an element configured identically to a working
+one, pointing at a 52-keybank waveform yields silence.
 
-`verified on hardware`. Element 0 of part 8, nothing touched but the one
-address, with part 7's wave number as witness and the tempo as control:
+### Why three earlier readings are worthless, and it is a method failure
 
-| `41 08 03` wave | `41 08 37` release | Heard |
-|---|---|---|
-| 462 (52 keybanks) | `0` | **silent** |
-| 462 (52 keybanks) | `83` | **sounds** |
-| 462 (52 keybanks) | `0` | **silent** |
+The earlier attempts repointed **the same part** at four different waveforms —
+426, 461, 462, 463 — asking "play SYNTH 2" each time. The instruction named the
+same track for four different contents, and the listener was never given the
+mapping at the moment of listening. He said so: *sometimes I test and it is
+actually the wrong track, which biases my analysis.* He is right, and these are
+the casualties:
 
-So **`AEGReleaseTime` = 0 silences a looped user sample completely**, not just
-at key release. That is worth knowing on its own: `build_kb.py` and `build_hq.py`
-both wrote `0` into that offset of every package they built, which is why every
-multi-keybank package this project has produced was born mute.
+| Reading | State |
+|---|---|
+| waveform 426 sounds on part 8 | unaffected — it is what the reliable test above re-establishes |
+| 8 keybanks (461) play | **unconfirmed** — a bare yes under the unreliable protocol |
+| 32 keybanks (463) play, pitch freezing at C6 | **unconfirmed**, but the detail argues it was real: a specific break point is not something a mis-test produces |
+| 52 keybanks (462) play with release 83 | **withdrawn** — contradicted by the reliable test |
+| `AEGReleaseTime` 0 silences a looped sample | **withdrawn entirely.** Its A/B/A rested on "462 with release 83 sounds", which is false; 462 is silent at 0 and at 83 alike, so the release time explains nothing |
 
-### What the keybank route actually does, heard
+The retraction committed on the strength of that A/B/A is therefore itself
+retracted. Two reversals on one question in one evening, and the cause was not
+the machine either time: it was asking someone to listen while the thing under
+his fingers kept moving.
 
-| Keybanks | Content | Heard |
-|---|---|---|
-| 8 | 8653 | plays |
-| 32 | 8655 | plays |
-| 52 | 8654 | plays |
+### The method that replaces it
 
-One sample per semitone from C1 to D#5 (MIDI 36-87, Yamaha's numbering, where
-`00`-`7F` is C-2 … G8), zones contiguous over the whole keyboard. This is the
-multisampled instrument the line of work was after, and it is content, so it
-survives a sound load.
+One part, one content, for the whole of a test. State the part-to-content
+mapping at every request to listen, not once at the start. Put a control the
+listener can **hear** in the same test, so a null result proves something.
+Never change two addresses in one write.
 
-### The lead that is left: pitch stops following above about +28 semitones
+### What is open
 
-With the 32-keybank waveform, whose highest root is G3 (67) and whose top zone
-is stretched to key 127, the pitch **stops rising at C6** (96) and every key
-above it sounds the same. 96 − 67 = **29**, so the upward transposition from a
-keybank's root looks to be clamped around +28.
-
-`verified on hardware` as an observation, by ear, on one waveform. The reading
-is inference: a second root distance has not been tried, and nothing has been
-measured on the machine's side. If it holds it is an argument **for** dense
-keybanks rather than against them — the tighter the roots, the less any zone has
-to transpose — and it would also explain why a one-sample instrument falls apart
-at the top of the keyboard, which is where this whole line of work started.
+Whether a smaller keybank count plays. The 32-keybank waveform (content 8655)
+and the 8-keybank one (8653) are both installed, and each needs the reliable
+test above, one at a time. If 32 plays and 52 does not, there is a count limit
+between them; the `KeybankFull` result code (5) exists and has never been
+returned, so nothing in the transfer announces it.
