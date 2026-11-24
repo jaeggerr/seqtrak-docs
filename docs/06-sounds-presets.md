@@ -689,6 +689,23 @@ layouts diverge — the file spends 13 bytes where the edit buffer spends 23 —
   [one zone per user waveform](#a-user-waveform-on-a-synth-element-is-one-zone-for-now)
   is the gap that matters. This is a fact about the image; what the running
   machine does with these tables was not observed.
+
+  **But "the same record layout as a package's" is too strong, and is hereby
+  narrowed.** Only the fields checked above line up: key range at `+0x00`/`+0x01`,
+  root key at `+0x08`, sample rate at `+0x24`. Two fields plainly do not:
+  `+0x38` reads `FFFFFFFF` in **every** one of the 14,595 records, and `+0x3C`
+  is not a sample count — summed over the table it gives 6 × 10¹³ samples, which
+  is six orders of magnitude past any plausible library. So the factory table
+  shares the record's *front* and diverges later. Do not read package field
+  offsets past `+0x24` into it.
+
+  **And the factory audio is not in the firmware image.** The image is 63.75 MiB,
+  of which **40 MiB is `FF` erase-filler** and about 17 MiB is code and data;
+  classifying it by megabyte finds no region that could hold a sample library,
+  against the Data List's 800 MB of preset wave memory. The update file carries
+  the tables and the program, not the samples: those live in a memory the
+  updater does not touch. `from firmware image (static analysis)` — a fact about
+  the file, which is exactly the point here.
 - Their factory reading is not clean: `+0x0F` is `1` on 99.7 % of one-shot-looking
   factory records but `0` on a drum (wave 765, Timbale 1), and one Sax zone
   decodes to an 80-sample loop that does not match what is heard. **Factory
