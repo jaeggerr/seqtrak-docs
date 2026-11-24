@@ -485,7 +485,18 @@ already sustains — but over SysEx the envelope is one write away
 `4 + 64n` bytes: 68 for one keybank, 132 stereo, and 516 for the eight-keybank
 waveform that was written and read back.
 
-### A user waveform on a synth element is **one zone**, for now
+### A user waveform on a synth element is **one zone**, and now we know why
+
+> **Explained, 2026-11-24.** Not by a count limit and not by flattening. A user
+> waveform **plays only if all of its keybanks carry the same key range**: 52
+> keybanks store and read back byte for byte, a single keybank restricted to
+> keys 0-59 plays, two keybanks both at `0`-`127` play, and two keybanks at
+> `0`-`59` and `60`-`127` are **silent on every key** — the same package out of
+> the same builder, two bytes per record apart. So the zones are stored and
+> cannot be selected among. Five measurements, each with an audible control:
+> [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-night--the-rule-a-user-waveform-plays-only-if-all-its-keybanks-share-one-key-range).
+> The flattening described below came from transfers whose header was malformed
+> and is not what the machine does to a well-formed one.
 
 `verified on hardware`. A package carrying five keybank records — one per
 octave, each with its own key range and root key — is accepted at every step of

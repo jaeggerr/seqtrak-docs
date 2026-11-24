@@ -5445,6 +5445,8 @@ cover 0-127 with the same root 60**. It is a stereo pair, not a multi-zone
 instrument. That waveform is not evidence of key-zone selection, and reading it
 as such is what kept the search pointed the wrong way.
 
+### Resolved below — read [the rule](#2026-11-24-night--the-rule-a-user-waveform-plays-only-if-all-its-keybanks-share-one-key-range) first
+
 ### The offsets are right, which makes this stranger, not simpler
 
 The first reading of this result was that `+0x00`/`+0x01` are not the key range.
@@ -5484,3 +5486,72 @@ offsets that matter are the ones neither source has pinned: what a factory
 record carries *besides* the key range that mine does not. That is a read — no
 hardware writes, no listener — and it is the one comparison that has never been
 made.
+
+
+## 2026-11-24, night — the rule: a user waveform plays only if all its keybanks share one key range
+
+**A restricted key range is legal. Several keybanks are legal. Several keybanks
+with *different* key ranges is what fails, and it silences the whole waveform on
+every key.**
+
+`verified on hardware`, five measurements, each with the control inside the
+listening: part 7 (SYNTH 1) held a user sound that sounds and was never touched,
+part 8 was repointed one wave number at a time, and each result was reported as
+"part 7 yes, part 8 yes/no".
+
+| Keybanks | `+0x00`/`+0x01` per record | Content | Heard |
+|---|---|---|---|
+| 1 | `0`-`59` | 8659 | **plays**, in the low register |
+| 2 | `0`-`127` and `0`-`127` | 8658 | **plays** |
+| 2 | `0`-`59` and `60`-`127` | 8657 | **silent, on every key** |
+| 8 | one semitone-ish zone each | 8653 | silent |
+| 32 | one semitone each | 8655 | silent |
+| 52 | one semitone each | 8654 | silent |
+| 2, made by the official app | `0`-`127` and `0`-`127`, same root 60 | 8592 | **plays** |
+
+Row 1 is the one that settles it: a single keybank restricted to keys 0-59 plays.
+So the two bytes are **not** rejected per se, and they are honoured, not ignored.
+Row 3 against row 2 is the minimal pair — the same two-keybank package out of the
+same builder, differing in nothing but those bytes — and row 3 is silent even on
+keys 0-59, inside its own first record's range.
+
+### What it means
+
+**Key-zone selection inside a user waveform does not work.** The machine stores
+the zones faithfully — all 52 records came back byte for byte — and will not play
+a waveform whose keybanks disagree about which keys they serve. The app's stereo
+import never contradicted this: its two keybanks are a left/right pair at
+`0`-`127` with the same root, which is exactly the "all the same range" case.
+
+This explains, and finally closes,
+[a user waveform on a synth element is one zone](06-sounds-presets.md#a-user-waveform-on-a-synth-element-is-one-zone-for-now):
+it is one zone not because only one keybank can be written — 52 can — but
+because the moment they differ, nothing plays.
+
+| Claim | State |
+|---|---|
+| a host can write and read back 8, 32 or 52 keybanks | **`verified on hardware`** |
+| a single keybank may carry a restricted range | **`verified on hardware`** |
+| several keybanks sharing one range play | **`verified on hardware`** |
+| several keybanks with differing ranges silence the waveform | **`verified on hardware`** |
+| a multisampled instrument can be built inside one user waveform | **no** — not through the key range, on this firmware |
+| the element route | **the only way to get key zones**, and that is now explained rather than observed |
+
+### What is still unknown
+
+Why. The factory tables in the firmware image carry 12,076 records with
+restricted, differing ranges, so the engine can plainly do it for factory
+content; a user waveform evidently does not reach that path. Nothing measured
+here says what the difference is — a flag outside the record, a different
+directory structure, or a deliberate restriction.
+
+What would move it: the factory **directory** at `0x2041351C`, which lists which
+records belong to a waveform. A user waveform's equivalent has never been
+located, and the four record bytes where every narrow factory record differs
+from a package's (`+0x06`, `+0x07`, `+0x10`, `+0x13`) are **not** the answer —
+the app's own playing stereo record carries the package values there, so those
+four separate the image's table format from a package's, nothing more.
+
+Factory waveforms cannot be pulled for comparison: every number from 0 to 8191
+answers the content channel with an **empty 17-byte header**, all counts zero.
+That is an answer, not a silence, so the absence is established.
