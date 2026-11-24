@@ -4819,3 +4819,38 @@ until that is found.
 > (the stereo one, waveform 8592, pulled back and counted). What is missing is
 > the write handshake for the second keybank, and a way to save an element
 > assembly.
+
+#### The trap in assembling elements by hand: `41 ep 54`
+
+The five-zone assembly above played, and it played wrong in a way worth
+recording: the pitch stopped rising part-way up the keyboard and every key above
+that point sounded **the same note**, with only the timbre darkening as the
+player went higher.
+
+Dumping the part and diffing element 0's block against elements 1-4 named the
+cause in one line. Seven bytes differed, four of them intended (the wave number
+and the note limits) and one decisive:
+
+| Offset | Parameter | Element 0 | Elements 1-4 |
+|---|---|---|---|
+| **`0x54`** | **`Pitch Key Follow Sensitivity`** | **96** (`0x60`, the Data List default) | **64** (`0x40`) |
+| `0x2F` | `Level Velocity Sensitivity` | 84 | 64 |
+| `0x34` | `AEG Decay 1 Time` | 97 | 127 |
+| `0x35` | `AEG Decay 2 Time` | 64 | 100 |
+
+**`41 ep 54` = 64 means the element does not track the keyboard in pitch**: it
+plays its sample at the root key whatever note arrives. The filter still follows
+the key, which is exactly the "same note, darker as you go up" the player
+described. `verified on hardware`.
+
+An element that an existing sound configured carries 96; an element switched on
+from scratch over SysEx does not. **Assigning a wave, a zone and a level to a
+fresh element is not enough** — `0x54` has to be written too, and so does
+anything else element 0 carries that the untouched blocks do not. Diff the
+blocks rather than trusting the Data List defaults: the default for this
+parameter is `0x60`, and the element blocks of a loaded sound hold `0x40`.
+
+All five elements were then aligned and read back identical apart from wave
+number and note limits, witness unmoved and tempo answering. Each waveform's
+root key survived the import — waveform 436 pulled back with root `84`, key
+range `0`-`127`, its loop start and length intact.

@@ -223,6 +223,7 @@ Three rules learned the hard way, all from
 | Script | What it is for |
 |---|---|
 | `which_sound.py` | read-only: the loaded sound's **name** on every part from `01 1p 35`, user sounds included, four attempts each with the tempo as control. Run it before any test that depends on which track is sounding |
+| `element_align.py` | aligns elements switched on from scratch onto a configured one — above all `41 ep 54` `Pitch Key Follow Sensitivity`, which reads 64 (no keyboard tracking) on a fresh element and 96 on a configured one |
 | `element_zones.py` | assembles a **multisampled** instrument live: points several elements of one part at several single-zone user waveforms with `41 ep 00/01/03/10/11`, then reads every field back. Not persisted — a sound load wipes it |
 | `push_multi.py` | the multi-keybank experiment: one header, one continuous stream of concatenated samples, a record table with N keybanks. **The machine accepts it and keeps one keybank** — kept as the instrument that measured the header's fields, not as a working importer |
 | `content_push.py` | **installs** a `.Y3S` on the machine through the content channel, without the official app: the dump header, the sample packets, the waveform body and the sound body, each acknowledged. Verified by `01 10 09` decrementing |

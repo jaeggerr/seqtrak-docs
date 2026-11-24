@@ -492,6 +492,14 @@ Five elements of one part were pointed at five user waveforms with five key
 ranges, and **every field read back as written**, witness unmoved and tempo
 answering. That also settles `41 ep 01` / `41 ep 03`, listed as untested above.
 
+**One trap, and it is not optional.** `41 ep 54` `Pitch Key Follow Sensitivity`
+reads **64** on an element switched on from scratch and **96** on one an
+existing sound configured. At 64 the element ignores the keyboard and plays its
+sample at the root key whatever note arrives — the filter still follows, so it
+sounds like one frozen note getting darker as you climb. Write it, along with
+anything else element 0 carries that a fresh block does not; diff the element
+blocks of a part dump rather than trusting the Data List defaults.
+
 Two caveats. Whether it *sounds* like five zones has not been listened to. And
 it **does not persist**: live element writes are lost when a sound is loaded,
 and `Sound Save` remains an unresolved address, so the assembly must be rebuilt

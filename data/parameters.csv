@@ -1504,7 +1504,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 41,ep,51,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Pitch Velocity Sensitivity,1,00 - 7F,40,-64 - +63,,,,,,,Yamaha Data List,149,,
 41,ep,52,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,reserved,1,,00,,,,,,,,Yamaha Data List,149,,
 41,ep,53,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Random Pitch Depth,1,00 - 7F,00,0 - 127,,,,,,,Yamaha Data List,149,,
-41,ep,54,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Pitch Key Follow Sensitivity,1,00 - 7F,60,-200 - +200[%],,,,,,,Yamaha Data List,149,,
+41,ep,54,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Pitch Key Follow Sensitivity,1,00 - 7F,60,-200 - +200[%],,,,,,,Yamaha Data List,149,Pitch Key Follow Sensitivity reads 64 on an element switched on from scratch over SysEx and 96 on one an existing sound configured. At 64 the element plays its sample at the root key whatever note arrives while the filter still follows the key - one frozen note getting darker as you climb. Written 96 on elements 1-4 and read back 96,10-verified-behaviour.md
 41,ep,55,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Pitch Key Follow Sensitivity Center Note,1,00 - 7F,3C,C-2 ... G8,,,,,,,Yamaha Data List,149,,
 41,ep,56,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,Pitch Fine Scaling Sensitivity,1,00 - 7F,40,-64 - +63,,,,,,,Yamaha Data List,149,,
 41,ep,57,Sound Drum/Synth/SAMPLER / Oscillator/Amplitude/Pitch,PEG Hold Time,1,00 - 7F,00,0 - 127,,,,,,,Yamaha Data List,149,,

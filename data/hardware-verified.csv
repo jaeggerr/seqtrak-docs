@@ -166,3 +166,4 @@ address_high,address_mid,address_low,what_was_established,document
 41,ep,10,"Note Limit Low written per element (0, 42, 54, 66, 78) and read back exactly - five live key zones on one part",10-verified-behaviour.md
 41,ep,11,"Note Limit High written per element (41, 53, 65, 77, 127) and read back exactly",10-verified-behaviour.md
 41,ep,00,Element Assign written 1 on elements 0-4 of part 8 and read back 1 on each,10-verified-behaviour.md
+41,ep,54,Pitch Key Follow Sensitivity reads 64 on an element switched on from scratch over SysEx and 96 on one an existing sound configured. At 64 the element plays its sample at the root key whatever note arrives while the filter still follows the key - one frozen note getting darker as you climb. Written 96 on elements 1-4 and read back 96,10-verified-behaviour.md
