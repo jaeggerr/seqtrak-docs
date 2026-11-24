@@ -5108,6 +5108,31 @@ Machine state: firmware answering 4/4 on every address, sequencer stopped
 (`01 10 20` = `0`), `ContentsManagementMode` = `0`, tempo 120, 1988 free
 waveform slots (`01 10 09`).
 
+### How high the count goes
+
+The same instrument, header alone, with the count swept and the size entries
+always matched to it. `verified on hardware`, four runs of each:
+
+| Declared samples | Payload | Yamaha count | Result |
+|---|---|---|---|
+| 8 | 46 B | 50 | 0, 0, 0, 0 |
+| 16 | 78 B | 82 | 0, 0, 0, 0 |
+| 43 | 186 B | 190 | 0, 0, 0, 0 |
+| 64 | 270 B | 274 | 0, 0, 0, 0 |
+| 88 | 366 B | 370 | 0, 0, 0, 0 |
+| 128 | 526 B | 530 | 0, 0, 0, 0 |
+
+So the count field is not capped below 128, and 43 — the number of 3-semitone
+zones a full keyboard needs at the factory library's commonest density — is
+nowhere near a boundary. A 128-sample header is 526 payload bytes, well inside
+the 3992-byte message payload area, so the frame does not constrain it either.
+
+**This is the header and nothing else.** `KeybankFull` is result code 5 and
+exists, so a cap exists *somewhere*; it was not reached here, and a header does
+not exercise it. The only count carried through a whole transfer and read back
+is **8**. Sample memory is the other untested limit: one sample per semitone at
+the sizes used here is on the order of 15 MB.
+
 ### What this does not say
 
 **Nothing was installed, so nothing in *this* section says a user waveform can
