@@ -171,10 +171,13 @@ def main():
                 import struct
                 cnt = struct.unpack_from("<I", raw, 0)[0]
                 rate = struct.unpack_from("<I", raw, 4 + 0x24)[0]
-                ch = raw[4 + 0x0B]
+                # +0x0B is the KEYBANK count, not the channel count: an
+                # eight-keybank mono waveform reads 08 here. "Channels" fitted
+                # only because the one multi-keybank case seen was stereo.
+                kb0b = raw[4 + 0x0B]
                 loop = "loop" if raw[4 + 0x0F] == 0 else "one-shot"
-                print("        keybanks %d, %d Hz, %d channel(s), %s"
-                      % (cnt, rate, ch, loop))
+                print("        keybanks %d, %d Hz, +0x0B=%d, %s"
+                      % (cnt, rate, kb0b, loop))
 
 
 if __name__ == "__main__":

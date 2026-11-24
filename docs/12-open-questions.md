@@ -822,13 +822,13 @@ times before a push would take. Decoding it would unlock removing and renaming
 user content from a host, which is the last thing the official app can do and
 this repository cannot.
 
-## How does a host write **more than one keybank** into a user waveform? (2026-11-24)
+## ~~How does a host write **more than one keybank** into a user waveform?~~ **Answered** (2026-11-24)
 
 The format plainly supports it — `sampleK.bin` carries a `KeybankNumber`, each
 64-byte record has its own key and velocity range and root key, and a stereo
 waveform *is* two keybanks. The write handshake is what is missing. Six attempts
 on hardware
-([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get))
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-six-attempts-that-were-all-malformed))
 established the header's fields and left exactly two shapes:
 
 | Shape tried | Result |
@@ -842,16 +842,18 @@ then stores one keybank per waveform, every one holding the *first* stream. The
 header checks its declared size at the end of each stream and expects exactly
 one stream per header, so there is no room in it for a second keybank.
 
-**The element route is the way round it and it works**: five single-zone user
+**The element route was the way round it, and it is no longer needed for this**:
+five single-zone user
 waveforms, five elements, `41 ep 00/01/03/10/11` written and read back exactly.
 What that leaves open is **persistence** — `Sound Save` is still unresolved, so
 an element assembly is lost when a sound is loaded.
 
-**What would settle it**: a both-directions capture of the official app
-importing a **stereo** `.Y3S` — the minimal two-keybank case. One capture is
-enough.
+~~**What would settle it**: a both-directions capture of the official app
+importing a **stereo** `.Y3S` — the minimal two-keybank case.~~ No capture was
+needed in the end; the repository already held the field table that capture
+would have produced.
 
-**The shape nobody has tried, and it is now specified.** The header carries one
+**The shape nobody had tried, now specified — and its header is accepted.** The header carries one
 4-byte size entry per sample from offset `0x19`
 ([08](08-bulk-and-files.md#the-headers-payload), `verified on hardware` from a
 stereo import), so a well-formed *n*-sample header is `18 + 4(n-1)` bytes longer
@@ -875,26 +877,51 @@ only the tone generator, the effects, the NAND driver and the platform — not t
 application code where the handler lives. One executable entry point *was*
 located (the `contentsDumpParam` group object) and is the place to resume from.
 
-### A cheap experiment that would weaken the "no room in the header" reading
+### ANSWERED, 2026-11-24: it writes eight, and the header was the only obstacle
 
-**This is a reading of the protocol, not a firmware finding, and it is
-untested.** [08-bulk-and-files.md](08-bulk-and-files.md#the-headers-payload)
-establishes that the transfer header carries **one 4-byte entry per sample**
-from offset `0x19`, and that the Yamaha byte count is `0x12 + 4n`. A header
-declaring *n* samples therefore measures `18 + 4(n−1)` payload bytes, not 18.
+`verified on hardware`. `push_keybanks.py` with the correct header installed
+`clavi-kb8.Y3S` — one waveform, eight keybanks — and the content was pulled
+back: the record table returns 516 bytes with a keybank count of 8, the eight
+key zones are intact and contiguous over 0-127, and all eight samples come back
+byte for byte. One waveform slot was consumed, not eight. Full account in
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back).
 
-The field that "must be 1" (header bytes 10-13) is, by that same table, the
-**sample count**. The run that set it to 2 and 5 and got result 127 is recorded
-as refused "whatever the sizes", but the tool that varied it is not in this
-repository and the write-up does not say whether the number of **size entries**
-was adjusted to match. So the refusal may have been a malformed header — a byte
-count inconsistent with the message length — rather than a limit.
+The write handshake that was "what is missing" above is: the `14 + 4n` header,
+then one packet run per keybank with its indices restarting at 0, then the
+N-record body. Nothing else was needed. Everything above this line is kept for
+the record; the answer is here.
 
-**The experiment**, on a disposable sound and stopping at the header so nothing
-is installed: send an `ah 03` header with the sample count set to **2** *and*
-**two** 4-byte size entries (22 payload bytes, Yamaha count `0x1A`). Result 0
-would overturn "there is no room left in the header for a second keybank";
-result 127 would reinforce it without explaining it.
+One correction falls out of it: `+0x0B` in the keybank record is **the keybank
+count**, not the channel count — eight mono samples came back with `08` in
+every record ([06-sounds-presets.md](06-sounds-presets.md#the-rest-of-the-record)).
+
+### The header experiment that led to it (2026-11-24)
+
+`verified on hardware`. The reading above was tested on the machine with
+headers sent alone, nothing behind them, nothing installed —
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later--the-eight-sample-header-is-accepted-and-127-was-answering-the-length),
+[`../tools/hardware-probe/probe_header_count.py`](../tools/hardware-probe/probe_header_count.py).
+
+| Header | Payload | Result |
+|---|---|---|
+| 1 sample, 1 size entry | 18 B | **0** |
+| **8 samples, 8 size entries** | 46 B | **0** |
+| 8 declared, 1 size entry | 18 B | **127** |
+
+Four runs of each. The third row reproduces on purpose the shape the six
+earlier attempts sent, so the only difference between 0 and 127 is the
+message's length: **127 was answering the length, not the count**. "There is no
+room left in the header for a second keybank" is **withdrawn** — there is room,
+and the machine takes it.
+
+**What remains open is the storing, not the sending.** No multi-keybank
+transfer has been completed: an accepted header is a message the machine agreed
+to receive, not a stored result. The next step is the whole chain with the
+correct header — `probe_header_count.py`'s big brother
+[`push_keybanks.py`](../tools/hardware-probe/push_keybanks.py), one packet run
+per keybank with its own indices from 0, then the N-record body — against
+`clavi-kb8.Y3S`, and then pulling the waveform back to count what is actually
+in it.
 
 Writing such an assembly **into a file** is still blocked on the element stride:
 element 0's envelope sits at `sound.bin` `0x14A` and its wave pointer at

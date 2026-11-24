@@ -487,10 +487,18 @@ therefore unconstrained.
 
 `from firmware image (static analysis)` throughout this subsection. It was
 written while looking for the code that limits a user waveform to **one
-keybank** ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)).
+keybank** ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-six-attempts-that-were-all-malformed)).
 That limit was **not** found. These are the by-products, which are worth more
 than the failure, plus the measured reasons the search could not work. Nothing
 here says what the hardware does — only what is in the file.
+
+> **The limit does not exist.** Later the same day the machine took **eight**
+> keybanks in one waveform, zones intact
+> ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back)):
+> the refusals were a malformed header, not a cap. So this search was looking
+> for something that was never there, which is why no constant, array bound or
+> state field could be attributed to it. The by-products below stand on their
+> own; the premise does not.
 
 **The machine reports a message *number*; the host supplies the text.** The
 image holds a table of one pointer per message identifier at image

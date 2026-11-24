@@ -255,12 +255,14 @@ exactly, and `InfoNameSize = 100` matches the 100-byte name field of a browser
 entry — two more independent agreements between the traffic captures and the
 official app.
 
-## The sound header's 18 bytes
+## The sound header's 14 + 4n bytes
 
-`ah 03` opens a content transfer and carries 18 bytes. Three of the fields are
+`ah 03` opens a content transfer and carries **`14 + 4n` bytes** for *n*
+samples — 18 for the single-sample form below, which is the smallest member of
+the family and not a fixed-size structure. Three of the fields are
 now measured, each by varying it alone with the attempt stopping at the header
 so nothing was installed (`verified on hardware`,
-[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)):
+[10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-six-attempts-that-were-all-malformed)):
 
 ```
 [0,1,0,0]  [0,0]  [0,0]  [0,1]  b4(1)  b4(size)
@@ -271,7 +273,7 @@ so nothing was installed (`verified on hardware`,
 | 0-3 | `00 01 00 00` | unexplained; left as the app sends it |
 | 4-5, 6-7 | two 2-byte counts | always `0` in a sound transfer |
 | 8-9 | a 2-byte count | **not validated**: `0`, `1`, `2` and `5` are all accepted |
-| 10-13 | `b4` | the **sample count**. ~~must be 1~~ — see the retraction below |
+| 10-13 | `b4` | the **sample count**; `8` is accepted when 8 size entries follow. ~~must be 1~~ — see the retraction below |
 | 14-17 | `b4` | the **byte length of the packet stream that follows**, checked when the stream ends: declare more than you send and the stream's *last* packet is refused, every earlier one accepted |
 
 > **Retracted, same day.** An earlier version of this section said the first
@@ -282,9 +284,17 @@ so nothing was installed (`verified on hardware`,
 > `verified on hardware`, from a stereo import whose header carried **two**
 > entries — so declaring a count of *n* while sending a single entry is a
 > malformed message of the wrong length, and 127 was answering that. The field
-> is the sample count, and a correctly sized multi-sample header has not yet
-> been tried. Whether a host can then write more than one keybank is
-> [open](12-open-questions.md#how-does-a-host-write-more-than-one-keybank-into-a-user-waveform-2026-11-24).
+> is the sample count.
+>
+> **Confirmed the same day, on hardware.** A header declaring **8** samples with
+> **8** size entries (46-byte payload, Yamaha count `0x32`) is **accepted,
+> result 0**; the same count with a single entry (18 bytes) comes back **127**.
+> Four runs of each —
+> [10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later--the-eight-sample-header-is-accepted-and-127-was-answering-the-length).
+> The whole transfer was then run with that header and read back: **a user
+> waveform holds eight keybanks with their key zones**, and the audio returns
+> byte for byte
+> ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back)).
 >
 > The lesson is not about the field. The answer was **already in this document**,
 > a hundred lines up, and a contradicting section was added without checking

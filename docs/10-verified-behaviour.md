@@ -4667,7 +4667,7 @@ have corrupted every *sound* address the moment anyone pulled one. Removed. The
 sweep above is the first run that used sound addresses at all, which is how it
 surfaced — a retraction is not finished until the tools are re-read.
 
-## 2026-11-24 — a multi-zone user waveform: the transfer header decoded, and one keybank is still all you get
+## 2026-11-24 — a multi-zone user waveform: the transfer header decoded, and six attempts that were all malformed
 
 The aim was a multisampled instrument — one note rendered per octave, five key
 zones — because a single sample stretched across the keyboard is what makes an
@@ -4686,7 +4686,7 @@ was installed:
 |---|---|---|
 | the 2-byte field at offset 8 | `0`, `1`, `2`, `5` | **all accepted** — the machine does not validate it |
 | the first `b4` | `1` | accepted |
-| the first `b4` | `2`, `5` | **refused, result 127** — but the header sent was malformed; see the retraction at the end of this section |
+| the first `b4` | `2`, `5` | **refused, result 127** — but the header sent was malformed; see the retraction at the end of this section. A well-formed `8` is accepted |
 | the second `b4` | one sample's size, or the total of five | accepted either way |
 
 So that first `b4` **must be 1**, and the second is the byte length of the
@@ -5054,10 +5054,13 @@ What stands, and what does not:
 | a user waveform gets only one keybank through this path | **withdrawn as a conclusion**; still what every attempt *produced*, but no attempt sent a well-formed header |
 | the machine flattened a 5-record table onto the whole blob | **stands** as an observation — of a transfer whose header was malformed |
 
-A correctly sized header has not been tried: the machine was unplugged before the
-run. The package is built and waiting (`clavi-kb8.Y3S`, one waveform, eight
-keybanks, each with its own matched loop), and the pusher that sends one size
-entry per sample is written.
+A correctly sized header **has since been tried, and accepted** — see
+[the section that follows](#2026-11-24-later--the-eight-sample-header-is-accepted-and-127-was-answering-the-length),
+where declaring 8 samples with 8 size entries returns result 0 and the same
+count with one entry returns 127. The package is built and waiting
+(`clavi-kb8.Y3S`, one waveform, eight keybanks, each with its own matched loop),
+and the pusher that sends one size entry per sample is written; the full
+transfer has not been run.
 
 **Two process failures, worth more than the field.** The answer was in this
 repository, in the document the new section was appended to, about a hundred
@@ -5067,3 +5070,141 @@ would settle it", when that capture was the source of the table all along.
 Before measuring a message, read what this repository already says about it; a
 measurement that contradicts an existing `verified on hardware` entry is a
 reason to stop and reconcile, not to add a second section.
+
+## 2026-11-24, later — the eight-sample header is accepted, and 127 was answering the length
+
+The retraction above left one thing unmeasured: whether a *correctly sized*
+multi-sample header is accepted. It is. Three headers were sent, each alone,
+with nothing behind it and `ContentsManagementMode` restored in a `finally`, so
+nothing was installed —
+[`../tools/hardware-probe/probe_header_count.py`](../tools/hardware-probe/probe_header_count.py).
+
+| Header | Sample count at `0x15` | Size entries from `0x19` | Payload | Yamaha count | Result |
+|---|---|---|---|---|---|
+| control, one sample | 1 | 1 | 18 B | `0x16` | **0** |
+| eight samples, well formed | 8 | 8 | 46 B | `0x32` | **0** |
+| eight declared, one entry | 8 | 1 | 18 B | `0x16` | **127** |
+
+Four runs of each, all four agreeing, no missing reply. `verified on hardware`.
+
+The third row is the point: it reproduces deliberately the shape the six earlier
+attempts sent. Same count, same field, same value — and the only difference that
+turns 0 into 127 is the message's length. **Result 127 was answering the length,
+not the count.** The field at `0x15` accepts 8.
+
+The arithmetic that makes a header well formed:
+
+| | |
+|---|---|
+| payload length | `14 + 4n` bytes |
+| Yamaha byte count | `0x12 + 4n` |
+
+So `n = 1` gives the 18-byte header that was taken for the only legal form, and
+every larger `n` needs 4 more bytes per sample. The 18-byte header is not a
+fixed-size structure with a count inside it; it is the smallest member of a
+family.
+
+Machine state: firmware answering 4/4 on every address, sequencer stopped
+(`01 10 20` = `0`), `ContentsManagementMode` = `0`, tempo 120, 1988 free
+waveform slots (`01 10 09`).
+
+### What this does not say
+
+**Nothing was installed, so nothing in *this* section says a user waveform can
+hold more than one keybank.** An accepted header is a message the machine agreed
+to receive, not a stored result — the same distinction that
+[rule 3](../CLAUDE.md) draws between a table's bytes and a table's behaviour.
+
+| Claim | State |
+|---|---|
+| a well-formed header may declare 8 samples | **`verified on hardware`** |
+| 127 was answering the message length | **`verified on hardware`** — by the reproduction in row 3 |
+| a host can store more than one keybank | **answered the same day, and yes** — the full transfer was then run and read back: [the next section](#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back) |
+
+## 2026-11-24, later still — eight keybanks written by a host, and read back
+
+**A user waveform takes more than one keybank through the SysEx content
+channel. Eight of them, with their key zones.** The conclusion that it does not
+is withdrawn; so is every explanation that was built on it. The cause was the
+malformed header, and nothing else.
+
+`verified on hardware`. One run,
+[`../tools/hardware-probe/push_keybanks.py`](../tools/hardware-probe/push_keybanks.py)
+against `clavi-kb8.Y3S` (one waveform, eight keybanks, eight matched loops),
+then [`../tools/hardware-probe/content_pull.py`](../tools/hardware-probe/content_pull.py)
+to read back what was stored.
+
+### The transfer
+
+| Step | Sent | Acknowledged |
+|---|---|---|
+| `ah 03` header | 8 samples, 8 size entries, 46-byte payload, Yamaha count `0x32` | result 0 |
+| `ah 0A` packets | eight runs, each restarting its index at 0: 65, 38, 59, 77, 62, 48, 28, 51 packets | every one result 0 |
+| `ah 09` waveform body | the 516-byte record table (`4 + 64 × 8`) | result 0 |
+| `ah 07` sound body | the sound, its wave pointer rewritten | result 0 |
+
+`01 10 09` went from 1988 free waveform slots to **1987** — one waveform
+created, holding eight keybanks, not eight waveforms holding one each.
+
+### What came back
+
+The dump request for the new waveform (content number 8653) answers with a
+header reading **`samples = 8`** and the eight byte sizes in order, then sends
+eight separate packet runs and the body.
+
+| | Sent | Back |
+|---|---|---|
+| record table | 516 B | 516 B, keybank count field = **8** |
+| audio | 8 samples, 1,112,816 B | **all eight byte for byte** (SHA-1 equal) |
+
+And the zones survived intact — every key range, root key and loop point
+identical to what was sent:
+
+| Keybank | Key range | Root | Loop start | Frames |
+|---|---|---|---|---|
+| 0 | 0-49 | 48 | 1896 | 84,244 |
+| 1 | 50-52 | 51 | 2056 | 49,044 |
+| 2 | 53-55 | 54 | 1848 | 77,196 |
+| 3 | 56-58 | 57 | 2520 | 99,836 |
+| 4 | 59-61 | 60 | 1400 | 81,300 |
+| 5 | 62-64 | 63 | 1656 | 62,996 |
+| 6 | 65-67 | 66 | 1688 | 36,044 |
+| 7 | 68-127 | 69 | 2312 | 65,748 |
+
+Contiguous, no gap, no overlap, covering 0-127.
+
+### The two bytes per record the machine rewrites
+
+Of the 64 bytes in each record, exactly **three** came back changed, the same
+three in all eight records.
+
+| Offset | Sent | Back | Reading |
+|---|---|---|---|
+| `+0x0B` | `01` in every record | **`08` in every record** | **not the channel count.** The audio is eight *mono* samples, and the machine wrote the **keybank count**. "Channels, 1 = mono, 2 = stereo" fitted only because the single multi-keybank case anyone had examined was stereo, where both numbers are 2 — corrected in [06-sounds-presets.md](06-sounds-presets.md#the-rest-of-the-record) |
+| `+0x38`, `+0x39` | `4E9C` in every record | a **different** value in each: `A7CA`, `03BC`, `BED6`, `DAFC`, `B539`, `A5C3`, `C5E2`, `D610` | confirms what was already recorded: the machine overwrites it, per keybank, and a host need not compute it. Eight distinct values from one transfer is a stronger instrument than two imports of the same PCM, and it still rules out any function of the audio — the eight payloads differ, but so would eight hashes; what it adds is that the field is assigned **per record within a single transfer** |
+
+Everything else in all eight records — key range, velocity range, pan, root
+key, loop switch, sample rate, loop start, frame count — came back unchanged.
+
+### What this costs the earlier write-ups
+
+| Claim | State |
+|---|---|
+| a user waveform gets only one keybank through this path | **withdrawn** — eight, verified |
+| "there is no room left in the header for a second keybank" | **withdrawn** — the room is `14 + 4n` |
+| the machine flattens a multi-record table onto one blob | **withdrawn as a property of the machine**; it is what a *malformed* transfer produced |
+| `+0x0B` is the channel count | **withdrawn** — it is the keybank count |
+| the element route is "the way round it" | still works, but it is no longer a way *round* anything for a waveform that a host builds; its remaining advantage is nothing, and its disadvantage — losing the assembly on a sound load — is now a reason to prefer keybanks |
+
+The multisampled instrument the whole line of work was after is therefore
+writable in one transfer, as one waveform, persistent because it is content and
+not live state.
+
+### How this was missed for six attempts
+
+Every attempt varied the count and never the message length, so every attempt
+was malformed in the same way and the machine answered the same way. The field
+table in [08-bulk-and-files.md](08-bulk-and-files.md#the-headers-payload) had
+recorded one 4-byte size entry per sample, `verified on hardware`, from a stereo
+import — about a hundred lines above the section that concluded the opposite.
+The measurement was not wrong; it was never the measurement that was asked for.

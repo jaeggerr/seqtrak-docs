@@ -461,12 +461,13 @@ already sustains — but over SysEx the envelope is one write away
 | `+0x00`, `+0x01` | key range low, high | `00`, `7F` |
 | `+0x02`, `+0x03` | velocity range low, high | `01`, `7F` |
 | `+0x08` | root key (MIDI note) | `3C` (60) |
-| `+0x0B` | channels, 1 = mono, 2 = stereo | `01` / `02` |
+| `+0x0B` | ~~channels, 1 = mono, 2 = stereo~~ — **the keybank count**, and the machine writes it | `01` / `02`, and `08` in an eight-keybank waveform. `verified on hardware`: a waveform of **eight mono** samples was pushed with `01` in every record and came back with **`08`** in every record ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back)). "Channels" fitted only because the sole multi-keybank case anyone had seen was stereo, where the channel count and the keybank count are both 2 |
 | `+0x24` | u32 sample rate in Hz | `44100`; other rates untested |
 | `+0x38` | u32 **written by the machine**, differs per keybank | `verified on hardware` that the machine **overwrites whatever the file carries** on import, and that it is **not a function of the audio**: the same PCM imported twice took `20124` and `47188`. So a host need not compute it. Meaning still unknown; the values rise with allocation order, which would fit a storage offset ([10-verified-behaviour.md](10-verified-behaviour.md#and-0x38-is-written-by-the-machine-not-by-the-file)) |
 
-`waveformN.bin` is a u32 keybank count followed by that many records, so 68
-bytes mono and 132 stereo.
+`waveformN.bin` is a u32 keybank count followed by that many records, so
+`4 + 64n` bytes: 68 for one keybank, 132 stereo, and 516 for the eight-keybank
+waveform that was written and read back.
 
 ### A user waveform on a synth element is **one zone**, for now
 
@@ -475,7 +476,7 @@ octave, each with its own key range and root key — is accepted at every step o
 the transfer and then **silently flattened**: the machine keeps the first record
 and stretches it over the whole audio blob. Pulling the waveform back shows
 keybank count `1` and a sample count rewritten to the full blob length
-([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)).
+([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-six-attempts-that-were-all-malformed)).
 
 This is not a format limit and **not a firmware limit**. The engine plays
 multi-zone waveforms constantly — the factory library is sampled every one to
