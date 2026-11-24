@@ -5245,11 +5245,19 @@ key, loop switch, sample rate, loop start, frame count — came back unchanged.
 | "there is no room left in the header for a second keybank" | **withdrawn** — the room is `14 + 4n` |
 | the machine flattens a multi-record table onto one blob | **withdrawn as a property of the machine**; it is what a *malformed* transfer produced |
 | `+0x0B` is the channel count | **withdrawn** — it is the keybank count |
-| the element route is "the way round it" | still works, but it is no longer a way *round* anything for a waveform that a host builds; its remaining advantage is nothing, and its disadvantage — losing the assembly on a sound load — is now a reason to prefer keybanks |
+| the element route is "the way round it" | **it is still the only route that has been heard.** See the correction below: a host-written multi-keybank waveform stores perfectly and does not play |
 
-The multisampled instrument the whole line of work was after is therefore
-writable in one transfer, as one waveform, persistent because it is content and
-not live state.
+The multisampled instrument the whole line of work was after is **writable** in
+one transfer, as one waveform, persistent because it is content and not live
+state.
+
+> **Correction, later the same day: writable is not playable.** An earlier
+> version of this paragraph stopped at "writable" and let the reader assume the
+> rest. It does **not** play. A 52-keybank waveform built this way, loaded on a
+> part, produces **no sound at all** —
+> [the diagnosis](#2026-11-24-night--a-host-written-multi-keybank-waveform-stores-perfectly-and-does-not-play).
+> Writing and reading back is `verified on hardware`; a working instrument is
+> not. The element route remains the only multisample that has been heard.
 
 ### How this was missed for six attempts
 
@@ -5349,3 +5357,56 @@ from 21 to 87 and then collapses — RMS 4706 at 72, 4543 at 88, 2364 at 96 — 
 notes above 87 would make the top of the keyboard vanish. All 52 loop joins
 measured at a waveform correlation of 0.9999 or better, and a single common gain
 of 1.6363 was applied to the whole set.
+
+
+## 2026-11-24, night — a host-written multi-keybank waveform stores perfectly and does not play
+
+**The 52 keybanks are stored, verified byte for byte, and silent.** Loaded on a
+part, the instrument produces no sound at all. This is the gap between the two
+things the earlier sections proved and the one thing they did not test.
+
+### What has been ruled out, and how
+
+The sound was loaded on part 8 (SYNTH 2), `01 18 35` reading `clavi-hq52`. One
+address at a time, with part 7 (`clavi-B2op`, a user sound that **does** sound)
+as the comparison:
+
+| Suspect | Ruled out by |
+|---|---|
+| the wave pointer | `41 08 03` reads **462** = content 8654, the waveform the machine assigned. The machine fixes the pointer up itself; the number written into `sound.bin` at `0x1E8` does not have to be right |
+| the element | all 192 addresses of `41 ep` and `42 ep` read on part 7 and part 8. **Two differences only**: the wave number, and `41 ep 37` `AEGReleaseTime` at `0` against `83` — set back to 83, still silent |
+| the part, and the sound | pointing part 8's element 0 at waveform **426** — the one part 7 uses — makes it **sound**, with nothing else changed. One write separated silent from sounding |
+| the record structure | the 64 bytes of three of the 52 records read against the sounding waveform's single record, field by field. They differ only where they must: key range, root key, loop start, last frame, frame count, and the `+0x0B` the machine writes. Every other field is identical |
+| the audio | all 52 samples came back from the machine byte for byte, SHA-1 equal to what was sent |
+
+So the element, the part, the sound, the pointer, the record layout and the
+audio are all accounted for. What is left is the **multi-keybank waveform
+itself**.
+
+### What is not known
+
+The deciding test was interrupted: whether the **8**-keybank waveform (content
+8653, number 461) plays. If it does, the fault is the count or something that
+scales with it; if it does not, a host-written multi-keybank waveform does not
+play at all, whatever the count. **Neither of this project's two multi-keybank
+waveforms has ever been heard** — the eight-zone instrument that *was* heard
+was the element route, eight separate single-keybank waveforms.
+
+A second control is worth running in the same session: waveform **8592**, the
+stereo package the official app imported, is a two-keybank waveform the machine
+made itself. Whether it plays on the same element says whether multi-keybank
+playback works on this machine at all.
+
+> **No crash.** The machine left the MIDI bus immediately after the write that
+> would have begun this test, and the owner confirms they unplugged it. Recorded
+> because the coincidence is exactly the shape of a host-reachable crash, and it
+> was not one.
+
+### What this costs the claims above
+
+| Claim | State |
+|---|---|
+| a host can **write** 8 and 52 keybanks into one waveform | **`verified on hardware`**, unchanged |
+| the record table and audio read back intact | **`verified on hardware`**, unchanged |
+| a host can build a multisampled instrument that **plays** | **not established** — this is the open question now |
+| the element route is superseded | **withdrawn** — it is the only multisample that has been heard |
