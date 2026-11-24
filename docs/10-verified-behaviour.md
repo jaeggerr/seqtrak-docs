@@ -4854,3 +4854,28 @@ All five elements were then aligned and read back identical apart from wave
 number and note limits, witness unmoved and tempo answering. Each waveform's
 root key survived the import — waveform 436 pulled back with root `84`, key
 range `0`-`127`, its loop start and length intact.
+
+#### The ceiling: eight elements, so eight zones
+
+`verified on hardware`. **Eight** elements are addressable live on a part —
+`41 (e<<4|p) xx` for `e` = 0-7 — and all eight were written and read back on
+part 8: eight user waves, eight note-limit ranges, `41 ep 54` at 96 on every
+one, witness unmoved and tempo answering. An edit-buffer dump of the part
+returns the matching eight blocks, `41 08 00` through `41 78 00`, of 109 bytes
+each.
+
+That is also the ceiling of this route. [06](06-sounds-presets.md#soundbin-and-how-an-element-points-at-a-wave)
+reports 7 usable element blocks in a package's `sound.bin`, the 8th `FF`-filled;
+over SysEx, on a loaded sound, all eight answer and all eight take an
+assignment.
+
+Eight zones is enough to **match Yamaha's own density over about two octaves**:
+a root every 3 semitones spans 24 semitones, and the factory library's commonest
+zone widths are 3, 2 and 1 semitones. It is not enough for a keyboard: 128 keys
+at 3 semitones would need 43 zones. So the element route gives a good two
+octaves, and anything wider has to stretch — which is the measure of what the
+keybank route would buy if its write handshake were known.
+
+A worked example now on the unit: roots at 48, 51, 54, 57, 60, 63, 66 and 69,
+zones `0`-`49`, `50`-`52`, `53`-`55`, `56`-`58`, `59`-`61`, `62`-`64`, `65`-`67`
+and `68`-`127`, with the two outer elements widened so nothing is silent.

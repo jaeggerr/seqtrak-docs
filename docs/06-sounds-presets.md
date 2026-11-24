@@ -500,6 +500,13 @@ sounds like one frozen note getting darker as you climb. Write it, along with
 anything else element 0 carries that a fresh block does not; diff the element
 blocks of a part dump rather than trusting the Data List defaults.
 
+**The ceiling is eight zones.** All eight elements of a part answer and take an
+assignment over SysEx (`41 (e<<4|p) xx`, `e` = 0-7), `verified on hardware` —
+even though a package's `sound.bin` shows only 7 usable blocks. Eight roots
+every 3 semitones span two octaves at the factory library's own commonest zone
+width; a full keyboard at that density would need 43 zones, so anything wider
+than two octaves has to stretch.
+
 Two caveats. Whether it *sounds* like five zones has not been listened to. And
 it **does not persist**: live element writes are lost when a sound is loaded,
 and `Sound Save` remains an unresolved address, so the assembly must be rebuilt
