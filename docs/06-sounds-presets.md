@@ -235,8 +235,24 @@ now established.
 
 Two limits, both `verified on hardware`:
 
-- With a **user** sound loaded it reads `00 00`, not the sound's number, so it
-  cannot identify one. Use `01 1p 35` instead.
+- ~~With a **user** sound loaded it reads `00 00`, not the sound's number, so it
+  cannot identify one.~~ **Contradicted, 2026-11-24.** Parts 7 and 8, both
+  holding user sounds, read `20 1A` = **4122** (`clavi-B2op`) and `20 34` =
+  **4148** (`fn0`), 4/4 attempts, raw bytes logged. That agrees with the note in
+  [03b](03b-parameters-live-state.md) where part 8 read 4100 for a user sound
+  and it matched that sound's exported `<ContentNumber>`. Three readings now say
+  the address **does** report a user sound's content number. `01 1p 35` is still
+  the way to get a name.
+- **An anomaly in the same sweep, unexplained.** On the eleven parts of the
+  current project, parts 0, 4, 5 and 6 read `0` while holding *factory* sounds,
+  and parts 1, 2 and 3 read **10597**, **15205** and **14690** — above the
+  documented maximum of 6143 — while their names are ordinary factory drum
+  names. Raw reply for part 1: `F0 43 10 7F 1C 0C 01 11 33 52 65 F7`, 4/4
+  attempts. The earlier survey of a factory project read small numbers (2, 112,
+  248, …) on these same parts. **No reading is proposed**; the mapping below is
+  left exactly as it was, since it was closed by a known-input test and this
+  sweep does not touch that. Recorded so the next person does not take the
+  formula as covering every part in every project.
 - It is **not writable**. Written `858` on part 8 with four confirming reads
   around it, the loaded sound did not change and the address still read `00 00`,
   with the neighbouring part's name unmoved as witness. Loading a sound is Bank
