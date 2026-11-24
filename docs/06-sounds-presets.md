@@ -474,7 +474,7 @@ already sustains — but over SysEx the envelope is one write away
 
 | Offset | Field | Value in user records |
 |---|---|---|
-| `+0x00`, `+0x01` | key range low, high | `00`, `7F` |
+| `+0x00`, `+0x01` | key range low, high | `00`, `7F`. **A restricted range in a *user* waveform silences it**: two 2-keybank packages differing in nothing but these two bytes per record, one `00`/`7F` throughout and one split 0-59 / 60-127, were pushed minutes apart — the first plays, the second is silent (`verified on hardware`, [10](10-verified-behaviour.md#2026-11-24-night--the-key-range-bytes-silence-a-keybank-and-that-is-the-whole-bug)). The offsets are not in doubt: 12,076 factory records carry restricted ranges here. What a user waveform needs *besides* the range is unknown |
 | `+0x02`, `+0x03` | velocity range low, high | `01`, `7F` |
 | `+0x08` | root key (MIDI note) | `3C` (60) |
 | `+0x0B` | ~~channels, 1 = mono, 2 = stereo~~ — **the keybank count**, and the machine writes it | `01` / `02`, `08` in an eight-keybank waveform and **`52` in a fifty-two-keybank one**. `verified on hardware`: a waveform of **eight mono** samples was pushed with `01` in every record and came back with **`08`** in every record, and 52 mono samples with **`52`** ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24-later-still--eight-keybanks-written-by-a-host-and-read-back)). "Channels" fitted only because the sole multi-keybank case anyone had seen was stereo, where the channel count and the keybank count are both 2 |

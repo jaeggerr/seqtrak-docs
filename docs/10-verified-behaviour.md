@@ -5409,3 +5409,78 @@ and the 8-keybank one (8653) are both installed, and each needs the reliable
 test above, one at a time. If 32 plays and 52 does not, there is a count limit
 between them; the `KeybankFull` result code (5) exists and has never been
 returned, so nothing in the transfer announces it.
+
+## 2026-11-24, night — the key-range bytes silence a keybank, and that is the whole bug
+
+**A multi-keybank waveform written by a host plays. Narrowing `+0x00`/`+0x01` in
+its records silences it completely.** Those two bytes are recorded in
+[06-sounds-presets.md](06-sounds-presets.md#the-rest-of-the-record) as the
+keybank's key range.
+
+### The minimal pair
+
+Two packages out of the same builder, in the same minute: same audio, same
+common gain, same roots (48 and 72), same loop points, same sound, same
+template, same transfer tool. **Two bytes per record differ.**
+
+| Package | Content | `+0x00`/`+0x01` per record | Heard |
+|---|---|---|---|
+| `clavi-p-wide` | 8658 | `00`/`7F` and `00`/`7F` | **sounds** |
+| `clavi-p-narrow` | 8657 | `00`/`3B` and `3C`/`7F` | **silent** |
+
+`verified on hardware`, with the control inside the test: part 7 holds a user
+sound that sounds and was never touched, part 8 was repointed one wave number at
+a time, and each listening was reported as "part 7 yes, part 8 yes/no".
+
+### What it explains
+
+Every multi-keybank package this project built had narrow zones, so every one of
+them was silent — 8, 32 and 52 keybanks alike. **The keybank count was never the
+problem**, which is why no cap could be found and why `KeybankFull` (result 5)
+was never returned.
+
+And it explains the one multi-keybank waveform that *does* play, the stereo
+package imported by the official app (content 8592): its **two keybanks both
+cover 0-127 with the same root 60**. It is a stereo pair, not a multi-zone
+instrument. That waveform is not evidence of key-zone selection, and reading it
+as such is what kept the search pointed the wrong way.
+
+### The offsets are right, which makes this stranger, not simpler
+
+The first reading of this result was that `+0x00`/`+0x01` are not the key range.
+That is **wrong**, and this document had the evidence already: a static pass over
+the factory keybank tables found **12,076 of 14,595** records carrying a
+*restricted* range at exactly those offsets in the firmware image, with the commonest widths 3, 2 and 1
+semitones ([the survey](06-sounds-presets.md#what-this-changes-here)). Yamaha's
+own library is full of narrow zones in these two bytes.
+
+So the field is identified correctly, and the real result is narrower and more
+interesting:
+
+> A **user** waveform whose keybank carries a restricted range in `+0x00`/`+0x01`
+> does not play, while a factory waveform's records carry restricted ranges by
+> the thousand.
+
+Something else must accompany a narrow zone — a field this project has not
+identified, a flag, or a playback path that user waveforms do not take. Nothing
+measured here says which.
+
+| Claim | State |
+|---|---|
+| a host can write 8, 32 or 52 keybanks and read them back | **`verified on hardware`**, unchanged |
+| a host-written multi-keybank waveform plays | **`verified on hardware`** — with `00`/`7F` in every record |
+| narrowing `+0x00`/`+0x01` silences the waveform | **`verified on hardware`** by the minimal pair |
+| `+0x00`/`+0x01` are the key range | **stands** — 12,076 factory records carry them restricted, measured in the firmware image |
+| a narrow range in a **user** waveform silences it | **`verified on hardware`** |
+| a user waveform can carry working key zones | **not established**, and this is now the open question |
+| the element route is superseded | **withdrawn, for the second time.** Per-element note limits (`41 ep 10`/`11`) remain the only key zones anyone has heard working |
+
+### The next step, and it costs no listening
+
+The factory tables were read from the **firmware image**, never from the
+device. Pull a factory multisampled waveform off the **running machine** through the content
+channel and compare its 64-byte records with one of mine, field by field. The
+offsets that matter are the ones neither source has pinned: what a factory
+record carries *besides* the key range that mine does not. That is a read — no
+hardware writes, no listener — and it is the one comparison that has never been
+made.
