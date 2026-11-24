@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Trouve la boucle la plus silencieuse par APPARIEMENT DE FORME D'ONDE.
+"""Find the quietest loop in a rendered note by WAVEFORM MATCHING.
 
-Un nombre entier de periodes de la fondamentale ne suffit pas : le timbre porte
-des partiels desaccordes, donc rien ne se raccorde a cette periode-la. On
-cherche la longueur qui fait coincider la forme d'onde avant le depart et la
-forme d'onde avant la fin -- ce que l'oreille juge au bouclage.
+An integer number of periods of the fundamental is not enough: the tone carries
+detuned partials, so nothing lines up at that period and the loop clicks. What
+is wanted is the length that makes the waveform before the loop start coincide
+with the waveform before the end -- which is what the ear judges at the join.
 
-Seul le DEPART doit etre un multiple de 16 (il est stocke divise par 16). La
-longueur est libre : la contrainte que je m'etais imposee coutait jusqu'a huit
-echantillons de desalignement.
+Only the START has to be a multiple of 16 (it is stored divided by 16). The
+LENGTH is free: constraining it to 16 as well, as this repository once did,
+costs up to eight samples of misalignment at the join.
 """
 import numpy as np, wave, json, os, sys
 
@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RATE = 44100
 NOTES = [int(x) for x in sys.argv[1:]] or [48, 51, 54, 57, 60, 63, 66, 69]
 LMIN, LMAX = int(0.20*RATE), int(1.40*RATE)
-WC, WF = 512, 4096          # fenetres de correlation, grossiere puis fine
+WC, WF = 512, 4096          # correlation windows, coarse then fine
 
 def mono(note):
     w = wave.open(os.path.join(HERE, 'long%d.wav' % note))
@@ -29,21 +29,21 @@ def corr(a, b):
     return float(a @ b / (na*nb)) if na and nb else -1.0
 
 out = {}
-print('%-5s %-8s %-9s %-8s %-9s %s' % ('note','depart','longueur','duree','corr','saut'))
+print('%-5s %-8s %-9s %-8s %-9s %s' % ('note','start','length','secs','corr','jump'))
 for note in NOTES:
     d = mono(note)
     best = None
     for start in range(int(0.45*RATE)//16*16, int(0.95*RATE), 16*16):
         ref_c = d[start-WC:start]
         ref_f = d[start-WF:start]
-        # passe grossiere
+        # coarse pass
         cands = []
         for L in range(LMIN, LMAX, 8):
             e = start + L
             if e + 8 > len(d): break
             cands.append((corr(ref_c, d[e-WC:e]), L))
         cands.sort(reverse=True)
-        # passe fine autour des meilleures
+        # fine pass around the best candidates
         for _, L0 in cands[:12]:
             for L in range(L0-16, L0+17):
                 e = start + L

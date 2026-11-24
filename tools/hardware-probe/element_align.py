@@ -1,9 +1,9 @@
-"""Aligne les elements 1-4 sur l'element 0 : suivi de clavier en hauteur et les
-trois autres ecarts releves au dump. SYNTH 1 temoin, tempo en controle."""
+"""Align elements 1-4 onto element 0: keyboard pitch tracking and the three
+other gaps the dump showed. SYNTH 1 is the witness, the tempo the control."""
 import time, rtmidi
 PART=8
-FIX={0x54:96,   # Pitch Key Follow Sensitivity : 64 = ne suit pas, 96 = suit
-     0x55:60,   # note centrale du suivi
+FIX={0x54:96,   # Pitch Key Follow Sensitivity: 64 = no tracking, 96 = tracking
+     0x55:60,   # centre note of the tracking
      0x2F:84,   # Level Velocity Sensitivity
      0x34:97,   # AEG Decay 1 Time
      0x35:64}   # AEG Decay 2 Time
@@ -29,7 +29,7 @@ print('el0 (reference) 54=%s 55=%s' % (req([0x41,0x08,0x54]), req([0x41,0x08,0x5
 for e in range(1,5):
     m=(e<<4)|PART
     for off,v in FIX.items(): w([0x41,m,off], v)
-print('relecture :')
+print('read back:')
 for e in range(5):
     m=(e<<4)|PART
     print('  el%d  54=%-5s 55=%-5s 2F=%-5s 34=%-5s 35=%-5s  wave=%s notes %s-%s'
@@ -37,4 +37,4 @@ for e in range(5):
          req([0x41,m,0x34]), req([0x41,m,0x35]),
          (lambda v: (v[0]<<7|v[1]) if v and len(v)==2 else None)(req([0x41,m,0x03])),
          req([0x41,m,0x10]), req([0x41,m,0x11])))
-print('temoin SYNTH1 41 07 54 :', req([0x41,0x07,0x54]), '| tempo :', req([0x30,0x40,0x76]))
+print('witness SYNTH1 41 07 54:', req([0x41,0x07,0x54]), '| tempo:', req([0x30,0x40,0x76]))

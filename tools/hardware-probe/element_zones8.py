@@ -1,8 +1,8 @@
-"""Huit zones tous les 3 demi-tons sur la partie 8, elements 0 a 7.
-Ecrit tout ce qu'un element frais ne porte pas, 41 ep 54 compris."""
+"""Eight zones, a root every 3 semitones, on part 8, elements 0 to 7.
+Writes everything a fresh element does not carry, 41 ep 54 included."""
 import time, rtmidi
 PART=8; CH=8; PROG0=36
-# (onde, note basse, note haute, note de reference)
+# (wave, low note, high note, root note)
 Z=[(437,  0, 49, 48), (438, 50, 52, 51), (439, 53, 55, 54), (440, 56, 58, 57),
    (441, 59, 61, 60), (442, 62, 64, 63), (443, 65, 67, 66), (444, 68,127, 69)]
 SET={0x00:1, 0x01:1, 0x10:None, 0x11:None, 0x12:1, 0x13:127, 0x2E:100, 0x2F:84,
@@ -43,7 +43,7 @@ def name(p=PART):
 out.send_message([0xB0|CH,0x00,63]); time.sleep(0.03)
 out.send_message([0xB0|CH,0x20,32]); time.sleep(0.03)
 out.send_message([0xC0|CH,PROG0]);   time.sleep(0.8)
-print('SYNTH 2 :', name(), '| temoin SYNTH 1 :', name(7))
+print('SYNTH 2:', name(), '| witness SYNTH 1:', name(7))
 for e,(wave,lo,hi,root) in enumerate(Z):
     m=(e<<4)|PART
     for off,v in SET.items():
@@ -51,7 +51,7 @@ for e,(wave,lo,hi,root) in enumerate(Z):
         elif off==0x11: v=hi
         w([0x41,m,off], v)
     w([0x41,m,0x03], (wave>>7)&0x7F, wave&0x7F)
-print('\nrelecture :')
+print('\nread back:')
 ok=True
 for e,(wave,lo,hi,root) in enumerate(Z):
     m=(e<<4)|PART
@@ -59,7 +59,7 @@ for e,(wave,lo,hi,root) in enumerate(Z):
     a,l,h,kf=req([0x41,m,0x00]),req([0x41,m,0x10]),req([0x41,m,0x11]),req([0x41,m,0x54])
     good = got==wave and l==[lo] and h==[hi] and kf==[96] and a==[1]
     ok &= good
-    print('  el%d  onde %s (ref %d)  notes %s-%s  54=%s  assign=%s  %s'
-          % (e, got, root, l, h, kf, a, 'ok' if good else '<<< ECART'))
-print('\ntout conforme :', ok)
-print('temoin SYNTH1 41 07 03 :', req([0x41,0x07,0x03]), '| tempo :', req([0x30,0x40,0x76]))
+    print('  el%d  wave %s (root %d)  notes %s-%s  54=%s  assign=%s  %s'
+          % (e, got, root, l, h, kf, a, 'ok' if good else '<<< MISMATCH'))
+print('\nall as written:', ok)
+print('witness SYNTH1 41 07 03:', req([0x41,0x07,0x03]), '| tempo:', req([0x30,0x40,0x76]))

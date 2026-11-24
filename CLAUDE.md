@@ -137,8 +137,15 @@ Rules when you write into this repository:
 
 ## Conventions
 
-- **Everything is in English**, including file names, headings, table headers and
-  code comments. This is non-negotiable for this repository.
+- **Everything is in English**, including file names, headings, table headers,
+  code comments, **docstrings, printed output and interactive prompts**. This is
+  non-negotiable for this repository.
+  > This rule is broken in exactly one situation, and it has happened: a session
+  > conducted in another language writes its tools in that language without
+  > noticing, because the prose and the code are being written in the same
+  > breath. The owner caught ten such files on 2026-11-24. If you are not
+  > thinking in English while you work, re-read every file you added before you
+  > commit — `grep` your tools for your own working language.
 - One fact per table row. Explicit tables over prose.
 - Addresses are always written high, mid, low, space-separated, hex.
 - Values are written in hex when the source gives hex, in decimal when it gives
@@ -231,6 +238,7 @@ Three rules learned the hard way, all from
 | `element_align.py` | aligns elements switched on from scratch onto a configured one — above all `41 ep 54` `Pitch Key Follow Sensitivity`, which reads 64 (no keyboard tracking) on a fresh element and 96 on a configured one |
 | `element_zones.py` | assembles a **multisampled** instrument live: points several elements of one part at several single-zone user waveforms with `41 ep 00/01/03/10/11`, then reads every field back. Not persisted — a sound load wipes it |
 | `push_multi.py` | the multi-keybank experiment: one header, one continuous stream of concatenated samples, a record table with N keybanks. **The machine accepts it and keeps one keybank** — kept as the instrument that measured the header's fields, not as a working importer |
+| `build_y3s.py` | builds a one-zone `.Y3S` from a mono WAV, given a real app export as a template and a loop from `find_loop.py`. The missing link between choosing a seamless loop and installing it |
 | `content_push.py` | **installs** a `.Y3S` on the machine through the content channel, without the official app: the dump header, the sample packets, the waveform body and the sound body, each acknowledged. Verified by `01 10 09` decrementing |
 | `content_pull.py` | pulls a content off the machine through the **content channel**: the dump request, the 21-byte acknowledgement at `01 21 00` for every message, 7-into-8 unpacking, and `01 10 01` restored in a `finally`. The run that brought a 220,470-byte sample back byte for byte |
 | `read_many.py` | reads a list of addresses with **one** port held open and timing/active-sensing filtered, four attempts each, the control address interleaved. The instrument to reach for first: a prober that reopens the port per request loses replies on a flooded link |

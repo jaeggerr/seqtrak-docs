@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Installe un .Y3S sur le SEQTRAK par le canal de contenu, comme l'app officielle.
+"""Install a .Y3S on the SEQTRAK through the content channel, as the app does.
 
-Chaine observee sur le fil : en-tete kind 03 (SON) -> paquets de sample (0A)
--> corps de la waveform (09) -> corps du son (07). Chaque message attendu.
-01 10 01 remis a 0 dans un finally.
+The chain observed on the wire: kind 03 header (SOUND) -> sample packets (0A)
+-> waveform body (09) -> sound body (07). Every message is acknowledged.
+01 10 01 is restored to 0 in a finally.
 """
 import sys, time, zipfile, struct, uuid, rtmidi
 
 Y3S = sys.argv[1] if len(sys.argv) > 1 else 'sound.Y3S'
-SOUND_CN = 4103          # numeros libres ; la machine reattribue de toute facon
+SOUND_CN = 4103          # free numbers; the machine reassigns them anyway
 WAVE_CN  = 8598
 
 out, inp = rtmidi.MidiOut(), rtmidi.MidiIn()
@@ -23,7 +23,7 @@ def cks(b):
     s=sum(b[7:len(b)-2])&0x7F
     return 0 if s==0 else (0x80-s)&0x7F
 def b4(v): return [(v>>21)&0x7F,(v>>14)&0x7F,(v>>7)&0x7F,v&0x7F]
-def addr(n): return ((n>>7)&0x7F, n&0x7F)   # PAS de |0x40 : l'app envoie 03 20 07 pour 4103
+def addr(n): return ((n>>7)&0x7F, n&0x7F)   # NO |0x40: the app sends 03 20 07 for 4103
 def pack7(raw):
     o=bytearray()
     for i in range(0,len(raw),7):
@@ -50,46 +50,46 @@ def ack(timeout=8.0):
 def step(label, ah, num, body):
     send(ah, num, body)
     a=ack()
-    if a is None: raise SystemExit("  %-22s -> AUCUN acquittement" % label)
+    if a is None: raise SystemExit("  %-22s -> NO acknowledgement" % label)
     res=a[11]
-    extra=" assigne=%d" % ((a[16]<<7)|a[17]) if len(a)>17 and (a[16] or a[17]) else ""
+    extra=" assigned=%d" % ((a[16]<<7)|a[17]) if len(a)>17 and (a[16] or a[17]) else ""
     print("  %-22s -> ack 01 %02X 00 result=%d%s" % (label, a[9], res, extra))
-    if res!=0: raise SystemExit("    refus, arret")
+    if res!=0: raise SystemExit("    refused, stopping")
     return a
 
 z=zipfile.ZipFile(Y3S); root=z.namelist()[0].split('/')[0]
 pcm=z.read(root+'/sample0.bin'); rec=z.read(root+'/waveform0.bin'); snd=bytearray(z.read(root+'/sound.bin'))
-struct.pack_into('<H', snd, 0x1E8, WAVE_CN-8192)        # coherence du pointeur de wave
+struct.pack_into('<H', snd, 0x1E8, WAVE_CN-8192)        # keep the wave pointer consistent
 snd=bytes(snd)
 su=uuid.uuid4().bytes; wu=uuid.uuid4().bytes
-print("source : %s" % Y3S)
-print("  pcm %d o., record %d o., sound.bin %d o." % (len(pcm), len(rec), len(snd)))
+print("source: %s" % Y3S)
+print("  pcm %d B, record %d B, sound.bin %d B" % (len(pcm), len(rec), len(snd)))
 print("  loop=%02X start=%d n=%d" % (rec[4+0x0F], struct.unpack_from('<I',rec,4+0x2C)[0], struct.unpack_from('<I',rec,4+0x3C)[0]))
 
 try:
     out.send_message(MODE+[0x01,0xF7]); time.sleep(0.4); flush()
-    # 1. en-tete : kind 03 (SON). Le type envoye est exclu de son propre compte.
+    # 1. the header: kind 03 (SOUND). The type being sent is left out of its own count.
     sz=len(pcm)
     hdr=[0,1,0,0] + [0,0] + [0,0] + b4(1)[2:] + b4(1) + b4(sz)
     hdr=[0,1,0,0, 0,0, 0,0, 0,1] + b4(1) + b4(sz)   # sound=0, element=0, waveform=1, sample=1
-    step("en-tete kind 03", 0x03, SOUND_CN, hdr)
-    # 2. les samples, adresses sur la WAVEFORM
+    step("kind 03 header", 0x03, SOUND_CN, hdr)
+    # 2. the samples, addressed on the WAVEFORM
     stream=b'\x00\x00'+pack7(pcm)
     pk=[stream[i:i+3000] for i in range(0,len(stream),3000)]
-    print("  %d paquets de sample" % len(pk))
+    print("  %d sample packets" % len(pk))
     for i,enc in enumerate(pk):
         body=[(len(pk)>>7)&0x7F,len(pk)&0x7F,(i>>7)&0x7F,i&0x7F]+list(enc)
         send(0x0A, WAVE_CN, body)
         a=ack()
-        if a is None or a[11]!=0: raise SystemExit("  paquet %d -> %s" % (i,"aucun ack" if a is None else "result=%d"%a[11]))
-        if i%20==0 or i==len(pk)-1: print("    paquet %d/%d ok" % (i,len(pk)))
-    # 3. corps de la waveform : UUID, order, 2 chaines de 50, 3 octets, le fichier
+        if a is None or a[11]!=0: raise SystemExit("  packet %d -> %s" % (i,"no ack" if a is None else "result=%d"%a[11]))
+        if i%20==0 or i==len(pk)-1: print("    packet %d/%d ok" % (i,len(pk)))
+    # 3. the waveform body: UUID, order, two 50-byte strings, 3 bytes, the file
     body=[0,1,0,0]+list(pack7(wu))[:19]+[0,0,0,0]+[0]*50+[0]*50+[3,1,0]+list(pack7(rec))
-    step("corps waveform (09)", 0x09, WAVE_CN, body)
-    # 4. corps du son : idem mais 2 octets de queue (Commercial, Favorite)
+    step("waveform body (09)", 0x09, WAVE_CN, body)
+    # 4. the sound body: the same but with a 2-byte tail (Commercial, Favorite)
     body=[0,1,0,0]+list(pack7(su))[:19]+[0,0,0,0]+[0]*50+[0]*50+[0,1]+list(pack7(snd))
-    step("corps son (07)", 0x07, SOUND_CN, body)
-    print("\ntransfert complet accepte")
+    step("sound body (07)", 0x07, SOUND_CN, body)
+    print("\nwhole transfer accepted")
 finally:
     out.send_message(MODE+[0x00,0xF7]); time.sleep(0.3)
-    print("mode gestion de contenu remis a 0")
+    print("ContentsManagementMode restored to 0")

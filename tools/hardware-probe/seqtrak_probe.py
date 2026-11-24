@@ -214,7 +214,7 @@ def main():
         for i, n in enumerate(ins):
             print(f'  [{i}] {n}')
         if not outs and not ins:
-            print('  (aucun)')
+            print('  (none)')
         return
 
     link = Link(a.port)

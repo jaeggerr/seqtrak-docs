@@ -1,7 +1,8 @@
-"""Aligne le bloc 42 ep (filtre/EQ) des elements 1-7 sur l'element 0.
-Filter Gain (42 ep 0C, 2 octets) et FEG Depth (42 ep 1D) : un element allume a
-la main garde les valeurs par defaut, plus douces, d'ou une marche de volume
-des qu'on quitte la zone de l'element 0."""
+"""Align the 42 ep block (filter/EQ) of elements 1-7 onto element 0.
+
+Filter Gain (42 ep 0C, 2 bytes) and FEG Depth (42 ep 1D): an element switched
+on by hand keeps the Data List defaults, which are quieter -- hence a level step
+the moment you leave element 0's range, and it never comes back up."""
 import time, rtmidi
 PART=8
 out, inp = rtmidi.MidiOut(), rtmidi.MidiIn()
@@ -23,13 +24,13 @@ def req(aa,n=4,wait=1.2):
 def w(aa,*v):
     out.send_message([0xF0,0x43,0x10,0x7F,0x1C,0x0C]+aa+list(v)+[0xF7]); time.sleep(0.05)
 gain0 = req([0x42,0x08,0x0C]); feg0 = req([0x42,0x08,0x1D])
-print('el0 : Filter Gain =', gain0, ' FEG Depth =', feg0)
+print('el0: Filter Gain =', gain0, ' FEG Depth =', feg0)
 for e in range(1,8):
     m=(e<<4)|PART
     w([0x42,m,0x0C], gain0[0], gain0[1])
     w([0x42,m,0x1D], feg0[0])
-print('relecture :')
+print('read back:')
 for e in range(8):
     m=(e<<4)|PART
     print('  el%d  Filter Gain %-9s FEG Depth %s' % (e, req([0x42,m,0x0C]), req([0x42,m,0x1D])))
-print('temoin SYNTH1 42 07 0C :', req([0x42,0x07,0x0C]), '| tempo :', req([0x30,0x40,0x76]))
+print('witness SYNTH1 42 07 0C:', req([0x42,0x07,0x0C]), '| tempo:', req([0x30,0x40,0x76]))

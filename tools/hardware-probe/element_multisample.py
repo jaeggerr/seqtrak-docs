@@ -1,46 +1,47 @@
 #!/usr/bin/env python3
 """Reassemble un instrument multi-echantillons sur une piste, en une passe.
 
-Les ondes utilisateur restent sur la machine, mais l'affectation des elements
-est de l'etat vivant : elle est perdue des qu'un son est charge sur la piste
-(et Sound Save est une adresse non resolue, voir docs/08-bulk-and-files.md).
-Ce script la refait. Il ecrit TOUT ce qu'un element allume a la main n'herite
-pas, dans les DEUX blocs -- c'est la lecon de la session du 2026-11-24 :
+The user waveforms stay on the machine, but the element assignment is live
+state: it is lost the moment a sound is loaded onto the part (and Sound Save is
+an unresolved address, see docs/08-bulk-and-files.md). This script redoes it.
 
-    41 ep 54  Pitch Key Follow Sensitivity  64 -> 96   sinon la hauteur ne suit pas
-    42 ep 0C  Filter Gain                  102 -> 127  sinon les zones sont plus douces
-    42 ep 1D  FEG Depth                    104 -> 64   sinon un balayage de filtre en trop
+It writes EVERYTHING an element switched on by hand does not inherit, in BOTH
+blocks -- the lesson of the 2026-11-24 session:
 
-    ./element_multisample.py                 valeurs par defaut ci-dessous
-    ./element_multisample.py 44 445          premier programme, premiere onde
+    41 ep 54  Pitch Key Follow Sensitivity  64 -> 96   or the pitch will not track
+    42 ep 0C  Filter Gain                  102 -> 127  or the zones are quieter
+    42 ep 1D  FEG Depth                    104 -> 64   or you get an extra filter sweep
 
-Les numeros par defaut sont ceux d'une machine particuliere : lisez-les avec
-which_sound.py et 41 08 03 avant de vous y fier.
+    ./element_multisample.py                 the defaults below
+    ./element_multisample.py 44 445          first program, first wave
+
+The default numbers are one particular machine's: read yours with
+which_sound.py and 41 08 03 before relying on them.
 """
 import sys, time, rtmidi
 
 PART = 8                      # SYNTH 2
 CH   = 8                      # canal MIDI de la partie 8
-PROG0 = int(sys.argv[1]) if len(sys.argv) > 1 else 44    # programme du 1er son, banque 63/32
-WAVE0 = int(sys.argv[2]) if len(sys.argv) > 2 else 445   # numero de la 1re onde utilisateur
+PROG0 = int(sys.argv[1]) if len(sys.argv) > 1 else 52    # program of the first sound, bank 63/32
+WAVE0 = int(sys.argv[2]) if len(sys.argv) > 2 else 453   # number of the first user wave
 
-# (note de reference, note basse, note haute) -- une racine tous les 3 demi-tons,
-# les deux elements extremes elargis pour que rien ne soit muet
+# (root note, low note, high note) -- a root every 3 semitones, with the two
+# outer elements widened so that nothing is silent
 ZONES = [(48, 0, 49), (51, 50, 52), (54, 53, 55), (57, 56, 58),
          (60, 59, 61), (63, 62, 64), (66, 65, 67), (69, 68, 127)]
 
 BLOCK41 = {0x00: 1,    # Element Assign
-           0x01: 1,    # Wave Select : onde utilisateur
-           0x12: 1, 0x13: 127,          # limites de velocite
+           0x01: 1,    # Wave Select: user wave
+           0x12: 1, 0x13: 127,          # velocity limits
            0x2E: 100,  # Element Level
            0x2F: 84,   # Level Velocity Sensitivity
            0x33: 0,    # AEG Attack Time
            0x34: 97, 0x35: 64,          # AEG Decay 1/2 Time
            0x37: 0,    # AEG Release Time
-           0x39: 127, 0x3A: 119, 0x3B: 116,   # niveaux AEG
+           0x39: 127, 0x3A: 119, 0x3B: 116,   # AEG levels
            0x54: 96,   # Pitch Key Follow Sensitivity
-           0x55: 60}   # note centrale du suivi
-BLOCK42_PAIR = (0x0C, (1, 127))          # Filter Gain, 2 octets
+           0x55: 60}   # centre note of the tracking
+BLOCK42_PAIR = (0x0C, (1, 127))          # Filter Gain, 2 bytes
 BLOCK42 = {0x1D: 64}                     # FEG Depth
 
 out, inp = rtmidi.MidiOut(), rtmidi.MidiIn()
@@ -92,11 +93,11 @@ def sound_name(part=PART):
     return unpack7(bytes(v)).split(b'\0')[0].decode('utf8', 'replace') if v and len(v) > 8 else None
 
 
-# charger le premier son met l'element 0 dans un etat configure
+# loading the first sound puts element 0 into a configured state
 out.send_message([0xB0 | CH, 0x00, 63]); time.sleep(0.03)
 out.send_message([0xB0 | CH, 0x20, 32]); time.sleep(0.03)
 out.send_message([0xC0 | CH, PROG0]);    time.sleep(0.8)
-print('piste %d : %s   (temoin, piste 7 : %s)' % (PART, sound_name(), sound_name(7)))
+print('part %d: %s   (witness, part 7: %s)' % (PART, sound_name(), sound_name(7)))
 
 for e, (root, lo, hi) in enumerate(ZONES):
     m41 = (e << 4) | PART
@@ -111,7 +112,7 @@ for e, (root, lo, hi) in enumerate(ZONES):
     for off, v in BLOCK42.items():
         write([0x42, m41, off], v)
 
-print('relecture :')
+print('read back:')
 ok = True
 for e, (root, lo, hi) in enumerate(ZONES):
     m = (e << 4) | PART
@@ -122,7 +123,7 @@ for e, (root, lo, hi) in enumerate(ZONES):
     good = (got == want and kf == [96] and gain == [1, 127] and feg == [64]
             and req([0x41, m, 0x10]) == [lo] and req([0x41, m, 0x11]) == [hi])
     ok &= good
-    print('  el%d  onde %s (ref %3d)  notes %3d-%3d  54=%s  gain=%s  feg=%s  %s'
-          % (e, got, root, lo, hi, kf, gain, feg, 'ok' if good else '<<< ECART'))
-print('\ntout conforme :', ok)
-print('temoin piste 7 onde :', req([0x41, 0x07, 0x03]), ' tempo :', req([0x30, 0x40, 0x76]))
+    print('  el%d  wave %s (root %3d)  notes %3d-%3d  54=%s  gain=%s  feg=%s  %s'
+          % (e, got, root, lo, hi, kf, gain, feg, 'ok' if good else '<<< MISMATCH'))
+print('\nall as written:', ok)
+print('witness part 7 wave:', req([0x41, 0x07, 0x03]), ' tempo:', req([0x30, 0x40, 0x76]))

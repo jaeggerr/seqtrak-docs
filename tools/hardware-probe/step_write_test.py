@@ -107,7 +107,7 @@ try:
     link.write(A_ADD(TRACK), [target, NOTE, VELOCITY, gh, gl])
     wrote = True
 
-    print(f'\nETAPE 3 — relecture')
+    print(f'\nSTEP 3 — read back')
     ok, d = link.read(A_INFO(TRACK, target))
     print(f'    step {target}  {show(d) if ok else "no reply"}')
     okw, dw = link.read(A_INFO(TRACK, witness))

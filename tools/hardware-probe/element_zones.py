@@ -1,7 +1,8 @@
-"""Assemble cinq zones en elements vivants sur SYNTH 2 (partie 8).
-Ecrit Element Assign, Wave Select/Number, Note Limit et l'enveloppe des
-elements 0 a 4, puis relit tout. SYNTH 1 sert de temoin, le tempo de controle.
-Rien n'est persiste : recharger un son remet tout a zero."""
+"""Assemble five zones as live elements on SYNTH 2 (part 8).
+
+Writes Element Assign, Wave Select/Number, Note Limit and the envelope of
+elements 0 to 4, then reads everything back. SYNTH 1 is the witness and the
+tempo the control. Nothing is persisted: loading a sound wipes it all."""
 import time, rtmidi
 PART=8; CH=8
 ZONES=[(432,0,41,36),(433,42,53,48),(434,54,65,60),(435,66,77,72),(436,78,127,84)]
@@ -43,21 +44,21 @@ def load(prog):
     out.send_message([0xB0|CH,0x20,32]); time.sleep(0.03)
     out.send_message([0xC0|CH,prog]);    time.sleep(0.8)
 load(31)
-print('SYNTH 2 :', name(), '| temoin SYNTH 1 :', name(7))
+print('SYNTH 2:', name(), '| witness SYNTH 1:', name(7))
 for e,(wave,lo,hi,root) in enumerate(ZONES):
     m = (e<<4) | PART
     w([0x41,m,0x00], 1)                                  # Element Assign
-    w([0x41,m,0x01], 1)                                  # Wave Select : wave utilisateur
+    w([0x41,m,0x01], 1)                                  # Wave Select: user wave
     w([0x41,m,0x03], (wave>>7)&0x7F, wave&0x7F)          # Wave Number
     w([0x41,m,0x10], lo); w([0x41,m,0x11], hi)           # Note Limit
     w([0x41,m,0x12], 1);  w([0x41,m,0x13], 127)          # Velocity Limit
     w([0x41,m,0x2E], 100)                                # Element Level
     for off,v in ENV.items(): w([0x41,m,off], v)
-print('\nrelecture :')
+print('\nread back:')
 for e,(wave,lo,hi,root) in enumerate(ZONES):
     m=(e<<4)|PART
     wn=req([0x41,m,0x03]); got = (wn[0]<<7|wn[1]) if wn and len(wn)==2 else None
-    print('  el%d  assign=%s select=%s wave=%s (voulu %d)  notes %s-%s (voulu %d-%d)  3B=%s'
+    print('  el%d  assign=%s select=%s wave=%s (want %d)  notes %s-%s (want %d-%d)  3B=%s'
           % (e, req([0x41,m,0x00]), req([0x41,m,0x01]), got, wave,
              req([0x41,m,0x10]), req([0x41,m,0x11]), lo, hi, req([0x41,m,0x3B])))
-print('\ntemoin SYNTH 1 el0 wave :', req([0x41,0x07,0x03]), '| tempo :', req([0x30,0x40,0x76]))
+print('\nwitness SYNTH 1 el0 wave:', req([0x41,0x07,0x03]), '| tempo:', req([0x30,0x40,0x76]))

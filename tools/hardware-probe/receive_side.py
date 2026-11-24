@@ -143,8 +143,8 @@ def stage_rec(link):
 
 def stage_panel(link):
     print('STAGE 2 — what [REC] emits (read-only)')
-    input('    Appuie sur Entrée, puis une fois sur [REC] (la touche ronde rouge), '
-          'attends deux secondes, et rappuie dessus pour arrêter. ')
+    input('    Press Enter, then press [REC] (the round red key) once, '
+          'wait two seconds, and press it again to stop. ')
     mark = len(link.log)
     time.sleep(12)
     show(link, mark, '12 s window')

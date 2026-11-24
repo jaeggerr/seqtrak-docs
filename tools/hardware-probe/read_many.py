@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Lit plusieurs adresses en gardant le port ouvert et en filtrant l'horloge.
-Controle (tempo) interleave, 4 tentatives par adresse."""
+"""Read several addresses with one port held open and the clock filtered out.
+The tempo is interleaved as a control, four attempts per address."""
 import time, sys, rtmidi
 PLAN = [
-    ("30 40 76", 2, "CONTROLE tempo"),
+    ("30 40 76", 2, "CONTROL tempo"),
     ("01 10 20", 1, "SequencerRunning"),
     ("01 10 01", 1, "ContentsManagementMode"),
     ("01 10 15", 1, "CurrentProject"),
     ("01 18 33", 2, "CurrentSound SYNTH 2"),
     ("41 08 01", 1, "SYNTH2 el0 Wave Select"),
     ("41 08 03", 2, "SYNTH2 el0 Wave Number"),
-    ("41 07 01", 1, "SYNTH1 el0 Wave Select  [temoin]"),
-    ("41 07 03", 2, "SYNTH1 el0 Wave Number  [temoin]"),
-    ("41 00 01", 1, "KICK el0 Wave Select    [temoin]"),
-    ("30 40 76", 2, "CONTROLE tempo"),
+    ("41 07 01", 1, "SYNTH1 el0 Wave Select  [witness]"),
+    ("41 07 03", 2, "SYNTH1 el0 Wave Number  [witness]"),
+    ("41 00 01", 1, "KICK el0 Wave Select    [witness]"),
+    ("30 40 76", 2, "CONTROL tempo"),
 ]
 out, inp = rtmidi.MidiOut(), rtmidi.MidiIn()
 out.open_port(next(i for i,n in enumerate(out.get_ports()) if 'SEQTRAK' in n))

@@ -66,7 +66,7 @@ def ask(prompt):
     print(prompt)
     print('-' * 68)
     try:
-        input('>>> Entree quand c est fait (Ctrl-C pour abandonner) : ')
+        input('>>> Enter when it is done (Ctrl-C to give up): ')
     except EOFError:
         pass
 
@@ -92,42 +92,42 @@ def main():
     if start_type == 2:
         target_key, target_name, target_wire = 9, 'Drum', 1
 
-    ask(f"""ETAPE 1 sur 2 — lis ceci tranquillement, puis appuie sur Entree.
+    ask(f"""STEP 1 of 2 — read this calmly, then press Enter.
 
-Tu vas changer le TYPE d'une seule piste de batterie, depuis la façade
-de la machine. Pendant ce temps je n'envoie strictement rien : j'ecoute.
+You are going to change the TYPE of a single drum track, from the machine's
+own front panel. While you do, I send absolutely nothing: I only listen.
 
-LA PISTE : la 3e piste de batterie, celle marquee **CLAP** sur la machine.
-(Les 7 pistes sont, dans l'ordre : KICK, SNARE, CLAP, HAT 1, HAT 2,
- PERC 1, PERC 2. C'est la troisieme, CLAP.)
-Ses patterns sont deja effaces, donc tu ne detruis rien de plus.
+THE TRACK: the 3rd drum track, the one printed **CLAP** on the machine.
+(The 7 tracks are, in order: KICK, SNARE, CLAP, HAT 1, HAT 2, PERC 1,
+ PERC 2. It is the third one, CLAP.)
+Its patterns are already cleared, so nothing more of yours is destroyed.
 
-LE GESTE (guide Yamaha 6.7) :
+THE GESTURE (Yamaha guide 6.7):
 
-  a. Appuie sur le bouton rotatif de la piste CLAP et GARDE-LE ENFONCE.
-     -> Les touches Drum 9, 10 et 11 s'allument.
-          touche  9 = Drum
-          touche 10 = DrumKit
-          touche 11 = Synth
-  b. TOUJOURS en maintenant le rotatif, appuie sur la touche {target_key}
-     ({target_name}) et MAINTIENS-LA CINQ SECONDES.
-     Le global meter clignote pour montrer la progression.
-  c. La touche devient VIOLETTE : c'est fini.
+  a. Press the CLAP track knob and HOLD IT DOWN.
+     -> Drum keys 9, 10 and 11 light up.
+          key  9 = Drum
+          key 10 = DrumKit
+          key 11 = Synth
+  b. STILL holding the knob, press key {target_key} ({target_name})
+     and HOLD IT FOR FIVE SECONDS.
+     The global meter flashes to show the progress.
+  c. The key turns PURPLE: that means it is done.
 
-Ne fais rien tout de suite. Appuie d'abord sur Entree.""")
+Do nothing yet. Press Enter first.""")
 
     quiet = time.time() - link.t0
-    print('\n*** Je suis maintenant SILENCIEUX. Rien ne part tant que tu n appuies pas sur Entree. ***')
+    print('\n*** I am now SILENT. Nothing goes out until you press Enter. ***')
 
-    ask(f"""ETAPE 2 sur 2 — fais le geste MAINTENANT, puis appuie sur Entree.
+    ask(f"""STEP 2 of 2 — do the gesture NOW, then press Enter.
 
-  Maintiens le rotatif CLAP  ->  maintiens la touche {target_key} ({target_name})
-  pendant 5 secondes  ->  attends le VIOLET  ->  relache
-  ->  reviens ici et appuie sur Entree.
+  Hold the CLAP knob  ->  hold key {target_key} ({target_name})
+  for 5 seconds  ->  wait for PURPLE  ->  let go
+  ->  come back here and press Enter.
 
-Prends tout ton temps, j'ecoute en continu.
-Si tu n'y arrives pas, appuie quand meme sur Entree et dis-le-moi :
-je consignerai la tentative honnetement plutot que de deviner.""")
+Take all the time you need, I am listening throughout.
+If you cannot manage it, press Enter anyway and say so: the attempt will be
+recorded honestly rather than guessed at.""")
 
     window = [(t, m) for t, m in link.all if t >= quiet]
     acks = link.matching(0x01, 0x33, 0x01, since=quiet)
