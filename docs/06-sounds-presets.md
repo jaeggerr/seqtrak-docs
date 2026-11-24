@@ -598,8 +598,26 @@ layouts diverge — the file spends 13 bytes where the edit buffer spends 23 —
 - The factory wave table lives in the `Program` image — offset table at
   `0x2041157C` (2024 × u32), directory at `0x2041351C`, and **19,865 records**
   of 64 bytes at `0x20428B24`, the same record layout as a package's. A
-  waveform is multi-zone: its directory entry lists many records. Reported,
-  not re-checked against this repository's image.
+  waveform is multi-zone: its directory entry lists many records. Reported by a
+  third party, and **now re-checked against this repository's own image**
+  (`from firmware image (static analysis)`, load base `0x20040000`): of the
+  19,865 records, **14,595** parse as plausible keybanks — key low ≤ key high,
+  root key in range, sample rate one of 22050/32000/44100/48000 — and of those:
+
+  | Key range | Records |
+  |---|---|
+  | the full keyboard, `0`-`127` | 2,519 |
+  | **a restricted range** | **12,076** |
+
+  The most common zone widths are **3, 2 and 1 semitones** (3,117 / 2,754 /
+  2,547 records), then 12 (772). Root keys spread over 123 distinct notes.
+
+  So the factory library is **densely multisampled** — a zone every one to
+  three semitones on the fine waves — which is the measure of what a single
+  user sample stretched across the keyboard is up against, and why
+  [one zone per user waveform](#a-user-waveform-on-a-synth-element-is-one-zone-for-now)
+  is the gap that matters. This is a fact about the image; what the running
+  machine does with these tables was not observed.
 - Their factory reading is not clean: `+0x0F` is `1` on 99.7 % of one-shot-looking
   factory records but `0` on a drum (wave 765, Timbale 1), and one Sax zone
   decodes to an 80-sample loop that does not match what is heard. **Factory
