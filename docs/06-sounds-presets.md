@@ -492,13 +492,19 @@ Five elements of one part were pointed at five user waveforms with five key
 ranges, and **every field read back as written**, witness unmoved and tempo
 answering. That also settles `41 ep 01` / `41 ep 03`, listed as untested above.
 
-**One trap, and it is not optional.** `41 ep 54` `Pitch Key Follow Sensitivity`
-reads **64** on an element switched on from scratch and **96** on one an
-existing sound configured. At 64 the element ignores the keyboard and plays its
-sample at the root key whatever note arrives — the filter still follows, so it
-sounds like one frozen note getting darker as you climb. Write it, along with
-anything else element 0 carries that a fresh block does not; diff the element
-blocks of a part dump rather than trusting the Data List defaults.
+**The traps, and they are not optional.** An element switched on from scratch
+keeps the Data List defaults, which are *not* what a loaded sound puts in its
+elements. Three of them are audible, and they sit in **two different blocks**:
+
+| Address | Parameter | Fresh element | Configured element | What you hear |
+|---|---|---|---|---|
+| `41 ep 54` | `Pitch Key Follow Sensitivity` | 64 | 96 | at 64 the element ignores the keyboard and plays its sample at the root key whatever note arrives — one frozen note, darkening as you climb |
+| `42 ep 0C` | `Filter Gain` (2 bytes) | 102 | 127 | the fresh zones are **quieter**, so the level steps down the moment you leave the configured element's range and stays there |
+| `42 ep 1D` | `FEG Depth` | 104 | 64 | a filter envelope sweep the configured element does not have |
+
+So dump the part and **diff every block** against the configured element —
+`41 ep` and `42 ep` both — rather than trusting the defaults or the block the
+symptom suggests.
 
 **The ceiling is eight zones.** All eight elements of a part answer and take an
 assignment over SysEx (`41 (e<<4|p) xx`, `e` = 0-7), `verified on hardware` —

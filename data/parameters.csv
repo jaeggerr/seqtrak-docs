@@ -1533,7 +1533,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 42,ep,07,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,HPF Cutoff Frequency MSB 0 HPF Cutoff Frequency LSB,2,00 - 01 00 - 7F,00 00,- 255,,,,,,,Yamaha Data List,150,,
 42,ep,09,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,reserved,1,,40,,,,,,,,Yamaha Data List,150,,
 42,ep,0A,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,Distance MSB,2,00 - 01 00 - 7F,01 00,"1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0 -128 - +127 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",Available when Filter Type is DualLPF/HPF/ BPF/BEF,,,,,,Yamaha Data List,150,,
-42,ep,0C,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,Distance LSB Filter Gain MSB 0 Filter Gain LSB,2,00 - 01 00 - 7F,01 66,"- 255 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,,,,,,Yamaha Data List,150,,
+42,ep,0C,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,Distance LSB Filter Gain MSB 0 Filter Gain LSB,2,00 - 01 00 - 7F,01 66,"- 255 1st bit6-0 → bit13-7, 2nd bit6-0 → bit6-0",,,,,,,Yamaha Data List,150,"Filter Gain reads 01 7F (127) on the element a loaded sound configured and 01 66 (102, the Data List default) on elements switched on by hand - the fresh zones are quieter, heard as a level step that holds for every note above the configured element's range. Written across and read back 01 7F on all eight",10-verified-behaviour.md
 42,ep,0E,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Hold Time 0,1,00 - 7F,00,- 127,,,,,,,Yamaha Data List,150,,
 42,ep,0F,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Attack Time 0,1,00 - 7F,00,- 127,,,,,,,Yamaha Data List,150,,
 42,ep,10,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Decay 1 Time 0,1,00 - 7F,40,- 127,,,,,,,Yamaha Data List,150,,
@@ -1544,7 +1544,7 @@ address_high,address_mid,address_low,block,parameter,size_bytes,value_range,defa
 42,ep,17,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,˶ FEG Decay 1 Level MSB FEG Decay 1 Level LSB,2,00 - 01 00 - 7F,01 7F,,,,,,,,Yamaha Data List,150,,
 42,ep,19,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,˶ FEG Decay 2 Level MSB,2,00 - 01 00 - 7F,01 7F,,,,,,,,Yamaha Data List,150,,
 42,ep,1B,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Decay 2 Level LSB ˶ FEG Release Level MSB FEG Release Level LSB,2,00 - 01 00 - 7F,01 00,,,,,,,,Yamaha Data List,150,,
-42,ep,1D,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Depth,1,00 - 7F,68,-64 - +63,,,,,,,Yamaha Data List,150,,
+42,ep,1D,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Depth,1,00 - 7F,68,-64 - +63,,,,,,,Yamaha Data List,150,FEG Depth reads 64 on the element a loaded sound configured and 104 (the Data List default) on elements switched on by hand. Written across and read back 64 on all eight,10-verified-behaviour.md
 42,ep,1E,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Time Velocity Sensitivity Segment,1,00 - 04,04,"Attack, Atk+Dcy, Decay, Atk+Rls, All",,,,,,,Yamaha Data List,150,,
 42,ep,1F,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Time Velocity Sensitivity,1,00 - 7F,40,-64 - +63,,,,,,,Yamaha Data List,150,,
 42,ep,20,Sound Drum/Synth/SAMPLER / Filter/EQ/LFO,FEG Depth Velocity Sensitivity,1,00 - 7F,40,-64 - +63,,,,,,,Yamaha Data List,150,,

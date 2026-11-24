@@ -4914,3 +4914,51 @@ stretched a semitone carries its whole spectrum with it, so at every zone
 boundary the brightness steps by roughly what three semitones of the natural
 contour would have done. Denser zones are the only cure, which is what the
 eight-element ceiling caps.
+
+#### An element switched on from scratch differs in **two** blocks, not one
+
+The volume step the player reported was real, and it was neither the audio nor
+the block this session had been looking at. It is worth the space because the
+diagnosis went wrong twice first.
+
+The report was precise: do3 (note 48) louder than ré3 (note 50), and **the
+softer level then holds for every note above** — a step, not a one-note
+anomaly. A MIDI capture of the two keys gave their numbers and so the elements:
+48 is element 0 at its exact root, 50 is the first note of element 1.
+
+What the audio and the `41 ep` block said:
+
+| Checked | Result |
+|---|---|
+| the two samples' RMS over 100 ms, 300 ms, 500 ms and the loop | matched within **0.04 dB** |
+| the `41 ep` blocks of the two elements | **3 bytes** differ — wave number and the two note limits, all intended |
+
+So neither. The cause was in the **`42 ep`** block, filter/EQ, which had not been
+compared:
+
+| Offset | Parameter | Element 0 | Elements 1-7 |
+|---|---|---|---|
+| `0C`-`0D` | **`Filter Gain`** (2 bytes) | `01 7F` = **127** | `01 66` = **102**, the Data List default |
+| `1D` | **`FEG Depth`** | **64** (neutral) | **104**, the default |
+
+`verified on hardware`. Element 0 carried more filter gain and no filter
+envelope sweep, because the loaded sound's file configured it. Elements switched
+on by hand kept the Data List defaults, which are quieter. Written across and
+read back, all eight elements now differ in **nothing** but wave number and note
+limits — both blocks, zero remaining bytes.
+
+So the full list of what a fresh element does **not** inherit:
+
+| Address | Parameter | Fresh | Configured |
+|---|---|---|---|
+| `41 ep 54` | `Pitch Key Follow Sensitivity` | 64 — ignores the keyboard | 96 |
+| `42 ep 0C` | `Filter Gain` | 102 | 127 |
+| `42 ep 1D` | `FEG Depth` | 104 | 64 |
+
+**The lesson is the method, not the list.** An element spans at least two
+parameter blocks, `41 ep` and `42 ep`, and a part dump returns both. Diffing
+only the one the symptom suggests cost two wrong hypotheses here — a level
+normalisation and a loop-window search, both measured, both irrelevant — and
+two listening tests. Diff every block the dump gives you before theorising about
+the audio: a parameter reads in seconds, and the Data List defaults are not what
+a loaded sound puts in its elements.
