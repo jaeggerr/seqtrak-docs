@@ -271,8 +271,25 @@ so nothing was installed (`verified on hardware`,
 | 0-3 | `00 01 00 00` | unexplained; left as the app sends it |
 | 4-5, 6-7 | two 2-byte counts | always `0` in a sound transfer |
 | 8-9 | a 2-byte count | **not validated**: `0`, `1`, `2` and `5` are all accepted |
-| 10-13 | `b4` | **must be 1.** `2` and `5` are refused with result 127, whatever the sizes. So it is *not* a sample count |
+| 10-13 | `b4` | the **sample count**. ~~must be 1~~ — see the retraction below |
 | 14-17 | `b4` | the **byte length of the packet stream that follows**, checked when the stream ends: declare more than you send and the stream's *last* packet is refused, every earlier one accepted |
+
+> **Retracted, same day.** An earlier version of this section said the first
+> `b4` "must be 1" and "is therefore not a sample count", because `2` and `5`
+> came back refused with result 127. The refusals were real; the conclusion was
+> not. The header carries **one 4-byte size entry per sample** from offset
+> `0x19` — which [the section above](#the-headers-payload) already recorded
+> `verified on hardware`, from a stereo import whose header carried **two**
+> entries — so declaring a count of *n* while sending a single entry is a
+> malformed message of the wrong length, and 127 was answering that. The field
+> is the sample count, and a correctly sized multi-sample header has not yet
+> been tried. Whether a host can then write more than one keybank is
+> [open](12-open-questions.md#how-does-a-host-write-more-than-one-keybank-into-a-user-waveform-2026-11-24).
+>
+> The lesson is not about the field. The answer was **already in this document**,
+> a hundred lines up, and a contradicting section was added without checking
+> against it. Read what the repository already says about a message before
+> measuring it again.
 
 Result **127** is what all of these refusals return, and it is not in the
 `Bulk.Result` enum below — treat it as the machine's generic "this request is

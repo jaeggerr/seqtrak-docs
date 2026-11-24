@@ -483,6 +483,97 @@ number**: `2`, `00`, `0`, `2` → "2.00.2". The correspondence is reproduced; th
 reading of the third byte is *inferred*, since it is `0` in both blocks here and
 therefore unconstrained.
 
+### What the image says about the content channel, and what it does not (static, 2026-11-24)
+
+`from firmware image (static analysis)` throughout this subsection. It was
+written while looking for the code that limits a user waveform to **one
+keybank** ([10-verified-behaviour.md](10-verified-behaviour.md#2026-11-24--a-multi-zone-user-waveform-the-transfer-header-decoded-and-one-keybank-is-still-all-you-get)).
+That limit was **not** found. These are the by-products, which are worth more
+than the failure, plus the measured reasons the search could not work. Nothing
+here says what the hardware does — only what is in the file.
+
+**The machine reports a message *number*; the host supplies the text.** The
+image holds a table of one pointer per message identifier at image
+`0x6531C0`-`0x65321C`, with a pointer to the empty string in the unused slots:
+
+| Index | Image | Text |
+|---|---|---|
+| 0 | `0x6531C0` | `Please keep power on.` |
+| 2 | `0x6531C8` | `Now receiving MIDI bulk data...` |
+| 4 | `0x6531D0` | `Now transmitting MIDI bulk data...` |
+| 8 | `0x6531E0` | `MIDI buffer full.` |
+| 9 | `0x6531E4` | `MIDI checksum error.` |
+| 11 | `0x6531EC` | `Bulk data protected.` |
+| 14 | `0x6531F8` | `Illegal bulk data.` |
+| 23 | `0x65321C` | `Unknown error.` |
+
+The image also holds a parameter named `Message ID` (image `0x53FF6C`) and a
+parameter group `messageId` (`0x53F864`). The reading that the device reports an
+index and the host renders the string is *inferred*, but the whole table is
+screen text for a machine with no screen, so these strings are **not** written
+by a bulk handler — a cross-reference to `Illegal bulk data.` does not lead to
+the receive path.
+
+**Two host-side constants are not in the firmware at all.** `0xBB8` (3000, a
+packet's encoded payload) and `0xF98` (3992, the payload area) occur nowhere in
+the 63.75 MiB — not as an ARM immediate, not as a Thumb-2 immediate, not as an
+aligned 32-bit word. They belong to the sending side only.
+
+**The content-management vocabulary is absent.** Zero occurrences of
+`aveform`, `.xml`, `<?xml`, `UUID`, `Y3S`, `sound.bin`, `Packet`, `Result`,
+`Checksum` or `Content Index`; one occurrence of `eybank`, which is the
+parameter name below. In particular this image contains **no XML parser
+strings**, so result code 52 `XmlParseError` in the
+[`Bulk.Result` list](08-bulk-and-files.md#result-codes) is a host-side code.
+*Inferred* — a parser can exist without strings — but strong in an image that
+keeps 106 source paths and thousands of parameter names.
+
+**The content service names itself in five places**, referenced only from a flat
+pool of string pointers (image `0x65F0A4`-`0x65F0DC`), never from code:
+`Port_ContentsService` (image `0x55A6E8`), `Port_mmsContentsService`
+(`0x55A6A0`), `Port_CmsContentsService` (`0x55A6B8`), `Port_mdsContentsService`
+(`0x3AD060`), `Model_ContentsService` (`0x55A6D0`).
+
+**One executable entry point was located.** The parameter group
+`contentsDumpParam` (string at image `0x53F7F0`) is named by code at image
+`0x21EC88` (RAM `0x101CE888`), inside a long C++ constructor that registers
+every parameter group in turn; the group's vtable is at image `0x3A3050` (RAM
+`0x10352C50`). Following that virtual interface was not done. **The group has no
+named parameters**, which is why no limit can be read off a descriptor table.
+
+**`Temporary Element Keybank` is a switch, not a count.** Its descriptor at
+image `0x53FDB4` reads `{name, 2, 1, extra}` — two values, maximum 1.
+
+**A content-channel Parameter Change template, byte for byte.** Image
+`0x3ACFA0` holds `F0 43 10 7F 1C 0C 00 60 01 00 F7` and image `0x3ACFAB` the
+same with the data byte `01`, both referenced from code at image `0xCC8F8` and
+`0xCCAA8`. Address `00 60 01` is `WiFiReady` in
+[data/parameters.csv](../data/parameters.csv), so this is an independent,
+byte-level confirmation of the frame `F0 43 1n 7F 1C 0C ah am al dd F7` and of a
+documented address. A third, generic template sits in **writable** data at RAM
+`0x105FDCE8` (image `0x64E0E8`): `F0 43 10 7F 1C 0C 00 00 00 00 00 00 00 F7`,
+loaded and filled in by twelve code sites between image `0x1039FC` and
+`0x105C74` — the Parameter Change transmit layer.
+
+**Why a source-file map cannot reach the application.** The 106 build paths feed
+a logging call taking `(file, line)`, so they give a coarse map of which code
+belongs to which file. But they cover only two build targets:
+`de-21mode-b-tg` (102 files) and `swx09-platform` (4). The sequencer, MIDI and
+content-management code — which *is* in the image, as the group above and all
+the parameter-name tables show — carries no such string, and the densest code
+region of the image, `0x180000`-`0x200000`, has no named assertion at all.
+
+> **An instruction-decoding trap, and it produced a false positive before it
+> was caught.**
+> In ARM, `MOVW`/`MOVT` (bits 27-20 = `0x30`/`0x34`) sit inside the
+> data-processing-immediate encoding space but carry a raw 16-bit immediate
+> rather than a rotated byte. A decoder that does not exclude them reads
+> `movw r3, #0xFE70` as `#0x700` — exactly 1792, the sound body size. That
+> invented a single code site apparently knowing all three content body sizes
+> (1792, 512, 132); with the two opcodes excluded, **no** site knows them
+> together. This is [rule 3](../CLAUDE.md) applied to an instruction decoder:
+> the bytes of an instruction are not its meaning.
+
 ## The `Program` image from inside: a third-party analysis (2026-11)
 
 An independent analyst — `giddycadet` on Reddit, `rexendevar` on GitHub, the same person according to the owner of this repository — published a working notebook at

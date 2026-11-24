@@ -604,6 +604,36 @@ possible addition to this repository's parameter documentation.
 `from firmware image (static analysis)` for the strings' existence and content;
 nothing is claimed about any link to an address.
 
+### Update (static, 2026-11-24): the descriptor table carries the ranges
+
+`from firmware image (static analysis)`. Those name strings are pointed to by a
+**descriptor table of 16 bytes per entry**, laid out
+`{name pointer, number of values, maximum, extra}`. Two examples, read at image
+offset `0x541808` and `0x541838`:
+
+| Name in the image | Values, maximum read | Documented address | Documented range |
+|---|---|---|---|
+| `Contents Management Mode` | 2, 1 | `01 10 01` | 0-1 |
+| `Battery` | `0x65` = 101, `0x64` = 100 | `01 10 02` | 0-100 |
+
+and `Temporary Element Keybank` (image `0x53FDB4`) reads `{name, 2, 1, extra}`,
+so it is a **switch, not a keybank index** — worth knowing before it is used as
+an anchor.
+
+Within the stretch examined, entries that correspond to documented addresses
+appear **in address order**, with firmware-internal parameters that have no
+address interleaved between them (`Reset WatchDog Timer`,
+`Reload Project Exit Contents Management Mode`). So the table is not an address
+map and cannot be indexed as one; the correspondence has to be established name
+by name, and two matches are not a correspondence.
+
+What this changes: the ranges are now reachable, from a source independent of
+both the Data List and the host application, for a large part of the parameter
+space. What it does not change: **nothing here gives an address**, and the
+interleaving means a naive positional join would silently shift. The next step
+is a careful name-by-name join against `data/parameters.csv`, reported as
+agreements, disagreements and firmware-only entries — not a bulk import.
+
 ## The bank arithmetic is documented and used, but never pinned by measurement
 
 `bank LSB = (n - 1) // 128`, `program = (n - 1) % 128`, MSB 63 for Drum/Synth/DX
@@ -820,6 +850,51 @@ an element assembly is lost when a sound is loaded.
 **What would settle it**: a both-directions capture of the official app
 importing a **stereo** `.Y3S` — the minimal two-keybank case. One capture is
 enough.
+
+**The shape nobody has tried, and it is now specified.** The header carries one
+4-byte size entry per sample from offset `0x19`
+([08](08-bulk-and-files.md#the-headers-payload), `verified on hardware` from a
+stereo import), so a well-formed *n*-sample header is `18 + 4(n-1)` bytes longer
+than the one-sample form. Every attempt so far sent the one-sample length with a
+count of 2 or 5 — a malformed message, and result 127 was answering the length,
+not the count. Send the correct header, then one packet run per keybank with its
+own indices from 0, then the N-record body. A package is built and waiting
+(`clavi-kb8.Y3S`: one waveform, eight keybanks, each with its own matched loop).
+
+### The firmware image was searched for the limit, and does not give it (static, 2026-11-24)
+
+`from firmware image (static analysis)`. A static pass over the decompressed
+`Program` image looked for what caps the stored keybank count at 1 — a
+constant, an array bound or an expected state field. **It was not found**, and
+the measured reasons are in
+[09-firmware.md](09-firmware.md#what-the-image-says-about-the-content-channel-and-what-it-does-not-static-2026-11-24):
+the image holds no content-management vocabulary to search by, the host's packet
+constants are not in it, the bulk message strings turn out to be host-rendered
+display text rather than handler output, and the image's source-file map covers
+only the tone generator, the effects, the NAND driver and the platform — not the
+application code where the handler lives. One executable entry point *was*
+located (the `contentsDumpParam` group object) and is the place to resume from.
+
+### A cheap experiment that would weaken the "no room in the header" reading
+
+**This is a reading of the protocol, not a firmware finding, and it is
+untested.** [08-bulk-and-files.md](08-bulk-and-files.md#the-headers-payload)
+establishes that the transfer header carries **one 4-byte entry per sample**
+from offset `0x19`, and that the Yamaha byte count is `0x12 + 4n`. A header
+declaring *n* samples therefore measures `18 + 4(n−1)` payload bytes, not 18.
+
+The field that "must be 1" (header bytes 10-13) is, by that same table, the
+**sample count**. The run that set it to 2 and 5 and got result 127 is recorded
+as refused "whatever the sizes", but the tool that varied it is not in this
+repository and the write-up does not say whether the number of **size entries**
+was adjusted to match. So the refusal may have been a malformed header — a byte
+count inconsistent with the message length — rather than a limit.
+
+**The experiment**, on a disposable sound and stopping at the header so nothing
+is installed: send an `ah 03` header with the sample count set to **2** *and*
+**two** 4-byte size entries (22 payload bytes, Yamaha count `0x1A`). Result 0
+would overturn "there is no room left in the header for a second keybank";
+result 127 would reinforce it without explaining it.
 
 Writing such an assembly **into a file** is still blocked on the element stride:
 element 0's envelope sits at `sound.bin` `0x14A` and its wave pointer at

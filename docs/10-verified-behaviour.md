@@ -4686,7 +4686,7 @@ was installed:
 |---|---|---|
 | the 2-byte field at offset 8 | `0`, `1`, `2`, `5` | **all accepted** — the machine does not validate it |
 | the first `b4` | `1` | accepted |
-| the first `b4` | `2`, `5` | **refused, result 127**, whatever the sizes |
+| the first `b4` | `2`, `5` | **refused, result 127** — but the header sent was malformed; see the retraction at the end of this section |
 | the second `b4` | one sample's size, or the total of five | accepted either way |
 
 So that first `b4` **must be 1**, and the second is the byte length of the
@@ -4741,8 +4741,9 @@ gave five runs' worth of audio one set of indices. The write side needs the same
 two-run shape under a **single** header — and what the header then declares as
 its size is exactly what is not known.
 
-**One capture settles it**: the official app importing a *stereo* `.Y3S`, which
-is the minimal two-keybank case, both directions. Until then a user waveform on
+~~**One capture settles it**: the official app importing a *stereo* `.Y3S`, which
+is the minimal two-keybank case, both directions.~~ **That capture had already
+been taken** — see the retraction below. Until then a user waveform on
 a synth element is one zone, and a multisampled instrument has to go the other
 route — several elements in one sound, one waveform each — whose file layout is
 also unresolved: element 0's envelope sits at `0x14A` and its wave pointer at
@@ -5017,3 +5018,52 @@ divided by 16, while `+0x3C` is a plain u32 sample count — and the template
 file's own count is 110,235, an odd number, which should have settled it
 earlier. The constraint cost up to eight samples of misalignment at every join,
 on top of the wrong objective.
+
+### Retracted, 2026-11-24 — the header was malformed, and the answer was already in this repository
+
+The three sections above conclude that the transfer header's first `b4` "must be
+1", that it is therefore not a sample count, and that "there is no room left in
+the header for a second keybank". **The measurements are sound and the
+conclusion is wrong.**
+
+[08-bulk-and-files.md](08-bulk-and-files.md#the-headers-payload) already
+documented the header's payload, `verified on hardware`, from a capture of the
+official app importing a **stereo** package — the very capture the sections
+above kept asking for:
+
+| Offset | Size | Contents |
+|---|---|---|
+| `0x15` | 4 | sample count |
+| `0x19` | **4 × n** | **one entry per sample: its byte size** |
+
+and the Yamaha byte count as `0x12 + 4n`. A stereo header carried **two**
+entries of 931,392.
+
+So every refused attempt declared a count of 2 or 5 while sending a payload
+sized for one entry. The message was the wrong length, and **result 127 was
+answering that, not the count**. Nothing about multi-keybank writing was
+established by those runs, in either direction.
+
+What stands, and what does not:
+
+| Claim | Status |
+|---|---|
+| the 2-byte count at offset 8 is not validated | **stands** — `0`, `1`, `2`, `5` all accepted |
+| the second `b4` is the stream's length, checked at its end | **stands** |
+| the first `b4` must be 1 | **withdrawn** — it is the sample count |
+| a user waveform gets only one keybank through this path | **withdrawn as a conclusion**; still what every attempt *produced*, but no attempt sent a well-formed header |
+| the machine flattened a 5-record table onto the whole blob | **stands** as an observation — of a transfer whose header was malformed |
+
+A correctly sized header has not been tried: the machine was unplugged before the
+run. The package is built and waiting (`clavi-kb8.Y3S`, one waveform, eight
+keybanks, each with its own matched loop), and the pusher that sends one size
+entry per sample is written.
+
+**Two process failures, worth more than the field.** The answer was in this
+repository, in the document the new section was appended to, about a hundred
+lines above it — and a contradicting claim was written without reading it. Then
+the gap it left was reported to the owner four separate times as "one capture
+would settle it", when that capture was the source of the table all along.
+Before measuring a message, read what this repository already says about it; a
+measurement that contradicts an existing `verified on hardware` entry is a
+reason to stop and reconcile, not to add a second section.
