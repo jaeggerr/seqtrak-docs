@@ -5105,8 +5105,8 @@ fixed-size structure with a count inside it; it is the smallest member of a
 family.
 
 Machine state: firmware answering 4/4 on every address, sequencer stopped
-(`01 10 20` = `0`), `ContentsManagementMode` = `0`, tempo 120, 1988 free
-waveform slots (`01 10 09`).
+(`01 10 20` = `0`), `ContentsManagementMode` = `0`, tempo 120, 1988 free **sound**
+slots (`01 10 09` `UserSoundEmptyContentCount`).
 
 ### How high the count goes
 
@@ -5182,8 +5182,20 @@ window was chosen by waveform match at the join, not by counting periods
 | `ah 09` waveform body | the 516-byte record table (`4 + 64 × 8`) | result 0 |
 | `ah 07` sound body | the sound, its wave pointer rewritten | result 0 |
 
-`01 10 09` went from 1988 free waveform slots to **1987** — one waveform
-created, holding eight keybanks, not eight waveforms holding one each.
+`01 10 09` went from 1988 to **1987**. That counter is
+`UserSoundEmptyContentCount`, so what it shows is the **sound** that was
+created, not the waveform — the address was misread when this section was first
+written, and the sentence that stood here drew the right conclusion from the
+wrong instrument. **Corrected, and it does not change the conclusion**, which
+rests on the read-back below: content number 8653 is one waveform holding eight
+keybanks. The waveform counters are `01 10 0D` `UserWaveformEmptyContentCount`
+(1578 free) and `01 10 0F` `UserWaveformTotalContentCount` (1648); neither was
+read before the transfer, so no before-and-after exists for them.
+
+Sample memory, read afterwards: `01 10 11` `SampleMemoryUsedSize` = 23 of
+`01 10 13` `SampleMemoryTotalSize` = 510. The unit is not established — an
+earlier session read 11 used, and other transfers happened between the two
+readings, so the difference cannot be attributed to this one.
 
 ### What came back
 
