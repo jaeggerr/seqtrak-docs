@@ -4879,3 +4879,38 @@ keybank route would buy if its write handshake were known.
 A worked example now on the unit: roots at 48, 51, 54, 57, 60, 63, 66 and 69,
 zones `0`-`49`, `50`-`52`, `53`-`55`, `56`-`58`, `59`-`61`, `62`-`64`, `65`-`67`
 and `68`-`127`, with the two outer elements widened so nothing is silent.
+
+#### Normalising each zone to the same peak is a mistake
+
+Worth recording because it is the obvious thing to do and it is wrong. The eight
+zone samples were each normalised to the same **peak**, which sounded uneven at
+the zone boundaries — "surtout le volume", in the player's words.
+
+Measured on the files, the loop region of each:
+
+| | Peak-normalised | One common gain |
+|---|---|---|
+| loop RMS, lowest zone → highest | 9,770 → 12,027 | 9,770 → 9,903 |
+| total spread across the set | **1.80 dB, rising** | **0.12 dB** |
+
+The engine's own output *falls* with pitch — the eight renders peaked 14,759
+down to 12,153. Normalising each one to an equal peak does not merely remove
+that contour, it **inverts it** into a rising ramp, because the crest factor
+changes with pitch. Applying a **single gain to the whole set** instead, sized
+so the loudest zone reaches the target, keeps the instrument's natural contour
+and leaves the RMS flat to a tenth of a decibel.
+
+The element blocks were ruled out first: a part dump showed all eight identical
+apart from wave number and note limits, with `41 ep 2E` level at 100 and
+`41 ep 4D` `Level Key Follow Sensitivity` at 64 on every one. `verified on
+hardware`. So the step was in the audio, not the parameters — worth checking in
+that order, since a parameter is far quicker to read than a sample is to analyse.
+
+A second finding from the same measurement, and it bounds what multisampling can
+do here: the spectral centroid of the eight loops rises **more slowly than the
+fundamental** — 252 → 610 Hz where f0 goes 131 → 440 Hz, a factor 2.4 against
+3.4. So the engine's timbre darkens relative to pitch as it climbs. A sample
+stretched a semitone carries its whole spectrum with it, so at every zone
+boundary the brightness steps by roughly what three semitones of the natural
+contour would have done. Denser zones are the only cure, which is what the
+eight-element ceiling caps.
