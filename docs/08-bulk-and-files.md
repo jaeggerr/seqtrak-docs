@@ -305,6 +305,30 @@ Result **127** is what all of these refusals return, and it is not in the
 `Bulk.Result` enum below — treat it as the machine's generic "this request is
 unusable".
 
+## A body is cut at 3000 payload bytes
+
+`verified on hardware`. An `ah 07` / `08` / `09` body is **not one message**.
+When the machine sends one larger than 3000 payload bytes it cuts it there — the
+same `0xBB8` as a packet — and the pieces carry **no count and no index**: they
+are simply consecutive, and the reader concatenates them in arrival order.
+
+Measured on a 52-record keybank table, 3332 raw bytes:
+
+| Body message | Payload |
+|---|---|
+| 1 | 3000 B |
+| 2 | 934 B |
+
+3000 + 934 = 3934 encoded, which unpacks to exactly the 3332 bytes sent. A
+reader that keyed every body message at index 0 kept only the second and
+recovered 707 bytes, with the metadata parsed off its true offsets — see
+[10-verified-behaviour.md](docs/10-verified-behaviour.md#2026-11-24-same-evening--52-keybanks-one-per-semitone-and-a-body-is-not-one-message).
+
+This is the **receive** direction. Whether the machine *accepts* a body cut the
+same way is untested: the transfer that installed those 52 records sent the
+whole body in one 3938-byte message and it was accepted, so nothing has forced
+the question yet.
+
 ## Result codes
 
 The device answers on `AcknowledgeAddress` (`01 20 00`). `Bulk.Result`, `from

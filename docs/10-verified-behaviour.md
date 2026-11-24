@@ -5259,3 +5259,93 @@ table in [08-bulk-and-files.md](08-bulk-and-files.md#the-headers-payload) had
 recorded one 4-byte size entry per sample, `verified on hardware`, from a stereo
 import — about a hundred lines above the section that concluded the opposite.
 The measurement was not wrong; it was never the measurement that was asked for.
+
+## 2026-11-24, same evening — 52 keybanks, one per semitone, and a body is not one message
+
+A multisampled instrument with **one sample per semitone** over MIDI 36-87, as
+one waveform with 52 keybanks, written by a host and read back. `verified on
+hardware`. Content number **8654**.
+
+### What went on, and what came back
+
+| | Sent | Back |
+|---|---|---|
+| keybanks | 52, roots 36-87, one per semitone, zones contiguous over 0-127 | **52**, zones and roots identical |
+| record table | 3332 B = `4 + 64 × 52` | 3332 B |
+| audio | 52 samples, 7,251,232 B | **52 of 52 byte for byte** (SHA-1 equal) |
+
+Counters, read four times each before and after:
+
+| Address | Before | After |
+|---|---|---|
+| `01 10 0D` `UserWaveformEmptyContentCount` | 1578 | **1577** |
+| `01 10 09` `UserSoundEmptyContentCount` | 1987 | 1986 |
+| `01 10 11` `SampleMemoryUsedSize` | 23 | **30** |
+| `01 10 13` `SampleMemoryTotalSize` | 510 | 510 |
+
+**One waveform for 52 keybanks**, now on the right counter. And the sample
+memory unit follows from it: **+7 for 7,251,232 bytes**, so one unit is about
+1 MiB and the machine holds about 510 MiB of sample memory. The unit was
+recorded as "not established" before this.
+
+### A body is cut at 3000 payload bytes, like a packet
+
+This was found by accident and it matters more than the instrument. The
+52-record table came back as **707 bytes of its 3332**, and the metadata parsed
+as nonsense. `python-rtmidi` was ruled out first — 5000-byte SysEx messages pass
+through a virtual port intact — so the arriving data was logged message by
+message:
+
+| Body message | Payload |
+|---|---|
+| 1 | **3000 B** |
+| 2 | 934 B |
+
+3000 + 934 = 3934 encoded → 3332 raw, the whole table. So **`ah 07` / `08` /
+`09` bodies are not one message**: the machine cuts them at **3000 payload
+bytes**, the same `0xBB8` as a packet, with no count or index of their own —
+they are simply consecutive.
+
+`content_pull.py` stored every body message at index 0 and so kept only the
+last. Fixed. Nothing had been pulled big enough to show it: the largest body
+read before this was 720 bytes.
+
+### The three bytes the machine rewrites, at 52 records
+
+Exactly the same three as at eight, and one of them now settles a field.
+
+| Offset | Sent | Back |
+|---|---|---|
+| `+0x0B` | `01` in all 52 records | **`52` in all 52 records** |
+| `+0x38`, `+0x39` | one value in all 52 | 48 and 50 distinct values |
+
+**`+0x0B` is the keybank count.** Eight keybanks gave `08`, fifty-two give
+`52`, and the audio is mono throughout; the "channels, 1 = mono, 2 = stereo"
+reading is finished. Everything else in all 52 records — key range, velocity
+range, pan, root key, loop switch, sample rate, loop start, frame count — came
+back unchanged.
+
+### Why 52, and why that is not the machine's limit
+
+52 is the ceiling of **the sender used here**, which puts the whole record table
+in one message: the table is `4 + 64n` bytes, 7-into-8 encoding makes it
+`⌈·/7⌉ × 8`, and with the 130 bytes of body metadata it must fit the 3992-byte
+payload area. `n = 52` gives 3938 and fits; `n = 53` gives 4012 and does not.
+
+But the machine's own *send* path cuts a body at 3000 bytes, so a **chunked
+send** would plausibly carry a larger table. That has not been tried, and
+`KeybankFull` (result code 5) exists and has not been reached. So:
+
+| Claim | State |
+|---|---|
+| 52 keybanks in one waveform, written and read back | **`verified on hardware`** |
+| a body arrives cut at 3000 payload bytes | **`verified on hardware`** |
+| `+0x0B` is the keybank count | **`verified on hardware`** at 8 and at 52 |
+| 52 is the most a host can write | **not established** — it is this sender's one-message limit, not a measured cap |
+
+The instrument itself: roots 36-87 one per semitone, the outer two zones
+widened to 0 and 127. The range stops at 87 because the engine's level is flat
+from 21 to 87 and then collapses — RMS 4706 at 72, 4543 at 88, 2364 at 96 — so
+notes above 87 would make the top of the keyboard vanish. All 52 loop joins
+measured at a waveform correlation of 0.9999 or better, and a single common gain
+of 1.6363 was applied to the whole set.

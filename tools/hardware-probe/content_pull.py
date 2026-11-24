@@ -118,7 +118,12 @@ def main():
                 if index == 0 and parts.get(ah):
                     streams.setdefault(ah, []).append(parts.pop(ah))
             else:
-                index = 0
+                # A body is NOT one message: the machine cuts it at 3000 payload
+                # bytes, the same 0xBB8 as a packet. Storing every body message
+                # at index 0 kept only the last one, so a 52-record keybank
+                # table came back as 707 bytes of its 3332 -- and nothing had
+                # been pulled big enough to show it before.
+                index = len(parts.get(ah, {}))
             parts.setdefault(ah, {})[index] = bytes(d[0x0F:len(d) - 2])
             ack(d)
     finally:
