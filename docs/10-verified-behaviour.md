@@ -5134,6 +5134,20 @@ against `clavi-kb8.Y3S` (one waveform, eight keybanks, eight matched loops),
 then [`../tools/hardware-probe/content_pull.py`](../tools/hardware-probe/content_pull.py)
 to read back what was stored.
 
+### What the eight keybanks are
+
+Worth stating because it is what makes the zones worth having. The eight zones
+are **not one file repitched**. Each root is an independent synthesis at its own
+pitch: eight offline renders of the same synthesiser voice of the owner's own at
+MIDI notes 48, 51, 54, 57, 60, 63, 66 and 69 — eight files of the same duration
+(4.1 s) and distinct content. That is what gives each zone its own timbre and
+its own level, and it is also why a **single common gain** across the set is
+required rather than a per-sample normalisation, which inverts the engine's
+falling level contour into a rising ramp
+([above](#normalising-each-zone-to-the-same-peak-is-a-mistake)). Each one's loop
+window was chosen by waveform match at the join, not by counting periods
+([the loop click](#the-loop-click-an-integer-number-of-periods-is-the-wrong-objective)).
+
 ### The transfer
 
 | Step | Sent | Acknowledged |
